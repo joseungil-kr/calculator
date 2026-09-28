@@ -1,0 +1,103 @@
+name: Airtable Fix Test
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  repair:
+    if: startsWith(github.event.issue.title, '[AIRTABLE-FIX]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          ref: scheduled-work-test
+          fetch-depth: 0
+
+      - name: Parse fix command and repair
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python - <<'PY'
+          import os, pathlib, re
+
+          body = os.environ.get("ISSUE_BODY", "")
+          values = {}
+          for line in body.splitlines():
+              if ": " in line:
+                  k, v = line.split(": ", 1)
+                  values[k.strip()] = v.strip()
+
+          action = values.get("ACTION", "")
+          source = values.get("SOURCE_FILE", "")
+          target = values.get("TARGET_URL", "")
+          anchor = values.get("ANCHOR_TEXT", "")
+
+          if action != "add_internal_link":
+              raise SystemExit(f"Unsupported action: {action}")
+
+          p = pathlib.PurePosixPath(source)
+          if (
+              p.is_absolute()
+              or ".." in p.parts
+              or not source.startswith("qa-test/site-a/")
+              or not source.endswith(".md")
+          ):
+              raise SystemExit(f"Unsafe source path: {source}")
+
+          if not target.startswith("/site-a/") or ".." in target:
+              raise SystemExit(f"Unsafe target URL: {target}")
+
+          if not anchor or any(x in anchor for x in ["[", "]", "\\n", "\\r"]):
+              raise SystemExit("Unsafe anchor text")
+
+          out = pathlib.Path(source)
+          if not out.exists():
+              raise SystemExit(f"Source file not found: {source}")
+
+          text = out.read_text(encoding="utf-8")
+          markdown_link = f"[{anchor}]({target})"
+
+          if markdown_link in text or target in text:
+              print("LINK_ALREADY_PRESENT=1")
+          else:
+              if not text.endswith("\\n"):
+                  text += "\\n"
+              text += f"\n- {markdown_link}\n"
+              out.write_text(text, encoding="utf-8")
+              print(f"Added {markdown_link} to {source}")
+          PY
+
+      - name: Commit and push repair
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add qa-test/site-a/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Auto-fix orphan link from issue #${{ github.event.issue.number }}"
+            git push origin HEAD:scheduled-work-test
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Report repair
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ steps.commit.outputs.sha }}
+          CHANGED: ${{ steps.commit.outputs.changed }}
+        run: |
+          if [ "$CHANGED" = "true" ]; then
+            gh issue comment "${{ github.event.issue.number }}" --body "Repair completed on scheduled-work-test. Commit: $SHA"
+          else
+            gh issue comment "${{ github.event.issue.number }}" --body "Repair not needed; link already present. Current commit: $SHA"
+          fi
+          gh issue close "${{ github.event.issue.number }}"
