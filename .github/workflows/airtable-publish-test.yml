@@ -1,0 +1,67 @@
+name: Airtable Publish Test
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  publish:
+    if: startsWith(github.event.issue.title, '[AIRTABLE-PUBLISH]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          ref: scheduled-work-test
+          fetch-depth: 0
+
+      - name: Parse issue and write Markdown
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python - <<'PY'
+          import os, pathlib, sys
+          body = os.environ.get("ISSUE_BODY", "")
+          begin = "---BEGIN-CONTENT---"
+          end = "---END-CONTENT---"
+
+          lines = body.splitlines()
+          path_line = next((x for x in lines if x.startswith("PATH: ")), None)
+          if not path_line or begin not in body or end not in body:
+              raise SystemExit("Invalid publish payload")
+
+          rel = path_line[6:].strip()
+          p = pathlib.PurePosixPath(rel)
+          if p.is_absolute() or ".." in p.parts or not rel.startswith("scheduled-tests/") or not rel.endswith(".md"):
+              raise SystemExit(f"Unsafe path: {rel}")
+
+          content = body.split(begin, 1)[1].split(end, 1)[0].strip("\n") + "\n"
+          out = pathlib.Path(rel)
+          out.parent.mkdir(parents=True, exist_ok=True)
+
+          if out.exists():
+              raise SystemExit(f"File already exists: {rel}")
+
+          out.write_text(content, encoding="utf-8")
+          print(f"Wrote {rel}")
+          PY
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scheduled-tests/
+          git commit -m "Publish Airtable queued test from issue #${{ github.event.issue.number }}"
+          git push origin HEAD:scheduled-work-test
+
+      - name: Report success
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          SHA=$(git rev-parse HEAD)
+          gh issue comment "${{ github.event.issue.number }}" --body "Published to scheduled-work-test. Commit: $SHA"
+          gh issue close "${{ github.event.issue.number }}"
