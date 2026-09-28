@@ -11,6 +11,11 @@
           "file": "qa-test/site-a/ansan/funeral-a.md",
           "url": "/site-a/ansan/funeral-a/",
           "anchor": "고대안산병원 장례식장"
+        },
+        {
+          "file": "qa-test/site-a/ansan/funeral-b.md",
+          "url": "/site-a/ansan/funeral-b/",
+          "anchor": "안산테스트병원 장례식장"
         }
       ]
     }
