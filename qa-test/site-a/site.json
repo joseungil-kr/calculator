@@ -16,6 +16,11 @@
           "file": "qa-test/site-a/ansan/funeral-b.md",
           "url": "/site-a/ansan/funeral-b/",
           "anchor": "안산테스트병원 장례식장"
+        },
+        {
+          "file": "qa-test/site-a/ansan/funeral-c.md",
+          "url": "/site-a/ansan/funeral-c/",
+          "anchor": "안산자동복구병원 장례식장"
         }
       ]
     }
