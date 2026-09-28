@@ -1,0 +1,29 @@
+{
+  "site_key": "ansan-flower-test",
+  "domain": "ansanflowerdelivery.com",
+  "blueprint_key": "flower-local",
+  "region": "안산",
+  "industry": "꽃배달·꽃집",
+  "initial_page_target": 30,
+  "daily_count": 1,
+  "editorial_policy": {
+    "local_identity_required": true,
+    "fake_experience_forbidden": true,
+    "source_required_for_changeable_local_facts": true,
+    "max_global_similarity": 35,
+    "max_structure_similarity": 35
+  },
+  "publishing": {
+    "initial_phase": "launch",
+    "daily_phase": "daily",
+    "content_gate": "editorial_pass_only"
+  },
+  "webmaster": {
+    "auto_fix_risk": [
+      "LOW"
+    ],
+    "first_auto_fix_actions": [
+      "add_internal_link"
+    ]
+  }
+}
