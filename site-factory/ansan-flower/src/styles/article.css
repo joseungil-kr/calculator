@@ -1,0 +1,37 @@
+.article-shell { padding: 54px 0 70px; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.breadcrumbs span { opacity: .6; }
+.article-header { max-width: 860px; margin-bottom: 34px; }
+.article-header h1 { margin: 12px 0 16px; font-size: clamp(34px, 6vw, 60px); line-height: 1.12; letter-spacing: -0.04em; }
+.article-header p { margin: 0; color: var(--muted); font-size: 18px; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.article-meta span { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 13px; color: var(--muted); }
+.article-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 44px; align-items: start; }
+.prose { min-width: 0; max-width: 780px; }
+.prose > :first-child { margin-top: 0; }
+.prose h2 { margin: 46px 0 14px; font-size: 28px; line-height: 1.32; letter-spacing: -0.025em; }
+.prose h3 { margin: 32px 0 10px; font-size: 21px; }
+.prose p, .prose li { color: #34423b; }
+.prose strong { color: var(--ink); }
+.prose ul, .prose ol { padding-left: 22px; }
+.prose blockquote {
+  margin: 28px 0; padding: 18px 20px; border-left: 4px solid var(--accent);
+  background: var(--surface-strong); border-radius: 0 14px 14px 0;
+}
+.prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+.article-aside { position: sticky; top: 96px; display: grid; gap: 14px; }
+.aside-card { padding: 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+.aside-card strong { display: block; margin-bottom: 6px; }
+.aside-card p { margin: 0; color: var(--muted); font-size: 14px; }
+.aside-card a { display: inline-block; margin-top: 12px; color: var(--brand); font-weight: 800; font-size: 14px; }
+.source-list { margin-top: 56px; padding: 22px; background: var(--surface-strong); border-radius: 16px; border: 1px solid var(--line); }
+.source-list h2 { margin-top: 0; font-size: 20px; }
+.source-list ul { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .article-grid { grid-template-columns: 1fr; }
+  .article-aside { position: static; grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .article-shell { padding-top: 34px; }
+  .article-aside { grid-template-columns: 1fr; }
+}
