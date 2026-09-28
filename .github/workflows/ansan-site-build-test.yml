@@ -1,0 +1,42 @@
+name: Ansan Site Factory Build Test
+
+on:
+  push:
+    branches:
+      - site-factory-ansan-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/ansan-flower
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Astro check and build
+        run: npm run build
+
+      - name: Verify generated site
+        run: |
+          test -f dist/index.html
+          test -f dist/guide/index.html
+          test -f dist/places/index.html
+          test -f dist/occasions/index.html
+          test -f dist/flower-knowledge/index.html
+          test -f dist/order-help/index.html
+          test -f dist/robots.txt
+          find dist -maxdepth 2 -type f | sort
