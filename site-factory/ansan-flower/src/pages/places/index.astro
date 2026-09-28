@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const items = [
+  ['대학교', '한양대 ERICA 졸업식·입학 시즌', '개인 선물과 단체 명의 축하를 나눠서 봅니다.'],
+  ['병원', '고려대 안산병원 병문안 꽃', '반입 가능 여부와 향·크기 배려를 먼저 확인합니다.'],
+  ['역', '중앙역에서 꽃을 오래 들고 이동해야 한다면', '포장과 이동시간을 기준으로 봅니다.'],
+  ['역', '상록수역 약속 전 꽃 준비 시간', '언제 준비해야 덜 급한지 시간 계획을 다룹니다.'],
+  ['광장', '안산문화광장 야외 행사 꽃', '바람·햇빛·사진·동선이라는 야외 조건을 먼저 봅니다.'],
+  ['동네', '고잔동 개업 축하꽃', '상가와 사무실의 공간 차이를 기준으로 봅니다.'],
+  ['동네', '선부동 집·가게 꽃 선물', '수령 장소에 따라 무엇을 미리 확인할지 정리합니다.'],
+];
+---
+<BaseLayout title="안산 장소별 꽃 가이드 | 꽃이랑 안산" description="대학, 병원, 역, 광장, 동네처럼 안산의 장소 특성에 맞춰 꽃 선택 기준을 안내합니다.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Places</span>
+      <h1>안산 장소별 가이드</h1>
+      <p>지역명을 붙이는 데서 끝내지 않고, 그 장소에서 실제로 먼저 확인해야 할 질문을 정리합니다.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container hub-list">
+      {items.map(([kind,title,body]) => (
+        <div class="hub-link">
+          <span class="kind">{kind}</span>
+          <div><strong>{title}</strong><br /><span>{body}</span></div>
+          <span class="hub-arrow">준비 중 →</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
