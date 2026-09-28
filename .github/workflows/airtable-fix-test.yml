@@ -53,7 +53,7 @@ jobs:
           if not target.startswith("/site-a/") or ".." in target:
               raise SystemExit(f"Unsafe target URL: {target}")
 
-          if not anchor or any(x in anchor for x in ["[", "]", "\\n", "\\r"]):
+          if not anchor or any(x in anchor for x in ["[", "]", "\n", "\r"]):
               raise SystemExit("Unsafe anchor text")
 
           out = pathlib.Path(source)
