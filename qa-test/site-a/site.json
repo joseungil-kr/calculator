@@ -1,0 +1,18 @@
+{
+  "site_key": "test-site-a",
+  "branch": "scheduled-work-test",
+  "content_root": "qa-test/site-a",
+  "regions": {
+    "ansan": {
+      "hub_file": "qa-test/site-a/ansan/index.md",
+      "hub_url": "/site-a/ansan/",
+      "pages": [
+        {
+          "file": "qa-test/site-a/ansan/funeral-a.md",
+          "url": "/site-a/ansan/funeral-a/",
+          "anchor": "고대안산병원 장례식장"
+        }
+      ]
+    }
+  }
+}
