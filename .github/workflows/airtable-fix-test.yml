@@ -24,7 +24,7 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python - <<'PY'
-          import os, pathlib, re
+          import os, pathlib
 
           body = os.environ.get("ISSUE_BODY", "")
           values = {}
@@ -66,8 +66,8 @@ jobs:
           if markdown_link in text or target in text:
               print("LINK_ALREADY_PRESENT=1")
           else:
-              if not text.endswith("\\n"):
-                  text += "\\n"
+              if not text.endswith("\n"):
+                  text += "\n"
               text += f"\n- {markdown_link}\n"
               out.write_text(text, encoding="utf-8")
               print(f"Added {markdown_link} to {source}")
