@@ -1,0 +1,16 @@
+---
+import { siteConfig } from '../config/site';
+---
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div>
+      <div class="footer-brand">{siteConfig.brand}</div>
+      <div>{siteConfig.description}</div>
+    </div>
+    <div class="footer-meta">
+      <a href={siteConfig.operator.href} rel={siteConfig.operator.rel}>{siteConfig.operator.label}</a>
+      <a href={`mailto:${siteConfig.operator.email}`}>{siteConfig.operator.email}</a>
+      <span>© {new Date().getFullYear()} {siteConfig.brand}</span>
+    </div>
+  </div>
+</footer>
