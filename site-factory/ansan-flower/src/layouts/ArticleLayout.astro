@@ -1,0 +1,74 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/article.css';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  structureType: string;
+  region: string;
+  sourceUrls?: string[];
+  verifiedAt?: Date;
+}
+
+const { title, description, category, structureType, region, sourceUrls = [], verifiedAt } = Astro.props;
+
+const categoryLabel: Record<string, string> = {
+  guide: '꽃 선택 가이드',
+  places: '장소별',
+  occasions: '상황별',
+  'flower-knowledge': '꽃 이야기',
+  'order-help': '주문 준비',
+};
+
+const categoryHref = `/${category}/`;
+---
+<BaseLayout title={`${title} | 꽃이랑 안산`} description={description}>
+  <section class="article-shell">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">홈</a><span>›</span>
+        <a href={categoryHref}>{categoryLabel[category] ?? category}</a><span>›</span>
+        <span>현재 글</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="eyebrow">{categoryLabel[category] ?? category}</span>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <div class="article-meta">
+          <span>{region}</span>
+          <span>{structureType}</span>
+          {verifiedAt && <span>자료 확인 {verifiedAt.toISOString().slice(0, 10)}</span>}
+        </div>
+      </header>
+
+      <div class="article-grid">
+        <article class="prose">
+          <slot />
+          {sourceUrls.length > 0 && (
+            <section class="source-list" aria-labelledby="source-title">
+              <h2 id="source-title">자료 확인</h2>
+              <ul>
+                {sourceUrls.map((url) => <li><a href={url} rel="nofollow noopener noreferrer">{url}</a></li>)}
+              </ul>
+            </section>
+          )}
+        </article>
+
+        <aside class="article-aside" aria-label="관련 안내">
+          <div class="aside-card">
+            <strong>이 글의 역할</strong>
+            <p>이 페이지는 모든 꽃을 한 번에 추천하기보다, 다음에 확인할 질문을 찾도록 돕습니다.</p>
+          </div>
+          <div class="aside-card">
+            <strong>더 구체적으로 찾기</strong>
+            <p>장소나 행사 유형이 정해졌다면 해당 허브에서 더 구체적인 글을 확인하세요.</p>
+            <a href={categoryHref}>관련 가이드 보기 →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
