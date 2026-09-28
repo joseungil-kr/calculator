@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlparse
+import json
+import re
+import sys
+
+DIST = Path("dist")
+EXPECTED_ORIGIN = "https://ansanflowerdelivery.com"
+errors = []
+
+class PageParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.title_depth = 0
+        self.title_text = []
+        self.meta_description = None
+        self.canonical = None
+        self.h1_count = 0
+        self.hrefs = []
+        self.json_ld_depth = 0
+        self.json_ld_parts = []
+        self.json_ld = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "title":
+            self.title_depth += 1
+        elif tag == "meta" and a.get("name") == "description":
+            self.meta_description = a.get("content", "").strip()
+        elif tag == "link" and a.get("rel") == "canonical":
+            self.canonical = a.get("href")
+        elif tag == "h1":
+            self.h1_count += 1
+        elif tag == "a" and a.get("href"):
+            self.hrefs.append(a["href"])
+        elif tag == "script" and a.get("type") == "application/ld+json":
+            self.json_ld_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag == "title" and self.title_depth:
+            self.title_depth -= 1
+        elif tag == "script" and self.json_ld_depth:
+            raw = "".join(self.json_ld_parts).strip()
+            if raw:
+                self.json_ld.append(raw)
+            self.json_ld_parts = []
+            self.json_ld_depth -= 1
+
+    def handle_data(self, data):
+        if self.title_depth:
+            self.title_text.append(data)
+        if self.json_ld_depth:
+            self.json_ld_parts.append(data)
+
+def target_exists(href: str) -> bool:
+    parsed = urlparse(href)
+    if parsed.scheme or parsed.netloc or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+        return True
+    path = parsed.path
+    if not path.startswith("/"):
+        return True
+    if path == "/":
+        return (DIST / "index.html").exists()
+    rel = path.lstrip("/")
+    direct = DIST / rel
+    if direct.is_file():
+        return True
+    if path.endswith("/"):
+        return (direct / "index.html").exists()
+    return (DIST / rel / "index.html").exists() or (DIST / f"{rel}.html").exists()
+
+html_files = sorted(DIST.rglob("*.html"))
+if not html_files:
+    errors.append("No HTML files generated.")
+
+for file in html_files:
+    parser = PageParser()
+    text = file.read_text(encoding="utf-8")
+    parser.feed(text)
+
+    title = "".join(parser.title_text).strip()
+    if not title:
+        errors.append(f"{file}: missing <title>")
+    if not parser.meta_description:
+        errors.append(f"{file}: missing meta description")
+    if parser.h1_count != 1:
+        errors.append(f"{file}: expected exactly 1 H1, found {parser.h1_count}")
+    if not parser.canonical:
+        errors.append(f"{file}: missing canonical")
+    elif not parser.canonical.startswith(EXPECTED_ORIGIN):
+        errors.append(f"{file}: unexpected canonical {parser.canonical}")
+    if "localhost" in text or "127.0.0.1" in text:
+        errors.append(f"{file}: localhost reference remains in output")
+
+    for raw in parser.json_ld:
+        try:
+            json.loads(raw)
+        except json.JSONDecodeError as e:
+            errors.append(f"{file}: invalid JSON-LD: {e}")
+
+    for href in parser.hrefs:
+        if not target_exists(href):
+            errors.append(f"{file}: broken internal href {href}")
+
+sitemap = DIST / "sitemap-index.xml"
+if not sitemap.exists():
+    errors.append("Missing sitemap-index.xml")
+else:
+    sm = sitemap.read_text(encoding="utf-8")
+    if EXPECTED_ORIGIN not in sm:
+        errors.append("Sitemap does not use expected production origin")
+
+article = DIST / "guide" / "ansan-flower-guide" / "index.html"
+if not article.exists():
+    errors.append("Approved article output is missing: /guide/ansan-flower-guide/")
+
+robots = DIST / "robots.txt"
+if not robots.exists():
+    errors.append("Missing robots.txt")
+else:
+    rt = robots.read_text(encoding="utf-8")
+    if f"Sitemap: {EXPECTED_ORIGIN}/sitemap-index.xml" not in rt:
+        errors.append("robots.txt sitemap URL mismatch")
+
+if errors:
+    print("\nSTATIC QA FAILED")
+    for error in errors:
+        print(f"- {error}")
+    sys.exit(1)
+
+print(f"STATIC QA PASSED: {len(html_files)} HTML files checked")
+print("Approved article, canonical, meta, H1, JSON-LD, internal links, sitemap and robots verified.")
