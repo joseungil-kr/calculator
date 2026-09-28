@@ -47,5 +47,8 @@ jobs:
       - name: Deterministic static SEO QA
         run: python3 scripts/qa_static.py
 
+      - name: Cloudflare Workers deploy dry run
+        run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
+
       - name: Show generated files
         run: find dist -maxdepth 4 -type f | sort
