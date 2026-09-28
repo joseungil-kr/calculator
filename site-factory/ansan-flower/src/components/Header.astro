@@ -1,0 +1,15 @@
+---
+import { siteConfig } from '../config/site';
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/" aria-label={`${siteConfig.brand} 홈`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>{siteConfig.brand}</span>
+    </a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      {siteConfig.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="header-cta" href="/order-help/">꽃 준비하기</a>
+  </div>
+</header>
