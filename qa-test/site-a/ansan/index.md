@@ -11,3 +11,5 @@
 - [고대안산병원 장례식장](/site-a/ansan/funeral-a/)
 
 - [안산테스트병원 장례식장](/site-a/ansan/funeral-b/)
+
+- [안산자동복구병원 장례식장](/site-a/ansan/funeral-c/)
