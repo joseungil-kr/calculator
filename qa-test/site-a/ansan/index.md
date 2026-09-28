@@ -9,3 +9,5 @@
 <!-- QA TEST: funeral-a 링크는 의도적으로 누락 -->
 
 - [고대안산병원 장례식장](/site-a/ansan/funeral-a/)
+
+- [안산테스트병원 장례식장](/site-a/ansan/funeral-b/)
