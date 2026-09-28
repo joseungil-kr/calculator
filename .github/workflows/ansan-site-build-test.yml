@@ -30,13 +30,22 @@ jobs:
       - name: Astro check and build
         run: npm run build
 
-      - name: Verify generated site
+      - name: Verify required outputs
         run: |
           test -f dist/index.html
+          test -f dist/404.html
           test -f dist/guide/index.html
+          test -f dist/guide/ansan-flower-guide/index.html
           test -f dist/places/index.html
           test -f dist/occasions/index.html
           test -f dist/flower-knowledge/index.html
           test -f dist/order-help/index.html
           test -f dist/robots.txt
-          find dist -maxdepth 2 -type f | sort
+          test -f dist/_headers
+          test -f dist/sitemap-index.xml
+
+      - name: Deterministic static SEO QA
+        run: python3 scripts/qa_static.py
+
+      - name: Show generated files
+        run: find dist -maxdepth 4 -type f | sort
