@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.SITE_URL || 'https://ansan.fwith.kr';
+const site = process.env.SITE_URL || 'https://suwon.fwith.kr';
 
 export default defineConfig({
   site,
