@@ -35,7 +35,7 @@ if (initial || !baseSha) {
   const root = 'site-factory/ansan-flower';
   let changed = '';
   try {
-    changed = execFileSync('git', ['diff','--name-only',baseSha,'HEAD','--',root], { encoding:'utf8' });
+    changed = execFileSync('git', ['diff','--name-only',baseSha,'HEAD','--','.'], { encoding:'utf8' });
   } catch {}
 
   const files = changed.split(/\r?\n/).filter(Boolean);
