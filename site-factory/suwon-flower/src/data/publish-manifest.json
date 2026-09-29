@@ -70,6 +70,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-21",
+      "draftKey": "suwon-flower-factory-draft-21",
+      "sourceRecordId": "rec308dcPxFH0UzJh",
+      "publishQueueRecordId": "recWibS9pvlx0g4Wa",
+      "snapshotId": "suwon-flower-launch-21-v1",
+      "slug": "suwon-yeonhwajang-condolence-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-21.md",
+      "url": "/funeral/suwon-yeonhwajang-condolence-wreath/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-23",
       "draftKey": "suwon-flower-factory-draft-23",
       "sourceRecordId": "rec6dpL2Zfm7neZ6u",
