@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 const dist = 'dist';
-const origin = (process.env.SITE_URL || 'https://ansan.fwith.kr').replace(/\/$/, '');
+const origin = (process.env.SITE_URL || 'https://suwon.fwith.kr').replace(/\/$/, '');
 const canonicalHost = new URL(origin).hostname;
 const errors = [];
 const htmlFiles = [];

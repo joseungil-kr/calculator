@@ -7,9 +7,9 @@ import os
 import sys
 
 DIST = Path("dist")
-EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansan.fwith.kr").rstrip("/")
-PRIMARY_LANDING_SLUG = os.environ.get("PRIMARY_LANDING_SLUG", "안산꽃배달").strip("/")
-HERO_PATH = os.environ.get("HERO_PATH", "images/ansan/hero-B-original.png").strip("/")
+EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://suwon.fwith.kr").rstrip("/")
+PRIMARY_LANDING_SLUG = os.environ.get("PRIMARY_LANDING_SLUG", "").strip("/")
+HERO_PATH = os.environ.get("HERO_PATH", "images/suwon/hero-B-original.png").strip("/")
 INDEXABLE_ENV = os.environ.get("SITE_INDEXABLE")
 PRODUCTION_MARKER = Path("production-indexing.enabled").exists()
 INDEXABLE = (

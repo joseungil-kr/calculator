@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const origin = (process.env.SITE_ORIGIN || 'https://ansan.fwith.kr').replace(/\/$/, '');
+const origin = (process.env.SITE_ORIGIN || 'https://suwon.fwith.kr').replace(/\/$/, '');
 const initial = process.env.INDEXNOW_INITIAL === 'true';
 const baseSha = process.env.INDEXNOW_BASE_SHA || '';
 
