@@ -15,15 +15,16 @@ jobs:
     env:
       BASE: https://ansan-flower-guide-test.joseungil.workers.dev
     steps:
-      - name: Wait for live homepage
+      - name: Wait for current test deployment
         run: |
-          for i in $(seq 1 18); do
+          for i in $(seq 1 24); do
             code=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$BASE/" || true)
-            if [ "$code" = "200" ]; then
-              echo "Homepage is live"
+            robots=$(curl -sS "$BASE/robots.txt" || true)
+            if [ "$code" = "200" ] && grep -qi 'name="robots"[^>]*noindex' /tmp/home.html && printf '%s' "$robots" | grep -q '^Disallow: /$'; then
+              echo "Current noindex test deployment is live"
               exit 0
             fi
-            echo "Attempt $i: HTTP $code"
+            echo "Attempt $i: waiting for current deployment"
             sleep 10
           done
           exit 1
@@ -52,6 +53,7 @@ jobs:
           curl -fsS "$BASE/" -o /tmp/home.html
           grep -q '<html lang="ko"' /tmp/home.html
           grep -q '<link rel="canonical" href="https://ansanflowerdelivery.com/"' /tmp/home.html
+          grep -qi 'name="robots"[^>]*noindex' /tmp/home.html
           grep -q '<meta name="description"' /tmp/home.html
           grep -q 'application/ld+json' /tmp/home.html
           grep -q '<h1' /tmp/home.html
@@ -62,13 +64,14 @@ jobs:
           grep -q '<h1' /tmp/article.html
           grep -q '안산에서 꽃을 보낼 때' /tmp/article.html
           grep -q '<link rel="canonical" href="https://ansanflowerdelivery.com/guide/ansan-flower-guide/"' /tmp/article.html
+          grep -qi 'name="robots"[^>]*noindex' /tmp/article.html
           grep -q 'application/ld+json' /tmp/article.html
 
       - name: Check robots and sitemap
         run: |
           curl -fsS "$BASE/robots.txt" -o /tmp/robots.txt
           grep -q 'User-agent: \*' /tmp/robots.txt
-          grep -q 'Sitemap: https://ansanflowerdelivery.com/sitemap-index.xml' /tmp/robots.txt
+          grep -q '^Disallow: /$' /tmp/robots.txt
           curl -fsS "$BASE/sitemap-index.xml" -o /tmp/sitemap-index.xml
           grep -q 'sitemap-0.xml' /tmp/sitemap-index.xml
           curl -fsS "$BASE/sitemap-0.xml" -o /tmp/sitemap-0.xml
@@ -91,13 +94,3 @@ jobs:
           grep -qi '^x-frame-options: SAMEORIGIN' /tmp/headers.txt
           grep -qi '^referrer-policy: strict-origin-when-cross-origin' /tmp/headers.txt
           grep -qi '^permissions-policy:' /tmp/headers.txt
-
-      - name: Report test indexing posture
-        run: |
-          curl -fsS "$BASE/" -o /tmp/home.html
-          curl -fsS "$BASE/robots.txt" -o /tmp/robots.txt
-          if grep -qi 'name="robots"[^>]*noindex' /tmp/home.html || grep -q '^Disallow: /$' /tmp/robots.txt; then
-            echo "Test deployment is protected from indexing."
-          else
-            echo "::warning::Test deployment is currently indexable. Add noindex/disallow before broader testing."
-          fi

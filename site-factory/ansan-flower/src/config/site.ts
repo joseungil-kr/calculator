@@ -1,8 +1,13 @@
+const siteUrl = import.meta.env.SITE_URL || 'https://ansanflowerdelivery.com';
+const indexable = import.meta.env.SITE_INDEXABLE === 'true';
+
 export const siteConfig = {
   siteKey: 'ansan-flower-test',
   brand: '꽃이랑 안산',
   region: '안산',
   industry: '꽃배달·꽃집',
+  siteUrl,
+  indexable,
   description:
     '안산에서 꽃을 준비할 때 사람, 상황, 장소에 맞는 선택 기준을 설명하는 지역 플라워 가이드입니다.',
   operator: {

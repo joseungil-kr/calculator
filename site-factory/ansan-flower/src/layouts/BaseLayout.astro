@@ -17,6 +17,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString();
+const robots = siteConfig.indexable ? 'index,follow' : 'noindex,nofollow,noarchive';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -33,6 +34,7 @@ const schema = {
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ko_KR" />
