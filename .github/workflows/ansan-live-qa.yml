@@ -15,16 +15,20 @@ jobs:
     env:
       BASE: https://ansan-flower-guide-test.joseungil.workers.dev
     steps:
-      - name: Wait for current test deployment
+      - name: Wait for current subdomain-routing deployment
         run: |
-          for i in $(seq 1 24); do
-            code=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$BASE/" || true)
+          for i in $(seq 1 30); do
+            home_code=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$BASE/" || true)
+            top_code=$(curl -sS -o /tmp/top.html -w "%{http_code}" "$BASE/%EC%95%88%EC%82%B0%EA%BD%83%EB%B0%B0%EB%8B%AC/" || true)
             robots=$(curl -sS "$BASE/robots.txt" || true)
-            if [ "$code" = "200" ] && grep -qi 'name="robots"[^>]*noindex' /tmp/home.html && printf '%s' "$robots" | grep -q '^Disallow: /$'; then
-              echo "Current noindex test deployment is live"
+            if [ "$home_code" = "200" ] && [ "$top_code" = "200" ] \
+               && grep -q 'https://ansan.fwith.kr/' /tmp/home.html \
+               && grep -qi 'name="robots"[^>]*noindex' /tmp/home.html \
+               && printf '%s' "$robots" | grep -q '^Disallow: /$'; then
+              echo "Current ansan.fwith.kr routing test deployment is live"
               exit 0
             fi
-            echo "Attempt $i: waiting for current deployment"
+            echo "Attempt $i: home=$home_code top=$top_code; waiting for current deployment"
             sleep 10
           done
           exit 1
@@ -33,7 +37,7 @@ jobs:
         run: |
           urls=(
             "/"
-            "/guide/ansan-flower-guide/"
+            "/%EC%95%88%EC%82%B0%EA%BD%83%EB%B0%B0%EB%8B%AC/"
             "/guide/ansan-flower-form-guide/"
             "/order-help/ansan-same-day-order-checklist/"
             "/guide/"
@@ -52,20 +56,26 @@ jobs:
         run: |
           curl -fsS "$BASE/" -o /tmp/home.html
           grep -q '<html lang="ko"' /tmp/home.html
-          grep -q '<link rel="canonical" href="https://ansanflowerdelivery.com/"' /tmp/home.html
+          grep -q '<link rel="canonical" href="https://ansan.fwith.kr/"' /tmp/home.html
           grep -qi 'name="robots"[^>]*noindex' /tmp/home.html
           grep -q '<meta name="description"' /tmp/home.html
           grep -q 'application/ld+json' /tmp/home.html
           grep -q '<h1' /tmp/home.html
 
-      - name: Check article SEO markup
+      - name: Check top-level Korean slug article
         run: |
-          curl -fsS "$BASE/guide/ansan-flower-guide/" -o /tmp/article.html
+          curl -fsS "$BASE/%EC%95%88%EC%82%B0%EA%BD%83%EB%B0%B0%EB%8B%AC/" -o /tmp/article.html
           grep -q '<h1' /tmp/article.html
           grep -q '안산에서 꽃을 보낼 때' /tmp/article.html
-          grep -q '<link rel="canonical" href="https://ansanflowerdelivery.com/guide/ansan-flower-guide/"' /tmp/article.html
-          grep -qi 'name="robots"[^>]*noindex' /tmp/article.html
-          grep -q 'application/ld+json' /tmp/article.html
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote
+          html = Path('/tmp/article.html').read_text(encoding='utf-8')
+          decoded = unquote(html)
+          assert 'https://ansan.fwith.kr/안산꽃배달/' in decoded
+          assert 'name="robots"' in html and 'noindex' in html.lower()
+          assert 'application/ld+json' in html
+          PY
 
       - name: Check robots and sitemap
         run: |
@@ -75,10 +85,19 @@ jobs:
           curl -fsS "$BASE/sitemap-index.xml" -o /tmp/sitemap-index.xml
           grep -q 'sitemap-0.xml' /tmp/sitemap-index.xml
           curl -fsS "$BASE/sitemap-0.xml" -o /tmp/sitemap-0.xml
-          grep -q 'https://ansanflowerdelivery.com/' /tmp/sitemap-0.xml
-          grep -q 'https://ansanflowerdelivery.com/guide/ansan-flower-guide/' /tmp/sitemap-0.xml
-          grep -q 'https://ansanflowerdelivery.com/guide/ansan-flower-form-guide/' /tmp/sitemap-0.xml
-          grep -q 'https://ansanflowerdelivery.com/order-help/ansan-same-day-order-checklist/' /tmp/sitemap-0.xml
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote
+          sm = unquote(Path('/tmp/sitemap-0.xml').read_text(encoding='utf-8'))
+          required = [
+              'https://ansan.fwith.kr/',
+              'https://ansan.fwith.kr/안산꽃배달/',
+              'https://ansan.fwith.kr/guide/ansan-flower-form-guide/',
+              'https://ansan.fwith.kr/order-help/ansan-same-day-order-checklist/',
+          ]
+          for url in required:
+              assert url in sm, url
+          PY
 
       - name: Check 404 handling
         run: |

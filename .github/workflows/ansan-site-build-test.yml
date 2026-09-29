@@ -34,8 +34,10 @@ jobs:
         run: |
           test -f dist/index.html
           test -f dist/404.html
+          test -f "dist/안산꽃배달/index.html"
           test -f dist/guide/index.html
-          test -f dist/guide/ansan-flower-guide/index.html
+          test -f dist/guide/ansan-flower-form-guide/index.html
+          test -f dist/order-help/ansan-same-day-order-checklist/index.html
           test -f dist/places/index.html
           test -f dist/occasions/index.html
           test -f dist/flower-knowledge/index.html

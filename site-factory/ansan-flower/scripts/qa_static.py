@@ -7,7 +7,7 @@ import os
 import sys
 
 DIST = Path("dist")
-EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansanflowerdelivery.com").rstrip("/")
+EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansan.fwith.kr").rstrip("/")
 INDEXABLE = os.environ.get("SITE_INDEXABLE", "false").lower() == "true"
 errors = []
 
@@ -123,9 +123,9 @@ else:
     if EXPECTED_ORIGIN not in sm:
         errors.append("Sitemap does not use expected production origin")
 
-article = DIST / "guide" / "ansan-flower-guide" / "index.html"
+article = DIST / "안산꽃배달" / "index.html"
 if not article.exists():
-    errors.append("Approved article output is missing: /guide/ansan-flower-guide/")
+    errors.append("Approved top-level article output is missing: /안산꽃배달/")
 
 robots = DIST / "robots.txt"
 if not robots.exists():
