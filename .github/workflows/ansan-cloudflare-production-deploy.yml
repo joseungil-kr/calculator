@@ -57,6 +57,9 @@ jobs:
       - name: Static SEO QA
         run: python3 scripts/qa_static.py
 
+      - name: Site graph QA
+        run: node scripts/qa_site_graph.mjs
+
       - name: Deploy to Cloudflare Workers
         run: npx --yes wrangler@latest deploy
 

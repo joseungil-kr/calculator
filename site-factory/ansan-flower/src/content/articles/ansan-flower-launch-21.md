@@ -11,6 +11,7 @@ category: flower-knowledge
 structureType: product_form_comparison
 region: 안산
 verifiedAt: 2026-09-30
+publishedAt: 2026-09-30
 sourceUrls:
   - "https://www.rhs.org.uk/plants/for-places/cut-flowers-conditioning"
 draftStatus: approved
