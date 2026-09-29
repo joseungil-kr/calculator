@@ -19,7 +19,7 @@ export const siteConfig = {
   rootDomain: 'fwith.kr',
   canonicalDomain: 'suwon.fwith.kr',
   primaryLandingSlug: '수원꽃배달',
-  naverSiteVerification: '',
+  naverSiteVerification: '80fedf144567fea99fe833d2937731a190854c41',
   siteUrl,
   indexable,
   defaultOgImage: '/images/suwon/hero-B-original.png',

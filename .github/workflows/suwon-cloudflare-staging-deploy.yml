@@ -1,12 +1,6 @@
 name: Suwon Cloudflare Staging Deploy
 
 on:
-  push:
-    branches:
-      - site-factory-suwon-v1
-    paths:
-      - "site-factory/suwon-flower/**"
-      - ".github/workflows/suwon-cloudflare-staging-deploy.yml"
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,174 @@
+name: Suwon Production Deploy
+
+on:
+  push:
+    branches:
+      - site-factory-suwon-v1
+    paths:
+      - "site-factory/suwon-flower/**"
+      - ".github/workflows/suwon-production-deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: suwon-production
+  cancel-in-progress: true
+
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/suwon-flower
+    env:
+      SITE_URL: https://suwon.fwith.kr
+      SITE_ORIGIN: https://suwon.fwith.kr
+      SITE_INDEXABLE: "true"
+      PRIMARY_LANDING_SLUG: 수원꽃배달
+      HERO_PATH: images/suwon/hero-B-original.png
+      NAVER_VERIFICATION: 80fedf144567fea99fe833d2937731a190854c41
+      INDEXNOW_KEY: 92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98
+      INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Require production indexing marker
+        run: test -f production-indexing.enabled
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate Cloudflare secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build indexable production site
+        run: npm run build
+
+      - name: Static SEO QA
+        run: python3 scripts/qa_static.py
+
+      - name: Site graph QA
+        run: node scripts/qa_site_graph.mjs
+
+      - name: Deploy production to Cloudflare
+        run: npx --yes wrangler@latest deploy
+
+      - name: Wait for exact production revision and validate live site
+        env:
+          EXPECTED_REVISION: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import json, os, time, urllib.request, urllib.error
+          from pathlib import Path
+          from urllib.parse import quote, unquote
+
+          base = os.environ["SITE_ORIGIN"].rstrip("/")
+          expected_revision = os.environ["EXPECTED_REVISION"]
+          verification = os.environ["NAVER_VERIFICATION"]
+          key = os.environ["INDEXNOW_KEY"]
+          manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
+          pages = manifest.get("pages", [])
+
+          def get(path):
+              req = urllib.request.Request(base + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-SuwonProductionQA/1.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as res:
+                      return res.status, res.read().decode("utf-8", errors="replace"), dict(res.headers)
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", errors="replace"), dict(e.headers)
+
+          last = None
+          for attempt in range(1, 49):
+              try:
+                  code, home, _ = get("/")
+                  assert code == 200
+                  lower = home.lower()
+                  assert f'name="site-factory-revision" content="{expected_revision}"' in home
+                  assert 'name="robots"' in lower
+                  assert "index,follow" in lower
+                  assert "noindex" not in lower
+                  assert f'name="naver-site-verification" content="{verification}"' in home
+                  assert "https://suwon.fwith.kr/" in unquote(home)
+
+                  code, robots, _ = get("/robots.txt")
+                  assert code == 200
+                  assert "Allow: /" in robots
+                  assert "Disallow: /" not in robots
+                  assert "Sitemap: https://suwon.fwith.kr/sitemap-index.xml" in robots
+
+                  code, key_body, _ = get(f"/{key}.txt")
+                  assert code == 200 and key_body.strip() == key
+
+                  code, sitemap_index, _ = get("/sitemap-index.xml")
+                  assert code == 200 and "sitemap-0.xml" in sitemap_index
+                  code, sitemap, _ = get("/sitemap-0.xml")
+                  sitemap = unquote(sitemap)
+                  assert code == 200
+
+                  for page in pages:
+                      code, html, _ = get(page["url"])
+                      assert code == 200, page["url"]
+                      assert f'data-snapshot-id="{page["snapshotId"]}"' in html
+                      assert "index,follow" in html.lower() and "noindex" not in html.lower()
+                      assert "application/ld+json" in html
+                      assert "<h1" in html.lower()
+                      assert base + page["url"] in unquote(html)
+                      assert base + page["url"] in sitemap
+                      assert "content-order-banner" in html
+                      assert "order-banner-" in html
+                      assert "근조화환 생화 최저가" in html
+
+                  code, article, _ = get("/수원꽃배달/")
+                  assert code == 200
+                  assert 'data-snapshot-id="suwon-flower-launch-01-v2"' in article
+
+                  nf_code, nf, _ = get("/production-qa-definitely-not-found/")
+                  assert nf_code == 404
+                  assert "페이지를 찾을 수 없습니다" in nf
+
+                  print(f"SUWON PRODUCTION QA PASSED: revision={expected_revision}, pages={len(pages)}")
+                  break
+              except Exception as exc:
+                  last = exc
+                  print(f"Attempt {attempt}/48: waiting for exact production revision: {exc}")
+                  time.sleep(5)
+          else:
+              raise SystemExit(f"Production did not become ready: {last}")
+          PY
+
+      - name: Determine initial or incremental IndexNow submission
+        id: mode
+        shell: bash
+        run: |
+          if git cat-file -e HEAD^:site-factory/suwon-flower/production-indexing.enabled 2>/dev/null; then
+            echo "initial=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "initial=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "base=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
+
+      - name: Select IndexNow URLs
+        env:
+          INDEXNOW_INITIAL: ${{ steps.mode.outputs.initial }}
+          INDEXNOW_BASE_SHA: ${{ steps.mode.outputs.base }}
+        run: node scripts/select_indexnow_urls.mjs
+
+      - name: Submit IndexNow
+        run: node scripts/submit_indexnow.mjs
