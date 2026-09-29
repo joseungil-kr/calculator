@@ -83,6 +83,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-22",
+      "draftKey": "suwon-flower-factory-draft-22",
+      "sourceRecordId": "recHJMpxSbQBIwVvk",
+      "publishQueueRecordId": "recTM0uqp021J0awM",
+      "snapshotId": "suwon-flower-launch-22-v1",
+      "slug": "ajou-hospital-funeral-condolence-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-22.md",
+      "url": "/funeral/ajou-hospital-funeral-condolence-wreath/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-23",
       "draftKey": "suwon-flower-factory-draft-23",
       "sourceRecordId": "rec6dpL2Zfm7neZ6u",
