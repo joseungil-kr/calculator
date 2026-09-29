@@ -16,6 +16,19 @@
       "file": "src/content/articles/suwon-flower-launch-01.md",
       "url": "/수원꽃배달/",
       "status": "approved"
+    },
+    {
+      "pageKey": "suwon-flower-launch-07",
+      "draftKey": "suwon-flower-factory-draft-07",
+      "sourceRecordId": "rec8MaZg72NM0iGQT",
+      "publishQueueRecordId": "recSquTdA7LtRZ5ZM",
+      "snapshotId": "suwon-flower-launch-07-v1",
+      "slug": "ingyedong-opening-flowers",
+      "category": "occasions",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-07.md",
+      "url": "/occasions/ingyedong-opening-flowers/",
+      "status": "approved"
     }
   ]
 }
