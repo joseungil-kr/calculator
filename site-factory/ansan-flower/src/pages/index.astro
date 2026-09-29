@@ -66,7 +66,7 @@ const situations = [
   {situations.length > 0 && (
     <section class="section guide-section">
       <div class="container">
-        <div class="section-head simple-head"><div><h2>{siteConfig.region} 꽃배달 이용 안내</h2><p class="section-intro">현재 실제 문서가 준비된 주제만 연결합니다.</p></div></div>
+        <div class="section-head simple-head"><div><h2>{siteConfig.region} 꽃배달 이용 안내</h2><p class="section-intro">장소·상황·주문 단계에 맞는 가이드를 확인하세요.</p></div></div>
         <div class="guide-tile-grid">
           {situations.map((item, index) => (
             <a class:list={['guide-tile', `guide-tile-${index + 1}`]} href={item.href}><span>{item.tag}</span><h3>{item.title}</h3><p>{item.body}</p><b>자세히 보기 ›</b></a>

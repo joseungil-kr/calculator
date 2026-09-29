@@ -68,6 +68,7 @@ const categoryLabel: Record<string, string> = {
 
 const categoryHref = `/${category}/`;
 const isPrimaryLanding = routeType === 'top_level' && slug === siteConfig.primaryLandingSlug;
+const effectiveContentRole = isPrimaryLanding ? 'informational-pillar' : contentRole;
 const displayTitle = isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 가이드` : title;
 const seoTitle = isPrimaryLanding
   ? `${siteConfig.region} 꽃배달 이용 가이드 | 장소·상황·주문 준비 | ${siteConfig.brand}`
@@ -171,7 +172,7 @@ const breadcrumbSchema = {
   <section
     class:list={['article-shell', isPrimaryLanding && 'primary-landing']}
     data-snapshot-id={snapshotId}
-    data-content-role={contentRole}
+    data-content-role={effectiveContentRole}
     data-page-type={pageType}
     data-localization-policy={localizationPolicy}
   >
