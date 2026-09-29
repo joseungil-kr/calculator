@@ -3,11 +3,12 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 import json
-import re
+import os
 import sys
 
 DIST = Path("dist")
-EXPECTED_ORIGIN = "https://ansanflowerdelivery.com"
+EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansanflowerdelivery.com").rstrip("/")
+INDEXABLE = os.environ.get("SITE_INDEXABLE", "false").lower() == "true"
 errors = []
 
 class PageParser(HTMLParser):
@@ -16,6 +17,7 @@ class PageParser(HTMLParser):
         self.title_depth = 0
         self.title_text = []
         self.meta_description = None
+        self.meta_robots = None
         self.canonical = None
         self.h1_count = 0
         self.hrefs = []
@@ -29,6 +31,8 @@ class PageParser(HTMLParser):
             self.title_depth += 1
         elif tag == "meta" and a.get("name") == "description":
             self.meta_description = a.get("content", "").strip()
+        elif tag == "meta" and a.get("name") == "robots":
+            self.meta_robots = a.get("content", "").strip().lower()
         elif tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href")
         elif tag == "h1":
@@ -94,6 +98,13 @@ for file in html_files:
     if "localhost" in text or "127.0.0.1" in text:
         errors.append(f"{file}: localhost reference remains in output")
 
+    if INDEXABLE:
+        if parser.meta_robots and "noindex" in parser.meta_robots:
+            errors.append(f"{file}: production page unexpectedly has noindex")
+    else:
+        if not parser.meta_robots or "noindex" not in parser.meta_robots:
+            errors.append(f"{file}: test page must include robots noindex")
+
     for raw in parser.json_ld:
         try:
             json.loads(raw)
@@ -121,8 +132,14 @@ if not robots.exists():
     errors.append("Missing robots.txt")
 else:
     rt = robots.read_text(encoding="utf-8")
-    if f"Sitemap: {EXPECTED_ORIGIN}/sitemap-index.xml" not in rt:
-        errors.append("robots.txt sitemap URL mismatch")
+    if INDEXABLE:
+        if "Allow: /" not in rt:
+            errors.append("Production robots.txt must allow crawling")
+        if f"Sitemap: {EXPECTED_ORIGIN}/sitemap-index.xml" not in rt:
+            errors.append("Production robots.txt sitemap URL mismatch")
+    else:
+        if "Disallow: /" not in rt:
+            errors.append("Test robots.txt must disallow crawling")
 
 if errors:
     print("\nSTATIC QA FAILED")
@@ -130,5 +147,6 @@ if errors:
         print(f"- {error}")
     sys.exit(1)
 
-print(f"STATIC QA PASSED: {len(html_files)} HTML files checked")
-print("Approved article, canonical, meta, H1, JSON-LD, internal links, sitemap and robots verified.")
+mode = "INDEXABLE" if INDEXABLE else "NOINDEX TEST"
+print(f"STATIC QA PASSED ({mode}): {len(html_files)} HTML files checked")
+print("Canonical, meta, H1, JSON-LD, internal links, sitemap and robots verified.")
