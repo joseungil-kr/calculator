@@ -8,17 +8,9 @@ interface Props {
   title: string;
   intro: string;
   description: string;
-  emptyText?: string;
 }
 
-const {
-  category,
-  eyebrow,
-  title,
-  intro,
-  description,
-  emptyText = '해당 주제의 상세 가이드를 준비하고 있습니다.',
-} = Astro.props;
+const { category, eyebrow, title, intro, description } = Astro.props;
 
 const articles = (await getCollection(
   'articles',
@@ -34,24 +26,48 @@ const hrefFor = (article: (typeof articles)[number]) =>
 
 const structureLabel: Record<string, string> = {
   hub_overview: '전체 가이드',
-  decision_tree: '선택 가이드',
+  recipient_based: '대상별',
+  route_based: '이동·동선',
+  relationship_based_b2b: '기업 관계',
+  space_based_event: '행사 공간',
+  comparison: '비교',
   checklist: '체크리스트',
   etiquette_guide: '문구·예절',
-  seasonal_guide: '계절 가이드',
-  scenario_based: '상황별',
-  recipient_based: '대상별',
-  comparison: '비교',
-  risk_based: '주의사항',
-  route_based: '이동·동선',
-  timing_guide: '시간 계획',
-  space_based_event: '행사 공간',
-  faq_first: '질문 정리',
   care_guide: '관리',
+  seasonal_guide: '계절 가이드',
+  decision_tree: '선택 가이드',
+  timing_guide: '시간 계획',
   message_guide: '문구',
-  product_form_comparison: '형태 비교',
+  risk_based: '주의사항',
+  scenario_based: '상황별',
+  faq_first: '질문 정리',
   myth_busting: '오해 정리',
-  relationship_based_b2b: '기업 관계',
+  product_form_comparison: '형태 비교',
 };
+
+const starter: Record<string, { title: string; items: string[] }> = {
+  guide: {
+    title: '꽃을 고르기 전에 먼저 정할 것',
+    items: ['받는 사람과 보내는 사람의 관계', '행사의 성격과 필요한 격식', '꽃을 받는 장소와 전달 방식'],
+  },
+  places: {
+    title: '장소가 정해졌다면 확인할 것',
+    items: ['학교·병원·행사장처럼 장소 유형 확인', '직접 전달인지 현장 수령인지 구분', '반입·보관·이동 조건은 공식 안내 우선 확인'],
+  },
+  occasions: {
+    title: '상황이 정해졌다면 확인할 것',
+    items: ['졸업·개업·이전·예식 등 목적 구분', '개인 명의인지 회사 명의인지 결정', '화환·꽃바구니·꽃다발 중 공간에 맞는 형태 비교'],
+  },
+  'flower-knowledge': {
+    title: '꽃 자체를 고를 때 확인할 것',
+    items: ['크기와 형태가 전달 장소에 맞는지', '향·색·계절감이 상대와 상황에 맞는지', '이동시간과 보관환경을 고려할 수 있는지'],
+  },
+  'order-help': {
+    title: '주문 전에 준비할 정보',
+    items: ['받는 장소와 수령 정보', '보내는 사람 이름과 문구', '희망 시간과 현장 반입 제한 여부'],
+  },
+};
+const starterData = starter[category];
 ---
 <BaseLayout title={`${title} | 꽃이랑 안산`} description={description}>
   <section class="page-hero">
@@ -64,8 +80,24 @@ const structureLabel: Record<string, string> = {
 
   <section class="section">
     <div class="container">
-      {articles.length > 0 ? (
-        <div class="hub-card-grid">
+      <div class="decision-box hub-starter">
+        <div>
+          <span class="eyebrow">먼저 확인하세요</span>
+          <h2>{starterData.title}</h2>
+          <p>안산에서 꽃을 준비할 때 아래 기준을 먼저 정하면 상세 정보를 고르기 쉬워집니다.</p>
+        </div>
+        <div class="decision-list">
+          {starterData.items.map((item, index) => (
+            <div class="decision-item">
+              <span class="decision-num">{index + 1}</span>
+              <div><strong>{item}</strong></div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {articles.length > 0 && (
+        <div class="hub-card-grid hub-card-grid-spaced">
           {articles.map((article) => (
             <a class="hub-card" href={hrefFor(article)}>
               <div class="hub-card-top">
@@ -78,9 +110,13 @@ const structureLabel: Record<string, string> = {
             </a>
           ))}
         </div>
-      ) : (
-        <div class="notice">{emptyText}</div>
       )}
+
+      <div class="hub-fallback-links">
+        <a href="/안산꽃배달/">안산 꽃배달 핵심 가이드</a>
+        <a href="tel:18440644">전화주문 1844-0644</a>
+        <a href="https://fwith.co.kr" rel="noopener">온라인 주문</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

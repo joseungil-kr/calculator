@@ -1,0 +1,72 @@
+name: Ansan Production IndexNow
+
+on:
+  push:
+    branches:
+      - site-factory-ansan-v1
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    env:
+      ROOT: site-factory/ansan-flower
+      SITE_ORIGIN: https://ansan.fwith.kr
+      INDEXNOW_KEY: 92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98
+      INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check production indexing gate
+        id: gate
+        run: |
+          if [ -f "$ROOT/production-indexing.enabled" ]; then
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "active=false" >> "$GITHUB_OUTPUT"
+            echo "Production indexing marker absent; IndexNow skipped."
+          fi
+
+      - name: Wait for exact production deployment
+        if: steps.gate.outputs.active == 'true'
+        run: |
+          for i in $(seq 1 30); do
+            html=$(curl -fsS "$SITE_ORIGIN/" || true)
+            if echo "$html" | grep -Fq "site-factory-revision" &&
+               echo "$html" | grep -Fq "$GITHUB_SHA" &&
+               ! echo "$html" | grep -Eiq 'name="robots"[^>]*noindex'; then
+              echo "Exact production revision is live and indexable."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Production revision did not become live/indexable in time."
+          exit 1
+
+      - name: Determine initial or incremental submission
+        if: steps.gate.outputs.active == 'true'
+        id: mode
+        run: |
+          if git cat-file -e HEAD^:"$ROOT/production-indexing.enabled" 2>/dev/null; then
+            echo "initial=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "initial=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "base=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
+
+      - name: Select URLs
+        if: steps.gate.outputs.active == 'true'
+        working-directory: site-factory/ansan-flower
+        env:
+          INDEXNOW_INITIAL: ${{ steps.mode.outputs.initial }}
+          INDEXNOW_BASE_SHA: ${{ steps.mode.outputs.base }}
+        run: node scripts/select_indexnow_urls.mjs
+
+      - name: Submit IndexNow
+        if: steps.gate.outputs.active == 'true'
+        working-directory: site-factory/ansan-flower
+        run: node scripts/submit_indexnow.mjs
