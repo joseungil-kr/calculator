@@ -24,15 +24,21 @@ const { article } = Astro.props as { article: Article };
 const { Content } = await render(article);
 ---
 <ArticleLayout
+  pageKey={article.data.pageKey}
   title={article.data.title}
   description={article.data.description}
   category={article.data.category}
   structureType={article.data.structureType}
+  pageType={article.data.pageType}
+  contentRole={article.data.contentRole}
+  localizationPolicy={article.data.localizationPolicy}
   region={article.data.region}
   snapshotId={article.data.snapshotId}
   slug={article.data.slug}
   routeType={article.data.routeType}
   sourceUrls={article.data.sourceUrls}
+  sources={article.data.sources}
+  relatedPageKeys={article.data.relatedPageKeys}
   verifiedAt={article.data.verifiedAt}
   publishedAt={article.data.publishedAt}
   updatedAt={article.data.updatedAt}

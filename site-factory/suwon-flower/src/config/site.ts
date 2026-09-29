@@ -33,11 +33,12 @@ export const siteConfig = {
     email: 'webmaster@interpiad.com',
   },
   nav: [
-    { href: '/수원꽃배달/', label: '수원 꽃배달' },
-    { href: '/guide/', label: '꽃 선택 가이드' },
-    { href: '/places/', label: '장소별' },
-    { href: '/occasions/', label: '상황별' },
-    { href: '/flower-knowledge/', label: '꽃 이야기' },
-    { href: '/order-help/', label: '주문 준비' },
+    { href: '/수원꽃배달/', label: '수원 꽃배달', kind: 'core' },
+    { href: '/guide/', label: '꽃 선택', category: 'guide', menuMinChildren: 5 },
+    { href: '/funeral/', label: '장례식장', category: 'funeral', menuMinChildren: 5 },
+    { href: '/places/', label: '장소별', category: 'places', menuMinChildren: 5 },
+    { href: '/occasions/', label: '상황별', category: 'occasions', menuMinChildren: 5 },
+    { href: '/flower-knowledge/', label: '꽃 관리', category: 'flower-knowledge', menuMinChildren: 5 },
+    { href: '/order-help/', label: '주문 도움', category: 'order-help', menuMinChildren: 5 },
   ],
 } as const;

@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
 
 interface Props {
-  category: 'guide' | 'places' | 'occasions' | 'flower-knowledge' | 'order-help';
+  category: 'guide' | 'funeral' | 'places' | 'occasions' | 'flower-knowledge' | 'order-help';
   eyebrow: string;
   title: string;
   intro: string;
@@ -20,9 +20,11 @@ const articles = (await getCollection(
     data.category === category
 )).sort((a, b) => a.data.pageKey.localeCompare(b.data.pageKey, 'ko'));
 
-if (siteConfig.indexable && articles.length === 0) {
-  throw new Error(`PUBLIC_HUB_EMPTY: /${category}/ has no approved or published child content.`);
+if (articles.length === 0) {
+  throw new Error(`PUBLIC_HUB_EMPTY: /${category}/ has no approved or published content.`);
 }
+
+const hubIndexable = !siteConfig.indexable ? false : articles.length >= 3;
 
 const hrefFor = (article: (typeof articles)[number]) =>
   article.data.routeType === 'top_level'
@@ -50,7 +52,11 @@ const structureLabel: Record<string, string> = {
   relationship_based_b2b: '기업 관계',
 };
 ---
-<BaseLayout title={`${title} | ${siteConfig.brand}`} description={description}>
+<BaseLayout
+  title={`${title} | ${siteConfig.brand}`}
+  description={description}
+  robotsOverride={siteConfig.indexable && !hubIndexable ? 'noindex,follow,max-image-preview:large' : undefined}
+>
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">{eyebrow}</span>
@@ -58,6 +64,7 @@ const structureLabel: Record<string, string> = {
       <p>{intro}</p>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
       <div class="hub-card-grid">

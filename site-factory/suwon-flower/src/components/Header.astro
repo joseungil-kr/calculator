@@ -1,6 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import { siteConfig } from '../config/site';
 import business from '../data/business-truth.json';
+
+const articles = await getCollection(
+  'articles',
+  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+);
+
+const categoryCounts = articles.reduce<Record<string, number>>((acc, article) => {
+  acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+  return acc;
+}, {});
+
+const visibleNav = siteConfig.nav.filter((item) => {
+  if (!('category' in item)) return true;
+  return (categoryCounts[item.category] ?? 0) >= item.menuMinChildren;
+});
 ---
 <header class="site-header">
   <div class="container header-row">
@@ -13,7 +29,7 @@ import business from '../data/business-truth.json';
     </a>
 
     <nav class="site-nav" aria-label="주요 메뉴">
-      {siteConfig.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {visibleNav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
 
     <div class="header-order">
