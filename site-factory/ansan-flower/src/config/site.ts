@@ -1,5 +1,11 @@
+import { existsSync } from 'node:fs';
+
 const siteUrl = import.meta.env.SITE_URL || 'https://ansan.fwith.kr';
-const indexable = import.meta.env.SITE_INDEXABLE === 'true';
+const indexableFlag = import.meta.env.SITE_INDEXABLE;
+const productionMarker = existsSync(new URL('../../production-indexing.enabled', import.meta.url));
+const indexable =
+  indexableFlag === 'true' ||
+  (indexableFlag !== 'false' && productionMarker);
 
 export const siteConfig = {
   siteKey: 'ansan-flower-test',

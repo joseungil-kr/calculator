@@ -8,7 +8,13 @@ import sys
 
 DIST = Path("dist")
 EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansan.fwith.kr").rstrip("/")
-INDEXABLE = os.environ.get("SITE_INDEXABLE", "false").lower() == "true"
+INDEXABLE_ENV = os.environ.get("SITE_INDEXABLE")
+PRODUCTION_MARKER = Path("production-indexing.enabled").exists()
+INDEXABLE = (
+    INDEXABLE_ENV.lower() == "true"
+    if INDEXABLE_ENV is not None
+    else PRODUCTION_MARKER
+)
 errors = []
 
 REQUIRED_OG = [
@@ -136,6 +142,8 @@ for file in html_files:
         errors.append(f"{file}: og:image must use canonical origin: {og_image}")
 
     if INDEXABLE:
+        if not parser.meta_robots or "index,follow" not in parser.meta_robots:
+            errors.append(f"{file}: production page must be index,follow")
         if parser.meta_robots and "noindex" in parser.meta_robots:
             errors.append(f"{file}: production page unexpectedly has noindex")
     else:
@@ -178,6 +186,8 @@ else:
     if INDEXABLE:
         if "Allow: /" not in rt:
             errors.append("Production robots.txt must allow crawling")
+        if "Disallow: /" in rt:
+            errors.append("Production robots.txt must not disallow the entire site")
         if f"Sitemap: {EXPECTED_ORIGIN}/sitemap-index.xml" not in rt:
             errors.append("Production robots.txt sitemap URL mismatch")
     else:

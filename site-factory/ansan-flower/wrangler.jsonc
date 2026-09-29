@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ansan-flower-guide-test",
   "compatibility_date": "2026-09-29",
-  "workers_dev": true,
+  "workers_dev": false,
   "routes": [
     {
       "pattern": "ansan.fwith.kr",
