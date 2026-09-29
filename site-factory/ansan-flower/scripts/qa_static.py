@@ -213,6 +213,16 @@ for name in required_product_images:
     if not (DIST / "images" / "products" / name).exists():
         errors.append(f"Missing product image: {name}")
 
+required_order_banners = [
+    "order-banner-01.webp", "order-banner-02.webp", "order-banner-03.webp",
+]
+for name in required_order_banners:
+    banner = DIST / "images" / "banners" / name
+    if not banner.exists():
+        errors.append(f"Missing order banner image: {name}")
+    elif banner.stat().st_size < 50_000:
+        errors.append(f"Order banner appears over-compressed: {name} ({banner.stat().st_size} bytes)")
+
 hero = DIST / HERO_PATH
 if not hero.exists():
     errors.append(f"Missing original B hero image: /{HERO_PATH}")
@@ -241,4 +251,4 @@ if errors:
 
 mode = "INDEXABLE" if INDEXABLE else "NOINDEX TEST"
 print(f"STATIC QA PASSED ({mode}): {len(html_files)} HTML files checked")
-print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon, product assets and original-resolution hero verified.")
+print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon, product assets, order banners and original-resolution hero verified.")
