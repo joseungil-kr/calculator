@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "validate:snapshot": "node scripts/validate_snapshot.mjs",
-    "build": "npm run validate:snapshot && astro check && astro build",
+    "build": "node scripts/write_build_revision.mjs && npm run validate:snapshot && astro check && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
