@@ -31,6 +31,16 @@
       "url": "/order-help/ansan-same-day-order-checklist/",
       "status": "approved",
       "sourceRecordId": "reccpzhtvVbDKrerl"
+    },
+    {
+      "pageKey": "ansan-flower-launch-04",
+      "snapshotId": "ansan-flower-launch-04-v2",
+      "slug": "ansan-flower-message-etiquette",
+      "category": "guide",
+      "routeType": "category",
+      "url": "/guide/ansan-flower-message-etiquette/",
+      "status": "approved",
+      "sourceRecordId": "recPXhz4UWVTOOWa6"
     }
   ]
 }

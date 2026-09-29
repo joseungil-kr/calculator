@@ -43,6 +43,19 @@
       "file": "src/content/articles/ansan-flower-launch-03.md",
       "url": "/order-help/ansan-same-day-order-checklist/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-04",
+      "draftKey": "ansan-flower-factory-draft-04",
+      "sourceRecordId": "recPXhz4UWVTOOWa6",
+      "publishQueueRecordId": "recfUGsgPzdXyF9uu",
+      "snapshotId": "ansan-flower-launch-04-v2",
+      "slug": "ansan-flower-message-etiquette",
+      "category": "guide",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-04.md",
+      "url": "/guide/ansan-flower-message-etiquette/",
+      "status": "approved"
     }
   ]
 }
