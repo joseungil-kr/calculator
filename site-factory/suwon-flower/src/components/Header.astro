@@ -1,0 +1,31 @@
+---
+import { siteConfig } from '../config/site';
+import business from '../data/business-truth.json';
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/" aria-label={`${siteConfig.brand} 홈`}>
+      <span class="brand-mark" aria-hidden="true">✿</span>
+      <span class="brand-copy">
+        <strong>{siteConfig.brandBase}</strong>
+        <small>{siteConfig.region} 꽃배달</small>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="주요 메뉴">
+      {siteConfig.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-order">
+      <a class="header-phone" href={business.phoneHref} aria-label={`${business.phone} 전화주문`}>
+        <span>전화주문</span>
+        <strong>{business.phone}</strong>
+        <small>{business.phoneOrderHours}</small>
+      </a>
+      <a class="header-online" href={business.onlineOrderUrl} rel="noopener">
+        <span>온라인 주문</span>
+        <small>24시간 주문 가능</small>
+      </a>
+    </div>
+  </div>
+</header>
