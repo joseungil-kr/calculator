@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 const dist = 'dist';
@@ -6,7 +6,6 @@ const origin = (process.env.SITE_URL || 'https://ansan.fwith.kr').replace(/\/$/,
 const canonicalHost = new URL(origin).hostname;
 const errors = [];
 const htmlFiles = [];
-
 function walk(dir) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -16,7 +15,6 @@ function walk(dir) {
   }
 }
 walk(dist);
-
 function routeFor(file) {
   const rel = relative(dist, file).split(sep).join('/');
   if (rel === 'index.html') return '/';
@@ -30,14 +28,17 @@ function normalize(pathname) {
   if (p !== '/' && !p.endsWith('/')) p += '/';
   return p;
 }
-
+function robotsFor(html) {
+  return html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i)?.[1]
+    || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']robots["']/i)?.[1]
+    || '';
+}
 const pages = new Map();
 for (const file of htmlFiles) {
   const route = routeFor(file);
   if (!route) continue;
   pages.set(normalize(route), { file, html: readFileSync(file, 'utf8') });
 }
-
 const sitemapFiles = readdirSync(dist).filter(n => /^sitemap-\d+\.xml$/.test(n));
 if (sitemapFiles.length === 0) errors.push('No sitemap-N.xml files generated.');
 const sitemapRoutes = new Set();
@@ -48,34 +49,26 @@ for (const name of sitemapFiles) {
     catch { errors.push(`${name}: invalid <loc> ${m[1]}`); }
   }
 }
-for (const route of pages.keys()) if (!sitemapRoutes.has(route)) errors.push(`Sitemap missing public HTML route: ${route}`);
-for (const route of sitemapRoutes) if (!pages.has(route)) errors.push(`Sitemap contains URL without generated HTML: ${route}`);
-
+for (const [route, { html }] of pages) {
+  const noindex = /noindex/i.test(robotsFor(html));
+  if (noindex && sitemapRoutes.has(route)) errors.push(`Noindex route must not be in sitemap: ${route}`);
+  if (!noindex && !sitemapRoutes.has(route)) errors.push(`Sitemap missing indexable HTML route: ${route}`);
+}
+for (const route of sitemapRoutes) {
+  if (!pages.has(route)) errors.push(`Sitemap contains URL without generated HTML: ${route}`);
+  else if (/noindex/i.test(robotsFor(pages.get(route).html))) errors.push(`Sitemap contains noindex URL: ${route}`);
+}
 const placeholderPatterns = [
-  /준비하고 있습니다/,
-  /페이지 준비 중/,
-  /상세 문서 수가 아직 적더라도/,
-  /메뉴가 빈 화면이 되지 않도록/,
-  /초기 콘텐츠 발행 순서/,
-  /향후 업데이트 예정/,
-  /coming soon/i,
-  /\bTODO\b/,
+  /준비하고 있습니다/, /페이지 준비 중/, /상세 문서 수가 아직 적더라도/, /메뉴가 빈 화면이 되지 않도록/,
+  /초기 콘텐츠 발행 순서/, /향후 업데이트 예정/, /이 글의 역할/, /한 가지 질문에 집중해/,
+  /자동으로 연결합니다/, /관련 콘텐츠를 자동으로/, /콘텐츠가 없습니다/, /해당 문서가 없습니다/,
+  /허브 문서/, /coming soon/i, /\bfallback\b/i, /\bplaceholder\b/i, /\bTODO\b/
 ];
-
 const inbound = new Map([...pages.keys()].map(r => [r, 0]));
 for (const [source, { html }] of pages) {
-  for (const pattern of placeholderPatterns) {
-    if (pattern.test(html)) errors.push(`${source}: developer/placeholder wording detected (${pattern})`);
-  }
-  const bodyText = html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&[^;]+;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  for (const pattern of placeholderPatterns) if (pattern.test(html)) errors.push(`${source}: developer/placeholder wording detected (${pattern})`);
+  const bodyText = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&[^;]+;/g, ' ').replace(/\s+/g, ' ').trim();
   if (bodyText.length < 180) errors.push(`${source}: page text is too thin (${bodyText.length} chars)`);
-
   for (const m of html.matchAll(/href=["']([^"'#]+)["']/g)) {
     const href = m[1];
     if (/^(mailto:|tel:|javascript:)/i.test(href)) continue;
@@ -94,27 +87,30 @@ for (const [source, { html }] of pages) {
 }
 for (const [route, count] of inbound) if (route !== '/' && count === 0) errors.push(`Orphan page detected: ${route}`);
 
-// Public nav hubs must be backed by real approved/published content. No fallback copy is allowed.
-const configSource = readFileSync('src/config/site.ts', 'utf8');
-const navHrefs = [...configSource.matchAll(/href:\s*['"]([^'"]+)['"]/g)].map(m => normalize(m[1]));
-const hubRoutes = [...new Set(navHrefs.filter(route => {
-  const slug = route.replace(/^\//, '').replace(/\/$/, '');
-  return slug && existsSync(join('src', 'pages', slug, 'index.astro'));
-}))];
 const manifest = JSON.parse(readFileSync('src/data/publish-manifest.json', 'utf8'));
 const approved = (manifest.pages || []).filter(p => ['approved','published'].includes(p.status));
-for (const hub of hubRoutes) {
-  const category = hub.replace(/^\//, '').replace(/\/$/, '');
+const hubCategories = ['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help'];
+const hubStats = [];
+for (const category of hubCategories) {
   const children = approved.filter(p => p.category === category);
-  if (children.length === 0) errors.push(`Public hub has no real approved/published content: ${hub}`);
-  for (const page of children) {
-    if (!pages.has(normalize(page.url))) errors.push(`Manifest child missing generated HTML: ${page.pageKey} -> ${page.url}`);
+  const hub = `/${category}/`;
+  if (children.length === 0) {
+    if (pages.has(hub)) errors.push(`Hub route exists without real content: ${hub}`);
+    continue;
   }
+  if (!pages.has(hub)) {
+    errors.push(`Category has content but hub route is missing: ${hub}`);
+    continue;
+  }
+  const hubNoindex = /noindex/i.test(robotsFor(pages.get(hub).html));
+  if (children.length < 3 && !hubNoindex) errors.push(`Thin hub must be noindex until 3 documents: ${hub}`);
+  if (children.length >= 3 && hubNoindex) errors.push(`Hub with 3+ documents should be indexable: ${hub}`);
+  for (const page of children) if (!pages.has(normalize(page.url))) errors.push(`Manifest child missing generated HTML: ${page.pageKey} -> ${page.url}`);
+  hubStats.push(`${category}=${children.length}${children.length < 3 ? '(noindex)' : '(index)'}`);
 }
-
 if (errors.length) {
   console.error('\nSITE GRAPH QA FAILED');
   for (const e of errors) console.error('- ' + e);
   process.exit(1);
 }
-console.log(`SITE GRAPH QA PASSED: ${pages.size} public HTML pages, ${sitemapRoutes.size} sitemap URLs, zero orphans, no developer placeholders, all ${hubRoutes.length} public hubs covered by real content.`);
+console.log(`SITE GRAPH QA PASSED: ${pages.size} HTML pages, ${sitemapRoutes.size} sitemap URLs, zero orphans, no developer placeholders. Hubs: ${hubStats.join(', ')}`);
