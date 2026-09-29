@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "siteKey": "ansan-flower-test",
+  "pages": [
+    {
+      "pageKey": "ansan-flower-launch-01",
+      "snapshotId": "ansan-flower-launch-01-v1",
+      "slug": "ansan-flower-guide",
+      "category": "guide",
+      "url": "/guide/ansan-flower-guide/",
+      "status": "approved",
+      "sourceRecordId": "rec4dnHODA5cb9Az5"
+    }
+  ]
+}

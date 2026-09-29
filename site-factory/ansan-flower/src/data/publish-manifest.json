@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "siteKey": "ansan-flower-test",
+  "snapshotMode": "git-frozen",
+  "generatedFrom": "Airtable Publish Queue",
+  "generatedAt": "2026-09-29T02:15:53Z",
+  "pages": [
+    {
+      "pageKey": "ansan-flower-launch-01",
+      "draftKey": "ansan-flower-factory-draft-01",
+      "sourceRecordId": "rec4dnHODA5cb9Az5",
+      "publishQueueRecordId": "recQ7VKGx4NBYiKkB",
+      "snapshotId": "ansan-flower-launch-01-v1",
+      "slug": "ansan-flower-guide",
+      "category": "guide",
+      "file": "src/content/articles/ansan-flower-guide.md",
+      "url": "/guide/ansan-flower-guide/",
+      "status": "approved"
+    }
+  ]
+}

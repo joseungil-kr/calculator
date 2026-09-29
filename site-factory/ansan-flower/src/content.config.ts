@@ -5,6 +5,9 @@ const articles = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
   schema: z.object({
     pageKey: z.string(),
+    snapshotId: z.string(),
+    sourceDraftKey: z.string(),
+    sourceRecordId: z.string(),
     title: z.string(),
     description: z.string(),
     category: z.enum(['guide', 'places', 'occasions', 'flower-knowledge', 'order-help']),
