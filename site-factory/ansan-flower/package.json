@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "validate:snapshot": "node scripts/validate_snapshot.mjs",
-    "build": "node scripts/write_build_revision.mjs && npm run validate:snapshot && astro check && astro build",
-    "preview": "astro preview"
+    "build": "node scripts/write_build_revision.mjs && npm run qa:utf8 && npm run validate:snapshot && astro check && astro build && npm run qa:graph",
+    "preview": "astro preview",
+    "qa:utf8": "node scripts/qa_utf8.mjs",
+    "qa:graph": "node scripts/qa_site_graph.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",
