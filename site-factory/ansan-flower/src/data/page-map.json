@@ -121,6 +121,16 @@
       "url": "/occasions/ansan-february-graduation-bouquet/",
       "status": "approved",
       "sourceRecordId": "recgFh3SUp4iMmfDY"
+    },
+    {
+      "pageKey": "ansan-flower-launch-21",
+      "snapshotId": "ansan-flower-launch-21-v1",
+      "slug": "bouquet-vs-basket-practical-guide",
+      "category": "flower-knowledge",
+      "routeType": "category",
+      "url": "/flower-knowledge/bouquet-vs-basket-practical-guide/",
+      "status": "approved",
+      "sourceRecordId": "recD5U0Fdjgjik6pw"
     }
   ]
 }
