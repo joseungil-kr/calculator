@@ -1,0 +1,49 @@
+name: Suwon Site Factory Build Test
+
+on:
+  push:
+    branches:
+      - site-factory-suwon-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/suwon-flower
+    env:
+      SITE_URL: https://suwon.fwith.kr
+      PRIMARY_LANDING_SLUG: 수원꽃배달
+      HERO_PATH: images/suwon/hero-B-original.png
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Astro check and build
+        run: npm run build
+      - name: Verify required outputs
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f "dist/수원꽃배달/index.html"
+          test -f dist/guide/index.html
+          test -f dist/places/index.html
+          test -f dist/occasions/index.html
+          test -f dist/flower-knowledge/index.html
+          test -f dist/order-help/index.html
+          test -f dist/robots.txt
+          test -f dist/_headers
+          test -f dist/sitemap-index.xml
+      - name: Deterministic static SEO QA
+        run: python3 scripts/qa_static.py
+      - name: Cloudflare Workers deploy dry run
+        run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
