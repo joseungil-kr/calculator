@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE: https://ansan-flower-guide-test.joseungil.workers.dev
+      CUSTOM_BASE: https://ansan.fwith.kr
       CANONICAL_ORIGIN: https://ansan.fwith.kr
       EXPECTED_REVISION: ${{ github.sha }}
     steps:
@@ -169,3 +170,23 @@ jobs:
           grep -qi '^x-frame-options: SAMEORIGIN' /tmp/headers.txt
           grep -qi '^referrer-policy: strict-origin-when-cross-origin' /tmp/headers.txt
           grep -qi '^permissions-policy:' /tmp/headers.txt
+
+
+      - name: Validate custom domain before indexing
+        run: |
+          for i in $(seq 1 30); do
+            code=$(curl -sS -L -o /tmp/custom-home.html -w "%{http_code}" "$CUSTOM_BASE/" || true)
+            robots_code=$(curl -sS -L -o /tmp/custom-robots.txt -w "%{http_code}" "$CUSTOM_BASE/robots.txt" || true)
+            echo "Attempt $i -> home=$code robots=$robots_code"
+            if [ "$code" = "200" ] && [ "$robots_code" = "200" ] &&
+               grep -Fq "site-factory-revision" /tmp/custom-home.html &&
+               grep -Fq "$EXPECTED_REVISION" /tmp/custom-home.html &&
+               grep -Eiq 'name="robots"[^>]*noindex' /tmp/custom-home.html &&
+               grep -Fq "Disallow: /" /tmp/custom-robots.txt; then
+              echo "Custom domain is live with exact revision and remains noindex."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Custom domain did not become ready in time."
+          exit 1
