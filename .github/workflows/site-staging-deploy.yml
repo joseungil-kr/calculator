@@ -1,0 +1,121 @@
+name: Site Factory Staging Deploy
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  deploy:
+    if: startsWith(github.event.issue.title, '[SITE-STAGING-DEPLOY]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve staging target
+        id: target
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python3 - <<'PY'
+          import os
+
+          body = os.environ.get("ISSUE_BODY", "")
+          values = {}
+          for line in body.splitlines():
+              if ": " in line:
+                  k, v = line.split(": ", 1)
+                  values[k.strip()] = v.strip()
+
+          site_key = values.get("SITE_KEY", "")
+          allowed = {
+              "suwon-flower-test": {
+                  "branch": "site-factory-suwon-v1",
+                  "root": "site-factory/suwon-flower",
+                  "worker": "suwon-flower-guide-test",
+              },
+          }
+          if site_key not in allowed:
+              raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
+          target = allowed[site_key]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"site_key={site_key}\n")
+              fh.write(f"branch={target['branch']}\n")
+              fh.write(f"root={target['root']}\n")
+              fh.write(f"worker={target['worker']}\n")
+          PY
+
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.target.outputs.branch }}
+
+      - name: Verify Cloudflare credentials exist
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Cloudflare GitHub Actions credentials are not configured in this repository."
+            exit 2
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: ${{ steps.target.outputs.root }}
+        run: npm install
+
+      - name: Validate and build noindex staging
+        working-directory: ${{ steps.target.outputs.root }}
+        env:
+          SITE_INDEXABLE: "false"
+        run: |
+          npm run build
+          python3 scripts/qa_static.py
+
+      - name: Deploy staging Worker
+        id: deploy
+        working-directory: ${{ steps.target.outputs.root }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SITE_INDEXABLE: "false"
+        run: |
+          set -o pipefail
+          npx --yes wrangler@latest deploy 2>&1 | tee deploy.log
+          URL=$(grep -Eo 'https://[A-Za-z0-9._-]+\.workers\.dev' deploy.log | tail -1 || true)
+          if [ -z "$URL" ]; then
+            URL="https://${{ steps.target.outputs.worker }}.joseungil.workers.dev"
+          fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Smoke test staging
+        env:
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+        run: |
+          for i in $(seq 1 18); do
+            code=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$DEPLOY_URL/" || true)
+            if [ "$code" = "200" ]; then
+              grep -Eiq 'name="robots"[^>]*noindex|content="noindex' /tmp/home.html
+              curl -fsS "$DEPLOY_URL/robots.txt" | grep -Fq 'Disallow: /'
+              echo "Staging is live and remains noindex: $DEPLOY_URL"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Staging endpoint did not become ready."
+          exit 1
+
+      - name: Report success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          SITE_KEY: ${{ steps.target.outputs.site_key }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$DEPLOY_URL noindex/robots Disallow verified."
+          gh issue close "${{ github.event.issue.number }}"
