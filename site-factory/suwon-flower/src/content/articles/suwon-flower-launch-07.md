@@ -11,6 +11,7 @@ category: occasions
 structureType: scenario_based
 region: 수원
 verifiedAt: 2026-09-30
+publishedAt: 2026-09-30
 sourceUrls:
   - "https://www.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp"
   - "https://www.suwon.go.kr/sw-www/deptHome/dep_eco/eco02/eco02_01/eco03_01_02.jsp"

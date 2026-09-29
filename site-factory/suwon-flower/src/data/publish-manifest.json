@@ -29,6 +29,45 @@
       "file": "src/content/articles/suwon-flower-launch-07.md",
       "url": "/occasions/ingyedong-opening-flowers/",
       "status": "approved"
+    },
+    {
+      "pageKey": "suwon-flower-launch-02",
+      "draftKey": "suwon-flower-factory-draft-02",
+      "sourceRecordId": "recTh5JIC8I1ah0zG",
+      "publishQueueRecordId": "recGQetY5j72vDGjy",
+      "snapshotId": "suwon-flower-launch-02-v1",
+      "slug": "suwon-station-flower-timing",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-02.md",
+      "url": "/places/suwon-station-flower-timing/",
+      "status": "approved"
+    },
+    {
+      "pageKey": "suwon-flower-launch-13",
+      "draftKey": "suwon-flower-factory-draft-13",
+      "sourceRecordId": "recYtCw9VGylskqwj",
+      "publishQueueRecordId": "recJcVGbkAmlkk8OY",
+      "snapshotId": "suwon-flower-launch-13-v1",
+      "slug": "suwon-bouquet-aftercare",
+      "category": "flower-knowledge",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-13.md",
+      "url": "/flower-knowledge/suwon-bouquet-aftercare/",
+      "status": "approved"
+    },
+    {
+      "pageKey": "suwon-flower-launch-11",
+      "draftKey": "suwon-flower-factory-draft-11",
+      "sourceRecordId": "receni0KLkkIJGCtL",
+      "publishQueueRecordId": "rec6FRNtxq4bqPQhG",
+      "snapshotId": "suwon-flower-launch-11-v1",
+      "slug": "suwon-business-wreath-message",
+      "category": "order-help",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-11.md",
+      "url": "/order-help/suwon-business-wreath-message/",
+      "status": "approved"
     }
   ]
 }
