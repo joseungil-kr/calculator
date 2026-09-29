@@ -39,12 +39,12 @@ jobs:
 
           allowed = {
               "ansan-flower-test": {
-                  "repo": "joseungil-kr/calculator",
+                  "repo": "joseungil-kr/fwith-site-factory",
                   "branch": "site-factory-ansan-v1",
                   "root": "site-factory/ansan-flower",
               },
               "suwon-flower-test": {
-                  "repo": "joseungil-kr/calculator",
+                  "repo": "joseungil-kr/fwith-site-factory",
                   "branch": "site-factory-suwon-v1",
                   "root": "site-factory/suwon-flower",
               },
@@ -132,7 +132,7 @@ jobs:
 
           if site_key != os.environ["EXPECTED_SITE_KEY"]:
               raise SystemExit(f"Unexpected site_key: {site_key}")
-          if target_repo != "joseungil-kr/calculator":
+          if target_repo != "joseungil-kr/fwith-site-factory":
               raise SystemExit(f"Unexpected target_repo: {target_repo}")
           if target_branch != os.environ["EXPECTED_BRANCH"]:
               raise SystemExit(f"Unexpected target_branch: {target_branch}")
