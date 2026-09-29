@@ -108,6 +108,11 @@ jobs:
                   raise SystemExit(f"Missing block {begin}")
               return body.split(begin, 1)[1].split(end, 1)[0].strip("\n")
 
+          def optional_block(begin, end):
+              if begin not in body or end not in body:
+                  return ""
+              return body.split(begin, 1)[1].split(end, 1)[0].strip("\n")
+
           record_id = line_value("PUBLISH_QUEUE_RECORD_ID")
           site_key = line_value("SITE_KEY")
           page_key = line_value("PAGE_KEY")
@@ -121,14 +126,31 @@ jobs:
           category = line_value("CATEGORY")
           route_type = optional_line_value("ROUTE_TYPE", "category")
           structure_type = line_value("STRUCTURE_TYPE")
+          page_type = optional_line_value("PAGE_TYPE", "")
+          content_role = optional_line_value("CONTENT_ROLE", "")
+          localization_policy = optional_line_value("LOCALIZATION_POLICY", "")
           region = line_value("REGION")
           verified_at = line_value("VERIFIED_AT")
           title = block("---BEGIN-TITLE---", "---END-TITLE---")
           description = block("---BEGIN-DESCRIPTION---", "---END-DESCRIPTION---")
           content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
           source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
+          source_names = [x.strip() for x in optional_block("---BEGIN-SOURCE-NAMES---", "---END-SOURCE-NAMES---").splitlines() if x.strip()]
+          source_types = [x.strip() for x in optional_block("---BEGIN-SOURCE-TYPES---", "---END-SOURCE-TYPES---").splitlines() if x.strip()]
+          related_page_keys = [x.strip() for x in optional_block("---BEGIN-RELATED-PAGE-KEYS---", "---END-RELATED-PAGE-KEYS---").splitlines() if x.strip()]
           if not source_urls:
               raise SystemExit("Missing source URL: Site Factory snapshots require at least one verified source URL")
+
+          if not page_type:
+              page_type = {
+                  "funeral": "funeral-facility",
+                  "flower-knowledge": "flower-knowledge",
+                  "order-help": "order-help",
+              }.get(category, "general-guide")
+          if not content_role:
+              content_role = "informational-pillar" if route_type == "top_level" else "question-answer"
+          if not localization_policy:
+              localization_policy = "global" if category == "flower-knowledge" else "local-optional"
 
           if site_key != os.environ["EXPECTED_SITE_KEY"]:
               raise SystemExit(f"Unexpected site_key: {site_key}")
@@ -146,8 +168,14 @@ jobs:
           if not all(ch.isalnum() or ch == "-" for ch in slug):
               raise SystemExit(f"Slug must contain only Unicode letters/numbers or hyphen: {slug}")
 
-          if category not in {"guide","places","occasions","flower-knowledge","order-help"}:
+          if category not in {"guide","funeral","places","occasions","flower-knowledge","order-help"}:
               raise SystemExit(f"Unsafe category: {category}")
+          if page_type not in {"general-guide","funeral-facility","hospital","station-transit","opening-business","event-venue","flower-knowledge","order-help"}:
+              raise SystemExit(f"Unsafe page_type: {page_type}")
+          if content_role not in {"informational-pillar","question-answer"}:
+              raise SystemExit(f"Unsafe content_role: {content_role}")
+          if localization_policy not in {"local-required","local-optional","global"}:
+              raise SystemExit(f"Unsafe localization_policy: {localization_policy}")
           if route_type not in {"category","top_level"}:
               raise SystemExit(f"Unsafe route_type: {route_type}")
           if not re.fullmatch(r"rec[A-Za-z0-9]{14}", source_record_id):
@@ -177,6 +205,26 @@ jobs:
           quote = lambda s: json.dumps(s, ensure_ascii=False)
           sources_yaml = "\n".join("  - " + quote(u) for u in source_urls)
 
+          structured_sources_yaml = ""
+          if source_names or source_types:
+              rows = []
+              for idx, source_url in enumerate(source_urls):
+                  source_name = source_names[idx] if idx < len(source_names) else urlparse(source_url).netloc
+                  source_type = source_types[idx] if idx < len(source_types) else "reference"
+                  if source_type not in {"official","facility","education","professional","reference"}:
+                      source_type = "reference"
+                  rows.extend([
+                      "  - name: " + quote(source_name),
+                      "    url: " + quote(source_url),
+                      "    type: " + source_type,
+                      "    verifiedAt: " + verified_date,
+                  ])
+              structured_sources_yaml = "\nsources:\n" + "\n".join(rows)
+
+          related_yaml = ""
+          if related_page_keys:
+              related_yaml = "\nrelatedPageKeys:\n" + "\n".join("  - " + quote(key) for key in related_page_keys)
+
           article = f"""---
           pageKey: {page_key}
           snapshotId: {snapshot_id}
@@ -188,10 +236,13 @@ jobs:
           description: {quote(description)}
           category: {category}
           structureType: {structure_type}
+          pageType: {page_type}
+          contentRole: {content_role}
+          localizationPolicy: {localization_policy}
           region: {region}
           verifiedAt: {verified_date}
           sourceUrls:
-          {sources_yaml}
+          {sources_yaml}{structured_sources_yaml}{related_yaml}
           draftStatus: approved
           ---
 
