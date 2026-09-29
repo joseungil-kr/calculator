@@ -28,6 +28,7 @@ jobs:
           import os
           import pathlib
           import re
+          import textwrap
           from urllib.parse import urlparse
 
           body = os.environ.get("ISSUE_BODY", "")
@@ -39,6 +40,11 @@ jobs:
               if line is None:
                   raise SystemExit(f"Missing {key}")
               return line[len(prefix):].strip()
+
+          def optional_line_value(key, default):
+              prefix = key + ": "
+              line = next((x for x in lines if x.startswith(prefix)), None)
+              return default if line is None else line[len(prefix):].strip()
 
           def block(begin, end):
               if begin not in body or end not in body:
@@ -56,6 +62,7 @@ jobs:
           target_root = line_value("TARGET_ROOT")
           slug = line_value("SLUG")
           category = line_value("CATEGORY")
+          route_type = optional_line_value("ROUTE_TYPE", "category")
           structure_type = line_value("STRUCTURE_TYPE")
           region = line_value("REGION")
           verified_at = line_value("VERIFIED_AT")
@@ -64,7 +71,6 @@ jobs:
           content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
           source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
 
-          # TEST allowlist. Production generalization must resolve these from Sites registry.
           if site_key != "ansan-flower-test":
               raise SystemExit(f"Unexpected site_key: {site_key}")
           if target_repo != "joseungil-kr/calculator":
@@ -74,21 +80,29 @@ jobs:
           if target_root != "site-factory/ansan-flower":
               raise SystemExit(f"Unexpected target_root: {target_root}")
 
-          if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,80}", slug):
+          if not slug or len(slug) > 80 or any(ch in slug for ch in "/\\?#"):
               raise SystemExit(f"Unsafe slug: {slug}")
+          if slug in {".", ".."} or ".." in slug:
+              raise SystemExit(f"Unsafe slug: {slug}")
+          if not all(ch.isalnum() or ch == "-" for ch in slug):
+              raise SystemExit(f"Slug must contain only Unicode letters/numbers or hyphen: {slug}")
+
           if category not in {"guide","places","occasions","flower-knowledge","order-help"}:
               raise SystemExit(f"Unsafe category: {category}")
+          if route_type not in {"category","top_level"}:
+              raise SystemExit(f"Unsafe route_type: {route_type}")
           if not re.fullmatch(r"rec[A-Za-z0-9]{14}", source_record_id):
               raise SystemExit(f"Invalid source record: {source_record_id}")
           if not re.fullmatch(r"rec[A-Za-z0-9]{14}", record_id):
               raise SystemExit(f"Invalid queue record: {record_id}")
-          for url in source_urls:
-              parsed = urlparse(url)
+          for source_url in source_urls:
+              parsed = urlparse(source_url)
               if parsed.scheme != "https" or not parsed.netloc:
-                  raise SystemExit(f"Invalid source URL: {url}")
+                  raise SystemExit(f"Invalid source URL: {source_url}")
 
           root = pathlib.Path(target_root)
-          article_rel = pathlib.PurePosixPath("src/content/articles") / f"{slug}.md"
+          safe_filename = page_key + ".md"
+          article_rel = pathlib.PurePosixPath("src/content/articles") / safe_filename
           article_path = root / article_rel
           manifest_path = root / "src/data/publish-manifest.json"
           page_map_path = root / "src/data/page-map.json"
@@ -99,7 +113,7 @@ jobs:
           manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
           page_map = json.loads(page_map_path.read_text(encoding="utf-8"))
 
-          url = f"/{category}/{slug}/"
+          url = f"/{slug}/" if route_type == "top_level" else f"/{category}/{slug}/"
           verified_date = verified_at[:10]
           quote = lambda s: json.dumps(s, ensure_ascii=False)
           sources_yaml = "\n".join("  - " + quote(u) for u in source_urls)
@@ -109,6 +123,8 @@ jobs:
           snapshotId: {snapshot_id}
           sourceDraftKey: {draft_key}
           sourceRecordId: {source_record_id}
+          slug: {quote(slug)}
+          routeType: {route_type}
           title: {quote(title)}
           description: {quote(description)}
           category: {category}
@@ -122,8 +138,6 @@ jobs:
 
           {content_md}
           """
-          # Dedent only the workflow's Python indentation.
-          import textwrap
           article = textwrap.dedent(article).lstrip()
           article_path.parent.mkdir(parents=True, exist_ok=True)
           article_path.write_text(article.rstrip() + "\n", encoding="utf-8")
@@ -136,10 +150,12 @@ jobs:
               "snapshotId": snapshot_id,
               "slug": slug,
               "category": category,
+              "routeType": route_type,
               "file": str(article_rel),
               "url": url,
               "status": "approved"
           }
+          manifest["schemaVersion"] = 2
           manifest["pages"] = [p for p in manifest.get("pages", []) if p.get("pageKey") != page_key]
           manifest["pages"].append(entry)
           manifest["pages"].sort(key=lambda p: p["pageKey"])
@@ -152,16 +168,18 @@ jobs:
               "snapshotId": snapshot_id,
               "slug": slug,
               "category": category,
+              "routeType": route_type,
               "url": url,
               "status": "approved",
               "sourceRecordId": source_record_id
           }
+          page_map["schemaVersion"] = 2
           page_map["pages"] = [p for p in page_map.get("pages", []) if p.get("pageKey") != page_key]
           page_map["pages"].append(map_entry)
           page_map["pages"].sort(key=lambda p: p["pageKey"])
           page_map_path.write_text(json.dumps(page_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-          print(f"Rendered snapshot {snapshot_id} -> {article_path}")
+          print(f"Rendered snapshot {snapshot_id} route={route_type} url={url} -> {article_path}")
           PY
 
       - name: Validate and build snapshot before push
