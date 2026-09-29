@@ -1,0 +1,18 @@
+{
+  "siteKey": "ansan-flower-test",
+  "region": "안산",
+  "canonicalDomain": "ansan.fwith.kr",
+  "deploymentMode": "subdomain",
+  "rootDomain": "fwith.kr",
+  "blueprintKey": "flower-local",
+  "brandKey": "flower-fwith",
+  "businessTruthKey": "flower-fwith-v1",
+  "productCatalogFilter": "brand_key=flower-fwith AND status=active",
+  "primaryLanding": {
+    "routeType": "top_level",
+    "slug": "안산꽃배달"
+  },
+  "previewIndexable": false,
+  "realDomainConnected": false,
+  "searchSubmitted": false
+}

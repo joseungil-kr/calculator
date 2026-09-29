@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ProductShowcase from '../components/ProductShowcase.astro';
+import OrderCTA from '../components/OrderCTA.astro';
 import { siteConfig } from '../config/site';
 import '../styles/article.css';
 
@@ -14,6 +16,10 @@ interface Props {
   routeType: 'top_level' | 'category';
   sourceUrls?: string[];
   verifiedAt?: Date;
+  publishedAt?: Date;
+  updatedAt?: Date;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -27,6 +33,10 @@ const {
   routeType,
   sourceUrls = [],
   verifiedAt,
+  publishedAt,
+  updatedAt,
+  ogImage,
+  ogImageAlt,
 } = Astro.props;
 
 const categoryLabel: Record<string, string> = {
@@ -41,7 +51,7 @@ const categoryHref = `/${category}/`;
 const isPrimaryLanding = routeType === 'top_level' && slug === '안산꽃배달';
 const displayTitle = isPrimaryLanding ? '안산 꽃배달, 무엇부터 정하면 될까요?' : title;
 const seoTitle = isPrimaryLanding
-  ? `안산 꽃배달 가이드 | 상황별 꽃 선택 기준 | ${siteConfig.brand}`
+  ? `안산 꽃배달·화환 가격 | 전화주문 1844-0644 | ${siteConfig.brand}`
   : `${title} | ${siteConfig.brand}`;
 
 const webPageSchema = {
@@ -51,7 +61,8 @@ const webPageSchema = {
   description,
   inLanguage: 'ko-KR',
   about: [region, '꽃배달', categoryLabel[category] ?? category],
-  dateModified: verifiedAt?.toISOString().slice(0, 10),
+  datePublished: publishedAt?.toISOString(),
+  dateModified: (updatedAt ?? verifiedAt)?.toISOString(),
   isPartOf: {
     '@type': 'WebSite',
     name: siteConfig.brand,
@@ -84,7 +95,13 @@ const breadcrumbSchema = {
   ],
 };
 ---
-<BaseLayout title={seoTitle} description={description}>
+<BaseLayout
+  title={seoTitle}
+  description={description}
+  ogType="article"
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
+>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -108,23 +125,27 @@ const breadcrumbSchema = {
       </header>
 
       {isPrimaryLanding && (
-        <div class="landing-quick" aria-label="안산 꽃배달 빠른 탐색">
-          <a href="/places/">
-            <span>01</span>
-            <strong>장소가 정해졌다면</strong>
-            <small>대학·병원·역·동네별로 먼저 확인할 조건을 봅니다.</small>
-          </a>
-          <a href="/occasions/">
-            <span>02</span>
-            <strong>보내는 이유가 정해졌다면</strong>
-            <small>졸업·개업·행사·이전처럼 상황별 기준을 비교합니다.</small>
-          </a>
-          <a href="/order-help/">
-            <span>03</span>
-            <strong>주문 직전이라면</strong>
-            <small>수령 장소·시간·문구처럼 빠뜨리기 쉬운 정보를 확인합니다.</small>
-          </a>
-        </div>
+        <>
+          <OrderCTA heading="안산 꽃배달 주문 안내" />
+          <div class="landing-quick" aria-label="안산 꽃배달 빠른 탐색">
+            <a href="/places/">
+              <span>01</span>
+              <strong>장소가 정해졌다면</strong>
+              <small>대학·병원·역·동네별로 먼저 확인할 조건을 봅니다.</small>
+            </a>
+            <a href="/occasions/">
+              <span>02</span>
+              <strong>보내는 이유가 정해졌다면</strong>
+              <small>졸업·개업·행사·이전처럼 상황별 기준을 비교합니다.</small>
+            </a>
+            <a href="/order-help/">
+              <span>03</span>
+              <strong>주문 직전이라면</strong>
+              <small>수령 장소·시간·문구처럼 빠뜨리기 쉬운 정보를 확인합니다.</small>
+            </a>
+          </div>
+          <ProductShowcase />
+        </>
       )}
 
       <div class="article-grid">
