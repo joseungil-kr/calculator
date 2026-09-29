@@ -1,30 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-const items = [
-  ['졸업', '2월 졸업식 꽃다발은 추운 날 무엇이 다를까요?', '겨울 이동과 포장·보관을 중심으로 봅니다.'],
-  ['가족', '어버이날 꽃, 카네이션만 고집하지 않아도 될까요?', '취향과 보관 환경에 따라 선택 기준을 나눕니다.'],
-  ['학교', '스승의날 꽃, 부담이 적은 형태는 무엇일까요?', '관계와 규정을 먼저 확인합니다.'],
-  ['개업', '봄 개업 시즌, 실내 크기까지 봐야 할까요?', '매장 공간과 출입 동선을 기준으로 봅니다.'],
-  ['기업', '회사 이전·공장 확장 축하꽃', '거래관계와 공식성에 따라 문구와 형태를 결정합니다.'],
-];
+import HubIndex from '../../components/HubIndex.astro';
 ---
-<BaseLayout title="안산 상황별 꽃 가이드 | 꽃이랑 안산" description="졸업, 개업, 가족행사, 기업 이전 등 상황에 따라 꽃을 선택하는 기준을 안내합니다.">
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Occasions</span>
-      <h1>상황별 꽃 가이드</h1>
-      <p>같은 꽃도 보내는 이유가 달라지면 크기, 형태, 문구, 전달 방식이 달라집니다.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container hub-list">
-      {items.map(([kind,title,body]) => (
-        <div class="hub-link">
-          <span class="kind">{kind}</span>
-          <div><strong>{title}</strong><br /><span>{body}</span></div>
-          <span class="hub-arrow">준비 중 →</span>
-        </div>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubIndex
+  category="occasions"
+  eyebrow="Occasions"
+  title="상황별 꽃 가이드"
+  intro="졸업, 개업, 가족행사, 기업 이전처럼 보내는 이유가 달라지면 형태·문구·전달 방식도 달라집니다."
+  description="졸업, 개업, 가족행사, 기업 이전 등 상황에 따라 꽃을 선택하는 기준을 안내합니다."
+  emptyText="상황별 상세 가이드는 초기 콘텐츠 발행 순서에 맞춰 공개됩니다."
+/>

@@ -1,29 +1,10 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-const items = [
-  ['전체 가이드', '안산에서 꽃을 보낼 때, 상황별로 무엇을 먼저 정해야 할까요?', '사람·상황·장소를 기준으로 상세 가이드로 이동하는 출발점입니다.'],
-  ['형태 비교', '꽃다발·꽃바구니·축하화환, 언제 무엇이 더 잘 맞을까요?', '전달 방식과 공간, 받는 사람의 움직임을 기준으로 형태를 비교합니다.'],
-  ['계절', '안산의 계절이 바뀌면 꽃 고르는 기준도 달라질까요?', '기온과 이동·보관 조건에 따라 달라지는 관리 포인트를 다룹니다.'],
-  ['장소', '회사·학교·병원·가족행사에 꽃을 보낼 때 선택 기준', '장소 성격을 먼저 보고 다음 질문을 고릅니다.'],
-];
+import HubIndex from '../../components/HubIndex.astro';
 ---
-<BaseLayout title="안산 꽃 선택 가이드 | 꽃이랑 안산" description="안산에서 꽃을 준비할 때 사람, 상황, 장소별 선택 기준을 정리합니다.">
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Guide</span>
-      <h1>꽃 선택 가이드</h1>
-      <p>예쁜 꽃을 고르는 것보다 먼저 상황을 정리하면 선택이 훨씬 단순해집니다.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container hub-list">
-      {items.map(([kind,title,body]) => (
-        <div class="hub-link">
-          <span class="kind">{kind}</span>
-          <div><strong>{title}</strong><br /><span>{body}</span></div>
-          <span class="hub-arrow">준비 중 →</span>
-        </div>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubIndex
+  category="guide"
+  eyebrow="Guide"
+  title="꽃 선택 가이드"
+  intro="예쁜 꽃을 고르는 것보다 먼저 사람·상황·장소를 정리하면 선택이 훨씬 단순해집니다."
+  description="안산에서 꽃을 준비할 때 사람, 상황, 장소별 선택 기준을 정리합니다."
+/>

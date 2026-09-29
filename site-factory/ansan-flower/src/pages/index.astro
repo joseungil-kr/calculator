@@ -1,18 +1,30 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const articles = (await getCollection(
+  'articles',
+  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+)).sort((a, b) => b.data.pageKey.localeCompare(a.data.pageKey, 'ko'));
+
+const recent = articles.slice(0, 6);
+const hrefFor = (article: (typeof articles)[number]) =>
+  article.data.routeType === 'top_level'
+    ? `/${article.data.slug}/`
+    : `/${article.data.category}/${article.data.slug}/`;
+
 const situations = [
-  { tag: '학교·대학', title: '졸업·입학 꽃', body: '개인 선물인지, 학과·연구실·회사 명의 축하인지부터 구분합니다.', href: '/occasions/' },
+  { tag: '학교·대학', title: '졸업·입학 꽃', body: '개인 선물인지, 학과·연구실·회사 명의 축하인지부터 구분합니다.', href: '/places/' },
   { tag: '병원', title: '병문안 꽃', body: '향과 크기보다 먼저 시설 반입 가능 여부와 상대의 상황을 확인합니다.', href: '/places/' },
   { tag: '기업·상가', title: '개업·이전 축하', body: '공간, 관계, 보내는 명의를 기준으로 화환·꽃바구니·화분을 비교합니다.', href: '/occasions/' },
   { tag: '장례·조문', title: '위로의 꽃', body: '빈소 정보와 보내는 사람 표기를 먼저 정리한 뒤 문구를 선택합니다.', href: '/order-help/' },
 ];
 
-const places = [
-  { tag: '대학교', title: '한양대학교 ERICA', body: '졸업·입학·연구실 행사처럼 학교 안에서도 상황에 따라 기준이 달라집니다.' },
-  { tag: '병원', title: '고려대학교 안산병원', body: '병문안 꽃은 선물보다 반입 가능 여부와 향·크기 배려가 우선입니다.' },
-  { tag: '역·생활권', title: '중앙역 · 상록수역', body: '이동이 있는 날에는 꽃 종류보다 포장과 들고 다니는 시간을 먼저 봅니다.' },
-  { tag: '행사·상권', title: '안산문화광장 · 고잔 · 선부', body: '야외 행사, 상가 개업, 주거지 선물처럼 공간 성격에 맞춰 접근합니다.' },
+const paths = [
+  ['1', '상황', '졸업·개업·병문안·조문처럼 꽃이 필요한 이유를 먼저 정합니다.'],
+  ['2', '사람', '개인·가족·회사·거래처처럼 받는 사람과 관계를 봅니다.'],
+  ['3', '장소', '학교·병원·상가·행사장처럼 수령 장소의 조건을 확인합니다.'],
+  ['4', '형태', '꽃다발·꽃바구니·화환·화분 중 전달 방식에 맞는 형태를 비교합니다.'],
 ];
 ---
 <BaseLayout>
@@ -20,15 +32,19 @@ const places = [
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">안산 로컬 플라워 가이드</span>
-        <h1>꽃을 고르기 전에<br />사람·상황·장소부터.</h1>
+        <h1>안산 꽃배달,<br />꽃보다 먼저 기준부터.</h1>
         <p>
-          안산에서 꽃을 준비할 때 필요한 것은 키워드보다 판단 기준입니다.
-          졸업식, 병문안, 개업, 장례처럼 상황이 달라지면 꽃의 형태와 문구,
-          전달 방식도 달라집니다.
+          안산에서 꽃을 준비할 때 필요한 것은 지역명만 반복한 추천이 아니라
+          누구에게, 어떤 상황에서, 어디로 보내는지에 맞는 판단 기준입니다.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/안산꽃배달/">안산 꽃배달 가이드</a>
           <a class="btn btn-ghost" href="/places/">안산 장소별 보기</a>
+        </div>
+        <div class="hero-proof" aria-label="사이트 운영 원칙">
+          <span>확인 가능한 공개자료 우선</span>
+          <span>허위 배송후기 없음</span>
+          <span>상황별 상세 가이드</span>
         </div>
       </div>
       <div class="hero-art" aria-label="꽃과 줄기를 추상화한 장식 이미지">
@@ -37,6 +53,17 @@ const places = [
           <span>“무슨 꽃이 예쁜가?”보다 “누구에게, 어디서, 어떤 상황인가?”를 먼저 정해보세요.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container path-strip">
+      {paths.map(([n, title, body]) => (
+        <div class="path-item">
+          <span class="path-num">{n}</span>
+          <div><strong>{title}</strong><span>{body}</span></div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -69,7 +96,7 @@ const places = [
       <div>
         <span class="eyebrow">빠른 결정 순서</span>
         <h2>다섯 가지만 먼저 정해도 선택이 쉬워집니다.</h2>
-        <p>사이트의 상세 글들은 이 판단 순서에서 필요한 질문 하나씩을 깊게 다룹니다.</p>
+        <p>상세 글은 이 판단 순서에서 필요한 질문 하나씩을 더 깊게 다룹니다.</p>
       </div>
       <div class="decision-list">
         {[
@@ -92,20 +119,20 @@ const places = [
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="eyebrow">안산 장소 맥락</span>
-          <h2>장소가 달라지면 먼저 확인할 것도 달라집니다.</h2>
-          <p class="section-intro">지역명만 붙이는 대신, 그 장소에서 실제로 필요한 판단을 중심으로 정리합니다.</p>
+          <span class="eyebrow">최근 공개 가이드</span>
+          <h2>안산에서 실제로 자주 생기는 질문부터.</h2>
+          <p class="section-intro">발행된 글은 각 허브에 자동으로 연결되고, 새 글이 추가되면 이 목록도 갱신됩니다.</p>
         </div>
       </div>
-      <div class="grid grid-4">
-        {places.map((item) => (
-          <a class="card" href="/places/">
+      <div class="grid grid-3">
+        {recent.map((article) => (
+          <a class="card recent-card" href={hrefFor(article)}>
             <div>
-              <span class="tag">{item.tag}</span>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
+              <span class="tag">{article.data.region} · {article.data.category}</span>
+              <h3>{article.data.title}</h3>
+              <p>{article.data.description}</p>
             </div>
-            <span class="more">장소별 가이드 →</span>
+            <span class="more">가이드 읽기 →</span>
           </a>
         ))}
       </div>

@@ -1,30 +1,10 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-const items = [
-  ['형태', '꽃다발과 꽃바구니, 실제로 뭐가 더 편할까요?', '이동·보관·전시 방식에 따라 비교합니다.'],
-  ['색', '빨강·핑크·노랑·화이트는 어떤 분위기를 만들까요?', '색의 인상을 절대적 의미가 아니라 분위기 기준으로 봅니다.'],
-  ['관리', '꽃다발을 하루 더 싱싱하게 유지하려면?', '포장 해체, 줄기, 물 관리를 순서대로 봅니다.'],
-  ['향', '향이 강한 꽃이 늘 좋은 선물은 아닌 이유', '병원·사무실·식사자리처럼 공간 배려가 필요한 경우를 다룹니다.'],
-  ['화환', '큰 화환일수록 축하가 잘 전달될까요?', '크기보다 장소·관계·문구·시인성을 먼저 봅니다.'],
-];
+import HubIndex from '../../components/HubIndex.astro';
 ---
-<BaseLayout title="꽃 이야기와 관리 | 꽃이랑 안산" description="꽃 형태, 색, 향, 보관과 관리처럼 상황 판단에 필요한 꽃 기본지식을 정리합니다.">
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Flower Knowledge</span>
-      <h1>꽃 이야기</h1>
-      <p>지역 정보와 별개로, 꽃을 더 잘 고르기 위해 알아두면 좋은 기본 판단 기준입니다.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container hub-list">
-      {items.map(([kind,title,body]) => (
-        <div class="hub-link">
-          <span class="kind">{kind}</span>
-          <div><strong>{title}</strong><br /><span>{body}</span></div>
-          <span class="hub-arrow">준비 중 →</span>
-        </div>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubIndex
+  category="flower-knowledge"
+  eyebrow="Flower Knowledge"
+  title="꽃 이야기"
+  intro="꽃 형태, 색, 향, 보관과 관리처럼 지역과 상관없이 실제 선택에 도움이 되는 기본 기준을 모았습니다."
+  description="꽃 형태, 색, 향, 보관과 관리처럼 상황 판단에 필요한 꽃 기본지식을 정리합니다."
+/>
