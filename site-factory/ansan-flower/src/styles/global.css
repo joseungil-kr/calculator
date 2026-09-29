@@ -432,3 +432,56 @@ body{background:#fff;color:var(--ink);}
   .guide-tile-grid{grid-template-columns:repeat(2,1fr);gap:8px}.guide-tile{min-height:145px;padding:12px}
   .info-band-grid{grid-template-columns:1fr}.footer-service-grid{grid-template-columns:1fr 1fr}
 }
+
+
+/* WIDE_AI_HERO_V1 */
+.hero-commerce{
+  min-height:430px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,249,251,.99) 0%,
+      rgba(255,249,251,.96) 30%,
+      rgba(255,249,251,.76) 45%,
+      rgba(255,249,251,.18) 62%,
+      rgba(255,249,251,0) 76%),
+    url('/images/ansan/hero-wide.webp') center center / cover no-repeat;
+  border-bottom:1px solid #f3e9ec;
+}
+.hero-commerce-grid{
+  min-height:430px;
+  display:block;
+}
+.hero-copy{
+  max-width:580px;
+  padding:58px 0 54px 4px;
+}
+.hero-product{display:none!important;}
+
+@media(max-width:900px){
+  .hero-commerce{
+    min-height:400px;
+    background:
+      linear-gradient(90deg,
+        rgba(255,249,251,.99) 0%,
+        rgba(255,249,251,.95) 42%,
+        rgba(255,249,251,.56) 64%,
+        rgba(255,249,251,.12) 84%),
+      url('/images/ansan/hero-wide.webp') 62% center / cover no-repeat;
+  }
+  .hero-commerce-grid{min-height:400px;}
+  .hero-copy{max-width:540px;padding:48px 0 44px;}
+}
+@media(max-width:620px){
+  .hero-commerce{
+    min-height:455px;
+    background:
+      linear-gradient(180deg,
+        rgba(255,249,251,.99) 0%,
+        rgba(255,249,251,.96) 44%,
+        rgba(255,249,251,.58) 69%,
+        rgba(255,249,251,.20) 100%),
+      url('/images/ansan/hero-wide.webp') 68% center / auto 100% no-repeat;
+  }
+  .hero-commerce-grid{min-height:455px;}
+  .hero-copy{max-width:100%;padding:30px 0 28px;}
+}
