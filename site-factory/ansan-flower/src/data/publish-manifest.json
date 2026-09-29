@@ -110,6 +110,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "ansan-flower-launch-09",
+      "draftKey": "ansan-flower-factory-draft-09",
+      "sourceRecordId": "recKI0kfbWXAHsZNo",
+      "publishQueueRecordId": "rec3NvOkDoHcHqtUu",
+      "snapshotId": "ansan-flower-launch-09-v1",
+      "slug": "korea-ansan-hospital-visit-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-09.md",
+      "url": "/places/korea-ansan-hospital-visit-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "ansan-flower-launch-15",
       "draftKey": "ansan-flower-factory-draft-15",
       "sourceRecordId": "recgFh3SUp4iMmfDY",
