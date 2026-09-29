@@ -1,0 +1,164 @@
+name: Ansan Live QA
+
+on:
+  push:
+    branches:
+      - site-factory-ansan-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-qa:
+    runs-on: ubuntu-latest
+    env:
+      BASE: https://ansan-flower-guide-test.joseungil.workers.dev
+      CANONICAL_ORIGIN: https://ansan.fwith.kr
+    steps:
+      - name: Checkout expected snapshot
+        uses: actions/checkout@v4
+
+      - name: Wait for exact Git snapshot deployment
+        working-directory: site-factory/ansan-flower
+        run: |
+          python3 - <<'PY'
+          import json
+          import time
+          import urllib.request
+          import urllib.error
+          from pathlib import Path
+          from urllib.parse import quote
+
+          BASE = "https://ansan-flower-guide-test.joseungil.workers.dev"
+          manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
+          pages = manifest["pages"]
+
+          def fetch(path):
+              url = BASE + quote(path, safe="/")
+              req = urllib.request.Request(url, headers={"User-Agent": "SiteFactory-LiveQA/1.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as res:
+                      return res.status, res.read().decode("utf-8", errors="replace")
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", errors="replace")
+              except Exception:
+                  return 0, ""
+
+          for attempt in range(1, 37):
+              home_code, home = fetch("/")
+              robots_code, robots = fetch("/robots.txt")
+              exact = home_code == 200 and robots_code == 200
+              exact = exact and "https://ansan.fwith.kr/" in home
+              exact = exact and 'name="robots"' in home.lower() and "noindex" in home.lower()
+              exact = exact and "Disallow: /" in robots
+
+              missing = []
+              if exact:
+                  for page in pages:
+                      code, html = fetch(page["url"])
+                      marker = f'data-snapshot-id="{page["snapshotId"]}"'
+                      if code != 200 or marker not in html:
+                          missing.append(f'{page["url"]} code={code} snapshot={page["snapshotId"]}')
+                  exact = not missing
+
+              if exact:
+                  print(f"Exact deployment is live: {len(pages)} snapshot page(s)")
+                  break
+
+              print(f"Attempt {attempt}: waiting for exact deployment; pending={missing[:5]}")
+              time.sleep(10)
+          else:
+              raise SystemExit("Timed out waiting for exact Git snapshot deployment")
+          PY
+
+      - name: Validate all manifest pages live
+        working-directory: site-factory/ansan-flower
+        run: |
+          python3 - <<'PY'
+          import json
+          import urllib.request
+          from pathlib import Path
+          from urllib.parse import quote, unquote
+
+          BASE = "https://ansan-flower-guide-test.joseungil.workers.dev"
+          ORIGIN = "https://ansan.fwith.kr"
+          pages = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))["pages"]
+
+          def get(path):
+              req = urllib.request.Request(BASE + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-LiveQA/1.0"})
+              with urllib.request.urlopen(req, timeout=20) as res:
+                  return res.status, res.read().decode("utf-8", errors="replace")
+
+          for page in pages:
+              code, html = get(page["url"])
+              decoded = unquote(html)
+              expected_canonical = ORIGIN + page["url"]
+              assert code == 200, (page["url"], code)
+              assert f'data-snapshot-id="{page["snapshotId"]}"' in html, page["snapshotId"]
+              assert expected_canonical in decoded, expected_canonical
+              assert "<h1" in html.lower(), page["url"]
+              assert 'name="robots"' in html.lower() and "noindex" in html.lower(), page["url"]
+              assert "application/ld+json" in html, page["url"]
+              print("OK", page["url"], page["snapshotId"])
+          PY
+
+      - name: Validate home hubs robots and sitemap
+        working-directory: site-factory/ansan-flower
+        run: |
+          python3 - <<'PY'
+          import json
+          import urllib.request
+          from pathlib import Path
+          from urllib.parse import quote, unquote
+
+          BASE = "https://ansan-flower-guide-test.joseungil.workers.dev"
+          ORIGIN = "https://ansan.fwith.kr"
+          manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
+
+          def get(path):
+              req = urllib.request.Request(BASE + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-LiveQA/1.0"})
+              with urllib.request.urlopen(req, timeout=20) as res:
+                  return res.status, res.read().decode("utf-8", errors="replace")
+
+          home_code, home = get("/")
+          assert home_code == 200
+          assert '<html lang="ko"' in home
+          assert ORIGIN + "/" in unquote(home)
+          assert 'name="robots"' in home.lower() and "noindex" in home.lower()
+          assert "<h1" in home.lower()
+          assert "application/ld+json" in home
+
+          for hub in ["/guide/","/places/","/occasions/","/flower-knowledge/","/order-help/"]:
+              code, html = get(hub)
+              assert code == 200, (hub, code)
+              assert "<h1" in html.lower(), hub
+
+          _, robots = get("/robots.txt")
+          assert "User-agent: *" in robots
+          assert "Disallow: /" in robots
+
+          _, sm_index = get("/sitemap-index.xml")
+          assert "sitemap-0.xml" in sm_index
+          _, sm = get("/sitemap-0.xml")
+          sm = unquote(sm)
+          for page in manifest["pages"]:
+              expected = ORIGIN + page["url"]
+              assert expected in sm, expected
+          print(f"Sitemap contains all {len(manifest['pages'])} snapshot pages")
+          PY
+
+      - name: Check 404 handling
+        run: |
+          code=$(curl -sS -o /tmp/notfound.html -w "%{http_code}" "$BASE/live-qa-definitely-not-found/")
+          echo "404 test -> $code"
+          test "$code" = "404"
+          grep -q '페이지를 찾을 수 없습니다' /tmp/notfound.html
+
+      - name: Check security headers
+        run: |
+          curl -fsSI "$BASE/" -o /tmp/headers.txt
+          grep -qi '^x-content-type-options: nosniff' /tmp/headers.txt
+          grep -qi '^x-frame-options: SAMEORIGIN' /tmp/headers.txt
+          grep -qi '^referrer-policy: strict-origin-when-cross-origin' /tmp/headers.txt
+          grep -qi '^permissions-policy:' /tmp/headers.txt

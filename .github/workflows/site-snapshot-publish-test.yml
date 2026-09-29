@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 jobs:
   snapshot:
@@ -70,6 +71,8 @@ jobs:
           description = block("---BEGIN-DESCRIPTION---", "---END-DESCRIPTION---")
           content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
           source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
+          if not source_urls:
+              raise SystemExit("Missing source URL: Site Factory snapshots require at least one verified source URL")
 
           if site_key != "ansan-flower-test":
               raise SystemExit(f"Unexpected site_key: {site_key}")
@@ -213,6 +216,12 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Trigger exact live QA
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ansan-live-qa.yml --ref site-factory-ansan-v1
 
       - name: Report success
         env:
