@@ -1,0 +1,69 @@
+---
+import products from '../data/products.json';
+import business from '../data/business-truth.json';
+
+interface Props {
+  limit?: number;
+  showHeading?: boolean;
+}
+
+const { limit, showHeading = true } = Astro.props;
+const selected = typeof limit === 'number' ? products.slice(0, limit) : products;
+const funeral = selected.filter((p) => p.category === 'funeral_wreath');
+const congrats = selected.filter((p) => p.category === 'congrats_wreath');
+const money = new Intl.NumberFormat('ko-KR');
+---
+
+<section class="product-showcase" aria-label="화환 상품과 가격">
+  {showHeading && (
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">상품·가격</span>
+        <h2>화환 가격을 먼저 확인하세요.</h2>
+        <p class="section-intro">전화주문을 우선 안내하며, 온라인 주문은 fwith.co.kr에서 24시간 접수합니다.</p>
+      </div>
+    </div>
+  )}
+
+  {[
+    ['근조화환', funeral],
+    ['축하화환', congrats],
+  ].map(([label, group]) => (
+    Array.isArray(group) && group.length > 0 && (
+      <div class="product-group">
+        <div class="product-group-head">
+          <h3>{label}</h3>
+          <span>{group.length}개 상품</span>
+        </div>
+        <div class="product-grid">
+          {group.map((product) => (
+            <article class="product-card">
+              <div class="product-image-wrap">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="640"
+                />
+              </div>
+              <div class="product-card-body">
+                <h4>{product.name}</h4>
+                <strong class="product-price">{money.format(product.price)}원</strong>
+                <p>{product.description}</p>
+                <div class="product-card-actions">
+                  <a href={business.phoneHref}>전화주문</a>
+                  <a href={business.onlineOrderUrl} rel="noopener">온라인주문</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )
+  ))}
+
+  <p class="product-notice">{business.productVariationNotice}</p>
+  <p class="product-notice">{business.deliveryNotice}</p>
+</section>

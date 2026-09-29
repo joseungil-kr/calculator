@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../config/site';
+import business from '../data/business-truth.json';
 ---
 <header class="site-header">
   <div class="container header-row">
@@ -10,6 +11,8 @@ import { siteConfig } from '../config/site';
     <nav class="site-nav" aria-label="주요 메뉴">
       {siteConfig.nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="header-cta" href="/order-help/">꽃 준비하기</a>
+    <a class="header-cta" href={business.phoneHref} aria-label={`${business.phone} 전화주문`}>
+      {business.phone}
+    </a>
   </div>
 </header>
