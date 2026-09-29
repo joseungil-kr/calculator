@@ -1,0 +1,114 @@
+name: Suwon Cloudflare Staging Deploy
+
+on:
+  push:
+    branches:
+      - site-factory-suwon-v1
+    paths:
+      - "site-factory/suwon-flower/**"
+      - ".github/workflows/suwon-cloudflare-staging-deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: suwon-cloudflare-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/suwon-flower
+    env:
+      SITE_URL: https://suwon.fwith.kr
+      SITE_INDEXABLE: "false"
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate Cloudflare secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          if ! printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'; then
+            echo "CLOUDFLARE_ACCOUNT_ID must be the 32-character Cloudflare Account ID."
+            exit 1
+          fi
+          echo "Cloudflare secrets are present and Account ID format is valid."
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build noindex staging site
+        run: npm run build
+
+      - name: Static SEO QA
+        run: python3 scripts/qa_static.py
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@latest deploy 2>&1 | tee /tmp/wrangler-deploy.log
+          url=$(grep -Eo 'https://[A-Za-z0-9._-]+\.workers\.dev' /tmp/wrangler-deploy.log | tail -1 || true)
+          if [ -z "$url" ]; then
+            echo "Could not determine workers.dev URL from Wrangler output."
+            cat /tmp/wrangler-deploy.log
+            exit 1
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Staging URL: $url"
+
+      - name: Verify live noindex staging
+        env:
+          STAGING_URL: ${{ steps.deploy.outputs.url }}
+          EXPECTED_REVISION: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import urllib.request
+          from urllib.parse import quote
+
+          base = os.environ["STAGING_URL"].rstrip("/")
+          expected = os.environ["EXPECTED_REVISION"]
+
+          def get(path):
+              url = base + quote(path, safe="/")
+              req = urllib.request.Request(url, headers={"User-Agent":"SiteFactory-StagingQA/1.0"})
+              with urllib.request.urlopen(req, timeout=30) as res:
+                  return res.status, res.read().decode("utf-8", errors="replace")
+
+          code, home = get("/")
+          assert code == 200, code
+          lower = home.lower()
+          assert 'name="robots"' in lower
+          assert "noindex" in lower
+          assert f'name="site-factory-revision" content="{expected}"' in home
+
+          code, robots = get("/robots.txt")
+          assert code == 200
+          assert "Disallow: /" in robots
+
+          code, article = get("/수원꽃배달/")
+          assert code == 200
+          alower = article.lower()
+          assert "noindex" in alower
+          assert "<h1" in alower
+          assert 'data-snapshot-id="suwon-flower-launch-01-v2"' in article
+
+          print(f"STAGING QA PASSED: {base}")
+          print("Home, robots.txt and /수원꽃배달/ are live and noindex.")
+          PY
