@@ -1,0 +1,57 @@
+name: Sync Flower Product Images
+
+on:
+  push:
+    branches:
+      - site-factory-ansan-v1
+    paths:
+      - 'site-factory/ansan-flower/product-image-sync.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: site-factory-ansan-v1
+
+      - name: Download approved product images
+        run: |
+          set -euo pipefail
+          ROOT="site-factory/ansan-flower/public/images/products"
+          mkdir -p "$ROOT"
+
+          curl -fL --retry 3 --retry-delay 2 "https://fwith.kr/img/product/f1_hu_fe001f0cd4409b66.webp" -o "$ROOT/funeral-basic.webp"
+          curl -fL --retry 3 --retry-delay 2 "https://fwith.kr/img/product/f2_hu_c13ff56e9a54f74a.webp" -o "$ROOT/funeral-premium.webp"
+          curl -fL --retry 3 --retry-delay 2 "https://fwith.kr/img/product/f3_hu_2dff149c34fa978f.webp" -o "$ROOT/funeral-large.webp"
+          curl -fL --retry 3 --retry-delay 2 "https://fwith.kr/img/product/f4_hu_2d8d131f57c92d72.webp" -o "$ROOT/funeral-xl.webp"
+
+          curl -fL --retry 3 --retry-delay 2 "https://www.baroflowers.com/product/c1.jpg" -o "$ROOT/congrats-basic.jpg"
+          curl -fL --retry 3 --retry-delay 2 "https://www.baroflowers.com/product/c2.jpg" -o "$ROOT/congrats-premium.jpg"
+          curl -fL --retry 3 --retry-delay 2 "https://www.baroflowers.com/product/c3.jpg" -o "$ROOT/congrats-large.jpg"
+          curl -fL --retry 3 --retry-delay 2 "https://www.baroflowers.com/product/c4.jpg" -o "$ROOT/congrats-xl.jpg"
+
+          test -s "$ROOT/funeral-basic.webp"
+          test -s "$ROOT/funeral-premium.webp"
+          test -s "$ROOT/funeral-large.webp"
+          test -s "$ROOT/funeral-xl.webp"
+          test -s "$ROOT/congrats-basic.jpg"
+          test -s "$ROOT/congrats-premium.jpg"
+          test -s "$ROOT/congrats-large.jpg"
+          test -s "$ROOT/congrats-xl.jpg"
+
+      - name: Commit immutable product image snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site-factory/ansan-flower/public/images/products
+          if git diff --cached --quiet; then
+            echo "Product images already synchronized."
+            exit 0
+          fi
+          git commit -m "Snapshot approved flower product images"
+          git push origin HEAD:site-factory-ansan-v1
