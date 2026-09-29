@@ -16,6 +16,18 @@
       "file": "src/content/articles/ansan-flower-guide.md",
       "url": "/guide/ansan-flower-guide/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-02",
+      "draftKey": "ansan-flower-factory-draft-02",
+      "sourceRecordId": "recbN0TvtuO01wqqp",
+      "publishQueueRecordId": "rec2xSa5l5rnWZ7ts",
+      "snapshotId": "ansan-flower-launch-02-v1",
+      "slug": "ansan-flower-form-guide",
+      "category": "guide",
+      "file": "src/content/articles/ansan-flower-form-guide.md",
+      "url": "/guide/ansan-flower-form-guide/",
+      "status": "approved"
     }
   ]
 }

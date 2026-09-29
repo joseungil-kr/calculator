@@ -10,6 +10,15 @@
       "url": "/guide/ansan-flower-guide/",
       "status": "approved",
       "sourceRecordId": "rec4dnHODA5cb9Az5"
+    },
+    {
+      "pageKey": "ansan-flower-launch-02",
+      "snapshotId": "ansan-flower-launch-02-v1",
+      "slug": "ansan-flower-form-guide",
+      "category": "guide",
+      "url": "/guide/ansan-flower-form-guide/",
+      "status": "approved",
+      "sourceRecordId": "recbN0TvtuO01wqqp"
     }
   ]
 }
