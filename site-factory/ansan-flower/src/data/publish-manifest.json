@@ -95,6 +95,19 @@
       "file": "src/content/articles/ansan-flower-launch-07.md",
       "url": "/places/hanyang-erica-graduation-flowers/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-15",
+      "draftKey": "ansan-flower-factory-draft-15",
+      "sourceRecordId": "recgFh3SUp4iMmfDY",
+      "publishQueueRecordId": "rec9orIYnxeCnnmmk",
+      "snapshotId": "ansan-flower-launch-15-v1",
+      "slug": "ansan-february-graduation-bouquet",
+      "category": "occasions",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-15.md",
+      "url": "/occasions/ansan-february-graduation-bouquet/",
+      "status": "approved"
     }
   ]
 }
