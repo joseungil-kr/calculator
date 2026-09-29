@@ -123,6 +123,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "ansan-flower-launch-10",
+      "draftKey": "ansan-flower-factory-draft-10",
+      "sourceRecordId": "recj9a8GjZDk5eK8d",
+      "publishQueueRecordId": "recg9FUV9UpzAvvx9",
+      "snapshotId": "ansan-flower-launch-10-v1",
+      "slug": "jungang-station-carrying-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-10.md",
+      "url": "/places/jungang-station-carrying-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "ansan-flower-launch-15",
       "draftKey": "ansan-flower-factory-draft-15",
       "sourceRecordId": "recgFh3SUp4iMmfDY",
