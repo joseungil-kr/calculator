@@ -1,6 +1,6 @@
 ---
 pageKey: suwon-flower-launch-21
-snapshotId: suwon-flower-launch-21-v1
+snapshotId: suwon-flower-launch-21-v2
 sourceDraftKey: suwon-flower-factory-draft-21
 sourceRecordId: rec308dcPxFH0UzJh
 slug: "suwon-yeonhwajang-condolence-wreath"
@@ -11,12 +11,26 @@ category: funeral
 structureType: facility_guide
 pageType: funeral-facility
 contentRole: question-answer
-localizationPolicy: local-optional
+localizationPolicy: local-required
 region: 수원
 verifiedAt: 2026-09-30
+publishedAt: 2026-09-30
 sourceUrls:
   - "https://www.suwonudc.co.kr/suwonyhj/mainPage.do"
   - "https://www.suwonudc.co.kr/suwonyhj/PageLink.do?link=forward%3A%2FPageContent.do&menuNo=010000&subMenuNo=011000&tempParam1=&thirdMenuNo="
+sources:
+  - name: "수원시연화장"
+    url: "https://www.suwonudc.co.kr/suwonyhj/mainPage.do"
+    type: facility
+    verifiedAt: 2026-09-30
+  - name: "수원시연화장"
+    url: "https://www.suwonudc.co.kr/suwonyhj/PageLink.do?link=forward%3A%2FPageContent.do&menuNo=010000&subMenuNo=011000&tempParam1=&thirdMenuNo="
+    type: facility
+    verifiedAt: 2026-09-30
+relatedPageKeys:
+  - "suwon-flower-launch-22"
+  - "suwon-flower-launch-23"
+  - "suwon-flower-launch-11"
 draftStatus: approved
 ---
 

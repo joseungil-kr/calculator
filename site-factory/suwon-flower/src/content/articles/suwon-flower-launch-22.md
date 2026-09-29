@@ -1,6 +1,6 @@
 ---
 pageKey: suwon-flower-launch-22
-snapshotId: suwon-flower-launch-22-v1
+snapshotId: suwon-flower-launch-22-v2
 sourceDraftKey: suwon-flower-factory-draft-22
 sourceRecordId: recHJMpxSbQBIwVvk
 slug: "ajou-hospital-funeral-condolence-wreath"
@@ -11,13 +11,31 @@ category: funeral
 structureType: facility_guide
 pageType: funeral-facility
 contentRole: question-answer
-localizationPolicy: local-optional
+localizationPolicy: local-required
 region: 수원
 verifiedAt: 2026-09-30
+publishedAt: 2026-09-30
 sourceUrls:
   - "https://hosp.ajoumc.or.kr/conts/102003000000000.do"
   - "https://hosp.ajoumc.or.kr/conts/102002000000000.do"
   - "https://hosp.ajoumc.or.kr/conts/102001000000000.do"
+sources:
+  - name: "아주대학교병원"
+    url: "https://hosp.ajoumc.or.kr/conts/102003000000000.do"
+    type: facility
+    verifiedAt: 2026-09-30
+  - name: "아주대학교병원"
+    url: "https://hosp.ajoumc.or.kr/conts/102002000000000.do"
+    type: facility
+    verifiedAt: 2026-09-30
+  - name: "아주대학교병원"
+    url: "https://hosp.ajoumc.or.kr/conts/102001000000000.do"
+    type: facility
+    verifiedAt: 2026-09-30
+relatedPageKeys:
+  - "suwon-flower-launch-21"
+  - "suwon-flower-launch-23"
+  - "suwon-flower-launch-11"
 draftStatus: approved
 ---
 

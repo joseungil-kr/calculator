@@ -1,6 +1,6 @@
 ---
 pageKey: suwon-flower-launch-23
-snapshotId: suwon-flower-launch-23-v1
+snapshotId: suwon-flower-launch-23-v2
 sourceDraftKey: suwon-flower-factory-draft-23
 sourceRecordId: rec6dpL2Zfm7neZ6u
 slug: "dongsuwon-hospital-funeral-condolence-wreath"
@@ -11,13 +11,31 @@ category: funeral
 structureType: facility_guide
 pageType: funeral-facility
 contentRole: question-answer
-localizationPolicy: local-optional
+localizationPolicy: local-required
 region: 수원
 verifiedAt: 2026-09-30
+publishedAt: 2026-09-30
 sourceUrls:
   - "https://dswhosp.co.kr/guide/funeral.php"
   - "https://www.dswhosp.co.kr/guide/parking.php"
   - "https://www.dswhosp.co.kr/guide/map.php"
+sources:
+  - name: "동수원병원"
+    url: "https://dswhosp.co.kr/guide/funeral.php"
+    type: facility
+    verifiedAt: 2026-09-30
+  - name: "동수원병원"
+    url: "https://www.dswhosp.co.kr/guide/parking.php"
+    type: facility
+    verifiedAt: 2026-09-30
+  - name: "동수원병원"
+    url: "https://www.dswhosp.co.kr/guide/map.php"
+    type: facility
+    verifiedAt: 2026-09-30
+relatedPageKeys:
+  - "suwon-flower-launch-21"
+  - "suwon-flower-launch-22"
+  - "suwon-flower-launch-11"
 draftStatus: approved
 ---
 
