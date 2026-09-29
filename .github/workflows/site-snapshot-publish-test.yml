@@ -170,6 +170,14 @@ jobs:
           npm install
           npm run build
 
+      - name: Deterministic static SEO QA
+        working-directory: site-factory/ansan-flower
+        run: python3 scripts/qa_static.py
+
+      - name: Cloudflare Workers deploy dry run
+        working-directory: site-factory/ansan-flower
+        run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
+
       - name: Commit and push snapshot
         id: commit
         run: |
@@ -194,5 +202,5 @@ jobs:
           SHA: ${{ steps.commit.outputs.sha }}
           CHANGED: ${{ steps.commit.outputs.changed }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. changed=$CHANGED Commit: $SHA"
+          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. snapshot/build/SEO QA/Cloudflare dry-run passed. changed=$CHANGED Commit: $SHA"
           gh issue close "${{ github.event.issue.number }}"
