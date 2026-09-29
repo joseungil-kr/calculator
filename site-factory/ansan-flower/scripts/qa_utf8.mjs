@@ -17,6 +17,7 @@ function walk(dir) {
 }
 
 function check(path) {
+  if (path.endsWith('scripts/qa_utf8.mjs')) return;
   const bytes = readFileSync(path);
   let text;
   try {
