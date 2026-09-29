@@ -14,5 +14,23 @@
   },
   "previewIndexable": false,
   "realDomainConnected": false,
-  "searchSubmitted": false
+  "searchSubmitted": false,
+  "initialPageTarget": 30,
+  "initialPageTargetRange": {
+    "min": 1,
+    "max": 49,
+    "adjustable": true
+  },
+  "growthMode": "unlimited",
+  "growthDailyCountSource": "Sites.daily_count",
+  "orphanPolicy": "zero_orphans",
+  "sitemapPolicy": "all_public_html",
+  "indexNow": {
+    "status": "prepared",
+    "endpoint": "https://searchadvisor.naver.com/indexnow",
+    "key": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
+    "productionOnly": true,
+    "initialSubmission": "all_sitemap_urls",
+    "incrementalSubmission": "changed_urls_only"
+  }
 }
