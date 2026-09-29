@@ -31,6 +31,10 @@ const { Content } = await render(article);
   routeType={article.data.routeType}
   sourceUrls={article.data.sourceUrls}
   verifiedAt={article.data.verifiedAt}
+  publishedAt={article.data.publishedAt}
+  updatedAt={article.data.updatedAt}
+  ogImage={article.data.ogImage}
+  ogImageAlt={article.data.ogImageAlt}
 >
   <Content />
 </ArticleLayout>

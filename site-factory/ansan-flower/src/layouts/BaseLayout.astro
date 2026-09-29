@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import MobileOrderBar from '../components/MobileOrderBar.astro';
 import '../styles/global.css';
 import { siteConfig } from '../config/site';
 
@@ -8,21 +9,29 @@ interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
-  title = `${siteConfig.brand} | 안산 꽃 선택과 지역 플라워 가이드`,
+  title = `${siteConfig.brand} | 안산 꽃배달·화환 가격과 지역 가이드`,
   description = siteConfig.description,
   canonicalPath = Astro.url.pathname,
+  ogImage = siteConfig.defaultOgImage,
+  ogImageAlt = siteConfig.defaultOgImageAlt,
+  ogType = 'website',
 } = Astro.props;
 
-const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString();
-const robots = siteConfig.indexable ? 'index,follow' : 'noindex,nofollow,noarchive';
+const origin = Astro.site ?? new URL(siteConfig.siteUrl);
+const canonical = new URL(canonicalPath, origin).toString();
+const ogImageUrl = new URL(ogImage, origin).toString();
+const robots = siteConfig.indexable ? 'index,follow,max-image-preview:large' : 'noindex,nofollow,noarchive';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: siteConfig.brand,
-  url: Astro.site?.toString() ?? Astro.url.origin,
+  url: origin.toString(),
   description,
   inLanguage: 'ko-KR',
 };
@@ -36,12 +45,23 @@ const schema = {
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content={siteConfig.brand} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
@@ -51,5 +71,6 @@ const schema = {
       <slot />
     </main>
     <Footer />
+    <MobileOrderBar />
   </body>
 </html>

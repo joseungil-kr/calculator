@@ -3,6 +3,8 @@ const indexable = import.meta.env.SITE_INDEXABLE === 'true';
 
 export const siteConfig = {
   siteKey: 'ansan-flower-test',
+  brandKey: 'flower-fwith',
+  businessTruthKey: 'flower-fwith-v1',
   brand: '꽃이랑 안산',
   region: '안산',
   industry: '꽃배달·꽃집',
@@ -11,8 +13,10 @@ export const siteConfig = {
   canonicalDomain: 'ansan.fwith.kr',
   siteUrl,
   indexable,
+  defaultOgImage: '/images/products/congrats-basic.jpg',
+  defaultOgImageAlt: '꽃이랑 안산 꽃배달 가이드 대표 이미지',
   description:
-    '안산에서 꽃을 준비할 때 사람, 상황, 장소에 맞는 선택 기준을 설명하는 지역 플라워 가이드입니다.',
+    '안산에서 꽃을 준비할 때 사람, 상황, 장소에 맞는 선택 기준과 실제 화환 가격, 주문 정보를 함께 제공하는 지역 플라워 가이드입니다.',
   operator: {
     label: 'Powered by INTERPIAD',
     href: 'https://interpiad.com',

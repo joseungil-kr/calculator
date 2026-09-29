@@ -1,16 +1,26 @@
 ---
 import { siteConfig } from '../config/site';
+import business from '../data/business-truth.json';
 ---
 <footer class="site-footer">
-  <div class="container footer-row">
-    <div>
-      <div class="footer-brand">{siteConfig.brand}</div>
-      <div>{siteConfig.description}</div>
+  <div class="container footer-business">
+    <div class="footer-brand">{business.business.name}</div>
+    <p>{siteConfig.description}</p>
+
+    <div class="footer-business-grid">
+      <span>대표자: {business.business.representative}</span>
+      <span>사업자등록번호: {business.business.businessNumber}</span>
+      <span>통신판매업신고번호: {business.business.mailOrderNumber}</span>
+      <span>전화: <a href={business.phoneHref}>{business.phone}</a></span>
+      <span>개인정보관리책임자: {business.business.privacyOfficer}</span>
+      <span class="footer-address">사업장 주소: {business.business.address}</span>
     </div>
-    <div class="footer-meta">
+
+    <div class="footer-links">
+      <a href={business.onlineOrderUrl} rel="noopener">온라인 주문</a>
       <a href={siteConfig.operator.href} rel={siteConfig.operator.rel}>{siteConfig.operator.label}</a>
       <a href={`mailto:${siteConfig.operator.email}`}>{siteConfig.operator.email}</a>
-      <span>© {new Date().getFullYear()} {siteConfig.brand}</span>
     </div>
+    <div class="footer-copyright">{business.copyright}</div>
   </div>
 </footer>
