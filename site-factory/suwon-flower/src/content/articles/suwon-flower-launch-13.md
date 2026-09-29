@@ -1,6 +1,6 @@
 ---
 pageKey: suwon-flower-launch-13
-snapshotId: suwon-flower-launch-13-v1
+snapshotId: suwon-flower-launch-13-v2
 sourceDraftKey: suwon-flower-factory-draft-13
 sourceRecordId: recYtCw9VGylskqwj
 slug: "suwon-bouquet-aftercare"
