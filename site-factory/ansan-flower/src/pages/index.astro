@@ -16,55 +16,55 @@ const hrefFor = (article: (typeof articles)[number]) =>
     : `/${article.data.category}/${article.data.slug}/`;
 
 const trust = [
-  ['truck', '전국 배송 가능', '지역별 추가배송비 발생 가능'],
-  ['clock', '신속한 주문 접수', '전화 08:00~23:00'],
-  ['shield', '화환 반입 여부 확인', '제한 지역은 상담원 문의'],
-  ['headset', '전화 상담', '1844-0644'],
+  ['truck', 'ì „êµ­ ë°°ì†¡ ê°€ëŠ¥', 'ì§€ì—­ë³„ ì¶”ê°€ë°°ì†¡ë¹„ ë°œìƒ ê°€ëŠ¥'],
+  ['clock', 'ì‹ ì†í•œ ì£¼ë¬¸ ì ‘ìˆ˜', 'ì „í™” 08:00~23:00'],
+  ['shield', 'í™”í™˜ ë°˜ìž… ì—¬ë¶€ í™•ì¸', 'ì œí•œ ì§€ì—­ì€ ìƒë‹´ì› ë¬¸ì˜'],
+  ['headset', 'ì „í™” ìƒë‹´', '1844-0644'],
 ];
 
 const situations = [
-  { tag: '장례', title: '장례식장 근조화환', body: '빈소 정보와 반입 여부를 먼저 확인합니다.', href: '/order-help/' },
-  { tag: '개업·이전', title: '개업·이전 축하화환', body: '매장·사무실·상가 상황별 기준을 정리합니다.', href: '/occasions/' },
-  { tag: '병원', title: '병문안 꽃', body: '시설 반입 가능 여부와 상대 상황을 먼저 봅니다.', href: '/places/' },
-  { tag: '학교', title: '졸업식 꽃', body: '학교별 이동·보관·전달 기준을 확인합니다.', href: '/places/' },
-  { tag: '예식', title: '결혼식 축하화환', body: '예식장 공간과 보내는 명의에 맞춰 선택합니다.', href: '/occasions/' },
-  { tag: '화분', title: 'm��분·식물 가이드', body: '개업·이전 선물용 화분 선택 기준을 정리합니다.', href: '/flower-knowledge/' },
+  { tag: 'ìž¥ë¡€', title: 'ìž¥ë¡€ì‹ìž¥ ê·¼ì¡°í™”í™˜', body: 'ë¹ˆì†Œ ì •ë³´ì™€ ë°˜ìž… ì—¬ë¶€ë¥¼ ë¨¼ì € í™•ì¸í•©ë‹ˆë‹¤.', href: '/order-help/' },
+  { tag: 'ê°œì—…Â·ì´ì „', title: 'ê°œì—…Â·ì´ì „ ì¶•í•˜í™”í™˜', body: 'ë§¤ìž¥Â·ì‚¬ë¬´ì‹¤Â·ìƒê°€ ìƒí™©ë³„ ê¸°ì¤€ì„ ì •ë¦¬í•©ë‹ˆë‹¤.', href: '/occasions/' },
+  { tag: 'ë³‘ì›', title: 'ë³‘ë¬¸ì•ˆ ê½ƒ', body: 'ì‹œì„¤ ë°˜ìž… ê°€ëŠ¥ ì—¬ë¶€ì™€ ìƒëŒ€ ìƒí™©ì„ ë¨¼ì € ë´…ë‹ˆë‹¤.', href: '/places/' },
+  { tag: 'í•™êµ', title: 'ì¡¸ì—…ì‹ ê½ƒ', body: 'í•™êµë³„ ì´ë™Â·ë³´ê´€Â·ì „ë‹¬ ê¸°ì¤€ì„ í™•ì¸í•©ë‹ˆë‹¤.', href: '/places/' },
+  { tag: 'ì˜ˆì‹', title: 'ê²°í˜¼ì‹ ì¶•í•˜í™”í™˜', body: 'ì˜ˆì‹ìž¥ ê³µê°„ê³¼ ë³´ë‚´ëŠ” ëª…ì˜ì— ë§žì¶° ì„ íƒí•©ë‹ˆë‹¤.', href: '/occasions/' },
+  { tag: 'í™”ë¶„', title: 'm™”ë¶„Â·ì‹ë¬¼ ê°€ì´ë“œ', body: 'ê°œì—…Â·ì´ì „ ì„ ë¬¼ìš© í™”ë¶„ ì„ íƒ ê¸°ì¤€ì„ ì •ë¦¬í•©ë‹ˆë‹¤.', href: '/flower-knowledge/' },
 ];
 ---
 <BaseLayout>
   <section class="hero hero-commerce">
     <div class="container hero-commerce-grid">
       <div class="hero-copy">
-        <span class="hero-badge">안산 전 지역 꽃배달</span>
-        <h1>안산 <em>꽃배달</em></h1>
-        <p class="hero-lead">소중한 마음을 꽃으로 전하세요.</p>
+        <span class="hero-badge">ì•ˆì‚° ì „ ì§€ì—­ ê½ƒë°°ë‹¬</span>
+        <h1>ì•ˆì‚° <em>ê½ƒë°°ë‹¬</em></h1>
+        <p class="hero-lead">ì†Œì¤‘í•œ ë§ˆìŒì„ ê½ƒìœ¼ë¡œ ì „í•˜ì„¸ìš”.</p>
         <p class="hero-sub">
-          근조화환, 축하화환부터 상황별 꽃 선택까지<br />
-          안산 꽃배달에 필요한 정보를 한곳에서 확인합니다.
+          ê·¼ì¡°í™”í™˜, ì¶•í•˜í™”í™˜ë¶€í„° ìƒí™©ë³„ ê½ƒ ì„ íƒê¹Œì§€<br />
+          ì•ˆì‚° ê½ƒë°°ë‹¬ì— í•„ìš”í•œ ì •ë³´ë¥¼ í•œê³³ì—ì„œ í™•ì¸í•©ë‹ˆë‹¤.
         </p>
         <div class="hero-actions hero-order-actions">
           <a class="hero-phone" href={business.phoneHref}>
-            <span>☎</span>
-            <strong>전화주문 {business.phone}</strong>
+            <span>â˜Ž</span>
+            <strong>ì „í™”ì£¼ë¬¸ {business.phone}</strong>
             <small>{business.phoneOrderHours}</small>
           </a>
           <a class="hero-online" href={business.onlineOrderUrl} rel="noopener">
-            <span>▣</span>
-            <strong>온라인 주문</strong>
-            <small>24시간 주문 가능</small>
+            <span>â–£</span>
+            <strong>ì˜¨ë¼ì¸ ì£¼ë¬¸</strong>
+            <small>24ì‹œê°„ ì£¼ë¬¸ ê°€ëŠ¥</small>
           </a>
         </div>
       </div>
 
-      <div class="hero-product" aria-label="축하화환 상품 이미지">
+      <div class="hero-product" aria-label="ì¶•í•˜í™”í™˜ ìƒí’ˆ ì´ë¯¸ì§€">
         <div class="hero-product-bg"></div>
-        <img src="/images/products/congrats-premium.jpg" alt="축하 고급 3단 화환 상품 이미지" width="640" height="640" />
-        <span class="hero-product-caption">실제 판매상품 이미지</span>
+        <img src="/images/products/congrats-premium.jpg" alt="ì¶•í•˜ ê³ ê¸‰ 3ë‹¨ í™”í™˜ ìƒí’ˆ ì´ë¯¸ì§€" width="640" height="640" />
+        <span class="hero-product-caption">ì‹¤ì œ íŒë§¤ìƒí’ˆ ì´ë¯¸ì§€</span>
       </div>
     </div>
   </section>
 
-  <section class="trust-strip" aria-label="주문 및 배송 안내">
+  <section class="trust-strip" aria-label="ì£¼ë¬¸ ë° ë°°ì†¡ ì•ˆë‚´">
     <div class="container trust-grid">
       {trust.map(([icon, title, desc]) => (
         <div class="trust-item">
@@ -88,8 +88,8 @@ const situations = [
     <div class="container">
       <div class="section-head simple-head">
         <div>
-          <h2>안산에서 많이 찾는 꽃배달</h2>
-          <p class="section-intro">장소와 상황이 정해졌다면 필요한 가이드로 바로 이동하세요.</p>
+          <h2>ì•ˆì‚°ì—ì„œ ë§Žì´ ì°¾ëŠ” ê½ƒë°°ë‹¬</h2>
+          <p class="section-intro">ìž¥ì†Œì™€ ìƒí™©ì´ ì •í•´ì¡Œë‹¤ë©´ í•„ìš”í•œ ê°€ì´ë“œë¡œ ë°”ë¡œ ì´ë™í•˜ì„¸ìš”.</p>
         </div>
       </div>
       <div class="guide-tile-grid">
@@ -98,7 +98,7 @@ const situations = [
             <span>{item.tag}</span>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
-            <b>자세히 보기 ›</b>
+            <b>ìžì„¸ížˆ ë³´ê¸° â€º</b>
           </a>
         ))}
       </div>
@@ -107,10 +107,10 @@ const situations = [
 
   <section class="info-band">
     <div class="container info-band-grid">
-      <div><strong>주문 가능 시간</strong><span>전화주문 08:00~23:00 · 온라인 24시간</span></div>
-      <div><strong>배송 안내</strong><span>전국 배송 가능 · 지역별 추가배송비 발생 가능</span></div>
-      <div><strong>상품 안내</strong><span>지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.</span></div>
-      <div><strong>안산 지역별 꽃배달</strong><span>학교·병원·장례식장 등 장소별 상세 가이드 제공</span></div>
+      <div><strong>ì£¼ë¬¸ ê°€ëŠ¥ ì‹œê°„</strong><span>ì „í™”ì£¼ë¬¸ 08:00~23:00 Â· ì˜¨ë¼ì¸ 24ì‹œê°„</span></div>
+      <div><strong>ë°°ì†¡ ì•ˆë‚´</strong><span>ì „êµ­ ë°°ì†¡ ê°€ëŠ¥ Â· ì§€ì—­ë³„ ì¶”ê°€ë°°ì†¡ë¹„ ë°œìƒ ê°€ëŠ¥</span></div>
+      <div><strong>ìƒí’ˆ ì•ˆë‚´</strong><span>ì§€ì—­Â·ê³„ì ˆì— ë”°ë¼ ê½ƒ êµ¬ì„±ê³¼ í˜•íƒœê°€ ì¼ë¶€ ë‹¬ë¼ì§ˆ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</span></div>
+      <div><strong>ì•ˆì‚° ì§€ì—­ë³„ ê½ƒë°°ë‹¬</strong><span>í•™êµÂ·ë³‘ì›Â·ìž¥ë¡€ì‹ìž¥ ë“± ìž¥ì†Œë³„ ìƒì„¸ ê°€ì´ë“œ ì œê³µ</span></div>
     </div>
   </section>
 
@@ -118,19 +118,19 @@ const situations = [
     <div class="container">
       <div class="section-head simple-head">
         <div>
-          <h2>최근 공개 가이드</h2>
-          <p class="section-intro">새로 발행된 안산 꽃배달 정보를 자동으로 연결합니다.</p>
+          <h2>ìµœê·¼ ê³µê°œ ê°€ì´ë“œ</h2>
+          <p class="section-intro">ìƒˆë¡œ ë°œí–‰ëœ ì•ˆì‚° ê½ƒë°°ë‹¬ ì •ë³´ë¥¼ ìžë™ìœ¼ë¡œ ì—°ê²°í•©ë‹ˆë‹¤.</p>
         </div>
       </div>
       <div class="grid grid-3">
         {recent.map((article) => (
           <a class="card recent-card" href={hrefFor(article)}>
             <div>
-              <span class="tag">{article.data.region} · {article.data.category}</span>
+              <span class="tag">{article.data.region} Â· {article.data.category}</span>
               <h3>{article.data.title}</h3>
               <p>{article.data.description}</p>
             </div>
-            <span class="more">가이드 읽기 ›</span>
+            <span class="more">ê°€ì´ë“œ ì½ê¸° â€º</span>
           </a>
         ))}
       </div>
