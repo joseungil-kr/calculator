@@ -3,6 +3,12 @@
   "name": "ansan-flower-guide-test",
   "compatibility_date": "2026-09-29",
   "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "ansan.fwith.kr",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist/",
     "not_found_handling": "404-page",
