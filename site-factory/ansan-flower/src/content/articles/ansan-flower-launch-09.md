@@ -9,7 +9,7 @@ title: "고려대 안산병원 병문안 꽃, 보내기 전에 무엇을 확인�
 description: "고려대학교 안산병원 병문안 꽃을 준비할 때 면회·병동 출입 제한, 꽃 수령 확인, 향과 크기, 전달 방식까지 무엇을 먼저 확인해야 하는지 정리합니다."
 category: places
 structureType: risk_based
-region: 고려대학교 안산병원
+region: 안산
 verifiedAt: 2026-09-29
 sourceUrls:
   - "https://ansan.kumc.or.kr/kr/service-guide/med-information/hospitalization.do"
