@@ -56,6 +56,19 @@
       "file": "src/content/articles/ansan-flower-launch-04.md",
       "url": "/guide/ansan-flower-message-etiquette/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-05",
+      "draftKey": "ansan-flower-factory-draft-05",
+      "sourceRecordId": "recngZsRyeTR50eLd",
+      "publishQueueRecordId": "recYoaTgkDqI3nqnO",
+      "snapshotId": "ansan-flower-launch-05-v1",
+      "slug": "ansan-seasonal-flower-guide",
+      "category": "guide",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-05.md",
+      "url": "/guide/ansan-seasonal-flower-guide/",
+      "status": "approved"
     }
   ]
 }

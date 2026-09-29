@@ -41,6 +41,16 @@
       "url": "/guide/ansan-flower-message-etiquette/",
       "status": "approved",
       "sourceRecordId": "recPXhz4UWVTOOWa6"
+    },
+    {
+      "pageKey": "ansan-flower-launch-05",
+      "snapshotId": "ansan-flower-launch-05-v1",
+      "slug": "ansan-seasonal-flower-guide",
+      "category": "guide",
+      "routeType": "category",
+      "url": "/guide/ansan-seasonal-flower-guide/",
+      "status": "approved",
+      "sourceRecordId": "recngZsRyeTR50eLd"
     }
   ]
 }
