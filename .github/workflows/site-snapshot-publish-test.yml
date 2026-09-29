@@ -1,4 +1,4 @@
-name: Site Factory Snapshot Publish Test
+name: Site Factory Snapshot Publish
 
 on:
   issues:
@@ -14,15 +14,71 @@ jobs:
     if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve and validate target site
+        id: target
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python3 - <<'PY'
+          import os
+
+          body = os.environ.get("ISSUE_BODY", "")
+          lines = body.splitlines()
+
+          def value(key):
+              prefix = key + ": "
+              line = next((x for x in lines if x.startswith(prefix)), None)
+              if line is None:
+                  raise SystemExit(f"Missing {key}")
+              return line[len(prefix):].strip()
+
+          site_key = value("SITE_KEY")
+          target_repo = value("TARGET_REPO")
+          target_branch = value("TARGET_BRANCH")
+          target_root = value("TARGET_ROOT")
+
+          allowed = {
+              "ansan-flower-test": {
+                  "repo": "joseungil-kr/calculator",
+                  "branch": "site-factory-ansan-v1",
+                  "root": "site-factory/ansan-flower",
+              },
+              "suwon-flower-test": {
+                  "repo": "joseungil-kr/calculator",
+                  "branch": "site-factory-suwon-v1",
+                  "root": "site-factory/suwon-flower",
+              },
+          }
+
+          if site_key not in allowed:
+              raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
+          expected = allowed[site_key]
+          if target_repo != expected["repo"]:
+              raise SystemExit(f"Unexpected target_repo: {target_repo}")
+          if target_branch != expected["branch"]:
+              raise SystemExit(f"Unexpected target_branch: {target_branch}")
+          if target_root != expected["root"]:
+              raise SystemExit(f"Unexpected target_root: {target_root}")
+
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as fh:
+              fh.write(f"site_key={site_key}\n")
+              fh.write(f"branch={target_branch}\n")
+              fh.write(f"root={target_root}\n")
+          PY
+
       - name: Checkout target branch
         uses: actions/checkout@v4
         with:
-          ref: site-factory-ansan-v1
+          ref: ${{ steps.target.outputs.branch }}
           fetch-depth: 0
 
       - name: Parse immutable snapshot and render Git artifacts
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          EXPECTED_SITE_KEY: ${{ steps.target.outputs.site_key }}
+          EXPECTED_BRANCH: ${{ steps.target.outputs.branch }}
+          EXPECTED_ROOT: ${{ steps.target.outputs.root }}
         run: |
           python3 - <<'PY'
           import json
@@ -74,13 +130,13 @@ jobs:
           if not source_urls:
               raise SystemExit("Missing source URL: Site Factory snapshots require at least one verified source URL")
 
-          if site_key != "ansan-flower-test":
+          if site_key != os.environ["EXPECTED_SITE_KEY"]:
               raise SystemExit(f"Unexpected site_key: {site_key}")
           if target_repo != "joseungil-kr/calculator":
               raise SystemExit(f"Unexpected target_repo: {target_repo}")
-          if target_branch != "site-factory-ansan-v1":
+          if target_branch != os.environ["EXPECTED_BRANCH"]:
               raise SystemExit(f"Unexpected target_branch: {target_branch}")
-          if target_root != "site-factory/ansan-flower":
+          if target_root != os.environ["EXPECTED_ROOT"]:
               raise SystemExit(f"Unexpected target_root: {target_root}")
 
           if not slug or len(slug) > 80 or any(ch in slug for ch in "/\\?#"):
@@ -159,6 +215,7 @@ jobs:
               "status": "approved"
           }
           manifest["schemaVersion"] = 2
+          manifest["siteKey"] = site_key
           manifest["pages"] = [p for p in manifest.get("pages", []) if p.get("pageKey") != page_key]
           manifest["pages"].append(entry)
           manifest["pages"].sort(key=lambda p: p["pageKey"])
@@ -177,48 +234,52 @@ jobs:
               "sourceRecordId": source_record_id
           }
           page_map["schemaVersion"] = 2
+          page_map["siteKey"] = site_key
           page_map["pages"] = [p for p in page_map.get("pages", []) if p.get("pageKey") != page_key]
           page_map["pages"].append(map_entry)
           page_map["pages"].sort(key=lambda p: p["pageKey"])
           page_map_path.write_text(json.dumps(page_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-          print(f"Rendered snapshot {snapshot_id} route={route_type} url={url} -> {article_path}")
+          print(f"Rendered snapshot {snapshot_id} site={site_key} route={route_type} url={url} -> {article_path}")
           PY
 
       - name: Validate and build snapshot before push
-        working-directory: site-factory/ansan-flower
+        working-directory: ${{ steps.target.outputs.root }}
         run: |
           npm install
           npm run build
 
       - name: Deterministic static SEO QA
-        working-directory: site-factory/ansan-flower
+        working-directory: ${{ steps.target.outputs.root }}
         run: python3 scripts/qa_static.py
 
       - name: Cloudflare Workers deploy dry run
-        working-directory: site-factory/ansan-flower
+        working-directory: ${{ steps.target.outputs.root }}
         run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
 
       - name: Commit and push snapshot
         id: commit
+        env:
+          ROOT: ${{ steps.target.outputs.root }}
+          BRANCH: ${{ steps.target.outputs.branch }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site-factory/ansan-flower/src/content/articles/ \
-                  site-factory/ansan-flower/src/data/publish-manifest.json \
-                  site-factory/ansan-flower/src/data/page-map.json
+          git add "$ROOT/src/content/articles/" \
+                  "$ROOT/src/data/publish-manifest.json" \
+                  "$ROOT/src/data/page-map.json"
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }}"
-            git push origin HEAD:site-factory-ansan-v1
+            git push origin "HEAD:$BRANCH"
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Trigger exact live QA
-        if: steps.commit.outputs.changed == 'true'
+      - name: Trigger Ansan exact live QA
+        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ansan-live-qa.yml --ref site-factory-ansan-v1
@@ -228,6 +289,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SHA: ${{ steps.commit.outputs.sha }}
           CHANGED: ${{ steps.commit.outputs.changed }}
+          SITE_KEY: ${{ steps.target.outputs.site_key }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. snapshot/build/SEO QA/Cloudflare dry-run passed. changed=$CHANGED Commit: $SHA"
+          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. site=$SITE_KEY snapshot/build/SEO QA/Cloudflare dry-run passed. changed=$CHANGED Commit: $SHA"
           gh issue close "${{ github.event.issue.number }}"
