@@ -141,7 +141,12 @@ for file in html_files:
     if og_image and not og_image.startswith(EXPECTED_ORIGIN):
         errors.append(f"{file}: og:image must use canonical origin: {og_image}")
 
-    if INDEXABLE:
+    rel_file = file.relative_to(DIST).as_posix()
+    is_404 = rel_file in ("404.html", "404/index.html")
+    if is_404:
+        if not parser.meta_robots or "noindex" not in parser.meta_robots:
+            errors.append(f"{file}: 404 page must remain noindex")
+    elif INDEXABLE:
         if not parser.meta_robots or "index,follow" not in parser.meta_robots:
             errors.append(f"{file}: production page must be index,follow")
         if parser.meta_robots and "noindex" in parser.meta_robots:

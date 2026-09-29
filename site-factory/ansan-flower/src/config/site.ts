@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 
 const siteUrl = import.meta.env.SITE_URL || 'https://ansan.fwith.kr';
 const indexableFlag = import.meta.env.SITE_INDEXABLE;
-const productionMarker = existsSync(new URL('../../production-indexing.enabled', import.meta.url));
+const productionMarker = existsSync('production-indexing.enabled');
 const indexable =
   indexableFlag === 'true' ||
   (indexableFlag !== 'false' && productionMarker);
