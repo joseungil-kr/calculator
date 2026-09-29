@@ -61,6 +61,16 @@
       "url": "/guide/ansan-flower-by-place/",
       "status": "approved",
       "sourceRecordId": "recKB3rV3eFgDrgCW"
+    },
+    {
+      "pageKey": "ansan-flower-launch-07",
+      "snapshotId": "ansan-flower-launch-07-v1",
+      "slug": "hanyang-erica-graduation-flowers",
+      "category": "places",
+      "routeType": "category",
+      "url": "/places/hanyang-erica-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "rec2jalhFj00KEVEF"
     }
   ]
 }
