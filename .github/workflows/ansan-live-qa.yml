@@ -15,6 +15,7 @@ jobs:
     env:
       BASE: https://ansan-flower-guide-test.joseungil.workers.dev
       CANONICAL_ORIGIN: https://ansan.fwith.kr
+      EXPECTED_REVISION: ${{ github.sha }}
     steps:
       - name: Checkout expected snapshot
         uses: actions/checkout@v4
@@ -24,6 +25,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import json
+          import os
           import time
           import urllib.request
           import urllib.error
@@ -31,6 +33,7 @@ jobs:
           from urllib.parse import quote
 
           BASE = "https://ansan-flower-guide-test.joseungil.workers.dev"
+          EXPECTED_REVISION = os.environ["EXPECTED_REVISION"]
           manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
           pages = manifest["pages"]
 
@@ -50,6 +53,7 @@ jobs:
               robots_code, robots = fetch("/robots.txt")
               exact = home_code == 200 and robots_code == 200
               exact = exact and "https://ansan.fwith.kr/" in home
+              exact = exact and f'name="site-factory-revision" content="{EXPECTED_REVISION}"' in home
               exact = exact and 'name="robots"' in home.lower() and "noindex" in home.lower()
               exact = exact and "Disallow: /" in robots
 
@@ -63,7 +67,7 @@ jobs:
                   exact = not missing
 
               if exact:
-                  print(f"Exact deployment is live: {len(pages)} snapshot page(s)")
+                  print(f"Exact deployment is live: revision={EXPECTED_REVISION}, {len(pages)} snapshot page(s)")
                   break
 
               print(f"Attempt {attempt}: waiting for exact deployment; pending={missing[:5]}")
@@ -108,12 +112,14 @@ jobs:
         run: |
           python3 - <<'PY'
           import json
+          import os
           import urllib.request
           from pathlib import Path
           from urllib.parse import quote, unquote
 
           BASE = "https://ansan-flower-guide-test.joseungil.workers.dev"
           ORIGIN = "https://ansan.fwith.kr"
+          EXPECTED_REVISION = os.environ["EXPECTED_REVISION"]
           manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
 
           def get(path):
@@ -125,6 +131,7 @@ jobs:
           assert home_code == 200
           assert '<html lang="ko"' in home
           assert ORIGIN + "/" in unquote(home)
+          assert f'name="site-factory-revision" content="{EXPECTED_REVISION}"' in home
           assert 'name="robots"' in home.lower() and "noindex" in home.lower()
           assert "<h1" in home.lower()
           assert "application/ld+json" in home
