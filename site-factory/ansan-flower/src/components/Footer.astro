@@ -3,10 +3,17 @@ import { siteConfig } from '../config/site';
 import business from '../data/business-truth.json';
 ---
 <footer class="site-footer">
+  <div class="footer-service">
+    <div class="container footer-service-grid">
+      <div><strong>☎ 전화주문 {business.phone}</strong><span>{business.phoneOrderHours}</span></div>
+      <div><strong>▣ 온라인 주문</strong><span>{business.onlineOrderUrl.replace('https://','')} · 24시간</span></div>
+      <div><strong>▣ 전국 배송 가능</strong><span>지역별 추가배송비 발생 가능</span></div>
+      <div><strong>ⓘ 화환 반입 제한</strong><span>반입 불가 지역은 상담원 문의</span></div>
+    </div>
+  </div>
+
   <div class="container footer-business">
     <div class="footer-brand">{business.business.name}</div>
-    <p>{siteConfig.description}</p>
-
     <div class="footer-business-grid">
       <span>대표자: {business.business.representative}</span>
       <span>사업자등록번호: {business.business.businessNumber}</span>

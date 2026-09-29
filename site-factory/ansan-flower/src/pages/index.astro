@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import OrderCTA from '../components/OrderCTA.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
+import business from '../data/business-truth.json';
 
 const articles = (await getCollection(
   'articles',
@@ -15,127 +15,111 @@ const hrefFor = (article: (typeof articles)[number]) =>
     ? `/${article.data.slug}/`
     : `/${article.data.category}/${article.data.slug}/`;
 
-const situations = [
-  { tag: '학교·대학', title: '졸업·입학 꽃', body: '개인 선물인지, 학과·연구실·회사 명의 축하인지부터 구분합니다.', href: '/places/' },
-  { tag: '병원', title: '병문안 꽃', body: '향과 크기보다 먼저 시설 반입 가능 여부와 상대의 상황을 확인합니다.', href: '/places/' },
-  { tag: '기업·상가', title: '개업·이전 축하', body: '공간, 관계, 보내는 명의를 기준으로 화환·꽃바구니·화분을 비교합니다.', href: '/occasions/' },
-  { tag: '장례·조문', title: '위로의 꽃', body: '빈소 정보와 보내는 사람 표기를 먼저 정리한 뒤 문구를 선택합니다.', href: '/order-help/' },
+const trust = [
+  ['truck', '전국 배송 가능', '지역별 추가배송비 발생 가능'],
+  ['clock', '신속한 주문 접수', '전화 08:00~23:00'],
+  ['shield', '화환 반입 여부 확인', '제한 지역은 상담원 문의'],
+  ['headset', '전화 상담', '1844-0644'],
 ];
 
-const paths = [
-  ['1', '상황', '졸업·개업·병문안·조문처럼 꽃이 필요한 이유를 먼저 정합니다.'],
-  ['2', '사람', '개인·가족·회사·거래처처럼 받는 사람과 관계를 봅니다.'],
-  ['3', '장소', '학교·병원·상가·행사장처럼 수령 장소의 조건을 확인합니다.'],
-  ['4', '형태', '꽃다발·꽃바구니·화환·화분 중 전달 방식에 맞는 형태를 비교합니다.'],
+const situations = [
+  { tag: '장례', title: '장례식장 근조화환', body: '빈소 정보와 반입 여부를 먼저 확인합니다.', href: '/order-help/' },
+  { tag: '개업·이전', title: '개업·이전 축하화환', body: '매장·사무실·상가 상황별 기준을 정리합니다.', href: '/occasions/' },
+  { tag: '병원', title: '병문안 꽃', body: '시설 반입 가능 여부와 상대 상황을 먼저 봅니다.', href: '/places/' },
+  { tag: '학교', title: '졸업식 꽃', body: '학교별 이동·보관·전달 기준을 확인합니다.', href: '/places/' },
+  { tag: '예식', title: '결혼식 축하화환', body: '예식장 공간과 보내는 명의에 맞춰 선택합니다.', href: '/occasions/' },
+  { tag: '화분', title: 'm��분·식물 가이드', body: '개업·이전 선물용 화분 선택 기준을 정리합니다.', href: '/flower-knowledge/' },
 ];
 ---
 <BaseLayout>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow">안산 로컬 플라워 가이드</span>
-        <h1>안산 꽃배달,<br />꽃보다 먼저 기준부터.</h1>
-        <p>
-          안산에서 꽃을 준비할 때 필요한 판단 기준과 함께 실제 화환 가격,
-          전화주문·온라인 주문 방법을 한곳에서 확인할 수 있습니다.
+  <section class="hero hero-commerce">
+    <div class="container hero-commerce-grid">
+      <div class="hero-copy">
+        <span class="hero-badge">안산 전 지역 꽃배달</span>
+        <h1>안산 <em>꽃배달</em></h1>
+        <p class="hero-lead">소중한 마음을 꽃으로 전하세요.</p>
+        <p class="hero-sub">
+          근조화환, 축하화환부터 상황별 꽃 선택까지<br />
+          안산 꽃배달에 필요한 정보를 한곳에서 확인합니다.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:18440644">전화주문 1844-0644</a>
-          <a class="btn btn-ghost" href="/안산꽃배달/">안산 꽃배달 가이드</a>
-        </div>
-        <div class="hero-proof" aria-label="사이트 운영 원칙">
-          <span>전화 08:00-23:00</span>
-          <span>온라인 24시간</span>
-          <span>전국 배송 가능</span>
+        <div class="hero-actions hero-order-actions">
+          <a class="hero-phone" href={business.phoneHref}>
+            <span>☎</span>
+            <strong>전화주문 {business.phone}</strong>
+            <small>{business.phoneOrderHours}</small>
+          </a>
+          <a class="hero-online" href={business.onlineOrderUrl} rel="noopener">
+            <span>▣</span>
+            <strong>온라인 주문</strong>
+            <small>24시간 주문 가능</small>
+          </a>
         </div>
       </div>
-      <div class="hero-art" aria-label="꽃과 줄기를 추상화한 장식 이미지">
-        <div class="art-card">
-          <strong>주문 전 확인</strong>
-          <span>지역별 추가 배송비와 반입 제한 여부는 상담 시 함께 확인해 주세요.</span>
-        </div>
+
+      <div class="hero-product" aria-label="축하화환 상품 이미지">
+        <div class="hero-product-bg"></div>
+        <img src="/images/products/congrats-premium.jpg" alt="축하 고급 3단 화환 상품 이미지" width="640" height="640" />
+        <span class="hero-product-caption">실제 판매상품 이미지</span>
       </div>
     </div>
   </section>
 
-  <section class="section section-tight">
-    <div class="container">
-      <OrderCTA compact={true} heading="전화주문을 가장 빠르게 안내합니다." />
-    </div>
-  </section>
-
-  <section class="section section-tight">
-    <div class="container path-strip">
-      {paths.map(([n, title, body]) => (
-        <div class="path-item">
-          <span class="path-num">{n}</span>
-          <div><strong>{title}</strong><span>{body}</span></div>
+  <section class="trust-strip" aria-label="주문 및 배송 안내">
+    <div class="container trust-grid">
+      {trust.map(([icon, title, desc]) => (
+        <div class="trust-item">
+          <span class:list={['trust-icon', `trust-icon-${icon}`]} aria-hidden="true"></span>
+          <div>
+            <strong>{title}</strong>
+            <span>{desc}</span>
+          </div>
         </div>
       ))}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section product-section">
     <div class="container">
-      <ProductShowcase />
+      <ProductShowcase showHeading={false} />
     </div>
   </section>
 
-  <section class="section">
+  <section class="section guide-section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head simple-head">
         <div>
-          <span class="eyebrow">상황으로 찾기</span>
-          <h2>꽃이 필요한 이유부터 고릅니다.</h2>
-          <p class="section-intro">같은 꽃다발도 졸업식과 병문안에서는 판단 기준이 다릅니다.</p>
+          <h2>안산에서 많이 찾는 꽃배달</h2>
+          <p class="section-intro">장소와 상황이 정해졌다면 필요한 가이드로 바로 이동하세요.</p>
         </div>
       </div>
-      <div class="grid grid-4">
-        {situations.map((item) => (
-          <a class="card" href={item.href}>
-            <div>
-              <span class="tag">{item.tag}</span>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </div>
-            <span class="more">기준 보기 →</span>
+      <div class="guide-tile-grid">
+        {situations.map((item, index) => (
+          <a class:list={['guide-tile', `guide-tile-${index + 1}`]} href={item.href}>
+            <span>{item.tag}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+            <b>자세히 보기 ›</b>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container decision-box">
-      <div>
-        <span class="eyebrow">빠른 결정 순서</span>
-        <h2>다섯 가지만 먼저 정해도 선택이 쉬워집니다.</h2>
-        <p>상세 글은 이 판단 순서에서 필요한 질문 하나씩을 더 깊게 다룹니다.</p>
-      </div>
-      <div class="decision-list">
-        {[
-          ['1', '누구에게 보내나요?', '개인, 가족, 회사, 연구실, 거래처처럼 관계를 정합니다.'],
-          ['2', '어떤 상황인가요?', '졸업, 개업, 병문안, 조문처럼 목적을 구분합니다.'],
-          ['3', '어디에서 받나요?', '학교, 병원, 상가, 행사장 등 장소 특성을 확인합니다.'],
-          ['4', '직접 들고 이동하나요?', '꽃 크기와 포장, 보관 시간을 판단합니다.'],
-          ['5', '어떤 이름과 문구를 쓰나요?', '개인·회사 명의와 관계의 격식을 맞춥니다.'],
-        ].map(([n, title, body]) => (
-          <div class="decision-item">
-            <span class="decision-num">{n}</span>
-            <div><strong>{title}</strong><span>{body}</span></div>
-          </div>
-        ))}
-      </div>
+  <section class="info-band">
+    <div class="container info-band-grid">
+      <div><strong>주문 가능 시간</strong><span>전화주문 08:00~23:00 · 온라인 24시간</span></div>
+      <div><strong>배송 안내</strong><span>전국 배송 가능 · 지역별 추가배송비 발생 가능</span></div>
+      <div><strong>상품 안내</strong><span>지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.</span></div>
+      <div><strong>안산 지역별 꽃배달</strong><span>학교·병원·장례식장 등 장소별 상세 가이드 제공</span></div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section recent-section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head simple-head">
         <div>
-          <span class="eyebrow">최근 공개 가이드</span>
-          <h2>안산에서 실제로 자주 생기는 질문부터.</h2>
-          <p class="section-intro">발행된 글은 각 허브에 자동으로 연결되고, 새 글이 추가되면 이 목록도 갱신됩니다.</p>
+          <h2>최근 공개 가이드</h2>
+          <p class="section-intro">새로 발행된 안산 꽃배달 정보를 자동으로 연결합니다.</p>
         </div>
       </div>
       <div class="grid grid-3">
@@ -146,18 +130,9 @@ const paths = [
               <h3>{article.data.title}</h3>
               <p>{article.data.description}</p>
             </div>
-            <span class="more">가이드 읽기 →</span>
+            <span class="more">가이드 읽기 ›</span>
           </a>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="notice">
-        실제 배송 상품은 지역 및 계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.
-        지역별 추가 배송비가 발생할 수 있으며, 화환 반입 불가 지역은 전화 상담으로 확인해 주세요.
       </div>
     </div>
   </section>
