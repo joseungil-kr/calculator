@@ -136,6 +136,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "ansan-flower-launch-11",
+      "draftKey": "ansan-flower-factory-draft-11",
+      "sourceRecordId": "reckiqd3PWBLS9ctB",
+      "publishQueueRecordId": "recT3f9tE7AhCbY40",
+      "snapshotId": "ansan-flower-launch-11-v1",
+      "slug": "sangnoksu-station-flower-timing",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-11.md",
+      "url": "/places/sangnoksu-station-flower-timing/",
+      "status": "approved"
+    },
+    {
       "pageKey": "ansan-flower-launch-15",
       "draftKey": "ansan-flower-factory-draft-15",
       "sourceRecordId": "recgFh3SUp4iMmfDY",
