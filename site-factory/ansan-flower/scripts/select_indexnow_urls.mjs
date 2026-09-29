@@ -32,7 +32,10 @@ let selected = [];
 if (initial || !baseSha) {
   selected = allUrls;
 } else {
-  const root = 'site-factory/ansan-flower';
+  let root = '';
+  try {
+    root = execFileSync('git', ['rev-parse','--show-prefix'], { encoding:'utf8' }).trim().replace(/\/$/, '');
+  } catch {}
   let changed = '';
   try {
     changed = execFileSync('git', ['diff','--name-only',baseSha,'HEAD','--','.'], { encoding:'utf8' });
@@ -55,7 +58,7 @@ if (initial || !baseSha) {
     selected = allUrls;
   } else {
     const currentPath = 'src/data/publish-manifest.json';
-    const gitPath = root + '/src/data/publish-manifest.json';
+    const gitPath = (root ? root + '/' : '') + 'src/data/publish-manifest.json';
     const current = JSON.parse(readFileSync(currentPath, 'utf8'));
     let previous = { pages: [] };
     try {

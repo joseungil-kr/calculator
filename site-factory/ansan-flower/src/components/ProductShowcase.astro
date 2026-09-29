@@ -1,6 +1,7 @@
 ---
 import products from '../data/products.json';
 import business from '../data/business-truth.json';
+import { siteConfig } from '../config/site';
 
 interface Props {
   limit?: number;
@@ -19,7 +20,7 @@ const money = new Intl.NumberFormat('ko-KR');
     <div class="section-head product-showcase-head">
       <div>
         <span class="eyebrow">상품·가격</span>
-        <h2>안산 꽃배달 대표 화환</h2>
+        <h2>{siteConfig.region} 꽃배달 대표 화환</h2>
         <p class="section-intro">전화주문을 우선 안내하며 온라인 주문은 fwith.co.kr에서 24시간 접수합니다.</p>
       </div>
     </div>

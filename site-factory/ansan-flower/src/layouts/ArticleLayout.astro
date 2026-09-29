@@ -48,10 +48,10 @@ const categoryLabel: Record<string, string> = {
 };
 
 const categoryHref = `/${category}/`;
-const isPrimaryLanding = routeType === 'top_level' && slug === '안산꽃배달';
-const displayTitle = isPrimaryLanding ? '안산 꽃배달, 무엇부터 정하면 될까요?' : title;
+const isPrimaryLanding = routeType === 'top_level' && slug === siteConfig.primaryLandingSlug;
+const displayTitle = isPrimaryLanding ? `${siteConfig.region} 꽃배달, 무엇부터 정하면 될까요?` : title;
 const seoTitle = isPrimaryLanding
-  ? `안산 꽃배달·화환 가격 | 전화주문 1844-0644 | ${siteConfig.brand}`
+  ? `${siteConfig.region} 꽃배달·화환 가격 | 전화주문 1844-0644 | ${siteConfig.brand}`
   : `${title} | ${siteConfig.brand}`;
 
 const webPageSchema = {
@@ -114,7 +114,7 @@ const breadcrumbSchema = {
       </nav>
 
       <header class="article-header">
-        <span class="eyebrow">{isPrimaryLanding ? '안산 꽃배달 핵심 가이드' : categoryLabel[category] ?? category}</span>
+        <span class="eyebrow">{isPrimaryLanding ? `${siteConfig.region} 꽃배달 핵심 가이드` : categoryLabel[category] ?? category}</span>
         <h1>{displayTitle}</h1>
         <p>{description}</p>
         <div class="article-meta">
@@ -126,8 +126,8 @@ const breadcrumbSchema = {
 
       {isPrimaryLanding && (
         <>
-          <OrderCTA heading="안산 꽃배달 주문 안내" />
-          <div class="landing-quick" aria-label="안산 꽃배달 빠른 탐색">
+          <OrderCTA heading={`${siteConfig.region} 꽃배달 주문 안내`} />
+          <div class="landing-quick" aria-label={`${siteConfig.region} 꽃배달 빠른 탐색`}>
             <a href="/places/">
               <span>01</span>
               <strong>장소가 정해졌다면</strong>
@@ -164,7 +164,7 @@ const breadcrumbSchema = {
         <aside class="article-aside" aria-label="관련 안내">
           <div class="aside-card">
             <strong>이 글의 역할</strong>
-            <p>{isPrimaryLanding ? '안산 꽃배달 전체 가이드의 출발점입니다. 상황을 좁힌 뒤 상세 문서로 이동하세요.' : '한 가지 질문에 집중해 선택 기준을 정리한 문서입니다.'}</p>
+            <p>{isPrimaryLanding ? `${siteConfig.region} 꽃배달 전체 가이드의 출발점입니다. 상황을 좁힌 뒤 상세 문서로 이동하세요.` : '한 가지 질문에 집중해 선택 기준을 정리한 문서입니다.'}</p>
           </div>
           <div class="aside-card">
             <strong>더 구체적으로 찾기</strong>

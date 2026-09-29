@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
 import business from '../data/business-truth.json';
+import { siteConfig } from '../config/site';
 
 const articles = (await getCollection(
   'articles',
@@ -35,12 +36,12 @@ const situations = [
   <section class="hero hero-commerce">
     <div class="container hero-commerce-grid">
       <div class="hero-copy">
-        <span class="hero-badge">안산 전 지역 꽃배달</span>
-        <h1>안산 <em>꽃배달</em></h1>
+        <span class="hero-badge">{siteConfig.region} 전 지역 꽃배달</span>
+        <h1>{siteConfig.region} <em>꽃배달</em></h1>
         <p class="hero-lead">소중한 마음을 꽃으로 전하세요.</p>
         <p class="hero-sub">
           근조화환, 축하화환부터 상황별 꽃 선택까지<br />
-          안산 꽃배달에 필요한 정보를 한곳에서 확인합니다.
+          {siteConfig.region} 꽃배달에 필요한 정보를 한곳에서 확인합니다.
         </p>
         <div class="hero-actions hero-order-actions">
           <a class="hero-phone" href={business.phoneHref}>
@@ -83,7 +84,7 @@ const situations = [
     <div class="container">
       <div class="section-head simple-head">
         <div>
-          <h2>안산에서 많이 찾는 꽃배달</h2>
+          <h2>{siteConfig.region}에서 많이 찾는 꽃배달</h2>
           <p class="section-intro">장소와 상황이 정해졌다면 필요한 가이드로 바로 이동하세요.</p>
         </div>
       </div>
@@ -105,7 +106,7 @@ const situations = [
       <div><strong>주문 가능 시간</strong><span>전화주문 08:00~23:00 · 온라인 24시간</span></div>
       <div><strong>배송 안내</strong><span>전국 배송 가능 · 지역별 추가배송비 발생 가능</span></div>
       <div><strong>상품 안내</strong><span>지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.</span></div>
-      <div><strong>안산 지역별 꽃배달</strong><span>학교·병원·장례식장 등 장소별 상세 가이드 제공</span></div>
+      <div><strong>{siteConfig.region} 지역별 꽃배달</strong><span>학교·병원·장례식장 등 장소별 상세 가이드 제공</span></div>
     </div>
   </section>
 
@@ -114,7 +115,7 @@ const situations = [
       <div class="section-head simple-head">
         <div>
           <h2>최근 공개 가이드</h2>
-          <p class="section-intro">새로 발행된 안산 꽃배달 정보를 자동으로 연결합니다.</p>
+          <p class="section-intro">새로 발행된 {siteConfig.region} 꽃배달 정보를 자동으로 연결합니다.</p>
         </div>
       </div>
       <div class="grid grid-3">

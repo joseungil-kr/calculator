@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  title = `${siteConfig.brand} | 안산 꽃배달·화환 가격과 지역 가이드`,
+  title = `${siteConfig.brand} | ${siteConfig.region} 꽃배달·화환 가격과 지역 가이드`,
   description = siteConfig.description,
   canonicalPath = Astro.url.pathname,
   ogImage = siteConfig.defaultOgImage,
@@ -46,7 +46,7 @@ const schema = {
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="naver-site-verification" content="29e360fe4ae4a2cb72015166abc3b386c2e49974" />
+    {siteConfig.naverSiteVerification && <meta name="naver-site-verification" content={siteConfig.naverSiteVerification} />}
     <meta name="robots" content={robots} />
     <meta name="site-factory-revision" content={buildRevision.sha} />
     <link rel="canonical" href={canonical} />

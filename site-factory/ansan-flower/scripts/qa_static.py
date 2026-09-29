@@ -8,6 +8,8 @@ import sys
 
 DIST = Path("dist")
 EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansan.fwith.kr").rstrip("/")
+PRIMARY_LANDING_SLUG = os.environ.get("PRIMARY_LANDING_SLUG", "안산꽃배달").strip("/")
+HERO_PATH = os.environ.get("HERO_PATH", "images/ansan/hero-B-original.png").strip("/")
 INDEXABLE_ENV = os.environ.get("SITE_INDEXABLE")
 PRODUCTION_MARKER = Path("production-indexing.enabled").exists()
 INDEXABLE = (
@@ -179,9 +181,10 @@ else:
     if EXPECTED_ORIGIN not in sm:
         errors.append("Sitemap does not use expected production origin")
 
-article = DIST / "안산꽃배달" / "index.html"
-if not article.exists():
-    errors.append("Approved top-level article output is missing: /안산꽃배달/")
+if PRIMARY_LANDING_SLUG:
+    article = DIST / PRIMARY_LANDING_SLUG / "index.html"
+    if not article.exists():
+        errors.append(f"Approved top-level article output is missing: /{PRIMARY_LANDING_SLUG}/")
 
 robots = DIST / "robots.txt"
 if not robots.exists():
@@ -210,9 +213,9 @@ for name in required_product_images:
     if not (DIST / "images" / "products" / name).exists():
         errors.append(f"Missing product image: {name}")
 
-hero = DIST / "images" / "ansan" / "hero-B-original.png"
+hero = DIST / HERO_PATH
 if not hero.exists():
-    errors.append("Missing original B hero image: /images/ansan/hero-B-original.png")
+    errors.append(f"Missing original B hero image: /{HERO_PATH}")
 else:
     size = hero.stat().st_size
     if size < 1_000_000:

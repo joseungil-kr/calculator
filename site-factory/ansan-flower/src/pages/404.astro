@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
 ---
 <BaseLayout
-  title="페이지를 찾을 수 없습니다 | 꽃이랑 안산"
-  description="요청한 페이지를 찾을 수 없습니다. 안산 꽃 선택 가이드에서 필요한 정보를 다시 찾아보세요."
+  title={`페이지를 찾을 수 없습니다 | ${siteConfig.brand}`}
+  description={`요청한 페이지를 찾을 수 없습니다. ${siteConfig.region} 꽃 선택 가이드에서 필요한 정보를 다시 찾아보세요.`}
   robotsOverride="noindex,nofollow,noarchive"
 >
   <section class="page-hero">

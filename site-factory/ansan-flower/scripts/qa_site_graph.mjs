@@ -2,6 +2,8 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 const dist = 'dist';
+const origin = (process.env.SITE_URL || 'https://ansan.fwith.kr').replace(/\/$/, '');
+const canonicalHost = new URL(origin).hostname;
 const errors = [];
 const htmlFiles = [];
 
@@ -88,10 +90,10 @@ for (const [source, { file, html }] of pages) {
     try {
       if (/^https?:\/\//i.test(href)) {
         const u = new URL(href);
-        if (u.hostname !== 'ansan.fwith.kr') continue;
+        if (u.hostname !== canonicalHost) continue;
         target = normalize(u.pathname);
       } else {
-        target = normalize(new URL(href, 'https://ansan.fwith.kr' + source).pathname);
+        target = normalize(new URL(href, origin + source).pathname);
       }
     } catch { continue; }
 
