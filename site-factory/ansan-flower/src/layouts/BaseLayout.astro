@@ -13,6 +13,7 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: 'website' | 'article';
+  robotsOverride?: string;
 }
 
 const {
@@ -22,12 +23,13 @@ const {
   ogImage = siteConfig.defaultOgImage,
   ogImageAlt = siteConfig.defaultOgImageAlt,
   ogType = 'website',
+  robotsOverride,
 } = Astro.props;
 
 const origin = Astro.site ?? new URL(siteConfig.siteUrl);
 const canonical = new URL(canonicalPath, origin).toString();
 const ogImageUrl = new URL(ogImage, origin).toString();
-const robots = siteConfig.indexable ? 'index,follow,max-image-preview:large' : 'noindex,nofollow,noarchive';
+const robots = robotsOverride ?? (siteConfig.indexable ? 'index,follow,max-image-preview:large' : 'noindex,nofollow,noarchive');
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
