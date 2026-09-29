@@ -1,0 +1,198 @@
+name: Site Factory Snapshot Publish Test
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  snapshot:
+    if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: site-factory-ansan-v1
+          fetch-depth: 0
+
+      - name: Parse immutable snapshot and render Git artifacts
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+          import re
+          from urllib.parse import urlparse
+
+          body = os.environ.get("ISSUE_BODY", "")
+          lines = body.splitlines()
+
+          def line_value(key):
+              prefix = key + ": "
+              line = next((x for x in lines if x.startswith(prefix)), None)
+              if line is None:
+                  raise SystemExit(f"Missing {key}")
+              return line[len(prefix):].strip()
+
+          def block(begin, end):
+              if begin not in body or end not in body:
+                  raise SystemExit(f"Missing block {begin}")
+              return body.split(begin, 1)[1].split(end, 1)[0].strip("\n")
+
+          record_id = line_value("PUBLISH_QUEUE_RECORD_ID")
+          site_key = line_value("SITE_KEY")
+          page_key = line_value("PAGE_KEY")
+          draft_key = line_value("DRAFT_KEY")
+          source_record_id = line_value("SOURCE_RECORD_ID")
+          snapshot_id = line_value("SNAPSHOT_ID")
+          target_repo = line_value("TARGET_REPO")
+          target_branch = line_value("TARGET_BRANCH")
+          target_root = line_value("TARGET_ROOT")
+          slug = line_value("SLUG")
+          category = line_value("CATEGORY")
+          structure_type = line_value("STRUCTURE_TYPE")
+          region = line_value("REGION")
+          verified_at = line_value("VERIFIED_AT")
+          title = block("---BEGIN-TITLE---", "---END-TITLE---")
+          description = block("---BEGIN-DESCRIPTION---", "---END-DESCRIPTION---")
+          content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
+          source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
+
+          # TEST allowlist. Production generalization must resolve these from Sites registry.
+          if site_key != "ansan-flower-test":
+              raise SystemExit(f"Unexpected site_key: {site_key}")
+          if target_repo != "joseungil-kr/calculator":
+              raise SystemExit(f"Unexpected target_repo: {target_repo}")
+          if target_branch != "site-factory-ansan-v1":
+              raise SystemExit(f"Unexpected target_branch: {target_branch}")
+          if target_root != "site-factory/ansan-flower":
+              raise SystemExit(f"Unexpected target_root: {target_root}")
+
+          if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,80}", slug):
+              raise SystemExit(f"Unsafe slug: {slug}")
+          if category not in {"guide","places","occasions","flower-knowledge","order-help"}:
+              raise SystemExit(f"Unsafe category: {category}")
+          if not re.fullmatch(r"rec[A-Za-z0-9]{14}", source_record_id):
+              raise SystemExit(f"Invalid source record: {source_record_id}")
+          if not re.fullmatch(r"rec[A-Za-z0-9]{14}", record_id):
+              raise SystemExit(f"Invalid queue record: {record_id}")
+          for url in source_urls:
+              parsed = urlparse(url)
+              if parsed.scheme != "https" or not parsed.netloc:
+                  raise SystemExit(f"Invalid source URL: {url}")
+
+          root = pathlib.Path(target_root)
+          article_rel = pathlib.PurePosixPath("src/content/articles") / f"{slug}.md"
+          article_path = root / article_rel
+          manifest_path = root / "src/data/publish-manifest.json"
+          page_map_path = root / "src/data/page-map.json"
+
+          if not manifest_path.exists() or not page_map_path.exists():
+              raise SystemExit("Snapshot baseline files are missing")
+
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          page_map = json.loads(page_map_path.read_text(encoding="utf-8"))
+
+          url = f"/{category}/{slug}/"
+          verified_date = verified_at[:10]
+          quote = lambda s: json.dumps(s, ensure_ascii=False)
+          sources_yaml = "\n".join("  - " + quote(u) for u in source_urls)
+
+          article = f"""---
+          pageKey: {page_key}
+          snapshotId: {snapshot_id}
+          sourceDraftKey: {draft_key}
+          sourceRecordId: {source_record_id}
+          title: {quote(title)}
+          description: {quote(description)}
+          category: {category}
+          structureType: {structure_type}
+          region: {region}
+          verifiedAt: {verified_date}
+          sourceUrls:
+          {sources_yaml}
+          draftStatus: approved
+          ---
+
+          {content_md}
+          """
+          # Dedent only the workflow's Python indentation.
+          import textwrap
+          article = textwrap.dedent(article).lstrip()
+          article_path.parent.mkdir(parents=True, exist_ok=True)
+          article_path.write_text(article.rstrip() + "\n", encoding="utf-8")
+
+          entry = {
+              "pageKey": page_key,
+              "draftKey": draft_key,
+              "sourceRecordId": source_record_id,
+              "publishQueueRecordId": record_id,
+              "snapshotId": snapshot_id,
+              "slug": slug,
+              "category": category,
+              "file": str(article_rel),
+              "url": url,
+              "status": "approved"
+          }
+          manifest["pages"] = [p for p in manifest.get("pages", []) if p.get("pageKey") != page_key]
+          manifest["pages"].append(entry)
+          manifest["pages"].sort(key=lambda p: p["pageKey"])
+          manifest["generatedFrom"] = "Airtable Publish Queue"
+          manifest["snapshotMode"] = "git-frozen"
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          map_entry = {
+              "pageKey": page_key,
+              "snapshotId": snapshot_id,
+              "slug": slug,
+              "category": category,
+              "url": url,
+              "status": "approved",
+              "sourceRecordId": source_record_id
+          }
+          page_map["pages"] = [p for p in page_map.get("pages", []) if p.get("pageKey") != page_key]
+          page_map["pages"].append(map_entry)
+          page_map["pages"].sort(key=lambda p: p["pageKey"])
+          page_map_path.write_text(json.dumps(page_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          print(f"Rendered snapshot {snapshot_id} -> {article_path}")
+          PY
+
+      - name: Validate and build snapshot before push
+        working-directory: site-factory/ansan-flower
+        run: |
+          npm install
+          npm run build
+
+      - name: Commit and push snapshot
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site-factory/ansan-flower/src/content/articles/ \
+                  site-factory/ansan-flower/src/data/publish-manifest.json \
+                  site-factory/ansan-flower/src/data/page-map.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }}"
+            git push origin HEAD:site-factory-ansan-v1
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Report success
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ steps.commit.outputs.sha }}
+          CHANGED: ${{ steps.commit.outputs.changed }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. changed=$CHANGED Commit: $SHA"
+          gh issue close "${{ github.event.issue.number }}"
