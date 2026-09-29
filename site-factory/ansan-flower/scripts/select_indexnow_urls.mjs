@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 const origin = (process.env.SITE_ORIGIN || 'https://ansan.fwith.kr').replace(/\/$/, '');
 const initial = process.env.INDEXNOW_INITIAL === 'true';
@@ -46,17 +46,20 @@ if (initial || !baseSha) {
     p.includes('/src/pages/') ||
     p.includes('/src/config/') ||
     p.endsWith('/src/data/business-truth.json') ||
-    p.endsWith('/src/data/products.json')
+    p.endsWith('/src/data/products.json') ||
+    p.endsWith('/scripts/select_indexnow_urls.mjs') ||
+    p.endsWith('/scripts/submit_indexnow.mjs')
   );
 
   if (sitewide) {
     selected = allUrls;
   } else {
-    const currentPath = root + '/src/data/publish-manifest.json';
+    const currentPath = 'src/data/publish-manifest.json';
+    const gitPath = root + '/src/data/publish-manifest.json';
     const current = JSON.parse(readFileSync(currentPath, 'utf8'));
     let previous = { pages: [] };
     try {
-      previous = JSON.parse(execFileSync('git', ['show', `${baseSha}:${currentPath}`], { encoding:'utf8' }));
+      previous = JSON.parse(execFileSync('git', ['show', `${baseSha}:${gitPath}`], { encoding:'utf8' }));
     } catch {}
 
     const prevMap = new Map((previous.pages || []).map(p => [p.pageKey, p]));
