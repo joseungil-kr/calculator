@@ -69,6 +69,19 @@
       "file": "src/content/articles/ansan-flower-launch-05.md",
       "url": "/guide/ansan-seasonal-flower-guide/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-06",
+      "draftKey": "ansan-flower-launch-06-draft",
+      "sourceRecordId": "recKB3rV3eFgDrgCW",
+      "publishQueueRecordId": "recMbaDe6DatIooUA",
+      "snapshotId": "ansan-flower-launch-06-v1",
+      "slug": "ansan-flower-by-place",
+      "category": "guide",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-06.md",
+      "url": "/guide/ansan-flower-by-place/",
+      "status": "approved"
     }
   ]
 }
