@@ -8,7 +8,7 @@ description: "안산에서 꽃을 준비할 때 사람·상황·장소 중 무�
 category: guide
 structureType: hub_overview
 region: 안산
-verifiedAt: 2026-09-29
+verifiedAt: 2026-09-28
 sourceUrls:
   - "https://www.ansan.go.kr/"
   - "https://goerica.hanyang.ac.kr/admission/html/program/2025/tour.asp"
