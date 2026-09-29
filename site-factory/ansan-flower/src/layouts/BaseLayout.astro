@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import MobileOrderBar from '../components/MobileOrderBar.astro';
 import '../styles/global.css';
 import { siteConfig } from '../config/site';
+import buildRevision from '../data/build-revision.json';
 
 interface Props {
   title?: string;
@@ -44,6 +45,7 @@ const schema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    <meta name="site-factory-revision" content={buildRevision.sha} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
