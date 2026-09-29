@@ -11,6 +11,15 @@ EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://ansan.fwith.kr").rstrip("/
 INDEXABLE = os.environ.get("SITE_INDEXABLE", "false").lower() == "true"
 errors = []
 
+REQUIRED_OG = [
+    "og:type", "og:site_name", "og:title", "og:description",
+    "og:url", "og:image", "og:image:alt",
+]
+REQUIRED_TWITTER = [
+    "twitter:card", "twitter:title", "twitter:description",
+    "twitter:image", "twitter:image:alt",
+]
+
 class PageParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -18,9 +27,12 @@ class PageParser(HTMLParser):
         self.title_text = []
         self.meta_description = None
         self.meta_robots = None
+        self.meta_names = {}
+        self.meta_props = {}
         self.canonical = None
         self.h1_count = 0
         self.hrefs = []
+        self.images = []
         self.json_ld_depth = 0
         self.json_ld_parts = []
         self.json_ld = []
@@ -29,16 +41,26 @@ class PageParser(HTMLParser):
         a = dict(attrs)
         if tag == "title":
             self.title_depth += 1
-        elif tag == "meta" and a.get("name") == "description":
-            self.meta_description = a.get("content", "").strip()
-        elif tag == "meta" and a.get("name") == "robots":
-            self.meta_robots = a.get("content", "").strip().lower()
+        elif tag == "meta":
+            name = a.get("name")
+            prop = a.get("property")
+            content = a.get("content", "").strip()
+            if name:
+                self.meta_names[name.lower()] = content
+            if prop:
+                self.meta_props[prop.lower()] = content
+            if name == "description":
+                self.meta_description = content
+            elif name == "robots":
+                self.meta_robots = content.lower()
         elif tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href")
         elif tag == "h1":
             self.h1_count += 1
         elif tag == "a" and a.get("href"):
             self.hrefs.append(a["href"])
+        elif tag == "img":
+            self.images.append(a)
         elif tag == "script" and a.get("type") == "application/ld+json":
             self.json_ld_depth += 1
 
@@ -98,6 +120,21 @@ for file in html_files:
     if "localhost" in text or "127.0.0.1" in text:
         errors.append(f"{file}: localhost reference remains in output")
 
+    revision = parser.meta_names.get("site-factory-revision", "")
+    if not revision:
+        errors.append(f"{file}: missing site-factory-revision meta")
+
+    for key in REQUIRED_OG:
+        if not parser.meta_props.get(key):
+            errors.append(f"{file}: missing {key}")
+    for key in REQUIRED_TWITTER:
+        if not parser.meta_names.get(key):
+            errors.append(f"{file}: missing {key}")
+
+    og_image = parser.meta_props.get("og:image", "")
+    if og_image and not og_image.startswith(EXPECTED_ORIGIN):
+        errors.append(f"{file}: og:image must use canonical origin: {og_image}")
+
     if INDEXABLE:
         if parser.meta_robots and "noindex" in parser.meta_robots:
             errors.append(f"{file}: production page unexpectedly has noindex")
@@ -105,11 +142,17 @@ for file in html_files:
         if not parser.meta_robots or "noindex" not in parser.meta_robots:
             errors.append(f"{file}: test page must include robots noindex")
 
+    for img in parser.images:
+        if "alt" not in img or not img.get("alt", "").strip():
+            errors.append(f"{file}: meaningful image missing non-empty alt: {img.get('src','')}")
+
     for raw in parser.json_ld:
         try:
             json.loads(raw)
         except json.JSONDecodeError as e:
             errors.append(f"{file}: invalid JSON-LD: {e}")
+    if not parser.json_ld:
+        errors.append(f"{file}: missing JSON-LD")
 
     for href in parser.hrefs:
         if not target_exists(href):
@@ -141,6 +184,17 @@ else:
         if "Disallow: /" not in rt:
             errors.append("Test robots.txt must disallow crawling")
 
+if not (DIST / "favicon.svg").exists():
+    errors.append("Missing favicon.svg")
+
+required_product_images = [
+    "funeral-basic.webp", "funeral-premium.webp", "funeral-large.webp", "funeral-xl.webp",
+    "congrats-basic.jpg", "congrats-premium.jpg", "congrats-large.jpg", "congrats-xl.jpg",
+]
+for name in required_product_images:
+    if not (DIST / "images" / "products" / name).exists():
+        errors.append(f"Missing product image: {name}")
+
 if errors:
     print("\nSTATIC QA FAILED")
     for error in errors:
@@ -149,4 +203,4 @@ if errors:
 
 mode = "INDEXABLE" if INDEXABLE else "NOINDEX TEST"
 print(f"STATIC QA PASSED ({mode}): {len(html_files)} HTML files checked")
-print("Canonical, meta, H1, JSON-LD, internal links, sitemap and robots verified.")
+print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon and product assets verified.")
