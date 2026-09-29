@@ -3,6 +3,8 @@ pageKey: ansan-flower-launch-01
 snapshotId: ansan-flower-launch-01-v1
 sourceDraftKey: ansan-flower-factory-draft-01
 sourceRecordId: rec4dnHODA5cb9Az5
+slug: "안산꽃배달"
+routeType: top_level
 title: "안산에서 꽃을 보낼 때, 상황별로 무엇을 먼저 정해야 할까요?"
 description: "안산에서 꽃을 준비할 때 사람·상황·장소 중 무엇부터 정해야 하는지 빠르게 판별하고, 대학·병원·역·개업·기업행사 등 필요한 상세 가이드로 이동할 수 있게 정리했습니다."
 category: guide

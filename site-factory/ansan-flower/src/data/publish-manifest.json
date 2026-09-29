@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "siteKey": "ansan-flower-test",
   "snapshotMode": "git-frozen",
   "generatedFrom": "Airtable Publish Queue",
@@ -11,10 +11,11 @@
       "sourceRecordId": "rec4dnHODA5cb9Az5",
       "publishQueueRecordId": "recQ7VKGx4NBYiKkB",
       "snapshotId": "ansan-flower-launch-01-v1",
-      "slug": "ansan-flower-guide",
+      "slug": "안산꽃배달",
       "category": "guide",
-      "file": "src/content/articles/ansan-flower-guide.md",
-      "url": "/guide/ansan-flower-guide/",
+      "routeType": "top_level",
+      "file": "src/content/articles/ansan-flower-launch-01.md",
+      "url": "/안산꽃배달/",
       "status": "approved"
     },
     {
@@ -25,7 +26,8 @@
       "snapshotId": "ansan-flower-launch-02-v1",
       "slug": "ansan-flower-form-guide",
       "category": "guide",
-      "file": "src/content/articles/ansan-flower-form-guide.md",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-02.md",
       "url": "/guide/ansan-flower-form-guide/",
       "status": "approved"
     },
@@ -37,7 +39,8 @@
       "snapshotId": "ansan-flower-launch-03-v1",
       "slug": "ansan-same-day-order-checklist",
       "category": "order-help",
-      "file": "src/content/articles/ansan-same-day-order-checklist.md",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-03.md",
       "url": "/order-help/ansan-same-day-order-checklist/",
       "status": "approved"
     }

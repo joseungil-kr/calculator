@@ -3,6 +3,8 @@ pageKey: ansan-flower-launch-03
 snapshotId: ansan-flower-launch-03-v1
 sourceDraftKey: ansan-flower-factory-draft-03
 sourceRecordId: reccpzhtvVbDKrerl
+slug: "ansan-same-day-order-checklist"
+routeType: category
 title: "안산 당일 꽃 주문, 연락하기 전에 준비하면 좋은 정보 7가지"
 description: "안산에서 당일 꽃 주문이 급할 때 수령인, 배송지, 시간대, 용도, 발신자명, 문구, 예산까지 연락 전에 준비할 7가지 정보를 정리했습니다."
 category: order-help

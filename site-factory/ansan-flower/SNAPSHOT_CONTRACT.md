@@ -1,56 +1,46 @@
 # Site Factory Snapshot Contract
 
-Production builds must be reproducible and must not depend on live Airtable reads.
+Production builds are reproducible and never read Airtable directly.
 
 ## Source roles
 
 - Airtable Sites / Page Plan / Draft Lab: editorial and operational source of truth.
 - Airtable Publish Queue: immutable handoff created only after Editor approval.
-- Git snapshot: source of truth for what is actually publishable in production.
-- Astro: reads only Git-tracked Markdown/JSON during production build.
+- Git snapshot: source of truth for what is publishable in production.
+- Astro: reads Git-tracked Markdown/JSON only.
 - Cloudflare: builds and serves the Git snapshot.
+
+## URL routing
+
+Every snapshot stores both `slug` and `routeType`.
+
+- `top_level` → `/<slug>/`
+- `category` → `/<category>/<slug>/`
+
+Top-level routes are reserved for a small number of core commercial/hub pages such as
+`/안산꽃배달/`. Informational, local-entity, occasion and expertise pages normally use
+category routes. Keyword-looking URLs are an experiment variable, not a ranking guarantee.
 
 ## Publish invariant
 
 An approved page is copied into Publish Queue with a unique `snapshot_id`.
-After that copy is created, later Draft Lab edits do not change that queued snapshot.
-A new revision must create a new snapshot id.
+Later Draft Lab edits do not change that queued snapshot. A content revision creates a new
+snapshot id. The pre-production v1 test snapshots received a one-time routing metadata
+migration before the first real domain launch.
 
 ## Git artifacts
 
-Each publish must update:
+Each publish updates:
 
-1. `src/content/articles/<slug>.md`
+1. `src/content/articles/<page_key>.md`
 2. `src/data/publish-manifest.json`
 3. `src/data/page-map.json`
 
-Article frontmatter must contain:
+Article frontmatter contains pageKey, snapshotId, sourceDraftKey, sourceRecordId, slug,
+routeType, category, structureType, region, verifiedAt, sourceUrls and draftStatus.
 
-- pageKey
-- snapshotId
-- sourceDraftKey
-- sourceRecordId
-- category
-- structureType
-- region
-- verifiedAt
-- sourceUrls
-- draftStatus
+## Test vs production indexing
 
-## Build gate
-
-`npm run build` first runs `scripts/validate_snapshot.mjs`.
-
-The build fails when:
-
-- a manifest file is missing,
-- a listed content file is missing,
-- page keys or URLs collide,
-- article provenance does not match the manifest,
-- page-map and manifest disagree,
-- draftStatus is not approved/published.
-
-## Preview vs production
-
-A future preview site may read Airtable directly.
-Production must continue to build from frozen Git snapshots.
+The factory defaults to `SITE_INDEXABLE=false`, emitting meta noindex and robots Disallow.
+A real domain must explicitly set `SITE_INDEXABLE=true` only after final live QA and search
+registration readiness.

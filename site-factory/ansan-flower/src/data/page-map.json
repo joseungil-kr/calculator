@@ -1,13 +1,14 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "siteKey": "ansan-flower-test",
   "pages": [
     {
       "pageKey": "ansan-flower-launch-01",
       "snapshotId": "ansan-flower-launch-01-v1",
-      "slug": "ansan-flower-guide",
+      "slug": "안산꽃배달",
       "category": "guide",
-      "url": "/guide/ansan-flower-guide/",
+      "routeType": "top_level",
+      "url": "/안산꽃배달/",
       "status": "approved",
       "sourceRecordId": "rec4dnHODA5cb9Az5"
     },
@@ -16,6 +17,7 @@
       "snapshotId": "ansan-flower-launch-02-v1",
       "slug": "ansan-flower-form-guide",
       "category": "guide",
+      "routeType": "category",
       "url": "/guide/ansan-flower-form-guide/",
       "status": "approved",
       "sourceRecordId": "recbN0TvtuO01wqqp"
@@ -25,6 +27,7 @@
       "snapshotId": "ansan-flower-launch-03-v1",
       "slug": "ansan-same-day-order-checklist",
       "category": "order-help",
+      "routeType": "category",
       "url": "/order-help/ansan-same-day-order-checklist/",
       "status": "approved",
       "sourceRecordId": "reccpzhtvVbDKrerl"

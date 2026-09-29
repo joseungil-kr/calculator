@@ -3,6 +3,8 @@ pageKey: ansan-flower-launch-02
 snapshotId: ansan-flower-launch-02-v1
 sourceDraftKey: ansan-flower-factory-draft-02
 sourceRecordId: recbN0TvtuO01wqqp
+slug: "ansan-flower-form-guide"
+routeType: category
 title: "꽃다발·꽃바구니·축하화환, 안산에서는 언제 무엇이 더 잘 맞을까요?"
 description: "안산에서 꽃다발·꽃바구니·축하화환을 고를 때 받는 사람, 행사 성격, 전달 방식, 공간과 격식을 순서대로 판단하는 선택 기준을 정리합니다."
 category: guide

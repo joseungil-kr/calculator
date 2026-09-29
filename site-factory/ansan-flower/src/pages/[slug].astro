@@ -1,6 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
 
 type Article = CollectionEntry<'articles'>;
 
@@ -9,13 +9,10 @@ export async function getStaticPaths() {
     'articles',
     ({ data }) =>
       (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
-      data.routeType === 'category'
+      data.routeType === 'top_level'
   );
   return articles.map((article) => ({
-    params: {
-      category: article.data.category,
-      slug: article.data.slug,
-    },
+    params: { slug: article.data.slug },
     props: { article },
   }));
 }

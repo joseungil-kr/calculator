@@ -16,7 +16,8 @@ if (!fs.existsSync(pageMapPath)) fail('page-map.json is missing');
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const pageMap = JSON.parse(fs.readFileSync(pageMapPath, 'utf8'));
 
-if (manifest.schemaVersion !== 1) fail('unsupported manifest schemaVersion');
+if (manifest.schemaVersion !== 2) fail('unsupported manifest schemaVersion');
+if (pageMap.schemaVersion !== 2) fail('unsupported page-map schemaVersion');
 if (manifest.snapshotMode !== 'git-frozen') fail('snapshotMode must be git-frozen');
 if (!Array.isArray(manifest.pages) || manifest.pages.length === 0) fail('manifest has no pages');
 if (!Array.isArray(pageMap.pages)) fail('page map pages must be an array');
@@ -26,9 +27,15 @@ const seenUrls = new Set();
 const mapByPageKey = new Map(pageMap.pages.map((p) => [p.pageKey, p]));
 
 for (const page of manifest.pages) {
-  for (const key of ['pageKey','draftKey','sourceRecordId','snapshotId','slug','category','file','url','status']) {
+  for (const key of ['pageKey','draftKey','sourceRecordId','snapshotId','slug','category','routeType','file','url','status']) {
     if (!page[key]) fail(`manifest page missing ${key}: ${JSON.stringify(page)}`);
   }
+  if (!['top_level','category'].includes(page.routeType)) fail(`invalid routeType: ${page.routeType}`);
+
+  const expectedUrl = page.routeType === 'top_level'
+    ? `/${page.slug}/`
+    : `/${page.category}/${page.slug}/`;
+  if (page.url !== expectedUrl) fail(`manifest route mismatch for ${page.pageKey}: ${page.url} != ${expectedUrl}`);
 
   if (seenPageKeys.has(page.pageKey)) fail(`duplicate pageKey: ${page.pageKey}`);
   if (seenUrls.has(page.url)) fail(`duplicate url: ${page.url}`);
@@ -49,6 +56,8 @@ for (const page of manifest.pages) {
     snapshotId: page.snapshotId,
     sourceDraftKey: page.draftKey,
     sourceRecordId: page.sourceRecordId,
+    slug: page.slug,
+    routeType: page.routeType,
     category: page.category,
   };
 
@@ -64,9 +73,9 @@ for (const page of manifest.pages) {
 
   const mapped = mapByPageKey.get(page.pageKey);
   if (!mapped) fail(`page-map missing pageKey: ${page.pageKey}`);
-  for (const key of ['snapshotId','slug','category','url','sourceRecordId']) {
+  for (const key of ['snapshotId','slug','category','routeType','url','sourceRecordId']) {
     if (mapped[key] !== page[key]) fail(`page-map mismatch for ${page.pageKey}: ${key}`);
   }
 }
 
-console.log(`[snapshot] OK: ${manifest.pages.length} frozen page(s), site=${manifest.siteKey}`);
+console.log(`[snapshot] OK: ${manifest.pages.length} frozen page(s), site=${manifest.siteKey}, schema=v2`);

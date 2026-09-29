@@ -8,6 +8,8 @@ const articles = defineCollection({
     snapshotId: z.string(),
     sourceDraftKey: z.string(),
     sourceRecordId: z.string(),
+    slug: z.string(),
+    routeType: z.enum(['top_level', 'category']),
     title: z.string(),
     description: z.string(),
     category: z.enum(['guide', 'places', 'occasions', 'flower-knowledge', 'order-help']),
