@@ -8,11 +8,12 @@ interface Props {
   category: string;
   structureType: string;
   region: string;
+  snapshotId: string;
   sourceUrls?: string[];
   verifiedAt?: Date;
 }
 
-const { title, description, category, structureType, region, sourceUrls = [], verifiedAt } = Astro.props;
+const { title, description, category, structureType, region, snapshotId, sourceUrls = [], verifiedAt } = Astro.props;
 
 const categoryLabel: Record<string, string> = {
   guide: '꽃 선택 가이드',
@@ -25,7 +26,7 @@ const categoryLabel: Record<string, string> = {
 const categoryHref = `/${category}/`;
 ---
 <BaseLayout title={`${title} | 꽃이랑 안산`} description={description}>
-  <section class="article-shell">
+  <section class="article-shell" data-snapshot-id={snapshotId}>
     <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">홈</a><span>›</span>
