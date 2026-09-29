@@ -28,6 +28,18 @@
       "file": "src/content/articles/ansan-flower-form-guide.md",
       "url": "/guide/ansan-flower-form-guide/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-03",
+      "draftKey": "ansan-flower-factory-draft-03",
+      "sourceRecordId": "reccpzhtvVbDKrerl",
+      "publishQueueRecordId": "recKe42hM4qTDeLos",
+      "snapshotId": "ansan-flower-launch-03-v1",
+      "slug": "ansan-same-day-order-checklist",
+      "category": "order-help",
+      "file": "src/content/articles/ansan-same-day-order-checklist.md",
+      "url": "/order-help/ansan-same-day-order-checklist/",
+      "status": "approved"
     }
   ]
 }
