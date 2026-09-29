@@ -444,7 +444,7 @@ body{background:#fff;color:var(--ink);}
       rgba(255,249,251,.76) 45%,
       rgba(255,249,251,.18) 62%,
       rgba(255,249,251,0) 76%),
-    url('/images/ansan/hero-wide.webp') center center / cover no-repeat;
+    url('/images/ansan/hero-B-original.png') center center / cover no-repeat;
   border-bottom:1px solid #f3e9ec;
 }
 .hero-commerce-grid{
@@ -466,7 +466,7 @@ body{background:#fff;color:var(--ink);}
         rgba(255,249,251,.95) 42%,
         rgba(255,249,251,.56) 64%,
         rgba(255,249,251,.12) 84%),
-      url('/images/ansan/hero-wide.webp') 62% center / cover no-repeat;
+      url('/images/ansan/hero-B-original.png') 62% center / cover no-repeat;
   }
   .hero-commerce-grid{min-height:400px;}
   .hero-copy{max-width:540px;padding:48px 0 44px;}
@@ -480,8 +480,55 @@ body{background:#fff;color:var(--ink);}
         rgba(255,249,251,.96) 44%,
         rgba(255,249,251,.58) 69%,
         rgba(255,249,251,.20) 100%),
-      url('/images/ansan/hero-wide.webp') 68% center / auto 100% no-repeat;
+      url('/images/ansan/hero-B-original.png') 68% center / auto 100% no-repeat;
   }
   .hero-commerce-grid{min-height:455px;}
   .hero-copy{max-width:100%;padding:30px 0 28px;}
+}
+
+
+/* ORIGINAL_B_HERO_ALL_PAGES_V1 */
+.page-hero{
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  padding:58px 0 48px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,249,251,.98) 0%,
+      rgba(255,249,251,.95) 34%,
+      rgba(255,249,251,.77) 49%,
+      rgba(255,249,251,.30) 67%,
+      rgba(255,249,251,.04) 84%),
+    url('/images/ansan/hero-B-original.png') 64% center / cover no-repeat;
+  border-bottom:1px solid #f7e4ea;
+}
+.page-hero .container{position:relative;z-index:1;}
+.page-hero h1{max-width:760px;}
+.page-hero p{max-width:720px;color:#5e636b;}
+
+@media(max-width:900px){
+  .page-hero{
+    min-height:280px;
+    background:
+      linear-gradient(90deg,
+        rgba(255,249,251,.98) 0%,
+        rgba(255,249,251,.94) 45%,
+        rgba(255,249,251,.58) 68%,
+        rgba(255,249,251,.16) 100%),
+      url('/images/ansan/hero-B-original.png') 68% center / cover no-repeat;
+  }
+}
+@media(max-width:620px){
+  .page-hero{
+    min-height:260px;
+    padding:42px 0 36px;
+    background:
+      linear-gradient(90deg,
+        rgba(255,249,251,.99) 0%,
+        rgba(255,249,251,.95) 58%,
+        rgba(255,249,251,.56) 82%,
+        rgba(255,249,251,.22) 100%),
+      url('/images/ansan/hero-B-original.png') 72% center / cover no-repeat;
+  }
 }

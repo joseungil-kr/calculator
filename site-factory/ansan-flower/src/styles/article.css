@@ -61,3 +61,75 @@
   .article-aside { grid-template-columns: 1fr; }
   .primary-landing .article-header { padding: 24px; border-radius: 20px; }
 }
+
+
+/* ARTICLE_B_HERO_V1 */
+.article-shell{
+  position:relative;
+  padding-top:42px;
+}
+.article-shell::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:0;
+  right:0;
+  top:0;
+  height:330px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,249,251,.98) 0%,
+      rgba(255,249,251,.95) 35%,
+      rgba(255,249,251,.76) 51%,
+      rgba(255,249,251,.28) 70%,
+      rgba(255,249,251,.04) 86%),
+    url('/images/ansan/hero-B-original.png') 64% center / cover no-repeat;
+  border-bottom:1px solid #f7e4ea;
+}
+.article-shell > .container{position:relative;z-index:1;}
+.article-header{
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width:780px;
+  margin-bottom:44px;
+}
+.article-header p{max-width:700px;color:#5e636b;}
+.article-meta span{background:rgba(255,255,255,.86);backdrop-filter:blur(4px);}
+.primary-landing .article-header{
+  min-height:250px;
+  max-width:900px;
+  padding:28px 0;
+  border:0;
+  box-shadow:none;
+  background:transparent;
+}
+
+@media(max-width:860px){
+  .article-shell::before{
+    height:340px;
+    background:
+      linear-gradient(90deg,
+        rgba(255,249,251,.98) 0%,
+        rgba(255,249,251,.94) 46%,
+        rgba(255,249,251,.56) 70%,
+        rgba(255,249,251,.15) 100%),
+      url('/images/ansan/hero-B-original.png') 68% center / cover no-repeat;
+  }
+}
+@media(max-width:560px){
+  .article-shell{padding-top:26px;}
+  .article-shell::before{
+    height:350px;
+    background:
+      linear-gradient(90deg,
+        rgba(255,249,251,.99) 0%,
+        rgba(255,249,251,.95) 60%,
+        rgba(255,249,251,.57) 83%,
+        rgba(255,249,251,.22) 100%),
+      url('/images/ansan/hero-B-original.png') 72% center / cover no-repeat;
+  }
+  .article-header{min-height:245px;margin-bottom:34px;}
+  .primary-landing .article-header{padding:18px 0;border-radius:0;}
+}

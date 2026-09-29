@@ -13,8 +13,8 @@ export const siteConfig = {
   canonicalDomain: 'ansan.fwith.kr',
   siteUrl,
   indexable,
-  defaultOgImage: '/images/products/congrats-basic.jpg',
-  defaultOgImageAlt: '꽃이랑 안산 꽃배달 가이드 대표 이미지',
+  defaultOgImage: '/images/ansan/hero-B-original.png',
+  defaultOgImageAlt: '밝은 핑크 플라워 부케를 담은 꽃이랑 안산 꽃배달 대표 이미지',
   description:
     '안산에서 꽃을 준비할 때 사람, 상황, 장소에 맞는 선택 기준과 실제 화환 가격, 주문 정보를 함께 제공하는 지역 플라워 가이드입니다.',
   operator: {

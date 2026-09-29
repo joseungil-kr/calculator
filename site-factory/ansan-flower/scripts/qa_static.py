@@ -195,6 +195,26 @@ for name in required_product_images:
     if not (DIST / "images" / "products" / name).exists():
         errors.append(f"Missing product image: {name}")
 
+hero = DIST / "images" / "ansan" / "hero-B-original.png"
+if not hero.exists():
+    errors.append("Missing original B hero image: /images/ansan/hero-B-original.png")
+else:
+    size = hero.stat().st_size
+    if size < 1_000_000:
+        errors.append(f"Hero image appears over-compressed: {size} bytes")
+    try:
+        import struct
+        with hero.open("rb") as fh:
+            sig = fh.read(24)
+        if sig[:8] != b"\x89PNG\r\n\x1a\n":
+            errors.append("Hero asset is not the expected PNG original")
+        else:
+            width, height = struct.unpack(">II", sig[16:24])
+            if width < 1900 or height < 800:
+                errors.append(f"Hero image resolution too small: {width}x{height}")
+    except Exception as exc:
+        errors.append(f"Could not validate hero image dimensions: {exc}")
+
 if errors:
     print("\nSTATIC QA FAILED")
     for error in errors:
@@ -203,4 +223,4 @@ if errors:
 
 mode = "INDEXABLE" if INDEXABLE else "NOINDEX TEST"
 print(f"STATIC QA PASSED ({mode}): {len(html_files)} HTML files checked")
-print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon and product assets verified.")
+print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon, product assets and original-resolution hero verified.")
