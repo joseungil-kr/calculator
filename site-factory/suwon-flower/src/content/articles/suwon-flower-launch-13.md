@@ -5,15 +5,27 @@ sourceDraftKey: suwon-flower-factory-draft-13
 sourceRecordId: recYtCw9VGylskqwj
 slug: "suwon-bouquet-aftercare"
 routeType: category
-title: "수원에서 받은 꽃다발, 집이나 사무실에 도착한 뒤 포장을 언제 풀어야 할까요?"
-description: "수원에서 꽃다발을 받은 뒤 포장을 풀고 화병, 줄기, 물, 놓는 위치를 어떤 순서로 관리하면 좋은지 정리합니다."
+title: "꽃다발 받은 후 포장은 언제 풀어야 할까요?"
+description: "꽃다발을 받은 뒤 포장을 풀고 화병, 줄기, 물, 놓는 위치를 어떤 순서로 관리하면 좋은지 정리합니다."
 category: flower-knowledge
 structureType: care_guide
+pageType: flower-knowledge
+contentRole: question-answer
+localizationPolicy: global
 region: 수원
 verifiedAt: 2026-09-30
 publishedAt: 2026-09-30
 sourceUrls:
   - "https://www.rhs.org.uk/plants/for-places/cut-flowers-conditioning"
+sources:
+  - name: "Royal Horticultural Society (RHS)"
+    url: "https://www.rhs.org.uk/plants/for-places/cut-flowers-conditioning"
+    type: professional
+    verifiedAt: 2026-09-30
+relatedPageKeys:
+  - "suwon-flower-launch-02"
+  - "suwon-flower-launch-07"
+  - "suwon-flower-launch-11"
 draftStatus: approved
 ---
 
@@ -35,13 +47,11 @@ draftStatus: approved
 
 꽃을 받은 뒤에는 난방기 바로 앞이나 강한 열이 오래 머무는 곳보다 비교적 서늘하고 안정적인 실내가 관리에 유리합니다. 과일이 많이 놓인 공간이나 직사광선이 강한 창가처럼 꽃 상태에 영향을 줄 수 있는 환경도 피하는 편이 좋습니다.
 
-수원역·광교·영통 등에서 꽃을 받아 이동한 뒤라면 꽃이 이동 중 눌리거나 기울지 않았는지 먼저 확인한 뒤 물 관리로 넘어가세요. 이동 자체에 관한 기준은 [수원 장소별 가이드](/places/)에서 확인할 수 있습니다.
+꽃을 들고 이동한 시간이 길었다면 포장을 풀기 전에 꽃이 눌리거나 기울지 않았는지 먼저 확인한 뒤 물 관리로 넘어가세요.
 
 ## 물은 한 번 채우고 끝이 아닙니다
 
 RHS는 화병의 물 상태를 주기적으로 확인하고, 일정 간격으로 물을 갈면서 줄기 끝을 다시 정리하는 방법을 안내합니다. 정확한 교체 주기는 실내 온도, 꽃 종류, 물 상태에 따라 달라질 수 있으므로 물이 탁해지거나 줄기 상태가 좋지 않다면 더 빨리 관리하는 것이 좋습니다.
-
-[꽃 이야기](/flower-knowledge/)에서는 계절과 꽃 형태에 따른 관리 기준을 계속 모아 볼 수 있고, 주문 단계에서 확인할 정보는 [주문 준비](/order-help/)에서 정리합니다.
 
 ### 포장을 바로 다 버려야 하나요?
 
