@@ -165,6 +165,9 @@ jobs:
                   assert code == 200
                   assert "noindex" in article.lower()
                   assert 'data-snapshot-id="suwon-flower-launch-01-v2"' in article
+                  assert "content-order-banner" in article
+                  assert "order-banner-" in article
+                  assert "근조화환 생화 최저가" in article
 
                   print(f"CUSTOM DOMAIN QA PASSED: {base}")
                   print("DNS/HTTPS/Worker routing are live; site remains safely noindex.")
