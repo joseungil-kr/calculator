@@ -91,24 +91,38 @@ jobs:
               with urllib.request.urlopen(req, timeout=30) as res:
                   return res.status, res.read().decode("utf-8", errors="replace")
 
-          code, home = get("/")
-          assert code == 200, code
-          lower = home.lower()
-          assert 'name="robots"' in lower
-          assert "noindex" in lower
-          assert f'name="site-factory-revision" content="{expected}"' in home
+          import time
+          import urllib.error
 
-          code, robots = get("/robots.txt")
-          assert code == 200
-          assert "Disallow: /" in robots
+          last_error = None
+          for attempt in range(1, 31):
+              try:
+                  code, home = get("/")
+                  if code != 200:
+                      raise AssertionError(f"home HTTP {code}")
+                  lower = home.lower()
+                  assert 'name="robots"' in lower
+                  assert "noindex" in lower
+                  assert f'name="site-factory-revision" content="{expected}"' in home
 
-          code, article = get("/수원꽃배달/")
-          assert code == 200
-          alower = article.lower()
-          assert "noindex" in alower
-          assert "<h1" in alower
-          assert 'data-snapshot-id="suwon-flower-launch-01-v2"' in article
+                  code, robots = get("/robots.txt")
+                  assert code == 200
+                  assert "Disallow: /" in robots
 
-          print(f"STAGING QA PASSED: {base}")
-          print("Home, robots.txt and /수원꽃배달/ are live and noindex.")
+                  code, article = get("/수원꽃배달/")
+                  assert code == 200
+                  alower = article.lower()
+                  assert "noindex" in alower
+                  assert "<h1" in alower
+                  assert 'data-snapshot-id="suwon-flower-launch-01-v2"' in article
+
+                  print(f"STAGING QA PASSED: {base}")
+                  print("Home, robots.txt and /수원꽃배달/ are live and noindex.")
+                  break
+              except Exception as exc:
+                  last_error = exc
+                  print(f"Attempt {attempt}/30: staging not ready yet: {exc}")
+                  time.sleep(5)
+          else:
+              raise SystemExit(f"Staging did not become ready: {last_error}")
           PY
