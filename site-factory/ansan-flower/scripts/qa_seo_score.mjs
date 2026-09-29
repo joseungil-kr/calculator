@@ -45,7 +45,8 @@ for(const file of walk(DIST).filter(p=>p.endsWith('.html'))){
   const banners=[...html.matchAll(/<figure class=["']content-order-banner["'][\s\S]*?<\/figure>/gi)].map(x=>x[0]);
 
   const prose=m(html,/<article class=["']prose["']>([\s\S]*?)<\/article>/i);
-  const proseNoBanners=prose.replace(/<figure class=["']content-order-banner["'][\s\S]*?<\/figure>/gi,' ');
+  const proseWithoutSources=prose.replace(/<section class=["']source-list["'][\s\S]*?<\/section>/gi,' ');
+  const proseNoBanners=proseWithoutSources.replace(/<figure class=["']content-order-banner["'][\s\S]*?<\/figure>/gi,' ');
   const chars=textOnly(proseNoBanners).length;
   const expected=expectedBannerCount(chars);
   const bannerAlt=banners.every(x=>/<img\b[^>]+alt=["'][^"']+["']/i.test(x));
