@@ -14,12 +14,18 @@ jobs:
     if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout control registry
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Resolve and validate target site
         id: target
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python3 - <<'PY'
+          import json
           import os
 
           body = os.environ.get("ISSUE_BODY", "")
@@ -37,34 +43,26 @@ jobs:
           target_branch = value("TARGET_BRANCH")
           target_root = value("TARGET_ROOT")
 
-          allowed = {
-              "ansan-flower-test": {
-                  "repo": "joseungil-kr/fwith-site-factory",
-                  "branch": "site-factory-ansan-v1",
-                  "root": "site-factory/ansan-flower",
-              },
-              "suwon-flower-test": {
-                  "repo": "joseungil-kr/fwith-site-factory",
-                  "branch": "site-factory-suwon-v1",
-                  "root": "site-factory/suwon-flower",
-              },
-          }
-
-          if site_key not in allowed:
+          registry = json.load(open(".github/site-factory-sites.json", encoding="utf-8"))
+          expected = registry.get("sites", {}).get(site_key)
+          if not expected:
               raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
-          expected = allowed[site_key]
           if target_repo != expected["repo"]:
               raise SystemExit(f"Unexpected target_repo: {target_repo}")
           if target_branch != expected["branch"]:
               raise SystemExit(f"Unexpected target_branch: {target_branch}")
           if target_root != expected["root"]:
               raise SystemExit(f"Unexpected target_root: {target_root}")
+          if target_repo != os.environ.get("GITHUB_REPOSITORY"):
+              raise SystemExit("Target repository must be this Site Factory repository")
 
           out = os.environ["GITHUB_OUTPUT"]
           with open(out, "a", encoding="utf-8") as fh:
               fh.write(f"site_key={site_key}\n")
               fh.write(f"branch={target_branch}\n")
               fh.write(f"root={target_root}\n")
+              fh.write(f"launch_mode={expected.get('launchMode','staging')}\n")
+              fh.write(f"production_enabled={'true' if expected.get('productionEnabled') else 'false'}\n")
           PY
 
       - name: Checkout target branch
@@ -338,23 +336,12 @@ jobs:
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Trigger Ansan production deployment
-        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
+      - name: Trigger generic production deployment
+        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.launch_mode == 'live' && steps.target.outputs.production_enabled == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run ansan-cloudflare-production-deploy.yml --ref site-factory-ansan-v1
-
-      - name: Trigger Ansan exact live QA
-        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run ansan-live-qa.yml --ref site-factory-ansan-v1
-
-      - name: Trigger Ansan IndexNow
-        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run ansan-indexnow-production.yml --ref site-factory-ansan-v1
+          SITE_KEY: ${{ steps.target.outputs.site_key }}
+        run: gh workflow run site-production-deploy.yml --ref main -f site_key="$SITE_KEY"
 
       - name: Report success
         env:
