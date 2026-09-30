@@ -149,6 +149,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "ansan-flower-launch-12",
+      "draftKey": "ansan-flower-launch-12-draft-v1",
+      "sourceRecordId": "recqfHSlGMr8SK8V4",
+      "publishQueueRecordId": "recuDEmqW9GPx12FK",
+      "snapshotId": "ansan-flower-launch-12-v2",
+      "slug": "ansan-culture-square-event-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-12.md",
+      "url": "/places/ansan-culture-square-event-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "ansan-flower-launch-15",
       "draftKey": "ansan-flower-factory-draft-15",
       "sourceRecordId": "recgFh3SUp4iMmfDY",
