@@ -63,6 +63,9 @@ jobs:
               fh.write(f"root={target_root}\n")
               fh.write(f"launch_mode={expected.get('launchMode','staging')}\n")
               fh.write(f"production_enabled={'true' if expected.get('productionEnabled') else 'false'}\n")
+              fh.write(f"template_key={expected.get('templateKey','')}\n")
+              fh.write("allowed_categories=" + ",".join(expected.get("allowedCategories", [])) + "\n")
+              fh.write("allowed_page_types=" + ",".join(expected.get("allowedPageTypes", [])) + "\n")
           PY
 
       - name: Checkout target branch
@@ -77,6 +80,8 @@ jobs:
           EXPECTED_SITE_KEY: ${{ steps.target.outputs.site_key }}
           EXPECTED_BRANCH: ${{ steps.target.outputs.branch }}
           EXPECTED_ROOT: ${{ steps.target.outputs.root }}
+          ALLOWED_CATEGORIES: ${{ steps.target.outputs.allowed_categories }}
+          ALLOWED_PAGE_TYPES: ${{ steps.target.outputs.allowed_page_types }}
         run: |
           python3 - <<'PY'
           import json
@@ -149,15 +154,11 @@ jobs:
               raise SystemExit("Missing source URL: Site Factory snapshots require at least one verified source URL")
 
           if not page_type:
-              page_type = {
-                  "funeral": "funeral-facility",
-                  "flower-knowledge": "flower-knowledge",
-                  "order-help": "order-help",
-              }.get(category, "general-guide")
+              raise SystemExit("Missing PAGE_TYPE: snapshots must provide the industry-specific page type")
           if not content_role:
               content_role = "informational-pillar" if route_type == "top_level" else "question-answer"
           if not localization_policy:
-              localization_policy = "global" if category == "flower-knowledge" else "local-optional"
+              raise SystemExit("Missing LOCALIZATION_POLICY: snapshots must provide it explicitly")
 
           if site_key != os.environ["EXPECTED_SITE_KEY"]:
               raise SystemExit(f"Unexpected site_key: {site_key}")
@@ -175,10 +176,14 @@ jobs:
           if not all(ch.isalnum() or ch == "-" for ch in slug):
               raise SystemExit(f"Slug must contain only Unicode letters/numbers or hyphen: {slug}")
 
-          if category not in {"guide","funeral","places","occasions","flower-knowledge","order-help"}:
-              raise SystemExit(f"Unsafe category: {category}")
-          if page_type not in {"general-guide","funeral-facility","hospital","station-transit","opening-business","event-venue","flower-knowledge","order-help"}:
-              raise SystemExit(f"Unsafe page_type: {page_type}")
+          allowed_categories = {x for x in os.environ.get("ALLOWED_CATEGORIES", "").split(",") if x}
+          allowed_page_types = {x for x in os.environ.get("ALLOWED_PAGE_TYPES", "").split(",") if x}
+          if not allowed_categories or not allowed_page_types:
+              raise SystemExit("Site registry missing allowedCategories/allowedPageTypes contract")
+          if category not in allowed_categories:
+              raise SystemExit(f"Unsafe category for this template: {category}")
+          if page_type not in allowed_page_types:
+              raise SystemExit(f"Unsafe page_type for this template: {page_type}")
           if content_role not in {"informational-pillar","question-answer"}:
               raise SystemExit(f"Unsafe content_role: {content_role}")
           if localization_policy not in {"local-required","local-optional","global"}:
