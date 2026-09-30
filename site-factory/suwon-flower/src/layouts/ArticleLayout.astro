@@ -5,6 +5,18 @@ import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
 import '../styles/article.css';
 
+type ArchitectureEntry = {
+  pageKey: string;
+  url: string;
+  pageRole?: string;
+  parentHub?: string;
+  primaryKeyword?: string;
+  intentKey?: string;
+  sitemapIndexable?: boolean;
+  status?: string;
+  canonicalUrl?: string;
+};
+
 type SourceRef = {
   name: string;
   url: string;
@@ -67,7 +79,8 @@ const categoryLabel: Record<string, string> = {
   'order-help': '주문 도움',
 };
 
-const architectureEntry = (architecture.pages || []).find((page) => page.pageKey === pageKey);
+const architecturePages = (architecture.pages || []) as ArchitectureEntry[];
+const architectureEntry = architecturePages.find((page) => page.pageKey === pageKey);
 const effectivePageRole = architectureEntry?.pageRole ?? 'INFORMATION_GUIDE';
 const effectivePrimaryKeyword = architectureEntry?.primaryKeyword ?? '';
 const effectiveIntentKey = architectureEntry?.intentKey ?? '';
@@ -85,7 +98,7 @@ const seoTitle = isPrimaryLanding
   : `${title} | ${siteConfig.brand}`;
 
 const activePageKeys = new Set(
-  (architecture.pages || [])
+  architecturePages
     .filter((page) => page.sitemapIndexable !== false && page.status !== 'merged')
     .map((page) => page.pageKey)
 );
