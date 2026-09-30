@@ -16,6 +16,84 @@
       "localizationPolicy": "local-required",
       "sitemapIndexable": true,
       "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-01",
+      "url": "/funeral/yongin-severance-funeral-condolence-wreath/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/funeral/",
+      "primaryKeyword": "용인세브란스병원 장례식장 근조화환",
+      "intentKey": "용인|근조화환|용인세브란스병원장례식장",
+      "pageType": "funeral-facility",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-07",
+      "url": "/business/suji-opening-flowers/",
+      "pageRole": "INTENT_LANDING",
+      "parentHub": "/business/",
+      "primaryKeyword": "수지구 개업 축하꽃",
+      "intentKey": "용인수지구|개업축하꽃|매장사무실선택",
+      "pageType": "business-opening",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-12",
+      "url": "/school/dankook-jukjeon-graduation-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/school/",
+      "primaryKeyword": "단국대학교 죽전캠퍼스 졸업식 꽃",
+      "intentKey": "용인|졸업식꽃|단국대학교죽전캠퍼스",
+      "pageType": "school-event",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-17",
+      "url": "/event/poeun-art-hall-performance-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/event/",
+      "primaryKeyword": "용인포은아트홀 축하꽃",
+      "intentKey": "용인|공연축하꽃|용인포은아트홀",
+      "pageType": "event-venue",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-21",
+      "url": "/gift/yongin-severance-visit-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/gift/",
+      "primaryKeyword": "용인세브란스병원 병문안 꽃",
+      "intentKey": "용인|병문안꽃|용인세브란스병원",
+      "pageType": "hospital-visit",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
+      "pageKey": "yongin-flower-launch-25",
+      "url": "/order/yongin-same-day-flower-order/",
+      "pageRole": "INTENT_LANDING",
+      "parentHub": "/order/",
+      "primaryKeyword": "용인 당일 꽃배달",
+      "intentKey": "용인|당일꽃배달|주문준비",
+      "pageType": "order-help",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": true,
+      "status": "primary"
     }
   ]
 }

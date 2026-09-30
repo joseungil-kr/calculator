@@ -1,5 +1,66 @@
 {
   "schemaVersion": 2,
   "siteKey": "yongin-flower-v2",
-  "pages": []
+  "pages": [
+    {
+      "pageKey": "yongin-flower-launch-01",
+      "snapshotId": "yongin-flower-launch-01-canary-v2",
+      "slug": "yongin-severance-funeral-condolence-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/yongin-severance-funeral-condolence-wreath/",
+      "status": "approved",
+      "sourceRecordId": "recoHCbpYsMDzoqa8"
+    },
+    {
+      "pageKey": "yongin-flower-launch-07",
+      "snapshotId": "yongin-flower-launch-07-canary-v2",
+      "slug": "suji-opening-flowers",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/suji-opening-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recmqCgOaPRgstmXq"
+    },
+    {
+      "pageKey": "yongin-flower-launch-12",
+      "snapshotId": "yongin-flower-launch-12-canary-v2",
+      "slug": "dankook-jukjeon-graduation-flowers",
+      "category": "school",
+      "routeType": "category",
+      "url": "/school/dankook-jukjeon-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recRar2wxg1feGddq"
+    },
+    {
+      "pageKey": "yongin-flower-launch-17",
+      "snapshotId": "yongin-flower-launch-17-canary-v2",
+      "slug": "poeun-art-hall-performance-flowers",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/poeun-art-hall-performance-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recYC9rNMQTsBzSCM"
+    },
+    {
+      "pageKey": "yongin-flower-launch-21",
+      "snapshotId": "yongin-flower-launch-21-canary-v2",
+      "slug": "yongin-severance-visit-flowers",
+      "category": "gift",
+      "routeType": "category",
+      "url": "/gift/yongin-severance-visit-flowers/",
+      "status": "approved",
+      "sourceRecordId": "rec6LfvHb0uucl3IM"
+    },
+    {
+      "pageKey": "yongin-flower-launch-25",
+      "snapshotId": "yongin-flower-launch-25-canary-v2",
+      "slug": "yongin-same-day-flower-order",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-same-day-flower-order/",
+      "status": "approved",
+      "sourceRecordId": "recdbjmW1mbWWkjCb"
+    }
+  ]
 }
