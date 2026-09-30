@@ -1,0 +1,82 @@
+[
+  {
+    "productKey": "funeral-basic",
+    "category": "funeral_wreath",
+    "name": "근조 3단 화환",
+    "price": 59000,
+    "description": "무난하게 예의를 갖춘 기본형",
+    "image": "/images/products/funeral-basic.webp",
+    "imageAlt": "근조 3단 화환 상품 이미지",
+    "sourceUrl": "https://fwith.kr/img/product/f1_hu_fe001f0cd4409b66.webp"
+  },
+  {
+    "productKey": "funeral-premium",
+    "category": "funeral_wreath",
+    "name": "근조 고급 3단 화환",
+    "price": 79000,
+    "description": "보다 풍성한 구성을 원하는 경우 선택하는 고급형",
+    "image": "/images/products/funeral-premium.webp",
+    "imageAlt": "근조 고급 3단 화환 상품 이미지",
+    "sourceUrl": "https://fwith.kr/img/product/f2_hu_c13ff56e9a54f74a.webp"
+  },
+  {
+    "productKey": "funeral-large",
+    "category": "funeral_wreath",
+    "name": "근조 특대 3단 화환",
+    "price": 109000,
+    "description": "더 큰 규모와 존재감을 원하는 경우의 특대형",
+    "image": "/images/products/funeral-large.webp",
+    "imageAlt": "근조 특대 3단 화환 상품 이미지",
+    "sourceUrl": "https://fwith.kr/img/product/f3_hu_2dff149c34fa978f.webp"
+  },
+  {
+    "productKey": "funeral-xl",
+    "category": "funeral_wreath",
+    "name": "근조 특특대 3단 화환",
+    "price": 149000,
+    "description": "격식과 크기를 강조한 프리미엄 대형 구성",
+    "image": "/images/products/funeral-xl.webp",
+    "imageAlt": "근조 특특대 3단 화환 상품 이미지",
+    "sourceUrl": "https://fwith.kr/img/product/f4_hu_2d8d131f57c92d72.webp"
+  },
+  {
+    "productKey": "congrats-basic",
+    "category": "congrats_wreath",
+    "name": "축하 3단 화환",
+    "price": 59000,
+    "description": "무난하게 예의를 갖춘 기본형",
+    "image": "/images/products/congrats-basic.jpg",
+    "imageAlt": "축하 3단 화환 상품 이미지",
+    "sourceUrl": "https://www.baroflowers.com/product/c1.jpg"
+  },
+  {
+    "productKey": "congrats-premium",
+    "category": "congrats_wreath",
+    "name": "축하 고급 3단 화환",
+    "price": 79000,
+    "description": "계절꽃이 더해진 풍성한 구성",
+    "image": "/images/products/congrats-premium.jpg",
+    "imageAlt": "축하 고급 3단 화환 상품 이미지",
+    "sourceUrl": "https://www.baroflowers.com/product/c2.jpg"
+  },
+  {
+    "productKey": "congrats-large",
+    "category": "congrats_wreath",
+    "name": "축하 특대 3단 화환",
+    "price": 99000,
+    "description": "대형 행사장 입구에 어울리는 크기",
+    "image": "/images/products/congrats-large.jpg",
+    "imageAlt": "축하 특대 3단 화환 상품 이미지",
+    "sourceUrl": "https://www.baroflowers.com/product/c3.jpg"
+  },
+  {
+    "productKey": "congrats-xl",
+    "category": "congrats_wreath",
+    "name": "축하 특특대 3단 화환",
+    "price": 149000,
+    "description": "VIP 예식을 위한 프리미엄 라인",
+    "image": "/images/products/congrats-xl.jpg",
+    "imageAlt": "축하 특특대 3단 화환 상품 이미지",
+    "sourceUrl": "https://www.baroflowers.com/product/c4.jpg"
+  }
+]
