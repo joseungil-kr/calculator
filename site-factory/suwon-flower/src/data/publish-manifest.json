@@ -31,6 +31,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-03",
+      "draftKey": "suwon-flower-launch-03-draft-v1",
+      "sourceRecordId": "reciStj7SCKJiciTt",
+      "publishQueueRecordId": "recKFnaYk9HJcmjBl",
+      "snapshotId": "suwon-flower-launch-03-v2",
+      "slug": "ajou-graduation-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-03.md",
+      "url": "/places/ajou-graduation-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-07",
       "draftKey": "suwon-flower-factory-draft-07",
       "sourceRecordId": "rec8MaZg72NM0iGQT",
