@@ -12,6 +12,9 @@ type ArchitectureEntry = {
   parentHub?: string;
   primaryKeyword?: string;
   intentKey?: string;
+  pageType?: string;
+  contentRole?: string;
+  localizationPolicy?: string;
   sitemapIndexable?: boolean;
   status?: string;
   canonicalUrl?: string;
@@ -85,13 +88,15 @@ const effectivePageRole = architectureEntry?.pageRole ?? 'INFORMATION_GUIDE';
 const effectivePrimaryKeyword = architectureEntry?.primaryKeyword ?? '';
 const effectiveIntentKey = architectureEntry?.intentKey ?? '';
 const effectiveParentHub = architectureEntry?.parentHub ?? `/${category}/`;
+const effectivePageType = architectureEntry?.pageType ?? pageType;
+const effectiveLocalizationPolicy = architectureEntry?.localizationPolicy ?? localizationPolicy;
 const architectureIndexable = architectureEntry?.sitemapIndexable !== false && architectureEntry?.status !== 'merged';
 const canonicalPath = architectureEntry?.canonicalUrl ?? Astro.url.pathname;
 
 const categoryHref = `/${category}/`;
 const regionLandingHref = `/${siteConfig.primaryLandingSlug}/`;
 const isPrimaryLanding = routeType === 'top_level' && slug === siteConfig.primaryLandingSlug;
-const effectiveContentRole = isPrimaryLanding ? 'informational-pillar' : contentRole;
+const effectiveContentRole = isPrimaryLanding ? 'informational-pillar' : (architectureEntry?.contentRole ?? contentRole);
 const displayTitle = isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 가이드` : title;
 const seoTitle = isPrimaryLanding
   ? `${siteConfig.region} 꽃배달 이용 가이드 | 장소·상황·주문 준비 | ${siteConfig.brand}`
@@ -225,8 +230,8 @@ const breadcrumbSchema = {
     class:list={['article-shell', isPrimaryLanding && 'primary-landing']}
     data-snapshot-id={snapshotId}
     data-content-role={effectiveContentRole}
-    data-page-type={pageType}
-    data-localization-policy={localizationPolicy}
+    data-page-type={effectivePageType}
+    data-localization-policy={effectiveLocalizationPolicy}
     data-page-role={effectivePageRole}
     data-primary-keyword={effectivePrimaryKeyword}
     data-intent-key={effectiveIntentKey}
