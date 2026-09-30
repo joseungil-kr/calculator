@@ -21,10 +21,12 @@ const categoryLabel: Record<string, string> = {
   guide: '꽃 선택', funeral: '장례식장', places: '장소별', occasions: '상황별',
   'flower-knowledge': '꽃 관리', 'order-help': '주문 도움',
 };
-const categoryCounts = articles.reduce<Record<string, number>>((acc, article) => {
-  acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
-  return acc;
-}, {});
+const categoryCounts = articles
+  .filter((article) => article.data.routeType === 'category')
+  .reduce<Record<string, number>>((acc, article) => {
+    acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+    return acc;
+  }, {});
 const trust = [
   ['truck', '전국 배송 가능', '지역별 추가배송비 발생 가능'],
   ['clock', '신속한 주문 접수', '전화 08:00~23:00'],
