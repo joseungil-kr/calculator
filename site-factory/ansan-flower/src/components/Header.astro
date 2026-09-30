@@ -11,10 +11,12 @@ const articles = await getCollection(
   ({ data }) => (data.draftStatus === 'approved' || data.draftStatus === 'published') && activePageKeys.has(data.pageKey)
 );
 
-const categoryCounts = articles.reduce<Record<string, number>>((acc, article) => {
-  acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
-  return acc;
-}, {});
+const categoryCounts = articles
+  .filter((article) => article.data.routeType === 'category')
+  .reduce<Record<string, number>>((acc, article) => {
+    acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+    return acc;
+  }, {});
 
 const visibleNav = siteConfig.nav.filter((item) => {
   if (!('category' in item)) return true;
