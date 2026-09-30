@@ -173,6 +173,19 @@
       "file": "src/content/articles/ansan-flower-launch-21.md",
       "url": "/flower-knowledge/bouquet-vs-basket-practical-guide/",
       "status": "approved"
+    },
+    {
+      "pageKey": "ansan-flower-launch-31",
+      "draftKey": "ansan-flower-launch-31-draft-v1",
+      "sourceRecordId": "recHQyyIXZIYS4gNz",
+      "publishQueueRecordId": "recUDr8vxzqj2Vl54",
+      "snapshotId": "ansan-flower-launch-31-v2",
+      "slug": "korea-ansan-hospital-funeral-condolence-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "file": "src/content/articles/ansan-flower-launch-31.md",
+      "url": "/funeral/korea-ansan-hospital-funeral-condolence-wreath/",
+      "status": "approved"
     }
   ]
 }
