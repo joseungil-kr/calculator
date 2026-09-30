@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "templates": {
+    "flower-local-v1": {
+      "status": "ready",
+      "sourceRepo": "joseungil-kr/fwith-site-factory",
+      "sourceBranch": "site-factory-hwaseong-v1",
+      "sourceRoot": "site-factory/hwaseong-flower",
+      "allowedCategories": [
+        "guide",
+        "funeral",
+        "places",
+        "occasions",
+        "flower-knowledge",
+        "order-help"
+      ],
+      "allowedPageTypes": [
+        "general-guide",
+        "funeral-facility",
+        "hospital",
+        "station-transit",
+        "opening-business",
+        "event-venue",
+        "flower-knowledge",
+        "order-help"
+      ],
+      "notes": "Validated regional flower template. Launcher must rewrite site config, domain, region asset paths and business truth; never copy article content."
+    },
+    "skycar-local-v1": {
+      "status": "planned",
+      "sourceRepo": "joseungil-kr/fwith-site-factory",
+      "sourceBranch": null,
+      "sourceRoot": null,
+      "allowedCategories": [
+        "areas",
+        "work-types",
+        "equipment",
+        "site-conditions",
+        "quote-help",
+        "safety-permits"
+      ],
+      "allowedPageTypes": [
+        "local-area",
+        "work-type-guide",
+        "equipment-selection",
+        "site-condition",
+        "quote-help",
+        "safety-permit",
+        "general-guide"
+      ],
+      "notes": "Blueprint exists but code/UI scaffold is not yet implemented. Launcher must block rather than fall back to flower-local-v1."
+    }
+  }
+}
