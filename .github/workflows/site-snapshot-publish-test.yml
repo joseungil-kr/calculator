@@ -134,6 +134,15 @@ jobs:
           title = block("---BEGIN-TITLE---", "---END-TITLE---")
           description = block("---BEGIN-DESCRIPTION---", "---END-DESCRIPTION---")
           content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
+
+          # Renderer contract: ArticleLayout owns the single page H1.
+          # Normalize one accidental leading Markdown H1, but reject any other H1 in body.
+          content_lines = content_md.splitlines()
+          if content_lines and re.match(r"^#\\s+", content_lines[0]):
+              content_md = "\\n".join(content_lines[1:]).lstrip()
+          if re.search(r"(?m)^#\\s+", content_md):
+              raise SystemExit("content_md must not contain Markdown H1; ArticleLayout renders the page H1")
+
           source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
           source_names = [x.strip() for x in optional_block("---BEGIN-SOURCE-NAMES---", "---END-SOURCE-NAMES---").splitlines() if x.strip()]
           source_types = [x.strip() for x in optional_block("---BEGIN-SOURCE-TYPES---", "---END-SOURCE-TYPES---").splitlines() if x.strip()]
