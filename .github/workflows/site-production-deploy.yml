@@ -251,5 +251,5 @@ jobs:
           SITE_KEY: ${{ steps.target.outputs.site_key }}
           SITE_URL: ${{ steps.target.outputs.site_url }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Production deploy succeeded. site=$SITE_KEY URL=$SITE_URL live QA and IndexNow completed."
-          gh issue close "${{ github.event.issue.number }}"
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "Production deploy succeeded. site=$SITE_KEY URL=$SITE_URL live QA and IndexNow completed."
+          gh issue close -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}"
