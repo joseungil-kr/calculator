@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "sites": {
+    "ansan-flower-test": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-ansan-v1",
+      "root": "site-factory/ansan-flower",
+      "siteUrl": "https://ansan.fwith.kr",
+      "primaryLandingSlug": "안산꽃배달",
+      "heroPath": "images/ansan/hero-B-original.png",
+      "worker": "ansan-flower-guide-test",
+      "launchMode": "live",
+      "productionEnabled": true,
+      "naverVerification": "29e360fe4ae4a2cb72015166abc3b386c2e49974",
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+    },
+    "suwon-flower-test": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-suwon-v1",
+      "root": "site-factory/suwon-flower",
+      "siteUrl": "https://suwon.fwith.kr",
+      "primaryLandingSlug": "수원꽃배달",
+      "heroPath": "images/suwon/hero-B-original.png",
+      "worker": "suwon-flower-guide-test",
+      "launchMode": "live",
+      "productionEnabled": true,
+      "naverVerification": "80fedf144567fea99fe833d2937731a190854c41",
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+    },
+    "hwaseong-flower": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-hwaseong-v1",
+      "root": "site-factory/hwaseong-flower",
+      "siteUrl": "https://hwaseong.fwith.kr",
+      "primaryLandingSlug": "화성꽃배달",
+      "heroPath": "images/hwaseong/hero-B-original.png",
+      "worker": "hwaseong-flower-guide-test",
+      "launchMode": "staging",
+      "productionEnabled": false,
+      "naverVerification": "",
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+    }
+  }
+}
