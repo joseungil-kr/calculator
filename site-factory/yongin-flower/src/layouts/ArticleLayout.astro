@@ -6,7 +6,7 @@ import architecture from '../data/architecture.json';
 import '../styles/article.css';
 
 type ArchitectureEntry = {
-  pageKey: string; url: string; pageRole?: string; parentHub?: string; primaryKeyword?: string;
+  pageKey: string; url: string; pageRole?: string; parentHub?: string | null; primaryKeyword?: string;
   intentKey?: string; pageType?: string; contentRole?: string; localizationPolicy?: string;
   sitemapIndexable?: boolean; status?: string; canonicalUrl?: string;
 };
