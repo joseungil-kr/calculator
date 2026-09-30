@@ -1,0 +1,46 @@
+name: Yongin Flower v2 Build Test
+
+on:
+  push:
+    branches:
+      - site-factory-yongin-v2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/yongin-flower
+    env:
+      SITE_URL: https://yongin.fwith.kr
+      SITE_INDEXABLE: "false"
+      HERO_PATH: images/yongin/hero-B-original.png
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Astro check and build
+        run: npm run build
+      - name: Verify bootstrap outputs
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/robots.txt
+          test -f dist/_headers
+          test -f dist/sitemap-index.xml
+          test ! -f dist/용인꽃배달/index.html
+      - name: Deterministic static SEO QA
+        run: python3 scripts/qa_static.py
+      - name: Site graph QA
+        run: node scripts/qa_site_graph.mjs
+      - name: Cloudflare Workers deploy dry run
+        run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run

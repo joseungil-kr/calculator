@@ -8,9 +8,9 @@ import re
 import sys
 
 DIST = Path("dist")
-EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://hwaseong.fwith.kr").rstrip("/")
+EXPECTED_ORIGIN = os.environ.get("SITE_URL", "https://yongin.fwith.kr").rstrip("/")
 PRIMARY_LANDING_SLUG = os.environ.get("PRIMARY_LANDING_SLUG", "").strip("/")
-HERO_PATH = os.environ.get("HERO_PATH", "images/hwaseong/hero-B-original.png").strip("/")
+HERO_PATH = os.environ.get("HERO_PATH", "images/yongin/hero-B-original.png").strip("/")
 INDEXABLE_ENV = os.environ.get("SITE_INDEXABLE")
 PRODUCTION_MARKER = Path("production-indexing.enabled").exists()
 INDEXABLE = (
@@ -108,7 +108,7 @@ def target_exists(href: str) -> bool:
 
 manifest_data = json.loads((Path("src/data/publish-manifest.json")).read_text(encoding="utf-8"))
 approved_pages = [p for p in manifest_data.get("pages", []) if p.get("status") in ("approved", "published")]
-hub_categories = ("guide", "funeral", "places", "occasions", "flower-knowledge", "order-help")
+hub_categories = ("funeral", "business", "school", "event", "gift", "order")
 hub_counts = {
     category: sum(
         1 for p in approved_pages
