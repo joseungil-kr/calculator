@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-25
-snapshotId: yongin-flower-launch-25-canary-v2
+snapshotId: yongin-flower-launch-25-launch-v2
 sourceDraftKey: yongin-flower-launch-25-draft-v2
 sourceRecordId: recdbjmW1mbWWkjCb
 slug: "yongin-same-day-flower-order"

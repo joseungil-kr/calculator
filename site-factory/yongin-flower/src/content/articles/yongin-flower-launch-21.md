@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-21
-snapshotId: yongin-flower-launch-21-canary-v2
+snapshotId: yongin-flower-launch-21-launch-v2
 sourceDraftKey: yongin-flower-launch-21-draft-v2
 sourceRecordId: rec6LfvHb0uucl3IM
 slug: "yongin-severance-visit-flowers"
