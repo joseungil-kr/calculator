@@ -1,22 +1,75 @@
 ---
 import { getCollection } from 'astro:content';
 import HubIndex from '../../components/HubIndex.astro';
+import architecture from '../../data/architecture.json';
 import { siteConfig } from '../../config/site';
 
+const categoryMeta = {
+  guide: {
+    eyebrow: '꽃 선택',
+    title: `${siteConfig.region} 꽃 선택·이용 가이드`,
+    intro: '꽃 형태와 전달 방식, 이용 조건을 검색 목적별로 나눠 확인합니다.',
+    description: `${siteConfig.region} 꽃배달을 준비할 때 필요한 꽃 선택과 이용 기준을 정리합니다.`,
+  },
+  funeral: {
+    eyebrow: '장례식장',
+    title: `${siteConfig.region} 장례식장 근조화환 안내`,
+    intro: '장례식장별 위치·연락처·빈소·주차·화환 반입처럼 주문 전에 확인해야 할 실제 정보를 정리합니다.',
+    description: `${siteConfig.region} 장례식장별 근조화환 주문에 필요한 위치, 연락처, 빈소, 주차, 반입 확인사항을 안내합니다.`,
+  },
+  places: {
+    eyebrow: '장소별',
+    title: `${siteConfig.region} 장소별 꽃배달 안내`,
+    intro: '역·병원·대학·행사장처럼 목적지가 정해졌을 때 이동·수령·반입 조건을 확인합니다.',
+    description: `${siteConfig.region}의 역, 병원, 대학, 행사장 등 실제 장소별 꽃배달 확인사항을 안내합니다.`,
+  },
+  occasions: {
+    eyebrow: '상황별',
+    title: `${siteConfig.region} 상황별 축하꽃·꽃배달 안내`,
+    intro: '개업·이전·졸업·행사 등 보내는 이유에 따라 꽃 형태와 확인사항을 구분합니다.',
+    description: `${siteConfig.region} 개업, 이전, 졸업, 행사 등 상황별 꽃배달 선택 기준을 안내합니다.`,
+  },
+  'flower-knowledge': {
+    eyebrow: '꽃 관리',
+    title: '꽃 선택과 관리 가이드',
+    intro: '꽃다발·꽃바구니·화환의 형태 차이와 이동·보관·관리 기준을 정리합니다.',
+    description: '꽃 형태별 선택과 이동, 보관, 계절별 관리에 필요한 실용 정보를 안내합니다.',
+  },
+  'order-help': {
+    eyebrow: '주문 도움',
+    title: `${siteConfig.region} 꽃배달 주문 준비 가이드`,
+    intro: '주소·수령자·시간·문구처럼 주문 직전에 빠뜨리기 쉬운 정보를 정리합니다.',
+    description: `${siteConfig.region} 꽃배달 주문 전 필요한 주소, 수령자, 시간, 문구와 확인사항을 안내합니다.`,
+  },
+} as const;
+
+type Category = keyof typeof categoryMeta;
+
 export async function getStaticPaths() {
+  const activePageKeys = new Set(
+    (architecture.pages || [])
+      .filter((page) => page.sitemapIndexable !== false && page.status !== 'merged')
+      .map((page) => page.pageKey)
+  );
   const articles = await getCollection(
     'articles',
     ({ data }) =>
       (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
-      data.category === 'funeral'
+      data.routeType === 'category' &&
+      activePageKeys.has(data.pageKey)
   );
-  return articles.length ? [{ params: { category: 'funeral' }, props: {} }] : [];
+  const categories = [...new Set(articles.map((article) => article.data.category))]
+    .filter((category): category is Category => category in categoryMeta);
+  return categories.map((category) => ({ params: { category }, props: { category } }));
 }
+
+const { category } = Astro.props as { category: Category };
+const meta = categoryMeta[category];
 ---
 <HubIndex
-  category="funeral"
-  eyebrow="장례식장"
-  title={`${siteConfig.region} 장례식장 근조화환 안내`}
-  intro="장례식장별 위치·연락처·빈소 확인·주차·화환 반입처럼 주문 전에 확인해야 할 실제 정보를 정리합니다."
-  description={`${siteConfig.region} 장례식장별 근조화환 주문에 필요한 위치, 연락처, 빈소, 주차, 반입 확인사항을 안내합니다.`}
+  category={category}
+  eyebrow={meta.eyebrow}
+  title={meta.title}
+  intro={meta.intro}
+  description={meta.description}
 />
