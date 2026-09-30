@@ -1,0 +1,233 @@
+name: Site Factory Production Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_key:
+        description: Site Factory site_key registered in .github/site-factory-sites.json
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-production-${{ inputs.site_key }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout control plane
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: control
+
+      - name: Resolve registered site
+        id: target
+        env:
+          SITE_KEY: ${{ inputs.site_key }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          registry = json.load(open("control/.github/site-factory-sites.json", encoding="utf-8"))
+          key = os.environ["SITE_KEY"]
+          site = registry.get("sites", {}).get(key)
+          if not site:
+              raise SystemExit(f"Unregistered site_key: {key}")
+          if site.get("repo") != os.environ.get("GITHUB_REPOSITORY"):
+              raise SystemExit("Registry repo mismatch")
+          if not site.get("productionEnabled"):
+              raise SystemExit(f"Production disabled for {key}; Launch Gate has not passed")
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as fh:
+              for k, v in {
+                  "site_key": key,
+                  "branch": site["branch"],
+                  "root": site["root"],
+                  "site_url": site["siteUrl"],
+                  "primary_slug": site["primaryLandingSlug"],
+                  "hero_path": site["heroPath"],
+                  "naver_verification": site.get("naverVerification", ""),
+                  "indexnow_key": site["indexnowKey"],
+              }.items():
+                  fh.write(f"{k}={v}\n")
+          PY
+
+      - name: Checkout target site branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.target.outputs.branch }}
+          fetch-depth: 2
+          path: target
+
+      - name: Resolve target revision
+        id: revision
+        working-directory: target
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Require production indexing marker
+        working-directory: target/${{ steps.target.outputs.root }}
+        run: test -f production-indexing.enabled
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate Cloudflare secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
+
+      - name: Install dependencies
+        working-directory: target/${{ steps.target.outputs.root }}
+        run: npm install
+
+      - name: Build indexable production site
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: "true"
+          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
+          HERO_PATH: ${{ steps.target.outputs.hero_path }}
+        run: npm run build
+
+      - name: Static and graph QA
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: "true"
+          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
+          HERO_PATH: ${{ steps.target.outputs.hero_path }}
+        run: |
+          python3 scripts/qa_static.py
+          node scripts/qa_site_graph.mjs
+
+      - name: Deploy production to Cloudflare
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: "true"
+        run: npx --yes wrangler@latest deploy
+
+      - name: Wait for exact production revision and validate live site
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          SITE_ORIGIN: ${{ steps.target.outputs.site_url }}
+          EXPECTED_REVISION: ${{ steps.revision.outputs.sha }}
+          NAVER_VERIFICATION: ${{ steps.target.outputs.naver_verification }}
+          INDEXNOW_KEY: ${{ steps.target.outputs.indexnow_key }}
+          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
+        run: |
+          python3 - <<'PY'
+          import json, os, time, urllib.request, urllib.error
+          from pathlib import Path
+          from urllib.parse import quote, unquote
+
+          base = os.environ["SITE_ORIGIN"].rstrip("/")
+          expected = os.environ["EXPECTED_REVISION"]
+          verification = os.environ.get("NAVER_VERIFICATION", "")
+          key = os.environ["INDEXNOW_KEY"]
+          primary = os.environ["PRIMARY_LANDING_SLUG"]
+          pages = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8")).get("pages", [])
+
+          def get(path):
+              req = urllib.request.Request(base + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-ProductionQA/2.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as res:
+                      return res.status, res.read().decode("utf-8", errors="replace")
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", errors="replace")
+
+          last = None
+          for attempt in range(1, 49):
+              try:
+                  code, home = get("/")
+                  assert code == 200
+                  lower = home.lower()
+                  assert f'name="site-factory-revision" content="{expected}"' in home
+                  assert "index,follow" in lower and "noindex" not in lower
+                  if verification:
+                      assert f'name="naver-site-verification" content="{verification}"' in home
+                  assert base + "/" in unquote(home)
+
+                  code, robots = get("/robots.txt")
+                  assert code == 200
+                  assert "Allow: /" in robots and "Disallow: /" not in robots
+                  assert f"Sitemap: {base}/sitemap-index.xml" in robots
+
+                  code, key_body = get(f"/{key}.txt")
+                  assert code == 200 and key_body.strip() == key
+
+                  code, smi = get("/sitemap-index.xml")
+                  assert code == 200 and "sitemap-0.xml" in smi
+                  code, sitemap = get("/sitemap-0.xml")
+                  sitemap = unquote(sitemap)
+                  assert code == 200
+
+                  for page in pages:
+                      code, html = get(page["url"])
+                      assert code == 200, page["url"]
+                      assert f'data-snapshot-id="{page["snapshotId"]}"' in html
+                      assert "index,follow" in html.lower() and "noindex" not in html.lower()
+                      assert "application/ld+json" in html
+                      assert "<h1" in html.lower()
+                      assert base + page["url"] in unquote(html)
+                      assert base + page["url"] in sitemap
+
+                  code, article = get("/" + primary + "/")
+                  assert code == 200
+                  assert "<h1" in article.lower()
+
+                  nf_code, nf = get("/production-qa-definitely-not-found/")
+                  assert nf_code == 404
+                  assert "페이지를 찾을 수 없습니다" in nf
+
+                  print(f"PRODUCTION QA PASSED: site={base}, revision={expected}, pages={len(pages)}")
+                  break
+              except Exception as exc:
+                  last = exc
+                  print(f"Attempt {attempt}/48: waiting for exact production revision: {exc}")
+                  time.sleep(5)
+          else:
+              raise SystemExit(f"Production did not become ready: {last}")
+          PY
+
+      - name: Determine initial or incremental IndexNow submission
+        id: mode
+        working-directory: target
+        env:
+          ROOT: ${{ steps.target.outputs.root }}
+        run: |
+          if git cat-file -e "HEAD^:$ROOT/production-indexing.enabled" 2>/dev/null; then
+            echo "initial=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "initial=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "base=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
+
+      - name: Select IndexNow URLs
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: "true"
+          INDEXNOW_INITIAL: ${{ steps.mode.outputs.initial }}
+          INDEXNOW_BASE_SHA: ${{ steps.mode.outputs.base }}
+        run: node scripts/select_indexnow_urls.mjs
+
+      - name: Submit IndexNow
+        working-directory: target/${{ steps.target.outputs.root }}
+        env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          INDEXNOW_KEY: ${{ steps.target.outputs.indexnow_key }}
+          INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
+        run: node scripts/submit_indexnow.mjs
