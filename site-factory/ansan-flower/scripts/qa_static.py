@@ -109,8 +109,22 @@ def target_exists(href: str) -> bool:
 manifest_data = json.loads((Path("src/data/publish-manifest.json")).read_text(encoding="utf-8"))
 approved_pages = [p for p in manifest_data.get("pages", []) if p.get("status") in ("approved", "published")]
 hub_categories = ("guide", "funeral", "places", "occasions", "flower-knowledge", "order-help")
-hub_counts = {category: sum(1 for p in approved_pages if p.get("category") == category) for category in hub_categories}
+hub_counts = {
+    category: sum(
+        1 for p in approved_pages
+        if p.get("routeType") == "category" and p.get("category") == category
+    )
+    for category in hub_categories
+}
 thin_hub_files = {f"{category}/index.html" for category, count in hub_counts.items() if 0 < count < 3}
+
+architecture_path = Path("src/data/architecture.json")
+architecture_data = json.loads(architecture_path.read_text(encoding="utf-8")) if architecture_path.exists() else {"pages": []}
+intentional_noindex_routes = {
+    p.get("url")
+    for p in architecture_data.get("pages", [])
+    if p.get("sitemapIndexable") is False or p.get("status") == "merged"
+}
 
 html_files = sorted(DIST.rglob("*.html"))
 if not html_files:
@@ -153,9 +167,14 @@ for file in html_files:
     rel_file = file.relative_to(DIST).as_posix()
     is_404 = rel_file in ("404.html", "404/index.html")
     is_thin_hub = rel_file in thin_hub_files
+    page_route = "/" if rel_file == "index.html" else "/" + rel_file.removesuffix("index.html")
+    intentional_noindex = page_route in intentional_noindex_routes
     if is_404:
         if not parser.meta_robots or "noindex" not in parser.meta_robots:
             errors.append(f"{file}: 404 page must remain noindex")
+    elif INDEXABLE and intentional_noindex:
+        if not parser.meta_robots or "noindex" not in parser.meta_robots:
+            errors.append(f"{file}: architecture-excluded page must remain noindex")
     elif INDEXABLE and is_thin_hub:
         if not parser.meta_robots or "noindex" not in parser.meta_robots:
             errors.append(f"{file}: thin hub (<3 documents) must remain noindex")
