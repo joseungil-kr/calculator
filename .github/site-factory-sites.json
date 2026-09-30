@@ -12,7 +12,26 @@
       "launchMode": "live",
       "productionEnabled": true,
       "naverVerification": "29e360fe4ae4a2cb72015166abc3b386c2e49974",
-      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
+      "templateKey": "flower-local-v1",
+      "allowedCategories": [
+        "guide",
+        "funeral",
+        "places",
+        "occasions",
+        "flower-knowledge",
+        "order-help"
+      ],
+      "allowedPageTypes": [
+        "general-guide",
+        "funeral-facility",
+        "hospital",
+        "station-transit",
+        "opening-business",
+        "event-venue",
+        "flower-knowledge",
+        "order-help"
+      ]
     },
     "suwon-flower-test": {
       "repo": "joseungil-kr/fwith-site-factory",
@@ -25,7 +44,26 @@
       "launchMode": "live",
       "productionEnabled": true,
       "naverVerification": "80fedf144567fea99fe833d2937731a190854c41",
-      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
+      "templateKey": "flower-local-v1",
+      "allowedCategories": [
+        "guide",
+        "funeral",
+        "places",
+        "occasions",
+        "flower-knowledge",
+        "order-help"
+      ],
+      "allowedPageTypes": [
+        "general-guide",
+        "funeral-facility",
+        "hospital",
+        "station-transit",
+        "opening-business",
+        "event-venue",
+        "flower-knowledge",
+        "order-help"
+      ]
     },
     "hwaseong-flower": {
       "repo": "joseungil-kr/fwith-site-factory",
@@ -38,7 +76,26 @@
       "launchMode": "live",
       "productionEnabled": true,
       "naverVerification": "",
-      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
+      "templateKey": "flower-local-v1",
+      "allowedCategories": [
+        "guide",
+        "funeral",
+        "places",
+        "occasions",
+        "flower-knowledge",
+        "order-help"
+      ],
+      "allowedPageTypes": [
+        "general-guide",
+        "funeral-facility",
+        "hospital",
+        "station-transit",
+        "opening-business",
+        "event-venue",
+        "flower-knowledge",
+        "order-help"
+      ]
     }
   }
 }
