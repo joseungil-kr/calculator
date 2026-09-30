@@ -113,7 +113,8 @@ const formatDate = (date?: Date) =>
 
 const inferSource = (url: string) => {
   const host = new URL(url).hostname.replace(/^www\./, '');
-  if (host.endsWith('hwaseong.go.kr')) return { name: '화성시', type: '공식기관' };\n  if (host.endsWith('suwon.go.kr')) return { name: '수원특례시', type: '공식기관' };
+  if (host.endsWith('hwaseong.go.kr')) return { name: '화성시', type: '공식기관' };
+  if (host.endsWith('suwon.go.kr')) return { name: '수원특례시', type: '공식기관' };
   if (host.endsWith('ansan.go.kr')) return { name: '안산시', type: '공식기관' };
   if (host === 'rhs.org.uk' || host.endsWith('.rhs.org.uk')) return { name: 'Royal Horticultural Society (RHS)', type: '전문기관' };
   if (host.endsWith('.go.kr')) return { name: host, type: '공식기관' };
