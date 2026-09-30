@@ -205,16 +205,60 @@ jobs:
           article_path = root / article_rel
           manifest_path = root / "src/data/publish-manifest.json"
           page_map_path = root / "src/data/page-map.json"
+          architecture_path = root / "src/data/architecture.json"
 
           if not manifest_path.exists() or not page_map_path.exists():
               raise SystemExit("Snapshot baseline files are missing")
 
           manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
           page_map = json.loads(page_map_path.read_text(encoding="utf-8"))
+          architecture = (
+              json.loads(architecture_path.read_text(encoding="utf-8"))
+              if architecture_path.exists()
+              else {"schemaVersion": 1, "siteKey": site_key, "ruleset": "Site Factory 상위노출 설계 규칙 v1", "pages": []}
+          )
 
           url = f"/{slug}/" if route_type == "top_level" else f"/{category}/{slug}/"
           verified_date = verified_at[:10]
           quote = lambda s: json.dumps(s, ensure_ascii=False)
+
+          primary_keyword = optional_line_value("PRIMARY_KEYWORD", "").strip() or title.strip()
+          page_role = optional_line_value("PAGE_ROLE", "").strip()
+          if not page_role:
+              if route_type == "top_level":
+                  page_role = "REGION_SERVICE_LANDING"
+              elif page_type in {"funeral-facility", "hospital", "station-transit", "event-venue"} or category in {"places", "funeral"}:
+                  page_role = "PLACE_LANDING"
+              elif page_type in {"opening-business", "order-help"} or category in {"occasions", "order-help"}:
+                  page_role = "INTENT_LANDING"
+              else:
+                  page_role = "INFORMATION_GUIDE"
+          allowed_page_roles = {
+              "REGION_SERVICE_LANDING", "PLACE_LANDING", "INTENT_LANDING",
+              "PRICE_GUIDE", "INFORMATION_GUIDE"
+          }
+          if page_role not in allowed_page_roles:
+              raise SystemExit(f"Unsafe PAGE_ROLE: {page_role}")
+
+          parent_hub = optional_line_value(
+              "PARENT_HUB",
+              "/" if route_type == "top_level" else f"/{category}/"
+          ).strip()
+          if not parent_hub.startswith("/") or not parent_hub.endswith("/"):
+              raise SystemExit(f"Unsafe PARENT_HUB: {parent_hub}")
+
+          intent_key = optional_line_value("INTENT_KEY", "").strip()
+          if not intent_key:
+              normalized_keyword = re.sub(r"[?？]+$", "", primary_keyword).strip()
+              intent_key = f"{region}|{page_role}|{normalized_keyword}"
+
+          for existing in architecture.get("pages", []):
+              if existing.get("pageKey") == page_key:
+                  continue
+              if existing.get("status", "primary") == "primary" and existing.get("intentKey") == intent_key:
+                  raise SystemExit(
+                      f"Intent collision: {intent_key} already belongs to {existing.get('pageKey')}"
+                  )
           sources_yaml = "\n".join("  - " + quote(u) for u in source_urls)
 
           structured_sources_yaml = ""
@@ -303,7 +347,35 @@ jobs:
           page_map["pages"].sort(key=lambda p: p["pageKey"])
           page_map_path.write_text(json.dumps(page_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-          print(f"Rendered snapshot {snapshot_id} site={site_key} route={route_type} url={url} -> {article_path}")
+          architecture_entry = {
+              "pageKey": page_key,
+              "url": url,
+              "pageRole": page_role,
+              "parentHub": parent_hub,
+              "primaryKeyword": primary_keyword,
+              "intentKey": intent_key,
+              "pageType": page_type,
+              "contentRole": content_role,
+              "localizationPolicy": localization_policy,
+              "category": category,
+              "sitemapIndexable": True,
+              "status": "primary"
+          }
+          architecture["schemaVersion"] = 1
+          architecture["siteKey"] = site_key
+          architecture["ruleset"] = "Site Factory 상위노출 설계 규칙 v1"
+          architecture["pages"] = [
+              p for p in architecture.get("pages", [])
+              if p.get("pageKey") != page_key
+          ]
+          architecture["pages"].append(architecture_entry)
+          architecture["pages"].sort(key=lambda p: p["pageKey"])
+          architecture_path.write_text(
+              json.dumps(architecture, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+          print(f"Rendered snapshot {snapshot_id} site={site_key} role={page_role} intent={intent_key} route={route_type} url={url} -> {article_path}")
           PY
 
       - name: Validate and build snapshot before push
@@ -330,7 +402,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$ROOT/src/content/articles/" \
                   "$ROOT/src/data/publish-manifest.json" \
-                  "$ROOT/src/data/page-map.json"
+                  "$ROOT/src/data/page-map.json" \
+                  "$ROOT/src/data/architecture.json"
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
