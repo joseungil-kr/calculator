@@ -83,7 +83,7 @@
       rgba(255,249,251,.76) 51%,
       rgba(255,249,251,.28) 70%,
       rgba(255,249,251,.04) 86%),
-    url('/images/suwon/hero-B-original.png') 64% center / cover no-repeat;
+    url('/images/hwaseong/hero-B-original.png') 64% center / cover no-repeat;
   border-bottom:1px solid #f7e4ea;
 }
 .article-shell > .container{position:relative;z-index:1;}
@@ -115,7 +115,7 @@
         rgba(255,249,251,.94) 46%,
         rgba(255,249,251,.56) 70%,
         rgba(255,249,251,.15) 100%),
-      url('/images/suwon/hero-B-original.png') 68% center / cover no-repeat;
+      url('/images/hwaseong/hero-B-original.png') 68% center / cover no-repeat;
   }
 }
 @media(max-width:560px){
@@ -128,7 +128,7 @@
         rgba(255,249,251,.95) 60%,
         rgba(255,249,251,.57) 83%,
         rgba(255,249,251,.22) 100%),
-      url('/images/suwon/hero-B-original.png') 72% center / cover no-repeat;
+      url('/images/hwaseong/hero-B-original.png') 72% center / cover no-repeat;
   }
   .article-header{min-height:245px;margin-bottom:34px;}
   .primary-landing .article-header{padding:18px 0;border-radius:0;}
