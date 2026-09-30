@@ -1,5 +1,5 @@
 {
-  "name": "suwon-flower-site-factory",
+  "name": "yongin-flower-site-factory-v2",
   "type": "module",
   "private": true,
   "scripts": {
@@ -12,12 +12,6 @@
     "inject:banners": "node scripts/inject_article_banners.mjs",
     "qa:seo": "node scripts/qa_seo_score.mjs"
   },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.0.0",
-    "astro": "^7.3.5"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.0",
-    "typescript": "^5.9.0"
-  }
+  "dependencies": { "@astrojs/sitemap": "^3.0.0", "astro": "^7.3.5" },
+  "devDependencies": { "@astrojs/check": "^0.9.0", "typescript": "^5.9.0" }
 }
