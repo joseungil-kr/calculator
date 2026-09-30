@@ -58,8 +58,9 @@ export async function getStaticPaths() {
       data.routeType === 'category' &&
       activePageKeys.has(data.pageKey)
   );
+  const allowedCategories = new Set(['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help']);
   const categories = [...new Set(articles.map((article) => article.data.category))]
-    .filter((category): category is Category => category in categoryMeta);
+    .filter((category) => allowedCategories.has(category)) as Category[];
   return categories.map((category) => ({ params: { category }, props: { category } }));
 }
 
