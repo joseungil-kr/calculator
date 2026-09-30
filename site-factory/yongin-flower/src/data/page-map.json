@@ -4,7 +4,7 @@
   "pages": [
     {
       "pageKey": "yongin-flower-launch-01",
-      "snapshotId": "yongin-flower-launch-01-canary-v2",
+      "snapshotId": "yongin-flower-launch-01-launch-v2",
       "slug": "yongin-severance-funeral-condolence-wreath",
       "category": "funeral",
       "routeType": "category",
@@ -13,8 +13,58 @@
       "sourceRecordId": "recoHCbpYsMDzoqa8"
     },
     {
+      "pageKey": "yongin-flower-launch-02",
+      "snapshotId": "yongin-flower-launch-02-launch-v2",
+      "slug": "yongin-peace-forest-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/yongin-peace-forest-funeral-wreath/",
+      "status": "approved",
+      "sourceRecordId": "recRQd7EGZqcz5VUv"
+    },
+    {
+      "pageKey": "yongin-flower-launch-03",
+      "snapshotId": "yongin-flower-launch-03-launch-v2",
+      "slug": "davoss-hospital-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/davoss-hospital-funeral-wreath/",
+      "status": "approved",
+      "sourceRecordId": "recgtzrun8gOD9miT"
+    },
+    {
+      "pageKey": "yongin-flower-launch-04",
+      "snapshotId": "yongin-flower-launch-04-launch-v2",
+      "slug": "yongin-seoul-hospital-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/yongin-seoul-hospital-funeral-wreath/",
+      "status": "approved",
+      "sourceRecordId": "recurayyXqE1wIHQS"
+    },
+    {
+      "pageKey": "yongin-flower-launch-05",
+      "snapshotId": "yongin-flower-launch-05-launch-v2",
+      "slug": "bojeong-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/bojeong-funeral-wreath/",
+      "status": "approved",
+      "sourceRecordId": "rec6Td6wTqe8KYDsF"
+    },
+    {
+      "pageKey": "yongin-flower-launch-06",
+      "snapshotId": "yongin-flower-launch-06-launch-v2",
+      "slug": "giheung-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/giheung-funeral-wreath/",
+      "status": "approved",
+      "sourceRecordId": "rectweJMDFTGhpftA"
+    },
+    {
       "pageKey": "yongin-flower-launch-07",
-      "snapshotId": "yongin-flower-launch-07-canary-v2",
+      "snapshotId": "yongin-flower-launch-07-launch-v2",
       "slug": "suji-opening-flowers",
       "category": "business",
       "routeType": "category",
@@ -23,8 +73,48 @@
       "sourceRecordId": "recmqCgOaPRgstmXq"
     },
     {
+      "pageKey": "yongin-flower-launch-08",
+      "snapshotId": "yongin-flower-launch-08-launch-v2",
+      "slug": "jukjeon-office-relocation-flowers",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/jukjeon-office-relocation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recU1Ap3T4ZcYgCnO"
+    },
+    {
+      "pageKey": "yongin-flower-launch-09",
+      "snapshotId": "yongin-flower-launch-09-launch-v2",
+      "slug": "giheung-business-opening-relocation-flowers",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/giheung-business-opening-relocation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "reckbhmO2f33ygIEU"
+    },
+    {
+      "pageKey": "yongin-flower-launch-10",
+      "snapshotId": "yongin-flower-launch-10-launch-v2",
+      "slug": "dongbaek-store-opening-flowers",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/dongbaek-store-opening-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recNrb7adJlIjTPja"
+    },
+    {
+      "pageKey": "yongin-flower-launch-11",
+      "snapshotId": "yongin-flower-launch-11-launch-v2",
+      "slug": "yeokbuk-gimnyangjang-opening-flowers",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/yeokbuk-gimnyangjang-opening-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recZyjf34DATnc0JO"
+    },
+    {
       "pageKey": "yongin-flower-launch-12",
-      "snapshotId": "yongin-flower-launch-12-canary-v2",
+      "snapshotId": "yongin-flower-launch-12-launch-v2",
       "slug": "dankook-jukjeon-graduation-flowers",
       "category": "school",
       "routeType": "category",
@@ -33,8 +123,48 @@
       "sourceRecordId": "recRar2wxg1feGddq"
     },
     {
+      "pageKey": "yongin-flower-launch-13",
+      "snapshotId": "yongin-flower-launch-13-launch-v2",
+      "slug": "yongin-arts-science-graduation-flowers",
+      "category": "school",
+      "routeType": "category",
+      "url": "/school/yongin-arts-science-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "rechWBmMrOpD6B112"
+    },
+    {
+      "pageKey": "yongin-flower-launch-14",
+      "snapshotId": "yongin-flower-launch-14-launch-v2",
+      "slug": "yongin-university-graduation-flowers",
+      "category": "school",
+      "routeType": "category",
+      "url": "/school/yongin-university-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recuvBiOF8m5kLEEA"
+    },
+    {
+      "pageKey": "yongin-flower-launch-15",
+      "snapshotId": "yongin-flower-launch-15-launch-v2",
+      "slug": "myongji-natural-campus-graduation-flowers",
+      "category": "school",
+      "routeType": "category",
+      "url": "/school/myongji-natural-campus-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recxF56L80lH7NVIk"
+    },
+    {
+      "pageKey": "yongin-flower-launch-16",
+      "snapshotId": "yongin-flower-launch-16-launch-v2",
+      "slug": "hufs-global-campus-graduation-flowers",
+      "category": "school",
+      "routeType": "category",
+      "url": "/school/hufs-global-campus-graduation-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recfLevCMKDMX5MRD"
+    },
+    {
       "pageKey": "yongin-flower-launch-17",
-      "snapshotId": "yongin-flower-launch-17-canary-v2",
+      "snapshotId": "yongin-flower-launch-17-launch-v2",
       "slug": "poeun-art-hall-performance-flowers",
       "category": "event",
       "routeType": "category",
@@ -43,8 +173,38 @@
       "sourceRecordId": "recYC9rNMQTsBzSCM"
     },
     {
+      "pageKey": "yongin-flower-launch-18",
+      "snapshotId": "yongin-flower-launch-18-launch-v2",
+      "slug": "yongin-arts-center-event-flowers",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/yongin-arts-center-event-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recGrqrSqEmd29f5p"
+    },
+    {
+      "pageKey": "yongin-flower-launch-19",
+      "snapshotId": "yongin-flower-launch-19-launch-v2",
+      "slug": "jukjeon-outdoor-music-hall-event-flowers",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/jukjeon-outdoor-music-hall-event-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recJIEY9CelncNYQf"
+    },
+    {
+      "pageKey": "yongin-flower-launch-20",
+      "snapshotId": "yongin-flower-launch-20-launch-v2",
+      "slug": "everland-event-gift-flowers",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/everland-event-gift-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recVaAseYiWnVUVkd"
+    },
+    {
       "pageKey": "yongin-flower-launch-21",
-      "snapshotId": "yongin-flower-launch-21-canary-v2",
+      "snapshotId": "yongin-flower-launch-21-launch-v2",
       "slug": "yongin-severance-visit-flowers",
       "category": "gift",
       "routeType": "category",
@@ -53,14 +213,94 @@
       "sourceRecordId": "rec6LfvHb0uucl3IM"
     },
     {
+      "pageKey": "yongin-flower-launch-22",
+      "snapshotId": "yongin-flower-launch-22-launch-v2",
+      "slug": "jukjeon-station-bouquet-pickup",
+      "category": "gift",
+      "routeType": "category",
+      "url": "/gift/jukjeon-station-bouquet-pickup/",
+      "status": "approved",
+      "sourceRecordId": "recrg3SR9RrDYcoNY"
+    },
+    {
+      "pageKey": "yongin-flower-launch-23",
+      "snapshotId": "yongin-flower-launch-23-launch-v2",
+      "slug": "giheung-station-bouquet-pickup",
+      "category": "gift",
+      "routeType": "category",
+      "url": "/gift/giheung-station-bouquet-pickup/",
+      "status": "approved",
+      "sourceRecordId": "rec7hHRChhtab1RWm"
+    },
+    {
+      "pageKey": "yongin-flower-launch-24",
+      "snapshotId": "yongin-flower-launch-24-launch-v2",
+      "slug": "suji-anniversary-flower-gift",
+      "category": "gift",
+      "routeType": "category",
+      "url": "/gift/suji-anniversary-flower-gift/",
+      "status": "approved",
+      "sourceRecordId": "rec7p59OPpPwErXAK"
+    },
+    {
       "pageKey": "yongin-flower-launch-25",
-      "snapshotId": "yongin-flower-launch-25-canary-v2",
+      "snapshotId": "yongin-flower-launch-25-launch-v2",
       "slug": "yongin-same-day-flower-order",
       "category": "order",
       "routeType": "category",
       "url": "/order/yongin-same-day-flower-order/",
       "status": "approved",
       "sourceRecordId": "recdbjmW1mbWWkjCb"
+    },
+    {
+      "pageKey": "yongin-flower-launch-26",
+      "snapshotId": "yongin-flower-launch-26-launch-v2",
+      "slug": "yongin-flower-delivery-price-guide",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-flower-delivery-price-guide/",
+      "status": "approved",
+      "sourceRecordId": "rec8btCdnccLv6Mlu"
+    },
+    {
+      "pageKey": "yongin-flower-launch-27",
+      "snapshotId": "yongin-flower-launch-27-launch-v2",
+      "slug": "yongin-congrats-wreath-ribbon-message",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-congrats-wreath-ribbon-message/",
+      "status": "approved",
+      "sourceRecordId": "recnoqJhaaM77sXcH"
+    },
+    {
+      "pageKey": "yongin-flower-launch-28",
+      "snapshotId": "yongin-flower-launch-28-launch-v2",
+      "slug": "yongin-funeral-wreath-order-checklist",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-funeral-wreath-order-checklist/",
+      "status": "approved",
+      "sourceRecordId": "rec1Q69YuUYuakWkf"
+    },
+    {
+      "pageKey": "yongin-flower-launch-29",
+      "snapshotId": "yongin-flower-launch-29-launch-v2",
+      "slug": "yongin-event-flower-order-checklist",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-event-flower-order-checklist/",
+      "status": "approved",
+      "sourceRecordId": "recZJgwCpKhUI3yI7"
+    },
+    {
+      "pageKey": "yongin-flower-launch-30",
+      "snapshotId": "yongin-flower-launch-30-launch-v2",
+      "slug": "yongin-apartment-flower-delivery-info",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/yongin-apartment-flower-delivery-info/",
+      "status": "approved",
+      "sourceRecordId": "rec1WiBZ0aOblSXzD"
     }
   ]
 }
