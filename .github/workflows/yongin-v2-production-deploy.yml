@@ -1,0 +1,154 @@
+name: Yongin Flower v2 Production Deploy
+
+on:
+  push:
+    branches:
+      - site-factory-yongin-v2
+    paths:
+      - "site-factory/yongin-flower/**"
+      - ".github/workflows/yongin-v2-production-deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yongin-v2-production
+  cancel-in-progress: true
+
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/yongin-flower
+    env:
+      SITE_URL: https://yongin.fwith.kr
+      SITE_ORIGIN: https://yongin.fwith.kr
+      SITE_INDEXABLE: "true"
+      HERO_PATH: images/yongin/hero-B-original.png
+      INDEXNOW_KEY: 92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98
+      INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Require production indexing marker
+        run: test -f production-indexing.enabled
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate Cloudflare secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build indexable production site
+        run: npm run build
+
+      - name: Static SEO QA
+        run: python3 scripts/qa_static.py
+
+      - name: Site graph QA
+        run: node scripts/qa_site_graph.mjs
+
+      - name: Deploy production custom domain
+        run: npx --yes wrangler@latest deploy -c wrangler.production.jsonc
+
+      - name: Wait for exact production revision and validate all launch URLs
+        env:
+          EXPECTED_REVISION: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import json, os, time, urllib.request, urllib.error
+          from pathlib import Path
+          from urllib.parse import quote, unquote
+
+          base = os.environ["SITE_ORIGIN"].rstrip("/")
+          expected = os.environ["EXPECTED_REVISION"]
+          manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
+          pages = manifest.get("pages", [])
+          assert len(pages) == 30, len(pages)
+
+          def get(path):
+              url = base + quote(path, safe="/")
+              req = urllib.request.Request(url, headers={"User-Agent":"SiteFactory-YonginProductionQA/2.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as res:
+                      return res.status, res.read().decode("utf-8", errors="replace")
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", errors="replace")
+
+          last = None
+          for attempt in range(1, 61):
+              try:
+                  code, home = get("/")
+                  assert code == 200
+                  lower = home.lower()
+                  assert f'name="site-factory-revision" content="{expected}"' in home
+                  assert "index,follow" in lower and "noindex" not in lower
+                  assert "<h1" in lower and "용인" in home and "꽃배달" in home
+
+                  code, robots = get("/robots.txt")
+                  assert code == 200
+                  assert "Allow: /" in robots and "Disallow: /" not in robots
+                  assert "Sitemap: https://yongin.fwith.kr/sitemap-index.xml" in robots
+
+                  code, si = get("/sitemap-index.xml")
+                  assert code == 200 and "sitemap-0.xml" in si
+                  code, sitemap = get("/sitemap-0.xml")
+                  assert code == 200
+                  sitemap = unquote(sitemap)
+
+                  hubs = ["/funeral/","/business/","/school/","/event/","/gift/","/order/"]
+                  for hub in hubs:
+                      code, html = get(hub)
+                      assert code == 200, hub
+                      assert "index,follow" in html.lower() and "noindex" not in html.lower(), hub
+                      assert base + hub in sitemap, hub
+
+                  for page in pages:
+                      code, html = get(page["url"])
+                      assert code == 200, page["url"]
+                      assert f'data-snapshot-id="{page["snapshotId"]}"' in html, page["url"]
+                      assert "index,follow" in html.lower() and "noindex" not in html.lower(), page["url"]
+                      assert "<h1" in html.lower(), page["url"]
+                      assert "application/ld+json" in html, page["url"]
+                      assert base + page["url"] in sitemap, page["url"]
+
+                  duplicate_code, _ = get("/용인꽃배달/")
+                  assert duplicate_code == 404, duplicate_code
+
+                  code, key_body = get("/" + os.environ["INDEXNOW_KEY"] + ".txt")
+                  assert code == 200 and key_body.strip() == os.environ["INDEXNOW_KEY"]
+
+                  print(f"YONGIN V2 PRODUCTION QA PASSED: revision={expected}, pages={len(pages)}, hubs={len(hubs)}")
+                  break
+              except Exception as exc:
+                  last = exc
+                  print(f"Attempt {attempt}/60: waiting for custom domain/revision: {exc}")
+                  time.sleep(5)
+          else:
+              raise SystemExit(f"Yongin production did not become ready: {last}")
+          PY
+
+      - name: Select IndexNow URLs
+        env:
+          INDEXNOW_INITIAL: "true"
+        run: node scripts/select_indexnow_urls.mjs
+
+      - name: Submit IndexNow
+        run: node scripts/submit_indexnow.mjs
