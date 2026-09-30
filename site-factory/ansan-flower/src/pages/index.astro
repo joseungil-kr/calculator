@@ -4,10 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
 import business from '../data/business-truth.json';
 import { siteConfig } from '../config/site';
+import architecture from '../data/architecture.json';
+
+const activePageKeys = new Set((architecture.pages || []).filter((page) => page.sitemapIndexable !== false && page.status !== 'merged').map((page) => page.pageKey));
 
 const articles = (await getCollection(
   'articles',
-  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+  ({ data }) => (data.draftStatus === 'approved' || data.draftStatus === 'published') && activePageKeys.has(data.pageKey)
 )).sort((a, b) => b.data.pageKey.localeCompare(a.data.pageKey, 'ko'));
 
 const recent = articles.slice(0, 6);
