@@ -145,5 +145,5 @@ jobs:
           SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_KEY: ${{ steps.target.outputs.site_key }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$SITE_URL noindex/robots Disallow verified."
-          gh issue close "${{ github.event.issue.number }}"
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$SITE_URL noindex/robots Disallow verified."
+          gh issue close -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}"
