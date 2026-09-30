@@ -65,7 +65,7 @@
       "intentKey": "안산|INFORMATION_GUIDE|안산의 계절이 바뀌면 꽃 고르는 기준도 달라질까요",
       "pageType": "flower-knowledge",
       "contentRole": "question-answer",
-      "localizationPolicy": "global",
+      "localizationPolicy": "local-optional",
       "sitemapIndexable": true,
       "status": "primary"
     },
@@ -169,7 +169,7 @@
       "intentKey": "안산|INFORMATION_GUIDE|안산 꽃다발 꽃바구니",
       "pageType": "flower-knowledge",
       "contentRole": "question-answer",
-      "localizationPolicy": "global",
+      "localizationPolicy": "local-optional",
       "sitemapIndexable": true,
       "status": "primary"
     },
