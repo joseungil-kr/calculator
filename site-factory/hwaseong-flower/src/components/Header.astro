@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../config/site';
+import business from '../data/business-truth.json';
+
+const articles = await getCollection(
+  'articles',
+  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+);
+
+const categoryCounts = articles.reduce<Record<string, number>>((acc, article) => {
+  acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+  return acc;
+}, {});
+
+const visibleNav = siteConfig.nav.filter((item) => {
+  if (!('category' in item)) return true;
+  return (categoryCounts[item.category] ?? 0) >= item.menuMinChildren;
+});
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/" aria-label={`${siteConfig.brand} 홈`}>
+      <span class="brand-mark" aria-hidden="true">✿</span>
+      <span class="brand-copy">
+        <strong>{siteConfig.brandBase}</strong>
+        <small>{siteConfig.region} 꽃배달</small>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="주요 메뉴">
+      {visibleNav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-order">
+      <a class="header-phone" href={business.phoneHref} aria-label={`${business.phone} 전화주문`}>
+        <span>전화주문</span>
+        <strong>{business.phone}</strong>
+        <small>{business.phoneOrderHours}</small>
+      </a>
+      <a class="header-online" href={business.onlineOrderUrl} rel="noopener">
+        <span>온라인 주문</span>
+        <small>24시간 주문 가능</small>
+      </a>
+    </div>
+  </div>
+</header>

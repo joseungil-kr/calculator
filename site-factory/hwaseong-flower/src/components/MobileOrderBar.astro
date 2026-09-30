@@ -1,0 +1,13 @@
+---
+import business from '../data/business-truth.json';
+---
+<div class="mobile-order-bar" aria-label="빠른 주문">
+  <a class="mobile-order-phone" href={business.phoneHref}>
+    <span>전화주문</span>
+    <strong>{business.phone}</strong>
+  </a>
+  <a class="mobile-order-online" href={business.onlineOrderUrl} rel="noopener">
+    <span>24시간</span>
+    <strong>온라인 주문</strong>
+  </a>
+</div>

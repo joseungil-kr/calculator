@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import HubIndex from '../../components/HubIndex.astro';
+import { siteConfig } from '../../config/site';
+
+export async function getStaticPaths() {
+  const articles = await getCollection(
+    'articles',
+    ({ data }) =>
+      (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
+      data.category === 'funeral'
+  );
+  return articles.length ? [{ params: { category: 'funeral' }, props: {} }] : [];
+}
+---
+<HubIndex
+  category="funeral"
+  eyebrow="장례식장"
+  title={`${siteConfig.region} 장례식장 근조화환 안내`}
+  intro="장례식장별 위치·연락처·빈소 확인·주차·화환 반입처럼 주문 전에 확인해야 할 실제 정보를 정리합니다."
+  description={`${siteConfig.region} 장례식장별 근조화환 주문에 필요한 위치, 연락처, 빈소, 주차, 반입 확인사항을 안내합니다.`}
+/>
