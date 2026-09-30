@@ -13,14 +13,19 @@ jobs:
     if: startsWith(github.event.issue.title, '[SITE-STAGING-DEPLOY]')
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout control registry
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: control
+
       - name: Resolve staging target
         id: target
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python3 - <<'PY'
-          import os
-
+          import json, os
           body = os.environ.get("ISSUE_BODY", "")
           values = {}
           for line in body.splitlines():
@@ -29,37 +34,40 @@ jobs:
                   values[k.strip()] = v.strip()
 
           site_key = values.get("SITE_KEY", "")
-          allowed = {
-              "suwon-flower-test": {
-                  "branch": "site-factory-suwon-v1",
-                  "root": "site-factory/suwon-flower",
-                  "worker": "suwon-flower-guide-test",
-              },
-          }
-          if site_key not in allowed:
+          registry = json.load(open("control/.github/site-factory-sites.json", encoding="utf-8"))
+          target = registry.get("sites", {}).get(site_key)
+          if not target:
               raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
-          target = allowed[site_key]
+          if target.get("repo") != os.environ.get("GITHUB_REPOSITORY"):
+              raise SystemExit("Registry repo mismatch")
+
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
-              fh.write(f"site_key={site_key}\n")
-              fh.write(f"branch={target['branch']}\n")
-              fh.write(f"root={target['root']}\n")
-              fh.write(f"worker={target['worker']}\n")
+              for k, v in {
+                  "site_key": site_key,
+                  "branch": target["branch"],
+                  "root": target["root"],
+                  "worker": target["worker"],
+                  "site_url": target["siteUrl"],
+                  "primary_slug": target["primaryLandingSlug"],
+                  "hero_path": target["heroPath"],
+              }.items():
+                  fh.write(f"{k}={v}\n")
           PY
 
       - name: Checkout target branch
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.target.outputs.branch }}
+          path: target
 
       - name: Verify Cloudflare credentials exist
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-            echo "Cloudflare GitHub Actions credentials are not configured in this repository."
-            exit 2
-          fi
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -67,55 +75,75 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        working-directory: ${{ steps.target.outputs.root }}
+        working-directory: target/${{ steps.target.outputs.root }}
         run: npm install
 
       - name: Validate and build noindex staging
-        working-directory: ${{ steps.target.outputs.root }}
+        working-directory: target/${{ steps.target.outputs.root }}
         env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_INDEXABLE: "false"
+          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
+          HERO_PATH: ${{ steps.target.outputs.hero_path }}
         run: |
           npm run build
           python3 scripts/qa_static.py
 
-      - name: Deploy staging Worker
-        id: deploy
-        working-directory: ${{ steps.target.outputs.root }}
+      - name: Deploy noindex staging Worker/custom domain
+        working-directory: target/${{ steps.target.outputs.root }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_INDEXABLE: "false"
-        run: |
-          set -o pipefail
-          npx --yes wrangler@latest deploy 2>&1 | tee deploy.log
-          URL=$(grep -Eo 'https://[A-Za-z0-9._-]+\.workers\.dev' deploy.log | tail -1 || true)
-          if [ -z "$URL" ]; then
-            URL="https://${{ steps.target.outputs.worker }}.joseungil.workers.dev"
-          fi
-          echo "url=$URL" >> "$GITHUB_OUTPUT"
+        run: npx --yes wrangler@latest deploy
 
-      - name: Smoke test staging
+      - name: Verify custom domain remains noindex
         env:
-          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          DEPLOY_URL: ${{ steps.target.outputs.site_url }}
+          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
         run: |
-          for i in $(seq 1 18); do
-            code=$(curl -sS -o /tmp/home.html -w "%{http_code}" "$DEPLOY_URL/" || true)
-            if [ "$code" = "200" ]; then
-              grep -Eiq 'name="robots"[^>]*noindex|content="noindex' /tmp/home.html
-              curl -fsS "$DEPLOY_URL/robots.txt" | grep -Fq 'Disallow: /'
-              echo "Staging is live and remains noindex: $DEPLOY_URL"
-              exit 0
-            fi
-            sleep 5
-          done
-          echo "Staging endpoint did not become ready."
-          exit 1
+          python3 - <<'PY'
+          import os, time, urllib.request, urllib.error
+          from urllib.parse import quote
+
+          base = os.environ["DEPLOY_URL"].rstrip("/")
+          primary = os.environ["PRIMARY_LANDING_SLUG"]
+
+          def get(path):
+              req = urllib.request.Request(base + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-StagingQA/2.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as res:
+                      return res.status, res.read().decode("utf-8", errors="replace")
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", errors="replace")
+
+          last = None
+          for attempt in range(1, 61):
+              try:
+                  code, home = get("/")
+                  assert code == 200
+                  assert "noindex" in home.lower()
+                  code, robots = get("/robots.txt")
+                  assert code == 200 and "Disallow: /" in robots
+                  code, article = get("/" + primary + "/")
+                  assert code == 200 and "noindex" in article.lower()
+                  assert "<h1" in article.lower()
+                  print(f"STAGING QA PASSED: {base}")
+                  break
+              except Exception as exc:
+                  last = exc
+                  print(f"Attempt {attempt}/60: staging not ready yet: {exc}")
+                  time.sleep(5)
+          else:
+              raise SystemExit(f"Staging did not become ready: {last}")
+          PY
 
       - name: Report success
         env:
           GH_TOKEN: ${{ github.token }}
-          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_KEY: ${{ steps.target.outputs.site_key }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$DEPLOY_URL noindex/robots Disallow verified."
+          gh issue comment "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$SITE_URL noindex/robots Disallow verified."
           gh issue close "${{ github.event.issue.number }}"
