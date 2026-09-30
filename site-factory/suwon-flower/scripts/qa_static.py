@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 import json
 import os
+import re
 import sys
 
 DIST = Path("dist")
@@ -253,6 +254,20 @@ else:
     except Exception as exc:
         errors.append(f"Could not validate hero image dimensions: {exc}")
 
+# Verify local asset URLs referenced by compiled CSS actually exist in dist.
+for css_file in DIST.rglob("*.css"):
+    css_text = css_file.read_text(encoding="utf-8", errors="replace")
+    for raw in re.findall(r"url\(([^)]+)\)", css_text):
+        ref = raw.strip().strip("\\\"'")
+        if not ref.startswith("/") or ref.startswith("//"):
+            continue
+        asset_ref = ref.split("?", 1)[0].split("#", 1)[0].lstrip("/")
+        if not asset_ref or asset_ref.startswith("data:"):
+            continue
+        asset = DIST / asset_ref
+        if not asset.exists():
+            errors.append(f"CSS references missing local asset: {css_file.relative_to(DIST)} -> /{asset_ref}")
+
 if errors:
     print("\nSTATIC QA FAILED")
     for error in errors:
@@ -261,4 +276,4 @@ if errors:
 
 mode = "INDEXABLE" if INDEXABLE else "NOINDEX TEST"
 print(f"STATIC QA PASSED ({mode}): {len(html_files)} HTML files checked")
-print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon, product assets, order banners and original-resolution hero verified.")
+print("Canonical, title, description, H1, OG, Twitter, image ALT, JSON-LD, internal links, sitemap, robots, favicon, product assets, order banners, CSS local assets and original-resolution hero verified.")
