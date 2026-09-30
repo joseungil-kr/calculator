@@ -84,10 +84,31 @@ const seoTitle = isPrimaryLanding
   ? `${siteConfig.region} 꽃배달 이용 가이드 | 장소·상황·주문 준비 | ${siteConfig.brand}`
   : `${title} | ${siteConfig.brand}`;
 
+const activePageKeys = new Set(
+  (architecture.pages || [])
+    .filter((page) => page.sitemapIndexable !== false && page.status !== 'merged')
+    .map((page) => page.pageKey)
+);
 const allArticles = await getCollection(
   'articles',
-  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+  ({ data }) =>
+    (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
+    activePageKeys.has(data.pageKey)
 );
+const detailCategoryCounts = allArticles
+  .filter((article) => article.data.routeType === 'category')
+  .reduce<Record<string, number>>((acc, article) => {
+    acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+    return acc;
+  }, {});
+const primaryQuickLinks = [
+  { href: '/funeral/', category: 'funeral', no: '01', title: '장례식장에 보내는 꽃이라면', body: '근조화환 주문 전 빈소·시설·반입 정보를 확인합니다.' },
+  { href: '/places/', category: 'places', no: '02', title: '장소가 정해졌다면', body: '대학·병원·역·행사장처럼 목적지별 확인 조건을 봅니다.' },
+  { href: '/occasions/', category: 'occasions', no: '03', title: '보내는 이유가 정해졌다면', body: '졸업·개업·행사·이전처럼 상황별 선택 기준을 비교합니다.' },
+  { href: '/order-help/', category: 'order-help', no: '04', title: '주문 직전이라면', body: '수령 장소·시간·문구·주문정보처럼 빠뜨리기 쉬운 항목을 확인합니다.' },
+  { href: '/flower-knowledge/', category: 'flower-knowledge', no: '05', title: '꽃 선택과 관리가 궁금하다면', body: '꽃다발·꽃바구니의 형태 차이와 기본 관리 기준을 확인합니다.' },
+  { href: '/guide/', category: 'guide', no: '06', title: '무엇부터 고를지 고민이라면', body: '서비스·상황·전달 방식에 맞는 선택 가이드부터 확인합니다.' },
+].filter((item) => (detailCategoryCounts[item.category] ?? 0) > 0);
 const hrefFor = (article: (typeof allArticles)[number]) =>
   article.data.routeType === 'top_level'
     ? `/${article.data.slug}/`
@@ -229,14 +250,11 @@ const breadcrumbSchema = {
         </div>
       </header>
 
-      {isPrimaryLanding && (
+      {isPrimaryLanding && primaryQuickLinks.length > 0 && (
         <div class="landing-quick" aria-label={`${siteConfig.region} 꽃배달 이용 가이드 빠른 탐색`}>
-          <a href="/funeral/"><span>01</span><strong>장례식장에 보내는 꽃이라면</strong><small>근조화환 주문 전 빈소·시설·반입 정보를 확인합니다.</small></a>
-          <a href="/places/"><span>02</span><strong>장소가 정해졌다면</strong><small>대학·병원·역·행사장처럼 목적지별 확인 조건을 봅니다.</small></a>
-          <a href="/occasions/"><span>03</span><strong>보내는 이유가 정해졌다면</strong><small>졸업·개업·행사·이전처럼 상황별 선택 기준을 비교합니다.</small></a>
-          <a href="/order-help/"><span>04</span><strong>주문 직전이라면</strong><small>수령 장소·시간·문구·주문정보처럼 빠뜨리기 쉬운 항목을 확인합니다.</small></a>
-          <a href="/flower-knowledge/"><span>05</span><strong>꽃 선택과 관리가 궁금하다면</strong><small>꽃다발·꽃바구니의 형태 차이와 기본 관리 기준을 확인합니다.</small></a>
-          <a href="/guide/"><span>06</span><strong>무엇부터 고를지 고민이라면</strong><small>서비스·상황·전달 방식에 맞는 선택 가이드부터 확인합니다.</small></a>
+          {primaryQuickLinks.map((item) => (
+            <a href={item.href}><span>{item.no}</span><strong>{item.title}</strong><small>{item.body}</small></a>
+          ))}
         </div>
       )}
 
