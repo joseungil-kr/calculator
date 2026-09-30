@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import { siteConfig } from '../config/site';
+import architecture from '../data/architecture.json';
 import '../styles/article.css';
 
 type SourceRef = {
@@ -66,6 +67,14 @@ const categoryLabel: Record<string, string> = {
   'order-help': '주문 도움',
 };
 
+const architectureEntry = (architecture.pages || []).find((page) => page.pageKey === pageKey);
+const effectivePageRole = architectureEntry?.pageRole ?? 'INFORMATION_GUIDE';
+const effectivePrimaryKeyword = architectureEntry?.primaryKeyword ?? '';
+const effectiveIntentKey = architectureEntry?.intentKey ?? '';
+const effectiveParentHub = architectureEntry?.parentHub ?? `/${category}/`;
+const architectureIndexable = architectureEntry?.sitemapIndexable !== false && architectureEntry?.status !== 'merged';
+const canonicalPath = architectureEntry?.canonicalUrl ?? Astro.url.pathname;
+
 const categoryHref = `/${category}/`;
 const regionLandingHref = `/${siteConfig.primaryLandingSlug}/`;
 const isPrimaryLanding = routeType === 'top_level' && slug === siteConfig.primaryLandingSlug;
@@ -75,10 +84,31 @@ const seoTitle = isPrimaryLanding
   ? `${siteConfig.region} 꽃배달 이용 가이드 | 장소·상황·주문 준비 | ${siteConfig.brand}`
   : `${title} | ${siteConfig.brand}`;
 
+const activePageKeys = new Set(
+  (architecture.pages || [])
+    .filter((page) => page.sitemapIndexable !== false && page.status !== 'merged')
+    .map((page) => page.pageKey)
+);
 const allArticles = await getCollection(
   'articles',
-  ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published'
+  ({ data }) =>
+    (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
+    activePageKeys.has(data.pageKey)
 );
+const detailCategoryCounts = allArticles
+  .filter((article) => article.data.routeType === 'category')
+  .reduce<Record<string, number>>((acc, article) => {
+    acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
+    return acc;
+  }, {});
+const primaryQuickLinks = [
+  { href: '/funeral/', category: 'funeral', no: '01', title: '장례식장에 보내는 꽃이라면', body: '근조화환 주문 전 빈소·시설·반입 정보를 확인합니다.' },
+  { href: '/places/', category: 'places', no: '02', title: '장소가 정해졌다면', body: '대학·병원·역·행사장처럼 목적지별 확인 조건을 봅니다.' },
+  { href: '/occasions/', category: 'occasions', no: '03', title: '보내는 이유가 정해졌다면', body: '졸업·개업·행사·이전처럼 상황별 선택 기준을 비교합니다.' },
+  { href: '/order-help/', category: 'order-help', no: '04', title: '주문 직전이라면', body: '수령 장소·시간·문구·주문정보처럼 빠뜨리기 쉬운 항목을 확인합니다.' },
+  { href: '/flower-knowledge/', category: 'flower-knowledge', no: '05', title: '꽃 선택과 관리가 궁금하다면', body: '꽃다발·꽃바구니의 형태 차이와 기본 관리 기준을 확인합니다.' },
+  { href: '/guide/', category: 'guide', no: '06', title: '무엇부터 고를지 고민이라면', body: '서비스·상황·전달 방식에 맞는 선택 가이드부터 확인합니다.' },
+].filter((item) => (detailCategoryCounts[item.category] ?? 0) > 0);
 const hrefFor = (article: (typeof allArticles)[number]) =>
   article.data.routeType === 'top_level'
     ? `/${article.data.slug}/`
@@ -114,7 +144,6 @@ const formatDate = (date?: Date) =>
 
 const inferSource = (url: string) => {
   const host = new URL(url).hostname.replace(/^www\./, '');
-  if (host.endsWith('hwaseong.go.kr')) return { name: '화성시', type: '공식기관' };
   if (host.endsWith('suwon.go.kr')) return { name: '수원특례시', type: '공식기관' };
   if (host.endsWith('ansan.go.kr')) return { name: '안산시', type: '공식기관' };
   if (host === 'rhs.org.uk' || host.endsWith('.rhs.org.uk')) return { name: 'Royal Horticultural Society (RHS)', type: '전문기관' };
@@ -175,7 +204,7 @@ const breadcrumbSchema = {
   itemListElement: breadcrumbItems,
 };
 ---
-<BaseLayout title={seoTitle} description={description} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
+<BaseLayout title={seoTitle} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable ? "noindex,follow,max-image-preview:large" : undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -185,6 +214,10 @@ const breadcrumbSchema = {
     data-content-role={effectiveContentRole}
     data-page-type={pageType}
     data-localization-policy={localizationPolicy}
+    data-page-role={effectivePageRole}
+    data-primary-keyword={effectivePrimaryKeyword}
+    data-intent-key={effectiveIntentKey}
+    data-parent-hub={effectiveParentHub}
   >
     <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -200,6 +233,12 @@ const breadcrumbSchema = {
         )}
       </nav>
 
+      {architectureEntry?.status === 'merged' && architectureEntry?.canonicalUrl && (
+        <aside class="merged-page-notice" aria-label="통합 페이지 안내">
+          이 내용은 더 명확한 검색의도로 통합되었습니다. <a href={architectureEntry.canonicalUrl}>통합된 최신 페이지 보기 →</a>
+        </aside>
+      )}
+
       <header class="article-header">
         <span class="eyebrow">{isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 안내` : categoryLabel[category] ?? category}</span>
         <h1>{displayTitle}</h1>
@@ -211,14 +250,11 @@ const breadcrumbSchema = {
         </div>
       </header>
 
-      {isPrimaryLanding && (
+      {isPrimaryLanding && primaryQuickLinks.length > 0 && (
         <div class="landing-quick" aria-label={`${siteConfig.region} 꽃배달 이용 가이드 빠른 탐색`}>
-          <a href="/funeral/"><span>01</span><strong>장례식장에 보내는 꽃이라면</strong><small>근조화환 주문 전 빈소·시설·반입 정보를 확인합니다.</small></a>
-          <a href="/places/"><span>02</span><strong>장소가 정해졌다면</strong><small>대학·병원·역·행사장처럼 목적지별 확인 조건을 봅니다.</small></a>
-          <a href="/occasions/"><span>03</span><strong>보내는 이유가 정해졌다면</strong><small>졸업·개업·행사·이전처럼 상황별 선택 기준을 비교합니다.</small></a>
-          <a href="/order-help/"><span>04</span><strong>주문 직전이라면</strong><small>수령 장소·시간·문구·주문정보처럼 빠뜨리기 쉬운 항목을 확인합니다.</small></a>
-          <a href="/flower-knowledge/"><span>05</span><strong>꽃 선택과 관리가 궁금하다면</strong><small>꽃다발·꽃바구니의 형태 차이와 기본 관리 기준을 확인합니다.</small></a>
-          <a href="/guide/"><span>06</span><strong>무엇부터 고를지 고민이라면</strong><small>서비스·상황·전달 방식에 맞는 선택 가이드부터 확인합니다.</small></a>
+          {primaryQuickLinks.map((item) => (
+            <a href={item.href}><span>{item.no}</span><strong>{item.title}</strong><small>{item.body}</small></a>
+          ))}
         </div>
       )}
 
