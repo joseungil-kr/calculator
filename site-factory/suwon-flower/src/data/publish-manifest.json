@@ -44,6 +44,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-05",
+      "draftKey": "suwon-flower-launch-05-draft-v2",
+      "sourceRecordId": "recDHyV8qjlHwb1Tc",
+      "publishQueueRecordId": "recQIoNmL0HdsTFqT",
+      "snapshotId": "suwon-flower-launch-05-v1",
+      "slug": "suwon-convention-event-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-05.md",
+      "url": "/places/suwon-convention-event-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-07",
       "draftKey": "suwon-flower-factory-draft-07",
       "sourceRecordId": "rec8MaZg72NM0iGQT",

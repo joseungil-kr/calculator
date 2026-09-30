@@ -44,6 +44,20 @@
       "status": "primary"
     },
     {
+      "pageKey": "suwon-flower-launch-05",
+      "url": "/places/suwon-convention-event-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/places/",
+      "primaryKeyword": "수원컨벤션센터 행사 꽃, 설치형과 전달형을 어떻게 나눠야 할까요?",
+      "intentKey": "수원|PLACE_LANDING|수원컨벤션센터 행사 꽃, 설치형과 전달형을 어떻게 나눠야 할까요",
+      "pageType": "event-venue",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "category": "places",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
       "pageKey": "suwon-flower-launch-07",
       "url": "/occasions/ingyedong-opening-flowers/",
       "pageRole": "INTENT_LANDING",
