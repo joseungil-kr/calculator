@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import HubIndex from '../../components/HubIndex.astro';
 import { siteConfig } from '../../config/site';
 
+type Category = 'funeral' | 'business' | 'school' | 'event' | 'gift' | 'order';
+
 const definitions = {
   funeral: {
     eyebrow: '근조·장례',
@@ -43,14 +45,14 @@ const definitions = {
 } as const;
 
 export async function getStaticPaths() {
+  const allowed = new Set(['funeral', 'business', 'school', 'event', 'gift', 'order']);
   const articles = await getCollection('articles', ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published');
-  const categories = [...new Set(articles.map((article) => article.data.category))];
-  return categories.filter((category) => category in definitions).map((category) => ({
-    params: { category },
-    props: { definition: definitions[category as keyof typeof definitions] },
-  }));
+  const categories = [...new Set(articles.map((article) => article.data.category))].filter((category) => allowed.has(category));
+  return categories.map((category) => ({ params: { category } }));
 }
-const { category } = Astro.params as { category: keyof typeof definitions };
-const { definition } = Astro.props as { definition: (typeof definitions)[keyof typeof definitions] };
+
+const category = Astro.params.category as Category;
+const definition = definitions[category];
+if (!definition) throw new Error(`UNKNOWN_V2_HUB: ${category}`);
 ---
 <HubIndex category={category} {...definition} />
