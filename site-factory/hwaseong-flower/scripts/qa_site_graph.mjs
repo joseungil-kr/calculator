@@ -90,14 +90,18 @@ for (const [source, { html }] of pages) {
     if (target !== source && pages.has(target)) inbound.set(target, (inbound.get(target) ?? 0) + 1);
   }
 }
-for (const [route, count] of inbound) if (route !== '/' && count === 0) errors.push(`Orphan page detected: ${route}`);
+for (const [route, count] of inbound) {
+  const html = pages.get(route)?.html ?? '';
+  const noindex = /noindex/i.test(robotsFor(html));
+  if (route !== '/' && count === 0 && !noindex) errors.push(`Orphan page detected: ${route}`);
+}
 
 const manifest = JSON.parse(readFileSync('src/data/publish-manifest.json', 'utf8'));
 const approved = (manifest.pages || []).filter(p => ['approved','published'].includes(p.status));
 const hubCategories = ['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help'];
 const hubStats = [];
 for (const category of hubCategories) {
-  const children = approved.filter(p => p.category === category);
+  const children = approved.filter(p => p.routeType === 'category' && p.category === category);
   const hub = `/${category}/`;
   if (children.length === 0) {
     if (pages.has(hub)) errors.push(`Hub route exists without real content: ${hub}`);
