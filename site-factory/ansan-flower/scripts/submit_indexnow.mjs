@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-const origin = (process.env.SITE_ORIGIN || 'https://ansan.fwith.kr').replace(/\/$/, '');
+const origin = (process.env.SITE_URL || process.env.SITE_ORIGIN || 'https://ansan.fwith.kr').replace(/\/$/, '');
 const key = process.env.INDEXNOW_KEY;
 const endpoint = process.env.INDEXNOW_ENDPOINT || 'https://searchadvisor.naver.com/indexnow';
 
