@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-17
-snapshotId: yongin-flower-launch-17-canary-v2
+snapshotId: yongin-flower-launch-17-launch-v2
 sourceDraftKey: yongin-flower-launch-17-draft-v2
 sourceRecordId: recYC9rNMQTsBzSCM
 slug: "poeun-art-hall-performance-flowers"

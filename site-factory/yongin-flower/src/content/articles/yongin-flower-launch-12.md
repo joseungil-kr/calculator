@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-12
-snapshotId: yongin-flower-launch-12-canary-v2
+snapshotId: yongin-flower-launch-12-launch-v2
 sourceDraftKey: yongin-flower-launch-12-draft-v2
 sourceRecordId: recRar2wxg1feGddq
 slug: "dankook-jukjeon-graduation-flowers"

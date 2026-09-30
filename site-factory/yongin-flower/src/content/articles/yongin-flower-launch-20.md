@@ -1,0 +1,64 @@
+---
+pageKey: yongin-flower-launch-20
+snapshotId: yongin-flower-launch-20-launch-v2
+sourceDraftKey: yongin-flower-launch-20-draft-v2
+sourceRecordId: recVaAseYiWnVUVkd
+slug: "everland-event-gift-flowers"
+routeType: category
+title: "에버랜드 주변 기념·행사 꽃, 전달 장소와 수령 방식을 먼저 정하는 법"
+description: "에버랜드 주변 기념·행사 꽃, 전달 장소와 수령 방식을 먼저 정하는 법에 필요한 이동·수령·행사 준비사항을 공식정보 확인 원칙에 따라 안내합니다."
+category: event
+structureType: scenario_based
+pageType: event-venue
+contentRole: question-answer
+localizationPolicy: local-required
+region: 용인
+verifiedAt: 2026-10-01
+publishedAt: 2026-10-01
+sourceUrls:
+  - "https://reservation.everland.com/web/el.do?method=productMain"
+  - "https://reservation.everland.com/web/main.do?method=guide&viewPrefix=faq"
+sources:
+  - name: "에버랜드 공식 스마트예약"
+    url: "https://reservation.everland.com/web/el.do?method=productMain"
+    type: facility
+    verifiedAt: 2026-10-01
+  - name: "에버랜드 이용안내"
+    url: "https://reservation.everland.com/web/main.do?method=guide&viewPrefix=faq"
+    type: facility
+    verifiedAt: 2026-10-01
+relatedPageKeys:
+  - "yongin-flower-launch-25"
+  - "yongin-flower-launch-29"
+  - "yongin-flower-launch-07"
+draftStatus: approved
+---
+
+에버랜드 꽃배달을 준비할 때는 **에버랜드의 행사명·수령 담당자·설치 또는 전달 방식**을 먼저 정하세요. 에버랜드 같은 대형 시설은 파크 내부 특정 장소까지 일반 배송이 가능하다고 가정하지 않습니다. 내부 반입과 수령 가능 여부를 공식 안내나 현장 담당자에게 확인하고 필요하면 외부 수령을 검토하세요.
+
+## 설치형과 전달형은 준비정보가 다릅니다
+축하화환처럼 설치가 필요한 꽃은 설치 위치와 반입 시간을 확인해야 합니다. 꽃다발처럼 개인에게 전달하는 꽃은 출연자·수령자 이름과 실제 만날 지점이 더 중요합니다. 백스테이지나 대기실까지 외부인이 자유롭게 들어갈 수 있다고 가정하지 않습니다.
+
+## 공식 시설안내는 기본정보 확인에 사용합니다
+에버랜드의 위치·운영·연락처 등은 시설 운영기관의 최신 공식 안내를 기준으로 확인합니다. 행사별 반입규정과 설치 위치는 대관·주최 측 결정에 따라 달라질 수 있으므로 시설 기본정보만 보고 일반화하지 않습니다.
+
+## 주문서에 적어야 할 내용
+- 행사명과 날짜
+- 축하 대상 또는 수령자
+- 설치형/전달형 구분
+- 시설명과 수령 위치
+- 행사 담당자 연락처
+- 리본 또는 카드문구
+- 전달 희망시간
+- 실제 당일 제작·배송 가능 여부
+
+## 자주 묻는 질문
+### 로비에 화환을 세울 수 있나요?
+행사별 조건이 다르므로 주최 측이나 시설 담당자 확인이 필요합니다.
+### 공연 뒤 출연자에게 바로 전달할 수 있나요?
+출입규정에 따라 어려울 수 있으므로 전달 지점을 미리 정하세요.
+### 주소만 알면 되나요?
+대형 시설은 행사명·담당자·수령 위치가 더 중요할 수 있습니다.
+
+## 이어서 확인하면 좋은 내용
+용인 행사장 꽃 주문 체크리스트, 축하화환 리본문구, 당일 꽃배달 가이드를 함께 보면 에버랜드 주문정보를 빠짐없이 준비할 수 있습니다.
