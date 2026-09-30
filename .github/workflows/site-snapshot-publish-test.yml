@@ -329,11 +329,23 @@ jobs:
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Trigger Ansan production deployment
+        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ansan-cloudflare-production-deploy.yml --ref site-factory-ansan-v1
+
       - name: Trigger Ansan exact live QA
         if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run ansan-live-qa.yml --ref site-factory-ansan-v1
+
+      - name: Trigger Ansan IndexNow
+        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.site_key == 'ansan-flower-test'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ansan-indexnow-production.yml --ref site-factory-ansan-v1
 
       - name: Report success
         env:
