@@ -22,6 +22,7 @@ const articles = (await getCollection(
   'articles',
   ({ data }) =>
     (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
+    data.routeType === 'category' &&
     data.category === category && activePageKeys.has(data.pageKey)
 )).sort((a, b) => (rolePriority[roleByPageKey.get(a.data.pageKey) ?? 'INFORMATION_GUIDE'] ?? 99) - (rolePriority[roleByPageKey.get(b.data.pageKey) ?? 'INFORMATION_GUIDE'] ?? 99) || a.data.pageKey.localeCompare(b.data.pageKey, 'ko'));
 
