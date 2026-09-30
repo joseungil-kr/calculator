@@ -4,6 +4,7 @@ import { join, relative, sep } from 'node:path';
 const dist = 'dist';
 const origin = (process.env.SITE_URL || 'https://hwaseong.fwith.kr').replace(/\/$/, '');
 const canonicalHost = new URL(origin).hostname;
+const siteIndexable = process.env.SITE_INDEXABLE === 'true';
 const errors = [];
 const htmlFiles = [];
 function walk(dir) {
@@ -51,12 +52,16 @@ for (const name of sitemapFiles) {
 }
 for (const [route, { html }] of pages) {
   const noindex = /noindex/i.test(robotsFor(html));
-  if (noindex && sitemapRoutes.has(route)) errors.push(`Noindex route must not be in sitemap: ${route}`);
-  if (!noindex && !sitemapRoutes.has(route)) errors.push(`Sitemap missing indexable HTML route: ${route}`);
+  if (siteIndexable) {
+    if (noindex && sitemapRoutes.has(route)) errors.push(`Noindex route must not be in sitemap: ${route}`);
+    if (!noindex && !sitemapRoutes.has(route)) errors.push(`Sitemap missing indexable HTML route: ${route}`);
+  } else if (!noindex) {
+    errors.push(`Staging route must remain noindex: ${route}`);
+  }
 }
 for (const route of sitemapRoutes) {
   if (!pages.has(route)) errors.push(`Sitemap contains URL without generated HTML: ${route}`);
-  else if (/noindex/i.test(robotsFor(pages.get(route).html))) errors.push(`Sitemap contains noindex URL: ${route}`);
+  else if (siteIndexable && /noindex/i.test(robotsFor(pages.get(route).html))) errors.push(`Sitemap contains noindex URL: ${route}`);
 }
 const placeholderPatterns = [
   /준비하고 있습니다/, /페이지 준비 중/, /상세 문서 수가 아직 적더라도/, /메뉴가 빈 화면이 되지 않도록/,
@@ -103,8 +108,12 @@ for (const category of hubCategories) {
     continue;
   }
   const hubNoindex = /noindex/i.test(robotsFor(pages.get(hub).html));
-  if (children.length < 3 && !hubNoindex) errors.push(`Thin hub must be noindex until 3 documents: ${hub}`);
-  if (children.length >= 3 && hubNoindex) errors.push(`Hub with 3+ documents should be indexable: ${hub}`);
+  if (siteIndexable) {
+    if (children.length < 3 && !hubNoindex) errors.push(`Thin hub must be noindex until 3 documents: ${hub}`);
+    if (children.length >= 3 && hubNoindex) errors.push(`Hub with 3+ documents should be indexable: ${hub}`);
+  } else if (!hubNoindex) {
+    errors.push(`Staging hub must remain noindex: ${hub}`);
+  }
   for (const page of children) if (!pages.has(normalize(page.url))) errors.push(`Manifest child missing generated HTML: ${page.pageKey} -> ${page.url}`);
   hubStats.push(`${category}=${children.length}${children.length < 3 ? '(noindex)' : '(index)'}`);
 }
@@ -113,4 +122,4 @@ if (errors.length) {
   for (const e of errors) console.error('- ' + e);
   process.exit(1);
 }
-console.log(`SITE GRAPH QA PASSED: ${pages.size} HTML pages, ${sitemapRoutes.size} sitemap URLs, zero orphans, no developer placeholders. Hubs: ${hubStats.join(', ')}`);
+console.log(`SITE GRAPH QA PASSED: mode=${siteIndexable ? 'production' : 'staging'}, ${pages.size} HTML pages, ${sitemapRoutes.size} sitemap URLs, zero orphans, no developer placeholders. Hubs: ${hubStats.join(', ')}`);
