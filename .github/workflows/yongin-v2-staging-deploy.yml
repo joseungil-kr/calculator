@@ -1,0 +1,88 @@
+name: Yongin Flower v2 Staging Deploy
+
+on:
+  push:
+    branches:
+      - site-factory-yongin-v2
+    paths:
+      - 'site-factory/yongin-flower/**'
+      - '.github/workflows/yongin-v2-staging-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yongin-flower-v2-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/yongin-flower
+    env:
+      SITE_URL: https://yongin.fwith.kr
+      SITE_INDEXABLE: "false"
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate Cloudflare secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
+      - name: Install dependencies
+        run: npm install
+      - name: Build noindex staging
+        run: npm run build
+      - name: Deploy preview worker
+        id: deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@latest deploy 2>&1 | tee /tmp/deploy.log
+          url=$(grep -Eo 'https://[A-Za-z0-9._-]+\.workers\.dev' /tmp/deploy.log | tail -1 || true)
+          test -n "$url"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Preview: $url"
+      - name: Verify preview
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+          EXPECTED_REVISION: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import os, time, urllib.request
+          base=os.environ["PREVIEW_URL"].rstrip("/")
+          expected=os.environ["EXPECTED_REVISION"]
+          def get(path):
+              req=urllib.request.Request(base+path,headers={"User-Agent":"SiteFactory-YonginV2/1.0"})
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  return r.status,r.read().decode("utf-8",errors="replace")
+          last=None
+          for i in range(30):
+              try:
+                  code,home=get("/")
+                  assert code==200
+                  assert "용인" in home and "꽃배달" in home
+                  assert "noindex" in home.lower()
+                  assert f'name="site-factory-revision" content="{expected}"' in home
+                  code,robots=get("/robots.txt")
+                  assert code==200 and "Disallow: /" in robots
+                  print("YONGIN V2 STAGING QA PASSED:",base)
+                  break
+              except Exception as e:
+                  last=e
+                  time.sleep(4)
+          else:
+              raise SystemExit(f"Preview not ready: {last}")
+          PY
