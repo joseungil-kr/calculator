@@ -14,7 +14,7 @@ import { siteConfig } from '../config/site';
       <p>주소가 바뀌었거나 아직 공개되지 않은 페이지일 수 있습니다.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/">홈으로 이동</a>
-        <a class="btn btn-ghost" href="/guide/">꽃 선택 가이드</a>
+        <a class="btn btn-ghost" href={`/${siteConfig.primaryLandingSlug}/`}>{siteConfig.region} 꽃배달 가이드</a>
       </div>
     </div>
   </section>
