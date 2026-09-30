@@ -35,8 +35,8 @@
       "primaryLandingSlug": "화성꽃배달",
       "heroPath": "images/hwaseong/hero-B-original.png",
       "worker": "hwaseong-flower-guide-test",
-      "launchMode": "staging",
-      "productionEnabled": false,
+      "launchMode": "live",
+      "productionEnabled": true,
       "naverVerification": "",
       "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98"
     }
