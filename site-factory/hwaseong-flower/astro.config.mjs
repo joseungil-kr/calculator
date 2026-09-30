@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.SITE_URL || 'https://suwon.fwith.kr';
+const site = process.env.SITE_URL || 'https://hwaseong.fwith.kr';
 const manifest = JSON.parse(readFileSync(new URL('./src/data/publish-manifest.json', import.meta.url), 'utf8'));
 const approved = (manifest.pages || []).filter((page) => ['approved', 'published'].includes(page.status));
 const hubCategories = ['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help'];
