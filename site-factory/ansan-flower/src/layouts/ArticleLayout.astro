@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import { siteConfig } from '../config/site';
+import architecture from '../data/architecture.json';
 import '../styles/article.css';
 
 type SourceRef = {
@@ -65,6 +66,14 @@ const categoryLabel: Record<string, string> = {
   'flower-knowledge': '꽃 관리',
   'order-help': '주문 도움',
 };
+
+const architectureEntry = (architecture.pages || []).find((page) => page.pageKey === pageKey);
+const effectivePageRole = architectureEntry?.pageRole ?? 'INFORMATION_GUIDE';
+const effectivePrimaryKeyword = architectureEntry?.primaryKeyword ?? '';
+const effectiveIntentKey = architectureEntry?.intentKey ?? '';
+const effectiveParentHub = architectureEntry?.parentHub ?? `/${category}/`;
+const architectureIndexable = architectureEntry?.sitemapIndexable !== false && architectureEntry?.status !== 'merged';
+const canonicalPath = architectureEntry?.canonicalUrl ?? Astro.url.pathname;
 
 const categoryHref = `/${category}/`;
 const regionLandingHref = `/${siteConfig.primaryLandingSlug}/`;
@@ -174,7 +183,7 @@ const breadcrumbSchema = {
   itemListElement: breadcrumbItems,
 };
 ---
-<BaseLayout title={seoTitle} description={description} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
+<BaseLayout title={seoTitle} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable ? "noindex,follow,max-image-preview:large" : undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -184,6 +193,10 @@ const breadcrumbSchema = {
     data-content-role={effectiveContentRole}
     data-page-type={pageType}
     data-localization-policy={localizationPolicy}
+    data-page-role={effectivePageRole}
+    data-primary-keyword={effectivePrimaryKeyword}
+    data-intent-key={effectiveIntentKey}
+    data-parent-hub={effectiveParentHub}
   >
     <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -198,6 +211,12 @@ const breadcrumbSchema = {
           </>
         )}
       </nav>
+
+      {architectureEntry?.status === 'merged' && architectureEntry?.canonicalUrl && (
+        <aside class="merged-page-notice" aria-label="통합 페이지 안내">
+          이 내용은 더 명확한 검색의도로 통합되었습니다. <a href={architectureEntry.canonicalUrl}>통합된 최신 페이지 보기 →</a>
+        </aside>
+      )}
 
       <header class="article-header">
         <span class="eyebrow">{isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 안내` : categoryLabel[category] ?? category}</span>
