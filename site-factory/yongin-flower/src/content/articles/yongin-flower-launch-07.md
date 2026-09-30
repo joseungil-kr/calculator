@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-07
-snapshotId: yongin-flower-launch-07-canary-v2
+snapshotId: yongin-flower-launch-07-launch-v2
 sourceDraftKey: yongin-flower-launch-07-draft-v2
 sourceRecordId: recmqCgOaPRgstmXq
 slug: "suji-opening-flowers"

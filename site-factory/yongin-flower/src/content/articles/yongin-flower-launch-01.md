@@ -1,6 +1,6 @@
 ---
 pageKey: yongin-flower-launch-01
-snapshotId: yongin-flower-launch-01-canary-v2
+snapshotId: yongin-flower-launch-01-launch-v2
 sourceDraftKey: yongin-flower-launch-01-draft-v2
 sourceRecordId: recoHCbpYsMDzoqa8
 slug: "yongin-severance-funeral-condolence-wreath"
