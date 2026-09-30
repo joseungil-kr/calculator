@@ -7,9 +7,12 @@ on:
         description: Site Factory site_key registered in .github/site-factory-sites.json
         required: true
         type: string
+  issues:
+    types: [opened]
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: site-production-${{ inputs.site_key }}
@@ -17,6 +20,7 @@ concurrency:
 
 jobs:
   deploy-and-verify:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[SITE-PRODUCTION-DEPLOY]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout control plane
@@ -28,12 +32,20 @@ jobs:
       - name: Resolve registered site
         id: target
         env:
-          SITE_KEY: ${{ inputs.site_key }}
+          INPUT_SITE_KEY: ${{ inputs.site_key }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python3 - <<'PY'
           import json, os
           registry = json.load(open("control/.github/site-factory-sites.json", encoding="utf-8"))
-          key = os.environ["SITE_KEY"]
+          key = (os.environ.get("INPUT_SITE_KEY") or "").strip()
+          if not key:
+              for line in os.environ.get("ISSUE_BODY", "").splitlines():
+                  if line.startswith("SITE_KEY: "):
+                      key = line.split(": ", 1)[1].strip()
+                      break
+          if not key:
+              raise SystemExit("Missing SITE_KEY")
           site = registry.get("sites", {}).get(key)
           if not site:
               raise SystemExit(f"Unregistered site_key: {key}")
@@ -231,3 +243,13 @@ jobs:
           INDEXNOW_KEY: ${{ steps.target.outputs.indexnow_key }}
           INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
         run: node scripts/submit_indexnow.mjs
+
+      - name: Report issue-triggered success
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SITE_KEY: ${{ steps.target.outputs.site_key }}
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Production deploy succeeded. site=$SITE_KEY URL=$SITE_URL live QA and IndexNow completed."
+          gh issue close "${{ github.event.issue.number }}"
