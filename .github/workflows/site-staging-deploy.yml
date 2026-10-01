@@ -1,149 +1,124 @@
-name: Site Factory Staging Deploy
-
+name: Site Factory Isolated Staging Preview
 on:
+  workflow_call:
+    inputs:
+      site_key: {required: true, type: string}
+      expected_revision: {required: true, type: string}
+      source_snapshot_issue: {required: false, type: string, default: ''}
+    secrets:
+      CLOUDFLARE_API_TOKEN: {required: true}
+      CLOUDFLARE_ACCOUNT_ID: {required: true}
+  workflow_dispatch:
+    inputs:
+      site_key: {description: Registered site key, required: true, type: string}
+      expected_revision: {description: Full preview source commit SHA, required: true, type: string}
   issues:
-    types: [opened]
-
-permissions:
-  contents: read
-  issues: write
-
+    types: [opened, reopened]
+permissions: {}
+concurrency:
+  group: site-staging-${{ github.repository }}
+  cancel-in-progress: false
 jobs:
-  deploy:
-    if: startsWith(github.event.issue.title, '[SITE-STAGING-DEPLOY]')
+  preview:
+    permissions: {contents: read, issues: write}
+    if: inputs.site_key != '' || github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[SITE-STAGING-DEPLOY]')
     runs-on: ubuntu-latest
+    env: {ASTRO_TELEMETRY_DISABLED: '1'}
     steps:
-      - name: Checkout control registry
-        uses: actions/checkout@v4
+      - name: Authorize repository writer
+        uses: actions/github-script@v7
         with:
-          ref: main
-          path: control
-
-      - name: Resolve staging target
+          script: |
+            const repo = context.payload.repository;
+            const users = new Set([context.actor]);
+            if (context.payload.issue) users.add(context.payload.issue.user.login);
+            for (const username of users) {
+              if (repo.owner.type === 'User' && username === repo.owner.login) continue;
+              let permission;
+              try {
+                const r = await github.rest.repos.getCollaboratorPermissionLevel({
+                  ...context.repo, username
+                });
+                permission = r.data.permission;
+              } catch (error) {
+                throw new Error(`Cannot authorize ${username}; no privileged processing allowed`);
+              }
+              if (!['admin', 'maintain', 'write'].includes(permission)) {
+                throw new Error(`Untrusted actor/author: ${username}`);
+              }
+            }
+      - uses: actions/checkout@v4
+        with: {ref: main, path: control}
+      - name: Resolve isolated preview target
         id: target
-        env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
+        env: {SITE_KEY: "${{ inputs.site_key }}", REVISION: "${{ inputs.expected_revision }}", ISSUE_BODY: "${{ github.event.issue.body }}"}
         run: |
-          python3 - <<'PY'
-          import json, os
-          body = os.environ.get("ISSUE_BODY", "")
-          values = {}
-          for line in body.splitlines():
-              if ": " in line:
-                  k, v = line.split(": ", 1)
-                  values[k.strip()] = v.strip()
-
-          site_key = values.get("SITE_KEY", "")
-          registry = json.load(open("control/.github/site-factory-sites.json", encoding="utf-8"))
-          target = registry.get("sites", {}).get(site_key)
-          if not target:
-              raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
-          if target.get("repo") != os.environ.get("GITHUB_REPOSITORY"):
-              raise SystemExit("Registry repo mismatch")
-
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
-              for k, v in {
-                  "site_key": site_key,
-                  "branch": target["branch"],
-                  "root": target["root"],
-                  "worker": target["worker"],
-                  "site_url": target["siteUrl"],
-                  "primary_slug": target["primaryLandingSlug"],
-                  "hero_path": target["heroPath"],
-              }.items():
-                  fh.write(f"{k}={v}\n")
-          PY
-
-      - name: Checkout target branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.target.outputs.branch }}
-          path: target
-
-      - name: Verify Cloudflare credentials exist
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          set -euo pipefail
-          test -n "$CLOUDFLARE_API_TOKEN"
-          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install dependencies
+          python3 - <<'PYTHON'
+          import json,os,re
+          values=dict(line.split(': ',1) for line in os.environ.get('ISSUE_BODY','').splitlines() if ': ' in line)
+          key=os.environ.get('SITE_KEY') or values.get('SITE_KEY','')
+          revision=os.environ.get('REVISION') or values.get('EXPECTED_REVISION','')
+          site=json.load(open('control/.github/site-factory-sites.json'))['sites'].get(key)
+          if not site or site['repo']!=os.environ['GITHUB_REPOSITORY']:raise SystemExit('Unregistered target')
+          config,url=site.get('stagingWranglerConfig'),site.get('stagingUrl')
+          if not config or not url or config==site.get('wranglerConfig','wrangler.jsonc') or url.rstrip('/')==site['siteUrl'].rstrip('/'):
+              raise SystemExit('No isolated staging configuration: refusing to overwrite production')
+          if not re.fullmatch('[0-9a-f]{40}',revision):raise SystemExit('A pinned preview revision is required')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              for k,v in {'site_key':key,'root':site['root'],'url':url,'config':config,'revision':revision}.items():out.write(f'{k}={v}\n')
+          PYTHON
+      - uses: actions/checkout@v4
+        with: {ref: "${{ steps.target.outputs.revision }}", path: target}
+      - name: Assert preview cannot route onto production
         working-directory: target/${{ steps.target.outputs.root }}
-        run: npm install
-
-      - name: Validate and build noindex staging
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "false"
-          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
-          HERO_PATH: ${{ steps.target.outputs.hero_path }}
+        env: {CONFIG: "${{ steps.target.outputs.config }}"}
         run: |
+          python3 - <<'PYTHON'
+          import json,os
+          p=json.load(open('wrangler.jsonc'));s=json.load(open(os.environ['CONFIG']))
+          assert s['name']!=p['name'] and s.get('workers_dev') is True
+          assert not s.get('routes') and not s.get('route')
+          assert s['assets']['directory']=='./dist/'
+          PYTHON
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - name: Build noindex preview and run gates
+        working-directory: target/${{ steps.target.outputs.root }}
+        env: {SITE_URL: "${{ steps.target.outputs.url }}", SITE_INDEXABLE: 'false', SITE_FACTORY_REVISION: "${{ steps.target.outputs.revision }}"}
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run build
           python3 scripts/qa_static.py
-
-      - name: Deploy noindex staging Worker/custom domain
+      - name: Deploy isolated noindex QA Worker
         working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "false"
-        run: npx --yes wrangler@latest deploy
-
-      - name: Verify custom domain remains noindex
-        env:
-          DEPLOY_URL: ${{ steps.target.outputs.site_url }}
-          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", CONFIG: "${{ steps.target.outputs.config }}"}
+        run: npx --yes wrangler@latest deploy -c "$CONFIG"
+      - name: Verify isolated exact-revision preview
+        env: {ORIGIN: "${{ steps.target.outputs.url }}", REVISION: "${{ steps.target.outputs.revision }}"}
         run: |
-          python3 - <<'PY'
-          import os, time, urllib.request, urllib.error
-          from urllib.parse import quote
-
-          base = os.environ["DEPLOY_URL"].rstrip("/")
-          primary = os.environ["PRIMARY_LANDING_SLUG"]
-
-          def get(path):
-              req = urllib.request.Request(base + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-StagingQA/2.0"})
+          python3 - <<'PYTHON'
+          import os,time,urllib.request
+          base=os.environ['ORIGIN'].rstrip('/')
+          for attempt in range(12):
               try:
-                  with urllib.request.urlopen(req, timeout=30) as res:
-                      return res.status, res.read().decode("utf-8", errors="replace")
-              except urllib.error.HTTPError as e:
-                  return e.code, e.read().decode("utf-8", errors="replace")
-
-          last = None
-          for attempt in range(1, 61):
-              try:
-                  code, home = get("/")
-                  assert code == 200
-                  assert "noindex" in home.lower()
-                  code, robots = get("/robots.txt")
-                  assert code == 200 and "Disallow: /" in robots
-                  code, article = get("/" + primary + "/")
-                  assert code == 200 and "noindex" in article.lower()
-                  assert "<h1" in article.lower()
-                  print(f"STAGING QA PASSED: {base}")
-                  break
-              except Exception as exc:
-                  last = exc
-                  print(f"Attempt {attempt}/60: staging not ready yet: {exc}")
+                  req=urllib.request.Request(base+'/',headers={'User-Agent':'SiteFactory-StagingQA/3.0'})
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      html=r.read().decode();headers=r.headers
+                  assert 'noindex' in html and os.environ['REVISION'] in html
+                  assert 'noindex' in headers.get('X-Robots-Tag','')
+                  with urllib.request.urlopen(base+'/robots.txt',timeout=15) as r: assert 'Disallow: /' in r.read().decode()
+                  print('PREVIEW_VERIFIED '+base);break
+              except Exception as e:
+                  print(f'Preview verification {attempt+1}/12: {e}')
+                  if attempt==11:raise
                   time.sleep(5)
-          else:
-              raise SystemExit(f"Staging did not become ready: {last}")
-          PY
-
-      - name: Report success
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_KEY: ${{ steps.target.outputs.site_key }}
+          PYTHON
+      - name: Save preview artifact
+        uses: actions/upload-artifact@v4
+        with: {name: "isolated-preview-${{ github.run_id }}", path: "target/${{ steps.target.outputs.root }}/dist/", retention-days: 7}
+      - name: Report issue preview
+        if: github.event_name == 'issues'
+        env: {GH_TOKEN: "${{ github.token }}", URL: "${{ steps.target.outputs.url }}", REVISION: "${{ steps.target.outputs.revision }}"}
         run: |
-          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "Staging deploy succeeded. site=$SITE_KEY URL=$SITE_URL noindex/robots Disallow verified."
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: preview_verified. Noindex isolated preview=$URL revision=$REVISION. Production is unchanged. Independent visual QA is still required."
           gh issue close -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}"

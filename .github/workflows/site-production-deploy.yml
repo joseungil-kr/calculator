@@ -1,260 +1,150 @@
 name: Site Factory Production Deploy
-
 on:
+  workflow_call:
+    inputs:
+      site_key: {required: true, type: string}
+      expected_revision: {required: true, type: string}
+      source_snapshot_issue: {required: false, type: string, default: ''}
+    secrets:
+      CLOUDFLARE_API_TOKEN: {required: true}
+      CLOUDFLARE_ACCOUNT_ID: {required: true}
   workflow_dispatch:
     inputs:
-      site_key:
-        description: Site Factory site_key registered in .github/site-factory-sites.json
-        required: true
-        type: string
+      site_key: {description: Registered site key, required: true, type: string}
+      expected_revision: {description: Full independently approved target commit SHA, required: true, type: string}
   issues:
-    types: [opened]
-
-permissions:
-  contents: read
-  issues: write
-
+    types: [opened, reopened]
+permissions: {}
 concurrency:
-  group: site-production-${{ inputs.site_key }}
-  cancel-in-progress: true
-
+  group: site-production-${{ github.repository }}
+  cancel-in-progress: false
 jobs:
   deploy-and-verify:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[SITE-PRODUCTION-DEPLOY]')
+    permissions: {contents: read, issues: write}
+    if: inputs.site_key != '' || github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[SITE-PRODUCTION-DEPLOY]')
     runs-on: ubuntu-latest
+    env: {ASTRO_TELEMETRY_DISABLED: '1'}
     steps:
-      - name: Checkout control plane
-        uses: actions/checkout@v4
+      - name: Authorize repository writer
+        uses: actions/github-script@v7
         with:
-          ref: main
-          path: control
-
-      - name: Resolve registered site
+          script: |
+            const repo = context.payload.repository;
+            const users = new Set([context.actor]);
+            if (context.payload.issue) users.add(context.payload.issue.user.login);
+            for (const username of users) {
+              if (repo.owner.type === 'User' && username === repo.owner.login) continue;
+              let permission;
+              try {
+                const r = await github.rest.repos.getCollaboratorPermissionLevel({
+                  ...context.repo, username
+                });
+                permission = r.data.permission;
+              } catch (error) {
+                throw new Error(`Cannot authorize ${username}; no privileged processing allowed`);
+              }
+              if (!['admin', 'maintain', 'write'].includes(permission)) {
+                throw new Error(`Untrusted actor/author: ${username}`);
+              }
+            }
+      - uses: actions/checkout@v4
+        with: {ref: main, path: control}
+      - name: Resolve approved production target
         id: target
         env:
-          INPUT_SITE_KEY: ${{ inputs.site_key }}
+          SITE_KEY: ${{ inputs.site_key }}
+          REVISION: ${{ inputs.expected_revision }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          python3 - <<'PY'
-          import json, os
-          registry = json.load(open("control/.github/site-factory-sites.json", encoding="utf-8"))
-          key = (os.environ.get("INPUT_SITE_KEY") or "").strip()
-          if not key:
-              for line in os.environ.get("ISSUE_BODY", "").splitlines():
-                  if line.startswith("SITE_KEY: "):
-                      key = line.split(": ", 1)[1].strip()
-                      break
-          if not key:
-              raise SystemExit("Missing SITE_KEY")
-          site = registry.get("sites", {}).get(key)
-          if not site:
-              raise SystemExit(f"Unregistered site_key: {key}")
-          if site.get("repo") != os.environ.get("GITHUB_REPOSITORY"):
-              raise SystemExit("Registry repo mismatch")
-          if not site.get("productionEnabled"):
-              raise SystemExit(f"Production disabled for {key}; Launch Gate has not passed")
-          out = os.environ["GITHUB_OUTPUT"]
-          with open(out, "a", encoding="utf-8") as fh:
-              for k, v in {
-                  "site_key": key,
-                  "branch": site["branch"],
-                  "root": site["root"],
-                  "site_url": site["siteUrl"],
-                  "primary_slug": site["primaryLandingSlug"],
-                  "hero_path": site["heroPath"],
-                  "naver_verification": site.get("naverVerification", ""),
-                  "indexnow_key": site["indexnowKey"],
-                  "wrangler_config": site.get("wranglerConfig", "wrangler.jsonc"),
-              }.items():
-                  fh.write(f"{k}={v}\n")
-          PY
-
-      - name: Checkout target site branch
+          python3 - <<'PYTHON'
+          import json, os, re
+          values = {}
+          for line in os.environ.get('ISSUE_BODY','').split('---BEGIN-',1)[0].splitlines():
+              if ': ' in line:
+                  k,v=line.split(': ',1)
+                  if k in values: raise SystemExit('Duplicate issue header')
+                  values[k]=v.strip()
+          key=os.environ.get('SITE_KEY') or values.get('SITE_KEY','')
+          site=json.load(open('control/.github/site-factory-sites.json'))['sites'].get(key)
+          if not site or site['repo']!=os.environ['GITHUB_REPOSITORY']: raise SystemExit('Unregistered target')
+          if not site.get('productionEnabled') or site.get('launchMode')!='live': raise SystemExit('Production Launch Gate is closed')
+          revision=os.environ.get('REVISION') or values.get('EXPECTED_REVISION','')
+          if not re.fullmatch('[0-9a-f]{40}',revision): raise SystemExit('A full pinned EXPECTED_REVISION is required')
+          if site.get('requireRevisionApproval'):
+              if site.get('approvedRevision')!=revision or not site.get('approvalEvidenceUrl','').startswith('https://github.com/'):
+                  raise SystemExit('Exact revision lacks independent QA clearance in trusted registry')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              for k,v in {'site_key':key,'branch':site['branch'],'root':site['root'],'site_url':site['siteUrl'],'revision':revision,'wrangler':site.get('wranglerConfig','wrangler.jsonc'),'graph':site.get('graphScript','scripts/qa_site_graph.mjs'),'naver':site.get('naverVerification',''),'indexnow':site.get('indexnowKey','')}.items():out.write(f'{k}={v}\n')
+          PYTHON
+      - name: Checkout pinned approved revision
         uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.target.outputs.branch }}
-          fetch-depth: 2
-          path: target
-
-      - name: Resolve target revision
-        id: revision
+        with: {ref: "${{ steps.target.outputs.revision }}", path: target, fetch-depth: 0}
+      - name: Check revision belongs to production branch
         working-directory: target
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - name: Require production indexing marker
+        env: {BRANCH: "${{ steps.target.outputs.branch }}", REVISION: "${{ steps.target.outputs.revision }}"}
+        run: |
+          git fetch origin "$BRANCH"
+          git merge-base --is-ancestor "$REVISION" "origin/$BRANCH"
+          test "$(git rev-parse HEAD)" = "$REVISION"
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - name: Build approved indexable artifact and rerun gates
         working-directory: target/${{ steps.target.outputs.root }}
-        run: test -f production-indexing.enabled
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Validate Cloudflare secrets
+        env:
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: 'true'
+          SITE_FACTORY_REVISION: ${{ steps.target.outputs.revision }}
+          GRAPH_SCRIPT: ${{ steps.target.outputs.graph }}
+        run: |
+          test -f production-indexing.enabled
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          npm run build
+          python3 scripts/qa_static.py
+          node "$GRAPH_SCRIPT"
+      - name: Record build provenance
+        run: python3 control/site-factory/engine/write_qa_provenance.py --root "target/${{ steps.target.outputs.root }}" --revision "${{ steps.target.outputs.revision }}" --output production-qa-provenance.json
+      - name: Deploy approved artifact
+        working-directory: target/${{ steps.target.outputs.root }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_CONFIG: ${{ steps.target.outputs.wrangler }}
         run: |
-          set -euo pipefail
           test -n "$CLOUDFLARE_API_TOKEN"
           printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
-
-      - name: Install dependencies
-        working-directory: target/${{ steps.target.outputs.root }}
-        run: npm install
-
-      - name: Build indexable production site
+          npx --yes wrangler@latest deploy -c "$WRANGLER_CONFIG"
+      - name: Verify exact live revision and every published route
+        run: python3 control/site-factory/engine/verify_live.py --root "target/${{ steps.target.outputs.root }}" --origin "${{ steps.target.outputs.site_url }}" --revision "${{ steps.target.outputs.revision }}" --report live-qa-report.json --naver-verification "${{ steps.target.outputs.naver }}" --indexnow-key "${{ steps.target.outputs.indexnow }}"
+      - name: Submit verified URLs to IndexNow
         working-directory: target/${{ steps.target.outputs.root }}
         env:
           SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "true"
-          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
-          HERO_PATH: ${{ steps.target.outputs.hero_path }}
-        run: npm run build
-
-      - name: Static and graph QA
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "true"
-          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
-          HERO_PATH: ${{ steps.target.outputs.hero_path }}
-        run: |
-          python3 scripts/qa_static.py
-          node scripts/qa_site_graph.mjs
-
-      - name: Deploy production to Cloudflare
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "true"
-          WRANGLER_CONFIG: ${{ steps.target.outputs.wrangler_config }}
-        run: npx --yes wrangler@latest deploy -c "$WRANGLER_CONFIG"
-
-      - name: Wait for exact production revision and validate live site
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
+          SITE_INDEXABLE: 'true'
           SITE_ORIGIN: ${{ steps.target.outputs.site_url }}
-          EXPECTED_REVISION: ${{ steps.revision.outputs.sha }}
-          NAVER_VERIFICATION: ${{ steps.target.outputs.naver_verification }}
-          INDEXNOW_KEY: ${{ steps.target.outputs.indexnow_key }}
-          PRIMARY_LANDING_SLUG: ${{ steps.target.outputs.primary_slug }}
-        run: |
-          python3 - <<'PY'
-          import json, os, time, urllib.request, urllib.error
-          from pathlib import Path
-          from urllib.parse import quote, unquote
-
-          base = os.environ["SITE_ORIGIN"].rstrip("/")
-          expected = os.environ["EXPECTED_REVISION"]
-          verification = os.environ.get("NAVER_VERIFICATION", "")
-          key = os.environ["INDEXNOW_KEY"]
-          primary = os.environ["PRIMARY_LANDING_SLUG"]
-          pages = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8")).get("pages", [])
-
-          def get(path):
-              req = urllib.request.Request(base + quote(path, safe="/"), headers={"User-Agent":"SiteFactory-ProductionQA/2.0"})
-              try:
-                  with urllib.request.urlopen(req, timeout=30) as res:
-                      return res.status, res.read().decode("utf-8", errors="replace")
-              except urllib.error.HTTPError as e:
-                  return e.code, e.read().decode("utf-8", errors="replace")
-
-          last = None
-          for attempt in range(1, 49):
-              try:
-                  code, home = get("/")
-                  assert code == 200
-                  lower = home.lower()
-                  assert f'name="site-factory-revision" content="{expected}"' in home
-                  assert "index,follow" in lower and "noindex" not in lower
-                  if verification:
-                      assert f'name="naver-site-verification" content="{verification}"' in home
-                  assert base + "/" in unquote(home)
-
-                  code, robots = get("/robots.txt")
-                  assert code == 200
-                  assert "Allow: /" in robots and "Disallow: /" not in robots
-                  assert f"Sitemap: {base}/sitemap-index.xml" in robots
-
-                  code, key_body = get(f"/{key}.txt")
-                  assert code == 200 and key_body.strip() == key
-
-                  code, smi = get("/sitemap-index.xml")
-                  assert code == 200 and "sitemap-0.xml" in smi
-                  code, sitemap = get("/sitemap-0.xml")
-                  sitemap = unquote(sitemap)
-                  assert code == 200
-
-                  for page in pages:
-                      code, html = get(page["url"])
-                      assert code == 200, page["url"]
-                      assert f'data-snapshot-id="{page["snapshotId"]}"' in html
-                      assert "index,follow" in html.lower() and "noindex" not in html.lower()
-                      assert "application/ld+json" in html
-                      assert "<h1" in html.lower()
-                      assert base + page["url"] in unquote(html)
-                      assert base + page["url"] in sitemap
-
-                  if primary:
-                      code, article = get("/" + primary + "/")
-                      assert code == 200
-                      assert "<h1" in article.lower()
-                  else:
-                      assert "<h1" in home.lower()
-
-                  nf_code, nf = get("/production-qa-definitely-not-found/")
-                  assert nf_code == 404
-                  assert "페이지를 찾을 수 없습니다" in nf
-
-                  print(f"PRODUCTION QA PASSED: site={base}, revision={expected}, pages={len(pages)}")
-                  break
-              except Exception as exc:
-                  last = exc
-                  print(f"Attempt {attempt}/48: waiting for exact production revision: {exc}")
-                  time.sleep(5)
-          else:
-              raise SystemExit(f"Production did not become ready: {last}")
-          PY
-
-      - name: Determine initial or incremental IndexNow submission
-        id: mode
-        working-directory: target
-        env:
-          ROOT: ${{ steps.target.outputs.root }}
-        run: |
-          if git cat-file -e "HEAD^:$ROOT/production-indexing.enabled" 2>/dev/null; then
-            echo "initial=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "initial=true" >> "$GITHUB_OUTPUT"
-          fi
-          echo "base=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
-
-      - name: Select IndexNow URLs
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: "true"
-          INDEXNOW_INITIAL: ${{ steps.mode.outputs.initial }}
-          INDEXNOW_BASE_SHA: ${{ steps.mode.outputs.base }}
-        run: node scripts/select_indexnow_urls.mjs
-
-      - name: Submit IndexNow
-        working-directory: target/${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          INDEXNOW_KEY: ${{ steps.target.outputs.indexnow_key }}
+          LIVE_QA_VERIFIED_REVISION: ${{ steps.target.outputs.revision }}
+          INDEXNOW_INITIAL: 'true'
+          INDEXNOW_KEY: ${{ steps.target.outputs.indexnow }}
           INDEXNOW_ENDPOINT: https://searchadvisor.naver.com/indexnow
-        run: node scripts/submit_indexnow.mjs
-
-      - name: Report issue-triggered success
-        if: github.event_name == 'issues'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SITE_KEY: ${{ steps.target.outputs.site_key }}
-          SITE_URL: ${{ steps.target.outputs.site_url }}
         run: |
-          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "Production deploy succeeded. site=$SITE_KEY URL=$SITE_URL live QA and IndexNow completed."
-          gh issue close -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}"
+          node scripts/select_indexnow_urls.mjs
+          node scripts/submit_indexnow.mjs
+      - name: Save exact-revision QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-qa-${{ steps.target.outputs.site_key }}-${{ github.run_id }}
+          path: |
+            production-qa-provenance.json
+            live-qa-report.json
+          if-no-files-found: ignore
+      - name: Report live verification
+        if: github.event_name == 'issues' || inputs.source_snapshot_issue != ''
+        env: {GH_TOKEN: "${{ github.token }}", REVISION: "${{ steps.target.outputs.revision }}", ISSUE_NUMBER: "${{ inputs.source_snapshot_issue || github.event.issue.number }}"}
+        run: |
+          gh issue comment -R "$GITHUB_REPOSITORY" "$ISSUE_NUMBER" --body "PIPELINE_STATE: live_verified. Exact production revision=$REVISION, every registered route and sitemap verified. IndexNow request accepted; search indexing/ranking is not guaranteed. Evidence: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh issue close -R "$GITHUB_REPOSITORY" "$ISSUE_NUMBER"
+      - name: Report failed or blocked verification
+        if: failure() && github.event_name == 'issues'
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: failed_or_verification_blocked. Deployment is not marked live_verified. The issue remains open for diagnosis and exact-revision retry. Evidence: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

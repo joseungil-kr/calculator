@@ -1,502 +1,172 @@
 name: Site Factory Snapshot Publish
-
 on:
   issues:
-    types: [opened]
-
-permissions:
-  contents: write
-  issues: write
-  actions: write
-
+    types: [opened, reopened]
+permissions: {}
+concurrency:
+  group: site-snapshot-${{ github.event.issue.number }}
+  cancel-in-progress: false
 jobs:
   snapshot:
+    permissions: {contents: write, issues: write}
     if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
     runs-on: ubuntu-latest
+    env: {ASTRO_TELEMETRY_DISABLED: '1'}
+    outputs:
+      auto_deploy: ${{ steps.target.outputs.auto_deploy }}
+      publication_approved: ${{ steps.render.outputs.publication_approved }}
+      revision: ${{ steps.commit.outputs.sha }}
+      site_key: ${{ steps.target.outputs.site_key }}
     steps:
-      - name: Checkout control registry
-        uses: actions/checkout@v4
+      - name: Authorize repository writer
+        uses: actions/github-script@v7
         with:
-          ref: main
-
-      - name: Resolve and validate target site
+          script: |
+            const repo = context.payload.repository;
+            const users = new Set([context.actor]);
+            if (context.payload.issue) users.add(context.payload.issue.user.login);
+            for (const username of users) {
+              if (repo.owner.type === 'User' && username === repo.owner.login) continue;
+              let permission;
+              try {
+                const r = await github.rest.repos.getCollaboratorPermissionLevel({
+                  ...context.repo, username
+                });
+                permission = r.data.permission;
+              } catch (error) {
+                throw new Error(`Cannot authorize ${username}; no privileged processing allowed`);
+              }
+              if (!['admin', 'maintain', 'write'].includes(permission)) {
+                throw new Error(`Untrusted actor/author: ${username}`);
+              }
+            }
+      - name: Checkout trusted control plane
+        uses: actions/checkout@v4
+        with: {ref: main, path: control}
+      - name: Resolve registered site
         id: target
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          python3 - <<'PY'
-          import json
-          import os
-
-          body = os.environ.get("ISSUE_BODY", "")
-          lines = body.splitlines()
-
-          def value(key):
-              prefix = key + ": "
-              line = next((x for x in lines if x.startswith(prefix)), None)
-              if line is None:
-                  raise SystemExit(f"Missing {key}")
-              return line[len(prefix):].strip()
-
-          site_key = value("SITE_KEY")
-          target_repo = value("TARGET_REPO")
-          target_branch = value("TARGET_BRANCH")
-          target_root = value("TARGET_ROOT")
-
-          registry = json.load(open(".github/site-factory-sites.json", encoding="utf-8"))
-          expected = registry.get("sites", {}).get(site_key)
-          if not expected:
-              raise SystemExit(f"Unsupported SITE_KEY: {site_key}")
-          if target_repo != expected["repo"]:
-              raise SystemExit(f"Unexpected target_repo: {target_repo}")
-          if target_branch != expected["branch"]:
-              raise SystemExit(f"Unexpected target_branch: {target_branch}")
-          if target_root != expected["root"]:
-              raise SystemExit(f"Unexpected target_root: {target_root}")
-          if target_repo != os.environ.get("GITHUB_REPOSITORY"):
-              raise SystemExit("Target repository must be this Site Factory repository")
-
-          out = os.environ["GITHUB_OUTPUT"]
-          with open(out, "a", encoding="utf-8") as fh:
-              fh.write(f"site_key={site_key}\n")
-              fh.write(f"branch={target_branch}\n")
-              fh.write(f"root={target_root}\n")
-              fh.write(f"launch_mode={expected.get('launchMode','staging')}\n")
-              fh.write(f"production_enabled={'true' if expected.get('productionEnabled') else 'false'}\n")
-              fh.write(f"template_key={expected.get('templateKey','')}\n")
-              fh.write(f"site_url={expected.get('siteUrl','')}\n")
-              fh.write("allowed_categories=" + ",".join(expected.get("allowedCategories", [])) + "\n")
-              fh.write("allowed_page_types=" + ",".join(expected.get("allowedPageTypes", [])) + "\n")
-          PY
-
-      - name: Checkout target branch
+          python3 - <<'PYTHON'
+          import json, os, sys
+          sys.path.insert(0, 'control/site-factory/engine')
+          from render_snapshot import parse_payload
+          p = parse_payload(os.environ['ISSUE_BODY'])
+          target = json.load(open('control/.github/site-factory-sites.json'))['sites'].get(p['SITE_KEY'])
+          if not target:
+              raise SystemExit('Unregistered SITE_KEY')
+          for key, field in [('TARGET_REPO','repo'),('TARGET_BRANCH','branch'),('TARGET_ROOT','root')]:
+              if p[key] != target[field]: raise SystemExit(f'{key} registry mismatch')
+          if target['repo'] != os.environ['GITHUB_REPOSITORY']:
+              raise SystemExit('Cross-repository publishing is not supported')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              for key, value in {
+                  'site_key':p['SITE_KEY'], 'branch':target['branch'], 'root':target['root'],
+                  'site_url':target['siteUrl'],
+                  'indexable':str(bool(target.get('productionEnabled'))).lower(),
+                  'auto_deploy':str(bool(target.get('productionEnabled') and target.get('launchMode') == 'live' and target.get('autoDeploySnapshots', True) and not target.get('growthPaused', False))).lower()
+              }.items(): out.write(f'{key}={value}\n')
+          PYTHON
+      - name: Checkout target snapshot baseline
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.target.outputs.branch }}
           fetch-depth: 0
-
-      - name: Parse immutable snapshot and render Git artifacts
-        env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
-          EXPECTED_SITE_KEY: ${{ steps.target.outputs.site_key }}
-          EXPECTED_BRANCH: ${{ steps.target.outputs.branch }}
-          EXPECTED_ROOT: ${{ steps.target.outputs.root }}
-          ALLOWED_CATEGORIES: ${{ steps.target.outputs.allowed_categories }}
-          ALLOWED_PAGE_TYPES: ${{ steps.target.outputs.allowed_page_types }}
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: ${{ steps.target.outputs.production_enabled }}
+          path: target
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - name: Render immutable snapshot into registered renderer
+        id: render
+        env: {ISSUE_BODY: "${{ github.event.issue.body }}"}
         run: |
-          cat > "$RUNNER_TEMP/render_snapshot.py" <<'PY'
-          import json
-          import os
-          import pathlib
-          import re
-          import textwrap
-          from urllib.parse import urlparse
-
-          body = os.environ.get("ISSUE_BODY", "")
-          lines = body.splitlines()
-
-          def line_value(key):
-              prefix = key + ": "
-              line = next((x for x in lines if x.startswith(prefix)), None)
-              if line is None:
-                  raise SystemExit(f"Missing {key}")
-              return line[len(prefix):].strip()
-
-          def optional_line_value(key, default):
-              prefix = key + ": "
-              line = next((x for x in lines if x.startswith(prefix)), None)
-              return default if line is None else line[len(prefix):].strip()
-
-          def block(begin, end):
-              if begin not in body or end not in body:
-                  raise SystemExit(f"Missing block {begin}")
-              return body.split(begin, 1)[1].split(end, 1)[0].strip("\n")
-
-          def optional_block(begin, end):
-              if begin not in body or end not in body:
-                  return ""
-              return body.split(begin, 1)[1].split(end, 1)[0].strip("\n")
-
-          record_id = line_value("PUBLISH_QUEUE_RECORD_ID")
-          site_key = line_value("SITE_KEY")
-          page_key = line_value("PAGE_KEY")
-          draft_key = line_value("DRAFT_KEY")
-          source_record_id = line_value("SOURCE_RECORD_ID")
-          snapshot_id = line_value("SNAPSHOT_ID")
-          target_repo = line_value("TARGET_REPO")
-          target_branch = line_value("TARGET_BRANCH")
-          target_root = line_value("TARGET_ROOT")
-          slug = line_value("SLUG")
-          category = line_value("CATEGORY")
-          route_type = optional_line_value("ROUTE_TYPE", "category")
-          structure_type = line_value("STRUCTURE_TYPE")
-          page_type = optional_line_value("PAGE_TYPE", "")
-          content_role = optional_line_value("CONTENT_ROLE", "")
-          localization_policy = optional_line_value("LOCALIZATION_POLICY", "")
-          region = line_value("REGION")
-          verified_at = line_value("VERIFIED_AT")
-          title = block("---BEGIN-TITLE---", "---END-TITLE---")
-          description = block("---BEGIN-DESCRIPTION---", "---END-DESCRIPTION---")
-          content_md = block("---BEGIN-CONTENT---", "---END-CONTENT---")
-
-          # Renderer contract: ArticleLayout owns the single page H1.
-          # Normalize one accidental leading Markdown H1, but reject any other H1 in body.
-          content_lines = content_md.splitlines()
-          if content_lines and re.match(r"^#\\s+", content_lines[0]):
-              content_md = "\\n".join(content_lines[1:]).lstrip()
-          if re.search(r"(?m)^#\\s+", content_md):
-              raise SystemExit("content_md must not contain Markdown H1; ArticleLayout renders the page H1")
-
-          source_urls = [x.strip() for x in block("---BEGIN-SOURCES---", "---END-SOURCES---").splitlines() if x.strip()]
-          source_names = [x.strip() for x in optional_block("---BEGIN-SOURCE-NAMES---", "---END-SOURCE-NAMES---").splitlines() if x.strip()]
-          source_types = [x.strip() for x in optional_block("---BEGIN-SOURCE-TYPES---", "---END-SOURCE-TYPES---").splitlines() if x.strip()]
-          related_page_keys = [x.strip() for x in optional_block("---BEGIN-RELATED-PAGE-KEYS---", "---END-RELATED-PAGE-KEYS---").splitlines() if x.strip()]
-          if not source_urls:
-              raise SystemExit("Missing source URL: Site Factory snapshots require at least one verified source URL")
-
-          if not page_type:
-              raise SystemExit("Missing PAGE_TYPE: snapshots must provide the industry-specific page type")
-          if not content_role:
-              content_role = "informational-pillar" if route_type == "top_level" else "question-answer"
-          if not localization_policy:
-              raise SystemExit("Missing LOCALIZATION_POLICY: snapshots must provide it explicitly")
-
-          if site_key != os.environ["EXPECTED_SITE_KEY"]:
-              raise SystemExit(f"Unexpected site_key: {site_key}")
-          if target_repo != "joseungil-kr/fwith-site-factory":
-              raise SystemExit(f"Unexpected target_repo: {target_repo}")
-          if target_branch != os.environ["EXPECTED_BRANCH"]:
-              raise SystemExit(f"Unexpected target_branch: {target_branch}")
-          if target_root != os.environ["EXPECTED_ROOT"]:
-              raise SystemExit(f"Unexpected target_root: {target_root}")
-
-          if not slug or len(slug) > 80 or any(ch in slug for ch in "/\\?#"):
-              raise SystemExit(f"Unsafe slug: {slug}")
-          if slug in {".", ".."} or ".." in slug:
-              raise SystemExit(f"Unsafe slug: {slug}")
-          if not all(ch.isalnum() or ch == "-" for ch in slug):
-              raise SystemExit(f"Slug must contain only Unicode letters/numbers or hyphen: {slug}")
-
-          allowed_categories = {x for x in os.environ.get("ALLOWED_CATEGORIES", "").split(",") if x}
-          allowed_page_types = {x for x in os.environ.get("ALLOWED_PAGE_TYPES", "").split(",") if x}
-          if not allowed_categories or not allowed_page_types:
-              raise SystemExit("Site registry missing allowedCategories/allowedPageTypes contract")
-          if category not in allowed_categories:
-              raise SystemExit(f"Unsafe category for this template: {category}")
-          if page_type not in allowed_page_types:
-              raise SystemExit(f"Unsafe page_type for this template: {page_type}")
-          if content_role not in {"informational-pillar","question-answer"}:
-              raise SystemExit(f"Unsafe content_role: {content_role}")
-          if localization_policy not in {"local-required","local-optional","global"}:
-              raise SystemExit(f"Unsafe localization_policy: {localization_policy}")
-          if route_type not in {"category","top_level"}:
-              raise SystemExit(f"Unsafe route_type: {route_type}")
-          if not re.fullmatch(r"rec[A-Za-z0-9]{14}", source_record_id):
-              raise SystemExit(f"Invalid source record: {source_record_id}")
-          if not re.fullmatch(r"rec[A-Za-z0-9]{14}", record_id):
-              raise SystemExit(f"Invalid queue record: {record_id}")
-          for source_url in source_urls:
-              parsed = urlparse(source_url)
-              if parsed.scheme != "https" or not parsed.netloc:
-                  raise SystemExit(f"Invalid source URL: {source_url}")
-
-          root = pathlib.Path(target_root)
-          safe_filename = page_key + ".md"
-          article_rel = pathlib.PurePosixPath("src/content/articles") / safe_filename
-          article_path = root / article_rel
-          manifest_path = root / "src/data/publish-manifest.json"
-          page_map_path = root / "src/data/page-map.json"
-          architecture_path = root / "src/data/architecture.json"
-
-          if not manifest_path.exists() or not page_map_path.exists():
-              raise SystemExit("Snapshot baseline files are missing")
-
-          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-          page_map = json.loads(page_map_path.read_text(encoding="utf-8"))
-          architecture = (
-              json.loads(architecture_path.read_text(encoding="utf-8"))
-              if architecture_path.exists()
-              else {"schemaVersion": 1, "siteKey": site_key, "ruleset": "Site Factory 상위노출 설계 규칙 v1", "pages": []}
-          )
-
-          url = f"/{slug}/" if route_type == "top_level" else f"/{category}/{slug}/"
-          verified_date = verified_at[:10]
-          quote = lambda s: json.dumps(s, ensure_ascii=False)
-
-          primary_keyword = optional_line_value("PRIMARY_KEYWORD", "").strip() or title.strip()
-          page_role = optional_line_value("PAGE_ROLE", "").strip()
-          if not page_role:
-              if route_type == "top_level":
-                  page_role = "REGION_SERVICE_LANDING"
-              elif page_type in {"funeral-facility", "hospital", "station-transit", "event-venue"} or category in {"places", "funeral"}:
-                  page_role = "PLACE_LANDING"
-              elif page_type in {"opening-business", "order-help"} or category in {"occasions", "order-help"}:
-                  page_role = "INTENT_LANDING"
-              else:
-                  page_role = "INFORMATION_GUIDE"
-          allowed_page_roles = {
-              "REGION_SERVICE_LANDING", "PLACE_LANDING", "INTENT_LANDING",
-              "PRICE_GUIDE", "INFORMATION_GUIDE"
-          }
-          if page_role not in allowed_page_roles:
-              raise SystemExit(f"Unsafe PAGE_ROLE: {page_role}")
-
-          parent_hub = optional_line_value(
-              "PARENT_HUB",
-              "/" if route_type == "top_level" else f"/{category}/"
-          ).strip()
-          if not parent_hub.startswith("/") or not parent_hub.endswith("/"):
-              raise SystemExit(f"Unsafe PARENT_HUB: {parent_hub}")
-
-          intent_key = optional_line_value("INTENT_KEY", "").strip()
-          if not intent_key:
-              normalized_keyword = re.sub(r"[?？]+$", "", primary_keyword).strip()
-              intent_key = f"{region}|{page_role}|{normalized_keyword}"
-
-          for existing in architecture.get("pages", []):
-              if existing.get("pageKey") == page_key:
-                  continue
-              if existing.get("status", "primary") == "primary" and existing.get("intentKey") == intent_key:
-                  raise SystemExit(
-                      f"Intent collision: {intent_key} already belongs to {existing.get('pageKey')}"
-                  )
-          sources_yaml = "\n".join("  - " + quote(u) for u in source_urls)
-
-          structured_sources_yaml = ""
-          if source_names or source_types:
-              rows = []
-              for idx, source_url in enumerate(source_urls):
-                  source_name = source_names[idx] if idx < len(source_names) else urlparse(source_url).netloc
-                  source_type = source_types[idx] if idx < len(source_types) else "reference"
-                  if source_type not in {"official","facility","education","professional","reference"}:
-                      source_type = "reference"
-                  rows.extend([
-                      "  - name: " + quote(source_name),
-                      "    url: " + quote(source_url),
-                      "    type: " + source_type,
-                      "    verifiedAt: " + verified_date,
-                  ])
-              structured_sources_yaml = "\nsources:\n" + "\n".join(rows)
-
-          related_yaml = ""
-          if related_page_keys:
-              related_yaml = "\nrelatedPageKeys:\n" + "\n".join("  - " + quote(key) for key in related_page_keys)
-
-          article = f"""---
-          pageKey: {page_key}
-          snapshotId: {snapshot_id}
-          sourceDraftKey: {draft_key}
-          sourceRecordId: {source_record_id}
-          slug: {quote(slug)}
-          routeType: {route_type}
-          title: {quote(title)}
-          description: {quote(description)}
-          category: {category}
-          structureType: {structure_type}
-          pageType: {page_type}
-          contentRole: {content_role}
-          localizationPolicy: {localization_policy}
-          region: {region}
-          verifiedAt: {verified_date}
-          sourceUrls:
-          {sources_yaml}{structured_sources_yaml}{related_yaml}
-          draftStatus: approved
-          ---
-
-          {content_md}
-          """
-          article = textwrap.dedent(article).lstrip()
-          article_path.parent.mkdir(parents=True, exist_ok=True)
-          article_path.write_text(article.rstrip() + "\n", encoding="utf-8")
-
-          entry = {
-              "pageKey": page_key,
-              "draftKey": draft_key,
-              "sourceRecordId": source_record_id,
-              "publishQueueRecordId": record_id,
-              "snapshotId": snapshot_id,
-              "slug": slug,
-              "category": category,
-              "routeType": route_type,
-              "file": str(article_rel),
-              "url": url,
-              "status": "approved"
-          }
-          manifest["schemaVersion"] = 2
-          manifest["siteKey"] = site_key
-          manifest["pages"] = [p for p in manifest.get("pages", []) if p.get("pageKey") != page_key]
-          manifest["pages"].append(entry)
-          manifest["pages"].sort(key=lambda p: p["pageKey"])
-          manifest["generatedFrom"] = "Airtable Publish Queue"
-          manifest["snapshotMode"] = "git-frozen"
-          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-          map_entry = {
-              "pageKey": page_key,
-              "snapshotId": snapshot_id,
-              "slug": slug,
-              "category": category,
-              "routeType": route_type,
-              "url": url,
-              "status": "approved",
-              "sourceRecordId": source_record_id
-          }
-          page_map["schemaVersion"] = 2
-          page_map["siteKey"] = site_key
-          page_map["pages"] = [p for p in page_map.get("pages", []) if p.get("pageKey") != page_key]
-          page_map["pages"].append(map_entry)
-          page_map["pages"].sort(key=lambda p: p["pageKey"])
-          page_map_path.write_text(json.dumps(page_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-          architecture_entry = {
-              "pageKey": page_key,
-              "url": url,
-              "pageRole": page_role,
-              "parentHub": parent_hub,
-              "primaryKeyword": primary_keyword,
-              "intentKey": intent_key,
-              "pageType": page_type,
-              "contentRole": content_role,
-              "localizationPolicy": localization_policy,
-              "category": category,
-              "sitemapIndexable": True,
-              "status": "primary"
-          }
-          architecture["schemaVersion"] = architecture.get("schemaVersion", 1)
-          architecture["siteKey"] = site_key
-          architecture["ruleset"] = architecture.get("ruleset", "Site Factory 상위노출 설계 규칙 v1")
-          architecture["pages"] = [
-              p for p in architecture.get("pages", [])
-              if p.get("pageKey") != page_key
-          ]
-          architecture["pages"].append(architecture_entry)
-          architecture["pages"].sort(key=lambda p: p["pageKey"])
-          architecture_path.write_text(
-              json.dumps(architecture, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8"
-          )
-
-          print(f"Rendered snapshot {snapshot_id} site={site_key} role={page_role} intent={intent_key} route={route_type} url={url} -> {article_path}")
-          PY
-          python3 "$RUNNER_TEMP/render_snapshot.py"
-
-      - name: Validate and build snapshot before push
-        working-directory: ${{ steps.target.outputs.root }}
+          python3 control/site-factory/engine/render_snapshot.py --registry control/.github/site-factory-sites.json --workspace target | tee snapshot-render-result.json
+          python3 - <<'PYTHON'
+          import json,os
+          result=json.load(open('snapshot-render-result.json'))
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('publication_approved='+str(result['publicationApproved']).lower()+'\n')
+          PYTHON
+      - name: Validate, build and QA preview
+        working-directory: target/${{ steps.target.outputs.root }}
         env:
           SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: ${{ steps.target.outputs.production_enabled }}
+          SITE_INDEXABLE: ${{ steps.target.outputs.indexable }}
         run: |
           npm install
           npm run build
-
-      - name: Deterministic static SEO QA
-        working-directory: ${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: ${{ steps.target.outputs.production_enabled }}
-        run: python3 scripts/qa_static.py
-
-      - name: Cloudflare Workers deploy dry run
-        working-directory: ${{ steps.target.outputs.root }}
-        env:
-          SITE_URL: ${{ steps.target.outputs.site_url }}
-          SITE_INDEXABLE: ${{ steps.target.outputs.production_enabled }}
-        run: npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
-
-      - name: Commit and push snapshot
+          python3 scripts/qa_static.py
+          npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
+      - name: Save reviewable preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-preview-${{ github.event.issue.number }}
+          path: target/${{ steps.target.outputs.root }}/dist/
+          retention-days: 7
+      - name: Commit validated snapshot with race-safe retry
+        if: steps.render.outputs.publication_approved == 'true'
         id: commit
         env:
           ROOT: ${{ steps.target.outputs.root }}
           BRANCH: ${{ steps.target.outputs.branch }}
           ISSUE_BODY: ${{ github.event.issue.body }}
-          EXPECTED_SITE_KEY: ${{ steps.target.outputs.site_key }}
-          EXPECTED_BRANCH: ${{ steps.target.outputs.branch }}
-          EXPECTED_ROOT: ${{ steps.target.outputs.root }}
-          ALLOWED_CATEGORIES: ${{ steps.target.outputs.allowed_categories }}
-          ALLOWED_PAGE_TYPES: ${{ steps.target.outputs.allowed_page_types }}
+          SITE_URL: ${{ steps.target.outputs.site_url }}
+          SITE_INDEXABLE: ${{ steps.target.outputs.indexable }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$ROOT/src/content/articles/" \
-                  "$ROOT/src/data/publish-manifest.json" \
-                  "$ROOT/src/data/page-map.json" \
-                  "$ROOT/src/data/architecture.json"
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }}"
-
-            # Multiple immutable snapshots may target the same branch at once.
-            # Never force-push and never text-merge the shared JSON registries.
-            # If another run advances the branch first, rebuild this snapshot
-            # from the newest remote baseline, rerun all gates, and retry.
-            changed=true
-            pushed=false
-            for attempt in $(seq 1 8); do
-              if git push origin "HEAD:$BRANCH"; then
-                pushed=true
-                break
-              fi
-
-              if [ "$attempt" -ge 8 ]; then
-                break
-              fi
-
-              echo "::warning::Push race on attempt $attempt. Re-rendering immutable snapshot on latest origin/$BRANCH."
-              sleep $((attempt * 2))
-              git fetch origin "$BRANCH"
-              git reset --hard "origin/$BRANCH"
-
-              python3 "$RUNNER_TEMP/render_snapshot.py"
-
-              (
-                cd "$ROOT"
-                npm install
-                npm run build
-                python3 scripts/qa_static.py
-                npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
-              )
-
-              git add "$ROOT/src/content/articles/" \
-                      "$ROOT/src/data/publish-manifest.json" \
-                      "$ROOT/src/data/page-map.json" \
-                      "$ROOT/src/data/architecture.json"
-
-              if git diff --cached --quiet; then
-                echo "Snapshot is already present on the refreshed branch; treating as idempotent success."
-                changed=false
-                pushed=true
-                break
-              fi
-
-              git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }} (retry $attempt)"
-            done
-
-            if [ "$pushed" != "true" ]; then
-              echo "::error::Snapshot push failed after 8 race-safe attempts."
-              exit 1
+          set -euo pipefail
+          cd target
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in $(seq 1 8); do
+            git restore -- "$ROOT/src/data/build-revision.json" 2>/dev/null || true
+            git add "$ROOT/src/content/articles" "$ROOT/src/data" 2>/dev/null || git add "$ROOT/src/data"
+            if git diff --cached --quiet; then
+              echo 'changed=false' >> "$GITHUB_OUTPUT"
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
             fi
-
-            echo "changed=$changed" >> "$GITHUB_OUTPUT"
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Trigger generic production deployment
-        if: steps.commit.outputs.changed == 'true' && steps.target.outputs.launch_mode == 'live' && steps.target.outputs.production_enabled == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SITE_KEY: ${{ steps.target.outputs.site_key }}
-        run: gh workflow run site-production-deploy.yml --ref main -f site_key="$SITE_KEY"
-
-      - name: Report success
+            git commit -m "Publish validated snapshot from issue #${{ github.event.issue.number }}"
+            if git push origin "HEAD:$BRANCH"; then
+              echo 'changed=true' >> "$GITHUB_OUTPUT"
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$attempt" = 8 ]; then exit 1; fi
+            sleep $((attempt * 2))
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/$BRANCH"
+            python3 ../control/site-factory/engine/render_snapshot.py --registry ../control/.github/site-factory-sites.json --workspace .
+            (cd "$ROOT"; npm install; npm run build; python3 scripts/qa_static.py; npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run)
+          done
+      - name: Report committed snapshot state
+        if: steps.render.outputs.publication_approved == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           SHA: ${{ steps.commit.outputs.sha }}
-          CHANGED: ${{ steps.commit.outputs.changed }}
           SITE_KEY: ${{ steps.target.outputs.site_key }}
+          AUTO_DEPLOY: ${{ steps.target.outputs.auto_deploy }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "Site snapshot processed. site=$SITE_KEY snapshot/build/SEO QA/Cloudflare dry-run passed. changed=$CHANGED Commit: $SHA"
-          gh issue close "${{ github.event.issue.number }}"
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "Site snapshot processed. PIPELINE_STATE: snapshot_committed. site=$SITE_KEY Commit: $SHA. Snapshot/build/static QA/dry-run passed. Production requested=$AUTO_DEPLOY; live verification is a separate deployment result. Preview: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      - name: Report legacy preview awaiting explicit content approval
+        if: steps.render.outputs.publication_approved != 'true'
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: preview_ready_approval_required. Legacy queue payload lacks verified content approval metadata; preview/QA passed but no site branch was changed and no deployment was requested. Approve the exact snapshot hash after reviewing the preview, then create a new frozen approved request. Evidence: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      - name: Report actionable failure without closing the queue issue
+        if: failure()
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: failed. No live_verified result was established. Inspect $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID, repair the frozen payload or failed gate, then reopen this issue to retry safely."
+  deploy-approved-snapshot:
+    permissions: {contents: read, issues: write}
+    needs: snapshot
+    if: needs.snapshot.outputs.auto_deploy == 'true' && needs.snapshot.outputs.publication_approved == 'true'
+    uses: joseungil-kr/fwith-site-factory/.github/workflows/site-production-deploy.yml@main
+    with:
+      site_key: ${{ needs.snapshot.outputs.site_key }}
+      expected_revision: ${{ needs.snapshot.outputs.revision }}
+      source_snapshot_issue: ${{ format('{0}', github.event.issue.number) }}
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

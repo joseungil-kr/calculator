@@ -39,8 +39,8 @@
       "root": "site-factory/suwon-flower",
       "siteUrl": "https://suwon.fwith.kr",
       "primaryLandingSlug": "",
-      "heroPath": "images/suwon/hero-B-original.png",
-      "worker": "suwon-flower-guide-v2",
+      "heroPath": "",
+      "worker": "suwon-flower-guide-test",
       "launchMode": "rebuild",
       "productionEnabled": false,
       "naverVerification": "80fedf144567fea99fe833d2937731a190854c41",
@@ -65,7 +65,41 @@
         "order-help",
         "price-guide",
         "message-guide"
-      ]
+      ],
+      "snapshotRenderer": "structured-json-v12",
+      "growthPaused": true,
+      "autoDeploySnapshots": false,
+      "graphScript": "scripts/qa_graph.mjs",
+      "categoryPageTypes": {
+        "funeral": [
+          "funeral-facility",
+          "order-help",
+          "price-guide"
+        ],
+        "business": [
+          "business-opening"
+        ],
+        "school": [
+          "school-event"
+        ],
+        "event": [
+          "event-venue"
+        ],
+        "gift": [
+          "hospital-visit",
+          "personal-gift",
+          "station-transit"
+        ],
+        "order": [
+          "order-help",
+          "price-guide",
+          "message-guide"
+        ]
+      },
+      "stagingWranglerConfig": "wrangler.staging.jsonc",
+      "stagingUrl": "https://suwon-flower-guide-qa.joseungil.workers.dev",
+      "requireRevisionApproval": true,
+      "requireSnapshotApproval": true
     },
     "hwaseong-flower": {
       "repo": "joseungil-kr/fwith-site-factory",
