@@ -2,90 +2,25 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
-import architecture from '../data/architecture.json';
-
-interface Props {
-  category: 'guide' | 'funeral' | 'places' | 'occasions' | 'flower-knowledge' | 'order-help';
-  eyebrow: string;
-  title: string;
-  intro: string;
-  description: string;
-}
 
 const { category, eyebrow, title, intro, description } = Astro.props;
-const activePageKeys = new Set((architecture.pages || []).filter((page) => page.sitemapIndexable !== false && page.status !== 'merged').map((page) => page.pageKey));
-const roleByPageKey = new Map((architecture.pages || []).map((page) => [page.pageKey, page.pageRole]));
-const rolePriority: Record<string, number> = { REGION_SERVICE_LANDING: 0, PLACE_LANDING: 1, INTENT_LANDING: 2, PRICE_GUIDE: 3, INFORMATION_GUIDE: 4 };
-const roleLabel: Record<string, string> = { REGION_SERVICE_LANDING: '지역 서비스', PLACE_LANDING: '장소별 안내', INTENT_LANDING: '목적별 안내', PRICE_GUIDE: '가격 안내', INFORMATION_GUIDE: '정보 가이드' };
-
-const articles = (await getCollection(
-  'articles',
-  ({ data }) =>
-    (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
-    data.routeType === 'category' &&
-    data.category === category && activePageKeys.has(data.pageKey)
-)).sort((a, b) => (rolePriority[roleByPageKey.get(a.data.pageKey) ?? 'INFORMATION_GUIDE'] ?? 99) - (rolePriority[roleByPageKey.get(b.data.pageKey) ?? 'INFORMATION_GUIDE'] ?? 99) || a.data.pageKey.localeCompare(b.data.pageKey, 'ko'));
-
-if (articles.length === 0) {
-  throw new Error(`PUBLIC_HUB_EMPTY: /${category}/ has no approved or published content.`);
-}
-
-const hubIndexable = !siteConfig.indexable ? false : articles.length >= 3;
-
-const hrefFor = (article: (typeof articles)[number]) =>
-  article.data.routeType === 'top_level'
-    ? `/${article.data.slug}/`
-    : `/${article.data.category}/${article.data.slug}/`;
-
-const structureLabel: Record<string, string> = {
-  hub_overview: '전체 가이드',
-  decision_tree: '선택 가이드',
-  checklist: '체크리스트',
-  etiquette_guide: '문구·예절',
-  seasonal_guide: '계절 가이드',
-  scenario_based: '상황별',
-  recipient_based: '대상별',
-  comparison: '비교',
-  risk_based: '주의사항',
-  route_based: '이동·동선',
-  timing_guide: '시간 계획',
-  space_based_event: '행사 공간',
-  faq_first: '질문 정리',
-  care_guide: '관리',
-  message_guide: '문구',
-  product_form_comparison: '형태 비교',
-  myth_busting: '오해 정리',
-  relationship_based_b2b: '기업 관계',
-};
+const articles=(await getCollection('articles',({data})=>data.category===category))
+  .sort((a,b)=>a.data.pageKey.localeCompare(b.data.pageKey,'ko'));
 ---
-<BaseLayout
-  title={`${title} | ${siteConfig.brand}`}
-  description={description}
-  robotsOverride={siteConfig.indexable && !hubIndexable ? 'noindex,follow,max-image-preview:large' : undefined}
->
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">{eyebrow}</span>
-      <h1>{title}</h1>
-      <p>{intro}</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="hub-card-grid">
-        {articles.map((article) => (
-          <a class="hub-card" href={hrefFor(article)}>
-            <div class="hub-card-top">
-              <span class="tag">{roleLabel[roleByPageKey.get(article.data.pageKey) ?? ''] ?? structureLabel[article.data.structureType] ?? '가이드'}</span>
-              <span class="hub-card-region">{article.data.region}</span>
-            </div>
-            <h2>{article.data.title}</h2>
-            <p>{article.data.description}</p>
-            <span class="more">자세히 보기 →</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+<BaseLayout title={`${title} | ${siteConfig.brand}`} description={description}>
+<section class="page-hero"><div class="container">
+  <span class="eyebrow">{eyebrow}</span>
+  <h1>{title}</h1>
+  <p>{intro}</p>
+</div></section>
+<section class="section"><div class="container">
+  <div class="hub-card-grid">
+  {articles.map(a=><a class="hub-card" href={`/${a.data.category}/${a.data.slug}/`}>
+    <div class="hub-card-top"><span class="tag">{eyebrow}</span><span class="hub-card-region">수원</span></div>
+    <h2>{a.data.title}</h2>
+    <p>{a.data.cardSummary}</p>
+    <span class="more">자세히 보기 →</span>
+  </a>)}
+  </div>
+</div></section>
 </BaseLayout>
