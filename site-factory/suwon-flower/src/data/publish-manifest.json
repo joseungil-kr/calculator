@@ -96,6 +96,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-12",
+      "draftKey": "suwon-flower-launch-12-draft-v2",
+      "sourceRecordId": "recoGFNLznhfdU29f",
+      "publishQueueRecordId": "recYjMUQ91TIQyXdf",
+      "snapshotId": "suwon-flower-launch-12-v1",
+      "slug": "suwon-funeral-wreath-order-checklist",
+      "category": "order-help",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-12.md",
+      "url": "/order-help/suwon-funeral-wreath-order-checklist/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-13",
       "draftKey": "suwon-flower-factory-draft-13",
       "sourceRecordId": "recYtCw9VGylskqwj",

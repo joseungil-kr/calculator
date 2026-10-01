@@ -98,6 +98,20 @@
       "status": "primary"
     },
     {
+      "pageKey": "suwon-flower-launch-12",
+      "url": "/order-help/suwon-funeral-wreath-order-checklist/",
+      "pageRole": "INTENT_LANDING",
+      "parentHub": "/order-help/",
+      "primaryKeyword": "수원 장례식장 근조화환 주문 전, 어떤 빈소 정보를 먼저 확인해야 할까요?",
+      "intentKey": "수원|INTENT_LANDING|수원 장례식장 근조화환 주문 전, 어떤 빈소 정보를 먼저 확인해야 할까요",
+      "pageType": "order-help",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-optional",
+      "category": "order-help",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
       "pageKey": "suwon-flower-launch-13",
       "url": "/flower-knowledge/suwon-bouquet-aftercare/",
       "pageRole": "INFORMATION_GUIDE",
