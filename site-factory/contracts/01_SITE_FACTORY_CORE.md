@@ -161,3 +161,11 @@ Vertical Blueprint가 별도 값을 지정하지 않는 한 현재 검증값은:
 
 ## 13. 학습 루프
 페이지별 URL, target keyword/intent, 발행일, 색인일, 첫 노출일, 첫 클릭일, 최고/현재 순위, impressions, CTR을 기록한다. 자체 데이터가 충분히 쌓이면 외부 경쟁사이트 추정보다 자사 실증 결과를 우선하여 Contract를 v3.x로 갱신한다.
+
+
+## 14. Content Writing Contract
+모든 사용자 노출 문구는 `site-factory/contracts/04_SITE_FACTORY_CONTENT_WRITING.md`를 필수 하위계약으로 따른다.
+
+Core/Vertical Blueprint가 검색어·정보구조·사실 범위를 결정하고, Content Writing Contract가 실제 고객용 문장, Title–Summary 역할 분리, Provider Voice, 웹 리서치 fallback, 구매전환 내부링크, CTA 및 human-check 규칙을 결정한다.
+
+검색어/구조/SEO Gate가 PASS해도 Content Writing Contract를 위반하면 production PASS 금지다.
