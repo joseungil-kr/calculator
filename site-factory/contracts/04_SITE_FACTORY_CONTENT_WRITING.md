@@ -1,4 +1,4 @@
-# Site Factory Content Writing Contract v1
+# Site Factory Content Writing Contract v1.1
 
 ## 1. 목적
 이 계약은 Site Factory가 생성하는 모든 고객 노출 문구의 작성 기준이다.

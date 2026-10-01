@@ -1,4 +1,4 @@
-# Site Factory Generic Engine Contract v2 — Query-first
+# Site Factory Generic Engine Contract v3 — Query-first + Bootstrap
 
 ## 목적
 Generic Engine의 제1목적은 지역 서비스 사이트의 검색어-문서 적합도를 높이는 것이다. 허브 숫자, 페이지 수, 정보량은 목적이 아니라 결과다.
