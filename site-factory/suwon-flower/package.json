@@ -1,15 +1,14 @@
 {
-  "name": "suwon-flower-site-factory",
+  "name": "suwon-flower-v12",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "validate:snapshot": "node scripts/validate_snapshot.mjs",
-    "build": "node scripts/write_build_revision.mjs && npm run qa:utf8 && npm run validate:snapshot && astro check && astro build && npm run inject:banners && npm run qa:seo && npm run qa:graph",
+    "build": "node scripts/write_build_revision.mjs && npm run qa:utf8 && npm run validate:snapshot && astro check && astro build && npm run qa:seo && npm run qa:graph",
     "preview": "astro preview",
     "qa:utf8": "node scripts/qa_utf8.mjs",
     "qa:graph": "node scripts/qa_site_graph.mjs",
-    "inject:banners": "node scripts/inject_article_banners.mjs",
     "qa:seo": "node scripts/qa_seo_score.mjs"
   },
   "dependencies": {
