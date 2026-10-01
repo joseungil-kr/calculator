@@ -5,6 +5,7 @@ if(pages.length!==12) throw new Error('Expected 12 query pages');
 const seen=new Set();
 const headingSets=[];
 const linkRe=/\[\[([^|]+)\|([^\]]+)\]\]/g;
+const audienceForbidden=/(검색어|검색의도|SEO|상위노출|페이지를 분리|페이지의 역할|지역 페이지|가격 페이지|견적 페이지|대표 페이지|중복문서|cluster|Business Truth|Production|Shadow|QA|검증용|콘텐츠와 CTA|사용자는|검색자는|페이지에서는|허브로 돌아)/i;
 for(const p of pages){
   if(!p.primaryKeyword || !p.title.startsWith(p.primaryKeyword)) throw new Error('Title alignment fail: '+p.pageKey);
   if(!p.h1.includes(p.primaryKeyword)) throw new Error('H1 alignment fail: '+p.pageKey);
@@ -32,6 +33,8 @@ for(const p of pages){
     }
   }
   if(!p.cta?.targetKey || !p.cta?.label) throw new Error('CTA missing: '+p.pageKey);
+  const visibleCopy=[p.firstAnswer,...p.sections.flat(),...p.faq.flat(),p.cta.label].join(' ');
+  if(audienceForbidden.test(visibleCopy)) throw new Error('Audience/Conversion gate fail: '+p.pageKey);
 }
 if(pages.filter(p=>p.queryClass==='support-info').length!==0) throw new Error('Support-info quota filler detected');
 if(arch.pages.filter(p=>p.status==='primary').length!==12) throw new Error('Architecture primary count mismatch');
@@ -45,4 +48,4 @@ for(const cat of ['work-types','areas']){
   const hub=arch.pages.find(p=>p.pageRole==='HUB'&&p.url===`/${cat}/`);
   if(count>=2 && !hub) throw new Error('Required structural hub missing: '+cat);
 }
-console.log('QUERY-FIRST HARD-GATE QA PASSED: pages=12, titleH1=12, inlineLinks>=2, localEvidence>=2 for local/work, singleChildHub=0');
+console.log('QUERY-FIRST HARD-GATE QA PASSED: pages=12, titleH1=12, audienceConversion=12, inlineLinks>=2, localEvidence>=2 for local/work, singleChildHub=0');

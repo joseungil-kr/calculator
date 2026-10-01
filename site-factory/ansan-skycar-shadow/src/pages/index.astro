@@ -8,6 +8,7 @@ const groups = [
   {label:'지역별 작업',links:pages.filter((p:any)=>p.category==='areas')}
 ];
 const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>p.pageKey===key)).filter(Boolean);
+const estimate=pages.find((p:any)=>p.pageKey==='skycar-qf-003');
 function rich(text:string){
  const out:any[]=[]; const re=/\[\[([^|]+)\|([^\]]+)\]\]/g; let last=0; let m;
  while((m=re.exec(text))){
@@ -24,6 +25,7 @@ function rich(text:string){
 <section class="hero">
   <h1>{page.h1}</h1>
   <p class="lead">{page.firstAnswer}</p>
+  {estimate && <a class="cta-link" href={estimate.url}>현장정보로 견적 준비하기</a>}
 </section>
 
 <section class="grid">
@@ -33,7 +35,7 @@ function rich(text:string){
 {page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p></section>)}
 
 <section class="section evidence">
-  <h2>안산 스카이차 지역·현장 확인 근거</h2>
+  <h2>안산 스카이차 작업에 참고할 지역정보</h2>
   {page.localEvidence.map((e:any)=><article class="evidence-item" data-local-evidence="true"><p>{e.claim}</p><p class="source"><a href={e.sourceUrl} rel="nofollow">{e.sourceName}</a> · 확인 {e.verifiedAt}</p></article>)}
 </section>
 
@@ -43,7 +45,7 @@ function rich(text:string){
 </section>
 
 <section class="section related">
-  <h2>먼저 확인하면 좋은 페이지</h2>
+  <h2>함께 확인하면 좋은 작업 정보</h2>
   <ul>{related.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><span>{p.description}</span></li>)}</ul>
 </section>
 </BaseLayout>
