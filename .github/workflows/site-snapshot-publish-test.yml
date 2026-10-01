@@ -361,9 +361,9 @@ jobs:
               "sitemapIndexable": True,
               "status": "primary"
           }
-          architecture["schemaVersion"] = 1
+          architecture["schemaVersion"] = architecture.get("schemaVersion", 1)
           architecture["siteKey"] = site_key
-          architecture["ruleset"] = "Site Factory 상위노출 설계 규칙 v1"
+          architecture["ruleset"] = architecture.get("ruleset", "Site Factory 상위노출 설계 규칙 v1")
           architecture["pages"] = [
               p for p in architecture.get("pages", [])
               if p.get("pageKey") != page_key
