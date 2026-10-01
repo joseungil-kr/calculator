@@ -4,7 +4,7 @@ const arch=JSON.parse(fs.readFileSync('src/data/architecture.json','utf8'));
 if(pages.length!==12) throw new Error('Expected 12 query pages');
 const seen=new Set(), headingSets=[];
 const linkRe=/\[\[([^|]+)\|([^\]]+)\]\]/g;
-const audienceForbidden=/(검색어|검색의도|SEO|상위노출|페이지를 분리|페이지의 역할|지역 페이지|가격 페이지|견적 페이지|대표 페이지|중복문서|cluster|Business Truth|Production|Shadow|QA|검증용|콘텐츠와 CTA|사용자는|검색자는|페이지에서는|페이지에서 임의|허브로 돌아|지역 랜딩|설계할 때 실제 지역 맥락)/i;
+const audienceForbidden=/(검색어|검색의도|SEO|상위노출|페이지를 분리|페이지의 역할|지역 페이지|가격 페이지|견적 페이지|대표 페이지|중복문서|cluster|Business Truth|Production|Shadow|QA|검증용|콘텐츠와 CTA|사용자는|사용자가|검색자는|검색자가|페이지에서는|페이지에서 임의|허브로 돌아|지역 랜딩|설계할 때 실제 지역 맥락)/i;
 function commonPrefix(a,b){let i=0; while(i<a.length&&i<b.length&&a[i]===b[i]) i++; return i;}
 function toks(s){return new Set(s.replace(/[^\p{L}\p{N}]+/gu,' ').split(/\s+/).filter(x=>x.length>1));}
 function sim(a,b){const A=toks(a),B=toks(b); const inter=[...A].filter(x=>B.has(x)).length; const uni=new Set([...A,...B]).size; return uni?inter/uni:0;}
