@@ -96,6 +96,41 @@
         "flower-knowledge",
         "order-help"
       ]
+    },
+    "yongin-flower-v2": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-yongin-v2",
+      "root": "site-factory/yongin-flower",
+      "siteUrl": "https://yongin.fwith.kr",
+      "primaryLandingSlug": "",
+      "heroPath": "images/yongin/hero-B-original.png",
+      "worker": "yongin-flower-guide-v2",
+      "wranglerConfig": "wrangler.production.jsonc",
+      "launchMode": "live",
+      "productionEnabled": true,
+      "naverVerification": "",
+      "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
+      "templateKey": "flower-local-v2",
+      "allowedCategories": [
+        "funeral",
+        "business",
+        "school",
+        "event",
+        "gift",
+        "order"
+      ],
+      "allowedPageTypes": [
+        "funeral-facility",
+        "business-opening",
+        "school-event",
+        "event-venue",
+        "hospital-visit",
+        "personal-gift",
+        "station-transit",
+        "order-help",
+        "price-guide",
+        "message-guide"
+      ]
     }
   }
 }
