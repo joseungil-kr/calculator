@@ -1,26 +1,51 @@
 ---
 import '../styles/global.css';
+import '../styles/image-assets.css';
 const { title, description, canonicalPath='/' } = Astro.props;
 const revision = import.meta.env.SITE_FACTORY_REVISION || 'shadow';
 const canonical = new URL(canonicalPath, 'https://generic-skycar-shadow.joseungil.workers.dev').toString();
+const smsHref='sms:01053221952?body='+encodeURIComponent('영진스카이 스카이차 견적 문의드립니다. 주소 / 작업종류 / 작업높이 / 현장사진을 보내겠습니다.');
 ---
 <!doctype html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href={canonical} />
   <meta name="site-factory-revision" content={revision} />
+  <meta name="theme-color" content="#071a33" />
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="/">안산 스카이차</a>
-  <nav><a href="/pricing/ansan-skycar-price/">가격</a><a href="/quote/ansan-skycar-estimate/">견적</a><a href="/work-types/">작업유형</a><a href="/areas/">지역</a></nav>
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="영진스카이 홈">
+      <span class="brand-mark">↗</span>
+      <span><b>영진스카이</b><small>안산 스카이차</small></span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="/pricing/ansan-skycar-price/">가격</a>
+      <a href="/quote/ansan-skycar-estimate/">견적</a>
+      <a href="/work-types/">작업유형</a>
+      <a href="/areas/">지역</a>
+    </nav>
+    <a class="header-phone" href="tel:01053221952">☎ 010-5322-1952</a>
+  </div>
 </header>
 <main><slot /></main>
-<footer>안산 스카이차 작업 안내 · 현장 조건에 따라 작업 가능 여부와 견적이 달라질 수 있습니다.</footer>
+<footer>
+  <div class="footer-inner">
+    <strong>영진스카이</strong>
+    <span>안산 스카이차 · 당일예약 및 출동 가능</span>
+    <a href="tel:01053221952">010-5322-1952</a>
+    <small>현장 조건과 일정에 따라 작업 가능 여부와 견적이 달라질 수 있습니다.</small>
+  </div>
+</footer>
+<div class="mobile-actions" aria-label="빠른 문의">
+  <a class="mobile-call" href="tel:01053221952">전화하기</a>
+  <a class="mobile-sms" href={smsHref}>문자로 견적</a>
+</div>
 </body>
 </html>

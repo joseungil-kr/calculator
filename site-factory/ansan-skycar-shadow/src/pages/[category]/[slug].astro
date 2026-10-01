@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import pages from '../../data/pages.json';
+import { realExterior, realIndustrial, realBoom } from '../../data/real-photo-assets';
 export function getStaticPaths(){
   return (pages as any[]).filter(p=>p.url!=='/').map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));
 }
@@ -11,6 +12,11 @@ const hubAllowed=(counts[page.category]||0)>=2;
 const hubLabels:any={"work-types":"안산 스카이차 작업유형","areas":"안산 지역별 스카이차"};
 const parentHref=hubAllowed ? `/${page.category}/` : '/';
 const parentLabel=hubAllowed ? (hubLabels[page.category]||'상위 목록') : '안산 스카이차';
+const smsHref='sms:01053221952?body='+encodeURIComponent(`영진스카이 ${page.primaryKeyword} 견적 문의드립니다. 주소 / 작업종류 / 작업높이 / 현장사진을 보내겠습니다.`);
+const visualClass=page.category==='quote'?'sf-img-banner-estimate':page.category==='pricing'?'sf-img-banner-fleet':page.category==='work-types'?'sf-img-work-sign':'sf-img-work-industrial';
+const proofImages=page.category==='areas'
+ ? [{src:realIndustrial,alt:'영진스카이 산업현장 작업사진'},{src:realBoom,alt:'영진스카이 스카이차 현장사진'}]
+ : [{src:realExterior,alt:'영진스카이 고소작업 현장사진'},{src:realBoom,alt:'영진스카이 스카이차 장비 현장사진'}];
 function rich(text:string){
  const out:any[]=[]; const re=/\[\[([^|]+)\|([^\]]+)\]\]/g; let last=0; let m;
  while((m=re.exec(text))){
@@ -22,49 +28,67 @@ function rich(text:string){
  if(last<text.length) out.push({text:text.slice(last)});
  return out;
 }
-const ctaTarget=(pages as any[]).find(p=>p.pageKey===page.cta?.targetKey);
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath={page.url}>
 <article>
 <nav class="breadcrumb" aria-label="breadcrumb"><a href="/">안산 스카이차</a><span>›</span>{parentHref!=='/' && <><a href={parentHref}>{parentLabel}</a><span>›</span></>}<span>{page.primaryKeyword}</span></nav>
-<section class="hero compact">
-  <h1>{page.h1}</h1>
-  <p class="lead">{page.firstAnswer}</p>
-  {ctaTarget && <a class="cta-link" href={ctaTarget.url}>{page.cta.label}</a>}
+
+<section class="detail-hero">
+  <div class="detail-copy">
+    <span class="eyebrow">영진스카이 · 당일예약 및 출동 가능</span>
+    <h1>{page.h1}</h1>
+    <p class="lead">{page.firstAnswer}</p>
+    <div class="fact-pills"><span>1톤</span><span>2.5톤</span><span>3톤</span><span>5톤</span></div>
+    <div class="button-row"><a class="btn btn-primary" href="tel:01053221952">☎ 010-5322-1952</a><a class="btn btn-secondary" href={smsHref}>✉ 문자로 견적</a></div>
+  </div>
+  <a class={"detail-visual "+visualClass} href={smsHref} aria-label={page.primaryKeyword+" 문자 견적"}><span class="sr-only">{page.primaryKeyword} 영진스카이 견적</span></a>
 </section>
 
-{page.sections.map((s:any)=>
-  <section class="section">
-    <h2>{s[0]}</h2>
-    <p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p>
-  </section>
+<section class="provider-strip">
+  <strong>영진스카이</strong>
+  <span>안산 스카이차 작업 상담</span>
+  <span>당일예약 및 출동 가능</span>
+  <span>1톤 · 2.5톤 · 3톤 · 5톤 출장 가능</span>
+</section>
+
+{page.sections.slice(0,3).map((s:any)=>
+  <section class="section content-section"><h2>{s[0]}</h2><p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p></section>
 )}
+
+<a class="wide-banner sf-img-banner-estimate" href={smsHref} aria-label="현장사진 보내고 영진스카이 견적 문의"><span class="sr-only">주소 작업높이 현장사진으로 견적 상담</span></a>
+
+{page.sections.slice(3).map((s:any)=>
+  <section class="section content-section"><h2>{s[0]}</h2><p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p></section>
+)}
+
+<section class="real-work compact-real-work">
+  <div class="section-heading"><span class="eyebrow">실제 현장사진</span><h2>영진스카이 작업 현장</h2></div>
+  <div class="photo-grid two">
+    {proofImages.map((img:any)=><figure><img src={img.src} alt={img.alt} loading="lazy"/><figcaption>첨부된 실제 작업 현장사진</figcaption></figure>)}
+  </div>
+</section>
 
 {Array.isArray(page.localEvidence) && page.localEvidence.length>0 &&
 <section class="section evidence">
-  <h2>{page.primaryKeyword} 작업에 참고할 지역정보</h2>
+  <h2>{page.primaryKeyword} 현장에 참고할 지역정보</h2>
   {page.localEvidence.map((e:any)=><article class="evidence-item" data-local-evidence="true"><p>{e.claim}</p><p class="source"><a href={e.sourceUrl} rel="nofollow">{e.sourceName}</a> · 확인 {e.verifiedAt}</p></article>)}
 </section>}
 
 <section class="section faq">
   <h2>{page.primaryKeyword} 자주 묻는 질문</h2>
-  {page.faq.map((item:any)=>
-    <div class="faq-item">
-      <h3>{item[0]}</h3>
-      <p>{item[1]}</p>
-    </div>
-  )}
+  {page.faq.map((item:any)=><div class="faq-item"><h3>{item[0]}</h3><p>{item[1]}</p></div>)}
 </section>
 
 <section class="section related">
-  <h2>함께 확인하면 좋은 작업 정보</h2>
-  <ul>{related.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><span>{p.description}</span></li>)}</ul>
+  <h2>견적 전에 함께 확인하면 좋은 정보</h2>
+  <div class="related-grid">{related.map((p:any)=><a href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div>
 </section>
 
-<section class="cta">
-  <h2>견적 문의 전 현장정보를 준비해 주세요</h2>
-  <p>정확한 주소, 작업내용, 작업 위치와 높이, 현장사진, 차량 접근공간, 희망 일정을 정리해 두시면 상담이 훨씬 빠릅니다.</p>
-  {ctaTarget && <a class="cta-link" href={ctaTarget.url}>{page.cta.label}</a>}
+<a class="wide-banner sf-img-banner-fleet" href="tel:01053221952" aria-label="영진스카이 작업 가능 여부 전화 확인"><span class="sr-only">1톤 2.5톤 3톤 5톤 출장 가능 영진스카이 전화 문의</span></a>
+
+<section class="final-cta">
+  <div><span class="eyebrow">빠른 상담</span><h2>주소와 현장사진을 보내주세요</h2><p>영진스카이 010-5322-1952 · 당일예약 및 출동 가능</p></div>
+  <div class="button-row"><a class="btn btn-yellow" href="tel:01053221952">전화 상담</a><a class="btn btn-light" href={smsHref}>문자로 견적</a></div>
 </section>
 </article>
 </BaseLayout>

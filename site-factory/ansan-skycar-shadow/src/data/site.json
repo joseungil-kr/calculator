@@ -2,10 +2,12 @@
   "siteKey": "ansan-skycar-generic-shadow",
   "region": "안산",
   "service": "스카이차",
-  "brand": "Site Factory Query-First Shadow",
+  "brand": "영진스카이",
+  "phone": "010-5322-1952",
   "siteUrl": "https://generic-skycar-shadow.joseungil.workers.dev",
   "indexable": false,
   "blueprintKey": "skycar-local",
   "templateKey": "skycar-local-v1",
-  "productionReady": false
+  "productionReady": false,
+  "productionBlockReason": "Shadow/noindex 유지. 실제 가격·보험/자격 등 추가 확인 후 Production 전환."
 }

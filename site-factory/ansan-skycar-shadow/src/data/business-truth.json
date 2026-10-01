@@ -1,9 +1,26 @@
 {
-  "status": "missing-for-shadow",
-  "brand": null,
-  "phone": null,
-  "serviceArea": null,
-  "vehicles": [],
+  "status": "user-provided-shadow-truth",
+  "brand": "영진스카이",
+  "phone": "010-5322-1952",
+  "phoneHref": "tel:01053221952",
+  "smsNumber": "01053221952",
+  "serviceArea": "안산 및 출장 가능 지역 상담",
+  "sameDayReservation": true,
+  "sameDayDispatch": true,
+  "sameDayNote": "당일예약 및 출동 가능",
+  "vehicles": [
+    "1톤",
+    "2.5톤",
+    "3톤",
+    "5톤"
+  ],
+  "estimateMethod": "주소·작업종류·작업높이·현장사진 확인 후 상담",
   "pricing": null,
-  "note": "실제 업체 Business Truth가 없으므로 Production Gate는 의도적으로 차단한다."
+  "source": "user-provided",
+  "verifiedAt": "2026-10-01",
+  "productionNotes": [
+    "실제 가격",
+    "보험·자격 정보",
+    "검증된 고객후기"
+  ]
 }

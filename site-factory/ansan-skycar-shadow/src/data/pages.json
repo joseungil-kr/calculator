@@ -80,16 +80,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "간판·외벽·실외기·CCTV 작업 전에 필요한 현장사진, 차량 접근조건, 견적 준비사항을 한 번에 확인할 수 있습니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -177,16 +177,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "작업 높이·시간·차량 접근성·대기 여부 등 비용을 바꾸는 조건과 견적 비교 포인트를 정리했습니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-003",
@@ -278,16 +278,16 @@
       }
     ],
     "cta": {
-      "label": "작업 조건과 비용 다시 확인하기",
-      "targetKey": "skycar-qf-002",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "label": "영진스카이 견적 문의",
+      "targetKey": "skycar-qf-003",
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "주소와 작업사진부터 작업 위치·높이·희망 일정까지, 상담 전에 준비하면 좋은 정보를 순서대로 확인하세요.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -379,16 +379,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "설치·교체·철거 여부와 간판 위치, 차량 배치 공간을 미리 정리하면 현장 상담과 견적 확인이 한결 수월해집니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -480,16 +480,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "외벽 작업면과 범위, 주변 장애물, 차량 배치 공간을 확인해 두면 필요한 작업조건을 빠르게 설명할 수 있습니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -581,16 +581,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "실외기 위치와 설치·교체 여부, 이동경로, 차량 정차 공간을 함께 준비하면 현장조건 확인이 쉬워집니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -682,16 +682,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "설치 지점과 수량, 작업 높이, 차량 접근공간을 정리해 두면 여러 CCTV 지점 작업도 상담하기 편합니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -783,16 +783,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "상가·건물 고소작업을 문의하기 전 주차·보행 동선과 작업면, 차량 정차 위치를 함께 확인해 보세요.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -884,16 +884,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "건물 작업면과 차량이 설 위치, 현장사진을 준비해 두면 선부동 현장의 접근조건과 견적을 설명하기 쉽습니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -985,16 +985,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "상가와 공장 현장은 출입·보행 동선이 달라질 수 있어 작업 위치와 차량 동선을 먼저 정리하는 것이 좋습니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -1086,16 +1086,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "공장 내부·외부 작업은 출입구와 작업동, 설비 주변 공간이 중요하므로 사업장 단위로 준비사항을 확인해 보세요.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
@@ -1187,16 +1187,16 @@
       }
     ],
     "cta": {
-      "label": "견적에 필요한 현장정보 확인하기",
+      "label": "영진스카이 견적 문의",
       "targetKey": "skycar-qf-003",
-      "status": "provisional",
-      "humanCheckRequired": true
+      "status": "verified-user-provided",
+      "humanCheckRequired": false
     },
     "cardSummary": "공장·산업단지 작업은 사업장 주소와 출입구, 작업동, 차량 이동경로를 함께 정리하면 상담이 빠릅니다.",
     "humanCheckRequired": [
-      "operator_identity",
-      "real_contact_cta",
-      "verified_business_selling_points"
+      "pricing",
+      "insurance_license",
+      "customer_reviews"
     ],
     "conversionTargets": [
       "skycar-qf-002",
