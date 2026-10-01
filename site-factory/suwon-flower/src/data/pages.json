@@ -9,8 +9,8 @@
     "primaryKeyword": "아주대학교병원 장례식장 근조화환",
     "title": "아주대학교병원 장례식장 근조화환 | 빈소·주문정보 확인",
     "h1": "아주대학교병원 장례식장 근조화환",
-    "description": "아주대학교병원 장례식장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
-    "cardSummary": "아주대학교병원 장례식장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
+    "description": "빈소 호실과 상주 표기, 리본문구를 한 번에 준비하세요. 근조화환 등급별 가격도 함께 비교할 수 있습니다.",
+    "cardSummary": "빈소 호실과 상주 표기, 리본문구를 한 번에 준비하세요. 근조화환 등급별 가격도 함께 비교할 수 있습니다.",
     "pageType": "funeral-facility",
     "queryClass": "place-commercial",
     "visualIntent": "funeral_hospital_condolence",
@@ -65,7 +65,9 @@
       "suwon-flower-v12-02",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-01-v1-2",
+    "intentKey": "수원|아주대학교병원 장례식장 근조화환"
   },
   {
     "pageKey": "suwon-flower-v12-02",
@@ -77,8 +79,8 @@
     "primaryKeyword": "성빈센트병원 장례식장 근조화환",
     "title": "성빈센트병원 장례식장 근조화환 | 빈소·주문정보 확인",
     "h1": "성빈센트병원 장례식장 근조화환",
-    "description": "가톨릭대학교 성빈센트병원 장례식장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
-    "cardSummary": "가톨릭대학교 성빈센트병원 장례식장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
+    "description": "병원 본관과 장례식장 동선을 구분하고 수령할 빈소를 확인하세요. 발신자 이름과 문구까지 준비하면 주문이 간단해집니다.",
+    "cardSummary": "병원 본관과 장례식장 동선을 구분하고 수령할 빈소를 확인하세요. 발신자 이름과 문구까지 준비하면 주문이 간단해집니다.",
     "pageType": "funeral-facility",
     "queryClass": "place-commercial",
     "visualIntent": "funeral_hospital_condolence",
@@ -133,7 +135,9 @@
       "suwon-flower-v12-01",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-02-v1-2",
+    "intentKey": "수원|성빈센트병원 장례식장 근조화환"
   },
   {
     "pageKey": "suwon-flower-v12-03",
@@ -145,8 +149,8 @@
     "primaryKeyword": "수원시연화장 근조화환",
     "title": "수원시연화장 근조화환 | 장례식장 주문정보 확인",
     "h1": "수원시연화장 근조화환",
-    "description": "수원시연화장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
-    "cardSummary": "수원시연화장로 보낼 때 필요한 빈소·상주·리본문구와 59,000원부터의 근조화환 선택 기준을 정리했습니다.",
+    "description": "장례식장·승화원·추모시설 중 정확한 목적지를 구분하는 것이 먼저입니다. 빈소 전달에 필요한 정보를 확인하세요.",
+    "cardSummary": "장례식장·승화원·추모시설 중 정확한 목적지를 구분하는 것이 먼저입니다. 빈소 전달에 필요한 정보를 확인하세요.",
     "pageType": "funeral-facility",
     "queryClass": "place-commercial",
     "visualIntent": "funeral-facility",
@@ -201,7 +205,9 @@
       "suwon-flower-v12-01",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-03-v1-2",
+    "intentKey": "수원|수원시연화장 근조화환"
   },
   {
     "pageKey": "suwon-flower-v12-04",
@@ -213,8 +219,8 @@
     "primaryKeyword": "수원 근조화환",
     "title": "수원 근조화환 | 장례식장 당일 주문 준비",
     "h1": "수원 근조화환",
-    "description": "근조·축하화환의 실제 가격과 전화·온라인 주문방법, 배송에 필요한 수령정보를 주문 순서대로 정리했습니다.",
-    "cardSummary": "근조·축하화환의 실제 가격과 전화·온라인 주문방법, 배송에 필요한 수령정보를 주문 순서대로 정리했습니다.",
+    "description": "조의를 전할 화환을 고른 뒤 빈소·상주·발신자 정보를 알려주세요. 전화 접수시간과 배송 확인 순서를 안내합니다.",
+    "cardSummary": "조의를 전할 화환을 고른 뒤 빈소·상주·발신자 정보를 알려주세요. 전화 접수시간과 배송 확인 순서를 안내합니다.",
     "pageType": "order-help",
     "queryClass": "core-commercial",
     "visualIntent": "funeral_service",
@@ -269,7 +275,9 @@
       "suwon-flower-v12-01",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-04-v1-2",
+    "intentKey": "수원|수원 근조화환"
   },
   {
     "pageKey": "suwon-flower-v12-05",
@@ -281,8 +289,8 @@
     "primaryKeyword": "수원 장례식장 화환 가격",
     "title": "수원 장례식장 화환 가격 | 근조화환 59,000원부터",
     "h1": "수원 장례식장 화환 가격",
-    "description": "59,000원부터 시작하는 실제 화환 상품가격과 상품 등급, 지역별 추가배송비 가능조건을 한 번에 확인하세요.",
-    "cardSummary": "59,000원부터 시작하는 실제 화환 상품가격과 상품 등급, 지역별 추가배송비 가능조건을 한 번에 확인하세요.",
+    "description": "기본형 59,000원, 고급형 79,000원, 특대형 109,000원을 비교하세요. 최종 배송비는 목적지를 기준으로 확인합니다.",
+    "cardSummary": "기본형 59,000원, 고급형 79,000원, 특대형 109,000원을 비교하세요. 최종 배송비는 목적지를 기준으로 확인합니다.",
     "pageType": "price-guide",
     "queryClass": "commercial-modifier",
     "visualIntent": "funeral_price",
@@ -337,7 +345,9 @@
       "suwon-flower-v12-01",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-05-v1-2",
+    "intentKey": "수원|수원 장례식장 화환 가격"
   },
   {
     "pageKey": "suwon-flower-v12-06",
@@ -349,8 +359,8 @@
     "primaryKeyword": "광교 개업 축하화환",
     "title": "광교 개업 축하화환 | 매장·사무실 축하꽃 주문",
     "h1": "광교 개업 축하화환",
-    "description": "광교의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
-    "cardSummary": "광교의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
+    "description": "오픈 날짜와 매장 수령시간을 먼저 정해 주세요. 입구에 놓을 공간과 보내는 분 이름에 맞춰 축하화환을 선택할 수 있습니다.",
+    "cardSummary": "오픈 날짜와 매장 수령시간을 먼저 정해 주세요. 입구에 놓을 공간과 보내는 분 이름에 맞춰 축하화환을 선택할 수 있습니다.",
     "pageType": "business-opening",
     "queryClass": "local-commercial",
     "visualIntent": "business_opening",
@@ -405,7 +415,9 @@
       "suwon-flower-v12-07",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-06-v1-2",
+    "intentKey": "수원|광교 개업 축하화환"
   },
   {
     "pageKey": "suwon-flower-v12-07",
@@ -417,8 +429,8 @@
     "primaryKeyword": "인계동 개업화환",
     "title": "인계동 개업화환 | 매장 오픈 축하꽃 주문",
     "h1": "인계동 개업화환",
-    "description": "인계동의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
-    "cardSummary": "인계동의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
+    "description": "매장 오픈 시간에 꽃을 받을 담당자가 있는지 확인하세요. 리본문구와 건물·층 정보를 준비하는 순서를 안내합니다.",
+    "cardSummary": "매장 오픈 시간에 꽃을 받을 담당자가 있는지 확인하세요. 리본문구와 건물·층 정보를 준비하는 순서를 안내합니다.",
     "pageType": "business-opening",
     "queryClass": "local-commercial",
     "visualIntent": "business_opening",
@@ -473,7 +485,9 @@
       "suwon-flower-v12-06",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-07-v1-2",
+    "intentKey": "수원|인계동 개업화환"
   },
   {
     "pageKey": "suwon-flower-v12-08",
@@ -485,8 +499,8 @@
     "primaryKeyword": "영통 개업화환",
     "title": "영통 개업화환 | 매장·사무실 축하꽃 주문",
     "h1": "영통 개업화환",
-    "description": "영통의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
-    "cardSummary": "영통의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
+    "description": "상가 이름만으로는 전달 위치를 찾기 어려울 수 있습니다. 업종·호수·담당자 연락처와 설치 공간을 함께 준비하세요.",
+    "cardSummary": "상가 이름만으로는 전달 위치를 찾기 어려울 수 있습니다. 업종·호수·담당자 연락처와 설치 공간을 함께 준비하세요.",
     "pageType": "business-opening",
     "queryClass": "local-commercial",
     "visualIntent": "business_opening",
@@ -541,7 +555,9 @@
       "suwon-flower-v12-06",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-08-v1-2",
+    "intentKey": "수원|영통 개업화환"
   },
   {
     "pageKey": "suwon-flower-v12-09",
@@ -553,8 +569,8 @@
     "primaryKeyword": "권선구 개업화환",
     "title": "권선구 개업화환 | 매장 오픈 축하꽃 주문",
     "h1": "권선구 개업화환",
-    "description": "권선구의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
-    "cardSummary": "권선구의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
+    "description": "새 매장을 축하하는 화환은 크기와 설치 위치를 함께 비교하세요. 원하는 상품과 전달시간을 정해 문의할 수 있습니다.",
+    "cardSummary": "새 매장을 축하하는 화환은 크기와 설치 위치를 함께 비교하세요. 원하는 상품과 전달시간을 정해 문의할 수 있습니다.",
     "pageType": "business-opening",
     "queryClass": "local-commercial",
     "visualIntent": "business_opening",
@@ -609,7 +625,9 @@
       "suwon-flower-v12-06",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-09-v1-2",
+    "intentKey": "수원|권선구 개업화환"
   },
   {
     "pageKey": "suwon-flower-v12-10",
@@ -621,8 +639,8 @@
     "primaryKeyword": "수원 회사 이전 축하화환",
     "title": "수원 회사 이전 축하화환 | 사무실 이전 축하꽃",
     "h1": "수원 회사 이전 축하화환",
-    "description": "수원 회사·사무실의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
-    "cardSummary": "수원 회사·사무실의 매장·사무실 개업·이전 상황에 맞춰 수령정보와 축하화환 크기, 문구를 준비하는 방법을 안내합니다.",
+    "description": "이전한 사무실 주소와 회사 공식명칭을 정확히 적어 주세요. 방문객 동선을 고려해 화환 크기와 리본 표기를 고르세요.",
+    "cardSummary": "이전한 사무실 주소와 회사 공식명칭을 정확히 적어 주세요. 방문객 동선을 고려해 화환 크기와 리본 표기를 고르세요.",
     "pageType": "business-opening",
     "queryClass": "intent-commercial",
     "visualIntent": "office_relocation",
@@ -677,7 +695,9 @@
       "suwon-flower-v12-06",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-10-v1-2",
+    "intentKey": "수원|수원 회사 이전 축하화환"
   },
   {
     "pageKey": "suwon-flower-v12-11",
@@ -689,8 +709,8 @@
     "primaryKeyword": "아주대학교 졸업식 꽃",
     "title": "아주대학교 졸업식 꽃 | 꽃다발·캠퍼스 전달 준비",
     "h1": "아주대학교 졸업식 꽃",
-    "description": "아주대학교 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
-    "cardSummary": "아주대학교 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
+    "description": "사진을 찍고 이동할 졸업생에게는 들고 다니기 편한 꽃다발이 좋습니다. 캠퍼스 안에서 만날 건물과 시간을 준비하세요.",
+    "cardSummary": "사진을 찍고 이동할 졸업생에게는 들고 다니기 편한 꽃다발이 좋습니다. 캠퍼스 안에서 만날 건물과 시간을 준비하세요.",
     "pageType": "school-event",
     "queryClass": "place-commercial",
     "visualIntent": "university_graduation",
@@ -745,7 +765,9 @@
       "suwon-flower-v12-12",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-11-v1-2",
+    "intentKey": "수원|아주대학교 졸업식 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-12",
@@ -757,8 +779,8 @@
     "primaryKeyword": "성균관대학교 자연과학캠퍼스 졸업식 꽃",
     "title": "성균관대 자연과학캠퍼스 졸업식 꽃 | 꽃다발 전달 준비",
     "h1": "성균관대 자연과학캠퍼스 졸업식 꽃",
-    "description": "성균관대학교 자연과학캠퍼스 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
-    "cardSummary": "성균관대학교 자연과학캠퍼스 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
+    "description": "넓은 캠퍼스에서는 정문보다 실제 만남 장소가 중요합니다. 학생의 이동 동선에 맞는 꽃 크기와 포장을 비교하세요.",
+    "cardSummary": "넓은 캠퍼스에서는 정문보다 실제 만남 장소가 중요합니다. 학생의 이동 동선에 맞는 꽃 크기와 포장을 비교하세요.",
     "pageType": "school-event",
     "queryClass": "place-commercial",
     "visualIntent": "university_graduation",
@@ -813,7 +835,9 @@
       "suwon-flower-v12-11",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-12-v1-2",
+    "intentKey": "수원|성균관대학교 자연과학캠퍼스 졸업식 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-13",
@@ -825,8 +849,8 @@
     "primaryKeyword": "경기대학교 수원캠퍼스 졸업식 꽃",
     "title": "경기대학교 수원캠퍼스 졸업식 꽃 | 꽃다발 전달 준비",
     "h1": "경기대학교 수원캠퍼스 졸업식 꽃",
-    "description": "경기대학교 수원캠퍼스 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
-    "cardSummary": "경기대학교 수원캠퍼스 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
+    "description": "행사 당일 받을 사람과 만날 위치를 먼저 정해 주세요. 촬영·식사·이동 일정에 맞는 전달 준비사항을 확인할 수 있습니다.",
+    "cardSummary": "행사 당일 받을 사람과 만날 위치를 먼저 정해 주세요. 촬영·식사·이동 일정에 맞는 전달 준비사항을 확인할 수 있습니다.",
     "pageType": "school-event",
     "queryClass": "place-commercial",
     "visualIntent": "university_graduation",
@@ -881,7 +905,9 @@
       "suwon-flower-v12-11",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-13-v1-2",
+    "intentKey": "수원|경기대학교 수원캠퍼스 졸업식 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-14",
@@ -893,8 +919,8 @@
     "primaryKeyword": "수원여자대학교 졸업식 꽃",
     "title": "수원여자대학교 졸업식 꽃 | 꽃다발·전달 준비",
     "h1": "수원여자대학교 졸업식 꽃",
-    "description": "수원여자대학교 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
-    "cardSummary": "수원여자대학교 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
+    "description": "학위수여식 날짜와 행사 건물은 최신 학교 공지를 확인하세요. 졸업생에게 직접 건넬 꽃과 수령정보를 준비해 드립니다.",
+    "cardSummary": "학위수여식 날짜와 행사 건물은 최신 학교 공지를 확인하세요. 졸업생에게 직접 건넬 꽃과 수령정보를 준비해 드립니다.",
     "pageType": "school-event",
     "queryClass": "place-commercial",
     "visualIntent": "university_graduation",
@@ -949,7 +975,9 @@
       "suwon-flower-v12-11",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-14-v1-2",
+    "intentKey": "수원|수원여자대학교 졸업식 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-15",
@@ -961,8 +989,8 @@
     "primaryKeyword": "수원 졸업식 꽃다발",
     "title": "수원 졸업식 꽃다발 | 대학·학교 행사 꽃 준비",
     "h1": "수원 졸업식 꽃다발",
-    "description": "수원 졸업식 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
-    "cardSummary": "수원 졸업식 행사에서 전달 위치와 이동, 사진촬영까지 고려해 꽃을 준비하는 실무 정보를 확인하세요.",
+    "description": "소소한 행복 50,000원부터 색감이 다른 꽃다발을 비교하세요. 촬영 후 이동까지 고려해 마음에 드는 구성을 골라 보세요.",
+    "cardSummary": "소소한 행복 50,000원부터 색감이 다른 꽃다발을 비교하세요. 촬영 후 이동까지 고려해 마음에 드는 구성을 골라 보세요.",
     "pageType": "school-event",
     "queryClass": "intent-commercial",
     "visualIntent": "graduation_bouquet",
@@ -1017,7 +1045,9 @@
       "suwon-flower-v12-11",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-15-v1-2",
+    "intentKey": "수원|수원 졸업식 꽃다발"
   },
   {
     "pageKey": "suwon-flower-v12-16",
@@ -1029,8 +1059,8 @@
     "primaryKeyword": "수원컨벤션센터 행사 축하꽃",
     "title": "수원컨벤션센터 행사 축하꽃 | 전시·공연 꽃 주문",
     "h1": "수원컨벤션센터 행사 축하꽃",
-    "description": "수원컨벤션센터 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
-    "cardSummary": "수원컨벤션센터 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
+    "description": "전시홀·부스·담당자에 따라 수령 위치가 달라집니다. 설치할 축하화환과 직접 건넬 꽃다발을 구분해 주문하세요.",
+    "cardSummary": "전시홀·부스·담당자에 따라 수령 위치가 달라집니다. 설치할 축하화환과 직접 건넬 꽃다발을 구분해 주문하세요.",
     "pageType": "event-venue",
     "queryClass": "place-commercial",
     "visualIntent": "event_venue",
@@ -1085,7 +1115,9 @@
       "suwon-flower-v12-17",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-16-v1-2",
+    "intentKey": "수원|수원컨벤션센터 행사 축하꽃"
   },
   {
     "pageKey": "suwon-flower-v12-17",
@@ -1097,8 +1129,8 @@
     "primaryKeyword": "경기아트센터 공연 축하꽃",
     "title": "경기아트센터 공연 축하꽃 | 공연·행사 꽃 주문",
     "h1": "경기아트센터 공연 축하꽃",
-    "description": "경기아트센터 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
-    "cardSummary": "경기아트센터 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
+    "description": "공연 시작시간과 꽃을 받을 시간은 다를 수 있습니다. 출연자 직접 전달인지 관계자 수령인지 정해 준비하세요.",
+    "cardSummary": "공연 시작시간과 꽃을 받을 시간은 다를 수 있습니다. 출연자 직접 전달인지 관계자 수령인지 정해 준비하세요.",
     "pageType": "event-venue",
     "queryClass": "place-commercial",
     "visualIntent": "performance_venue",
@@ -1153,7 +1185,9 @@
       "suwon-flower-v12-16",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-17-v1-2",
+    "intentKey": "수원|경기아트센터 공연 축하꽃"
   },
   {
     "pageKey": "suwon-flower-v12-18",
@@ -1165,8 +1199,8 @@
     "primaryKeyword": "수원SK아트리움 공연 축하꽃",
     "title": "수원SK아트리움 공연 축하꽃 | 공연장 꽃 주문",
     "h1": "수원SK아트리움 공연 축하꽃",
-    "description": "수원SK아트리움 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
-    "cardSummary": "수원SK아트리움 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
+    "description": "출연자에게 건넬 꽃인지 행사장에 놓을 꽃인지 먼저 선택하세요. 무대·로비 반입조건과 수령 담당자도 확인해 주세요.",
+    "cardSummary": "출연자에게 건넬 꽃인지 행사장에 놓을 꽃인지 먼저 선택하세요. 무대·로비 반입조건과 수령 담당자도 확인해 주세요.",
     "pageType": "event-venue",
     "queryClass": "place-commercial",
     "visualIntent": "performance_venue",
@@ -1221,7 +1255,9 @@
       "suwon-flower-v12-16",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-18-v1-2",
+    "intentKey": "수원|수원SK아트리움 공연 축하꽃"
   },
   {
     "pageKey": "suwon-flower-v12-19",
@@ -1233,8 +1269,8 @@
     "primaryKeyword": "수원화성 행사 축하꽃",
     "title": "수원화성 행사 축하꽃 | 문화행사 꽃 주문 준비",
     "h1": "수원화성 행사 축하꽃",
-    "description": "수원화성·행궁동 행사 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
-    "cardSummary": "수원화성·행궁동 행사 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
+    "description": "야외 행사와 실내 전달은 보관·이동 조건이 다릅니다. 정확한 행사장소와 현장 수령자를 정하는 방법을 확인하세요.",
+    "cardSummary": "야외 행사와 실내 전달은 보관·이동 조건이 다릅니다. 정확한 행사장소와 현장 수령자를 정하는 방법을 확인하세요.",
     "pageType": "event-venue",
     "queryClass": "place-commercial",
     "visualIntent": "cultural_event",
@@ -1289,7 +1325,9 @@
       "suwon-flower-v12-16",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-19-v1-2",
+    "intentKey": "수원|수원화성 행사 축하꽃"
   },
   {
     "pageKey": "suwon-flower-v12-20",
@@ -1301,8 +1339,8 @@
     "primaryKeyword": "수원 행사 축하화환",
     "title": "수원 행사 축하화환 | 공연·전시·기념행사 주문",
     "h1": "수원 행사 축하화환",
-    "description": "수원 행사 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
-    "cardSummary": "수원 행사 행사에 맞춰 행사명·홀·담당자·수령시간을 정하고 축하꽃을 주문하는 순서를 안내합니다.",
+    "description": "행사 입구에 놓을 축하화환을 크기와 가격으로 비교하세요. 행사명·설치 위치·담당자·리본문구를 함께 알려주세요.",
+    "cardSummary": "행사 입구에 놓을 축하화환을 크기와 가격으로 비교하세요. 행사명·설치 위치·담당자·리본문구를 함께 알려주세요.",
     "pageType": "event-venue",
     "queryClass": "intent-commercial",
     "visualIntent": "event_wreath",
@@ -1357,7 +1395,9 @@
       "suwon-flower-v12-16",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-20-v1-2",
+    "intentKey": "수원|수원 행사 축하화환"
   },
   {
     "pageKey": "suwon-flower-v12-21",
@@ -1369,8 +1409,8 @@
     "primaryKeyword": "아주대학교병원 병문안 꽃",
     "title": "아주대학교병원 병문안 꽃 | 수령·면회 전 확인사항",
     "h1": "아주대학교병원 병문안 꽃",
-    "description": "아주대학교병원 방문 전에 병동 수령 가능 여부와 전달방식을 먼저 확인하고 부담 없는 선물꽃을 고르는 기준을 정리했습니다.",
-    "cardSummary": "아주대학교병원 방문 전에 병동 수령 가능 여부와 전달방식을 먼저 확인하고 부담 없는 선물꽃을 고르는 기준을 정리했습니다.",
+    "description": "병동에 생화를 반입할 수 있는지 먼저 확인하세요. 허용되는 경우에만 작은 꽃다발과 꽃바구니를 비교해 주세요.",
+    "cardSummary": "병동에 생화를 반입할 수 있는지 먼저 확인하세요. 허용되는 경우에만 작은 꽃다발과 꽃바구니를 비교해 주세요.",
     "pageType": "hospital-visit",
     "queryClass": "place-commercial",
     "visualIntent": "hospital_visit",
@@ -1425,7 +1465,9 @@
       "suwon-flower-v12-22",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-21-v1-2",
+    "intentKey": "수원|아주대학교병원 병문안 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-22",
@@ -1437,8 +1479,8 @@
     "primaryKeyword": "성빈센트병원 병문안 꽃",
     "title": "성빈센트병원 병문안 꽃 | 수령·면회 전 확인사항",
     "h1": "성빈센트병원 병문안 꽃",
-    "description": "가톨릭대학교 성빈센트병원 방문 전에 병동 수령 가능 여부와 전달방식을 먼저 확인하고 부담 없는 선물꽃을 고르는 기준을 정리했습니다.",
-    "cardSummary": "가톨릭대학교 성빈센트병원 방문 전에 병동 수령 가능 여부와 전달방식을 먼저 확인하고 부담 없는 선물꽃을 고르는 기준을 정리했습니다.",
+    "description": "보호자에게 수령 가능 여부와 전달방법을 먼저 물어보세요. 꽃 반입이 제한된다면 주문을 진행하기 전에 다른 전달방법을 정하세요.",
+    "cardSummary": "보호자에게 수령 가능 여부와 전달방법을 먼저 물어보세요. 꽃 반입이 제한된다면 주문을 진행하기 전에 다른 전달방법을 정하세요.",
     "pageType": "hospital-visit",
     "queryClass": "place-commercial",
     "visualIntent": "hospital_visit",
@@ -1493,7 +1535,9 @@
       "suwon-flower-v12-21",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-22-v1-2",
+    "intentKey": "수원|성빈센트병원 병문안 꽃"
   },
   {
     "pageKey": "suwon-flower-v12-23",
@@ -1505,8 +1549,8 @@
     "primaryKeyword": "수원역 꽃다발",
     "title": "수원역 꽃다발 | 약속·기념일 전달 준비",
     "h1": "수원역 꽃다발",
-    "description": "이동 중 들고 다니기 편한 크기와 포장, 만남 위치와 전달시간을 중심으로 준비사항을 정리했습니다.",
-    "cardSummary": "이동 중 들고 다니기 편한 크기와 포장, 만남 위치와 전달시간을 중심으로 준비사항을 정리했습니다.",
+    "description": "환승과 만남 사이에 오래 들고 다닐 꽃이라면 크기·포장이 중요합니다. 정확한 출구와 전달시간을 정해 주세요.",
+    "cardSummary": "환승과 만남 사이에 오래 들고 다닐 꽃이라면 크기·포장이 중요합니다. 정확한 출구와 전달시간을 정해 주세요.",
     "pageType": "station-transit",
     "queryClass": "local-commercial",
     "visualIntent": "station_bouquet",
@@ -1561,7 +1605,9 @@
       "suwon-flower-v12-21",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-23-v1-2",
+    "intentKey": "수원|수원역 꽃다발"
   },
   {
     "pageKey": "suwon-flower-v12-24",
@@ -1573,8 +1619,8 @@
     "primaryKeyword": "광교 기념일 꽃배달",
     "title": "광교 기념일 꽃배달 | 꽃다발·꽃바구니 선물",
     "h1": "광교 기념일 꽃배달",
-    "description": "광교에서 기념일·약속 선물을 준비할 때 꽃 형태와 전달장소, 보관시간을 함께 고려하는 방법을 안내합니다.",
-    "cardSummary": "광교에서 기념일·약속 선물을 준비할 때 꽃 형태와 전달장소, 보관시간을 함께 고려하는 방법을 안내합니다.",
+    "description": "집·직장·약속 장소 중 어디로 전할지 정하면 선물 선택이 쉬워집니다. 꽃다발과 꽃바구니의 쓰임을 비교하세요.",
+    "cardSummary": "집·직장·약속 장소 중 어디로 전할지 정하면 선물 선택이 쉬워집니다. 꽃다발과 꽃바구니의 쓰임을 비교하세요.",
     "pageType": "personal-gift",
     "queryClass": "local-commercial",
     "visualIntent": "anniversary_gift",
@@ -1629,7 +1675,9 @@
       "suwon-flower-v12-21",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-24-v1-2",
+    "intentKey": "수원|광교 기념일 꽃배달"
   },
   {
     "pageKey": "suwon-flower-v12-25",
@@ -1641,8 +1689,8 @@
     "primaryKeyword": "행궁동 꽃다발",
     "title": "행궁동 꽃다발 | 약속·기념일 꽃 선물 준비",
     "h1": "행궁동 꽃다발",
-    "description": "행궁동에서 기념일·약속 선물을 준비할 때 꽃 형태와 전달장소, 보관시간을 함께 고려하는 방법을 안내합니다.",
-    "cardSummary": "행궁동에서 기념일·약속 선물을 준비할 때 꽃 형태와 전달장소, 보관시간을 함께 고려하는 방법을 안내합니다.",
+    "description": "산책이나 데이트 중 건넬 꽃은 이동할 때의 부피도 생각해 주세요. 받는 분 취향과 만나는 시간에 맞춰 골라 보세요.",
+    "cardSummary": "산책이나 데이트 중 건넬 꽃은 이동할 때의 부피도 생각해 주세요. 받는 분 취향과 만나는 시간에 맞춰 골라 보세요.",
     "pageType": "personal-gift",
     "queryClass": "local-commercial",
     "visualIntent": "bouquet_gift",
@@ -1697,7 +1745,9 @@
       "suwon-flower-v12-21",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-25-v1-2",
+    "intentKey": "수원|행궁동 꽃다발"
   },
   {
     "pageKey": "suwon-flower-v12-26",
@@ -1709,8 +1759,8 @@
     "primaryKeyword": "수원 당일 꽃배달",
     "title": "수원 당일 꽃배달 | 주문시간·수령정보 확인",
     "h1": "수원 당일 꽃배달",
-    "description": "급한 주문일수록 상품·주소·수령자·희망시간을 먼저 준비해야 상담이 빨라집니다. 전화와 온라인 접수시간도 함께 확인하세요.",
-    "cardSummary": "급한 주문일수록 상품·주소·수령자·희망시간을 먼저 준비해야 상담이 빨라집니다. 전화와 온라인 접수시간도 함께 확인하세요.",
+    "description": "급한 일정일수록 상품·주소·받는 분·희망시간을 먼저 알려주세요. 실제 당일 배송 가능 여부를 확인한 뒤 안내합니다.",
+    "cardSummary": "급한 일정일수록 상품·주소·받는 분·희망시간을 먼저 알려주세요. 실제 당일 배송 가능 여부를 확인한 뒤 안내합니다.",
     "pageType": "order-help",
     "queryClass": "commercial-modifier",
     "visualIntent": "same_day_order",
@@ -1764,7 +1814,9 @@
     "relatedKeys": [
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-26-v1-2",
+    "intentKey": "수원|수원 당일 꽃배달"
   },
   {
     "pageKey": "suwon-flower-v12-27",
@@ -1776,8 +1828,8 @@
     "primaryKeyword": "수원 꽃배달 가격",
     "title": "수원 꽃배달 가격 | 근조·축하화환 59,000원부터",
     "h1": "수원 꽃배달 가격",
-    "description": "59,000원부터 시작하는 실제 화환 상품가격과 상품 등급, 지역별 추가배송비 가능조건을 한 번에 확인하세요.",
-    "cardSummary": "59,000원부터 시작하는 실제 화환 상품가격과 상품 등급, 지역별 추가배송비 가능조건을 한 번에 확인하세요.",
+    "description": "꽃다발과 화환의 가격대는 상품에 따라 다릅니다. 확인된 상품가격을 비교하고 지역별 배송비까지 상담하세요.",
+    "cardSummary": "꽃다발과 화환의 가격대는 상품에 따라 다릅니다. 확인된 상품가격을 비교하고 지역별 배송비까지 상담하세요.",
     "pageType": "price-guide",
     "queryClass": "commercial-modifier",
     "visualIntent": "flower_price",
@@ -1830,9 +1882,10 @@
     },
     "relatedKeys": [
       "suwon-flower-v12-26",
-      "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-27-v1-2",
+    "intentKey": "수원|수원 꽃배달 가격"
   },
   {
     "pageKey": "suwon-flower-v12-28",
@@ -1844,8 +1897,8 @@
     "primaryKeyword": "수원 화환 문구",
     "title": "수원 화환 문구 | 근조·축하 리본문구 작성법",
     "h1": "수원 화환 문구",
-    "description": "근조와 축하 상황별 리본문구를 짧고 자연스럽게 정하고 보내는 분 이름을 넣는 방법을 예시와 함께 정리했습니다.",
-    "cardSummary": "근조와 축하 상황별 리본문구를 짧고 자연스럽게 정하고 보내는 분 이름을 넣는 방법을 예시와 함께 정리했습니다.",
+    "description": "조의와 축하 상황에 맞는 리본문구를 고르고 발신자 이름을 확인하세요. 회사·단체 공식명칭을 정확히 적는 것이 중요합니다.",
+    "cardSummary": "조의와 축하 상황에 맞는 리본문구를 고르고 발신자 이름을 확인하세요. 회사·단체 공식명칭을 정확히 적는 것이 중요합니다.",
     "pageType": "message-guide",
     "queryClass": "commercial-modifier",
     "visualIntent": "wreath_message",
@@ -1900,7 +1953,9 @@
       "suwon-flower-v12-26",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-28-v1-2",
+    "intentKey": "수원|수원 화환 문구"
   },
   {
     "pageKey": "suwon-flower-v12-29",
@@ -1912,8 +1967,8 @@
     "primaryKeyword": "수원 꽃배달 주소 작성",
     "title": "수원 꽃배달 주소 작성 | 수령자·장소 정보 체크",
     "h1": "수원 꽃배달 주소 작성",
-    "description": "배송 오류를 줄이려면 도로명주소뿐 아니라 건물명·층·수령자 연락처·장소 유형까지 함께 적는 것이 좋습니다.",
-    "cardSummary": "배송 오류를 줄이려면 도로명주소뿐 아니라 건물명·층·수령자 연락처·장소 유형까지 함께 적는 것이 좋습니다.",
+    "description": "도로명주소에 건물명·층·호수와 수령자 연락처를 더해 주세요. 장례식장·학교·행사장별로 필요한 추가정보를 확인할 수 있습니다.",
+    "cardSummary": "도로명주소에 건물명·층·호수와 수령자 연락처를 더해 주세요. 장례식장·학교·행사장별로 필요한 추가정보를 확인할 수 있습니다.",
     "pageType": "order-help",
     "queryClass": "support-info",
     "visualIntent": "order_address",
@@ -1968,7 +2023,9 @@
       "suwon-flower-v12-26",
       "suwon-flower-v12-27",
       "suwon-flower-v12-30"
-    ]
+    ],
+    "snapshotId": "suwon-flower-v12-29-v1-2",
+    "intentKey": "수원|수원 꽃배달 주소 작성"
   },
   {
     "pageKey": "suwon-flower-v12-30",
@@ -1980,8 +2037,8 @@
     "primaryKeyword": "수원 화환 주문",
     "title": "수원 화환 주문 | 근조·축하화환 전화·온라인 주문",
     "h1": "수원 화환 주문",
-    "description": "근조·축하화환의 실제 가격과 전화·온라인 주문방법, 배송에 필요한 수령정보를 주문 순서대로 정리했습니다.",
-    "cardSummary": "근조·축하화환의 실제 가격과 전화·온라인 주문방법, 배송에 필요한 수령정보를 주문 순서대로 정리했습니다.",
+    "description": "상품을 골랐다면 빈소나 매장 등 수령정보와 문구를 준비해 주세요. 전화상담과 온라인 접수 중 편한 방법으로 주문하세요.",
+    "cardSummary": "상품을 골랐다면 빈소나 매장 등 수령정보와 문구를 준비해 주세요. 전화상담과 온라인 접수 중 편한 방법으로 주문하세요.",
     "pageType": "order-help",
     "queryClass": "core-commercial",
     "visualIntent": "wreath_order",
@@ -2034,8 +2091,9 @@
     },
     "relatedKeys": [
       "suwon-flower-v12-26",
-      "suwon-flower-v12-27",
-      "suwon-flower-v12-30"
-    ]
+      "suwon-flower-v12-27"
+    ],
+    "snapshotId": "suwon-flower-v12-30-v1-2",
+    "intentKey": "수원|수원 화환 주문"
   }
 ]

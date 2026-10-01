@@ -1,26 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import {site} from '../config/site';
+import {site,groups} from '../config/site';
+import ProductCards from '../components/ProductCards.astro';
 import pages from '../data/pages.json';
 import products from '../data/products.json';
-const groups=[
- {cat:'funeral',label:'근조·장례'},
- {cat:'business',label:'개업·이전'},
- {cat:'school',label:'졸업·학교'},
- {cat:'event',label:'공연·행사'},
- {cat:'gift',label:'선물·병문안'},
- {cat:'order',label:'가격·주문'}
-];
+
 ---
 <BaseLayout title="수원 꽃배달 | 근조·축하화환·꽃선물 꽃이랑" description="수원 꽃배달 꽃이랑. 근조·축하화환 59,000원부터, 전화 1844-0644, 온라인 24시간 주문 접수. 장례식장·개업·졸업·공연·선물 목적별 주문정보를 확인하세요." canonicalPath="/">
 <section class="home-hero">
  <div class="hero-copy"><span class="eyebrow">수원 꽃배달 · 꽃이랑</span><h1>수원 꽃배달,<br/>목적에 맞는 꽃을 빠르게 주문하세요</h1><p>근조·축하 3단 화환은 59,000원부터. 장례식장, 개업·이전, 졸업식, 공연·행사, 병문안과 기념일까지 수령장소와 목적에 맞춰 주문정보를 준비해드립니다.</p>
  <div class="actions"><a class="btn primary" href={site.phoneHref}>☎ 1844-0644 전화주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div>
- <div class="facts"><span>전화 08:00~23:00</span><span>온라인 24시간</span><span>전국 배송 가능</span></div></div>
+ <div class="facts"><span>전화 08:00~23:00</span><span>온라인 24시간</span><span>배송지역·추가비용 확인</span></div></div>
  <div class="hero-products"><img src={products[0].img} alt="근조 3단 화환" loading="eager"/><img src={products[3].img} alt="축하 3단 화환" loading="eager"/></div>
 </section>
 <section class="product-section"><div class="section-title"><span class="eyebrow">실제 상품가격</span><h2>근조·축하화환 59,000원부터</h2><p>상품 이미지는 대표 구성입니다. 실제 꽃은 지역과 계절에 따라 일부 달라질 수 있습니다.</p></div>
-<div class="product-grid">{products.slice(0,6).map((p:any)=><article class="product-card"><img src={p.img} alt={p.name} loading="lazy"/><div><h3>{p.name}</h3><strong>{p.price.toLocaleString()}원</strong><p>{p.desc}</p><a href={site.orderUrl}>주문하기 →</a></div></article>)}</div></section>
+<ProductCards products={products.filter((p:any)=>['funeral','congrats'].includes(p.family)).slice(0,6)}/></section>
 <section class="hub-overview"><div class="section-title"><span class="eyebrow">수원 꽃배달 목적별 안내</span><h2>필요한 상황부터 선택하세요</h2></div>
 {groups.map(g=><article class="hub-block"><div class="hub-heading"><h3>{g.label}</h3><a href={'/'+g.cat+'/'}>전체 보기 →</a></div><div class="card-grid">{pages.filter((p:any)=>p.category===g.cat).slice(0,5).map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></article>)}</section>
 <section class="conversion-panel"><div><span class="eyebrow">주문 전에 준비하면 빨라집니다</span><h2>상품 · 주소 · 수령자 · 문구</h2><p>장례식장은 빈소·상주 정보를, 행사장은 행사명·홀·담당자를 함께 알려주세요.</p></div><div class="actions"><a class="btn light" href={site.phoneHref}>전화주문</a><a class="btn yellow" href={site.orderUrl}>온라인 주문</a></div></section>

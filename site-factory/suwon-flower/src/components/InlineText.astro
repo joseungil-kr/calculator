@@ -1,0 +1,5 @@
+---
+import {inlineTokens} from '../lib/content.mjs';
+const {text=''}=Astro.props;
+---
+{inlineTokens(text).map(token => token.type === 'strong' ? <strong>{token.text}</strong> : token.type === 'link' && token.href ? <a href={token.href}>{token.text}</a> : <Fragment>{token.text}</Fragment>)}

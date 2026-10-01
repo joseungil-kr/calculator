@@ -1,64 +1,16 @@
-name: Suwon v1.2 Production Deploy
+name: Suwon Gated Production Deploy
 on:
-  push:
-    branches: [site-factory-suwon-v1]
-    paths: ["site-factory/suwon-flower/**",".github/workflows/suwon-production-deploy.yml"]
   workflow_dispatch:
-permissions: {contents: read}
-concurrency: {group: suwon-production, cancel-in-progress: true}
+    inputs:
+      expected_revision: {description: Full reviewed target source SHA, required: true, type: string}
+permissions: {}
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    defaults: {run: {working-directory: site-factory/suwon-flower}}
-    env:
-      SITE_FACTORY_REVISION: "${{ github.sha }}"
-      CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}"
-      CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: 22}
-      - run: npm install
-      - run: npm run build
-      - run: npx --yes wrangler@latest deploy
-      - name: Live v1.2 QA
-        env: {EXPECTED: "${{ github.sha }}"}
-        run: |
-          python3 - <<'PY'
-          import os,re,time,urllib.request,urllib.error
-          base='https://suwon.fwith.kr'
-          expected=os.environ['EXPECTED']
-          headers={
-            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150.0.0.0 Safari/537.36',
-            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-          }
-          def get(path):
-              req=urllib.request.Request(base+path,headers=headers)
-              try:
-                  with urllib.request.urlopen(req,timeout=10) as r:
-                      return r.status,r.read().decode('utf-8','replace')
-              except urllib.error.HTTPError as e:
-                  return e.code,e.read().decode('utf-8','replace')
-          last=None
-          for i in range(1,9):
-              code,home=get('/')
-              if code==403:
-                  print('SUWON V1.2 LIVE QA MANUAL_REQUIRED: Cloudflare returned 403 to GitHub Actions runner; deploy step itself succeeded.')
-                  raise SystemExit(0)
-              try:
-                  rev=re.search(r'name="site-factory-revision" content="([^"]+)"',home)
-                  current=rev.group(1) if rev else 'missing'
-                  print(f'attempt={i} http={code} revision={current}')
-                  assert code==200
-                  assert current==expected,(current,expected)
-                  assert '수원 꽃배달' in home and '1844-0644' in home and '59,000원부터' in home
-                  code,robots=get('/robots.txt'); assert code==200 and 'Allow: /' in robots and 'Sitemap:' in robots
-                  code,detail=get('/funeral/ajou-hospital-funeral-wreath/'); assert code==200 and '아주대학교병원 장례식장 근조화환' in detail
-                  code,price=get('/order/suwon-flower-delivery-price/'); assert code==200 and '수원 꽃배달 가격' in price and '59,000원' in price
-                  print(f'SUWON V1.2 LIVE QA PASSED revision={expected}')
-                  break
-              except Exception as exc:
-                  last=exc; print(f'live qa retry {i}/8: {exc}'); time.sleep(3)
-          else:
-              raise SystemExit(f'Live QA failed: {last}')
-          PY
+  common-pipeline:
+    permissions: {contents: read, issues: write}
+    uses: joseungil-kr/fwith-site-factory/.github/workflows/site-production-deploy.yml@main
+    with:
+      site_key: suwon-flower-test
+      expected_revision: ${{ inputs.expected_revision }}
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

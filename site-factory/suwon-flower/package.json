@@ -3,8 +3,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "node scripts/write_build_revision.mjs && astro check && astro build && python3 scripts/qa_static.py && node scripts/qa_graph.mjs",
-    "dev": "astro dev"
+    "build": "node scripts/write_build_revision.mjs && astro check && astro build && node scripts/write_response_headers.mjs && python3 scripts/qa_static.py && node scripts/qa_graph.mjs",
+    "dev": "astro dev",
+    "test": "node --test tests/*.test.mjs",
+    "qa": "python3 scripts/qa_static.py && node scripts/qa_graph.mjs",
+    "test:growth": "python3 tests/growth_build.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",

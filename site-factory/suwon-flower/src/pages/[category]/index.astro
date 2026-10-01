@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import pages from '../../data/pages.json';
-import {site} from '../../config/site';
-const labels:Record<string,string>={funeral:'근조·장례',business:'개업·이전',school:'졸업·학교',event:'공연·행사',gift:'선물·병문안',order:'가격·주문'};
-export function getStaticPaths(){return ['funeral','business','school','event','gift','order'].map(category=>({params:{category}}));}
-const {category}=Astro.params; const items=(pages as any[]).filter(p=>p.category===category); const label=labels[category!]||'수원 꽃배달';
+import {site,groups} from '../../config/site';
+export function getStaticPaths(){return groups.map(g=>({params:{category:g.cat},props:{group:g}}));}
+const {group}=Astro.props; const items=(pages as any[]).filter(p=>p.category===group.cat);
 ---
-<BaseLayout title={'수원 '+label+' 꽃배달 | 꽃이랑'} description={'수원 '+label+' 꽃배달 관련 장소·상황별 주문정보를 확인하세요.'} canonicalPath={'/'+category+'/'}>
-<nav class="breadcrumb"><a href="/">수원 꽃배달</a><span>›</span><span>{label}</span></nav>
-<section class="category-hero"><div><span class="eyebrow">꽃이랑 수원</span><h1>수원 {label} 꽃배달</h1><p>목적과 수령장소에 맞는 주문정보를 선택하세요. 실제 가격과 전화·온라인 주문으로 바로 이어집니다.</p><div class="actions"><a class="btn primary" href={site.phoneHref}>전화주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div></div></section>
+<BaseLayout title={`${site.region} ${group.label} 꽃배달 | ${site.brand}`} description={`${group.label}에 맞는 꽃과 수령 준비사항을 비교하고 전화·온라인으로 문의하세요.`} canonicalPath={group.url}>
+<nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><span>{group.label}</span></nav>
+<section class="category-hero"><div><span class="eyebrow">{site.brand} {site.region}</span><h1>{site.region} {group.label} 꽃배달</h1><p>목적과 수령장소에 맞는 안내를 선택하세요. 상품을 비교하고 정확한 전달정보를 준비해 문의할 수 있습니다.</p><div class="actions"><a class="btn primary" href={site.phoneHref}>전화주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div></div></section>
 <section class="card-grid big">{items.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span><em>자세히 보기 →</em></a>)}</section>
 </BaseLayout>

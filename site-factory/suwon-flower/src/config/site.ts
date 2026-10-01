@@ -1,10 +1,15 @@
-export const site={
-  brand:'꽃이랑',
-  region:'수원',
-  domain:'https://suwon.fwith.kr',
-  phone:'1844-0644',
-  phoneHref:'tel:18440644',
-  orderUrl:'https://fwith.co.kr',
-  orderHours:'전화 08:00~23:00 · 온라인 24시간',
-  naverVerification:'80fedf144567fea99fe833d2937731a190854c41'
+import truth from '../data/business-truth.json';
+import architecture from '../data/architecture.json';
+import pages from '../data/pages.json';
+const domain = (import.meta.env.SITE_URL || 'https://suwon.fwith.kr').replace(/\/$/, '');
+export const site = {
+  brand: truth.brand, region: '수원', domain,
+  indexable: import.meta.env.SITE_INDEXABLE === 'true',
+  phone: truth.phone, phoneHref: truth.phoneHref, orderUrl: truth.onlineOrderUrl,
+  phoneOrderHours: truth.phoneOrderHours.replace('-', '~'),
+  onlineOrderHours: truth.onlineOrderHours,
+  orderHours: `전화 ${truth.phoneOrderHours.replace('-', '~')} · 온라인 ${truth.onlineOrderHours} 접수`,
+  deliveryNotice: truth.deliveryNotice, productVariationNotice: truth.productVariationNotice,
+  naverVerification: '80fedf144567fea99fe833d2937731a190854c41'
 };
+export const groups = architecture.hubs.filter(h => pages.some(p => p.category === h.category)).map(h => ({cat: h.category, label: h.label, url: h.url}));
