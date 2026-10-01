@@ -3,104 +3,50 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
 import business from '../data/business-truth.json';
-import { siteConfig } from '../config/site';
-import architecture from '../data/architecture.json';
 
-const activePageKeys = new Set((architecture.pages || []).filter((page) => page.sitemapIndexable !== false && page.status !== 'merged').map((page) => page.pageKey));
-
-const articles = (await getCollection(
-  'articles',
-  ({ data }) => (data.draftStatus === 'approved' || data.draftStatus === 'published') && activePageKeys.has(data.pageKey)
-)).sort((a, b) => b.data.pageKey.localeCompare(a.data.pageKey, 'ko'));
-
-const recent = articles.slice(0, 6);
-const hrefFor = (article: (typeof articles)[number]) =>
-  article.data.routeType === 'top_level' ? `/${article.data.slug}/` : `/${article.data.category}/${article.data.slug}/`;
-
-const categoryLabel: Record<string, string> = {
-  guide: '꽃 선택', funeral: '장례식장', places: '장소별', occasions: '상황별',
-  'flower-knowledge': '꽃 관리', 'order-help': '주문 도움',
-};
-const categoryCounts = articles
-  .filter((article) => article.data.routeType === 'category')
-  .reduce<Record<string, number>>((acc, article) => {
-    acc[article.data.category] = (acc[article.data.category] ?? 0) + 1;
-    return acc;
-  }, {});
-const trust = [
-  ['truck', '전국 배송 가능', '지역별 추가배송비 발생 가능'],
-  ['clock', '신속한 주문 접수', '전화 08:00~23:00'],
-  ['shield', '화환 반입 여부 확인', '제한 지역은 상담원 문의'],
-  ['headset', '전화 상담', '1844-0644'],
+const articles=(await getCollection('articles')).sort((a,b)=>a.data.pageKey.localeCompare(b.data.pageKey,'ko'));
+const cats=[
+ ['funeral','근조·장례','장례식장·빈소·상주·리본문구와 근조화환 가격'],
+ ['business','개업·이전','매장·사무실의 공간과 수령방식에 맞춘 축하화환'],
+ ['school','졸업·입학','수원의 대학·학교 행사에서 꽃을 전달하는 방법'],
+ ['event','공연·행사','공연·전시·문화행사의 행사명·담당자·수령정보'],
+ ['gift','선물·병문안','병원·수원역·광교·행궁동의 꽃 선물 상황'],
+ ['order','가격·주문','화환 가격·당일 주문·문구·주소·주문방법']
 ];
-const situations = [
-  { tag: '이용 가이드', title: `${siteConfig.region} 꽃배달 이용 가이드`, body: '장소·상황·주문 준비를 어떤 순서로 확인하면 좋은지 정리합니다.', href: `/${siteConfig.primaryLandingSlug}/`, visible: true },
-  { tag: '장례', title: '장례식장 근조화환', body: '장례식장별 위치·빈소·주차·화환 반입 확인사항을 봅니다.', href: '/funeral/', visible: (categoryCounts.funeral ?? 0) >= 3 },
-  { tag: '개업·이전', title: '개업·이전 축하꽃', body: '매장·사무실·상가의 공간과 보내는 사람 관계를 함께 봅니다.', href: '/occasions/', visible: (categoryCounts.occasions ?? 0) >= 3 },
-  { tag: '장소별', title: '역·병원·대학·행사장', body: '실제 목적지의 이동·수령·반입 조건을 확인합니다.', href: '/places/', visible: (categoryCounts.places ?? 0) >= 3 },
-  { tag: '주문 도움', title: '문구·시간·받는 사람 정보', body: '주문 직전에 빠뜨리기 쉬운 정보를 확인합니다.', href: '/order-help/', visible: (categoryCounts['order-help'] ?? 0) >= 3 },
-  { tag: '꽃 관리', title: '꽃다발·꽃바구니 관리', body: '받은 뒤 보관과 관리, 형태별 차이를 확인합니다.', href: '/flower-knowledge/', visible: (categoryCounts['flower-knowledge'] ?? 0) >= 3 },
-].filter((item) => item.visible);
 ---
-<BaseLayout>
-  <section class="hero hero-commerce">
-    <div class="container hero-commerce-grid">
-      <div class="hero-copy">
-        <span class="hero-badge">{siteConfig.region} 전 지역 꽃배달</span>
-        <h1>{siteConfig.region} <em>꽃배달</em></h1>
-        <p class="hero-lead">소중한 마음을 꽃으로 전하세요.</p>
-        <p class="hero-sub">근조화환, 축하화환부터 상황별 꽃 선택까지<br />{siteConfig.region} 꽃배달에 필요한 정보를 한곳에서 확인합니다.</p>
-        <div class="hero-actions hero-order-actions">
-          <a class="hero-phone" href={business.phoneHref}><span>☎</span><strong>전화주문 {business.phone}</strong><small>{business.phoneOrderHours}</small></a>
-          <a class="hero-online" href={business.onlineOrderUrl} rel="noopener"><span>▣</span><strong>온라인 주문</strong><small>24시간 주문 가능</small></a>
-        </div>
+<BaseLayout title="수원 꽃배달 | 근조·축하화환·꽃다발 주문 | 꽃이랑 수원" description="수원 꽃배달, 근조화환·개업화환·졸업식 꽃·행사 축하꽃·병문안 꽃과 실제 화환 가격, 전화·온라인 주문방법을 안내합니다.">
+<section class="v12-hero">
+  <div class="container v12-hero-grid">
+    <div>
+      <span class="hero-badge">근조 · 축하 · 꽃다발</span>
+      <h1>수원 <em>꽃배달</em></h1>
+      <p class="hero-lead">보낼 장소와 목적을 알려주시면 상품·가격·수령정보를 함께 확인할 수 있습니다.</p>
+      <div class="hero-order-actions">
+        <a class="hero-phone" href={business.phoneHref}><strong>전화주문 {business.phone}</strong><small>{business.phoneOrderHours}</small></a>
+        <a class="hero-online" href={business.onlineOrderUrl} rel="noopener"><strong>온라인 주문</strong><small>24시간 접수</small></a>
       </div>
+      <p class="hero-note">당일 배송 가능 여부와 지역별 추가배송비는 실제 주문 시 확인합니다.</p>
     </div>
-  </section>
+    <picture class="v12-hero-picture"><img src="/images/suwon/hero-B-original.png" alt="꽃배달을 표현한 핑크 계열 꽃다발" width="1900" height="800"/></picture>
+  </div>
+</section>
 
-  <section class="trust-strip" aria-label="주문 및 배송 안내">
-    <div class="container trust-grid">
-      {trust.map(([icon, title, desc]) => (
-        <div class="trust-item"><span class:list={['trust-icon', `trust-icon-${icon}`]} aria-hidden="true"></span><div><strong>{title}</strong><span>{desc}</span></div></div>
-      ))}
-    </div>
-  </section>
+<section class="section product-section"><div class="container"><ProductShowcase showHeading={true}/></div></section>
 
-  <section class="section product-section"><div class="container"><ProductShowcase showHeading={false} /></div></section>
+<section class="section"><div class="container">
+  <div class="section-head"><div><h2>어떤 꽃을 보내시나요?</h2><p class="section-intro">장소보다 먼저 실제 목적을 선택하면 필요한 정보를 빠르게 찾을 수 있습니다.</p></div></div>
+  <div class="guide-tile-grid">{cats.map(([cat,title,body])=><a class="guide-tile" href={`/${cat}/`}><span>수원 꽃배달</span><h3>{title}</h3><p>{body}</p><b>확인하기 ›</b></a>)}</div>
+</div></section>
 
-  {situations.length > 0 && (
-    <section class="section guide-section">
-      <div class="container">
-        <div class="section-head simple-head"><div><h2>{siteConfig.region} 꽃배달 이용 안내</h2><p class="section-intro">장소·상황·주문 단계에 맞는 가이드를 확인하세요.</p></div></div>
-        <div class="guide-tile-grid">
-          {situations.map((item, index) => (
-            <a class:list={['guide-tile', `guide-tile-${index + 1}`]} href={item.href}><span>{item.tag}</span><h3>{item.title}</h3><p>{item.body}</p><b>자세히 보기 ›</b></a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
+<section class="info-band"><div class="container info-band-grid">
+  <div><strong>전화주문</strong><span>1844-0644 · 08:00~23:00</span></div>
+  <div><strong>온라인 주문</strong><span>24시간 접수</span></div>
+  <div><strong>화환 가격</strong><span>근조·축하 3단 59,000원부터</span></div>
+  <div><strong>배송 확인</strong><span>추가배송비·당일 가능 여부는 주문 시 확인</span></div>
+</div></section>
 
-  <section class="info-band">
-    <div class="container info-band-grid">
-      <div><strong>주문 가능 시간</strong><span>전화주문 08:00~23:00 · 온라인 24시간</span></div>
-      <div><strong>배송 안내</strong><span>전국 배송 가능 · 지역별 추가배송비 발생 가능</span></div>
-      <div><strong>상품 안내</strong><span>지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.</span></div>
-      <div><strong>{siteConfig.region} 꽃배달 정보</strong><span>실제 공개된 장소·상황·주문 가이드를 기준으로 안내합니다.</span></div>
-    </div>
-  </section>
-
-  <section class="section recent-section">
-    <div class="container">
-      <div class="section-head simple-head"><div><h2>최근 업데이트된 가이드</h2><p class="section-intro">최근 확인·갱신된 {siteConfig.region} 꽃배달 가이드입니다.</p></div></div>
-      <div class="grid grid-3">
-        {recent.map((article) => (
-          <a class="card recent-card" href={hrefFor(article)}>
-            <div><span class="tag">{article.data.region} · {categoryLabel[article.data.category] ?? '가이드'}</span><h3>{article.data.title}</h3><p>{article.data.description}</p></div>
-            <span class="more">가이드 읽기 ›</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="section"><div class="container">
+  <div class="section-head"><div><h2>수원 꽃배달에서 많이 찾는 내용</h2><p class="section-intro">실제 장소와 구매상황별로 필요한 내용을 바로 확인하세요.</p></div></div>
+  <div class="grid grid-3">{articles.slice(0,12).map(a=><a class="card recent-card" href={`/${a.data.category}/${a.data.slug}/`}><div><span class="tag">수원</span><h3>{a.data.title}</h3><p>{a.data.cardSummary}</p></div><span class="more">자세히 보기 ›</span></a>)}</div>
+</div></section>
 </BaseLayout>
