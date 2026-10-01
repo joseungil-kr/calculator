@@ -11,7 +11,7 @@
       "primaryKeyword": "아주대학교병원 장례식장 근조화환",
       "pageType": "funeral-facility",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-01-v1-2"
+      "snapshotId": "suwon-flower-v12-01-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-02",
@@ -22,7 +22,7 @@
       "primaryKeyword": "성빈센트병원 장례식장 근조화환",
       "pageType": "funeral-facility",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-02-v1-2"
+      "snapshotId": "suwon-flower-v12-02-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-03",
@@ -33,7 +33,7 @@
       "primaryKeyword": "수원시연화장 근조화환",
       "pageType": "funeral-facility",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-03-v1-2"
+      "snapshotId": "suwon-flower-v12-03-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-04",
@@ -44,7 +44,7 @@
       "primaryKeyword": "수원 근조화환",
       "pageType": "order-help",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-04-v1-2"
+      "snapshotId": "suwon-flower-v12-04-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-05",
@@ -55,7 +55,7 @@
       "primaryKeyword": "수원 장례식장 화환 가격",
       "pageType": "price-guide",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-05-v1-2"
+      "snapshotId": "suwon-flower-v12-05-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-06",
@@ -66,7 +66,7 @@
       "primaryKeyword": "광교 개업 축하화환",
       "pageType": "business-opening",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-06-v1-2"
+      "snapshotId": "suwon-flower-v12-06-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-07",
@@ -77,7 +77,7 @@
       "primaryKeyword": "인계동 개업화환",
       "pageType": "business-opening",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-07-v1-2"
+      "snapshotId": "suwon-flower-v12-07-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-08",
@@ -88,7 +88,7 @@
       "primaryKeyword": "영통 개업화환",
       "pageType": "business-opening",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-08-v1-2"
+      "snapshotId": "suwon-flower-v12-08-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-09",
@@ -99,7 +99,7 @@
       "primaryKeyword": "권선구 개업화환",
       "pageType": "business-opening",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-09-v1-2"
+      "snapshotId": "suwon-flower-v12-09-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-10",
@@ -110,7 +110,7 @@
       "primaryKeyword": "수원 회사 이전 축하화환",
       "pageType": "business-opening",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-10-v1-2"
+      "snapshotId": "suwon-flower-v12-10-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-11",
@@ -121,7 +121,7 @@
       "primaryKeyword": "아주대학교 졸업식 꽃",
       "pageType": "school-event",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-11-v1-2"
+      "snapshotId": "suwon-flower-v12-11-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-12",
@@ -132,7 +132,7 @@
       "primaryKeyword": "성균관대학교 자연과학캠퍼스 졸업식 꽃",
       "pageType": "school-event",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-12-v1-2"
+      "snapshotId": "suwon-flower-v12-12-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-13",
@@ -143,7 +143,7 @@
       "primaryKeyword": "경기대학교 수원캠퍼스 졸업식 꽃",
       "pageType": "school-event",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-13-v1-2"
+      "snapshotId": "suwon-flower-v12-13-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-14",
@@ -154,7 +154,7 @@
       "primaryKeyword": "수원여자대학교 졸업식 꽃",
       "pageType": "school-event",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-14-v1-2"
+      "snapshotId": "suwon-flower-v12-14-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-15",
@@ -165,40 +165,40 @@
       "primaryKeyword": "수원 졸업식 꽃다발",
       "pageType": "school-event",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-15-v1-2"
+      "snapshotId": "suwon-flower-v12-15-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-16",
       "url": "/event/suwon-convention-center-event-flowers/",
       "category": "event",
       "slug": "suwon-convention-center-event-flowers",
-      "title": "수원컨벤션센터 행사 축하꽃 | 전시·공연 꽃 주문",
+      "title": "수원컨벤션센터 행사 축하꽃 | 전시·행사 화환 설치 준비",
       "primaryKeyword": "수원컨벤션센터 행사 축하꽃",
       "pageType": "event-venue",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-16-v1-2"
+      "snapshotId": "suwon-flower-v12-16-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-17",
       "url": "/event/gyeonggi-arts-center-performance-flowers/",
       "category": "event",
       "slug": "gyeonggi-arts-center-performance-flowers",
-      "title": "경기아트센터 공연 축하꽃 | 공연·행사 꽃 주문",
+      "title": "경기아트센터 공연 축하꽃 | 출연자 꽃다발 전달 준비",
       "primaryKeyword": "경기아트센터 공연 축하꽃",
       "pageType": "event-venue",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-17-v1-2"
+      "snapshotId": "suwon-flower-v12-17-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-18",
       "url": "/event/suwon-sk-artrium-performance-flowers/",
       "category": "event",
       "slug": "suwon-sk-artrium-performance-flowers",
-      "title": "수원SK아트리움 공연 축하꽃 | 공연장 꽃 주문",
+      "title": "수원SK아트리움 공연 축하꽃 | 출연자 꽃다발 전달 준비",
       "primaryKeyword": "수원SK아트리움 공연 축하꽃",
       "pageType": "event-venue",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-18-v1-2"
+      "snapshotId": "suwon-flower-v12-18-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-19",
@@ -209,7 +209,7 @@
       "primaryKeyword": "수원화성 행사 축하꽃",
       "pageType": "event-venue",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-19-v1-2"
+      "snapshotId": "suwon-flower-v12-19-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-20",
@@ -220,7 +220,7 @@
       "primaryKeyword": "수원 행사 축하화환",
       "pageType": "event-venue",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-20-v1-2"
+      "snapshotId": "suwon-flower-v12-20-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-21",
@@ -231,7 +231,7 @@
       "primaryKeyword": "아주대학교병원 병문안 꽃",
       "pageType": "hospital-visit",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-21-v1-2"
+      "snapshotId": "suwon-flower-v12-21-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-22",
@@ -242,7 +242,7 @@
       "primaryKeyword": "성빈센트병원 병문안 꽃",
       "pageType": "hospital-visit",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-22-v1-2"
+      "snapshotId": "suwon-flower-v12-22-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-23",
@@ -253,7 +253,7 @@
       "primaryKeyword": "수원역 꽃다발",
       "pageType": "station-transit",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-23-v1-2"
+      "snapshotId": "suwon-flower-v12-23-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-24",
@@ -264,7 +264,7 @@
       "primaryKeyword": "광교 기념일 꽃배달",
       "pageType": "personal-gift",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-24-v1-2"
+      "snapshotId": "suwon-flower-v12-24-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-25",
@@ -275,7 +275,7 @@
       "primaryKeyword": "행궁동 꽃다발",
       "pageType": "personal-gift",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-25-v1-2"
+      "snapshotId": "suwon-flower-v12-25-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-26",
@@ -286,18 +286,18 @@
       "primaryKeyword": "수원 당일 꽃배달",
       "pageType": "order-help",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-26-v1-2"
+      "snapshotId": "suwon-flower-v12-26-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-27",
       "url": "/order/suwon-flower-delivery-price/",
       "category": "order",
       "slug": "suwon-flower-delivery-price",
-      "title": "수원 꽃배달 가격 | 근조·축하화환 59,000원부터",
+      "title": "수원 꽃배달 가격 | 꽃다발·꽃바구니·화환 비교",
       "primaryKeyword": "수원 꽃배달 가격",
       "pageType": "price-guide",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-27-v1-2"
+      "snapshotId": "suwon-flower-v12-27-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-28",
@@ -308,7 +308,7 @@
       "primaryKeyword": "수원 화환 문구",
       "pageType": "message-guide",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-28-v1-2"
+      "snapshotId": "suwon-flower-v12-28-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-29",
@@ -319,7 +319,7 @@
       "primaryKeyword": "수원 꽃배달 주소 작성",
       "pageType": "order-help",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-29-v1-2"
+      "snapshotId": "suwon-flower-v12-29-v1-3-intent"
     },
     {
       "pageKey": "suwon-flower-v12-30",
@@ -330,7 +330,7 @@
       "primaryKeyword": "수원 화환 주문",
       "pageType": "order-help",
       "status": "approved",
-      "snapshotId": "suwon-flower-v12-30-v1-2"
+      "snapshotId": "suwon-flower-v12-30-v1-3-intent"
     }
   ]
 }

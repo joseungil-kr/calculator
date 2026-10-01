@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "node scripts/write_build_revision.mjs && astro check && astro build && node scripts/write_response_headers.mjs && python3 scripts/qa_static.py && node scripts/qa_graph.mjs",
+    "build": "node scripts/write_build_revision.mjs && astro check && astro build && node scripts/write_response_headers.mjs && python3 scripts/qa_static.py && node scripts/qa_graph.mjs && node scripts/qa_intent_regressions.mjs",
     "dev": "astro dev",
     "test": "node --test tests/*.test.mjs",
     "qa": "python3 scripts/qa_static.py && node scripts/qa_graph.mjs",

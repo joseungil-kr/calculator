@@ -2,33 +2,39 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MarkdownContent from '../../components/MarkdownContent.astro';
 import ProductCards from '../../components/ProductCards.astro';
+import InlineText from '../../components/InlineText.astro';
 import pages from '../../data/pages.json';
 import products from '../../data/products.json';
 import {site,groups} from '../../config/site';
-import {selectProducts,productHeading} from '../../lib/catalog.mjs';
+import {selectProducts,productHeading,productFamilies} from '../../lib/catalog.mjs';
+import {nextSteps,relatedReading} from '../../lib/journey.mjs';
+import editorial from '../../data/editorial-assets.json';
 export function getStaticPaths(){return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
 const {page}=Astro.props;
-const related=(page.relatedKeys||[]).map((k:string)=>(pages as any[]).find(p=>p.pageKey===k)).filter(Boolean);
-const productSet=selectProducts(page,products); const hero=productSet[0];
+const journey=nextSteps(page,pages);
+const related=relatedReading(page,pages);
+const productSet=selectProducts(page,products,productFamilies(page).length>3?4:3); const hero=productSet[0];
+const illustration=page.pageType==='business-opening' || page.visualIntent==='event_wreath' ? editorial.openingWreath : null;
 const category=groups.find(g=>g.cat===page.category);
 const snapshotId=page.snapshotId;
-const pricePage=(pages as any[]).find(p=>p.pageType==='price-guide' && p.category===page.category) || (pages as any[]).find(p=>p.pageType==='price-guide' && p.category==='order');
-const orderPage=(pages as any[]).find(p=>p.pageType==='order-help' && p.category==='order' && p.visualIntent==='wreath_order');
+const pricePage=journey.find((p:any)=>p.pageType==='price-guide');
+const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath={page.url} orderUrl={hero?.orderUrl || site.orderUrl}>
 <article data-snapshot-id={snapshotId} data-page-key={page.pageKey} data-page-type={page.pageType}>
 <nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><a href={category?.url || '/'}>{category?.label || '꽃배달'}</a><span>›</span><span>{page.primaryKeyword}</span></nav>
 <section class="detail-hero"><div><span class="eyebrow">{site.brand} {site.region}</span><h1>{page.h1}</h1><p>{page.firstAnswer}</p><div class="actions"><a class="btn primary" href={site.phoneHref}>☎ {site.phone}</a><a class="btn dark" href={hero?.orderUrl || site.orderUrl}>상품 확인·주문</a></div><div class="facts"><span>전화 {site.phoneOrderHours}</span><span>온라인 {site.onlineOrderHours} 접수</span><span>배송 가능시간·추가비용 확인</span></div></div>
-{hero ? <div class="detail-product" data-product-family={hero.family}><img src={hero.img} alt={hero.name} loading="eager" width="540" height="540"/><strong>{hero.name}</strong><span>{hero.price.toLocaleString()}원</span><small>꽃이랑 공식 상품 이미지 · 지역·계절에 따라 구성이 달라질 수 있습니다</small>{hero.family==='congrats' && <small>사진 속 리본 문구는 예시입니다. 개업·행사 문구는 주문 시 확인해 주세요</small>}</div> : <aside class="detail-product"><h2>목적에 맞는 상품을 상담하세요</h2><p>원하는 형태와 전달 장소를 알려주시면 실제 주문 가능한 상품을 확인할 수 있습니다.</p><a class="btn primary" href={site.phoneHref}>전화 상담</a></aside>}
+{illustration ? <figure class="detail-product editorial-hero" data-asset-type={illustration.assetType}><img src={illustration.img} alt={illustration.alt} loading="eager" width="1000" height="1000"/><figcaption>{illustration.caption}</figcaption></figure> : hero ? <div class="detail-product" data-product-family={hero.family} data-product-key={hero.key}><img src={hero.img} alt={hero.name} loading="eager" width="540" height="540"/><strong>{hero.name}</strong><span>{hero.price.toLocaleString()}원</span><small>꽃이랑 공식 상품 이미지 · 지역·계절에 따라 구성이 달라질 수 있습니다</small>{hero.family==='congrats' && <small>사진 속 리본 문구는 예시입니다. 주문 목적에 맞는 문구를 확인해 주세요</small>}</div> : <aside class="detail-product"><h2>목적에 맞는 상품을 상담하세요</h2><p>원하는 형태와 전달 장소를 알려주시면 실제 주문 가능한 상품을 확인할 수 있습니다.</p><a class="btn primary" href={site.phoneHref}>전화 상담</a></aside>}
 </section>
 {page.pageType==='hospital-visit' && <aside class="caution"><strong>병동 반입 가능 여부부터 확인해 주세요</strong><p>생화 반입은 병원·병동에 따라 제한될 수 있습니다. 병동 확인 전에는 꽃을 주문하지 마시고, 반입이 허용되는 경우에만 아래 상품을 비교해 주세요.</p></aside>}
-{page.contentMarkdown ? <MarkdownContent content={page.contentMarkdown}/> : page.sections.slice(0,3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+{page.contentMarkdown ? <MarkdownContent content={page.contentMarkdown}/> : page.sections.slice(0,3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}
 {pricePage && pricePage.pageKey!==page.pageKey && <aside class="journey-link"><span>예산을 먼저 정하고 싶다면</span><a href={pricePage.url}>{pricePage.primaryKeyword} 확인 →</a></aside>}
 {productSet.length>0 && <section class="product-section compact"><h2>{productHeading(page)}</h2><ProductCards products={productSet}/></section>}
-{!page.contentMarkdown && page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
-{orderPage && orderPage.pageKey!==page.pageKey && <aside class="journey-link"><span>상품을 정했다면 수령정보를 준비해 주세요</span><a href={orderPage.url}>전화·온라인 주문 준비사항 →</a></aside>}
-{page.source?.url && <section class="source-card"><h2>{page.source.name || page.entity+' 관련 공식정보'}</h2><p>장소·시설의 운영 및 반입 조건은 공식 안내와 담당자에게 확인해 주세요.</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>}
+{!page.contentMarkdown && page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}
+{addressPage && <aside class="journey-link"><span>상품을 정했다면 수령정보를 준비해 주세요</span><a href={addressPage.url}>{addressPage.primaryKeyword} 확인 →</a></aside>}
+{page.source?.url && <section class="source-card"><h2>{page.source.name || page.entity+' 관련 공식정보'}</h2><p>{page.source.url.startsWith('https://fwith.co.kr') ? '꽃이랑의 상품과 주문 안내를 확인할 수 있습니다. 최종 상품 구성·배송조건은 주문 시 확인해 주세요.' : '주소와 시설 안내는 아래 공식 출처를 참고하세요. 꽃 수령·반입·설치 가능 여부는 해당 시설이나 행사 담당자에게 확인해 주세요.'}</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>}
 {!page.contentMarkdown && page.faq?.length>0 && <section class="faq"><h2>{page.primaryKeyword} 자주 묻는 질문</h2>{page.faq.map((f:any)=><div><h3>{f[0]}</h3><p>{f[1]}</p></div>)}</section>}
-{related.length>0 && <section class="related"><h2>다음 주문 단계</h2><div class="card-grid">{related.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}
+{journey.length>0 && <section class="related" data-journey="next-step"><h2>다음 주문 단계</h2><div class="card-grid journey-grid">{journey.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}
+{related.length>0 && <section class="related" data-journey="related-reading"><h2>함께 읽을 장소·상황 안내</h2><div class="card-grid journey-grid">{related.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}
 <section class="conversion-panel"><div><span class="eyebrow">{site.brand} 주문</span><h2>수령정보를 준비하셨다면 문의해 주세요</h2><p>전화 {site.phone} · {site.phoneOrderHours} / 온라인 {site.onlineOrderHours} 접수</p></div><div class="actions"><a class="btn light" href={site.phoneHref}>전화주문</a><a class="btn yellow" href={hero?.orderUrl || site.orderUrl}>상품 확인·주문</a></div></section>
 </article></BaseLayout>

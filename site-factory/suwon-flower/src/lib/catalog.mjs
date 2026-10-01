@@ -4,8 +4,12 @@ export function productFamilies(page) {
   if (['school-event', 'station-transit'].includes(page.pageType)) return ['bouquet'];
   if (['hospital-visit', 'personal-gift'].includes(page.pageType)) return ['bouquet', 'basket'];
   if (page.category === 'funeral' || page.pageType === 'funeral-facility') return ['funeral'];
-  if (page.pageType === 'event-venue') return page.visualIntent === 'event_wreath' ? ['congrats'] : ['bouquet', 'basket', 'congrats'];
-  if (['price-guide', 'message-guide', 'order-help'].includes(page.pageType)) return /화환/.test(page.primaryKeyword || '') ? ['funeral', 'congrats'] : ['funeral', 'congrats', 'bouquet'];
+  if (page.pageType === 'event-venue') {
+    if (page.visualIntent === 'event_wreath') return ['congrats'];
+    if (page.visualIntent === 'performance_venue') return ['bouquet'];
+    return ['bouquet', 'basket', 'congrats'];
+  }
+  if (['price-guide', 'message-guide', 'order-help'].includes(page.pageType)) return /화환/.test(page.primaryKeyword || '') ? ['funeral', 'congrats'] : ['bouquet', 'basket', 'funeral', 'congrats'];
   return [];
 }
 export function selectProducts(page, products, limit = 3) {
@@ -19,6 +23,12 @@ export function productHeading(page) {
   const families = productFamilies(page);
   if (families.length === 1 && families[0] === 'funeral') return '근조화환 상품과 가격';
   if (families.length === 1 && families[0] === 'congrats') return '축하화환 상품과 가격';
-  if (families.every(f => ['bouquet', 'basket'].includes(f))) return '전달하기 좋은 꽃선물';
+  if (families.length && families.every(f => ['bouquet', 'basket'].includes(f))) return '전달하기 좋은 꽃선물';
   return '목적에 맞는 꽃 상품 비교';
+}
+
+/** Initial selection spans the site's advertised purposes; no price or SKU aliases. */
+export function homeProducts(products) {
+  const keys = ['funeral-basic', 'congrats-basic', 'bouquet-happiness', 'basket-sunshine', 'bouquet-blue', 'funeral-premium'];
+  return keys.map(key => products.find(p => p.key === key)).filter(Boolean);
 }

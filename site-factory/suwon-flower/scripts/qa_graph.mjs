@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {productFamilies,selectProducts} from '../src/lib/catalog.mjs';
+import {validateCustomerIntent} from './qa_intent.mjs';
 export function validateGraph(data) {
  const {pages,manifest,map,architecture,products}=data;
  if(!pages.length) throw new Error('No approved pages');
@@ -12,6 +13,7 @@ export function validateGraph(data) {
   if(p.url!==`/${p.category}/${p.slug}/`)throw new Error('Route mismatch '+p.pageKey);
   if(!p.snapshotId)throw new Error('Missing snapshotId '+p.pageKey);
   if(!p.title || !p.h1 || !p.firstAnswer || !p.description || !p.cardSummary)throw new Error('Incomplete content '+p.pageKey);
+  validateCustomerIntent(p,products);
   const a=architecture.pages.find(x=>x.pageKey===p.pageKey);
   const intent=a?.intentKey || p.intentKey || p.primaryKeyword;
   if(intents.has(intent))throw new Error('Intent collision '+intent);intents.add(intent);

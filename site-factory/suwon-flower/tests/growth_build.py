@@ -10,7 +10,7 @@ with tempfile.TemporaryDirectory(prefix='suwon-growth-') as tmp:
  original=len(pages);prototype=next(p for p in pages if p['pageType']=='school-event')
  key='qa-growth-fixture'
  while any(p['pageKey']==key for p in pages):key+='-next'
- page=dict(prototype);page.update(pageKey=key,slug=key,url='/school/'+key+'/',snapshotId=key+'-v1',title='성장 렌더링 로컬 검증',h1='성장 렌더링 로컬 검증',primaryKeyword='성장 렌더링 로컬 검증',description='공개하지 않는 성장경로 테스트',cardSummary='안전한 스냅샷 렌더링 테스트',intentKey=key,contentMarkdown='## 성장 검증\n\n[주문 안내](/order/suwon-wreath-order/)\n\n<script>alert(1)</script>')
+ page=dict(prototype);page.update(pageKey=key,slug=key,url='/school/'+key+'/',snapshotId=key+'-v1',title='성장 렌더링 로컬 검증',h1='성장 렌더링 로컬 검증',primaryKeyword='성장 렌더링 로컬 검증',description='공개하지 않는 성장경로 테스트',cardSummary='안전한 스냅샷 렌더링 테스트',intentKey=key,contentMarkdown='## 성장 검증\n\n[주소·수령자 안내](/order/suwon-flower-address-guide/)\n\n<script>alert(1)</script>')
  pages.append(page);(data/'pages.json').write_text(json.dumps(pages,ensure_ascii=False))
  for name in ['publish-manifest','page-map','architecture']:
   record=json.loads((data/(name+'.json')).read_text());entry=dict(next(p for p in record['pages'] if p['pageKey']==prototype['pageKey']));entry.update({k:page[k] for k in ['pageKey','slug','url','snapshotId','title','primaryKeyword','intentKey']});record['pages'].append(entry)
