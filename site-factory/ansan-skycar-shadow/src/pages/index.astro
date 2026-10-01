@@ -5,18 +5,29 @@ const page = pages.find((p:any)=>p.url==='/')!;
 const groups = [
   {label:'가격·견적',links:pages.filter((p:any)=>['pricing','quote'].includes(p.category))},
   {label:'작업유형',links:pages.filter((p:any)=>p.category==='work-types')},
-  {label:'지역',links:pages.filter((p:any)=>p.category==='areas')}
+  {label:'지역별 작업',links:pages.filter((p:any)=>p.category==='areas')}
 ];
+const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>p.pageKey===key)).filter(Boolean);
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath="/">
 <section class="hero">
-  <span class="eyebrow">PRIMARY QUERY · {page.primaryKeyword}</span>
   <h1>{page.h1}</h1>
   <p class="lead">{page.firstAnswer}</p>
-  <div class="meta">Query class: {page.queryClass} · Alignment: 100/100</div>
 </section>
+
 <section class="grid">
-{groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.title}</small></li>)}</ul></article>)}
+{groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.description}</small></li>)}</ul></article>)}
 </section>
+
 {page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+
+<section class="section faq">
+  <h2>안산 스카이차 자주 묻는 질문</h2>
+  {page.faq.map((item:any)=><div class="faq-item"><h3>{item[0]}</h3><p>{item[1]}</p></div>)}
+</section>
+
+<section class="section related">
+  <h2>먼저 확인하면 좋은 페이지</h2>
+  <ul>{related.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><span>{p.description}</span></li>)}</ul>
+</section>
 </BaseLayout>

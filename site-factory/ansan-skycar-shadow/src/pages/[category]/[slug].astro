@@ -5,16 +5,40 @@ export function getStaticPaths(){
   return (pages as any[]).filter(p=>p.url!=='/').map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));
 }
 const { page }=Astro.props;
+const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>p.pageKey===key)).filter(Boolean);
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath={page.url}>
 <article>
 <section class="hero compact">
-  <span class="eyebrow">PRIMARY QUERY · {page.primaryKeyword}</span>
   <h1>{page.h1}</h1>
   <p class="lead">{page.firstAnswer}</p>
-  <div class="meta">{page.queryClass} · priority {page.queryPriority} · cluster {page.keywordCluster} · alignment 100/100</div>
 </section>
-{page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
-<section class="section related"><h2>관련 검색어 페이지</h2><ul>{(pages as any[]).filter(p=>p.url!==page.url && p.url!=='/').slice(0,5).map(p=><li><a href={p.url}>{p.primaryKeyword}</a></li>)}</ul></section>
+
+{page.sections.map((s:any)=>
+  <section class="section">
+    <h2>{s[0]}</h2>
+    <p>{s[1]}</p>
+  </section>
+)}
+
+<section class="section faq">
+  <h2>{page.primaryKeyword} 자주 묻는 질문</h2>
+  {page.faq.map((item:any)=>
+    <div class="faq-item">
+      <h3>{item[0]}</h3>
+      <p>{item[1]}</p>
+    </div>
+  )}
+</section>
+
+<section class="section related">
+  <h2>함께 확인할 안산 스카이차 정보</h2>
+  <ul>{related.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><span>{p.description}</span></li>)}</ul>
+</section>
+
+<section class="cta">
+  <h2>스카이차 문의 전에 현장정보를 준비하세요</h2>
+  <p>정확한 주소, 작업내용, 작업 위치와 높이, 현장사진, 차량 접근공간, 희망 일정을 정리하면 실제 상담 단계에서 필요한 정보를 빠르게 전달할 수 있습니다.</p>
+</section>
 </article>
 </BaseLayout>
