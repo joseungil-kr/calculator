@@ -9,6 +9,13 @@ permissions:
   issues: write
   actions: write
 
+# Serialize snapshot writes so multiple Airtable snapshots cannot race on
+# publish-manifest.json / page-map.json / architecture.json or the target branch.
+# cancel-in-progress=false preserves every immutable snapshot in FIFO-like queue order.
+concurrency:
+  group: site-factory-snapshot-publish
+  cancel-in-progress: false
+
 jobs:
   snapshot:
     if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
@@ -409,7 +416,31 @@ jobs:
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }}"
-            git push origin "HEAD:$BRANCH"
+
+            # Workflow-level concurrency prevents normal snapshot races. This
+            # retry loop is a second guard for an external/manual branch update.
+            pushed=false
+            for attempt in 1 2 3; do
+              if git push origin "HEAD:$BRANCH"; then
+                pushed=true
+                break
+              fi
+
+              echo "::warning::Push rejected on attempt $attempt; refreshing origin/$BRANCH and retrying."
+              git fetch origin "$BRANCH"
+              if ! git rebase "origin/$BRANCH"; then
+                git rebase --abort || true
+                echo "::error::Snapshot rebase conflicted with a newer remote change. Refusing to force-push."
+                exit 1
+              fi
+              sleep $((attempt * 2))
+            done
+
+            if [ "$pushed" != "true" ]; then
+              echo "::error::Snapshot push failed after 3 attempts."
+              exit 1
+            fi
+
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
