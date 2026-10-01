@@ -15,5 +15,5 @@ const h1=titleMap[category!]||def.label;
 <BaseLayout title={h1} description={def.description} canonicalPath={`/${category}/`}>
 <nav class="breadcrumb" aria-label="breadcrumb"><a href="/">안산 스카이차</a><span>›</span><span>{h1}</span></nav>
 <section class="hero compact"><h1>{h1}</h1><p class="lead">{def.description}</p></section>
-<section class="grid">{items.map((p:any)=><article class="card"><h2><a href={p.url}>{p.primaryKeyword}</a></h2><p>{p.firstAnswer}</p></article>)}</section>
+<section class="grid">{items.map((p:any)=><article class="card"><h2><a href={p.url}>{p.primaryKeyword}</a></h2><p>{p.cardSummary}</p></article>)}</section>
 </BaseLayout>

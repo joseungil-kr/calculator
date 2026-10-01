@@ -7,7 +7,7 @@
     "primaryKeyword": "안산 스카이차",
     "title": "안산 스카이차 | 간판·외벽·고소작업 문의",
     "h1": "안산 스카이차 간판·외벽·고소작업 문의",
-    "description": "안산 스카이차 작업을 알아볼 때 필요한 작업종류, 현장 높이, 차량 접근조건, 견적 준비정보를 한 번에 확인합니다.",
+    "description": "간판·외벽·실외기·CCTV 등 안산 고소작업에 필요한 현장 조건과 견적 준비사항을 확인하고 작업 목적에 맞는 안내로 이어집니다.",
     "pageType": "region-service",
     "pageRole": "REGION_SERVICE_LANDING",
     "queryClass": "core-commercial",
@@ -83,7 +83,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "간판·외벽·실외기·CCTV 작업 전에 필요한 현장사진, 차량 접근조건, 견적 준비사항을 한 번에 확인할 수 있습니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-002",
@@ -93,7 +103,7 @@
     "primaryKeyword": "안산 스카이차 가격",
     "title": "안산 스카이차 가격 | 비용과 견적 확인사항",
     "h1": "안산 스카이차 가격과 비용 확인사항",
-    "description": "안산 스카이차 가격과 비용이 달라지는 조건, 견적 전에 필요한 주소·높이·현장사진 정보를 정리합니다.",
+    "description": "스카이차 비용에 영향을 주는 작업 높이, 시간, 접근성, 대기 여부와 견적 비교 시 확인할 항목을 안내합니다.",
     "pageType": "price-guide",
     "pageRole": "PRICE_GUIDE",
     "queryClass": "commercial-modifier",
@@ -169,7 +179,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "작업 높이·시간·차량 접근성·대기 여부 등 비용을 바꾸는 조건과 견적 비교 포인트를 정리했습니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-003",
+      "skycar-qf-001"
+    ]
   },
   {
     "pageKey": "skycar-qf-003",
@@ -179,7 +199,7 @@
     "primaryKeyword": "안산 스카이차 견적",
     "title": "안산 스카이차 견적 | 현장정보와 문의 준비",
     "h1": "안산 스카이차 견적 문의 준비",
-    "description": "안산 스카이차 견적 문의 전에 주소, 작업내용, 높이, 현장사진, 접근조건을 어떻게 정리할지 안내합니다.",
+    "description": "견적 상담 전에 준비할 주소, 작업내용, 높이, 현장사진, 차량 접근조건과 일정 정보를 안내합니다.",
     "pageType": "quote-intent",
     "pageRole": "INTENT_LANDING",
     "queryClass": "commercial-modifier",
@@ -259,7 +279,17 @@
       "label": "안산 스카이차 작업 종류 확인",
       "targetKey": "skycar-qf-001",
       "note": ""
-    }
+    },
+    "cardSummary": "주소와 작업사진부터 작업 위치·높이·희망 일정까지, 상담 전에 준비하면 좋은 정보를 순서대로 확인하세요.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-001"
+    ]
   },
   {
     "pageKey": "skycar-qf-004",
@@ -269,7 +299,7 @@
     "primaryKeyword": "안산 간판 스카이차",
     "title": "안산 간판 스카이차 | 설치·철거 고소작업 문의",
     "h1": "안산 간판 스카이차 설치·철거 작업",
-    "description": "안산 간판 스카이차 설치·교체·철거 문의 전에 필요한 간판 위치, 높이, 작업면, 차량 접근조건을 안내합니다.",
+    "description": "간판 설치·교체·철거 작업 전 위치, 높이, 차량 접근공간과 견적 준비사항을 확인하세요.",
     "pageType": "work-type-landing",
     "pageRole": "INTENT_LANDING",
     "queryClass": "work-commercial",
@@ -349,7 +379,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "설치·교체·철거 여부와 간판 위치, 차량 배치 공간을 미리 정리하면 현장 상담과 견적 확인이 한결 수월해집니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-005",
@@ -359,7 +399,7 @@
     "primaryKeyword": "안산 외벽 스카이차",
     "title": "안산 외벽 스카이차 | 외벽 고소작업 문의",
     "h1": "안산 외벽 스카이차 고소작업 문의",
-    "description": "안산 외벽 스카이차 작업의 위치, 작업범위, 접근공간, 주변 장애물과 견적 준비사항을 안내합니다.",
+    "description": "외벽 고소작업 전 작업면, 범위, 주변 장애물, 차량 배치와 견적 준비사항을 안내합니다.",
     "pageType": "work-type-landing",
     "pageRole": "INTENT_LANDING",
     "queryClass": "work-commercial",
@@ -439,7 +479,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "외벽 작업면과 범위, 주변 장애물, 차량 배치 공간을 확인해 두면 필요한 작업조건을 빠르게 설명할 수 있습니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-006",
@@ -449,7 +499,7 @@
     "primaryKeyword": "안산 실외기 스카이차",
     "title": "안산 실외기 스카이차 | 설치·교체 작업 문의",
     "h1": "안산 실외기 스카이차 설치·교체 작업",
-    "description": "안산 실외기 스카이차 문의 전에 실외기 위치, 층수, 교체 여부, 접근공간과 작업 역할을 확인합니다.",
+    "description": "실외기 설치·교체 작업 전 위치, 이동경로, 차량 정차공간과 상담 준비정보를 확인하세요.",
     "pageType": "work-type-landing",
     "pageRole": "INTENT_LANDING",
     "queryClass": "work-commercial",
@@ -529,7 +579,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "실외기 위치와 설치·교체 여부, 이동경로, 차량 정차 공간을 함께 준비하면 현장조건 확인이 쉬워집니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-007",
@@ -539,7 +599,7 @@
     "primaryKeyword": "안산 CCTV 스카이차",
     "title": "안산 CCTV 스카이차 | 고소 설치작업 문의",
     "h1": "안산 CCTV 스카이차 고소 설치작업",
-    "description": "안산 CCTV 스카이차 작업에서 설치 위치, 개수, 접근동선, 통신공사와 장비지원 역할을 확인합니다.",
+    "description": "CCTV 고소 설치작업 전 설치 지점, 수량, 접근동선과 차량 배치 정보를 안내합니다.",
     "pageType": "work-type-landing",
     "pageRole": "INTENT_LANDING",
     "queryClass": "work-commercial",
@@ -574,7 +634,7 @@
       ],
       [
         "CCTV 고소작업 문의 체크리스트",
-        "주소, 설치 위치 수, 각 위치의 높이, 현장사진, 시공업체 유무, 작업 희망일, 차량 접근공간을 정리하면 견적 상담에 필요한 기본정보가 갖춰집니다. 설치 위치를 정리한 뒤 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가며, 다른 고소작업은 [[/work-types/|안산 스카이차 작업유형]]에서 확인할 수 있습니다."
+        "주소, 설치 위치 수, 각 위치의 높이, 현장사진, 시공업체 유무, 작업 희망일, 차량 접근공간을 정리하면 견적 상담에 필요한 기본정보가 갖춰집니다. 설치 위치를 정리한 뒤 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가며, 비용을 확인하려면 [[skycar-qf-002|안산 스카이차 가격]]을 보고, 실제 상담 준비는 [[skycar-qf-003|안산 스카이차 견적]]에서 이어가세요."
       ],
       [
         "기존 CCTV 교체 작업이라면 철거 범위도 확인하세요",
@@ -619,7 +679,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "설치 지점과 수량, 작업 높이, 차량 접근공간을 정리해 두면 여러 CCTV 지점 작업도 상담하기 편합니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-008",
@@ -629,7 +699,7 @@
     "primaryKeyword": "안산 고잔동 스카이차",
     "title": "안산 고잔동 스카이차 | 간판·외벽 고소작업",
     "h1": "안산 고잔동 스카이차 간판·외벽 고소작업",
-    "description": "안산 고잔동 스카이차 작업을 찾을 때 실제 지역 현장정보와 작업종류, 차량 접근·정차 조건, 견적 준비사항을 확인하는 지역 랜딩입니다.",
+    "description": "고잔동 상가·건물 고소작업 전 작업면, 주차·보행 동선, 차량 정차 조건과 견적 준비사항을 확인하세요.",
     "pageType": "local-area",
     "pageRole": "PLACE_LANDING",
     "queryClass": "local-commercial",
@@ -709,7 +779,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "상가·건물 고소작업을 문의하기 전 주차·보행 동선과 작업면, 차량 정차 위치를 함께 확인해 보세요.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-009",
@@ -719,7 +799,7 @@
     "primaryKeyword": "안산 선부동 스카이차",
     "title": "안산 선부동 스카이차 | 건물 고소작업 문의",
     "h1": "안산 선부동 스카이차 건물 고소작업 문의",
-    "description": "안산 선부동 스카이차 작업을 찾을 때 실제 지역 현장정보와 작업종류, 차량 접근·정차 조건, 견적 준비사항을 확인하는 지역 랜딩입니다.",
+    "description": "선부동 건물 고소작업 전 작업위치, 차량 접근조건, 현장사진과 상담 준비사항을 안내합니다.",
     "pageType": "local-area",
     "pageRole": "PLACE_LANDING",
     "queryClass": "local-commercial",
@@ -754,7 +834,7 @@
       ],
       [
         "선부동에서 다른 작업 검색으로 이동",
-        "사용자가 이미 작업 목적을 알고 있다면 안산 간판 스카이차, 외벽 스카이차, 실외기 스카이차, CCTV 스카이차 페이지로 이동해 목적별 준비사항을 확인할 수 있습니다. 실외기 작업이라면 [[skycar-qf-006|안산 실외기 스카이차]]를 확인하고, 실제 문의는 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가며 [[/areas/|안산 지역별 스카이차]]에서 다른 지역도 볼 수 있습니다."
+        "사용자가 이미 작업 목적을 알고 있다면 안산 간판 스카이차, 외벽 스카이차, 실외기 스카이차, CCTV 스카이차 페이지로 이동해 목적별 준비사항을 확인할 수 있습니다. 실외기 작업이라면 [[skycar-qf-006|안산 실외기 스카이차]]를 확인하고, 실제 문의는 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가며 비용 조건은 [[skycar-qf-002|안산 스카이차 가격]]에서 확인하고, 현장정보가 준비되면 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가세요."
       ],
       [
         "선부동 현장에서 작업시간을 정할 때",
@@ -799,7 +879,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "건물 작업면과 차량이 설 위치, 현장사진을 준비해 두면 선부동 현장의 접근조건과 견적을 설명하기 쉽습니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-010",
@@ -809,7 +899,7 @@
     "primaryKeyword": "안산 원곡동 스카이차",
     "title": "안산 원곡동 스카이차 | 상가·공장 고소작업",
     "h1": "안산 원곡동 스카이차 상가·공장 고소작업",
-    "description": "안산 원곡동 스카이차 작업을 찾을 때 실제 지역 현장정보와 작업종류, 차량 접근·정차 조건, 견적 준비사항을 확인하는 지역 랜딩입니다.",
+    "description": "원곡동 상가·공장 고소작업 전 출입·보행 동선, 작업위치와 차량 접근조건을 확인하세요.",
     "pageType": "local-area",
     "pageRole": "PLACE_LANDING",
     "queryClass": "local-commercial",
@@ -889,7 +979,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "상가와 공장 현장은 출입·보행 동선이 달라질 수 있어 작업 위치와 차량 동선을 먼저 정리하는 것이 좋습니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-011",
@@ -899,7 +999,7 @@
     "primaryKeyword": "안산 성곡동 스카이차",
     "title": "안산 성곡동 스카이차 | 공장 고소작업 문의",
     "h1": "안산 성곡동 스카이차 공장 고소작업 문의",
-    "description": "안산 성곡동 스카이차 작업을 찾을 때 실제 지역 현장정보와 작업종류, 차량 접근·정차 조건, 견적 준비사항을 확인하는 지역 랜딩입니다.",
+    "description": "성곡동 공장 고소작업 전 출입구, 작업동, 설비 주변 공간과 차량 진입조건을 확인하세요.",
     "pageType": "local-area",
     "pageRole": "PLACE_LANDING",
     "queryClass": "local-commercial",
@@ -979,7 +1079,17 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "공장 내부·외부 작업은 출입구와 작업동, 설비 주변 공간이 중요하므로 사업장 단위로 준비사항을 확인해 보세요.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   },
   {
     "pageKey": "skycar-qf-012",
@@ -989,7 +1099,7 @@
     "primaryKeyword": "안산 반월공단 스카이차",
     "title": "안산 반월공단 스카이차 | 공장·산업단지 고소작업",
     "h1": "안산 반월공단 스카이차 공장·산업단지 고소작업",
-    "description": "안산 반월공단 스카이차 작업을 찾을 때 실제 지역 현장정보와 작업종류, 차량 접근·정차 조건, 견적 준비사항을 확인하는 지역 랜딩입니다.",
+    "description": "반월공단 공장 고소작업 전 사업장 출입, 작업동, 차량 이동경로와 견적 준비사항을 안내합니다.",
     "pageType": "local-area",
     "pageRole": "PLACE_LANDING",
     "queryClass": "local-commercial",
@@ -1024,7 +1134,7 @@
       ],
       [
         "견적 문의 전 준비할 사업장 체크리스트",
-        "회사명 또는 사업장명, 도로명주소, 작업동·작업 위치, 작업종류, 현장사진, 차량 이동경로, 담당자 연락처, 희망일정을 준비하면 상담을 시작하기 좋습니다. 공장 외벽 작업은 [[skycar-qf-005|안산 외벽 스카이차]], CCTV 작업은 [[skycar-qf-007|안산 CCTV 스카이차]]에서 세부 조건을 확인하고 [[/areas/|안산 지역별 스카이차]]로 돌아갈 수 있습니다."
+        "회사명 또는 사업장명, 도로명주소, 작업동·작업 위치, 작업종류, 현장사진, 차량 이동경로, 담당자 연락처, 희망일정을 준비하면 상담을 시작하기 좋습니다. 공장 외벽 작업은 [[skycar-qf-005|안산 외벽 스카이차]], CCTV 작업은 [[skycar-qf-007|안산 CCTV 스카이차]]에서 세부 조건을 확인하고 작업 조건을 정리한 뒤 [[skycar-qf-002|안산 스카이차 가격]]에서 비용 요소를 확인하고 [[skycar-qf-003|안산 스카이차 견적]]으로 이어가세요."
       ],
       [
         "반월공단 작업에서 반복 방문이 필요한 경우",
@@ -1069,6 +1179,16 @@
       "label": "현장정보로 견적 준비하기",
       "targetKey": "skycar-qf-003",
       "note": ""
-    }
+    },
+    "cardSummary": "공장·산업단지 작업은 사업장 주소와 출입구, 작업동, 차량 이동경로를 함께 정리하면 상담이 빠릅니다.",
+    "humanCheckRequired": [
+      "operator_identity",
+      "real_contact_cta",
+      "verified_business_selling_points"
+    ],
+    "conversionTargets": [
+      "skycar-qf-002",
+      "skycar-qf-003"
+    ]
   }
 ]

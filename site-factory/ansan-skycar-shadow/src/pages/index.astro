@@ -29,7 +29,7 @@ function rich(text:string){
 </section>
 
 <section class="grid">
-{groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.description}</small></li>)}</ul></article>)}
+{groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.cardSummary}</small></li>)}</ul></article>)}
 </section>
 
 {page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p></section>)}
