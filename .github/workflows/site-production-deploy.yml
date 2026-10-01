@@ -64,6 +64,7 @@ jobs:
                   "hero_path": site["heroPath"],
                   "naver_verification": site.get("naverVerification", ""),
                   "indexnow_key": site["indexnowKey"],
+                  "wrangler_config": site.get("wranglerConfig", "wrangler.jsonc"),
               }.items():
                   fh.write(f"{k}={v}\n")
           PY
@@ -129,7 +130,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_INDEXABLE: "true"
-        run: npx --yes wrangler@latest deploy
+          WRANGLER_CONFIG: ${{ steps.target.outputs.wrangler_config }}
+        run: npx --yes wrangler@latest deploy -c "$WRANGLER_CONFIG"
 
       - name: Wait for exact production revision and validate live site
         working-directory: target/${{ steps.target.outputs.root }}
@@ -196,9 +198,12 @@ jobs:
                       assert base + page["url"] in unquote(html)
                       assert base + page["url"] in sitemap
 
-                  code, article = get("/" + primary + "/")
-                  assert code == 200
-                  assert "<h1" in article.lower()
+                  if primary:
+                      code, article = get("/" + primary + "/")
+                      assert code == 200
+                      assert "<h1" in article.lower()
+                  else:
+                      assert "<h1" in home.lower()
 
                   nf_code, nf = get("/production-qa-definitely-not-found/")
                   assert nf_code == 404
