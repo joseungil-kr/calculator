@@ -9,13 +9,6 @@ permissions:
   issues: write
   actions: write
 
-# Serialize snapshot writes so multiple Airtable snapshots cannot race on
-# publish-manifest.json / page-map.json / architecture.json or the target branch.
-# cancel-in-progress=false preserves every immutable snapshot in FIFO-like queue order.
-concurrency:
-  group: site-factory-snapshot-publish
-  cancel-in-progress: false
-
 jobs:
   snapshot:
     if: startsWith(github.event.issue.title, '[SITE-SNAPSHOT]')
@@ -90,7 +83,7 @@ jobs:
           ALLOWED_CATEGORIES: ${{ steps.target.outputs.allowed_categories }}
           ALLOWED_PAGE_TYPES: ${{ steps.target.outputs.allowed_page_types }}
         run: |
-          python3 - <<'PY'
+          cat > "$RUNNER_TEMP/render_snapshot.py" <<'PY'
           import json
           import os
           import pathlib
@@ -384,6 +377,7 @@ jobs:
 
           print(f"Rendered snapshot {snapshot_id} site={site_key} role={page_role} intent={intent_key} route={route_type} url={url} -> {article_path}")
           PY
+          python3 "$RUNNER_TEMP/render_snapshot.py"
 
       - name: Validate and build snapshot before push
         working-directory: ${{ steps.target.outputs.root }}
@@ -417,31 +411,58 @@ jobs:
           else
             git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }}"
 
-            # Workflow-level concurrency prevents normal snapshot races. This
-            # retry loop is a second guard for an external/manual branch update.
+            # Multiple immutable snapshots may target the same branch at once.
+            # Never force-push and never text-merge the shared JSON registries.
+            # If another run advances the branch first, rebuild this snapshot
+            # from the newest remote baseline, rerun all gates, and retry.
+            changed=true
             pushed=false
-            for attempt in 1 2 3; do
+            for attempt in $(seq 1 8); do
               if git push origin "HEAD:$BRANCH"; then
                 pushed=true
                 break
               fi
 
-              echo "::warning::Push rejected on attempt $attempt; refreshing origin/$BRANCH and retrying."
-              git fetch origin "$BRANCH"
-              if ! git rebase "origin/$BRANCH"; then
-                git rebase --abort || true
-                echo "::error::Snapshot rebase conflicted with a newer remote change. Refusing to force-push."
-                exit 1
+              if [ "$attempt" -ge 8 ]; then
+                break
               fi
+
+              echo "::warning::Push race on attempt $attempt. Re-rendering immutable snapshot on latest origin/$BRANCH."
               sleep $((attempt * 2))
+              git fetch origin "$BRANCH"
+              git reset --hard "origin/$BRANCH"
+
+              python3 "$RUNNER_TEMP/render_snapshot.py"
+
+              (
+                cd "$ROOT"
+                npm install
+                npm run build
+                python3 scripts/qa_static.py
+                npx --yes wrangler@latest deploy --dry-run --outdir .wrangler-dry-run
+              )
+
+              git add "$ROOT/src/content/articles/" \
+                      "$ROOT/src/data/publish-manifest.json" \
+                      "$ROOT/src/data/page-map.json" \
+                      "$ROOT/src/data/architecture.json"
+
+              if git diff --cached --quiet; then
+                echo "Snapshot is already present on the refreshed branch; treating as idempotent success."
+                changed=false
+                pushed=true
+                break
+              fi
+
+              git commit -m "Publish Site Factory snapshot from issue #${{ github.event.issue.number }} (retry $attempt)"
             done
 
             if [ "$pushed" != "true" ]; then
-              echo "::error::Snapshot push failed after 3 attempts."
+              echo "::error::Snapshot push failed after 8 race-safe attempts."
               exit 1
             fi
 
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "changed=$changed" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
