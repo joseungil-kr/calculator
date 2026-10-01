@@ -111,6 +111,20 @@
       "status": "primary"
     },
     {
+      "pageKey": "suwon-flower-launch-18",
+      "url": "/occasions/gwanggyo-office-opening-flower-space/",
+      "pageRole": "INTENT_LANDING",
+      "parentHub": "/occasions/",
+      "primaryKeyword": "광교 오피스 개업 축하꽃, 로비와 사무공간에 같은 구성이 맞을까요?",
+      "intentKey": "수원|INTENT_LANDING|광교 오피스 개업 축하꽃, 로비와 사무공간에 같은 구성이 맞을까요",
+      "pageType": "opening-business",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "category": "occasions",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
       "pageKey": "suwon-flower-launch-21",
       "url": "/funeral/suwon-yeonhwajang-condolence-wreath/",
       "pageRole": "PLACE_LANDING",

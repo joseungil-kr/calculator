@@ -109,6 +109,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-18",
+      "draftKey": "suwon-flower-launch-18-draft-v2",
+      "sourceRecordId": "recZaNvwaij28yDtP",
+      "publishQueueRecordId": "recC6TlLS2PWJ5WVD",
+      "snapshotId": "suwon-flower-launch-18-v1",
+      "slug": "gwanggyo-office-opening-flower-space",
+      "category": "occasions",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-18.md",
+      "url": "/occasions/gwanggyo-office-opening-flower-space/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-21",
       "draftKey": "suwon-flower-factory-draft-21",
       "sourceRecordId": "rec308dcPxFH0UzJh",
