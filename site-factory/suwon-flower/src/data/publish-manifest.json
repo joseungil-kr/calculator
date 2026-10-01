@@ -44,6 +44,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-04",
+      "draftKey": "suwon-flower-launch-04-draft-v2",
+      "sourceRecordId": "recK18fCNAWcLBJa9",
+      "publishQueueRecordId": "recZ7sPIvJCpRdtLj",
+      "snapshotId": "suwon-flower-launch-04-v1",
+      "slug": "ajou-hospital-visit-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-04.md",
+      "url": "/places/ajou-hospital-visit-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-05",
       "draftKey": "suwon-flower-launch-05-draft-v2",
       "sourceRecordId": "recDHyV8qjlHwb1Tc",
