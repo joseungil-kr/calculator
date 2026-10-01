@@ -65,3 +65,7 @@ Blueprint가 query pattern, page_type, forbidden facts, source priority, Busines
 
 ## Regression
 꽃배달 production 규칙은 Generic 전환 전후 결과가 동일해야 한다. Generic Shadow는 flower-local/flower-local-v2 production 레코드와 branch를 수정하지 않는다.
+
+
+## Content Writing Contract
+모든 사용자 노출 문구는 `site-factory/contracts/04_SITE_FACTORY_CONTENT_WRITING.md`를 따른다. Query-first 구조가 맞아도 화자·구매전환·Title/Summary 역할분리·Business Truth/웹리서치·내부링크 구매동선 Gate를 통과하지 못하면 production PASS 금지.
