@@ -398,6 +398,12 @@ jobs:
         env:
           ROOT: ${{ steps.target.outputs.root }}
           BRANCH: ${{ steps.target.outputs.branch }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          EXPECTED_SITE_KEY: ${{ steps.target.outputs.site_key }}
+          EXPECTED_BRANCH: ${{ steps.target.outputs.branch }}
+          EXPECTED_ROOT: ${{ steps.target.outputs.root }}
+          ALLOWED_CATEGORIES: ${{ steps.target.outputs.allowed_categories }}
+          ALLOWED_PAGE_TYPES: ${{ steps.target.outputs.allowed_page_types }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
