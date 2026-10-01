@@ -4,6 +4,9 @@
 Generic Engine의 제1목적은 지역 서비스 사이트의 검색어-문서 적합도를 높이는 것이다. 허브 숫자, 페이지 수, 정보량은 목적이 아니라 결과다.
 
 ## 실행 순서 — MUST
+0. Blueprint 존재 여부 확인 → 없으면 Bootstrap Questions
+0.1 새 brand_key 여부 확인 → 새 업체면 Business Fingerprint Questions
+0.2 Business Truth 부족분 → Official Research → Industry Default Research
 1. Query Universe 생성
 2. keyword cluster 병합
 3. primary_keyword 선정
@@ -69,3 +72,10 @@ Blueprint가 query pattern, page_type, forbidden facts, source priority, Busines
 
 ## Content Writing Contract
 모든 사용자 노출 문구는 `site-factory/contracts/04_SITE_FACTORY_CONTENT_WRITING.md`를 따른다. Query-first 구조가 맞아도 화자·구매전환·Title/Summary 역할분리·Business Truth/웹리서치·내부링크 구매동선 Gate를 통과하지 못하면 production PASS 금지.
+
+
+## Blueprint Bootstrap & Business Fingerprint Contract
+새 업종/새 업체/부족정보 처리는 `site-factory/contracts/05_SITE_FACTORY_BLUEPRINT_BOOTSTRAP.md`를 따른다. 새 업종 Blueprint가 없으면 먼저 사용자 질의를 수행하며, 기존 업종이라도 새 업체이면 업체지문을 수집한다. 부족값은 웹조사 기반 industry_default로 보강하되 source level을 보존한다.
+
+## Design & Visual Portability Contract
+이미지 생성·재사용·CTA·visual_intent·asset_slot은 `site-factory/contracts/06_SITE_FACTORY_DESIGN_VISUAL.md`를 따른다. 지역명·전화·가격·가짜버튼을 범용 이미지에 굽지 않는다.

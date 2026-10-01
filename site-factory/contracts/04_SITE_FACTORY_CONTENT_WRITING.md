@@ -121,3 +121,7 @@ Business Truth에 실제 연락/주문 수단이 있으면:
 - 고객후기
 
 Shadow에서 가정형 초안 메모는 허용하지만 사용자에게 사실처럼 노출하거나 Production으로 발행하지 않는다.
+
+
+## 9. Truth Source Level / Industry Default
+새 업종·새 업체·부족정보의 조사와 source_level은 `05_SITE_FACTORY_BLUEPRINT_BOOTSTRAP.md`를 따른다. Business Truth가 부족하다고 thin page를 만들거나 작업을 중단하지 않는다. official business source와 industry_default를 조사해 완성도 있는 Draft를 만들되, industry_default를 업체 확정정책으로 표현하지 않는다.
