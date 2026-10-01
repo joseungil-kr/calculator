@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import pages from '../../../data/pages.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import pages from '../../data/pages.json';
 export function getStaticPaths(){
   return (pages as any[]).filter(p=>p.url!=='/').map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));
 }
