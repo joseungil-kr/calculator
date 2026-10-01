@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "siteKey": "ansan-skycar-generic-shadow",
   "pages": [
     {
@@ -70,8 +70,8 @@
       "url": "/areas/gojan-dong-skycar/",
       "category": "areas",
       "slug": "gojan-dong-skycar",
-      "primaryKeyword": "고잔동 스카이차",
-      "intentKey": "고잔동|스카이차|작업문의",
+      "primaryKeyword": "안산 고잔동 스카이차",
+      "intentKey": "안산고잔동|스카이차|작업문의",
       "pageType": "local-area"
     },
     {
@@ -79,8 +79,8 @@
       "url": "/areas/seonbu-dong-skycar/",
       "category": "areas",
       "slug": "seonbu-dong-skycar",
-      "primaryKeyword": "선부동 스카이차",
-      "intentKey": "선부동|스카이차|작업문의",
+      "primaryKeyword": "안산 선부동 스카이차",
+      "intentKey": "안산선부동|스카이차|작업문의",
       "pageType": "local-area"
     },
     {
@@ -88,8 +88,8 @@
       "url": "/areas/wongok-dong-skycar/",
       "category": "areas",
       "slug": "wongok-dong-skycar",
-      "primaryKeyword": "원곡동 스카이차",
-      "intentKey": "원곡동|스카이차|작업문의",
+      "primaryKeyword": "안산 원곡동 스카이차",
+      "intentKey": "안산원곡동|스카이차|작업문의",
       "pageType": "local-area"
     },
     {
@@ -97,8 +97,8 @@
       "url": "/areas/seonggok-dong-skycar/",
       "category": "areas",
       "slug": "seonggok-dong-skycar",
-      "primaryKeyword": "성곡동 스카이차",
-      "intentKey": "성곡동|스카이차|작업문의",
+      "primaryKeyword": "안산 성곡동 스카이차",
+      "intentKey": "안산성곡동|스카이차|작업문의",
       "pageType": "local-area"
     },
     {

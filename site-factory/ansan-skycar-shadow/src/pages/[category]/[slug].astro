@@ -6,9 +6,27 @@ export function getStaticPaths(){
 }
 const { page }=Astro.props;
 const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>p.pageKey===key)).filter(Boolean);
+const counts=(pages as any[]).filter(p=>p.url!=='/').reduce((m:any,p:any)=>(m[p.category]=(m[p.category]||0)+1,m),{});
+const hubAllowed=(counts[page.category]||0)>=2;
+const hubLabels:any={"work-types":"안산 스카이차 작업유형","areas":"안산 지역별 스카이차"};
+const parentHref=hubAllowed ? `/${page.category}/` : '/';
+const parentLabel=hubAllowed ? (hubLabels[page.category]||'상위 목록') : '안산 스카이차';
+function rich(text:string){
+ const out:any[]=[]; const re=/\[\[([^|]+)\|([^\]]+)\]\]/g; let last=0; let m;
+ while((m=re.exec(text))){
+  if(m.index>last) out.push({text:text.slice(last,m.index)});
+  const target=m[1]; const found=(pages as any[]).find(p=>p.pageKey===target);
+  out.push({text:m[2],href:target.startsWith('/')?target:(found?.url||'#')});
+  last=re.lastIndex;
+ }
+ if(last<text.length) out.push({text:text.slice(last)});
+ return out;
+}
+const ctaTarget=(pages as any[]).find(p=>p.pageKey===page.cta?.targetKey);
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath={page.url}>
 <article>
+<nav class="breadcrumb" aria-label="breadcrumb"><a href="/">안산 스카이차</a><span>›</span>{parentHref!=='/' && <><a href={parentHref}>{parentLabel}</a><span>›</span></>}<span>{page.primaryKeyword}</span></nav>
 <section class="hero compact">
   <h1>{page.h1}</h1>
   <p class="lead">{page.firstAnswer}</p>
@@ -17,9 +35,15 @@ const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>
 {page.sections.map((s:any)=>
   <section class="section">
     <h2>{s[0]}</h2>
-    <p>{s[1]}</p>
+    <p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p>
   </section>
 )}
+
+{Array.isArray(page.localEvidence) && page.localEvidence.length>0 &&
+<section class="section evidence">
+  <h2>{page.primaryKeyword} 지역·현장 확인 근거</h2>
+  {page.localEvidence.map((e:any)=><article class="evidence-item" data-local-evidence="true"><p>{e.claim}</p><p class="source"><a href={e.sourceUrl} rel="nofollow">{e.sourceName}</a> · 확인 {e.verifiedAt}</p></article>)}
+</section>}
 
 <section class="section faq">
   <h2>{page.primaryKeyword} 자주 묻는 질문</h2>
@@ -37,8 +61,10 @@ const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>
 </section>
 
 <section class="cta">
-  <h2>스카이차 문의 전에 현장정보를 준비하세요</h2>
-  <p>정확한 주소, 작업내용, 작업 위치와 높이, 현장사진, 차량 접근공간, 희망 일정을 정리하면 실제 상담 단계에서 필요한 정보를 빠르게 전달할 수 있습니다.</p>
+  <h2>다음 단계</h2>
+  <p>주소, 작업내용, 작업 위치와 높이, 현장사진, 차량 접근공간, 희망 일정을 정리한 뒤 다음 페이지로 이어가세요.</p>
+  {ctaTarget && <a class="cta-link" href={ctaTarget.url}>{page.cta.label}</a>}
+  <small>{page.cta.note}</small>
 </section>
 </article>
 </BaseLayout>

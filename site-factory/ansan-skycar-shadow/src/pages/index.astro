@@ -8,6 +8,17 @@ const groups = [
   {label:'지역별 작업',links:pages.filter((p:any)=>p.category==='areas')}
 ];
 const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>p.pageKey===key)).filter(Boolean);
+function rich(text:string){
+ const out:any[]=[]; const re=/\[\[([^|]+)\|([^\]]+)\]\]/g; let last=0; let m;
+ while((m=re.exec(text))){
+  if(m.index>last) out.push({text:text.slice(last,m.index)});
+  const target=m[1]; const found=(pages as any[]).find(p=>p.pageKey===target);
+  out.push({text:m[2],href:target.startsWith('/')?target:(found?.url||'#')});
+  last=re.lastIndex;
+ }
+ if(last<text.length) out.push({text:text.slice(last)});
+ return out;
+}
 ---
 <BaseLayout title={page.title} description={page.description} canonicalPath="/">
 <section class="hero">
@@ -19,7 +30,12 @@ const related=(page.relatedKeys||[]).map((key:string)=>(pages as any[]).find(p=>
 {groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.description}</small></li>)}</ul></article>)}
 </section>
 
-{page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+{page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{rich(s[1]).map((part:any)=>part.href?<a data-context-link="true" href={part.href}>{part.text}</a>:part.text)}</p></section>)}
+
+<section class="section evidence">
+  <h2>안산 스카이차 지역·현장 확인 근거</h2>
+  {page.localEvidence.map((e:any)=><article class="evidence-item" data-local-evidence="true"><p>{e.claim}</p><p class="source"><a href={e.sourceUrl} rel="nofollow">{e.sourceName}</a> · 확인 {e.verifiedAt}</p></article>)}
+</section>
 
 <section class="section faq">
   <h2>안산 스카이차 자주 묻는 질문</h2>

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "siteKey": "ansan-skycar-generic-shadow",
-  "snapshotMode": "shadow-query-first",
+  "snapshotMode": "shadow-query-first-hard-gates",
   "pages": [
     {
       "pageKey": "skycar-qf-001",
@@ -16,6 +16,7 @@
       "queryPriority": 1,
       "keywordCluster": "ansan-skycar-core",
       "intentKey": "안산|스카이차|업체탐색·작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -31,6 +32,7 @@
       "queryPriority": 2,
       "keywordCluster": "ansan-skycar-price",
       "intentKey": "안산|스카이차|가격·비용",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -46,6 +48,7 @@
       "queryPriority": 2,
       "keywordCluster": "ansan-skycar-quote",
       "intentKey": "안산|스카이차|견적문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -61,6 +64,7 @@
       "queryPriority": 3,
       "keywordCluster": "ansan-signboard-skycar",
       "intentKey": "안산|간판|스카이차",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -76,6 +80,7 @@
       "queryPriority": 3,
       "keywordCluster": "ansan-exterior-skycar",
       "intentKey": "안산|외벽|스카이차",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -91,6 +96,7 @@
       "queryPriority": 3,
       "keywordCluster": "ansan-outdoor-unit-skycar",
       "intentKey": "안산|실외기|스카이차",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -106,6 +112,7 @@
       "queryPriority": 3,
       "keywordCluster": "ansan-cctv-skycar",
       "intentKey": "안산|CCTV|스카이차",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -113,14 +120,15 @@
       "url": "/areas/gojan-dong-skycar/",
       "category": "areas",
       "slug": "gojan-dong-skycar",
-      "primaryKeyword": "고잔동 스카이차",
-      "title": "고잔동 스카이차 | 간판·외벽 고소작업",
+      "primaryKeyword": "안산 고잔동 스카이차",
+      "title": "안산 고잔동 스카이차 | 간판·외벽 고소작업",
       "pageType": "local-area",
       "pageRole": "PLACE_LANDING",
       "queryClass": "local-commercial",
       "queryPriority": 4,
       "keywordCluster": "gojan-skycar",
-      "intentKey": "고잔동|스카이차|작업문의",
+      "intentKey": "안산고잔동|스카이차|작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -128,14 +136,15 @@
       "url": "/areas/seonbu-dong-skycar/",
       "category": "areas",
       "slug": "seonbu-dong-skycar",
-      "primaryKeyword": "선부동 스카이차",
-      "title": "선부동 스카이차 | 건물 고소작업 문의",
+      "primaryKeyword": "안산 선부동 스카이차",
+      "title": "안산 선부동 스카이차 | 건물 고소작업 문의",
       "pageType": "local-area",
       "pageRole": "PLACE_LANDING",
       "queryClass": "local-commercial",
       "queryPriority": 4,
       "keywordCluster": "seonbu-skycar",
-      "intentKey": "선부동|스카이차|작업문의",
+      "intentKey": "안산선부동|스카이차|작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -143,14 +152,15 @@
       "url": "/areas/wongok-dong-skycar/",
       "category": "areas",
       "slug": "wongok-dong-skycar",
-      "primaryKeyword": "원곡동 스카이차",
-      "title": "원곡동 스카이차 | 상가·공장 고소작업",
+      "primaryKeyword": "안산 원곡동 스카이차",
+      "title": "안산 원곡동 스카이차 | 상가·공장 고소작업",
       "pageType": "local-area",
       "pageRole": "PLACE_LANDING",
       "queryClass": "local-commercial",
       "queryPriority": 4,
       "keywordCluster": "wongok-skycar",
-      "intentKey": "원곡동|스카이차|작업문의",
+      "intentKey": "안산원곡동|스카이차|작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -158,14 +168,15 @@
       "url": "/areas/seonggok-dong-skycar/",
       "category": "areas",
       "slug": "seonggok-dong-skycar",
-      "primaryKeyword": "성곡동 스카이차",
-      "title": "성곡동 스카이차 | 공장 고소작업 문의",
+      "primaryKeyword": "안산 성곡동 스카이차",
+      "title": "안산 성곡동 스카이차 | 공장 고소작업 문의",
       "pageType": "local-area",
       "pageRole": "PLACE_LANDING",
       "queryClass": "local-commercial",
       "queryPriority": 4,
       "keywordCluster": "seonggok-skycar",
-      "intentKey": "성곡동|스카이차|작업문의",
+      "intentKey": "안산성곡동|스카이차|작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     },
     {
@@ -181,6 +192,7 @@
       "queryPriority": 4,
       "keywordCluster": "ansan-banwol-skycar",
       "intentKey": "안산반월공단|스카이차|작업문의",
+      "localEvidenceCount": 2,
       "status": "approved"
     }
   ]
