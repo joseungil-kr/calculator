@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "blueprintKey": "skycar-local",
+  "strategy": "query-first",
+  "executionOrder": [
+    "query-universe",
+    "cluster",
+    "primary-keyword",
+    "query-class",
+    "intent",
+    "title-h1",
+    "page-type",
+    "hub"
+  ],
+  "primaryKeywordAlignment": {
+    "titlePrefixRequired": true,
+    "h1KeywordRequired": true,
+    "firstAnswerKeywordRequired": true,
+    "minScore": 90
+  },
+  "searchPriority": [
+    "core-commercial",
+    "commercial-modifier",
+    "work-commercial",
+    "local-commercial",
+    "support-info"
+  ],
+  "categories": {
+    "pricing": {
+      "label": "가격",
+      "description": "가격·비용 검색의도를 한 페이지로 묶습니다."
+    },
+    "quote": {
+      "label": "견적",
+      "description": "견적 문의 직전 필요한 입력정보를 정리합니다."
+    },
+    "work-types": {
+      "label": "작업유형",
+      "description": "간판·외벽·실외기·CCTV처럼 실제 작업목적 검색어를 묶습니다."
+    },
+    "areas": {
+      "label": "지역",
+      "description": "동·산업단지 + 스카이차 검색어를 묶습니다."
+    }
+  },
+  "pageTypes": [
+    "region-service",
+    "price-guide",
+    "quote-intent",
+    "work-type-landing",
+    "local-area",
+    "equipment-selection",
+    "site-condition",
+    "safety-permit",
+    "support-guide"
+  ],
+  "productionGate": {
+    "businessTruthRequired": true,
+    "realHeroRequired": true,
+    "workPhotosRequired": 6,
+    "vehiclePhotosRequired": 2
+  }
+}

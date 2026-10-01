@@ -1,0 +1,65 @@
+name: Generic Query-First Shadow
+
+on:
+  push:
+    branches: [site-factory-generic-skycar-test]
+    paths:
+      - "site-factory/ansan-skycar-shadow/**"
+      - ".github/workflows/generic-query-first-shadow.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: generic-query-first-shadow
+  cancel-in-progress: true
+
+jobs:
+  build-deploy-verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-factory/ansan-skycar-shadow
+    env:
+      SITE_FACTORY_REVISION: ${{ github.sha }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install
+      - name: Query-first contract QA
+        run: node scripts/qa_query_first.mjs
+      - name: Astro check
+        run: npx astro check
+      - name: Build
+        run: npm run build
+      - name: Static QA
+        run: python3 scripts/qa_static.py
+      - name: Deploy noindex shadow
+        run: npx --yes wrangler@latest deploy
+      - name: Live shadow QA
+        run: |
+          python3 - <<'PY'
+          import time, urllib.request
+          base='https://generic-skycar-shadow.joseungil.workers.dev'
+          paths=['/','/pricing/ansan-skycar-price/','/quote/ansan-skycar-estimate/','/work-types/ansan-signboard-skycar/','/areas/gojan-dong-skycar/']
+          for attempt in range(30):
+              try:
+                  for path in paths:
+                      with urllib.request.urlopen(base+path,timeout=20) as r:
+                          html=r.read().decode('utf-8','replace')
+                          assert r.status==200
+                          assert 'noindex,follow' in html
+                          assert '<h1' in html.lower()
+                  with urllib.request.urlopen(base+'/robots.txt',timeout=20) as r:
+                      robots=r.read().decode()
+                      assert 'Disallow: /' in robots
+                  print('LIVE QUERY-FIRST SHADOW QA PASSED')
+                  break
+              except Exception as e:
+                  if attempt==29: raise
+                  print('waiting',e); time.sleep(4)
+          PY

@@ -1,0 +1,17 @@
+{
+  "name": "ansan-skycar-query-first-shadow",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "typescript": "latest",
+    "wrangler": "latest"
+  }
+}

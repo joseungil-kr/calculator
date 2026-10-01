@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import pages from '../../data/pages.json';
+import blueprint from '../../data/blueprint.json';
+export function getStaticPaths(){
+  const cats=[...new Set((pages as any[]).filter(p=>p.url!=='/').map(p=>p.category))];
+  return cats.map(category=>({params:{category}}));
+}
+const { category }=Astro.params;
+const items=(pages as any[]).filter(p=>p.category===category);
+const def=(blueprint as any).categories[category!];
+---
+<BaseLayout title={`안산 스카이차 ${def.label} 검색어 모음`} description={def.description} canonicalPath={`/${category}/`}>
+<section class="hero compact"><span class="eyebrow">QUERY HUB</span><h1>{def.label}</h1><p class="lead">{def.description}</p></section>
+<section class="grid">{items.map((p:any)=><article class="card"><span class="eyebrow">{p.queryClass}</span><h2><a href={p.url}>{p.primaryKeyword}</a></h2><p>{p.firstAnswer}</p><small>{p.title}</small></article>)}</section>
+</BaseLayout>

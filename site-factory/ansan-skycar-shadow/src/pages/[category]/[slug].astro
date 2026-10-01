@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import pages from '../../../data/pages.json';
+export function getStaticPaths(){
+  return (pages as any[]).filter(p=>p.url!=='/').map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));
+}
+const { page }=Astro.props;
+---
+<BaseLayout title={page.title} description={page.description} canonicalPath={page.url}>
+<article>
+<section class="hero compact">
+  <span class="eyebrow">PRIMARY QUERY · {page.primaryKeyword}</span>
+  <h1>{page.h1}</h1>
+  <p class="lead">{page.firstAnswer}</p>
+  <div class="meta">{page.queryClass} · priority {page.queryPriority} · cluster {page.keywordCluster} · alignment 100/100</div>
+</section>
+{page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+<section class="section related"><h2>관련 검색어 페이지</h2><ul>{(pages as any[]).filter(p=>p.url!==page.url && p.url!=='/').slice(0,5).map(p=><li><a href={p.url}>{p.primaryKeyword}</a></li>)}</ul></section>
+</article>
+</BaseLayout>

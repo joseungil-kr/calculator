@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+const { title, description, canonicalPath='/' } = Astro.props;
+const revision = import.meta.env.SITE_FACTORY_REVISION || 'shadow';
+const canonical = new URL(canonicalPath, 'https://generic-skycar-shadow.joseungil.workers.dev').toString();
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href={canonical} />
+  <meta name="site-factory-revision" content={revision} />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">Site Factory Query-First Shadow</a>
+  <nav><a href="/pricing/">가격</a><a href="/quote/">견적</a><a href="/work-types/">작업유형</a><a href="/areas/">지역</a></nav>
+</header>
+<main><slot /></main>
+<footer>검색어 적합도 설계 테스트용 noindex Shadow · 실제 업체 서비스/실적을 주장하지 않습니다.</footer>
+</body>
+</html>

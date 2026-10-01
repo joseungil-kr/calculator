@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "ansan-skycar-generic-shadow",
+  "pages": [
+    {
+      "pageKey": "skycar-qf-001",
+      "url": "/",
+      "category": "home",
+      "slug": "",
+      "primaryKeyword": "안산 스카이차",
+      "intentKey": "안산|스카이차|업체탐색·작업문의",
+      "pageType": "region-service"
+    },
+    {
+      "pageKey": "skycar-qf-002",
+      "url": "/pricing/ansan-skycar-price/",
+      "category": "pricing",
+      "slug": "ansan-skycar-price",
+      "primaryKeyword": "안산 스카이차 가격",
+      "intentKey": "안산|스카이차|가격·비용",
+      "pageType": "price-guide"
+    },
+    {
+      "pageKey": "skycar-qf-003",
+      "url": "/quote/ansan-skycar-estimate/",
+      "category": "quote",
+      "slug": "ansan-skycar-estimate",
+      "primaryKeyword": "안산 스카이차 견적",
+      "intentKey": "안산|스카이차|견적문의",
+      "pageType": "quote-intent"
+    },
+    {
+      "pageKey": "skycar-qf-004",
+      "url": "/work-types/ansan-signboard-skycar/",
+      "category": "work-types",
+      "slug": "ansan-signboard-skycar",
+      "primaryKeyword": "안산 간판 스카이차",
+      "intentKey": "안산|간판|스카이차",
+      "pageType": "work-type-landing"
+    },
+    {
+      "pageKey": "skycar-qf-005",
+      "url": "/work-types/ansan-exterior-skycar/",
+      "category": "work-types",
+      "slug": "ansan-exterior-skycar",
+      "primaryKeyword": "안산 외벽 스카이차",
+      "intentKey": "안산|외벽|스카이차",
+      "pageType": "work-type-landing"
+    },
+    {
+      "pageKey": "skycar-qf-006",
+      "url": "/work-types/ansan-aircon-outdoor-unit-skycar/",
+      "category": "work-types",
+      "slug": "ansan-aircon-outdoor-unit-skycar",
+      "primaryKeyword": "안산 실외기 스카이차",
+      "intentKey": "안산|실외기|스카이차",
+      "pageType": "work-type-landing"
+    },
+    {
+      "pageKey": "skycar-qf-007",
+      "url": "/work-types/ansan-cctv-skycar/",
+      "category": "work-types",
+      "slug": "ansan-cctv-skycar",
+      "primaryKeyword": "안산 CCTV 스카이차",
+      "intentKey": "안산|CCTV|스카이차",
+      "pageType": "work-type-landing"
+    },
+    {
+      "pageKey": "skycar-qf-008",
+      "url": "/areas/gojan-dong-skycar/",
+      "category": "areas",
+      "slug": "gojan-dong-skycar",
+      "primaryKeyword": "고잔동 스카이차",
+      "intentKey": "고잔동|스카이차|작업문의",
+      "pageType": "local-area"
+    },
+    {
+      "pageKey": "skycar-qf-009",
+      "url": "/areas/seonbu-dong-skycar/",
+      "category": "areas",
+      "slug": "seonbu-dong-skycar",
+      "primaryKeyword": "선부동 스카이차",
+      "intentKey": "선부동|스카이차|작업문의",
+      "pageType": "local-area"
+    },
+    {
+      "pageKey": "skycar-qf-010",
+      "url": "/areas/wongok-dong-skycar/",
+      "category": "areas",
+      "slug": "wongok-dong-skycar",
+      "primaryKeyword": "원곡동 스카이차",
+      "intentKey": "원곡동|스카이차|작업문의",
+      "pageType": "local-area"
+    },
+    {
+      "pageKey": "skycar-qf-011",
+      "url": "/areas/seonggok-dong-skycar/",
+      "category": "areas",
+      "slug": "seonggok-dong-skycar",
+      "primaryKeyword": "성곡동 스카이차",
+      "intentKey": "성곡동|스카이차|작업문의",
+      "pageType": "local-area"
+    },
+    {
+      "pageKey": "skycar-qf-012",
+      "url": "/areas/ansan-banwol-industrial-skycar/",
+      "category": "areas",
+      "slug": "ansan-banwol-industrial-skycar",
+      "primaryKeyword": "안산 반월공단 스카이차",
+      "intentKey": "안산반월공단|스카이차|작업문의",
+      "pageType": "local-area"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "siteKey": "ansan-skycar-generic-shadow",
+  "region": "안산",
+  "service": "스카이차",
+  "brand": "Site Factory Query-First Shadow",
+  "siteUrl": "https://generic-skycar-shadow.joseungil.workers.dev",
+  "indexable": false,
+  "blueprintKey": "skycar-local",
+  "templateKey": "skycar-local-v1",
+  "productionReady": false
+}

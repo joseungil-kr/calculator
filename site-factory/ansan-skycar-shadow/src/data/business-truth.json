@@ -1,0 +1,9 @@
+{
+  "status": "missing-for-shadow",
+  "brand": null,
+  "phone": null,
+  "serviceArea": null,
+  "vehicles": [],
+  "pricing": null,
+  "note": "실제 업체 Business Truth가 없으므로 Production Gate는 의도적으로 차단한다."
+}

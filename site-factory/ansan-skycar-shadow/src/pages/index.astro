@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import pages from '../data/pages.json';
+const page = pages.find((p:any)=>p.url==='/')!;
+const groups = [
+  {label:'가격·견적',links:pages.filter((p:any)=>['pricing','quote'].includes(p.category))},
+  {label:'작업유형',links:pages.filter((p:any)=>p.category==='work-types')},
+  {label:'지역',links:pages.filter((p:any)=>p.category==='areas')}
+];
+---
+<BaseLayout title={page.title} description={page.description} canonicalPath="/">
+<section class="hero">
+  <span class="eyebrow">PRIMARY QUERY · {page.primaryKeyword}</span>
+  <h1>{page.h1}</h1>
+  <p class="lead">{page.firstAnswer}</p>
+  <div class="meta">Query class: {page.queryClass} · Alignment: 100/100</div>
+</section>
+<section class="grid">
+{groups.map(g => <article class="card"><h2>{g.label}</h2><ul>{g.links.map((p:any)=><li><a href={p.url}>{p.primaryKeyword}</a><small>{p.title}</small></li>)}</ul></article>)}
+</section>
+{page.sections.map((s:any)=><section class="section"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+</BaseLayout>
