@@ -1,82 +1,23 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import MobileOrderBar from '../components/MobileOrderBar.astro';
 import '../styles/global.css';
-import '../styles/v12.css';
-import { siteConfig } from '../config/site';
-import buildRevision from '../data/build-revision.json';
-
-interface Props {
-  title?: string;
-  description?: string;
-  canonicalPath?: string;
-  ogImage?: string;
-  ogImageAlt?: string;
-  ogType?: 'website' | 'article';
-  robotsOverride?: string;
-}
-
-const {
-  title = `${siteConfig.brand} | ${siteConfig.region} 꽃배달·화환 가격과 지역 가이드`,
-  description = siteConfig.description,
-  canonicalPath = Astro.url.pathname,
-  ogImage = siteConfig.defaultOgImage,
-  ogImageAlt = siteConfig.defaultOgImageAlt,
-  ogType = 'website',
-  robotsOverride,
-} = Astro.props;
-
-const origin = Astro.site ?? new URL(siteConfig.siteUrl);
-const canonical = new URL(canonicalPath, origin).toString();
-const ogImageUrl = new URL(ogImage, origin).toString();
-const robots = robotsOverride ?? (siteConfig.indexable ? 'index,follow,max-image-preview:large' : 'noindex,nofollow,noarchive');
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: siteConfig.brand,
-  url: origin.toString(),
-  description,
-  inLanguage: 'ko-KR',
-};
+import {site} from '../config/site';
+const {title,description,canonicalPath='/',noindex=false}=Astro.props;
+const canonical=new URL(canonicalPath,site.domain).toString();
+const revision=import.meta.env.SITE_FACTORY_REVISION||'v1.2';
 ---
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    {siteConfig.naverSiteVerification && <meta name="naver-site-verification" content={siteConfig.naverSiteVerification} />}
-    <meta name="robots" content={robots} />
-    <meta name="site-factory-revision" content={buildRevision.sha} />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content="ko_KR" />
-    <meta property="og:site_name" content={siteConfig.brand} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content={ogImageAlt} />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content={ogImageAlt} />
-
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">본문으로 바로가기</a>
-    <Header />
-    <main id="main">
-      <slot />
-    </main>
-    <Footer />
-    <MobileOrderBar />
-  </body>
-</html>
+<!doctype html><html lang="ko"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{title}</title><meta name="description" content={description}/>
+<meta name="robots" content={noindex?'noindex,follow':'index,follow'}/>
+<meta name="naver-site-verification" content={site.naverVerification}/>
+<meta name="site-factory-revision" content={revision}/>
+<link rel="canonical" href={canonical}/><meta name="theme-color" content="#3a214f"/>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Florist","name":"꽃이랑 수원","url":site.domain,"telephone":"1844-0644","areaServed":"수원"})}></script>
+</head><body>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon">✿</span><span><b>꽃이랑</b><small>수원 꽃배달</small></span></a>
+<nav><a href="/funeral/">근조·장례</a><a href="/business/">개업·이전</a><a href="/school/">졸업·학교</a><a href="/event/">공연·행사</a><a href="/gift/">선물·병문안</a><a href="/order/">가격·주문</a></nav>
+<a class="phone" href={site.phoneHref}>☎ 1844-0644</a></div></header>
+<main><slot/></main>
+<footer><div><strong>꽃이랑 수원</strong><span>전화주문 08:00~23:00 · 온라인 24시간 접수</span><a href={site.phoneHref}>1844-0644</a><a href={site.orderUrl}>온라인 주문</a><small>지역별 추가 배송비 및 시설 반입조건은 주문 시 확인합니다.</small></div></footer>
+<div class="mobile-bar"><a href={site.phoneHref}>전화주문</a><a href={site.orderUrl}>온라인 주문</a></div>
+</body></html>

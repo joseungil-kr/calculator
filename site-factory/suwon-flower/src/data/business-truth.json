@@ -1,23 +1,13 @@
 {
-  "truthKey": "flower-fwith-v1",
+  "brand": "꽃이랑",
   "brandKey": "flower-fwith",
-  "brandName": "꽃이랑",
   "phone": "1844-0644",
   "phoneHref": "tel:18440644",
   "phoneOrderHours": "08:00-23:00",
   "onlineOrderUrl": "https://fwith.co.kr",
   "onlineOrderHours": "24시간",
-  "ctaPriority": "phone_first",
   "deliveryArea": "전국 배송 가능",
-  "deliveryNotice": "지역별 추가 배송비가 발생할 수 있으며, 화환 반입 불가 지역은 상담원 문의가 필요합니다.",
+  "deliveryNotice": "지역별 추가 배송비가 발생할 수 있으며 화환 반입 불가 지역은 상담원 문의가 필요합니다.",
   "productVariationNotice": "실제 배송 상품은 지역 및 계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.",
-  "business": {
-    "name": "꽃이랑((주)해피꽃배달)",
-    "representative": "조남길",
-    "businessNumber": "417-81-51220",
-    "mailOrderNumber": "제2017-부산부산진-0222호",
-    "address": "부산광역시 동구 중앙대로 328, 10층(초량동, 금산빌딩)",
-    "privacyOfficer": "조승일"
-  },
-  "copyright": "© 2026 꽃이랑. All rights reserved."
+  "sourceLevel": "operator_confirmed"
 }

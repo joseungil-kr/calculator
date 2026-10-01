@@ -3,13 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "validate:snapshot": "node scripts/validate_snapshot.mjs",
-    "build": "node scripts/write_build_revision.mjs && npm run qa:utf8 && npm run validate:snapshot && astro check && astro build && npm run qa:seo && npm run qa:graph",
-    "preview": "astro preview",
-    "qa:utf8": "node scripts/qa_utf8.mjs",
-    "qa:graph": "node scripts/qa_site_graph.mjs",
-    "qa:seo": "node scripts/qa_seo_score.mjs"
+    "build": "node scripts/write_build_revision.mjs && astro check && astro build && python3 scripts/qa_static.py && node scripts/qa_graph.mjs",
+    "dev": "astro dev"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",

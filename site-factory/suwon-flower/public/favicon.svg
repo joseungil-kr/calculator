@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="꽃이랑">
-  <rect width="64" height="64" rx="16" fill="#315846"/>
-  <circle cx="32" cy="22" r="9" fill="#f4dfd7"/>
-  <circle cx="22" cy="30" r="9" fill="#e6a08d"/>
-  <circle cx="42" cy="30" r="9" fill="#f2d3a8"/>
-  <circle cx="32" cy="36" r="9" fill="#fffdf8"/>
-  <circle cx="32" cy="29" r="6" fill="#c96f58"/>
-  <path d="M32 37v15" stroke="#fffdf8" stroke-width="4" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#3a214f"/><text x="32" y="43" text-anchor="middle" font-size="36">✿</text></svg>

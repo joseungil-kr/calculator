@@ -1,46 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import HubIndex from '../../components/HubIndex.astro';
-import architecture from '../../data/architecture.json';
-import { siteConfig } from '../../config/site';
-
-const categoryMeta = {
-  funeral:{eyebrow:'근조·장례',title:`${siteConfig.region} 근조화환·장례식장 꽃`,intro:'장례식장 빈소·수령정보와 실제 근조화환 가격을 확인합니다.',description:'수원 장례식장 근조화환 주문에 필요한 빈소·상품·가격·주문정보를 안내합니다.'},
-  business:{eyebrow:'개업·이전',title:`${siteConfig.region} 개업·이전 축하화환`,intro:'매장·사무실 개업과 이전 상황에 맞는 축하화환을 확인합니다.',description:'수원 개업·이전 축하화환의 공간·수령·문구·가격을 안내합니다.'},
-  school:{eyebrow:'졸업·입학',title:`${siteConfig.region} 졸업식 꽃`,intro:'대학·학교 행사에서 직접 전달과 캠퍼스 수령을 구분해 준비합니다.',description:'수원 대학·학교 졸업식 꽃다발과 전달 정보를 안내합니다.'},
-  event:{eyebrow:'공연·행사',title:`${siteConfig.region} 공연·행사 축하꽃`,intro:'공연·전시·문화행사의 행사명·담당자·수령정보를 확인합니다.',description:'수원 공연·행사 축하꽃과 축하화환 주문정보를 안내합니다.'},
-  gift:{eyebrow:'선물·병문안',title:`${siteConfig.region} 꽃다발·병문안 꽃`,intro:'병원·역·기념일·약속 상황에 맞는 꽃을 준비합니다.',description:'수원 꽃다발·병문안·기념일 꽃 선물의 전달 방법을 안내합니다.'},
-  order:{eyebrow:'가격·주문',title:`${siteConfig.region} 꽃배달 가격·주문`,intro:'실제 상품가격과 당일 주문, 문구, 주소, 주문방법을 확인합니다.',description:'수원 꽃배달 가격과 전화·온라인 주문방법을 안내합니다.'}
-} as const;
-
-type Category = keyof typeof categoryMeta;
-
-export async function getStaticPaths() {
-  const activePageKeys = new Set(
-    (architecture.pages || [])
-      .filter((page) => page.sitemapIndexable !== false && page.status !== 'merged')
-      .map((page) => page.pageKey)
-  );
-  const articles = await getCollection(
-    'articles',
-    ({ data }) =>
-      (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
-      data.routeType === 'category' &&
-      activePageKeys.has(data.pageKey)
-  );
-  const allowedCategories = new Set(['funeral','business','school','event','gift','order']);
-  const categories = [...new Set(articles.map((article) => article.data.category))]
-    .filter((category) => allowedCategories.has(category)) as Category[];
-  return categories.map((category) => ({ params: { category }, props: { category } }));
-}
-
-const { category } = Astro.props as { category: Category };
-const meta = categoryMeta[category];
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import pages from '../../data/pages.json';
+import {site} from '../../config/site';
+const labels={funeral:'근조·장례',business:'개업·이전',school:'졸업·학교',event:'공연·행사',gift:'선물·병문안',order:'가격·주문'};
+export function getStaticPaths(){return Object.keys(labels).map(category=>({params:{category}}));}
+const {category}=Astro.params; const items=(pages as any[]).filter(p=>p.category===category); const label=labels[category!];
 ---
-<HubIndex
-  category={category}
-  eyebrow={meta.eyebrow}
-  title={meta.title}
-  intro={meta.intro}
-  description={meta.description}
-/>
+<BaseLayout title={'수원 '+label+' 꽃배달 | 꽃이랑'} description={'수원 '+label+' 꽃배달 관련 장소·상황별 주문정보를 확인하세요.'} canonicalPath={'/'+category+'/'}>
+<nav class="breadcrumb"><a href="/">수원 꽃배달</a><span>›</span><span>{label}</span></nav>
+<section class="category-hero"><div><span class="eyebrow">꽃이랑 수원</span><h1>수원 {label} 꽃배달</h1><p>목적과 수령장소에 맞는 주문정보를 선택하세요. 실제 가격과 전화·온라인 주문으로 바로 이어집니다.</p><div class="actions"><a class="btn primary" href={site.phoneHref}>전화주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div></div></section>
+<section class="card-grid big">{items.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span><em>자세히 보기 →</em></a>)}</section>
+</BaseLayout>

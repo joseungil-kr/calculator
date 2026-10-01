@@ -1,1 +1,216 @@
-{"schemaVersion":2,"siteKey":"suwon-flower-test","ruleset":"v1.2","pages":[{"pageKey":"suwon-flower-v12-01","url":"/funeral/ajou-hospital-funeral-wreath/","category":"funeral","slug":"ajou-hospital-funeral-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-02","url":"/funeral/st-vincent-hospital-funeral-wreath/","category":"funeral","slug":"st-vincent-hospital-funeral-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-03","url":"/funeral/suwon-yeonhwajang-funeral-wreath/","category":"funeral","slug":"suwon-yeonhwajang-funeral-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-04","url":"/funeral/suwon-condolence-wreath/","category":"funeral","slug":"suwon-condolence-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-05","url":"/funeral/suwon-funeral-wreath-price/","category":"funeral","slug":"suwon-funeral-wreath-price","status":"approved"},{"pageKey":"suwon-flower-v12-06","url":"/business/gwanggyo-opening-congrats-wreath/","category":"business","slug":"gwanggyo-opening-congrats-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-07","url":"/business/ingyedong-opening-wreath/","category":"business","slug":"ingyedong-opening-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-08","url":"/business/yeongtong-opening-wreath/","category":"business","slug":"yeongtong-opening-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-09","url":"/business/gwonseon-opening-wreath/","category":"business","slug":"gwonseon-opening-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-10","url":"/business/suwon-office-relocation-wreath/","category":"business","slug":"suwon-office-relocation-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-11","url":"/school/ajou-university-graduation-flowers/","category":"school","slug":"ajou-university-graduation-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-12","url":"/school/skku-natural-campus-graduation-flowers/","category":"school","slug":"skku-natural-campus-graduation-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-13","url":"/school/kyonggi-suwon-campus-graduation-flowers/","category":"school","slug":"kyonggi-suwon-campus-graduation-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-14","url":"/school/suwon-womens-university-graduation-flowers/","category":"school","slug":"suwon-womens-university-graduation-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-15","url":"/school/suwon-graduation-bouquet/","category":"school","slug":"suwon-graduation-bouquet","status":"approved"},{"pageKey":"suwon-flower-v12-16","url":"/event/suwon-convention-center-event-flowers/","category":"event","slug":"suwon-convention-center-event-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-17","url":"/event/gyeonggi-arts-center-performance-flowers/","category":"event","slug":"gyeonggi-arts-center-performance-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-18","url":"/event/suwon-sk-artrium-performance-flowers/","category":"event","slug":"suwon-sk-artrium-performance-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-19","url":"/event/suwon-hwaseong-event-flowers/","category":"event","slug":"suwon-hwaseong-event-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-20","url":"/event/suwon-event-congrats-wreath/","category":"event","slug":"suwon-event-congrats-wreath","status":"approved"},{"pageKey":"suwon-flower-v12-21","url":"/gift/ajou-hospital-visit-flowers/","category":"gift","slug":"ajou-hospital-visit-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-22","url":"/gift/st-vincent-hospital-visit-flowers/","category":"gift","slug":"st-vincent-hospital-visit-flowers","status":"approved"},{"pageKey":"suwon-flower-v12-23","url":"/gift/suwon-station-bouquet/","category":"gift","slug":"suwon-station-bouquet","status":"approved"},{"pageKey":"suwon-flower-v12-24","url":"/gift/gwanggyo-anniversary-flower-delivery/","category":"gift","slug":"gwanggyo-anniversary-flower-delivery","status":"approved"},{"pageKey":"suwon-flower-v12-25","url":"/gift/haenggungdong-bouquet/","category":"gift","slug":"haenggungdong-bouquet","status":"approved"},{"pageKey":"suwon-flower-v12-26","url":"/order/suwon-same-day-flower-delivery/","category":"order","slug":"suwon-same-day-flower-delivery","status":"approved"},{"pageKey":"suwon-flower-v12-27","url":"/order/suwon-flower-delivery-price/","category":"order","slug":"suwon-flower-delivery-price","status":"approved"},{"pageKey":"suwon-flower-v12-28","url":"/order/suwon-wreath-message/","category":"order","slug":"suwon-wreath-message","status":"approved"},{"pageKey":"suwon-flower-v12-29","url":"/order/suwon-flower-address-guide/","category":"order","slug":"suwon-flower-address-guide","status":"approved"},{"pageKey":"suwon-flower-v12-30","url":"/order/suwon-wreath-order/","category":"order","slug":"suwon-wreath-order","status":"approved"}]}
+{
+  "schemaVersion": "1.2",
+  "siteKey": "suwon-flower-test",
+  "pages": [
+    {
+      "pageKey": "suwon-flower-v12-01",
+      "url": "/funeral/ajou-hospital-funeral-wreath/",
+      "category": "funeral",
+      "slug": "ajou-hospital-funeral-wreath",
+      "primaryKeyword": "아주대학교병원 장례식장 근조화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-02",
+      "url": "/funeral/st-vincent-hospital-funeral-wreath/",
+      "category": "funeral",
+      "slug": "st-vincent-hospital-funeral-wreath",
+      "primaryKeyword": "성빈센트병원 장례식장 근조화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-03",
+      "url": "/funeral/suwon-yeonhwajang-funeral-wreath/",
+      "category": "funeral",
+      "slug": "suwon-yeonhwajang-funeral-wreath",
+      "primaryKeyword": "수원시연화장 근조화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-04",
+      "url": "/funeral/suwon-condolence-wreath/",
+      "category": "funeral",
+      "slug": "suwon-condolence-wreath",
+      "primaryKeyword": "수원 근조화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-05",
+      "url": "/funeral/suwon-funeral-wreath-price/",
+      "category": "funeral",
+      "slug": "suwon-funeral-wreath-price",
+      "primaryKeyword": "수원 장례식장 화환 가격"
+    },
+    {
+      "pageKey": "suwon-flower-v12-06",
+      "url": "/business/gwanggyo-opening-congrats-wreath/",
+      "category": "business",
+      "slug": "gwanggyo-opening-congrats-wreath",
+      "primaryKeyword": "광교 개업 축하화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-07",
+      "url": "/business/ingyedong-opening-wreath/",
+      "category": "business",
+      "slug": "ingyedong-opening-wreath",
+      "primaryKeyword": "인계동 개업화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-08",
+      "url": "/business/yeongtong-opening-wreath/",
+      "category": "business",
+      "slug": "yeongtong-opening-wreath",
+      "primaryKeyword": "영통 개업화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-09",
+      "url": "/business/gwonseon-opening-wreath/",
+      "category": "business",
+      "slug": "gwonseon-opening-wreath",
+      "primaryKeyword": "권선구 개업화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-10",
+      "url": "/business/suwon-office-relocation-wreath/",
+      "category": "business",
+      "slug": "suwon-office-relocation-wreath",
+      "primaryKeyword": "수원 회사 이전 축하화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-11",
+      "url": "/school/ajou-university-graduation-flowers/",
+      "category": "school",
+      "slug": "ajou-university-graduation-flowers",
+      "primaryKeyword": "아주대학교 졸업식 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-12",
+      "url": "/school/skku-natural-campus-graduation-flowers/",
+      "category": "school",
+      "slug": "skku-natural-campus-graduation-flowers",
+      "primaryKeyword": "성균관대학교 자연과학캠퍼스 졸업식 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-13",
+      "url": "/school/kyonggi-suwon-campus-graduation-flowers/",
+      "category": "school",
+      "slug": "kyonggi-suwon-campus-graduation-flowers",
+      "primaryKeyword": "경기대학교 수원캠퍼스 졸업식 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-14",
+      "url": "/school/suwon-womens-university-graduation-flowers/",
+      "category": "school",
+      "slug": "suwon-womens-university-graduation-flowers",
+      "primaryKeyword": "수원여자대학교 졸업식 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-15",
+      "url": "/school/suwon-graduation-bouquet/",
+      "category": "school",
+      "slug": "suwon-graduation-bouquet",
+      "primaryKeyword": "수원 졸업식 꽃다발"
+    },
+    {
+      "pageKey": "suwon-flower-v12-16",
+      "url": "/event/suwon-convention-center-event-flowers/",
+      "category": "event",
+      "slug": "suwon-convention-center-event-flowers",
+      "primaryKeyword": "수원컨벤션센터 행사 축하꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-17",
+      "url": "/event/gyeonggi-arts-center-performance-flowers/",
+      "category": "event",
+      "slug": "gyeonggi-arts-center-performance-flowers",
+      "primaryKeyword": "경기아트센터 공연 축하꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-18",
+      "url": "/event/suwon-sk-artrium-performance-flowers/",
+      "category": "event",
+      "slug": "suwon-sk-artrium-performance-flowers",
+      "primaryKeyword": "수원SK아트리움 공연 축하꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-19",
+      "url": "/event/suwon-hwaseong-event-flowers/",
+      "category": "event",
+      "slug": "suwon-hwaseong-event-flowers",
+      "primaryKeyword": "수원화성 행사 축하꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-20",
+      "url": "/event/suwon-event-congrats-wreath/",
+      "category": "event",
+      "slug": "suwon-event-congrats-wreath",
+      "primaryKeyword": "수원 행사 축하화환"
+    },
+    {
+      "pageKey": "suwon-flower-v12-21",
+      "url": "/gift/ajou-hospital-visit-flowers/",
+      "category": "gift",
+      "slug": "ajou-hospital-visit-flowers",
+      "primaryKeyword": "아주대학교병원 병문안 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-22",
+      "url": "/gift/st-vincent-hospital-visit-flowers/",
+      "category": "gift",
+      "slug": "st-vincent-hospital-visit-flowers",
+      "primaryKeyword": "성빈센트병원 병문안 꽃"
+    },
+    {
+      "pageKey": "suwon-flower-v12-23",
+      "url": "/gift/suwon-station-bouquet/",
+      "category": "gift",
+      "slug": "suwon-station-bouquet",
+      "primaryKeyword": "수원역 꽃다발"
+    },
+    {
+      "pageKey": "suwon-flower-v12-24",
+      "url": "/gift/gwanggyo-anniversary-flower-delivery/",
+      "category": "gift",
+      "slug": "gwanggyo-anniversary-flower-delivery",
+      "primaryKeyword": "광교 기념일 꽃배달"
+    },
+    {
+      "pageKey": "suwon-flower-v12-25",
+      "url": "/gift/haenggungdong-bouquet/",
+      "category": "gift",
+      "slug": "haenggungdong-bouquet",
+      "primaryKeyword": "행궁동 꽃다발"
+    },
+    {
+      "pageKey": "suwon-flower-v12-26",
+      "url": "/order/suwon-same-day-flower-delivery/",
+      "category": "order",
+      "slug": "suwon-same-day-flower-delivery",
+      "primaryKeyword": "수원 당일 꽃배달"
+    },
+    {
+      "pageKey": "suwon-flower-v12-27",
+      "url": "/order/suwon-flower-delivery-price/",
+      "category": "order",
+      "slug": "suwon-flower-delivery-price",
+      "primaryKeyword": "수원 꽃배달 가격"
+    },
+    {
+      "pageKey": "suwon-flower-v12-28",
+      "url": "/order/suwon-wreath-message/",
+      "category": "order",
+      "slug": "suwon-wreath-message",
+      "primaryKeyword": "수원 화환 문구"
+    },
+    {
+      "pageKey": "suwon-flower-v12-29",
+      "url": "/order/suwon-flower-address-guide/",
+      "category": "order",
+      "slug": "suwon-flower-address-guide",
+      "primaryKeyword": "수원 꽃배달 주소 작성"
+    },
+    {
+      "pageKey": "suwon-flower-v12-30",
+      "url": "/order/suwon-wreath-order/",
+      "category": "order",
+      "slug": "suwon-wreath-order",
+      "primaryKeyword": "수원 화환 주문"
+    }
+  ]
+}

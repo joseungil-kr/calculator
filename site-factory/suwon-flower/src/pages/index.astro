@@ -1,52 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProductShowcase from '../components/ProductShowcase.astro';
-import business from '../data/business-truth.json';
-
-const articles=(await getCollection('articles')).sort((a,b)=>a.data.pageKey.localeCompare(b.data.pageKey,'ko'));
-const cats=[
- ['funeral','근조·장례','장례식장·빈소·상주·리본문구와 근조화환 가격'],
- ['business','개업·이전','매장·사무실의 공간과 수령방식에 맞춘 축하화환'],
- ['school','졸업·입학','수원의 대학·학교 행사에서 꽃을 전달하는 방법'],
- ['event','공연·행사','공연·전시·문화행사의 행사명·담당자·수령정보'],
- ['gift','선물·병문안','병원·수원역·광교·행궁동의 꽃 선물 상황'],
- ['order','가격·주문','화환 가격·당일 주문·문구·주소·주문방법']
+import {site} from '../config/site';
+import pages from '../data/pages.json';
+import products from '../data/products.json';
+const groups=[
+ {cat:'funeral',label:'근조·장례'},
+ {cat:'business',label:'개업·이전'},
+ {cat:'school',label:'졸업·학교'},
+ {cat:'event',label:'공연·행사'},
+ {cat:'gift',label:'선물·병문안'},
+ {cat:'order',label:'가격·주문'}
 ];
 ---
-<BaseLayout title="수원 꽃배달 | 근조·축하화환·꽃다발 주문 | 꽃이랑 수원" description="수원 꽃배달, 근조화환·개업화환·졸업식 꽃·행사 축하꽃·병문안 꽃과 실제 화환 가격, 전화·온라인 주문방법을 안내합니다.">
-<section class="v12-hero">
-  <div class="container v12-hero-grid">
-    <div>
-      <span class="hero-badge">근조 · 축하 · 꽃다발</span>
-      <h1>수원 <em>꽃배달</em></h1>
-      <p class="hero-lead">보낼 장소와 목적을 알려주시면 상품·가격·수령정보를 함께 확인할 수 있습니다.</p>
-      <div class="hero-order-actions">
-        <a class="hero-phone" href={business.phoneHref}><strong>전화주문 {business.phone}</strong><small>{business.phoneOrderHours}</small></a>
-        <a class="hero-online" href={business.onlineOrderUrl} rel="noopener"><strong>온라인 주문</strong><small>24시간 접수</small></a>
-      </div>
-      <p class="hero-note">당일 배송 가능 여부와 지역별 추가배송비는 실제 주문 시 확인합니다.</p>
-    </div>
-    <picture class="v12-hero-picture"><img src="/images/suwon/hero-B-original.png" alt="꽃배달을 표현한 핑크 계열 꽃다발" width="1900" height="800"/></picture>
-  </div>
+<BaseLayout title="수원 꽃배달 | 근조·축하화환·꽃선물 꽃이랑" description="수원 꽃배달 꽃이랑. 근조·축하화환 59,000원부터, 전화 1844-0644, 온라인 24시간 주문 접수. 장례식장·개업·졸업·공연·선물 목적별 주문정보를 확인하세요." canonicalPath="/">
+<section class="home-hero">
+ <div class="hero-copy"><span class="eyebrow">수원 꽃배달 · 꽃이랑</span><h1>수원 꽃배달,<br/>목적에 맞는 꽃을 빠르게 주문하세요</h1><p>근조·축하 3단 화환은 59,000원부터. 장례식장, 개업·이전, 졸업식, 공연·행사, 병문안과 기념일까지 수령장소와 목적에 맞춰 주문정보를 준비해드립니다.</p>
+ <div class="actions"><a class="btn primary" href={site.phoneHref}>☎ 1844-0644 전화주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div>
+ <div class="facts"><span>전화 08:00~23:00</span><span>온라인 24시간</span><span>전국 배송 가능</span></div></div>
+ <div class="hero-products"><img src={products[0].img} alt="근조 3단 화환" loading="eager"/><img src={products[3].img} alt="축하 3단 화환" loading="eager"/></div>
 </section>
-
-<section class="section product-section"><div class="container"><ProductShowcase showHeading={true}/></div></section>
-
-<section class="section"><div class="container">
-  <div class="section-head"><div><h2>어떤 꽃을 보내시나요?</h2><p class="section-intro">장소보다 먼저 실제 목적을 선택하면 필요한 정보를 빠르게 찾을 수 있습니다.</p></div></div>
-  <div class="guide-tile-grid">{cats.map(([cat,title,body])=><a class="guide-tile" href={`/${cat}/`}><span>수원 꽃배달</span><h3>{title}</h3><p>{body}</p><b>확인하기 ›</b></a>)}</div>
-</div></section>
-
-<section class="info-band"><div class="container info-band-grid">
-  <div><strong>전화주문</strong><span>1844-0644 · 08:00~23:00</span></div>
-  <div><strong>온라인 주문</strong><span>24시간 접수</span></div>
-  <div><strong>화환 가격</strong><span>근조·축하 3단 59,000원부터</span></div>
-  <div><strong>배송 확인</strong><span>추가배송비·당일 가능 여부는 주문 시 확인</span></div>
-</div></section>
-
-<section class="section"><div class="container">
-  <div class="section-head"><div><h2>수원 꽃배달에서 많이 찾는 내용</h2><p class="section-intro">실제 장소와 구매상황별로 필요한 내용을 바로 확인하세요.</p></div></div>
-  <div class="grid grid-3">{articles.slice(0,12).map(a=><a class="card recent-card" href={`/${a.data.category}/${a.data.slug}/`}><div><span class="tag">수원</span><h3>{a.data.title}</h3><p>{a.data.cardSummary}</p></div><span class="more">자세히 보기 ›</span></a>)}</div>
-</div></section>
+<section class="product-section"><div class="section-title"><span class="eyebrow">실제 상품가격</span><h2>근조·축하화환 59,000원부터</h2><p>상품 이미지는 대표 구성입니다. 실제 꽃은 지역과 계절에 따라 일부 달라질 수 있습니다.</p></div>
+<div class="product-grid">{products.slice(0,6).map((p:any)=><article class="product-card"><img src={p.img} alt={p.name} loading="lazy"/><div><h3>{p.name}</h3><strong>{p.price.toLocaleString()}원</strong><p>{p.desc}</p><a href={site.orderUrl}>주문하기 →</a></div></article>)}</div></section>
+<section class="hub-overview"><div class="section-title"><span class="eyebrow">수원 꽃배달 목적별 안내</span><h2>필요한 상황부터 선택하세요</h2></div>
+{groups.map(g=><article class="hub-block"><div class="hub-heading"><h3>{g.label}</h3><a href={'/'+g.cat+'/'}>전체 보기 →</a></div><div class="card-grid">{pages.filter((p:any)=>p.category===g.cat).slice(0,5).map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></article>)}</section>
+<section class="conversion-panel"><div><span class="eyebrow">주문 전에 준비하면 빨라집니다</span><h2>상품 · 주소 · 수령자 · 문구</h2><p>장례식장은 빈소·상주 정보를, 행사장은 행사명·홀·담당자를 함께 알려주세요.</p></div><div class="actions"><a class="btn light" href={site.phoneHref}>전화주문</a><a class="btn yellow" href={site.orderUrl}>온라인 주문</a></div></section>
 </BaseLayout>

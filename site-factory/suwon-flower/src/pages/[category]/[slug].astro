@@ -1,49 +1,22 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
-import ArticleLayout from '../../layouts/ArticleLayout.astro';
-
-type Article = CollectionEntry<'articles'>;
-
-export async function getStaticPaths() {
-  const articles = await getCollection(
-    'articles',
-    ({ data }) =>
-      (data.draftStatus === 'approved' || data.draftStatus === 'published') &&
-      data.routeType === 'category'
-  );
-  return articles.map((article) => ({
-    params: {
-      category: article.data.category,
-      slug: article.data.slug,
-    },
-    props: { article },
-  }));
-}
-
-const { article } = Astro.props as { article: Article };
-const { Content } = await render(article);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import pages from '../../data/pages.json';
+import products from '../../data/products.json';
+import {site} from '../../config/site';
+export function getStaticPaths(){return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
+const {page}=Astro.props; const related=(page.relatedKeys||[]).map((k:string)=>(pages as any[]).find(p=>p.pageKey===k)).filter(Boolean);
+const funeral=page.category==='funeral'; const productSet=funeral?products.filter((p:any)=>p.key.startsWith('funeral')).slice(0,3):products.filter((p:any)=>p.key.startsWith('congrats')).slice(0,3);
 ---
-<ArticleLayout
-  pageKey={article.data.pageKey}
-  title={article.data.title}
-  description={article.data.description}
-  category={article.data.category}
-  structureType={article.data.structureType}
-  pageType={article.data.pageType}
-  contentRole={article.data.contentRole}
-  localizationPolicy={article.data.localizationPolicy}
-  region={article.data.region}
-  snapshotId={article.data.snapshotId}
-  slug={article.data.slug}
-  routeType={article.data.routeType}
-  sourceUrls={article.data.sourceUrls}
-  sources={article.data.sources}
-  relatedPageKeys={article.data.relatedPageKeys}
-  verifiedAt={article.data.verifiedAt}
-  publishedAt={article.data.publishedAt}
-  updatedAt={article.data.updatedAt}
-  ogImage={article.data.ogImage}
-  ogImageAlt={article.data.ogImageAlt}
->
-  <Content />
-</ArticleLayout>
+<BaseLayout title={page.title} description={page.description} canonicalPath={page.url}>
+<article data-snapshot-id={page.pageKey+'-v1-2'}>
+<nav class="breadcrumb"><a href="/">수원 꽃배달</a><span>›</span><a href={'/'+page.category+'/'}>{page.category}</a><span>›</span><span>{page.primaryKeyword}</span></nav>
+<section class="detail-hero"><div><span class="eyebrow">꽃이랑 수원</span><h1>{page.h1}</h1><p>{page.firstAnswer}</p><div class="actions"><a class="btn primary" href={site.phoneHref}>☎ 1844-0644</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div><div class="facts"><span>전화 08:00~23:00</span><span>온라인 24시간</span><span>지역별 추가배송비 확인</span></div></div>
+<div class="detail-product"><img src={productSet[0]?.img} alt={productSet[0]?.name||'꽃배달 상품'} loading="eager"/><strong>{productSet[0]?.name}</strong><span>{productSet[0]?.price.toLocaleString()}원부터</span></div></section>
+{page.sections.slice(0,3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+<section class="product-section compact"><h2>주문 가능한 화환 상품</h2><div class="product-grid">{productSet.map((p:any)=><article class="product-card"><img src={p.img} alt={p.name} loading="lazy"/><div><h3>{p.name}</h3><strong>{p.price.toLocaleString()}원</strong><p>{p.desc}</p><a href={site.orderUrl}>온라인 주문 →</a></div></article>)}</div></section>
+{page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p>{s[1]}</p></section>)}
+<section class="source-card"><h2>{page.entity} 관련 공식정보</h2><p>장소·시설 정보는 주문 전 최신 내용을 확인하는 것이 좋습니다.</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>
+<section class="faq"><h2>{page.primaryKeyword} 자주 묻는 질문</h2>{page.faq.map((f:any)=><div><h3>{f[0]}</h3><p>{f[1]}</p></div>)}</section>
+<section class="related"><h2>다음 주문 단계</h2><div class="card-grid">{related.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>
+<section class="conversion-panel"><div><span class="eyebrow">꽃이랑 주문</span><h2>수령정보를 준비하셨다면 바로 주문하세요</h2><p>전화 1844-0644 · 08:00~23:00 / 온라인 주문 24시간 접수</p></div><div class="actions"><a class="btn light" href={site.phoneHref}>전화주문</a><a class="btn yellow" href={site.orderUrl}>온라인 주문</a></div></section>
+</article></BaseLayout>
