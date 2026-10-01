@@ -3,42 +3,42 @@
     "key": "funeral-basic",
     "name": "근조 3단 화환",
     "price": 59000,
-    "img": "https://fwith.kr/img/product/f1_hu_fe001f0cd4409b66.webp",
+    "img": "/images/products/funeral-basic.webp",
     "desc": "무난하게 예의를 갖춘 기본형"
   },
   {
     "key": "funeral-premium",
     "name": "근조 고급 3단 화환",
     "price": 79000,
-    "img": "https://fwith.kr/img/product/f2_hu_c13ff56e9a54f74a.webp",
+    "img": "/images/products/funeral-premium.webp",
     "desc": "보다 풍성한 고급형"
   },
   {
     "key": "funeral-large",
     "name": "근조 특대 3단 화환",
     "price": 109000,
-    "img": "https://fwith.kr/img/product/f3_hu_2dff149c34fa978f.webp",
+    "img": "/images/products/funeral-large.webp",
     "desc": "더 큰 규모와 존재감을 원하는 특대형"
   },
   {
     "key": "congrats-basic",
     "name": "축하 3단 화환",
     "price": 59000,
-    "img": "https://www.baroflowers.com/product/c1.jpg",
+    "img": "/images/products/congrats-basic.jpg",
     "desc": "개업·이전·공연 등 기본형"
   },
   {
     "key": "congrats-premium",
     "name": "축하 고급 3단 화환",
     "price": 79000,
-    "img": "https://www.baroflowers.com/product/c2.jpg",
+    "img": "/images/products/congrats-premium.jpg",
     "desc": "계절꽃이 더해진 풍성한 구성"
   },
   {
     "key": "congrats-large",
     "name": "축하 특대 3단 화환",
     "price": 99000,
-    "img": "https://www.baroflowers.com/product/c3.jpg",
+    "img": "/images/products/congrats-large.jpg",
     "desc": "대형 행사장 입구에 어울리는 크기"
   }
 ]

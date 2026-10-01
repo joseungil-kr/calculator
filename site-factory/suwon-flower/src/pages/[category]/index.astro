@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import pages from '../../data/pages.json';
 import {site} from '../../config/site';
-const labels={funeral:'근조·장례',business:'개업·이전',school:'졸업·학교',event:'공연·행사',gift:'선물·병문안',order:'가격·주문'};
+const labels:Record<string,string>={funeral:'근조·장례',business:'개업·이전',school:'졸업·학교',event:'공연·행사',gift:'선물·병문안',order:'가격·주문'};
 export function getStaticPaths(){return Object.keys(labels).map(category=>({params:{category}}));}
-const {category}=Astro.params; const items=(pages as any[]).filter(p=>p.category===category); const label=labels[category!];
+const {category}=Astro.params; const items=(pages as any[]).filter(p=>p.category===category); const label=labels[category!]||'수원 꽃배달';
 ---
 <BaseLayout title={'수원 '+label+' 꽃배달 | 꽃이랑'} description={'수원 '+label+' 꽃배달 관련 장소·상황별 주문정보를 확인하세요.'} canonicalPath={'/'+category+'/'}>
 <nav class="breadcrumb"><a href="/">수원 꽃배달</a><span>›</span><span>{label}</span></nav>
