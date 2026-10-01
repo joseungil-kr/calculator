@@ -109,6 +109,24 @@ class SnapshotTests(unittest.TestCase):
         p=snap.validate_content(snap.parse_payload(payload()));a,b=snap.frozen_hashes(p)
         p['SUPERSEDES_SNAPSHOT_ID']='';p['APPROVAL_STATUS']='';p['APPROVED_SNAPSHOT_HASH']=''
         self.assertEqual((a,b),snap.frozen_hashes(p))
+    def test_blank_new_optional_headers_keep_legacy_renderer_defaults(self):
+        absent=self.render();baseline=json.loads((self.root/'site/src/data/pages.json').read_text())[0]
+        self.assertEqual((baseline['queryClass'],baseline['visualIntent'],baseline['assetSlot']),('support-info','consultation','NONE'))
+        self.render(payload(QUERY_CLASS='',VISUAL_INTENT='',ASSET_SLOT=''))
+        blank=json.loads((self.root/'site/src/data/pages.json').read_text())[0]
+        self.assertEqual((blank['queryClass'],blank['visualIntent'],blank['assetSlot']),('support-info','consultation','NONE'))
+        self.assertEqual(absent['approvalHash'],self.render(payload())['approvalHash'])
+    def test_h1_header_is_preserved_and_bound_to_review_hash(self):
+        custom=payload(H1='수원 병문안 꽃 주문 조건과 선택')
+        parsed=snap.parse_payload(custom)
+        self.assertEqual(parsed['H1'],'수원 병문안 꽃 주문 조건과 선택')
+        proof=self.render(custom)['approvalHash']
+        self.render(payload(H1='수원 병문안 꽃 주문 조건과 선택',APPROVAL_STATUS='approved',APPROVED_SNAPSHOT_HASH=proof))
+        page=json.loads((self.root/'site/src/data/pages.json').read_text())[0]
+        self.assertEqual(page['h1'],'수원 병문안 꽃 주문 조건과 선택')
+        self.assert_rejected_unchanged(payload(H1='수원 병문안 꽃 다른 제목',APPROVAL_STATUS='approved',APPROVED_SNAPSHOT_HASH=proof))
+    def test_h1_header_injection_fails(self):
+        self.assert_rejected_unchanged(payload(H1='safe\nTARGET_ROOT: other'))
 
 def payload_content():return snap.parse_payload(payload())['CONTENT']
 

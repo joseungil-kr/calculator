@@ -33,7 +33,7 @@ def parse_payload(body):
     header = body.split("---BEGIN-", 1)[0]
     values = {}
     for line in header.splitlines():
-        match = re.fullmatch(r"([A-Z_]+): (.*)", line)
+        match = re.fullmatch(r"([A-Z][A-Z0-9_]*): (.*)", line)
         if match:
             key, value = match.groups()
             if key in values:
@@ -90,7 +90,9 @@ def validate_content(p):
     if date > dt.datetime.now(dt.timezone.utc).date():
         fail("VERIFIED_AT cannot be in the future")
     p["VERIFIED_AT"] = date.isoformat()
-    for key in ("TITLE", "DESCRIPTION"):
+    for key in ("TITLE", "DESCRIPTION", "H1"):
+        if not p.get(key):
+            continue
         if "\n" in p[key] or "\r" in p[key] or "<" in p[key] or "\x00" in p[key]:
             fail(f"{key} must be plain single-line text")
     content = p["CONTENT"].replace("\r\n", "\n")
@@ -259,7 +261,7 @@ def render(body, registry, workspace):
             fail("FIRST-ANSWER must be a direct plain-text customer answer")
         entry["file"] = "src/data/pages.json"
         old = tables["renderer"].get(key, {})
-        page = {**old, **entry, "order": old.get("order", max([r.get("order", 0) for r in pages] + [0]) + 1), "h1": p.get("H1") or p["PRIMARY_KEYWORD"], "description": p["DESCRIPTION"], "cardSummary": summary, "firstAnswer": first, "contentMarkdown": p["CONTENT"], "sections": [], "faq": [], "sources": p["sources"], "source": p["sources"][0], "relatedKeys": p["relatedKeys"], "queryClass": p.get("QUERY_CLASS", "support-info"), "visualIntent": p.get("VISUAL_INTENT", "consultation"), "assetSlot": p.get("ASSET_SLOT", "NONE")}
+        page = {**old, **entry, "order": old.get("order", max([r.get("order", 0) for r in pages] + [0]) + 1), "h1": p.get("H1") or p["PRIMARY_KEYWORD"], "description": p["DESCRIPTION"], "cardSummary": summary, "firstAnswer": first, "contentMarkdown": p["CONTENT"], "sections": [], "faq": [], "sources": p["sources"], "source": p["sources"][0], "relatedKeys": p["relatedKeys"], "queryClass": p.get("QUERY_CLASS") or "support-info", "visualIntent": p.get("VISUAL_INTENT") or "consultation", "assetSlot": p.get("ASSET_SLOT") or "NONE"}
         tables["renderer"][key] = page
         writes[data / "pages.json"] = list(sorted(tables["renderer"].values(), key=lambda r: (r.get("order", 0), r["pageKey"])))
     else:
