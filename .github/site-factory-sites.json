@@ -41,8 +41,8 @@
       "primaryLandingSlug": "",
       "heroPath": "",
       "worker": "suwon-flower-guide-test",
-      "launchMode": "rebuild",
-      "productionEnabled": false,
+      "launchMode": "live",
+      "productionEnabled": true,
       "naverVerification": "80fedf144567fea99fe833d2937731a190854c41",
       "indexnowKey": "92c88bd5983202f9f0f07ce422cfc19de89603d8bf1e14d3685724b3b5193c98",
       "templateKey": "flower-local-v2",
@@ -99,7 +99,9 @@
       "stagingWranglerConfig": "wrangler.staging.jsonc",
       "stagingUrl": "https://suwon-flower-guide-qa.joseungil.workers.dev",
       "requireRevisionApproval": true,
-      "requireSnapshotApproval": true
+      "requireSnapshotApproval": true,
+      "approvedRevision": "be08fdb6f1afa864ab1627a7dcd1f2d6386a7555",
+      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/74#issuecomment-5934300307"
     },
     "hwaseong-flower": {
       "repo": "joseungil-kr/fwith-site-factory",
