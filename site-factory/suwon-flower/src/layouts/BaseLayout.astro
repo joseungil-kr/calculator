@@ -1,9 +1,10 @@
 ---
 import '../styles/global.css';
 import {site} from '../config/site';
+import buildRevision from '../data/build-revision.json';
 const {title,description,canonicalPath='/',noindex=false}=Astro.props;
 const canonical=new URL(canonicalPath,site.domain).toString();
-const revision=import.meta.env.SITE_FACTORY_REVISION||'v1.2';
+const revision=buildRevision.revision||'v1.2';
 ---
 <!doctype html><html lang="ko"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
