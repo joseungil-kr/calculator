@@ -34,7 +34,7 @@ jobs:
                   assert '수원 꽃배달' in h and '1844-0644' in h and '59,000원부터' in h
                   r=urllib.request.urlopen(base+'/robots.txt',timeout=20).read().decode()
                   assert 'Allow: /' in r and 'Sitemap:' in r
-                  p=urllib.request.urlopen(base+'/funeral/aju-hospital-funeral-wreath/',timeout=20).read().decode('utf-8','replace')
+                  p=urllib.request.urlopen(base+'/funeral/ajou-hospital-funeral-wreath/',timeout=20).read().decode('utf-8','replace')
                   assert '아주대학교병원 장례식장 근조화환' in p
                   print('SUWON V1.2 LIVE QA PASSED'); break
               except Exception as e:
