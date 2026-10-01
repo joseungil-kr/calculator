@@ -85,6 +85,20 @@
       "status": "primary"
     },
     {
+      "pageKey": "suwon-flower-launch-10",
+      "url": "/places/skku-suwon-entry-graduation-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/places/",
+      "primaryKeyword": "성균관대 자연과학캠퍼스 졸업·입학 시즌, 꽃다발과 꽃바구니는 언제 다를까요?",
+      "intentKey": "수원|PLACE_LANDING|성균관대 자연과학캠퍼스 졸업·입학 시즌, 꽃다발과 꽃바구니는 언제 다를까요",
+      "pageType": "general-guide",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "category": "places",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
       "pageKey": "suwon-flower-launch-11",
       "url": "/order-help/suwon-business-wreath-message/",
       "pageRole": "INTENT_LANDING",

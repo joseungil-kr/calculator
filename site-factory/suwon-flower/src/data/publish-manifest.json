@@ -83,6 +83,19 @@
       "status": "approved"
     },
     {
+      "pageKey": "suwon-flower-launch-10",
+      "draftKey": "suwon-flower-launch-10-draft-v2",
+      "sourceRecordId": "rec1Hxz5ofxmwoG2A",
+      "publishQueueRecordId": "recfJwk01YaBUFzfL",
+      "snapshotId": "suwon-flower-launch-10-v1",
+      "slug": "skku-suwon-entry-graduation-flowers",
+      "category": "places",
+      "routeType": "category",
+      "file": "src/content/articles/suwon-flower-launch-10.md",
+      "url": "/places/skku-suwon-entry-graduation-flowers/",
+      "status": "approved"
+    },
+    {
       "pageKey": "suwon-flower-launch-11",
       "draftKey": "suwon-flower-factory-draft-11",
       "sourceRecordId": "receni0KLkkIJGCtL",
