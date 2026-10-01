@@ -1,9 +1,22 @@
 {
   "schemaVersion": 2,
   "siteKey": "yongin-flower-v2",
-  "generatedFrom": "Airtable Draft Lab launch v2",
+  "generatedFrom": "Airtable Publish Queue",
   "snapshotMode": "git-frozen",
   "pages": [
+    {
+      "pageKey": "yongin-flower-daily-001",
+      "draftKey": "yongin-flower-daily-001-draft-v1",
+      "sourceRecordId": "recoDva1HeigTFPQr",
+      "publishQueueRecordId": "recEKWGGe73lIHKtk",
+      "snapshotId": "yongin-flower-daily-001-v2",
+      "slug": "yongin-mir-stadium-event-flowers",
+      "category": "event",
+      "routeType": "category",
+      "file": "src/content/articles/yongin-flower-daily-001.md",
+      "url": "/event/yongin-mir-stadium-event-flowers/",
+      "status": "approved"
+    },
     {
       "pageKey": "yongin-flower-launch-01",
       "draftKey": "yongin-flower-launch-01-draft-v2",

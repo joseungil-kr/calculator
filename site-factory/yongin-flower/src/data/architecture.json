@@ -5,6 +5,20 @@
   "ruleset": "flower-local-v2 Intent Tree",
   "pages": [
     {
+      "pageKey": "yongin-flower-daily-001",
+      "url": "/event/yongin-mir-stadium-event-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/event/",
+      "primaryKeyword": "용인미르스타디움 행사 꽃",
+      "intentKey": "용인|용인미르스타디움행사꽃|용인미르스타디움|local",
+      "pageType": "event-venue",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "category": "event",
+      "sitemapIndexable": true,
+      "status": "primary"
+    },
+    {
       "pageKey": "yongin-flower-home",
       "url": "/",
       "pageRole": "REGION_SERVICE_LANDING",

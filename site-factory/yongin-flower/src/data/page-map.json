@@ -3,6 +3,16 @@
   "siteKey": "yongin-flower-v2",
   "pages": [
     {
+      "pageKey": "yongin-flower-daily-001",
+      "snapshotId": "yongin-flower-daily-001-v2",
+      "slug": "yongin-mir-stadium-event-flowers",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/yongin-mir-stadium-event-flowers/",
+      "status": "approved",
+      "sourceRecordId": "recoDva1HeigTFPQr"
+    },
+    {
       "pageKey": "yongin-flower-launch-01",
       "snapshotId": "yongin-flower-launch-01-launch-v2",
       "slug": "yongin-severance-funeral-condolence-wreath",
