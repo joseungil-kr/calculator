@@ -5,42 +5,12 @@ import architecture from '../../data/architecture.json';
 import { siteConfig } from '../../config/site';
 
 const categoryMeta = {
-  guide: {
-    eyebrow: '꽃 선택',
-    title: `${siteConfig.region} 꽃 선택·이용 가이드`,
-    intro: '꽃 형태와 전달 방식, 이용 조건을 검색 목적별로 나눠 확인합니다.',
-    description: `${siteConfig.region} 꽃배달을 준비할 때 필요한 꽃 선택과 이용 기준을 정리합니다.`,
-  },
-  funeral: {
-    eyebrow: '장례식장',
-    title: `${siteConfig.region} 장례식장 근조화환 안내`,
-    intro: '장례식장별 위치·연락처·빈소·주차·화환 반입처럼 주문 전에 확인해야 할 실제 정보를 정리합니다.',
-    description: `${siteConfig.region} 장례식장별 근조화환 주문에 필요한 위치, 연락처, 빈소, 주차, 반입 확인사항을 안내합니다.`,
-  },
-  places: {
-    eyebrow: '장소별',
-    title: `${siteConfig.region} 장소별 꽃배달 안내`,
-    intro: '역·병원·대학·행사장처럼 목적지가 정해졌을 때 이동·수령·반입 조건을 확인합니다.',
-    description: `${siteConfig.region}의 역, 병원, 대학, 행사장 등 실제 장소별 꽃배달 확인사항을 안내합니다.`,
-  },
-  occasions: {
-    eyebrow: '상황별',
-    title: `${siteConfig.region} 상황별 축하꽃·꽃배달 안내`,
-    intro: '개업·이전·졸업·행사 등 보내는 이유에 따라 꽃 형태와 확인사항을 구분합니다.',
-    description: `${siteConfig.region} 개업, 이전, 졸업, 행사 등 상황별 꽃배달 선택 기준을 안내합니다.`,
-  },
-  'flower-knowledge': {
-    eyebrow: '꽃 관리',
-    title: '꽃 선택과 관리 가이드',
-    intro: '꽃다발·꽃바구니·화환의 형태 차이와 이동·보관·관리 기준을 정리합니다.',
-    description: '꽃 형태별 선택과 이동, 보관, 계절별 관리에 필요한 실용 정보를 안내합니다.',
-  },
-  'order-help': {
-    eyebrow: '주문 도움',
-    title: `${siteConfig.region} 꽃배달 주문 준비 가이드`,
-    intro: '주소·수령자·시간·문구처럼 주문 직전에 빠뜨리기 쉬운 정보를 정리합니다.',
-    description: `${siteConfig.region} 꽃배달 주문 전 필요한 주소, 수령자, 시간, 문구와 확인사항을 안내합니다.`,
-  },
+  funeral:{eyebrow:'근조·장례',title:`${siteConfig.region} 근조화환·장례식장 꽃`,intro:'장례식장 빈소·수령정보와 실제 근조화환 가격을 확인합니다.',description:'수원 장례식장 근조화환 주문에 필요한 빈소·상품·가격·주문정보를 안내합니다.'},
+  business:{eyebrow:'개업·이전',title:`${siteConfig.region} 개업·이전 축하화환`,intro:'매장·사무실 개업과 이전 상황에 맞는 축하화환을 확인합니다.',description:'수원 개업·이전 축하화환의 공간·수령·문구·가격을 안내합니다.'},
+  school:{eyebrow:'졸업·입학',title:`${siteConfig.region} 졸업식 꽃`,intro:'대학·학교 행사에서 직접 전달과 캠퍼스 수령을 구분해 준비합니다.',description:'수원 대학·학교 졸업식 꽃다발과 전달 정보를 안내합니다.'},
+  event:{eyebrow:'공연·행사',title:`${siteConfig.region} 공연·행사 축하꽃`,intro:'공연·전시·문화행사의 행사명·담당자·수령정보를 확인합니다.',description:'수원 공연·행사 축하꽃과 축하화환 주문정보를 안내합니다.'},
+  gift:{eyebrow:'선물·병문안',title:`${siteConfig.region} 꽃다발·병문안 꽃`,intro:'병원·역·기념일·약속 상황에 맞는 꽃을 준비합니다.',description:'수원 꽃다발·병문안·기념일 꽃 선물의 전달 방법을 안내합니다.'},
+  order:{eyebrow:'가격·주문',title:`${siteConfig.region} 꽃배달 가격·주문`,intro:'실제 상품가격과 당일 주문, 문구, 주소, 주문방법을 확인합니다.',description:'수원 꽃배달 가격과 전화·온라인 주문방법을 안내합니다.'}
 } as const;
 
 type Category = keyof typeof categoryMeta;
@@ -58,7 +28,7 @@ export async function getStaticPaths() {
       data.routeType === 'category' &&
       activePageKeys.has(data.pageKey)
   );
-  const allowedCategories = new Set(['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help']);
+  const allowedCategories = new Set(['funeral','business','school','event','gift','order']);
   const categories = [...new Set(articles.map((article) => article.data.category))]
     .filter((category) => allowedCategories.has(category)) as Category[];
   return categories.map((category) => ({ params: { category }, props: { category } }));
