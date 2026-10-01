@@ -1,0 +1,51 @@
+{
+  "bundleName": "Site Factory v1.2 with nonconflicting earlier omissions",
+  "bundleVersion": "v1.2+omissions-2026-10-01",
+  "precedence": "v1.2 authoritative; only missing nonconflicting v1/v1.1 rules supplement it",
+  "normalization": "UTF-8; CRLF and CR to LF; exactly one final LF",
+  "sources": [
+    {
+      "path": "sources/site_factory_query_first_v1_1_test.md",
+      "sha256": "2a5ccd0a033f832df02f172cc3f09445f03c7d18b44af722264fad275d46488f",
+      "bytes": 4634
+    },
+    {
+      "path": "sources/site_factory_rules_v1.md",
+      "sha256": "571e445716658eaf79e9583c54ee1e0c3204cdaa9c400f1eb67dd2816769db3d",
+      "bytes": 15952
+    },
+    {
+      "path": "sources/site_factory_rules_v1_2.md",
+      "sha256": "b2d3cb57480c809d22b943b30e83fcd21c8767ff4df109603bc10476b38190ff",
+      "bytes": 8482
+    }
+  ],
+  "privacyReview": "Full original texts inspected; generic SEO/site design rules and public example places only; no credentials, personal contact data, private customer details or personal financial/health data found.",
+  "artifacts": [
+    {
+      "path": "COMBINED_RULES.md",
+      "sha256": "356666a7067218942a115ca8115823b6276d4526f3f8795cbbed8dc7546007bf",
+      "bytes": 14512
+    },
+    {
+      "path": "CREATOR_PROMPT.txt",
+      "sha256": "49ce4500281441ce9a95a6706e241282a6b5d8ab4c19fb7d169fcafb8c6f7082",
+      "bytes": 13107
+    },
+    {
+      "path": "PRECEDENCE_AND_COVERAGE.md",
+      "sha256": "c1663ca7fa0b99a10adf484bfa73ab5a563e9a19aa4a2161d81585c9d1984cd4",
+      "bytes": 9275
+    },
+    {
+      "path": "REVIEWER_PROMPT.txt",
+      "sha256": "b0cb746b489b0577cdb3c992c935584cf154d7d3829f19a6d6ed0279c21fecad",
+      "bytes": 14940
+    },
+    {
+      "path": "coverage-matrix.json",
+      "sha256": "b961fc1e93876d68d6cfb5e8ca28ed069e826c7b36d7b66e9f1a5163c6b92611",
+      "bytes": 22372
+    }
+  ]
+}
