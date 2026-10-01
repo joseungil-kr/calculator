@@ -1,58 +1,13 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
+  "genericEngine": "generic-local-v1",
   "templates": {
-    "flower-local-v1": {
-      "status": "ready",
-      "sourceRepo": "joseungil-kr/fwith-site-factory",
-      "sourceBranch": "site-factory-hwaseong-v1",
-      "sourceRoot": "site-factory/hwaseong-flower",
-      "allowedCategories": [
-        "guide",
-        "funeral",
-        "places",
-        "occasions",
-        "flower-knowledge",
-        "order-help"
-      ],
-      "allowedPageTypes": [
-        "general-guide",
-        "funeral-facility",
-        "hospital",
-        "station-transit",
-        "opening-business",
-        "event-venue",
-        "flower-knowledge",
-        "order-help"
-      ],
-      "notes": "Validated regional flower template. Canonical rules are main/site-factory/contracts v3. Launcher must rewrite site config, domain, region asset paths and business truth; never copy article content. Publication uses region×service×intent mapping, hub hierarchy, and QA-gated batch/rotation policy."
-    },
     "skycar-local-v1": {
-      "status": "planned",
-      "sourceRepo": "joseungil-kr/fwith-site-factory",
-      "sourceBranch": null,
-      "sourceRoot": null,
-      "allowedCategories": [
-        "areas",
-        "work-types",
-        "equipment",
-        "site-conditions",
-        "quote-help",
-        "safety-permits"
-      ],
-      "allowedPageTypes": [
-        "local-area",
-        "work-type-guide",
-        "equipment-selection",
-        "site-condition",
-        "quote-help",
-        "safety-permit",
-        "general-guide"
-      ],
-      "notes": "Blueprint exists but code/UI scaffold is not yet implemented. Launcher must block rather than fall back to flower-local-v1."
+      "engine": "generic-local-v1",
+      "blueprintKey": "skycar-local",
+      "shadowTestRoot": "site-factory/ansan-skycar-shadow",
+      "shadowBranch": "site-factory-generic-skycar-test",
+      "productionReady": false
     }
-  },
-  "contracts": {
-    "core": "site-factory/contracts/01_SITE_FACTORY_CORE.md",
-    "flowerLocal": "site-factory/contracts/02_VERTICAL_BLUEPRINT_FLOWER.md"
   }
 }
