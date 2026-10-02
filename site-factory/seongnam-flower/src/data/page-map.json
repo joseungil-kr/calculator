@@ -1,6 +1,24 @@
 {
   "pages": [
     {
+      "pageKey": "seongnam-opening-wreath",
+      "snapshotId": "seongnam-opening-r1-20261002T165404Z",
+      "snapshotHash": "65c437c14ab2b60532beddc293be462d5518da17f8b002eaed3622391a5d73fe",
+      "approvalVerified": true,
+      "draftKey": "seongnam-opening-wreath-r1",
+      "sourceRecordId": "recp4vlQ7gQBOk2oQ",
+      "publishQueueRecordId": "recAqtfpeAF1OUQEa",
+      "slug": "seongnam-opening-wreath",
+      "category": "business",
+      "routeType": "category",
+      "url": "/business/seongnam-opening-wreath/",
+      "title": "성남 개업화환 | 3단 가격·리본 문구와 사업장 배송 준비",
+      "primaryKeyword": "성남 개업화환",
+      "pageType": "business-opening",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-snuh-funeral-wreath",
       "snapshotId": "seongnam-snuh-funeral-r1-20261002T131900Z",
       "snapshotHash": "1522661f1f1cd0bae2e9b7449dc2adc2d095d665f12718d117e94d9e76d96e41",
