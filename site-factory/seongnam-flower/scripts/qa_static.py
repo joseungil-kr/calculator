@@ -10,6 +10,7 @@ class Document(HTMLParser):
         self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
         self.journey_aside=0;self.purpose_cards=[];self.active_purpose=None
+        self.markdown_blocks=[];self.markdown_depth=0;self.active_markdown_block=None
         self.source_cards=[];self.active_source=None;self.source_depth=0;self.source_field=None
         self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
@@ -18,6 +19,9 @@ class Document(HTMLParser):
         if a.get('data-product-key'):
             product={'key':a['data-product-key'],'family':a.get('data-product-family'),'images':[],'links':[],'text':[]};self.product_records.append(product)
         if tag not in ['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']:self.elements.append((tag,product))
+        if tag=='div' and 'markdown-content' in a.get('class','').split():self.markdown_depth=len(self.elements)
+        if self.markdown_depth and tag in ['p','h2','h3','li']:
+            self.active_markdown_block={'type':tag,'text':[]};self.markdown_blocks.append(self.active_markdown_block)
         context=next((p for _,p in reversed(self.elements) if p),None)
         if context and tag=='img':context['images'].append(a.get('src'))
         if context and tag=='a':context['links'].append(a.get('href'))
@@ -47,6 +51,8 @@ class Document(HTMLParser):
             if 'detail-product' in a.get('class','') or 'hero-product' in a.get('class',''):self.primary_families.append(a['data-product-family'])
         if 'data-snapshot-id' in a:self.snapshots.append(a['data-snapshot-id'])
     def handle_endtag(self,tag):
+        if self.active_markdown_block is not None and tag==self.active_markdown_block['type']:self.active_markdown_block=None
+        if tag=='div' and len(self.elements)==self.markdown_depth:self.markdown_depth=0
         if tag=='title':self.in_title=False
         if tag=='p' and self.capture_answer:self.capture_answer=False;self.answer_done=True
         if tag in ['script','style']:self.ignored=max(0,self.ignored-1)
@@ -62,6 +68,7 @@ class Document(HTMLParser):
         if self.in_title:self.title+=data
         if not self.ignored:self.visible.append(data)
         if self.capture_answer:self.first_answer.append(data)
+        if self.active_markdown_block is not None and not self.ignored:self.active_markdown_block['text'].append(data)
         if self.active_purpose is not None:self.active_purpose['text'].append(data)
         if self.active_source is not None and not self.ignored:
             self.active_source['text'].append(data)
@@ -87,6 +94,12 @@ def check_rendered_sources(doc, page):
         assert card['links'][0].get('aria-label')==expected['name']+' 확인',f'Source link label mismatch: {page["url"]}'
         assert card['dates']==[expected['verifiedAt']] and ''.join(card['date_text'])==expected['verifiedAt'],f'Rendered source date mismatch: {page["url"]}'
         assert f"출처 유형: {SOURCE_TYPE_LABELS[expected['type']]}" in ''.join(card['text']),f'Rendered source type label missing: {page["url"]}'
+
+def check_rendered_answer(doc, page, expected_blocks):
+    assert ''.join(doc.first_answer)==page.get('firstAnswer',''),f'Hero first answer changed: {page["url"]}'
+    if not page.get('contentMarkdown'):return
+    rendered=[{'type':block['type'],'text':''.join(block['text'])} for block in doc.markdown_blocks]
+    assert rendered==expected_blocks,f'Rendered Markdown block mismatch: {page["url"]}'
 
 def check_customer_output(doc, url):
     text=' '.join(doc.visible)
@@ -166,7 +179,7 @@ def check(root=Path('.')):
     import subprocess
     subprocess.run(['node', 'scripts/qa_seongnam_catalog.mjs'], cwd=root, check=True)
     navigation=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import fs from 'node:fs'; import {productFamilies} from './src/lib/catalog.mjs'; import {hubGuide} from './src/lib/hubs.mjs'; const pages=JSON.parse(fs.readFileSync('src/data/pages.json')); const cats=[...new Set(pages.map(p=>p.category))]; console.log(JSON.stringify({families:Object.fromEntries(pages.map(p=>[p.pageKey,productFamilies(p)])),purpose:Object.fromEntries(cats.map(c=>['/'+c+'/',hubGuide(c,pages).decision[0]]))}));"],cwd=root,text=True))
+        "import fs from 'node:fs'; import {productFamilies} from './src/lib/catalog.mjs'; import {hubGuide} from './src/lib/hubs.mjs'; import {displayMarkdownBlocks,inlineTokens} from './src/lib/content.mjs'; const pages=JSON.parse(fs.readFileSync('src/data/pages.json')); const cats=[...new Set(pages.map(p=>p.category))]; console.log(JSON.stringify({body:Object.fromEntries(pages.map(p=>[p.pageKey,displayMarkdownBlocks(p.contentMarkdown||'',p.firstAnswer).map(b=>({type:b.type,text:inlineTokens(b.text).map(t=>t.text).join('')}))])),families:Object.fromEntries(pages.map(p=>[p.pageKey,productFamilies(p)])),purpose:Object.fromEntries(cats.map(c=>['/'+c+'/',hubGuide(c,pages).decision[0]]))}));"],cwd=root,text=True))
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
@@ -195,6 +208,7 @@ def check(root=Path('.')):
         check_customer_journey(docs[page['url']],page,pages,navigation['families'])
         check_rendered_intent(docs[page['url']],page,products)
         check_rendered_sources(docs[page['url']],page)
+        check_rendered_answer(docs[page['url']],page,navigation['body'][page['pageKey']])
     assert {p['href'] for p in docs['/'].purpose_cards}==set(navigation['purpose']), 'Home purpose-card route mismatch'
     for card in docs['/'].purpose_cards:
         assert navigation['purpose'][card['href']] in ''.join(card['text']),f'Home purpose-card promise differs from actual hub children: {card["href"]}'

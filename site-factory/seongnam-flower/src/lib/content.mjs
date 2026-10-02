@@ -26,3 +26,15 @@ export function markdownBlocks(markdown) {
   }
   flush(); return blocks;
 }
+
+// This renderer creates plain <p> elements from text-only paragraph blocks.
+// Match their exact text before escaping; do not decode entities or normalize it.
+// Markup-like or uncertain input stays visible, even when its spelling matches.
+export function displayMarkdownBlocks(markdown, firstAnswer) {
+  const blocks=markdownBlocks(markdown);
+  const lead=blocks[0];
+  if (!lead || lead.type!=='p' || typeof firstAnswer!=='string' || !firstAnswer.trim()) return blocks;
+  const tokens=inlineTokens(lead.text);
+  if (tokens.length!==1 || tokens[0].type!=='text' || /[<>&*_`\[\]]|~~/.test(lead.text)) return blocks;
+  return lead.text===firstAnswer ? blocks.slice(1) : blocks;
+}
