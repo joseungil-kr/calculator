@@ -1,6 +1,24 @@
 {
   "pages": [
     {
+      "pageKey": "seongnam-funeral-wreath-price",
+      "snapshotId": "seongnam-funeral-wreath-price-r1-20261002T180106Z",
+      "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",
+      "approvalVerified": true,
+      "draftKey": "seongnam-funeral-wreath-price-r1",
+      "sourceRecordId": "recmWSZ5nv9sNUa1x",
+      "publishQueueRecordId": "recSNxjlO9HYFWV7C",
+      "slug": "seongnam-funeral-wreath-price",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/seongnam-funeral-wreath-price/",
+      "title": "성남 근조화환 가격 | 4종 상품가와 최종 결제금액 확인",
+      "primaryKeyword": "성남 근조화환 가격",
+      "pageType": "price-guide",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-opening-wreath",
       "snapshotId": "seongnam-opening-r1-20261002T165404Z",
       "snapshotHash": "65c437c14ab2b60532beddc293be462d5518da17f8b002eaed3622391a5d73fe",
@@ -49,6 +67,11 @@
       "pageKey": "seongnam-opening-wreath",
       "snapshotHash": "65c437c14ab2b60532beddc293be462d5518da17f8b002eaed3622391a5d73fe",
       "publishQueueRecordId": "recAqtfpeAF1OUQEa"
+    },
+    "seongnam-funeral-wreath-price-r1-20261002T180106Z": {
+      "pageKey": "seongnam-funeral-wreath-price",
+      "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",
+      "publishQueueRecordId": "recSNxjlO9HYFWV7C"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

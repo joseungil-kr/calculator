@@ -47,7 +47,7 @@
     },
     {
       "category": "order",
-      "children": 0,
+      "children": 1,
       "indexable": false,
       "label": "가격·주문",
       "menuVisible": false,
@@ -55,6 +55,30 @@
     }
   ],
   "pages": [
+    {
+      "pageKey": "seongnam-funeral-wreath-price",
+      "snapshotId": "seongnam-funeral-wreath-price-r1-20261002T180106Z",
+      "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",
+      "approvalVerified": true,
+      "draftKey": "seongnam-funeral-wreath-price-r1",
+      "sourceRecordId": "recmWSZ5nv9sNUa1x",
+      "publishQueueRecordId": "recSNxjlO9HYFWV7C",
+      "slug": "seongnam-funeral-wreath-price",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/seongnam-funeral-wreath-price/",
+      "title": "성남 근조화환 가격 | 4종 상품가와 최종 결제금액 확인",
+      "primaryKeyword": "성남 근조화환 가격",
+      "pageType": "price-guide",
+      "status": "primary",
+      "file": "src/data/pages.json",
+      "pageRole": "PRICE_GUIDE",
+      "parentHub": "/order/",
+      "intentKey": "성남|근조화환|가격비교|성남 근조4종 가격선택",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": false
+    },
     {
       "pageKey": "seongnam-opening-wreath",
       "snapshotId": "seongnam-opening-r1-20261002T165404Z",
