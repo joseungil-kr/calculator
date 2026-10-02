@@ -91,6 +91,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-jesaeng-funeral-wreath",
+      "snapshotId": "seongnam-jesaeng-funeral-wreath-r2-20261002T185018Z",
+      "snapshotHash": "2938d6d02254f40c85544a605ec0a298f85eb06e0ec910144b9f626637ec31b2",
+      "approvalVerified": true,
+      "draftKey": "seongnam-jesaeng-funeral-wreath-r2",
+      "sourceRecordId": "reclT6Nn0IIsMuenz",
+      "publishQueueRecordId": "recIiurD0eM6AlkM1",
+      "slug": "seongnam-jesaeng-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/seongnam-jesaeng-funeral-wreath/",
+      "title": "분당제생병원 장례식장 근조화환 | 주소·빈소·발인 전 수령",
+      "primaryKeyword": "분당제생병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-opening-wreath",
       "snapshotId": "seongnam-opening-r1-20261002T165404Z",
       "snapshotHash": "65c437c14ab2b60532beddc293be462d5518da17f8b002eaed3622391a5d73fe",
