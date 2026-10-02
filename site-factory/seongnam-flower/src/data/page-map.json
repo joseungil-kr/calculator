@@ -73,6 +73,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-doubletree-pangyo-wedding-wreath",
+      "snapshotId": "seongnam-doubletree-pangyo-wedding-wreath-r1-20261002T195317Z",
+      "snapshotHash": "1eb42dfc3133a3e804099b37b66e5e127cf6c67e96ac6fbc3eab619078acd61d",
+      "approvalVerified": true,
+      "draftKey": "seongnam-doubletree-pangyo-wedding-wreath-r1",
+      "sourceRecordId": "recW72min3acTb1o9",
+      "publishQueueRecordId": "recYOTN5aAZ0XRnvQ",
+      "slug": "seongnam-doubletree-pangyo-wedding-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-doubletree-pangyo-wedding-wreath/",
+      "title": "더블트리 판교 화환 | 그랜드볼룸·더가든·갤러리 수령 준비",
+      "primaryKeyword": "더블트리 판교 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-funeral-wreath-price",
       "snapshotId": "seongnam-funeral-wreath-price-r1-20261002T180106Z",
       "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",

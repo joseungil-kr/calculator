@@ -758,5 +758,81 @@
     "queryClass": "local-commercial",
     "visualIntent": "event_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-doubletree-pangyo-wedding-wreath",
+    "snapshotId": "seongnam-doubletree-pangyo-wedding-wreath-r1-20261002T195317Z",
+    "snapshotHash": "1eb42dfc3133a3e804099b37b66e5e127cf6c67e96ac6fbc3eab619078acd61d",
+    "approvalVerified": true,
+    "draftKey": "seongnam-doubletree-pangyo-wedding-wreath-r1",
+    "sourceRecordId": "recW72min3acTb1o9",
+    "publishQueueRecordId": "recYOTN5aAZ0XRnvQ",
+    "slug": "seongnam-doubletree-pangyo-wedding-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-doubletree-pangyo-wedding-wreath/",
+    "title": "더블트리 판교 화환 | 그랜드볼룸·더가든·갤러리 수령 준비",
+    "primaryKeyword": "더블트리 판교 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 14,
+    "h1": "더블트리 판교 화환, 예식 공간과 층을 구분해 주문하세요",
+    "description": "더블트리 바이 힐튼 서울 판교의 공식 웨딩 공간을 구분하고 축하화환 3종 가격, 수령 담당자와 반입 확인사항을 안내합니다. 백현로 26 주소만으로 배송 장소를 확정하지 마세요.",
+    "cardSummary": "1층 실내홀·야외 정원과 21층 갤러리는 전달 지점이 다릅니다. 우천으로 예식 장소가 바뀌는 경우까지 수령정보에 반영하세요.",
+    "firstAnswer": "더블트리 판교 화환은 백현로 26 주소와 함께 그랜드볼룸·더가든·갤러리 중 실제 예식 공간을 알려주세요. 공식 안내상 그랜드볼룸과 더가든은 1층, 갤러리는 21층입니다. 꽃이랑은 행사장 반입 조건과 수령시간을 확인해 상품 선택을 상담하며, 우천 시 변경된 장소도 다시 확인해야 합니다.",
+    "contentMarkdown": "더블트리 판교 화환은 백현로 26 주소와 함께 그랜드볼룸·더가든·갤러리 중 실제 예식 공간을 알려주세요. 공식 안내상 그랜드볼룸과 더가든은 1층, 갤러리는 21층입니다. 꽃이랑은 행사장 반입 조건과 수령시간을 확인해 상품 선택을 상담하며, 우천 시 변경된 장소도 다시 확인해야 합니다.\n\n같은 호텔에 보내는 화환이라도 실내홀, 야외 정원, 고층 예식 공간 중 어디에서 받는지에 따라 준비해야 할 정보가 달라집니다. 꽃이랑은 예식 공간을 특정한 뒤 축하화환 상품과 수령 조건을 상담합니다. 호텔 숙박 예약정보만으로 결혼식 화환의 전달 지점을 정하지 마세요.\n\n## 백현로 26에서 세 가지 예식 공간을 구분하세요\n\n더블트리 바이 힐튼 서울 판교의 공식 주소는 성남시 분당구 백현로 26입니다. 공식 웨딩 안내는 그랜드볼룸을 1층, 야외 웨딩 더가든을 1층 정원, 갤러리를 21층으로 구분합니다. 주문서에는 호텔명과 주소에 이 공간 이름을 덧붙여 주세요.\n\n그랜드볼룸은 세 구획으로 나눌 수 있다고 안내돼 있습니다. 초대장에 구체적인 구획이나 행사명이 적혀 있다면 함께 전달하고, 없는 경우 담당자에게 실제 받는 곳을 확인해 주세요. 갤러리 예식인데 1층의 다른 행사 입구를 수령 장소로 적는 일이 없도록 장소명과 층을 한 번 더 맞추는 것이 중요합니다.\n\n## 야외 예식은 우천 시 최종 수령 장소를 다시 확인합니다\n\n더가든은 1층 정원의 야외 예식 공간입니다. 호텔 공식 안내는 비가 오면 대체 실내 장소로 옮길 수 있다고 설명합니다. 따라서 미리 받은 청첩장에 더가든이라고 적혀 있더라도 예식일에 장소 변경이 안내되었는지 확인해 주세요.\n\n‘비가 오면 무조건 그랜드볼룸’처럼 대체 공간을 임의로 정하면 안 됩니다. 변경된 홀 이름·층·받는 담당자와 허용 시각을 확인한 내용으로 주문정보를 갱신해 주세요. 야외에 화환을 둘 수 있는지, 실내 이동이 필요한지, 실제 배치 위치가 어디인지도 행사 담당자의 안내를 받아야 합니다. 하객 출입 안내가 화환 운반·설치 허용을 대신하지는 않습니다.\n\n## 축하화환 가격과 공간 조건을 함께 비교하세요\n\n축하 3단 화환 C200은 59,000원, 축하 고급 3단 화환 C203은 79,000원, 축하 특대 3단 화환 C204는 99,000원입니다. 예산뿐 아니라 지정된 설치 공간과 허용 규격을 고려해 선택해 주세요. 상품 이름만으로 높이·폭이나 호텔의 반입 허용을 확정할 수 없습니다.\n\n공식 상품사진은 제품 선택을 위한 예시로, 해당 호텔 납품 실적을 보여주는 사진은 아닙니다. 사진 속 리본도 예시이며 실제 꽃 구성과 형태는 지역과 계절에 따라 달라질 수 있습니다. 표시 상품대금 외에 추가 배송비가 생기는지, 요청한 시간과 수령 조건으로 진행 가능한지 확인한 뒤 최종 금액을 안내받으세요.\n\n## 예식 시작과 화환 수령 가능시간을 따로 전달해 주세요\n\n예식 시작시각과 화환을 받을 수 있는 시각은 각각 알려주세요. 실제 주문에는 날짜, 공간명·층, 신랑·신부 확인정보, 현장 수령 연락처, 상품코드, 리본에 적을 보내는 이름이 필요합니다. 당일 요청이라면 희망시각을 먼저 말씀하시고 가능 여부를 확인해 주세요. 접수만으로 예식 전 도착을 보장하지 않습니다.\n\n리본에 쓸 문구와 회사·모임 이름을 어떻게 정리할지 고민된다면 [성남 결혼식 화환의 주문·리본 준비](/event/seongnam-wedding-wreath/)를 참고해 주세요. 장소 확인 뒤 이어지는 실제 주문 준비에 도움이 됩니다.\n\n실내홀인지 더가든인지 갤러리인지 확인하셨다면 [1844-0644로 꽃이랑에 전화](tel:1844-0644)해 수령 조건을 상담하세요. 상품 확인과 온라인 주문은 [꽃이랑 공식몰](https://fwith.co.kr)에서 가능합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "힐튼 공식 호텔 위치",
+        "url": "https://www.hilton.com/ko/hotels/selsedi-doubletree-seoul-pangyo/",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "힐튼 공식 웨딩 공간",
+        "url": "https://www.hilton.com/ko/hotels/selsedi-doubletree-seoul-pangyo/events/weddings/",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식몰 상품·주문 안내",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C200 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C203 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C204 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C204",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "힐튼 공식 호텔 위치",
+      "url": "https://www.hilton.com/ko/hotels/selsedi-doubletree-seoul-pangyo/",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-wedding-wreath"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]
