@@ -1,0 +1,104 @@
+name: Seongnam Worker Read-only Preflight
+
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: site-staging-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify configured account and exact Worker name without changes
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          import sys
+          from datetime import datetime, timezone
+          from urllib.error import HTTPError
+          from urllib.request import Request, build_opener
+
+          sys.path.insert(0, 'site-factory/engine')
+          from goyang_domain import NoRedirect, single_page
+
+          # Official API: GET account details and unfiltered single-page script list.
+          # https://developers.cloudflare.com/api/resources/accounts/methods/get/
+          # https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/list/
+          # Never retrieve script content, secrets, DNS, routes, or token identities.
+          report = {
+              'checkedAt': None,
+              'accountVerified': False,
+              'accountHttpStatus': None,
+              'scriptsHttpStatus': None,
+              'exists': None,
+          }
+          token = os.environ.get('CLOUDFLARE_API_TOKEN', '')
+          account = os.environ.get('CLOUDFLARE_ACCOUNT_ID', '')
+          opener = build_opener(NoRedirect())
+          account_path = '/accounts/' + account
+          scripts_path = account_path + '/workers/scripts'
+
+          def transport(method, path):
+              if method != 'GET' or path not in (account_path, scripts_path):
+                  raise ValueError()
+              status_key = 'accountHttpStatus' if path == account_path else 'scriptsHttpStatus'
+              request = Request(
+                  'https://api.cloudflare.com/client/v4' + path,
+                  headers={'Authorization': 'Bearer ' + token, 'Accept': 'application/json'},
+                  method='GET',
+              )
+              try:
+                  with opener.open(request, timeout=20) as response:
+                      report[status_key] = response.status
+                      if response.status != 200:
+                          raise ValueError()
+                      raw = response.read(1024 * 1024 + 1)
+              except HTTPError as error:
+                  report[status_key] = error.code
+                  error.close()
+                  raise ValueError() from None
+              if len(raw) > 1024 * 1024:
+                  raise ValueError()
+              payload = json.loads(raw)
+              if not isinstance(payload, dict) or payload.get('success') is not True:
+                  raise ValueError()
+              return payload
+
+          try:
+              if (not token or token != token.strip() or '\r' in token or '\n' in token
+                      or re.fullmatch(r'[0-9a-fA-F]{32}', account) is None):
+                  raise ValueError()
+              payload = transport('GET', account_path)
+              result = payload.get('result')
+              if not isinstance(result, dict) or result.get('id') != account:
+                  raise ValueError()
+              report['accountVerified'] = True
+              rows = single_page(transport, scripts_path)
+              if any(not isinstance(row.get('id'), str) or not row['id'] for row in rows):
+                  raise ValueError()
+              report['exists'] = any(row['id'] == 'seongnam-flower-guide-qa' for row in rows)
+          except Exception:
+              # HTTP/auth errors, malformed or incomplete results remain unknown, never absent.
+              pass
+          report['checkedAt'] = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+          safe_report = json.dumps(report, sort_keys=True)
+          print(safe_report)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              summary.write(safe_report + '\n')
+          raise SystemExit(0 if report['accountVerified'] and report['exists'] is False else 1)
+          PY
