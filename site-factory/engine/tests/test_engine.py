@@ -75,6 +75,40 @@ class SnapshotTests(unittest.TestCase):
         self.assertEqual(before,self.bytes())
     def test_markdown_adapter_remains_supported(self):
         self.registry['sites']['test']['snapshotRenderer']='markdown-v1';self.render();text=(self.root/'site/src/content/articles/test-page-01.md').read_text();self.assertIn('snapshotId: "snapshot-01"',text)
+    def test_markdown_review_fields_reach_article_and_replay_identically(self):
+        self.registry['sites']['test']['snapshotRenderer']='markdown-v1'
+        values={'H1':'수원 병문안 꽃 선택 조건', 'CARD-SUMMARY':'병동 반입 조건을 먼저 확인하세요.',
+                'FIRST-ANSWER':'병동의 생화 반입과 수령 시간을 먼저 확인하세요.',
+                'QUERY_CLASS':'core-commercial', 'VISUAL_INTENT':'product-selection', 'ASSET_SLOT':'FLOWER_SELECTION'}
+        body=payload(**values);self.render(body)
+        article=(self.root/'site/src/content/articles/test-page-01.md').read_text()
+        fields={line.split(': ',1)[0]:json.loads(line.split(': ',1)[1]) for line in article.split('---',2)[1].strip().splitlines()}
+        names={'H1':'h1','CARD-SUMMARY':'cardSummary','FIRST-ANSWER':'firstAnswer','QUERY_CLASS':'queryClass','VISUAL_INTENT':'visualIntent','ASSET_SLOT':'assetSlot'}
+        for header,field in names.items():self.assertEqual(fields[field],values[header])
+        before=self.bytes();self.assertEqual(self.render(body)['changedFiles'],[]);self.assertEqual(before,self.bytes())
+    def test_markdown_blank_review_fields_preserve_legacy_bytes(self):
+        self.registry['sites']['test']['snapshotRenderer']='markdown-v1'
+        baseline=self.render();before=self.bytes()
+        blank=payload(**{key:'' for key in ['H1','CARD-SUMMARY','FIRST-ANSWER','QUERY_CLASS','VISUAL_INTENT','ASSET_SLOT']})
+        result=self.render(blank)
+        self.assertEqual(result['changedFiles'],[]);self.assertEqual(before,self.bytes());self.assertEqual(baseline['approvalHash'],result['approvalHash'])
+    def test_markdown_review_fields_are_immutable_and_approval_bound(self):
+        self.registry['sites']['test']['snapshotRenderer']='markdown-v1'
+        values={'H1':'수원 병문안 꽃 선택', 'CARD-SUMMARY':'반입 조건 확인', 'FIRST-ANSWER':'병동에 반입 조건을 확인하세요.',
+                'QUERY_CLASS':'core-commercial','VISUAL_INTENT':'product-selection','ASSET_SLOT':'FLOWER_SELECTION'}
+        proof=self.render(payload(**values))['approvalHash']
+        self.render(payload(**values,APPROVAL_STATUS='approved',APPROVED_SNAPSHOT_HASH=proof))
+        for key in values:
+            with self.subTest(field=key):
+                changed={**values,key:values[key]+' changed'}
+                self.assert_rejected_unchanged(payload(**changed))
+                self.assert_rejected_unchanged(payload(**changed,APPROVAL_STATUS='approved',APPROVED_SNAPSHOT_HASH=proof))
+    def test_markdown_review_fields_support_explicit_supersession(self):
+        self.registry['sites']['test']['snapshotRenderer']='markdown-v1'
+        self.render(payload(H1='수원 병문안 꽃 이전 제목'))
+        self.render(payload(H1='수원 병문안 꽃 검수 제목',SNAPSHOT_ID='snapshot-02',PUBLISH_QUEUE_RECORD_ID='recCCCCCCCCCCCCCC',SUPERSEDES_SNAPSHOT_ID='snapshot-01'))
+        text=(self.root/'site/src/content/articles/test-page-01.md').read_text()
+        self.assertIn('h1: "수원 병문안 꽃 검수 제목"',text);self.assertNotIn('이전 제목',text)
     def test_legacy_business_source_type_is_compatible(self):self.render(payload(**{'SOURCE-TYPES':'business'}))
     def test_snapshot_id_cannot_bind_another_page(self):
         self.render();self.assert_rejected_unchanged(payload(PAGE_KEY='other',SLUG='other',PRIMARY_KEYWORD='수원 새 꽃',TITLE='수원 새 꽃 | 새 주문',PUBLISH_QUEUE_RECORD_ID='recCCCCCCCCCCCCCC'))

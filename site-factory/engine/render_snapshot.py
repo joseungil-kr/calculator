@@ -268,6 +268,13 @@ def render(body, registry, workspace):
         entry["file"] = f"src/content/articles/{key}.md"
         legacy_sources = [{**s, "type": "reference" if s["type"] == "business" else s["type"]} for s in p["sources"]]
         fields = {"pageKey": key, "snapshotId": p["SNAPSHOT_ID"], "sourceDraftKey": p["DRAFT_KEY"], "sourceRecordId": p["SOURCE_RECORD_ID"], "slug": p["SLUG"], "routeType": p["ROUTE_TYPE"], "title": p["TITLE"], "description": p["DESCRIPTION"], "category": p["CATEGORY"], "structureType": p["STRUCTURE_TYPE"], "pageType": p["PAGE_TYPE"], "contentRole": p["CONTENT_ROLE"], "localizationPolicy": p["LOCALIZATION_POLICY"], "region": p["REGION"], "verifiedAt": p["VERIFIED_AT"], "sourceUrls": [s["url"] for s in p["sources"]], "sources": legacy_sources, "relatedPageKeys": p["relatedKeys"], "draftStatus": "approved"}
+        # Emit only supplied review fields, preserving byte-identical legacy
+        # snapshots when the optional Publisher slots are absent or blank.
+        for header, field in (("H1", "h1"), ("CARD-SUMMARY", "cardSummary"),
+                              ("FIRST-ANSWER", "firstAnswer"), ("QUERY_CLASS", "queryClass"),
+                              ("VISUAL_INTENT", "visualIntent"), ("ASSET_SLOT", "assetSlot")):
+            if p.get(header):
+                fields[field] = p[header]
         # JSON values are valid YAML scalars/collections and cannot inject keys.
         article = "---\n" + "\n".join(f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in fields.items()) + "\n---\n\n" + p["CONTENT"] + "\n"
         writes[root / entry["file"]] = article
