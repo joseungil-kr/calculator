@@ -96,6 +96,20 @@
       "status": "primary"
     },
     {
+      "pageKey": "ansan-flower-launch-08",
+      "url": "/places/hanyang-erica-entry-graduation-flowers/",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/places/",
+      "primaryKeyword": "한양대 ERICA 입학 졸업식 꽃",
+      "intentKey": "안산|PLACE_LANDING|한양대 ERICA 입학 졸업식 꽃",
+      "pageType": "general-guide",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "status": "merged",
+      "canonicalUrl": "/places/hanyang-erica-graduation-flowers/",
+      "sitemapIndexable": false
+    },
+    {
       "pageKey": "ansan-flower-launch-09",
       "url": "/places/korea-ansan-hospital-visit-flowers/",
       "pageRole": "PLACE_LANDING",
@@ -175,30 +189,27 @@
     },
     {
       "pageKey": "ansan-flower-launch-31",
+      "snapshotId": "ansan-seo-repair-r2-20261002T182538Z",
+      "snapshotHash": "e9e39971a6cedc75ec5d2991a5baa2d5ddaaa6259ad0faff0fba915d30e0fcfa",
+      "approvalVerified": true,
+      "draftKey": "ansan-flower-launch-31-draft-v2",
+      "sourceRecordId": "recZ7SOwFwBiM7XBo",
+      "publishQueueRecordId": "recgxVrDNq42IFsGc",
+      "slug": "korea-ansan-hospital-funeral-condolence-wreath",
+      "category": "funeral",
+      "routeType": "category",
       "url": "/funeral/korea-ansan-hospital-funeral-condolence-wreath/",
+      "title": "고려대학교 안산병원 장례식장 근조화환 | 빈소 확인과 주문",
+      "primaryKeyword": "고려대학교 안산병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "primary",
+      "file": "src/content/articles/ansan-flower-launch-31.md",
       "pageRole": "PLACE_LANDING",
       "parentHub": "/funeral/",
-      "primaryKeyword": "고려대학교 안산병원 장례식장 근조화환",
       "intentKey": "안산|PLACE_LANDING|고려대학교 안산병원 장례식장 근조화환",
-      "pageType": "funeral-facility",
       "contentRole": "question-answer",
       "localizationPolicy": "local-required",
-      "sitemapIndexable": true,
-      "status": "primary"
-    },
-    {
-      "pageKey": "ansan-flower-launch-08",
-      "url": "/places/hanyang-erica-entry-graduation-flowers/",
-      "pageRole": "PLACE_LANDING",
-      "parentHub": "/places/",
-      "primaryKeyword": "한양대 ERICA 입학 졸업식 꽃",
-      "intentKey": "안산|PLACE_LANDING|한양대 ERICA 입학 졸업식 꽃",
-      "pageType": "general-guide",
-      "contentRole": "question-answer",
-      "localizationPolicy": "local-required",
-      "status": "merged",
-      "canonicalUrl": "/places/hanyang-erica-graduation-flowers/",
-      "sitemapIndexable": false
+      "sitemapIndexable": true
     }
   ]
 }

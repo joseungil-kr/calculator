@@ -134,13 +134,23 @@
     },
     {
       "pageKey": "ansan-flower-launch-31",
-      "snapshotId": "ansan-flower-launch-31-v2",
+      "snapshotId": "ansan-seo-repair-r2-20261002T182538Z",
+      "snapshotHash": "e9e39971a6cedc75ec5d2991a5baa2d5ddaaa6259ad0faff0fba915d30e0fcfa",
+      "approvalVerified": true,
+      "draftKey": "ansan-flower-launch-31-draft-v2",
+      "sourceRecordId": "recZ7SOwFwBiM7XBo",
+      "publishQueueRecordId": "recgxVrDNq42IFsGc",
       "slug": "korea-ansan-hospital-funeral-condolence-wreath",
       "category": "funeral",
       "routeType": "category",
       "url": "/funeral/korea-ansan-hospital-funeral-condolence-wreath/",
+      "title": "고려대학교 안산병원 장례식장 근조화환 | 빈소 확인과 주문",
+      "primaryKeyword": "고려대학교 안산병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
       "status": "approved",
-      "sourceRecordId": "recHQyyIXZIYS4gNz"
+      "file": "src/content/articles/ansan-flower-launch-31.md"
     }
-  ]
+  ],
+  "generatedFrom": "Airtable Publish Queue",
+  "snapshotMode": "git-frozen"
 }

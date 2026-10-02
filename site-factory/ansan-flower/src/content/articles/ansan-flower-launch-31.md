@@ -1,25 +1,32 @@
 ---
-pageKey: ansan-flower-launch-31
-snapshotId: ansan-flower-launch-31-v2
-sourceDraftKey: ansan-flower-launch-31-draft-v1
-sourceRecordId: recHQyyIXZIYS4gNz
+pageKey: "ansan-flower-launch-31"
+snapshotId: "ansan-seo-repair-r2-20261002T182538Z"
+sourceDraftKey: "ansan-flower-launch-31-draft-v2"
+sourceRecordId: "recZ7SOwFwBiM7XBo"
 slug: "korea-ansan-hospital-funeral-condolence-wreath"
-routeType: category
-title: "고려대학교 안산병원 장례식장 근조화환, 빈소·전화·교통은 무엇을 확인해야 할까요?"
-description: "고려대학교 안산병원 장례식장 근조화환 주문 전 공식 주소·전화, 빈소·상주 정보, 리본 문구와 반입 확인 기준을 정리합니다."
-category: funeral
-structureType: facility_guide
-pageType: funeral-facility
-contentRole: question-answer
-localizationPolicy: local-optional
-region: 안산
-verifiedAt: 2026-09-30
-sourceUrls:
-  - "https://ansan.kumc.or.kr/kr/index.do"
-draftStatus: approved
+routeType: "category"
+title: "고려대학교 안산병원 장례식장 근조화환 | 빈소 확인과 주문"
+description: "빈소·상주 정보와 공식 병원 주소를 먼저 확인하세요. 근조화환 상품 선택, 리본 문구, 반입 확인부터 꽃이랑 상담·온라인 주문까지 안내합니다."
+category: "funeral"
+structureType: "facility_guide"
+pageType: "funeral-facility"
+contentRole: "question-answer"
+localizationPolicy: "local-required"
+region: "안산"
+verifiedAt: "2026-10-02"
+sourceUrls: ["https://ansan.kumc.or.kr/kr/index.do", "https://fwith.co.kr/"]
+sources: [{"name": "고려대학교 안산병원 공식 홈페이지", "url": "https://ansan.kumc.or.kr/kr/index.do", "type": "official", "verifiedAt": "2026-10-02"}, {"name": "꽃이랑 공식 온라인몰", "url": "https://fwith.co.kr/", "type": "reference", "verifiedAt": "2026-10-02"}]
+relatedPageKeys: ["ansan-flower-launch-03"]
+draftStatus: "approved"
+h1: "고려대학교 안산병원 장례식장 근조화환 주문 준비"
+cardSummary: "병원 대표전화와 빈소 확인을 구분하고, 받는 분 정보·리본 표기·상품 선택을 한 번에 준비하세요."
+firstAnswer: "고려대학교 안산병원 장례식장 근조화환은 빈소와 상주 또는 고인 성함을 확인한 뒤 주문해 주세요. 저희 꽃이랑에 보내는 이름과 리본 문구, 희망 전달시간을 함께 알려주시면 됩니다. 반입·수령 가능 여부와 추가 배송비는 주문 전에 확인해 주세요."
+queryClass: "local-commercial"
+visualIntent: "funeral_wreath_order"
+assetSlot: "CTA_BANNER"
 ---
 
-고려대학교 안산병원 장례식장에 근조화환을 보낼 때는 **장례식장명만 적기보다 빈소와 상주 정보를 먼저 정확히 확인**하는 것이 중요합니다. 고려대학교 안산병원의 공식 주소는 경기도 안산시 단원구 적금로 123이며 병원 대표번호는 031-412-5114입니다. 장례식장 세부 연락처·빈소 현황과 화환 반입 가능 여부는 주문 시점의 공식 안내 또는 장례식장 확인을 우선하세요.
+고려대학교 안산병원 장례식장 근조화환은 빈소와 상주 또는 고인 성함을 확인한 뒤 주문해 주세요. 저희 꽃이랑에 보내는 이름과 리본 문구, 희망 전달시간을 함께 알려주시면 됩니다. 반입·수령 가능 여부와 추가 배송비는 주문 전에 확인해 주세요.
 
 ## 주문 전에 장례식장과 빈소를 정확히 확인하세요
 
@@ -46,9 +53,9 @@ draftStatus: approved
 
 일반적인 추모 문구를 사용할 수 있지만 종교나 유족의 상황을 알고 있다면 그에 맞는 표현을 선택하는 편이 좋습니다. 관계가 불분명하다면 지나치게 개성적인 문구보다 뜻이 분명하고 정중한 표현이 안전합니다.
 
-## 화환 반입은 확인 없이 단정하지 않습니다
+## 화환 반입·설치 가능 여부를 먼저 확인하세요
 
-병원이나 장례식장의 반입·설치 기준은 운영 상황에 따라 달라질 수 있습니다. 현재 확인한 병원 공식 정보만으로 특정 종류의 외부 화환이 항상 반입 가능하다고 단정하지 않습니다.
+병원이나 장례식장의 반입·설치 기준은 운영 상황에 따라 달라질 수 있습니다. 외부 화환 반입과 설치 위치는 주문 전에 장례식장에 확인해 주세요.
 
 따라서 주문 전에 빈소가 확정되었는지 확인하고, 반입 제한이 우려되는 경우 장례식장에 최신 기준을 문의하는 것이 좋습니다. 주차와 차량 동선 역시 방문 시점의 병원 공식 주차안내를 우선하세요.
 
@@ -72,6 +79,14 @@ draftStatus: approved
 ### 주문할 때 고인 성함과 상주 성함이 모두 필요한가요?
 확인 가능한 정보를 많이 갖추면 수령 대상을 특정하기 쉽습니다. 최소한 장례식장과 빈소, 수령 대상을 식별할 정보를 정확히 준비하세요.
 
-## 다음으로 확인하면 좋은 질문
+## 상품을 고르고 빈소 정보를 알려주세요
 
-급하게 주문할 때 필요한 정보, 조문·추모 문구를 고르는 방법, 안산에서 상황별로 꽃을 선택하는 기준을 함께 확인하면 주문 실수를 줄일 수 있습니다.
+저희 꽃이랑 공식몰의 근조 3단 화환은 2026년 10월 2일 표시가격 기준 59,000원입니다. 상품 표시가격과 최종 결제금액은 다를 수 있습니다. 추가 배송비와 원하는 시점의 제작·배송 가능 여부를 주문 전에 확인해 주세요. 지역과 계절에 따라 꽃 구성과 형태는 일부 달라질 수 있습니다.
+
+빈소·상주 또는 고인 성함을 확인하셨다면 [꽃이랑 온라인몰에서 근조화환 확인·주문하기](https://fwith.co.kr/)로 상품을 선택해 주세요. 급하게 보내셔야 한다면 [안산 당일 주문 준비사항](/order-help/ansan-same-day-order-checklist/)에서 필요한 정보를 먼저 확인하실 수 있습니다. 다른 시설 정보보다 현재 빈소의 수령시간과 리본 표기를 먼저 정리하는 것이 중요합니다.
+
+리본에는 ‘삼가 고인의 명복을 빕니다’ 또는 ‘깊은 애도를 표합니다’처럼 추모의 뜻을 담고, 보내는 회사·단체명과 성함을 별도로 알려주세요. 문구는 선택을 돕는 예시이며 유족의 종교와 상황을 고려해 정하시면 됩니다.
+
+[꽃이랑 1844-0644로 고려대학교 안산병원 장례식장 근조화환 상담하기](tel:1844-0644)
+
+전화주문 안내시간은 08:00~23:00, 온라인은 24시간 접수입니다. 접수시간은 실제 배송 가능시간이나 빈소의 반입 허용시간을 보장하지 않습니다. 발인 전 수령 가능시간, 추가 배송비와 최종금액을 확인한 뒤 주문을 확정해 주세요.

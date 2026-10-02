@@ -176,16 +176,98 @@
     },
     {
       "pageKey": "ansan-flower-launch-31",
-      "draftKey": "ansan-flower-launch-31-draft-v1",
-      "sourceRecordId": "recHQyyIXZIYS4gNz",
-      "publishQueueRecordId": "recUDr8vxzqj2Vl54",
-      "snapshotId": "ansan-flower-launch-31-v2",
+      "snapshotId": "ansan-seo-repair-r2-20261002T182538Z",
+      "snapshotHash": "e9e39971a6cedc75ec5d2991a5baa2d5ddaaa6259ad0faff0fba915d30e0fcfa",
+      "approvalVerified": true,
+      "draftKey": "ansan-flower-launch-31-draft-v2",
+      "sourceRecordId": "recZ7SOwFwBiM7XBo",
+      "publishQueueRecordId": "recgxVrDNq42IFsGc",
       "slug": "korea-ansan-hospital-funeral-condolence-wreath",
       "category": "funeral",
       "routeType": "category",
-      "file": "src/content/articles/ansan-flower-launch-31.md",
       "url": "/funeral/korea-ansan-hospital-funeral-condolence-wreath/",
-      "status": "approved"
+      "title": "고려대학교 안산병원 장례식장 근조화환 | 빈소 확인과 주문",
+      "primaryKeyword": "고려대학교 안산병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/content/articles/ansan-flower-launch-31.md"
     }
-  ]
+  ],
+  "snapshotLedger": {
+    "ansan-flower-launch-01-v1": {
+      "pageKey": "ansan-flower-launch-01",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recQ7VKGx4NBYiKkB"
+    },
+    "ansan-flower-launch-02-v1": {
+      "pageKey": "ansan-flower-launch-02",
+      "snapshotHash": null,
+      "publishQueueRecordId": "rec2xSa5l5rnWZ7ts"
+    },
+    "ansan-flower-launch-03-v1": {
+      "pageKey": "ansan-flower-launch-03",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recKe42hM4qTDeLos"
+    },
+    "ansan-flower-launch-04-v2": {
+      "pageKey": "ansan-flower-launch-04",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recfUGsgPzdXyF9uu"
+    },
+    "ansan-flower-launch-05-v1": {
+      "pageKey": "ansan-flower-launch-05",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recYoaTgkDqI3nqnO"
+    },
+    "ansan-flower-launch-06-v1": {
+      "pageKey": "ansan-flower-launch-06",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recMbaDe6DatIooUA"
+    },
+    "ansan-flower-launch-07-v1": {
+      "pageKey": "ansan-flower-launch-07",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recuSjGpkStv7Vk1E"
+    },
+    "ansan-flower-launch-09-v1": {
+      "pageKey": "ansan-flower-launch-09",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recQYC9tANL7azhpB"
+    },
+    "ansan-flower-launch-10-v1": {
+      "pageKey": "ansan-flower-launch-10",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recg9FUV9UpzAvvx9"
+    },
+    "ansan-flower-launch-11-v1": {
+      "pageKey": "ansan-flower-launch-11",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recT3f9tE7AhCbY40"
+    },
+    "ansan-flower-launch-12-v5": {
+      "pageKey": "ansan-flower-launch-12",
+      "snapshotHash": null,
+      "publishQueueRecordId": "rec6NaPLiGdy92Qww"
+    },
+    "ansan-flower-launch-15-v1": {
+      "pageKey": "ansan-flower-launch-15",
+      "snapshotHash": null,
+      "publishQueueRecordId": "rec9orIYnxeCnnmmk"
+    },
+    "ansan-flower-launch-21-v1": {
+      "pageKey": "ansan-flower-launch-21",
+      "snapshotHash": null,
+      "publishQueueRecordId": "rec43JQTsJiDFPtMT"
+    },
+    "ansan-flower-launch-31-v2": {
+      "pageKey": "ansan-flower-launch-31",
+      "snapshotHash": null,
+      "publishQueueRecordId": "recUDr8vxzqj2Vl54"
+    },
+    "ansan-seo-repair-r2-20261002T182538Z": {
+      "pageKey": "ansan-flower-launch-31",
+      "snapshotHash": "e9e39971a6cedc75ec5d2991a5baa2d5ddaaa6259ad0faff0fba915d30e0fcfa",
+      "publishQueueRecordId": "recgxVrDNq42IFsGc"
+    }
+  }
 }
