@@ -55,6 +55,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-same-day-wreath",
+      "snapshotId": "seongnam-same-day-wreath-r1-20261002T180106Z",
+      "snapshotHash": "0128c97696bddc3f399e5b755fcf731b5de830f5f9233d13095114d389609ea1",
+      "approvalVerified": true,
+      "draftKey": "seongnam-same-day-wreath-r1",
+      "sourceRecordId": "recMnXygQQvVGaPsD",
+      "publishQueueRecordId": "recB0cpdRTi4Nm4SW",
+      "slug": "seongnam-same-day-wreath",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/seongnam-same-day-wreath/",
+      "title": "성남 화환 당일배송 | 접수시간·도착 가능시간 확인",
+      "primaryKeyword": "성남 화환 당일배송",
+      "pageType": "order-help",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-snuh-funeral-wreath",
       "snapshotId": "seongnam-snuh-funeral-r1-20261002T131900Z",
       "snapshotHash": "1522661f1f1cd0bae2e9b7449dc2adc2d095d665f12718d117e94d9e76d96e41",
@@ -95,6 +113,11 @@
       "pageKey": "seongnam-congrats-wreath-price",
       "snapshotHash": "8ab33558663cbfca5f88374b12b248bdeeca79b179439ad859e06d4f683074c0",
       "publishQueueRecordId": "rec3AMvHsb0GYWfll"
+    },
+    "seongnam-same-day-wreath-r1-20261002T180106Z": {
+      "pageKey": "seongnam-same-day-wreath",
+      "snapshotHash": "0128c97696bddc3f399e5b755fcf731b5de830f5f9233d13095114d389609ea1",
+      "publishQueueRecordId": "recB0cpdRTi4Nm4SW"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
