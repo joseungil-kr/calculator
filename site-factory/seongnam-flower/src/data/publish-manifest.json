@@ -19,6 +19,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-city-funeral-wreath",
+      "snapshotId": "seongnam-city-funeral-wreath-r1-20261002T185018Z",
+      "snapshotHash": "1c3d0a5a11d5ec8a731faa6c851479a238c1e71a181296d41135c709eb8954f3",
+      "approvalVerified": true,
+      "draftKey": "seongnam-city-funeral-wreath-r1",
+      "sourceRecordId": "recEmaImC8e7DKYVA",
+      "publishQueueRecordId": "recVuOM4T93DZmci6",
+      "slug": "seongnam-city-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/seongnam-city-funeral-wreath/",
+      "title": "성남시장례식장 근조화환 | 순암로 800 목적지·상품가격",
+      "primaryKeyword": "성남시장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-congrats-wreath-price",
       "snapshotId": "seongnam-congrats-wreath-price-r1-20261002T180106Z",
       "snapshotHash": "8ab33558663cbfca5f88374b12b248bdeeca79b179439ad859e06d4f683074c0",
@@ -187,6 +205,11 @@
       "pageKey": "seongnam-cha-funeral-wreath",
       "snapshotHash": "9c3f4332eee80000fe8204cfffc811df155d61c2bcafc6e749f87581d337a6a1",
       "publishQueueRecordId": "recRYhHlGMtasJybM"
+    },
+    "seongnam-city-funeral-wreath-r1-20261002T185018Z": {
+      "pageKey": "seongnam-city-funeral-wreath",
+      "snapshotHash": "1c3d0a5a11d5ec8a731faa6c851479a238c1e71a181296d41135c709eb8954f3",
+      "publishQueueRecordId": "recVuOM4T93DZmci6"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
