@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { removeRepeatedOpeningParagraph } from '../lib/article-opening.mjs';
 import BaseLayout from './BaseLayout.astro';
 import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
@@ -152,7 +153,7 @@ const nextCategoryPriority: Record<string, string[]> = {
 };
 const explicitRank = new Map(relatedPageKeys.map((key, index) => [key, index]));
 const priority = nextCategoryPriority[category] ?? [];
-const related = allArticles
+const fallbackRelated = allArticles
   .filter((article) => article.data.pageKey !== pageKey)
   .map((article) => {
     const explicit = explicitRank.has(article.data.pageKey);
@@ -166,6 +167,12 @@ const related = allArticles
   .sort((a, b) => b.score - a.score || a.article.data.pageKey.localeCompare(b.article.data.pageKey, 'ko'))
   .slice(0, 4)
   .map(({ article }) => article);
+const related = relatedPageKeys.length
+  ? [...new Set(relatedPageKeys)].flatMap((key) => {
+      const article = allArticles.find((item) => item.data.pageKey === key && key !== pageKey);
+      return article ? [article] : [];
+    })
+  : fallbackRelated;
 
 const formatDate = (date?: Date) =>
   date ? new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }).format(date) : null;
@@ -231,6 +238,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: breadcrumbItems,
 };
+const articleContent=removeRepeatedOpeningParagraph(await Astro.slots.render('default'),firstAnswer);
 ---
 <BaseLayout title={seoTitle} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable ? "noindex,follow,max-image-preview:large" : undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -291,7 +299,7 @@ const breadcrumbSchema = {
 
       <div class="article-grid article-grid-single">
         <article class="prose">
-          <slot />
+          <Fragment set:html={articleContent} />
           {normalizedSources.length > 0 && (
             <section class="source-list" aria-labelledby="source-title">
               <div class="source-list-head">
