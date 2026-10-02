@@ -19,6 +19,12 @@ const articles = defineCollection({
     routeType: z.enum(['top_level', 'category']),
     title: z.string(),
     description: z.string(),
+    h1: z.string().optional(),
+    cardSummary: z.string().optional(),
+    firstAnswer: z.string().optional(),
+    queryClass: z.string().optional(),
+    visualIntent: z.string().optional(),
+    assetSlot: z.string().optional(),
     category: z.enum(['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help']),
     structureType: z.string(),
     pageType: z.enum([

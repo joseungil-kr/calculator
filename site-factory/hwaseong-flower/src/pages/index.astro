@@ -96,7 +96,7 @@ const situations = [
       <div class="grid grid-3">
         {recent.map((article) => (
           <a class="card recent-card" href={hrefFor(article)}>
-            <div><span class="tag">{article.data.region} · {categoryLabel[article.data.category] ?? '가이드'}</span><h3>{article.data.title}</h3><p>{article.data.description}</p></div>
+            <div><span class="tag">{article.data.region} · {categoryLabel[article.data.category] ?? '가이드'}</span><h3>{article.data.title}</h3><p>{article.data.cardSummary || article.data.description}</p></div>
             <span class="more">가이드 읽기 ›</span>
           </a>
         ))}
