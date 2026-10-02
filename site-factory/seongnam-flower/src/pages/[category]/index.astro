@@ -4,11 +4,11 @@ import pages from '../../data/pages.json';
 import products from '../../data/products.json';
 import ProductCards from '../../components/ProductCards.astro';
 import {site,groups} from '../../config/site';
-import {hubGuides,hubProducts} from '../../lib/hubs.mjs';
+import {hubGuide,hubProducts} from '../../lib/hubs.mjs';
 import editorial from '../../data/editorial-assets.json';
 export function getStaticPaths(){return groups.map(g=>({params:{category:g.cat},props:{group:g}}));}
 const {group}=Astro.props; const items=(pages as any[]).filter(p=>p.category===group.cat);
-const guide=hubGuides[group.cat]; const selected=hubProducts(group.cat,products,group.cat==='order'?4:3);
+const guide=hubGuide(group.cat,pages); const selected=hubProducts(group.cat,products,group.cat==='order'?4:3,pages);
 const hero=selected[0];
 const illustration=group.cat==='business'?(editorial as {openingWreath:any}).openingWreath:null;
 const addressPage=(pages as any[]).find(p=>p.visualIntent==='order_address');

@@ -1,3 +1,4 @@
+import {productFamilies} from './catalog.mjs';
 /** Decision help stays category-specific; it does not prescribe detail structure. */
 /** @type {Record<string, {intro:string, decision:string[], families:string[], heading:string, cta:string}>} */
 export const hubGuides = {
@@ -32,8 +33,21 @@ export const hubGuides = {
     families: ['funeral', 'congrats'], heading: '목적에 맞는 화환부터 선택', cta: '화환 상품 확인'
   }
 };
-export function hubProducts(category, products, limit = 3) {
-  const families = hubGuides[category]?.families || [];
+/** A wreath-only event collection must not promise unrelated gift families. */
+export function hubGuide(category, pages = []) {
+  const children = pages.filter(page => page.category === category);
+  if (category === 'event' && children.length > 0 && children.every(page => {
+    const families = productFamilies(page);
+    return families.length === 1 && families[0] === 'congrats';
+  })) return {
+    intro: '행사장에 설치할 축하화환은 받는 장소와 반입 조건을 확인한 뒤 고르세요. 축하 기본 3단은 59,000원입니다. 추가 배송비와 최종 결제금액은 주문 전에 확인해 주세요.',
+    decision: ['행사명·홀 또는 전시장·받는 담당자 확인', '주최 측에 화환 반입·설치 가능 여부와 전달시간 확인', '축하 문구와 보내는 회사·단체명 또는 이름 확인'],
+    families: ['congrats'], heading: '행사장에 설치하는 축하화환', cta: '행사 축하화환 상품 확인'
+  };
+  return hubGuides[category];
+}
+export function hubProducts(category, products, limit = 3, pages = []) {
+  const families = hubGuide(category, pages)?.families || [];
   if (families.some(family => !products.some(p => p.family === family))) throw new Error(`Seongnam catalog missing hub family: ${category}`);
   const first = families.map(family => products.find(p => p.family === family)).filter(Boolean);
   const rest = families.flatMap(family => products.filter(p => p.family === family && !first.includes(p)));

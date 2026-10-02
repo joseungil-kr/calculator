@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {homeProducts, productFamilies} from '../src/lib/catalog.mjs';
-import {hubGuides, hubProducts} from '../src/lib/hubs.mjs';
+import {hubGuides, hubGuide, hubProducts} from '../src/lib/hubs.mjs';
 const read=name=>JSON.parse(fs.readFileSync(`src/data/${name}.json`,'utf8'));
 const products=read('products'),proof=read('catalog-provenance'),pages=read('pages');
 const sourceBytes=fs.readFileSync('src/data/catalog-source-evidence.json');
@@ -36,7 +36,12 @@ for (const p of products) {
 }
 assert.deepEqual([...new Set(homeProducts(products).map(p=>p.family))].sort(),['congrats','funeral']);
 for (const category of new Set(pages.map(p=>p.category))) {
- assert.ok(hubGuides[category]);hubProducts(category,products);
+ assert.ok(hubGuides[category]);hubProducts(category,products,3,pages);
+ const guide=hubGuide(category,pages);
+ if (category==='event' && guide.families.length===1 && guide.families[0]==='congrats') {
+  const basic=products.find(p=>p.key==='congrats-basic');
+  assert.ok(basic && guide.intro.includes(`${basic.price.toLocaleString('en-US')}원`),'Event hub base-price promise drift');
+ }
 }
 for (const page of pages) {
  const expected=productFamilies(page);
