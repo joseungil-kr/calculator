@@ -1,0 +1,101 @@
+name: Goyang Fixed Canonical Noindex Redeploy
+
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: site-staging-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  canonical-noindex:
+    runs-on: ubuntu-latest
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+      SITE_URL: https://goyang.fwith.kr
+      SITE_INDEXABLE: 'false'
+      SITE_FACTORY_REVISION: e4eead3e881b3b4c09a60e2af5befb55b6787413
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: control
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: e4eead3e881b3b4c09a60e2af5befb55b6787413
+          path: target
+          persist-credentials: false
+      - name: Assert fixed source and unchanged paused contract
+        run: |
+          test "$(git -C target rev-parse HEAD)" = e4eead3e881b3b4c09a60e2af5befb55b6787413
+          test "$(git -C target rev-parse HEAD:site-factory/goyang-flower)" = 27a45b8e99151c34b966f0a59a96110b91395fad
+          python3 - <<'PYTHON'
+          import json
+          from pathlib import Path
+          site=json.load(open('control/.github/site-factory-sites.json'))['sites']['goyang-flower-v2']
+          assert site['repo']=='joseungil-kr/fwith-site-factory' and site['siteUrl']=='https://goyang.fwith.kr'
+          assert site['branch']=='site-factory-goyang-v2' and site['root']=='site-factory/goyang-flower'
+          assert site['productionEnabled'] is False and site['launchMode']=='staging'
+          assert site['growthPaused'] is True and site['autoDeploySnapshots'] is False and site['indexnowKey']==''
+          root=Path('target/site-factory/goyang-flower')
+          staging=json.loads((root/'wrangler.staging.jsonc').read_text())
+          assert staging['name']=='goyang-flower-guide-qa' and staging['workers_dev'] is True
+          assert 'route' not in staging and 'routes' not in staging and 'triggers' not in staging
+          assert staging['assets']['directory']=='./dist/'
+          manifest=json.loads((root/'src/data/publish-manifest.json').read_text())
+          assert len(manifest['pages'])==1
+          page=manifest['pages'][0]
+          assert page['url']=='/funeral/ilsan-paik-funeral-wreath/'
+          assert page['snapshotId']=='goyang-ilsan-paik-r2-20261002T040830'
+          assert page['snapshotHash']=='1419cc48f44a3618cbc365ac7f3796d4cd35dc5522eeff655a22f4caadfbdf10'
+          Path('goyang-restore-reference.json').write_text(json.dumps({'worker':'goyang-flower-guide-qa','previousWorkerVersion':'65c10ead-4583-4860-bd97-241b840b3276','revision':'e4eead3e881b3b4c09a60e2af5befb55b6787413','snapshot':page['snapshotId'],'snapshotHash':page['snapshotHash']},indent=2)+'\n')
+          PYTHON
+      - name: Isolate exact frozen Astro tree from repository-level PostCSS
+        run: |
+          set -euo pipefail
+          mkdir goyang-build
+          git -C target archive e4eead3e881b3b4c09a60e2af5befb55b6787413:site-factory/goyang-flower | tar -xf - -C goyang-build
+      - name: Verify existing binding before asset deployment
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-before.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build same frozen content with custom canonical and noindex
+        id: build
+        working-directory: goyang-build
+        run: |
+          npm ci
+          npm test
+          npm run build
+          python3 scripts/qa_static.py
+      - name: Redeploy assets to same QA Worker without domain synchronization
+        id: deploy
+        working-directory: goyang-build
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx --yes wrangler@4.146.0 deploy -c wrangler.staging.jsonc
+      - name: Verify binding preservation after deployment attempt
+        if: ${{ always() && steps.deploy.outcome != 'skipped' }}
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-after.json
+      - name: Verify HTTPS canonical noindex revision and frozen snapshot
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py http --report goyang-canonical-verification.json
+      - name: Save fixed redeploy evidence and built assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goyang-canonical-noindex-${{ github.run_id }}
+          path: |
+            goyang-restore-reference.json
+            goyang-binding-before.json
+            goyang-binding-after.json
+            goyang-canonical-verification.json
+            goyang-build/dist/
+          retention-days: 7

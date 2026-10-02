@@ -60,6 +60,8 @@ jobs:
           revision=os.environ.get('REVISION') or values.get('EXPECTED_REVISION','')
           site=json.load(open('control/.github/site-factory-sites.json'))['sites'].get(key)
           if not site or site['repo']!=os.environ['GITHUB_REPOSITORY']:raise SystemExit('Unregistered target')
+          if key == 'goyang-flower-v2':
+              raise SystemExit('Use goyang-canonical-noindex-deploy.yml: legacy staging would revert the bound Goyang canonical')
           config,url=site.get('stagingWranglerConfig'),site.get('stagingUrl')
           if not config or not url or config==site.get('wranglerConfig','wrangler.jsonc') or url.rstrip('/')==site['siteUrl'].rstrip('/'):
               raise SystemExit('No isolated staging configuration: refusing to overwrite production')
