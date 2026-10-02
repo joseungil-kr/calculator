@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import time
+import xml.etree.ElementTree as ET
 from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, build_opener, urlopen
@@ -80,9 +81,39 @@ def verify_http(opener=urlopen, sleeper=time.sleep):
                 raise ValueError("frozen_snapshot_mismatch")
             if step == "funeral_hub" and DETAIL not in page.hrefs:
                 raise ValueError("hub_detail_link_mismatch")
+        # Exact e4eead3 noindex build: one index/child, home + frozen detail.
+        # The thin funeral hub is excluded; robots does not advertise a sitemap.
+        namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+        for step, path, tag, expected in (
+            ("sitemap_index", "/sitemap-index.xml", "sitemapindex", {ORIGIN + "/sitemap-0.xml"}),
+            ("sitemap_urls", "/sitemap-0.xml", "urlset", {ORIGIN + "/", ORIGIN + DETAIL}),
+        ):
+            request = Request(ORIGIN + path, headers={"User-Agent": "SiteFactory-StagingQA/3.0"})
+            try:
+                with opener(request, timeout=15) as response:
+                    if response.status != 200 or response.geturl() != ORIGIN + path:
+                        raise ValueError("https_sitemap_route_mismatch")
+                    if "noindex" not in {part.strip().lower() for part in response.headers.get("X-Robots-Tag", "").split(",")}:
+                        raise ValueError("sitemap_noindex_header_mismatch")
+                    raw = response.read(1024 * 1024 + 1)
+            except HTTPError as error:
+                error.site_factory_step, error.site_factory_origin = step, ORIGIN
+                raise
+            text = raw.decode("utf-8")
+            if len(raw) > 1024 * 1024 or "<!DOCTYPE" in text.upper() or "<!ENTITY" in text.upper():
+                raise ValueError("unsafe_sitemap_xml")
+            xml = ET.fromstring(text)
+            locations = [node.text for node in xml.iter(namespace + "loc")]
+            entry_tag = namespace + ("sitemap" if tag == "sitemapindex" else "url")
+            if (xml.tag != namespace + tag or len(xml) != len(expected)
+                    or any(entry.tag != entry_tag or len(entry.findall(namespace + "loc")) != 1 for entry in xml)
+                    or len(locations) != len(expected) or set(locations) != expected):
+                raise ValueError("sitemap_isolation_mismatch")
     except Exception as error:
         return {"state": "goyang_canonical_qa_failed", "step": step, "lastFailure": preview.describe_failure(error)}
-    return {"state": "goyang_canonical_noindex_verified", "origin": ORIGIN, "revision": REVISION, "snapshot": SNAPSHOT}
+    return {"state": "goyang_canonical_noindex_verified", "origin": ORIGIN, "revision": REVISION, "snapshot": SNAPSHOT,
+            "sitemap": {"index": ORIGIN + "/sitemap-index.xml", "child": ORIGIN + "/sitemap-0.xml",
+                        "urls": sorted({ORIGIN + "/", ORIGIN + DETAIL}), "noindexHeaderVerified": True}}
 
 
 def main(argv=None):

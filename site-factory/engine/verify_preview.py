@@ -15,6 +15,8 @@ SAFE_FAILURE_PATHS = {
     "robots": "/robots.txt",
     "detail": "/funeral/ilsan-paik-funeral-wreath/",
     "funeral_hub": "/funeral/",
+    "sitemap_index": "/sitemap-index.xml",
+    "sitemap_urls": "/sitemap-0.xml",
 }
 
 
