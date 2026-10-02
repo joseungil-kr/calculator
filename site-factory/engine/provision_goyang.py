@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare a deterministic, local-only Goyang bootstrap from trusted Git objects.
+"""Prepare a deterministic, local-only reviewed v2 region bootstrap.
 
 This deliberately has no network, commit, push, deployment, Airtable, content
 writer or approval operation. The existing scheduled Creator consumes the bundle.
@@ -25,9 +25,9 @@ ROOT = 'site-factory/goyang-flower'
 TEMPLATE_KEY = 'flower-local-v2'
 SOURCE_BRANCH = 'site-factory-flower-v2-template'
 SOURCE_ROOT = 'site-factory/templates/flower-local-v2'
-SOURCE_REVISION = 'b1cd645bc252e0e11bdab6a0442bb3e0e6cfe3df'
+SOURCE_REVISION = '2ead40cecc0fe0925f69395e4798a35c0aec1894'
 # Independently reviewed 54-file tree, not the source branch's mutable HEAD.
-SOURCE_TREE = 'cc0ce35a65c72829d4d9e9eedd2e7b18c261c8e4'
+SOURCE_TREE = '52fa60037b12c0762dda16b61ab95c3fc62270b1'
 SOURCE_COUNT = 54
 STAGING_WORKER = 'goyang-flower-guide-qa'
 PRODUCTION_PLACEHOLDER = 'goyang-flower-prod-disabled'
@@ -48,6 +48,7 @@ CATEGORY_TYPES = {
     'gift': ['hospital-visit', 'personal-gift', 'station-transit'],
     'order': ['order-help', 'price-guide', 'message-guide'],
 }
+REGIONS = {'goyang-flower-v2': '고양', 'seongnam-flower-v2': '성남'}
 
 
 class ProvisionError(ValueError):
@@ -124,41 +125,67 @@ def read_json(repo, revision, path):
         raise ProvisionError('Invalid JSON: ' + path) from error
 
 
-def site_entry():
-    return {
-        'repo': REPOSITORY, 'branch': BRANCH, 'root': ROOT, 'siteUrl': SITE_URL,
-        'primaryLandingSlug': '', 'heroPath': '', 'worker': PRODUCTION_PLACEHOLDER,
+def target_contract(site_key=SITE_KEY):
+    require(site_key in REGIONS, 'Region is not in the reviewed v2 bootstrap allowlist')
+    region_slug = site_key.split('-')[0]
+    worker = region_slug + '-flower-guide-qa'
+    return {'siteKey': site_key, 'region': REGIONS[site_key],
+            'branch': 'site-factory-' + region_slug + '-v2', 'root': 'site-factory/' + region_slug + '-flower',
+            'siteUrl': 'https://' + region_slug + '.fwith.kr', 'stagingWorker': worker,
+            'productionWorker': region_slug + '-flower-prod-disabled',
+            'stagingUrl': 'https://' + worker + '.joseungil.workers.dev',
+            'provenancePath': '.github/site-factory-provisioning/' + site_key + '.json'}
+
+
+def checked_launch_key(site_key, launch_key):
+    if site_key == SITE_KEY:
+        require(launch_key in (None, LAUNCH_KEY), 'Goyang launch identity is fixed')
+        return LAUNCH_KEY
+    require(isinstance(launch_key, str) and re.fullmatch(re.escape(site_key) + r'-trial-[a-z0-9][a-z0-9-]{0,50}', launch_key),
+            'A distinct explicit regional trial launch key is required; legacy 30-page launch cannot be reused')
+    return launch_key
+
+
+def site_entry(site_key=SITE_KEY):
+    target = target_contract(site_key)
+    entry = {
+        'repo': REPOSITORY, 'branch': target['branch'], 'root': target['root'], 'siteUrl': target['siteUrl'],
+        'primaryLandingSlug': '', 'heroPath': '', 'worker': target['productionWorker'],
         'launchMode': 'staging', 'productionEnabled': False,
         'naverVerification': '', 'indexnowKey': '', 'templateKey': TEMPLATE_KEY,
         'allowedCategories': list(CATEGORY_TYPES),
         'allowedPageTypes': list(dict.fromkeys(t for values in CATEGORY_TYPES.values() for t in values)),
         'categoryPageTypes': CATEGORY_TYPES, 'snapshotRenderer': 'structured-json-v12',
         'growthPaused': True, 'autoDeploySnapshots': False, 'graphScript': 'scripts/qa_graph.mjs',
-        'stagingWranglerConfig': 'wrangler.staging.jsonc', 'stagingUrl': STAGING_URL,
+        'stagingWranglerConfig': 'wrangler.staging.jsonc', 'stagingUrl': target['stagingUrl'],
         'requireRevisionApproval': True, 'requireSnapshotApproval': True,
         'approvedRevision': '', 'approvalEvidenceUrl': '',
     }
+    if site_key != SITE_KEY:
+        entry.update(stagingBuildIsolation=True, stagingWorker=target['stagingWorker'])
+    return entry
 
 
-def validate_registry(registry):
+def validate_registry(registry, site_key=SITE_KEY):
     require(registry.get('schemaVersion') == 1 and isinstance(registry.get('sites'), dict),
             'Unsupported trusted site registry')
-    expected = site_entry()
-    existing = registry['sites'].get(SITE_KEY)
-    require(existing is None or existing == expected, 'Goyang registry identity/policy collision; no overwrite')
+    target = target_contract(site_key)
+    expected = site_entry(site_key)
+    existing = registry['sites'].get(site_key)
+    require(existing is None or existing == expected, 'Regional registry identity/policy collision; no overwrite')
     for key, site in registry['sites'].items():
         require(isinstance(site, dict), 'Malformed registered site: ' + key)
-        if key == SITE_KEY:
+        if key == site_key:
             continue
-        require(site.get('branch') != BRANCH, 'Protected/existing branch collision: ' + key)
+        require(site.get('branch') != target['branch'], 'Protected/existing branch collision: ' + key)
         other_root = str(site.get('root', '')).strip('/')
-        require(not other_root or not (other_root == ROOT or ROOT.startswith(other_root + '/') or other_root.startswith(ROOT + '/')),
+        require(not other_root or not (other_root == target['root'] or target['root'].startswith(other_root + '/') or other_root.startswith(target['root'] + '/')),
                 'Protected/existing root collision: ' + key)
         for field in ('siteUrl', 'stagingUrl'):
-            require(str(site.get(field, '')).rstrip('/').lower() not in {SITE_URL.lower(), STAGING_URL.lower()},
+            require(str(site.get(field, '')).rstrip('/').lower() not in {target['siteUrl'].lower(), target['stagingUrl'].lower()},
                     'Registered URL collision: ' + key)
         for field in ('worker', 'stagingWorker'):
-            require(site.get(field) not in {STAGING_WORKER, PRODUCTION_PLACEHOLDER}, 'Registered Worker collision: ' + key)
+            require(site.get(field) not in {target['stagingWorker'], target['productionWorker']}, 'Registered Worker collision: ' + key)
     return existing is not None
 
 
@@ -187,22 +214,23 @@ def validate_empty(files, site_key):
             'QA and production names must be distinct')
 
 
-def adapt(source):
+def adapt(source, site_key=SITE_KEY):
     validate_empty(source, 'template-only')
+    target = target_contract(site_key)
     files = dict(source)
     for name in sorted(ADAPTATIONS):
         value = json.loads(files[name])
         if name.startswith('src/data/'):
-            value['siteKey'] = SITE_KEY
+            value['siteKey'] = site_key
             if name.endswith('/site-config.json'):
-                value.update(region='고양', previewUrl=STAGING_URL, stagingWorker=STAGING_WORKER)
+                value.update(region=target['region'], previewUrl=target['stagingUrl'], stagingWorker=target['stagingWorker'])
             elif name.endswith('/architecture.json'):
-                value['home']['primaryKeyword'] = '고양 꽃배달'
+                value['home']['primaryKeyword'] = target['region'] + ' 꽃배달'
         else:
-            value['name'] = STAGING_WORKER if name == 'wrangler.staging.jsonc' else PRODUCTION_PLACEHOLDER
+            value['name'] = target['stagingWorker'] if name == 'wrangler.staging.jsonc' else target['productionWorker']
         files[name] = encode(value)
     require({p for p in files if files[p] != source[p]} == ADAPTATIONS, 'Only the six reviewed adaptations are permitted')
-    validate_empty(files, SITE_KEY)
+    validate_empty(files, site_key)
     return files
 
 
@@ -210,7 +238,9 @@ def manifest_for(files):
     return [{'path': name, 'sha256': sha256(data)} for name, data in sorted(files.items())]
 
 
-def prepare(repo, control_revision, target_revision):
+def prepare(repo, control_revision, target_revision, site_key=SITE_KEY, launch_key=None):
+    target = target_contract(site_key)
+    launch_key = checked_launch_key(site_key, launch_key)
     full_commit(repo, control_revision)
     full_commit(repo, SOURCE_REVISION)
     template_registry = read_json(repo, control_revision, TEMPLATE_REGISTRY_PATH)
@@ -223,16 +253,16 @@ def prepare(repo, control_revision, target_revision):
     require(tree == SOURCE_TREE, 'Source tree differs from independently reviewed source')
     source, source_manifest = read_tree(repo, SOURCE_REVISION, SOURCE_ROOT)
     require(len(source) == SOURCE_COUNT, 'Expected exactly 54 tracked source files')
-    files = adapt(source)
+    files = adapt(source, site_key)
     registry = read_json(repo, control_revision, REGISTRY_PATH)
-    already_registered = validate_registry(registry)
+    already_registered = validate_registry(registry, site_key)
     # A root accidentally present on main must never be silently overwritten.
-    control_files, _ = read_tree(repo, control_revision, ROOT)
+    control_files, _ = read_tree(repo, control_revision, target['root'])
     require(not control_files, 'Target root already exists on control revision')
     provenance = {
         'schemaVersion': 1, 'kind': 'site-factory-infrastructure-bootstrap-v1',
-        'siteKey': SITE_KEY, 'launchKey': LAUNCH_KEY, 'repository': REPOSITORY,
-        'branch': BRANCH, 'root': ROOT,
+        'siteKey': site_key, 'launchKey': launch_key, 'repository': REPOSITORY,
+        'branch': target['branch'], 'root': target['root'],
         'templateKey': TEMPLATE_KEY, 'sourceBranch': SOURCE_BRANCH,
         'sourceRoot': SOURCE_ROOT, 'sourceRevision': SOURCE_REVISION,
         'sourceTree': SOURCE_TREE, 'sourceManifest': source_manifest,
@@ -241,13 +271,15 @@ def prepare(repo, control_revision, target_revision):
         'customerPages': 0, 'snapshotApprovalGranted': False,
         'productionEnabled': False, 'growthPaused': True, 'autoDeploySnapshots': False,
     }
+    if site_key != SITE_KEY:
+        provenance['trialDetailTarget'] = 1
     provenance['bootstrapId'] = sha256(encode(provenance))
-    target_files = {ROOT + '/' + name: data for name, data in files.items()}
-    target_files[PROVENANCE_PATH] = encode(provenance)
+    target_files = {target['root'] + '/' + name: data for name, data in files.items()}
+    target_files[target['provenancePath']] = encode(provenance)
     # Caller must read branch existence remotely, then fetch the exact SHA.
     # Local refs provide a second collision guard, not remote absence evidence.
     known_refs = [git(repo, 'rev-parse', '--verify', ref, optional=True)
-                  for ref in ('refs/heads/' + BRANCH, 'refs/remotes/origin/' + BRANCH)]
+                  for ref in ('refs/heads/' + target['branch'], 'refs/remotes/origin/' + target['branch'])]
     if target_revision == 'absent':
         require(not any(known_refs), 'Target branch already exists locally; supply its exact remote revision')
         target_state = 'create'
@@ -255,19 +287,19 @@ def prepare(repo, control_revision, target_revision):
         full_commit(repo, target_revision)
         require(all(ref is None or ref.decode().strip() == target_revision for ref in known_refs),
                 'Observed target revision disagrees with a local branch/ref; refresh before retry')
-        observed, _ = read_tree(repo, target_revision, ROOT)
+        observed, _ = read_tree(repo, target_revision, target['root'])
         require(observed == files, 'Existing target differs from exact bootstrap; never overwrite customer content or conflicts')
-        require(git(repo, 'show', target_revision + ':' + PROVENANCE_PATH, optional=True) == encode(provenance),
+        require(git(repo, 'show', target_revision + ':' + target['provenancePath'], optional=True) == encode(provenance),
                 'Existing target has no matching bootstrap provenance')
         target_state = 'unchanged'
-    registry['sites'][SITE_KEY] = site_entry()
+    registry['sites'][site_key] = site_entry(site_key)
     # Preserve the existing registry's ordering and formatting convention.
     proposed_registry = (json.dumps(registry, ensure_ascii=False, indent=2) + '\n').encode()
     plan = {
         'schemaVersion': 1, 'bootstrapId': provenance['bootstrapId'],
-        'status': 'local_proposal_only', 'siteKey': SITE_KEY, 'launchKey': LAUNCH_KEY,
+        'status': 'local_proposal_only', 'siteKey': site_key, 'launchKey': launch_key,
         'repository': REPOSITORY, 'controlRevision': control_revision,
-        'expectedTargetRevision': target_revision, 'targetBranch': BRANCH,
+        'expectedTargetRevision': target_revision, 'targetBranch': target['branch'],
         'targetState': target_state, 'registryState': 'unchanged' if already_registered else 'add',
         'sourceRevision': SOURCE_REVISION, 'sourceTree': SOURCE_TREE,
         'targetFiles': manifest_for(target_files), 'registryPath': REGISTRY_PATH,
@@ -282,6 +314,8 @@ def prepare(repo, control_revision, target_revision):
             'Actual reviewed Draft must later use the existing frozen Publisher and snapshot approval path',
         ],
     }
+    if site_key != SITE_KEY:
+        plan['trialDetailTarget'] = 1
     outputs = {'target-files/' + p: b for p, b in target_files.items()}
     outputs['control-files/' + REGISTRY_PATH] = proposed_registry
     outputs['provisioning-plan.json'] = encode(plan)
@@ -369,10 +403,17 @@ def main():
     parser.add_argument('--repo', type=Path, required=True)
     parser.add_argument('--control-revision', required=True, help='Fresh full trusted main SHA, never a mutable ref')
     parser.add_argument('--target-revision', required=True, help='Fresh observed full target SHA, or explicit absent')
-    parser.add_argument('--output', type=Path, required=True, help='New bundle directory, or byte-identical prior output')
+    parser.add_argument('--site-key', choices=sorted(REGIONS), default=SITE_KEY)
+    parser.add_argument('--launch-key', help='Explicit new trial identity for a new region; never reuse its legacy launch')
+    output = parser.add_mutually_exclusive_group(required=True)
+    output.add_argument('--output', type=Path, help='New bundle directory, or byte-identical prior output (Linux)')
+    output.add_argument('--dry-run', action='store_true', help='Validate and print the proposal without writing files')
     args = parser.parse_args()
     try:
-        outputs, plan = prepare(args.repo, args.control_revision, args.target_revision)
+        outputs, plan = prepare(args.repo, args.control_revision, args.target_revision, args.site_key, args.launch_key)
+        if args.dry_run:
+            print(json.dumps(plan, ensure_ascii=False, sort_keys=True))
+            return
         written = materialize(outputs, args.output)
         print(json.dumps({'status': plan['status'], 'bootstrapId': plan['bootstrapId'],
                           'targetState': plan['targetState'], 'registryState': plan['registryState'],

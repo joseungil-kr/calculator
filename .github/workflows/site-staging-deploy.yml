@@ -66,14 +66,48 @@ jobs:
           if not config or not url or config==site.get('wranglerConfig','wrangler.jsonc') or url.rstrip('/')==site['siteUrl'].rstrip('/'):
               raise SystemExit('No isolated staging configuration: refusing to overwrite production')
           if not re.fullmatch('[0-9a-f]{40}',revision):raise SystemExit('A pinned preview revision is required')
+          isolated=site.get('stagingBuildIsolation') is True
+          if key=='seongnam-flower-v2' and not isolated:
+              raise SystemExit('Seongnam v2 must use the isolated template build path')
+          if isolated:
+              match=re.fullmatch(r'([a-z0-9]+)-flower-v2',key)
+              if not match:raise SystemExit('Invalid isolated v2 identity')
+              region=match.group(1)
+              if (site.get('templateKey')!='flower-local-v2' or site.get('snapshotRenderer')!='structured-json-v12'
+                  or site.get('productionEnabled') is not False or site.get('launchMode')!='staging'
+                  or site.get('growthPaused') is not True or site.get('autoDeploySnapshots') is not False
+                  or site.get('requireRevisionApproval') is not True or site.get('requireSnapshotApproval') is not True
+                  or site.get('indexnowKey')!='' or site.get('naverVerification')!=''
+                  or site.get('branch')!='site-factory-'+region+'-v2' or site.get('root')!='site-factory/'+region+'-flower'
+                  or site.get('worker')!=region+'-flower-prod-disabled'
+                  or site.get('stagingWorker')!=region+'-flower-guide-qa'
+                  or url!='https://'+site['stagingWorker']+'.joseungil.workers.dev' or config!='wrangler.staging.jsonc'):
+                  raise SystemExit('Isolated v2 paused identity/policy mismatch')
           with open(os.environ['GITHUB_OUTPUT'],'a') as out:
-              for k,v in {'site_key':key,'root':site['root'],'url':url,'config':config,'revision':revision}.items():out.write(f'{k}={v}\n')
+              for k,v in {'site_key':key,'root':site['root'],'url':url,'config':config,'revision':revision,
+                          'branch':site['branch'],'isolated':str(isolated).lower(),
+                          'build_root':'preview-build' if isolated else 'target/'+site['root'],
+                          'staging_worker':site.get('stagingWorker','')}.items():out.write(f'{k}={v}\n')
           PYTHON
       - uses: actions/checkout@v4
         with: {ref: "${{ steps.target.outputs.revision }}", path: target}
+      - name: Isolate pinned v2 tree and prove registered branch ancestry
+        if: steps.target.outputs.isolated == 'true'
+        env: {ROOT: "${{ steps.target.outputs.root }}", REVISION: "${{ steps.target.outputs.revision }}", BRANCH: "${{ steps.target.outputs.branch }}"}
+        run: |
+          set -euo pipefail
+          if [ "$(git -C target rev-parse --is-shallow-repository)" = true ]; then
+            git -C target fetch --unshallow origin "$BRANCH"
+          else
+            git -C target fetch origin "$BRANCH"
+          fi
+          git -C target merge-base --is-ancestor "$REVISION" "origin/$BRANCH"
+          test "$(git -C target rev-parse HEAD)" = "$REVISION"
+          mkdir preview-build
+          git -C target archive "$REVISION:$ROOT" | tar -xf - -C preview-build
       - name: Assert preview cannot route onto production
-        working-directory: target/${{ steps.target.outputs.root }}
-        env: {CONFIG: "${{ steps.target.outputs.config }}"}
+        working-directory: ${{ steps.target.outputs.build_root }}
+        env: {CONFIG: "${{ steps.target.outputs.config }}", ISOLATED: "${{ steps.target.outputs.isolated }}", STAGING_WORKER: "${{ steps.target.outputs.staging_worker }}"}
         run: |
           python3 - <<'PYTHON'
           import json,os
@@ -81,22 +115,32 @@ jobs:
           assert s['name']!=p['name'] and s.get('workers_dev') is True
           assert not s.get('routes') and not s.get('route')
           assert s['assets']['directory']=='./dist/'
+          if os.environ['ISOLATED']=='true':
+              assert s['name']==os.environ['STAGING_WORKER'] and p['name']==s['name'].replace('-guide-qa','-prod-disabled')
+              assert 'route' not in s and 'routes' not in s and 'triggers' not in s
+              assert json.load(open('src/data/site-config.json'))['productionApproved'] is False
           PYTHON
       - uses: actions/setup-node@v4
         with: {node-version: 22}
       - name: Build noindex preview and run gates
         id: build
-        working-directory: target/${{ steps.target.outputs.root }}
-        env: {SITE_URL: "${{ steps.target.outputs.url }}", SITE_INDEXABLE: 'false', SITE_FACTORY_REVISION: "${{ steps.target.outputs.revision }}"}
+        working-directory: ${{ steps.target.outputs.build_root }}
+        env: {SITE_URL: "${{ steps.target.outputs.url }}", SITE_INDEXABLE: 'false', SITE_FACTORY_REVISION: "${{ steps.target.outputs.revision }}", ISOLATED: "${{ steps.target.outputs.isolated }}"}
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          if [ "$ISOLATED" = true ]; then npm test; fi
           npm run build
           python3 scripts/qa_static.py
       - name: Deploy isolated noindex QA Worker
         id: deploy
-        working-directory: target/${{ steps.target.outputs.root }}
-        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", CONFIG: "${{ steps.target.outputs.config }}"}
-        run: npx --yes wrangler@latest deploy -c "$CONFIG"
+        working-directory: ${{ steps.target.outputs.build_root }}
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", CONFIG: "${{ steps.target.outputs.config }}", ISOLATED: "${{ steps.target.outputs.isolated }}"}
+        run: |
+          if [ "$ISOLATED" = true ]; then
+            npx --yes wrangler@4.146.0 deploy -c "$CONFIG"
+          else
+            npx --yes wrangler@latest deploy -c "$CONFIG"
+          fi
       - name: Verify isolated exact-revision preview
         env: {ORIGIN: "${{ steps.target.outputs.url }}", REVISION: "${{ steps.target.outputs.revision }}"}
         run: python3 control/site-factory/engine/verify_preview.py --origin "$ORIGIN" --revision "$REVISION" --report preview-verification.json
@@ -106,7 +150,7 @@ jobs:
         with:
           name: isolated-preview-${{ github.run_id }}
           path: |
-            target/${{ steps.target.outputs.root }}/dist/
+            ${{ steps.target.outputs.build_root }}/dist/
             preview-verification.json
           retention-days: 7
       - name: Report issue preview

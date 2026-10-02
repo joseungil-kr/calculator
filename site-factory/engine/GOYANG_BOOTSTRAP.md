@@ -1,6 +1,9 @@
-# Scheduled Creator: deterministic Goyang bootstrap
+# Scheduled Creator: deterministic v2 region bootstrap
 
-`provision_goyang.py` prepares infrastructure only for the existing Goyang launch.
+`provision_goyang.py` keeps its original filename/default for compatibility and
+now also prepares the allowlisted Seongnam trial using the same engine.
+It prepares infrastructure only. Existing hosted Goyang content is not a new
+bootstrap and must never be replaced by an empty skeleton.
 It is a local proposal builder, not a second publisher, workflow or scheduler.
 It never contacts a service, commits/pushes, deploys, changes Airtable, creates
 customer content, grants snapshot approval or enables production/growth.
@@ -11,9 +14,12 @@ customer content, grants snapshot approval or enables production/growth.
 - Site / launch: `goyang-flower-v2` / `goyang-flower-v2-launch`
 - Target branch / root: `site-factory-goyang-v2` / `site-factory/goyang-flower`
 - Trusted template: `flower-local-v2`, branch `site-factory-flower-v2-template`
-- Source revision: `b1cd645bc252e0e11bdab6a0442bb3e0e6cfe3df`
+- Source revision: `2ead40cecc0fe0925f69395e4798a35c0aec1894`
 - Source root: `site-factory/templates/flower-local-v2`
-- Independently reviewed source tree: `cc0ce35a65c72829d4d9e9eedd2e7b18c261c8e4`
+- Independently reviewed source tree: `52fa60037b12c0762dda16b61ab95c3fc62270b1`
+- This pin adds only the reviewed six-line Goyang mobile footer correction;
+  CSS blob `2d84867cf1cbc65120a7cb92ff4fd12620092c04`. Other template bytes
+  remain identical to the earlier reviewed 54-file source.
 - Exactly 54 regular tracked files. Never copy a working directory or generated
   `node_modules`, `dist`, `.astro` or `build-revision.json`
 - Six adapted JSON files only: site config, architecture, manifest, page map,
@@ -96,17 +102,86 @@ The existing reviewed Draft for 일산백병원 at
 `/funeral/ilsan-paik-funeral-wreath/` stays in its established scheduled
 Reviewer → frozen Publish Queue → Publisher → `[SITE-SNAPSHOT]` path. Only the
 actual approved frozen snapshot adds that one detail. After its exact commit,
-the scheduled Reviewer may use the already-existing `[SITE-STAGING-DEPLOY]`
-issue trigger with `SITE_KEY: goyang-flower-v2` and
-`EXPECTED_REVISION: <that full snapshot commit SHA>`. Do not add a new workflow,
+the scheduled Reviewer must use `goyang-staging-qa.yml` for read-only QA of
+the already-hosted `e4eead3e881b3b4c09a60e2af5befb55b6787413` snapshot.
+Generic staging explicitly blocks Goyang to avoid reverting its custom-domain
+canonical. Any separate Goyang redeploy still uses the fixed approved workflow.
+Do not add a new workflow,
 schedule, broad trigger, token or permission. Hosted detail/hub/catalog/image,
 mobile, metadata, snapshot and link QA remain required; a local bootstrap build
 or homepage-only preview check cannot establish them.
+
+## Seongnam one-detail trial handoff
+
+Do not resume or rewrite the legacy 30-detail launch
+`seongnam-flower-v2-launch` / `recwHFihLl4kLNor8`, or silently reuse the queued
+Pool `recSfGl7ViUdANzXf`. The parent coordinates Airtable and existing v2 roles.
+Use a new explicit launch identity matching `seongnam-flower-v2-trial-*`, for
+example `seongnam-flower-v2-trial-20261002`. It is included in immutable
+provenance/bootstrap identity with `trialDetailTarget=1` and zero created pages.
+Replaying a different trial against existing target provenance fails closed.
+
+Read current remote main, template and target refs; fetch exact objects first.
+Local refs do not prove remote absence. A safe Windows/Linux inspection is:
+
+```sh
+python3 site-factory/engine/provision_goyang.py \
+  --repo /path/to/verified/repository \
+  --control-revision FULL_CURRENT_TRUSTED_MAIN_SHA \
+  --target-revision absent \
+  --site-key seongnam-flower-v2 \
+  --launch-key seongnam-flower-v2-trial-20261002 \
+  --dry-run
+```
+
+On the supported Linux host, replace `--dry-run` with `--output` and a new
+bundle path beneath an existing checked parent. Never weaken Linux no-follow
+handles or atomic no-replace output checks to make a Windows write succeed.
+The Creator consumes the same bundle format/publication preconditions above:
+root `site-factory/seongnam-flower`, branch `site-factory-seongnam-v2`,
+registry key `seongnam-flower-v2`, QA Worker `seongnam-flower-guide-qa`, and URL
+`https://seongnam-flower-guide-qa.joseungil.workers.dev`. Registration is a
+proposal until the Creator publishes and reads it back; this code update does
+not create a target branch, registry entry, site, Draft or Airtable launch.
+
+Before publication/deployment, independently prove no existing hosted Worker
+collision using currently authorized access. Authentication/permission denial
+is a blocker, not permission to change tokens, security rules or routes.
+No custom domain/DNS setup is needed for this noindex trial.
+
+The existing Creator/Reviewer/Publisher must research and approve the real
+one-detail frozen payload; do not handwrite a sample article. Candidate:
+분당서울대학교병원 장례식장 근조화환; official source supplied by the parent:
+https://www.snubh.org/intro/map/funeral.do . Its final slug/snapshot are chosen
+by those roles, not this infrastructure helper. Preserve the actual source,
+Draft and frozen payload. Current Airtable catalog (4 funeral + 4 congratulatory
+SKUs) differs from this unchanged template catalog (3 funeral, 3 congratulatory,
+3 bouquet and 1 basket); home/hub/product promises require existing-role catalog
+reconciliation before customer QA or readiness. No missing bouquet/basket may
+be promised solely because the skeleton contains old catalog rows.
+
+After registration and the real reviewed snapshot commit, manually run the
+existing `site-staging-deploy.yml` with `site_key=seongnam-flower-v2` and
+`expected_revision=<full exact published snapshot commit SHA>`. It opts this
+new region into an isolated archived Astro build, proves registered branch
+ancestry, checks fixed/distinct Worker names and no route/trigger, uses noindex
+and pinned Wrangler `4.146.0`, and does not alter legacy site build behavior.
+The existing secret is reused, never changed. Source build static/graph/catalog
+gates and HTTP home/robots/revision gates run; independent hosted home/hub/detail,
+catalog/image/mobile/canonical/snapshot QA still gates the one-detail result.
+
+The later first batch target is explicitly **50 detail documents, including the
+Seongnam canary; home and hubs are separate**. Do not reduce it when topics are
+insufficient. `plan_batch.py` candidate selection and one-snapshot atomic writes
+are not a 50-item completion barrier. Exact batch membership/revisions, resume
+checkpoints, all-item approval/manifest parity and final exact-SHA full QA remain
+a separate next phase; no new engine/scheduler or completion claim is added here.
 
 ## Reproducible local checks
 
 ```sh
 python3 -m unittest discover -s site-factory/engine/tests -p test_provision_goyang.py -v
+python3 -m unittest discover -s site-factory/engine/tests -p test_provision_regions.py -v
 python3 -m unittest discover -s site-factory/engine/tests -p test_engine.py -v
 python3 -m unittest discover -s site-factory/engine/tests -p test_verify_preview.py -v
 python3 site-factory/engine/tests/test_legacy_baselines.py

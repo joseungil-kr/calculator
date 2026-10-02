@@ -12,7 +12,7 @@
     "flower-local-v2": {
       "sourceBranch": "site-factory-flower-v2-template",
       "sourceRoot": "site-factory/templates/flower-local-v2",
-      "sourceRevision": "b1cd645bc252e0e11bdab6a0442bb3e0e6cfe3df",
+      "sourceRevision": "2ead40cecc0fe0925f69395e4798a35c0aec1894",
       "productionReady": false
     }
   }
