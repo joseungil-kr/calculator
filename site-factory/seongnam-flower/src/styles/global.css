@@ -8,6 +8,7 @@ h1,h2,h3,p,a,li,span,strong,small,figcaption{word-break:keep-all;overflow-wrap:b
 /* Keep the footer readable above the fixed order bar, including device safe areas. */
 @media(max-width:860px){
   :root{--mobile-order-bar-height:58px;--mobile-order-safe-area:env(safe-area-inset-bottom,0px)}
+  html{scroll-padding-bottom:calc(var(--mobile-order-bar-height) + var(--mobile-order-safe-area) + 8px)}
   footer{padding-bottom:calc(34px + var(--mobile-order-bar-height) + var(--mobile-order-safe-area))}
   .mobile-bar a{min-height:calc(var(--mobile-order-bar-height) + var(--mobile-order-safe-area));padding-bottom:var(--mobile-order-safe-area)}
 }
