@@ -31,6 +31,11 @@ interface Props {
   pageKey: string;
   title: string;
   description: string;
+  h1?: string;
+  firstAnswer?: string;
+  queryClass?: string;
+  visualIntent?: string;
+  assetSlot?: string;
   category: string;
   structureType: string;
   pageType?: string;
@@ -54,6 +59,11 @@ const {
   pageKey,
   title,
   description,
+  h1,
+  firstAnswer,
+  queryClass,
+  visualIntent,
+  assetSlot,
   category,
   structureType,
   pageType = 'general-guide',
@@ -97,8 +107,8 @@ const categoryHref = `/${category}/`;
 const regionLandingHref = `/${siteConfig.primaryLandingSlug}/`;
 const isPrimaryLanding = routeType === 'top_level' && slug === siteConfig.primaryLandingSlug;
 const effectiveContentRole = isPrimaryLanding ? 'informational-pillar' : (architectureEntry?.contentRole ?? contentRole);
-const displayTitle = isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 가이드` : title;
-const seoTitle = isPrimaryLanding
+const displayTitle = h1 || (isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 가이드` : title);
+const seoTitle = isPrimaryLanding && !h1
   ? `${siteConfig.region} 꽃배달 이용 가이드 | 장소·상황·주문 준비 | ${siteConfig.brand}`
   : `${title} | ${siteConfig.brand}`;
 
@@ -229,6 +239,9 @@ const breadcrumbSchema = {
   <section
     class:list={['article-shell', isPrimaryLanding && 'primary-landing']}
     data-snapshot-id={snapshotId}
+    data-query-class={queryClass || undefined}
+    data-visual-intent={visualIntent || undefined}
+    data-asset-slot={assetSlot || undefined}
     data-content-role={effectiveContentRole}
     data-page-type={effectivePageType}
     data-localization-policy={effectiveLocalizationPolicy}
@@ -260,7 +273,7 @@ const breadcrumbSchema = {
       <header class="article-header">
         <span class="eyebrow">{isPrimaryLanding ? `${siteConfig.region} 꽃배달 이용 안내` : categoryLabel[category] ?? category}</span>
         <h1>{displayTitle}</h1>
-        <p>{description}</p>
+        <p>{firstAnswer || description}</p>
         <div class="article-meta">
           <span>{region}</span>
           <span>{categoryLabel[category] ?? category}</span>
@@ -310,7 +323,7 @@ const breadcrumbSchema = {
               <a href={hrefFor(article)} class="related-question-card">
                 <span>{categoryLabel[article.data.category] ?? article.data.category}</span>
                 <strong>{article.data.title}</strong>
-                <p>{article.data.description}</p>
+                <p>{article.data.cardSummary || article.data.description}</p>
                 <b>확인하기 →</b>
               </a>
             ))}

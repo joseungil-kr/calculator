@@ -81,7 +81,7 @@ const structureLabel: Record<string, string> = {
               <span class="hub-card-region">{article.data.region}</span>
             </div>
             <h2>{article.data.title}</h2>
-            <p>{article.data.description}</p>
+            <p>{article.data.cardSummary || article.data.description}</p>
             <span class="more">자세히 보기 →</span>
           </a>
         ))}
