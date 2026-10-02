@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote, urljoin
-import json, os, re, xml.etree.ElementTree as ET
+import hashlib, json, os, re, xml.etree.ElementTree as ET
 
 class Document(HTMLParser):
     def __init__(self, text):
@@ -85,6 +85,33 @@ def check_rendered_catalog(doc, url, products):
         assert p['orderUrl'] in rendered['links'] or p['orderUrl'] in doc.links,f'Rendered SKU order mismatch: {url} {p["key"]}'
         assert f'{p["price"]:,}원' in ''.join(rendered['text']),f'Rendered catalog price mismatch: {url} {p["key"]}'
 
+def check_opening_visual(doc, page, products, root):
+    if page['pageType']!='business-opening':return
+    url=page['url']
+    real=page.get('assetSlot')=='REAL_PROOF' or page.get('visualIntent') in ['congrats_wreath','funeral_wreath']
+    if real:
+        assert page.get('assetSlot') in [None,'','REAL_PROOF'],f'Opening product cannot satisfy a different asset slot: {url}'
+        assert doc.primary_families==['congrats'],f'Opening primary product mismatch: {url}'
+        hero=doc.product_records[0]
+        product=next((p for p in products if p['key']==hero['key']),None)
+        assert product and product['family']=='congrats' and product['assetType']=='real_product',f'Unverified opening product: {url}'
+        assert doc.images[0]['src']==product['img'],f'Opening REAL_PROOF hero is not its official product image: {url}'
+        proof=json.loads((root/'src/data/catalog-provenance.json').read_text())
+        source=next(p for p in proof['products'] if p['key']==product['key'])
+        assert source['officialSku']==product['officialSku'] and source['image']['path']==product['img'],f'Opening SKU/image provenance mismatch: {url}'
+        assert hashlib.sha256((root/'public'/product['img'].lstrip('/')).read_bytes()).hexdigest()==source['image']['sha256'],f'Opening image hash mismatch: {url}'
+        width,height=source['image']['dimensions'];image=doc.images[0]
+        assert int(image['width'])*height==int(image['height'])*width,f'Opening REAL_PROOF aspect ratio changed: {url}'
+        css=(root/'src/styles/global.css').read_text()
+        assert '.hero-products img,.detail-product img,.product-card img{object-fit:contain' in css,f'Opening REAL_PROOF must not be cropped: {url}'
+        caption=' '.join(hero['text'])
+        assert '공식 상품 이미지' in caption and '사진 속 리본 문구는 예시' in caption,f'Opening product/reference ribbon disclosure missing: {url}'
+    else:
+        assert not page.get('assetSlot'),f'No compatible opening illustration for asset slot: {url}'
+        asset=json.loads((root/'src/data/editorial-assets.json').read_text())['openingWreath']
+        assert asset['assetType']=='editorial_illustration' and doc.images[0]['src']==asset['img'],f'Opening editorial provenance mismatch: {url}'
+        assert 'AI 일러스트' in asset['caption'] and asset['caption'] in ' '.join(doc.visible),f'Unlabeled editorial opening hero: {url}'
+
 def check(root=Path('.')):
     dist=root/'dist'; data=root/'src/data'
     pages=json.loads((data/'pages.json').read_text());manifest=json.loads((data/'publish-manifest.json').read_text())
@@ -122,10 +149,7 @@ def check(root=Path('.')):
     assert {'funeral','congrats'} == set(docs['/'].primary_families), 'Home hero omits advertised product purpose'
     assert {'funeral','congrats'} == set(docs['/'].product_families), 'Home product selection omits advertised product purpose'
     for page in pages:
-        if page['pageType']=='business-opening':
-            doc=docs[page['url']]
-            assert doc.images[0]['src'].startswith('/images/editorial/'),f'Opening hero communicates wedding sample: {page["url"]}'
-            assert 'AI 일러스트' in ' '.join(doc.visible),f'Unlabeled editorial opening hero: {page["url"]}'
+        check_opening_visual(docs[page['url']],page,products,root)
         if page.get('visualIntent')=='performance_venue':
             assert docs[page['url']].primary_families==['bouquet'],f'Performance primary product mismatch: {page["url"]}'
     for url,doc in docs.items():

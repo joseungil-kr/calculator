@@ -9,12 +9,13 @@ import {site,groups} from '../../config/site';
 import {selectProducts,productHeading,productFamilies} from '../../lib/catalog.mjs';
 import {nextSteps,relatedReading} from '../../lib/journey.mjs';
 import editorial from '../../data/editorial-assets.json';
+import {detailIllustration} from '../../lib/visual.mjs';
 export function getStaticPaths(){return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
 const {page}=Astro.props;
 const journey=nextSteps(page,pages);
 const related=relatedReading(page,pages);
 const productSet=selectProducts(page,products,productFamilies(page).length>3?4:3); const hero=productSet[0];
-const illustration=page.pageType==='business-opening' || page.visualIntent==='event_wreath' ? (editorial as {openingWreath:any}).openingWreath : null;
+const illustration=detailIllustration(page,editorial);
 const category=groups.find(g=>g.cat===page.category);
 const snapshotId=page.snapshotId;
 const pricePage=journey.find((p:any)=>p.pageType==='price-guide');
