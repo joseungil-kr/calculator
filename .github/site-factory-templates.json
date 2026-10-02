@@ -8,6 +8,12 @@
       "shadowTestRoot": "site-factory/ansan-skycar-shadow",
       "shadowBranch": "site-factory-generic-skycar-test",
       "productionReady": false
+    },
+    "flower-local-v2": {
+      "sourceBranch": "site-factory-flower-v2-template",
+      "sourceRoot": "site-factory/templates/flower-local-v2",
+      "sourceRevision": "b1cd645bc252e0e11bdab6a0442bb3e0e6cfe3df",
+      "productionReady": false
     }
   }
 }
