@@ -1,0 +1,60 @@
+name: Goyang Noindex Domain Inspection
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: Reserved for separately reviewed binding implementation; leave false.
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: site-staging-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  inspect:
+    if: inputs.apply == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: control
+          persist-credentials: false
+      - name: Assert fixed noindex contract
+        working-directory: control
+        run: |
+          python3 - <<'PYTHON'
+          import json
+          site=json.load(open('.github/site-factory-sites.json'))['sites']['goyang-flower-v2']
+          assert site['repo']=='joseungil-kr/fwith-site-factory' and site['siteUrl']=='https://goyang.fwith.kr'
+          assert site['branch']=='site-factory-goyang-v2' and site['root']=='site-factory/goyang-flower'
+          assert site['stagingUrl']=='https://goyang-flower-guide-qa.joseungil.workers.dev'
+          assert site['productionEnabled'] is False and site['launchMode']=='staging'
+          assert site['growthPaused'] is True and site['autoDeploySnapshots'] is False
+          assert site['approvedRevision']=='' and site['indexnowKey']==''
+          PYTHON
+      - name: Inspect active zone and hostname collisions
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 control/site-factory/engine/goyang_domain.py --output goyang-domain-preflight.json
+      - name: Save inspection evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goyang-noindex-domain-inspection-${{ github.run_id }}
+          path: goyang-domain-preflight.json
+          if-no-files-found: error
+          retention-days: 7
+  apply-not-implemented:
+    if: inputs.apply == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo 'Apply is intentionally disabled until noindex asset deployment and binding receive separate review.' >&2
+          exit 1
