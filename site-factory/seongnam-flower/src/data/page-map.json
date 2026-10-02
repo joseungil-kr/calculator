@@ -1,5 +1,26 @@
 {
-  "pages": [],
+  "pages": [
+    {
+      "pageKey": "seongnam-snuh-funeral-wreath",
+      "snapshotId": "seongnam-snuh-funeral-r1-20261002T131900Z",
+      "snapshotHash": "1522661f1f1cd0bae2e9b7449dc2adc2d095d665f12718d117e94d9e76d96e41",
+      "approvalVerified": true,
+      "draftKey": "seongnam-snuh-funeral-wreath-r1",
+      "sourceRecordId": "receJOtCWWusXBmtc",
+      "publishQueueRecordId": "recNA3wpFmoU8T6bt",
+      "slug": "bundang-snuh-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/bundang-snuh-funeral-wreath/",
+      "title": "분당서울대학교병원 장례식장 근조화환 | 가격·빈소 확인과 주문",
+      "primaryKeyword": "분당서울대학교병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    }
+  ],
   "schemaVersion": 2,
-  "siteKey": "seongnam-flower-v2"
+  "siteKey": "seongnam-flower-v2",
+  "generatedFrom": "Airtable Publish Queue",
+  "snapshotMode": "git-frozen"
 }
