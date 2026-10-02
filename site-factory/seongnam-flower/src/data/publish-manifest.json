@@ -181,6 +181,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-somang-funeral-wreath",
+      "snapshotId": "seongnam-somang-funeral-wreath-r1-20261002T185018Z",
+      "snapshotHash": "df0843208a34025526c189c805922cf9716c50a4c0ae19f196db7112c5187b66",
+      "approvalVerified": true,
+      "draftKey": "seongnam-somang-funeral-wreath-r1",
+      "sourceRecordId": "rece1LPt03WT88Dko",
+      "publishQueueRecordId": "recuFBjr4qJQdZsTI",
+      "slug": "seongnam-somang-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/seongnam-somang-funeral-wreath/",
+      "title": "성남소망장례식장 근조화환 | 지하 1층·빈소 확인과 가격",
+      "primaryKeyword": "성남소망장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-wedding-wreath",
       "snapshotId": "seongnam-wedding-wreath-r2-20261002T180106Z",
       "snapshotHash": "5088ba1b875b848486e862b6a71a233233a5c64f7c43958609918309074ae513",
@@ -256,6 +274,11 @@
       "pageKey": "seongnam-nsquare-wedding-wreath",
       "snapshotHash": "de3c803d99e3081d5ef3e608b82cacc2328a486b3dcdd3fb78f2b9a2d3ea4a18",
       "publishQueueRecordId": "receAg9eTUi7NOQRi"
+    },
+    "seongnam-somang-funeral-wreath-r1-20261002T185018Z": {
+      "pageKey": "seongnam-somang-funeral-wreath",
+      "snapshotHash": "df0843208a34025526c189c805922cf9716c50a4c0ae19f196db7112c5187b66",
+      "publishQueueRecordId": "recuFBjr4qJQdZsTI"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
