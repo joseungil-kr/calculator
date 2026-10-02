@@ -239,6 +239,78 @@
       "requireSnapshotApproval": true,
       "approvedRevision": "",
       "approvalEvidenceUrl": ""
+    },
+    "seongnam-flower-v2": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-seongnam-v2",
+      "root": "site-factory/seongnam-flower",
+      "siteUrl": "https://seongnam.fwith.kr",
+      "primaryLandingSlug": "",
+      "heroPath": "",
+      "worker": "seongnam-flower-prod-disabled",
+      "launchMode": "staging",
+      "productionEnabled": false,
+      "naverVerification": "",
+      "indexnowKey": "",
+      "templateKey": "flower-local-v2",
+      "allowedCategories": [
+        "funeral",
+        "business",
+        "school",
+        "event",
+        "gift",
+        "order"
+      ],
+      "allowedPageTypes": [
+        "funeral-facility",
+        "order-help",
+        "price-guide",
+        "business-opening",
+        "school-event",
+        "event-venue",
+        "hospital-visit",
+        "personal-gift",
+        "station-transit",
+        "message-guide"
+      ],
+      "categoryPageTypes": {
+        "funeral": [
+          "funeral-facility",
+          "order-help",
+          "price-guide"
+        ],
+        "business": [
+          "business-opening"
+        ],
+        "school": [
+          "school-event"
+        ],
+        "event": [
+          "event-venue"
+        ],
+        "gift": [
+          "hospital-visit",
+          "personal-gift",
+          "station-transit"
+        ],
+        "order": [
+          "order-help",
+          "price-guide",
+          "message-guide"
+        ]
+      },
+      "snapshotRenderer": "structured-json-v12",
+      "growthPaused": true,
+      "autoDeploySnapshots": false,
+      "graphScript": "scripts/qa_graph.mjs",
+      "stagingWranglerConfig": "wrangler.staging.jsonc",
+      "stagingUrl": "https://seongnam-flower-guide-qa.joseungil.workers.dev",
+      "requireRevisionApproval": true,
+      "requireSnapshotApproval": true,
+      "approvedRevision": "",
+      "approvalEvidenceUrl": "",
+      "stagingBuildIsolation": true,
+      "stagingWorker": "seongnam-flower-guide-qa"
     }
   }
 }
