@@ -2,20 +2,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST = path.resolve('dist');
-const BANNERS = [
-  {
-    src: '/images/banners/order-banner-01.webp',
-    alt: '여성 플로리스트가 꽃다발을 제작하는 꽃배달 주문 안내 배너, 편리하게 주문하세요, 근조화환 생화 최저가, 전화 1844-0644'
-  },
-  {
-    src: '/images/banners/order-banner-02.webp',
-    alt: '여성 플로리스트가 근조화환을 제작하는 꽃배달 주문 안내 배너, 편리하게 주문하세요, 근조화환 생화 최저가, 전화 1844-0644'
-  },
-  {
-    src: '/images/banners/order-banner-03.webp',
-    alt: '여성 플로리스트가 꽃바구니를 제작하는 꽃배달 주문 안내 배너, 편리하게 주문하세요, 근조화환 생화 최저가, 전화 1844-0644'
-  }
-];
+const business = JSON.parse(fs.readFileSync('src/data/business-truth.json', 'utf8'));
+for (const field of ['phone', 'phoneHref', 'phoneOrderHours', 'onlineOrderUrl', 'onlineOrderHours']) {
+  if (typeof business[field] !== 'string' || !business[field].trim()) throw new Error(`Invalid order CTA business field: ${field}`);
+}
+if (!/^[+\d][\d ()-]*$/.test(business.phone) || !/^tel:\+?\d{8,15}$/.test(business.phoneHref)
+  || business.phone.replace(/\D/g, '') !== business.phoneHref.replace(/\D/g, '')) throw new Error('Invalid order CTA telephone');
+const orderUrl = new URL(business.onlineOrderUrl);
+if (orderUrl.protocol !== 'https:' || orderUrl.username || orderUrl.password || /\s/.test(business.onlineOrderUrl)) throw new Error('Invalid order CTA HTTPS URL');
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((ent) => {
@@ -40,18 +37,15 @@ function bannerCount(charCount) {
   return 1;
 }
 
-function stableSeed(input) {
-  let h = 0;
-  for (const ch of input) h = ((h << 5) - h + ch.codePointAt(0)) | 0;
-  return Math.abs(h);
-}
-
-function renderBanner(banner, index) {
+function renderBanner(index) {
   return `
 <figure class="content-order-banner" data-order-banner="${index + 1}">
-  <a href="tel:18440644" aria-label="꽃배달 전화 주문 1844-0644">
-    <img src="${banner.src}" alt="${banner.alt}" width="1200" height="400" loading="lazy" decoding="async">
-  </a>
+  <figcaption>꽃 주문 안내</figcaption>
+  <p>전화 주문 ${escapeHtml(business.phoneOrderHours)} · 온라인 주문 ${escapeHtml(business.onlineOrderHours)} 접수</p>
+  <div class="content-order-banner-actions">
+    <a href="${escapeHtml(business.phoneHref)}">전화 주문 ${escapeHtml(business.phone)}</a>
+    <a href="${escapeHtml(business.onlineOrderUrl)}" rel="noopener">온라인 주문</a>
+  </div>
 </figure>`;
 }
 
@@ -80,12 +74,10 @@ for (const file of walk(DIST).filter((p) => p.endsWith('.html'))) {
   if (boundaries.length === 0) continue;
 
   const fractions = count === 1 ? [0.50] : count === 2 ? [0.34, 0.68] : [0.26, 0.53, 0.80];
-  const seed = stableSeed(path.relative(DIST, file));
   const inserts = fractions.map((fraction, i) => {
     const target = Math.floor(body.length * fraction);
     const pos = boundaries.reduce((best, x) => Math.abs(x - target) < Math.abs(best - target) ? x : best, boundaries[0]);
-    const banner = BANNERS[(seed + i) % BANNERS.length];
-    return { pos, html: renderBanner(banner, i) };
+    return { pos, html: renderBanner(i) };
   }).sort((a, b) => b.pos - a.pos);
 
   for (const ins of inserts) body = body.slice(0, ins.pos) + ins.html + body.slice(ins.pos);

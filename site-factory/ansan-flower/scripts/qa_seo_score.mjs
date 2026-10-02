@@ -1,6 +1,26 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+const business = JSON.parse(fs.readFileSync('src/data/business-truth.json', 'utf8'));
+for (const field of ['phone', 'phoneHref', 'phoneOrderHours', 'onlineOrderUrl', 'onlineOrderHours']) {
+  if (typeof business[field] !== 'string' || !business[field].trim()) throw new Error(`Invalid order CTA business field: ${field}`);
+}
+if (!/^[+\d][\d ()-]*$/.test(business.phone) || !/^tel:\+?\d{8,15}$/.test(business.phoneHref)
+  || business.phone.replace(/\D/g, '') !== business.phoneHref.replace(/\D/g, '')) throw new Error('Invalid order CTA telephone');
+const orderUrl = new URL(business.onlineOrderUrl);
+if (orderUrl.protocol !== 'https:' || orderUrl.username || orderUrl.password || /\s/.test(business.onlineOrderUrl)) throw new Error('Invalid order CTA HTTPS URL');
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+function validOrderBanners(banners, expected) {
+  return banners.length === expected && banners.every((banner) =>
+    /<figcaption>[^<]+<\/figcaption>/.test(banner)
+    && banner.includes(`<a href="${escapeHtml(business.phoneHref)}">전화 주문 ${escapeHtml(business.phone)}</a>`)
+    && banner.includes(`<a href="${escapeHtml(business.onlineOrderUrl)}" rel="noopener">온라인 주문</a>`)
+    && !/<img\b|최저가/i.test(banner)
+  ) && new Set(banners.map(banner => banner.match(/data-order-banner="(\d+)"/)?.[1])).size === expected
+    && banners.every(banner => { const n = Number(banner.match(/data-order-banner="(\d+)"/)?.[1]); return n >= 1 && n <= expected; });
+}
 const DIST = path.resolve('dist');
 const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 const INDEXABLE = process.env.SITE_INDEXABLE
@@ -49,8 +69,7 @@ for(const file of walk(DIST).filter(p=>p.endsWith('.html'))){
   const proseNoBanners=proseWithoutSources.replace(/<figure class=["']content-order-banner["'][\s\S]*?<\/figure>/gi,' ');
   const chars=textOnly(proseNoBanners).length;
   const expected=expectedBannerCount(chars);
-  const bannerAlt=banners.every(x=>/<img\b[^>]+alt=["'][^"']+["']/i.test(x));
-  const bannerUnique=new Set(banners.map(x=>m(x,/src=["']([^"']+)["']/i))).size===banners.length;
+  const bannersValid=validOrderBanners(banners, expected);
   const region=(m(html,/<div class=["']article-meta["'][\s\S]*?<span>([^<]+)<\/span>/i)||'').trim();
   const regionHits=region ? (textOnly(proseNoBanners).match(new RegExp(region,'g'))||[]).length : 0;
   const density=chars ? regionHits / Math.max(1, chars/100) : 0;
@@ -62,14 +81,14 @@ for(const file of walk(DIST).filter(p=>p.endsWith('.html'))){
     internalLinks: internal>=1 ? 10 : 0,
     technical: canonical.startsWith(SITE_URL) && (INDEXABLE ? /index,follow/i.test(robots) : /noindex/i.test(robots)) ? 10 : 0,
     imageAlt: allAlt ? 10 : 0,
-    banners: banners.length===expected && bannerAlt && (banners.length===1 || bannerUnique) ? 10 : 0,
+    banners: bannersValid ? 10 : 0,
     content: chars>=1000 ? 15 : chars>=700 ? 10 : 5,
     keywordNaturalness: density<=2.5 ? 10 : density<=4 ? 7 : 3,
   };
   const total=Object.values(score).reduce((a,b)=>a+b,0);
   const status=total>=90?'PASS':total>=80?'CONDITIONAL':'REVISE';
   rows.push({url:rel.replace(/\/{2,}/g,'/'),score:total,status,banners:`${banners.length}/${expected}`,chars,...score});
-  if(total<90) failed=true;
+  if(total<90 || !bannersValid) failed=true;
 }
 console.table(rows);
 if(!rows.length){ console.error('SEO SCORE QA FAILED: no article pages found'); process.exit(1); }
