@@ -1,0 +1,35 @@
+name: Goyang Robots Only BIC Exception
+
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: site-staging-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  robots-bic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: control
+          persist-credentials: false
+      - name: Add only approved fixed-host robots BIC exception
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 control/site-factory/engine/goyang_robots_bic.py --report goyang-robots-bic.json
+      - name: Verify unchanged HTTPS canonical noindex revision and snapshot
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py http --report goyang-robots-http-qa.json
+      - name: Save narrow exception and HTTP evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goyang-robots-bic-${{ github.run_id }}
+          path: |
+            goyang-robots-bic.json
+            goyang-robots-http-qa.json
+          if-no-files-found: error
+          retention-days: 7
