@@ -688,5 +688,75 @@
     "queryClass": "local-commercial",
     "visualIntent": "funeral_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-the-merriden-wedding-wreath",
+    "snapshotId": "seongnam-the-merriden-wedding-wreath-r1-20261002T195317Z",
+    "snapshotHash": "c7522f5678e80d096cb14dd1b2cf9949c945ab405b2a32b78474db1703715218",
+    "approvalVerified": true,
+    "draftKey": "seongnam-the-merriden-wedding-wreath-r1",
+    "sourceRecordId": "recDa3wyevoJnjxzf",
+    "publishQueueRecordId": "recNTOfRsekaWE9rX",
+    "slug": "seongnam-the-merriden-wedding-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-the-merriden-wedding-wreath/",
+    "title": "더메리든 화환 | 서현동 8층 목적지·상품가격과 주문",
+    "primaryKeyword": "더메리든 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 13,
+    "h1": "더메리든 화환, 서현동 8층 예식에 맞춰 준비하세요",
+    "description": "더메리든에 보낼 축하화환의 3종 상품가격과 서현동 8층 주소, 예식 회차·리본·수령정보를 안내합니다. 반입 조건과 최종 배송비는 주문 전에 상담하세요.",
+    "cardSummary": "서현로180번길 19의 8층과 청첩장의 예식 회차를 맞춰 보세요. 단독홀 안내와 실제 화환 설치 가능 위치를 구분해 준비할 수 있습니다.",
+    "firstAnswer": "더메리든 화환은 성남시 분당구 서현로180번길 19, 8층과 예식 날짜·시각을 함께 알려주시면 주문을 상담할 수 있습니다. 꽃이랑 축하 3단 화환은 59,000원부터 선택할 수 있으며, 단독홀 안내와 별개로 화환 반입 가능 여부·배치 장소·추가 배송비를 먼저 확인해 주세요.",
+    "contentMarkdown": "더메리든 화환은 성남시 분당구 서현로180번길 19, 8층과 예식 날짜·시각을 함께 알려주시면 주문을 상담할 수 있습니다. 꽃이랑 축하 3단 화환은 59,000원부터 선택할 수 있으며, 단독홀 안내와 별개로 화환 반입 가능 여부·배치 장소·추가 배송비를 먼저 확인해 주세요.\n\n축하의 마음을 보내고 싶은데 예식 장소를 제대로 적었는지 걱정되실 수 있습니다. 꽃이랑에서는 청첩장에 적힌 장소와 받는 예식정보를 바탕으로 축하화환 주문을 상담합니다. 호텔·연회장 이름이 비슷해도 주소와 층이 다르면 다른 곳이니, 짧은 장소명만 남기기보다 주소까지 함께 준비해 주세요.\n\n## 서현동 8층 주소와 예식 회차를 함께 적어 주세요\n\n더메리든 공식 웨딩홀 안내에 표시된 주소는 경기도 성남시 분당구 서현로180번길 19, 8층입니다. 주소 뒤의 층을 빼지 말고 주문서에 넣어 주세요. ‘서현동 웨딩홀’처럼 넓게 적거나 ‘8층’만 적으면 어느 건물의 예식인지 확인하기 어렵습니다.\n\n청첩장에 쓰인 예식장 표기와 도로명 주소를 먼저 대조한 뒤, 날짜와 예식 시작시각, 신랑·신부 확인정보를 함께 정리해 주세요. 같은 홀에서 열리는 다른 시간의 예식과 혼동하지 않는 데 필요한 정보입니다. 전달할 당사자가 신랑 측인지 신부 측인지도 미리 알려주시면 리본과 수령정보를 맞추기 좋습니다.\n\n## 단독홀이라고 모든 위치에 화환을 놓을 수 있는 것은 아닙니다\n\n공식 소개는 한 층에서 진행되는 단독홀이라고 안내합니다. 이 설명은 예식 공간 구성에 관한 것이며 외부 화환을 어디에나 놓을 수 있다는 뜻은 아닙니다. 화환을 받는 위치가 예식홀 입구인지 별도 지정 장소인지, 담당자가 받을 수 있는 시간이 언제인지 확인해 주세요.\n\n반입을 허용하는 크기, 차량이 잠시 정차할 곳, 화환을 운반할 출입구와 엘리베이터는 이번 공개 안내에서 확인되지 않았습니다. 일반 하객의 이동방법을 화환 하역 경로로 대신 정하지 않습니다. 청첩장 장소와 현장 담당자의 안내가 다르거나 임시 이동을 안내받았다면 변경된 수령 위치를 주문 전에 알려주세요.\n\n## 사진과 가격을 대조해 축하화환을 선택하세요\n\n꽃이랑에서 선택할 수 있는 상품은 축하 3단 화환 C200 59,000원, 축하 고급 3단 화환 C203 79,000원, 축하 특대 3단 화환 C204 99,000원입니다. 상품명·코드·사진을 함께 보고 예산을 정하시면 서로 다른 제품의 가격을 혼동하지 않을 수 있습니다.\n\n사진은 공식 상품 예시이며 더메리든에 실제 배송한 사례 사진은 아닙니다. 사진 속 리본은 예시이고, 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다. ‘특대’라는 이름만으로 정확한 높이나 현장 반입 가능 여부를 판단하지 말고 필요한 규격을 상담해 주세요. 표시된 상품대금과 최종 주문금액은 구분해야 합니다. 추가 배송비와 수령 조건을 확인한 후 결제금액을 정합니다.\n\n예산을 더 비교하려면 [성남 축하화환 가격과 상품별 선택 기준](/order/seongnam-congrats-wreath-price/)을 확인하고, 원하시는 상품코드를 말씀해 주세요.\n\n## 리본 문구와 받는 예식정보를 마지막으로 맞춥니다\n\n문구 예시는 ‘축 결혼’, ‘두 분의 결혼을 축하합니다’처럼 짧게 준비할 수 있습니다. 보내는 이름은 회사·단체의 정식 표기를 사용할지 개인 이름을 사용할지 정한 뒤 오탈자를 확인해 주세요. 이는 문구를 고르는 예시이며 인쇄 분량이나 배치 가능 여부는 주문 시 확인합니다.\n\n상담할 때는 ‘더메리든 / 서현로180번길 19 8층 / 예식 날짜·시각 / 신랑·신부 확인정보 / 원하는 상품코드 / 리본 문구 / 현장 수령 연락처’ 순서로 알려주세요. 희망 도착시각은 요청사항이며 확인 전 배송 확정이나 정시 도착 보장은 아닙니다.\n\n[꽃이랑 1844-0644 전화 상담](tel:1844-0644)으로 반입과 수령 조건을 먼저 확인하거나 [꽃이랑 공식몰](https://fwith.co.kr)에서 상품을 살펴보고 주문해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "더메리든 공식 웨딩홀 안내",
+        "url": "https://themerriden.com/new2024/html/wedding_hall.php",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식몰 상품·주문 안내",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C200 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C203 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C204 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C204",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "더메리든 공식 웨딩홀 안내",
+      "url": "https://themerriden.com/new2024/html/wedding_hall.php",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-congrats-wreath-price"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]

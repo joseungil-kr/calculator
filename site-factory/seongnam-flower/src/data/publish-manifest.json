@@ -199,6 +199,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-the-merriden-wedding-wreath",
+      "snapshotId": "seongnam-the-merriden-wedding-wreath-r1-20261002T195317Z",
+      "snapshotHash": "c7522f5678e80d096cb14dd1b2cf9949c945ab405b2a32b78474db1703715218",
+      "approvalVerified": true,
+      "draftKey": "seongnam-the-merriden-wedding-wreath-r1",
+      "sourceRecordId": "recDa3wyevoJnjxzf",
+      "publishQueueRecordId": "recNTOfRsekaWE9rX",
+      "slug": "seongnam-the-merriden-wedding-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-the-merriden-wedding-wreath/",
+      "title": "더메리든 화환 | 서현동 8층 목적지·상품가격과 주문",
+      "primaryKeyword": "더메리든 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-wedding-wreath",
       "snapshotId": "seongnam-wedding-wreath-r2-20261002T180106Z",
       "snapshotHash": "5088ba1b875b848486e862b6a71a233233a5c64f7c43958609918309074ae513",
@@ -279,6 +297,11 @@
       "pageKey": "seongnam-somang-funeral-wreath",
       "snapshotHash": "df0843208a34025526c189c805922cf9716c50a4c0ae19f196db7112c5187b66",
       "publishQueueRecordId": "recuFBjr4qJQdZsTI"
+    },
+    "seongnam-the-merriden-wedding-wreath-r1-20261002T195317Z": {
+      "pageKey": "seongnam-the-merriden-wedding-wreath",
+      "snapshotHash": "c7522f5678e80d096cb14dd1b2cf9949c945ab405b2a32b78474db1703715218",
+      "publishQueueRecordId": "recNTOfRsekaWE9rX"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
