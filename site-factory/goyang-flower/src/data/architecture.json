@@ -1,0 +1,60 @@
+{
+  "home": {
+    "pageRole": "REGION_SERVICE_LANDING",
+    "primaryKeyword": "고양 꽃배달",
+    "url": "/"
+  },
+  "hubs": [
+    {
+      "category": "funeral",
+      "children": 0,
+      "indexable": false,
+      "label": "근조·장례",
+      "menuVisible": false,
+      "url": "/funeral/"
+    },
+    {
+      "category": "business",
+      "children": 0,
+      "indexable": false,
+      "label": "개업·이전",
+      "menuVisible": false,
+      "url": "/business/"
+    },
+    {
+      "category": "school",
+      "children": 0,
+      "indexable": false,
+      "label": "졸업·학교",
+      "menuVisible": false,
+      "url": "/school/"
+    },
+    {
+      "category": "event",
+      "children": 0,
+      "indexable": false,
+      "label": "공연·행사",
+      "menuVisible": false,
+      "url": "/event/"
+    },
+    {
+      "category": "gift",
+      "children": 0,
+      "indexable": false,
+      "label": "선물·병문안",
+      "menuVisible": false,
+      "url": "/gift/"
+    },
+    {
+      "category": "order",
+      "children": 0,
+      "indexable": false,
+      "label": "가격·주문",
+      "menuVisible": false,
+      "url": "/order/"
+    }
+  ],
+  "pages": [],
+  "schemaVersion": "1.2",
+  "siteKey": "goyang-flower-v2"
+}

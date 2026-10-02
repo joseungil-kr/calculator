@@ -1,0 +1,6 @@
+---
+import {site} from '../config/site';
+const {products=[]}=Astro.props;
+---
+<div class="product-grid">{products.map((p:any)=><article class="product-card" data-product-family={p.family} data-product-key={p.key}><img src={p.img} alt={p.name} loading="lazy" width="420" height="420"/><div><h3>{p.name}</h3><strong>{p.price.toLocaleString()}원</strong><p>{p.desc}</p>{p.family==='congrats' && <p class="product-notice">사진 속 리본 문구는 예시입니다. 개업·행사 문구는 주문 시 확인해 주세요</p>}<a href={p.orderUrl || site.orderUrl}>상품 확인·주문 →</a></div></article>)}</div>
+<p class="product-notice">{site.productVariationNotice} {site.deliveryNotice}</p>

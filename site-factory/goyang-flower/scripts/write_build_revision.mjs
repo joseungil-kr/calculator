@@ -1,0 +1,1 @@
+import fs from 'node:fs'; const rev=process.env.SITE_FACTORY_REVISION||process.env.GITHUB_SHA||'local'; fs.mkdirSync('src/data',{recursive:true}); fs.writeFileSync('src/data/build-revision.json',JSON.stringify({revision:rev},null,2));
