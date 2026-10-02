@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { removeRepeatedOpeningParagraph } from '../lib/article-opening.mjs';
 import BaseLayout from './BaseLayout.astro';
 import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
@@ -54,6 +55,7 @@ const breadcrumbSchema={'@context':'https://schema.org','@type':'BreadcrumbList'
   {'@type':'ListItem',position:2,name:categoryLabel[category]??category,item:new URL(categoryHref,Astro.site??Astro.url.origin).toString()},
   {'@type':'ListItem',position:3,name:title,item:Astro.url.toString()}
 ]};
+const articleContent=removeRepeatedOpeningParagraph(await Astro.slots.render('default'),firstAnswer);
 ---
 <BaseLayout title={`${title} | ${siteConfig.brand}`} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable?'noindex,follow,max-image-preview:large':undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -65,7 +67,7 @@ const breadcrumbSchema={'@context':'https://schema.org','@type':'BreadcrumbList'
         <span class="eyebrow">{categoryLabel[category]??category}</span><h1>{h1 || title}</h1><p>{firstAnswer || description}</p>
         <div class="article-meta"><span>{region}</span><span>{categoryLabel[category]??category}</span>{verifiedAt&&<span>정보 확인일: {formatDate(verifiedAt)}</span>}</div>
       </header>
-      <div class="article-grid article-grid-single"><article class="prose"><slot />
+      <div class="article-grid article-grid-single"><article class="prose"><Fragment set:html={articleContent} />
         {normalizedSources.length>0&&<section class="source-list" aria-labelledby="source-title"><div class="source-list-head"><h2 id="source-title">정보 출처</h2>{verifiedAt&&<span>최신 정보 확인: {formatDate(verifiedAt)}</span>}</div><ul>{normalizedSources.map((s)=><li><div><strong>{s.name}</strong><span>{s.typeLabel}</span></div><a href={s.url} rel="nofollow noopener noreferrer">원문 보기 →</a></li>)}</ul></section>}
       </article></div>
       {related.length>0&&<section class="related-questions"><div class="related-questions-head"><span class="eyebrow">다음 질문</span><h2>이어서 확인할 내용</h2></div><div class="related-question-grid">{related.map((article)=><a href={hrefFor(article)} class="related-question-card"><span>{categoryLabel[article.data.category]}</span><strong>{article.data.title}</strong><p>{article.data.cardSummary || article.data.description}</p><b>확인하기 →</b></a>)}</div></section>}
