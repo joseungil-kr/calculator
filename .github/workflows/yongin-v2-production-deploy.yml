@@ -81,7 +81,18 @@ jobs:
           expected = os.environ["EXPECTED_REVISION"]
           manifest = json.loads(Path("src/data/publish-manifest.json").read_text(encoding="utf-8"))
           pages = manifest.get("pages", [])
-          assert len(pages) == 30, len(pages)
+          assert isinstance(pages, list) and pages, "Manifest pages must be a nonempty list"
+          page_keys, page_urls = set(), set()
+          for page in pages:
+              assert isinstance(page, dict), "Manifest page must be an object"
+              page_key, page_url = page.get("pageKey"), page.get("url")
+              assert isinstance(page_key, str) and page_key.strip() == page_key and page_key, "Invalid pageKey"
+              assert isinstance(page_url, str) and page_url.startswith("/") and not page_url.startswith("//"), "Invalid page URL"
+              assert not any(char.isspace() or char in "?#\\" for char in page_url), "Invalid page URL"
+              assert page_key not in page_keys, f"Duplicate pageKey: {page_key}"
+              assert page_url not in page_urls, f"Duplicate page URL: {page_url}"
+              page_keys.add(page_key)
+              page_urls.add(page_url)
 
           def get(path):
               url = base + quote(path, safe="/")

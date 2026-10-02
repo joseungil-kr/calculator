@@ -16,11 +16,12 @@ interface Props {
   contentRole?:string; localizationPolicy?:string; region:string; snapshotId:string; slug:string; routeType:'category';
   sourceUrls?:string[]; sources?:SourceRef[]; relatedPageKeys?:string[]; verifiedAt?:Date; publishedAt?:Date; updatedAt?:Date;
   ogImage?:string; ogImageAlt?:string;
+  h1?:string; firstAnswer?:string; queryClass?:string; visualIntent?:string; assetSlot?:string;
 }
 const {
   pageKey,title,description,category,structureType,pageType='order-help',contentRole='question-answer',
   localizationPolicy='local-required',region,snapshotId,sourceUrls=[],sources=[],relatedPageKeys=[],
-  verifiedAt,publishedAt,updatedAt,ogImage,ogImageAlt,
+  verifiedAt,publishedAt,updatedAt,ogImage,ogImageAlt,h1,firstAnswer,queryClass,visualIntent,assetSlot,
 }=Astro.props;
 const categoryLabel:Record<string,string>={ funeral:'근조·장례',business:'개업·이전',school:'졸업·입학',event:'공연·행사',gift:'선물·병문안',order:'주문 안내' };
 const architecturePages=(architecture.pages||[]) as ArchitectureEntry[];
@@ -53,17 +54,17 @@ const breadcrumbSchema={'@context':'https://schema.org','@type':'BreadcrumbList'
 <BaseLayout title={`${title} | ${siteConfig.brand}`} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable?'noindex,follow,max-image-preview:large':undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <section class="article-shell" data-snapshot-id={snapshotId} data-content-role={contentRole} data-page-type={effectivePageType} data-localization-policy={effectiveLocalizationPolicy} data-page-role={effectivePageRole} data-primary-keyword={effectivePrimaryKeyword} data-intent-key={effectiveIntentKey} data-parent-hub={effectiveParentHub}>
+  <section class="article-shell" data-snapshot-id={snapshotId} data-content-role={contentRole} data-page-type={effectivePageType} data-localization-policy={effectiveLocalizationPolicy} data-page-role={effectivePageRole} data-primary-keyword={effectivePrimaryKeyword} data-intent-key={effectiveIntentKey} data-parent-hub={effectiveParentHub} data-query-class={queryClass} data-visual-intent={visualIntent} data-asset-slot={assetSlot}>
     <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">홈</a><span>›</span><a href={categoryHref}>{categoryLabel[category]??category}</a><span>›</span><span>현재 글</span></nav>
       <header class="article-header">
-        <span class="eyebrow">{categoryLabel[category]??category}</span><h1>{title}</h1><p>{description}</p>
+        <span class="eyebrow">{categoryLabel[category]??category}</span><h1>{h1 || title}</h1><p>{firstAnswer || description}</p>
         <div class="article-meta"><span>{region}</span><span>{categoryLabel[category]??category}</span>{verifiedAt&&<span>정보 확인일: {formatDate(verifiedAt)}</span>}</div>
       </header>
       <div class="article-grid article-grid-single"><article class="prose"><slot />
         {normalizedSources.length>0&&<section class="source-list" aria-labelledby="source-title"><div class="source-list-head"><h2 id="source-title">정보 출처</h2>{verifiedAt&&<span>최신 정보 확인: {formatDate(verifiedAt)}</span>}</div><ul>{normalizedSources.map((s)=><li><div><strong>{s.name}</strong><span>{s.typeLabel}</span></div><a href={s.url} rel="nofollow noopener noreferrer">원문 보기 →</a></li>)}</ul></section>}
       </article></div>
-      {related.length>0&&<section class="related-questions"><div class="related-questions-head"><span class="eyebrow">다음 질문</span><h2>이어서 확인할 내용</h2></div><div class="related-question-grid">{related.map((article)=><a href={hrefFor(article)} class="related-question-card"><span>{categoryLabel[article.data.category]}</span><strong>{article.data.title}</strong><p>{article.data.description}</p><b>확인하기 →</b></a>)}</div></section>}
+      {related.length>0&&<section class="related-questions"><div class="related-questions-head"><span class="eyebrow">다음 질문</span><h2>이어서 확인할 내용</h2></div><div class="related-question-grid">{related.map((article)=><a href={hrefFor(article)} class="related-question-card"><span>{categoryLabel[article.data.category]}</span><strong>{article.data.title}</strong><p>{article.data.cardSummary || article.data.description}</p><b>확인하기 →</b></a>)}</div></section>}
     </div>
   </section>
 </BaseLayout>
