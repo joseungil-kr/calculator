@@ -38,6 +38,6 @@ export function productHeading(page) {
 
 /** Initial selection spans the site's advertised purposes; no price or SKU aliases. */
 export function homeProducts(products) {
-  const keys = ['funeral-basic', 'congrats-basic', 'bouquet-happiness', 'basket-sunshine', 'bouquet-blue', 'funeral-premium'];
+  const keys = ['funeral-basic', 'congrats-basic', 'funeral-premium', 'congrats-premium', 'funeral-xl', 'congrats-xl'];
   return keys.map(key => products.find(p => p.key === key)).filter(Boolean);
 }

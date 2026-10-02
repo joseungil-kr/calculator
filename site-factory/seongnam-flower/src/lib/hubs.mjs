@@ -28,12 +28,13 @@ export const hubGuides = {
   },
   order: {
     intro: '가격과 문구를 정하고 주소·수령자·희망시간을 준비하면 주문 상담이 간단해집니다. 온라인 24시간은 접수시간이며 배송 가능시간은 별도로 확인합니다.',
-    decision: ['꽃다발·꽃바구니·화환의 상품가격 비교', '도로명주소와 건물명·층·호수·수령 연락처 준비', '당일 배송과 추가비용은 주문 전에 확인'],
-    families: ['bouquet', 'basket', 'funeral', 'congrats'], heading: '목적에 맞는 상품부터 선택', cta: '꽃다발 상품 확인'
+    decision: ['근조화환·축하화환의 상품가격 비교', '도로명주소와 건물명·층·호수·수령 연락처 준비', '당일 배송과 추가비용은 주문 전에 확인'],
+    families: ['funeral', 'congrats'], heading: '목적에 맞는 화환부터 선택', cta: '화환 상품 확인'
   }
 };
 export function hubProducts(category, products, limit = 3) {
   const families = hubGuides[category]?.families || [];
+  if (families.some(family => !products.some(p => p.family === family))) throw new Error(`Seongnam catalog missing hub family: ${category}`);
   const first = families.map(family => products.find(p => p.family === family)).filter(Boolean);
   const rest = families.flatMap(family => products.filter(p => p.family === family && !first.includes(p)));
   return [...first, ...rest].slice(0, limit);

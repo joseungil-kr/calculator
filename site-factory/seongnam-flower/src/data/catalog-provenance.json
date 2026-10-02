@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "siteKey": "seongnam-flower-v2",
+  "launchKey": "seongnam-flower-v2-trial-20261002",
+  "status": "catalog_reconciliation_proposal_not_content_approval",
+  "verifiedAt": "2026-10-02T11:15:36Z",
+  "sourceEvidenceSha256": "6f4af5e14e0b613779e8f918cfffe14961dbebed39dbd8bd09527d245dbe39cd",
+  "families": {
+    "funeral": 4,
+    "congrats": 4
+  },
+  "orderUrl": "https://fwith.co.kr",
+  "rules": [
+    "Internal product keys are not official SKUs.",
+    "Official SKU, exact source image bytes, name and price are bundled for Seongnam only.",
+    "No claim that earlier Catalog images match these SKUs.",
+    "Bouquet and basket are sold by the business but absent from this verified Airtable snapshot; no template fallback.",
+    "Source detail URLs are evidence only, never order CTA.",
+    "Creator owns customer detail writing and snapshot approvals."
+  ],
+  "products": [
+    {
+      "key": "funeral-basic",
+      "officialSku": "B201",
+      "airtableRecordId": "recseJA6g3k3ocNt6",
+      "name": "근조 3단 화환",
+      "price": 59000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=B201",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/B201/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/B201.jpg",
+        "sha256": "7556b6d29ff31e23da6e8e9cfc42b246974e8f8d5e3d3ba5b789fcd8341667f3",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "funeral-premium",
+      "officialSku": "B203",
+      "airtableRecordId": "recA5ZNOYQmAGnxWj",
+      "name": "근조 고급 3단 화환",
+      "price": 79000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=B203",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/B203/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/B203.jpg",
+        "sha256": "0db53ecefe21b765d042fc4ba96a58fff5287be7b15fbf26ff8d4e92095a5114",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "funeral-large",
+      "officialSku": "B205",
+      "airtableRecordId": "recIItmaL9EXPm2iE",
+      "name": "근조 특대 3단 화환",
+      "price": 109000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=B205",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/B205/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/B205.jpg",
+        "sha256": "1873eb9037478de487a4141e0974b90c994cfd0432e07af818799947ce0db43e",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "funeral-xl",
+      "officialSku": "B060",
+      "airtableRecordId": "rec6SSryW9aA4PqOQ",
+      "name": "근조 특특대 3단 화환",
+      "price": 149000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=B060",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/B060/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/B060.jpg",
+        "sha256": "a336ca8434249feccafceb257c10acf1a3a81693b794682d29f0bf5d0057c1e3",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "congrats-basic",
+      "officialSku": "C200",
+      "airtableRecordId": "recNkHPFKcPCEHkpp",
+      "name": "축하 3단 화환",
+      "price": 59000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=C200",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/C200/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/C200.jpg",
+        "sha256": "0e5c0e37f5a02b0448a0dd9b3aa48c4bd1ebe38862a9dde662ef2e1c14eee905",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "congrats-premium",
+      "officialSku": "C203",
+      "airtableRecordId": "recPt58eenQyFeza5",
+      "name": "축하 고급 3단 화환",
+      "price": 79000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=C203",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/C203/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/C203.jpg",
+        "sha256": "d3bd30015f4465f6db3d43c37a3088d383173e1bc0b46ff429ed24b9c251625a",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "congrats-large",
+      "officialSku": "C204",
+      "airtableRecordId": "reciujnhxqyNIStLH",
+      "name": "축하 특대 3단 화환",
+      "price": 99000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=C204",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/C204/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/C204.jpg",
+        "sha256": "05a71d0a3a624c7e27e0575baab02c21f87cc409a1de5389bd4c42b2789dc16d",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    },
+    {
+      "key": "congrats-xl",
+      "officialSku": "C205",
+      "airtableRecordId": "recpDzJpF7YP4KoGW",
+      "name": "축하 특특대 3단 화환",
+      "price": 149000,
+      "detailEvidenceUrl": "https://fwith.co.kr/shop/item.php?it_id=C205",
+      "image": {
+        "url": "https://fwith.co.kr/data/item/flower379/C205/thumb-1_500x500.jpg",
+        "path": "/images/products/seongnam-official-20261002/C205.jpg",
+        "sha256": "b0fa2c913adf258617e34ce0175cbdc282b83e6b47db556234380353c047d5e9",
+        "dimensions": [
+          500,
+          500
+        ]
+      }
+    }
+  ],
+  "assetBytesVerifiedAt": "2026-10-02T11:32:09.844502+00:00",
+  "assetVerification": "All eight official 500px images returned HTTP 200 image/jpeg, decoded with Pillow, and were visually inspected as funeral/congratulation wreaths. This does not establish identity to legacy Catalog images."
+}

@@ -90,6 +90,8 @@ def check(root=Path('.')):
     pages=json.loads((data/'pages.json').read_text());manifest=json.loads((data/'publish-manifest.json').read_text())
     arch=json.loads((data/'architecture.json').read_text());truth=json.loads((data/'business-truth.json').read_text())
     products=json.loads((data/'products.json').read_text())
+    import subprocess
+    subprocess.run(['node', 'scripts/qa_seongnam_catalog.mjs'], cwd=root, check=True)
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
@@ -117,8 +119,8 @@ def check(root=Path('.')):
     for page in pages:
         check_customer_journey(docs[page['url']],page,pages)
         check_rendered_intent(docs[page['url']],page,products)
-    assert {'bouquet','basket','funeral','congrats'} <= set(docs['/'].primary_families), 'Home hero omits advertised product purpose'
-    assert {'bouquet','basket','funeral','congrats'} <= set(docs['/'].product_families), 'Home product selection omits advertised product purpose'
+    assert {'funeral','congrats'} == set(docs['/'].primary_families), 'Home hero omits advertised product purpose'
+    assert {'funeral','congrats'} == set(docs['/'].product_families), 'Home product selection omits advertised product purpose'
     for page in pages:
         if page['pageType']=='business-opening':
             doc=docs[page['url']]
