@@ -38,10 +38,14 @@ const categoryHref=`/${category}/`;
 const activePageKeys=new Set(architecturePages.filter((p)=>p.sitemapIndexable!==false&&p.status!=='merged').map((p)=>p.pageKey));
 const allArticles=await getCollection('articles',({data})=>(data.draftStatus==='approved'||data.draftStatus==='published')&&activePageKeys.has(data.pageKey));
 const hrefFor=(article:(typeof allArticles)[number])=>`/${article.data.category}/${article.data.slug}/`;
-const explicitRank=new Map(relatedPageKeys.map((key,index)=>[key,index]));
-const related=allArticles.filter((a)=>a.data.pageKey!==pageKey).map((article)=>({
-  article,score: explicitRank.has(article.data.pageKey)?1000-(explicitRank.get(article.data.pageKey)??0)*10:(article.data.category===category?40:10)
-})).sort((a,b)=>b.score-a.score||a.article.data.pageKey.localeCompare(b.article.data.pageKey,'ko')).slice(0,4).map(({article})=>article);
+const eligibleRelatedArticles=allArticles.filter((a)=>a.data.pageKey!==pageKey);
+const related=relatedPageKeys.length
+  ? [...new Set(relatedPageKeys)].flatMap((key)=>{
+      const article=eligibleRelatedArticles.find((a)=>a.data.pageKey===key);
+      return article?[article]:[];
+    })
+  : eligibleRelatedArticles.map((article)=>({article,score:article.data.category===category?40:10}))
+      .sort((a,b)=>b.score-a.score||a.article.data.pageKey.localeCompare(b.article.data.pageKey,'ko')).slice(0,4).map(({article})=>article);
 const formatDate=(date?:Date)=>date?new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(date):null;
 const normalizedSources=sources.length?sources.map((s)=>({name:s.name,url:s.url,typeLabel:{official:'공식기관',facility:'시설 공식자료',education:'교육기관',professional:'전문기관',reference:'참고자료'}[s.type??'reference'],verifiedAt:s.verifiedAt??verifiedAt})):sourceUrls.map((url)=>({name:new URL(url).hostname.replace(/^www\./,''),url,typeLabel:'참고자료',verifiedAt}));
 const webPageSchema={'@context':'https://schema.org','@type':'WebPage',name:title,description,inLanguage:'ko-KR',about:[region,'꽃배달',categoryLabel[category]??category],datePublished:publishedAt?.toISOString(),dateModified:(updatedAt??verifiedAt)?.toISOString(),isPartOf:{'@type':'WebSite',name:siteConfig.brand,url:Astro.site?.toString()??Astro.url.origin}};
