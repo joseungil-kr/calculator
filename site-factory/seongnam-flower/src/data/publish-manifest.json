@@ -109,6 +109,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-nsquare-wedding-wreath",
+      "snapshotId": "seongnam-nsquare-wedding-wreath-r1-20261002T185018Z",
+      "snapshotHash": "de3c803d99e3081d5ef3e608b82cacc2328a486b3dcdd3fb78f2b9a2d3ea4a18",
+      "approvalVerified": true,
+      "draftKey": "seongnam-nsquare-wedding-wreath-r1",
+      "sourceRecordId": "recB9hMuv2zeo8FYm",
+      "publishQueueRecordId": "receAg9eTUi7NOQRi",
+      "slug": "seongnam-nsquare-wedding-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-nsquare-wedding-wreath/",
+      "title": "분당앤스퀘어 화환 | 4층 홀 구분·반입 확인과 주문",
+      "primaryKeyword": "분당앤스퀘어 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-opening-wreath",
       "snapshotId": "seongnam-opening-r1-20261002T165404Z",
       "snapshotHash": "65c437c14ab2b60532beddc293be462d5518da17f8b002eaed3622391a5d73fe",
@@ -233,6 +251,11 @@
       "pageKey": "seongnam-jesaeng-funeral-wreath",
       "snapshotHash": "2938d6d02254f40c85544a605ec0a298f85eb06e0ec910144b9f626637ec31b2",
       "publishQueueRecordId": "recIiurD0eM6AlkM1"
+    },
+    "seongnam-nsquare-wedding-wreath-r1-20261002T185018Z": {
+      "pageKey": "seongnam-nsquare-wedding-wreath",
+      "snapshotHash": "de3c803d99e3081d5ef3e608b82cacc2328a486b3dcdd3fb78f2b9a2d3ea4a18",
+      "publishQueueRecordId": "receAg9eTUi7NOQRi"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
