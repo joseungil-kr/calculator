@@ -4,14 +4,28 @@ import {productFamilies} from './catalog.mjs';
 // useful context, but is never a purchase stage for the current destination.
 export function nextSteps(page, pages) {
   const families = productFamilies(page);
+  if (!families.length) return [];
   const wreathOnly = families.length > 0 && families.every(f => ['funeral', 'congrats'].includes(f));
-  const byIntent = intent => pages.find(p => p.category === 'order' && p.visualIntent === intent);
-  const price = pages.find(p => p.pageType === 'price-guide' && p.category === page.category)
-    || pages.find(p => p.pageType === 'price-guide' && p.category === 'order');
-  const candidates = [price, byIntent('order_address')];
-  if (wreathOnly) candidates.push(byIntent('wreath_message'), byIntent('wreath_order'));
-  else candidates.push(byIntent('same_day_order'));
-  return [...new Set(candidates)].filter(p => p && p.pageKey !== page.pageKey);
+  const approved = pages.filter(p => p.status === 'approved' && p.approvalVerified === true && p.snapshotId
+    && p.pageKey !== page.pageKey && p.url !== page.url
+    && ['order', page.category].includes(p.category)
+    && ['price-guide', 'message-guide', 'order-help'].includes(p.pageType)
+    && families.every(family => productFamilies(p).includes(family)));
+  // Prefer the same scope; never choose a different family just because it
+  // happens to be the first price guide in the catalog.
+  const ranked = [...approved].sort((a,b) =>
+    Number(productFamilies(a).length !== families.length) - Number(productFamilies(b).length !== families.length)
+    || Number(a.category !== page.category) - Number(b.category !== page.category));
+  const byIntent = (intent, type) => ranked.find(p => p.pageType === type && p.visualIntent === intent);
+  // A price decision leads to ordering help, not another price-guide loop.
+  const price = page.pageType === 'price-guide' ? undefined : ranked.find(p => p.pageType === 'price-guide');
+  const candidates = [price, byIntent('order_address','order-help')];
+  if (wreathOnly) candidates.push(byIntent('wreath_message','message-guide'),
+    byIntent('wreath_delivery','order-help'), byIntent('wreath_order','order-help'));
+  else candidates.push(byIntent('same_day_order','order-help'));
+  // If no suitable approved guide exists, the template's real phone/order CTA
+  // stays available. Venue reading is never inserted as an ordering stage.
+  return [...new Set(candidates)].filter(Boolean);
 }
 
 export function relatedReading(page, pages) {

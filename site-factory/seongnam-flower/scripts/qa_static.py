@@ -9,6 +9,7 @@ class Document(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
+        self.journey_aside=0;self.purpose_cards=[];self.active_purpose=None
         self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
@@ -21,6 +22,7 @@ class Document(HTMLParser):
         if context and tag=='a':context['links'].append(a.get('href'))
         if tag in ['script','style']:self.ignored+=1
         if tag=='section':self.sections.append(a.get('data-journey') or ('detail-hero' if 'detail-hero' in a.get('class','') else None))
+        if tag=='aside' and 'journey-link' in a.get('class','').split():self.journey_aside+=1
         if tag=='p' and 'detail-hero' in self.sections and not self.answer_done:self.capture_answer=True
         if tag=='h1':self.h1+=1
         if tag=='title':self.in_title=True
@@ -28,7 +30,9 @@ class Document(HTMLParser):
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a.get('href'))
         if tag=='a':
             self.links.append(a.get('href',''))
-            if 'next-step' in self.sections:self.journey_links.append(a.get('href',''))
+            if 'next-step' in self.sections or self.journey_aside:self.journey_links.append(a.get('href',''))
+            if 'purpose-card' in a.get('class','').split():
+                self.active_purpose={'href':a.get('href'),'text':[]};self.purpose_cards.append(self.active_purpose)
         if tag=='img':self.images.append(a)
         if 'data-product-family' in a:
             self.product_families.append(a['data-product-family'])
@@ -39,12 +43,15 @@ class Document(HTMLParser):
         if tag=='p' and self.capture_answer:self.capture_answer=False;self.answer_done=True
         if tag in ['script','style']:self.ignored=max(0,self.ignored-1)
         if tag=='section' and self.sections:self.sections.pop()
+        if tag=='aside':self.journey_aside=max(0,self.journey_aside-1)
+        if tag=='a':self.active_purpose=None
         for i in range(len(self.elements)-1,-1,-1):
             if self.elements[i][0]==tag:del self.elements[i:];break
     def handle_data(self,data):
         if self.in_title:self.title+=data
         if not self.ignored:self.visible.append(data)
         if self.capture_answer:self.first_answer.append(data)
+        if self.active_purpose is not None:self.active_purpose['text'].append(data)
         context=next((p for _,p in reversed(self.elements) if p),None)
         if context and not self.ignored:context['text'].append(data)
 
@@ -53,12 +60,18 @@ def check_customer_output(doc, url):
     for forbidden in ['Business Truth','Product Catalog','Shadow','검색의도','문구은','주문 주문']:
         assert forbidden.lower() not in text.lower(),f'Internal/invalid customer copy leaked: {url} {forbidden}'
 
-def check_customer_journey(doc, page, pages):
+def check_customer_journey(doc, page, pages, family_by_key=None):
     route={p['url']:p for p in pages}
     gift=page['pageType'] in ['hospital-visit','personal-gift','school-event','station-transit'] or page.get('visualIntent')=='performance_venue'
     for link in doc.journey_links:
         target=route.get(link)
         assert target and target['pageType'] in ['order-help','price-guide','message-guide'],f'Invalid next-step destination: {page["url"]} -> {link}'
+        assert target.get('status')=='approved' and target.get('approvalVerified') is True and target.get('snapshotId'),f'Unapproved next-step destination: {page["url"]} -> {link}'
+        assert target['pageKey']!=page['pageKey'] and target['url']!=page['url'],f'Self next-step destination: {page["url"]}'
+        assert not (page['pageType']=='price-guide' and target['pageType']=='price-guide'),f'Price-guide next-step loop: {page["url"]} -> {link}'
+        if family_by_key is not None:
+            source_families=set(family_by_key[page['pageKey']]);target_families=set(family_by_key[target['pageKey']])
+            assert source_families and source_families.issubset(target_families),f'Cross-family next-step destination: {page["url"]} -> {link}'
         assert target['category'] in ['order',page['category']],f'Invalid next-step category: {link}'
         assert not gift or target.get('visualIntent') not in ['wreath_order','wreath_message'],f'Gift intent leads to wreath order: {page["url"]} -> {link}'
     assert not gift or not any(route.get(link,{}).get('visualIntent')=='wreath_order' for link in doc.links),f'Gift intent leads to wreath order: {page["url"]}'
@@ -119,6 +132,8 @@ def check(root=Path('.')):
     products=json.loads((data/'products.json').read_text())
     import subprocess
     subprocess.run(['node', 'scripts/qa_seongnam_catalog.mjs'], cwd=root, check=True)
+    navigation=json.loads(subprocess.check_output(['node','--input-type=module','-e',
+        "import fs from 'node:fs'; import {productFamilies} from './src/lib/catalog.mjs'; import {hubGuide} from './src/lib/hubs.mjs'; const pages=JSON.parse(fs.readFileSync('src/data/pages.json')); const cats=[...new Set(pages.map(p=>p.category))]; console.log(JSON.stringify({families:Object.fromEntries(pages.map(p=>[p.pageKey,productFamilies(p)])),purpose:Object.fromEntries(cats.map(c=>['/'+c+'/',hubGuide(c,pages).decision[0]]))}));"],cwd=root,text=True))
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
@@ -144,8 +159,11 @@ def check(root=Path('.')):
         check_customer_output(doc,url)
         check_rendered_catalog(doc,url,products)
     for page in pages:
-        check_customer_journey(docs[page['url']],page,pages)
+        check_customer_journey(docs[page['url']],page,pages,navigation['families'])
         check_rendered_intent(docs[page['url']],page,products)
+    assert {p['href'] for p in docs['/'].purpose_cards}==set(navigation['purpose']), 'Home purpose-card route mismatch'
+    for card in docs['/'].purpose_cards:
+        assert navigation['purpose'][card['href']] in ''.join(card['text']),f'Home purpose-card promise differs from actual hub children: {card["href"]}'
     assert {'funeral','congrats'} == set(docs['/'].primary_families), 'Home hero omits advertised product purpose'
     assert {'funeral','congrats'} == set(docs['/'].product_families), 'Home product selection omits advertised product purpose'
     for page in pages:
