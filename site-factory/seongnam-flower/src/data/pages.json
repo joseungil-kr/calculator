@@ -916,5 +916,81 @@
     "queryClass": "local-commercial",
     "visualIntent": "event_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-seongmo-funeral-wreath",
+    "snapshotId": "seongnam-seongmo-funeral-wreath-r1-20261002T195317Z",
+    "snapshotHash": "692b65e8806d2f68e60009e30edf0df93db2ed7192b2c63e28abc538eb42721a",
+    "approvalVerified": true,
+    "draftKey": "seongnam-seongmo-funeral-wreath-r1",
+    "sourceRecordId": "recth40OoZCLxC2tA",
+    "publishQueueRecordId": "recaMNFskHRZ9ajVq",
+    "slug": "seongnam-seongmo-funeral-wreath",
+    "category": "funeral",
+    "routeType": "category",
+    "url": "/funeral/seongnam-seongmo-funeral-wreath/",
+    "title": "분당성모장례식장 근조화환 | 새나리로 13·지하 빈소 주문",
+    "primaryKeyword": "분당성모장례식장 근조화환",
+    "pageType": "funeral-facility",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 16,
+    "h1": "분당성모장례식장 근조화환, 새나리로 13의 빈소로 준비하세요",
+    "description": "분당성모장례식장은 새나리로 13 성모요양병원 건물 B1에 있습니다. 근조화환 상품가격과 빈소·발인 전 수령, 운반경로를 확인하는 주문 준비를 안내합니다.",
+    "cardSummary": "병원 1층 접수와 지하 장례식장을 혼동하지 않도록 주소·빈소·발인 일정을 맞춥니다. 근조 상품가와 수령 가능 조건도 함께 확인하세요.",
+    "firstAnswer": "분당성모장례식장 근조화환은 성남시 분당구 새나리로 13, 성모요양병원 건물 B1의 실제 빈소를 확인해 주문해 주세요. 병원 1층 접수실과 장례식장은 구분됩니다. 꽃이랑 근조화환 가격을 살펴보고 고인·상주 확인정보, 발인 전 수령 가능시간과 반입 조건을 함께 상담하시면 됩니다.",
+    "contentMarkdown": "분당성모장례식장 근조화환은 성남시 분당구 새나리로 13, 성모요양병원 건물 B1의 실제 빈소를 확인해 주문해 주세요. 병원 1층 접수실과 장례식장은 구분됩니다. 꽃이랑 근조화환 가격을 살펴보고 고인·상주 확인정보, 발인 전 수령 가능시간과 반입 조건을 함께 상담하시면 됩니다.\n\n부고를 받고 서둘러 화환을 준비할 때는 비슷한 병원명이나 예전 주소를 보고 주문하지 않도록 주의해 주세요. 꽃이랑은 현재 시설 위치와 부고의 빈소 정보를 함께 맞추어 근조상품을 상담합니다. 병문안 꽃선물과 조문용 근조화환은 받는 곳과 목적이 다르므로 장례식장 주문임을 분명하게 알려주세요.\n\n## 새나리로 13의 병원 1층과 장례식장 B1을 구분하세요\n\n분당성모장례식장 공식 위치는 성남시 분당구 새나리로 13, 야탑동 49이며 성모요양병원 건물 B1으로 안내됩니다. 병원 층별안내는 1층에 접수실·행정실 등을, B1층에 분당성모장례식장을 표시합니다. 주문서에는 병원 이름이나 1층 접수가 아닌 ‘장례식장 B1, 실제 빈소’를 적어 주세요.\n\n병원 접수에서 화환을 대신 받아 주는지, 지하까지 어떤 경로로 운반하는지는 이 층별안내만으로 알 수 없습니다. 외부의 다른 주소 표기를 보셨다면 부고와 현행 장례식장 안내를 우선 맞추고, 빈소 수령 담당자에게 최종 전달 지점을 확인해 주세요.\n\n## 빈소와 발인 일정이 정해져야 수령시간을 맞출 수 있습니다\n\n빈소가 아직 정해지지 않았다면 번호를 추측해 입력하기보다 배정 후 확인된 정보를 알려주세요. 같은 건물 안에서도 고인·상주 확인정보와 빈소가 맞아야 조문용 화환을 정확하게 구분할 수 있습니다. 발인 일정도 함께 확인해 이미 장례가 종료된 뒤 도착하도록 요청하지 않게 해야 합니다.\n\n시설이 상시 운영된다고 안내하더라도 꽃이랑의 제작·배송 접수나 모든 빈소의 수령이 같은 시간에 가능하다는 뜻은 아닙니다. 희망 수령시각과 현장 담당자가 받을 수 있는 시간을 나누어 알려주세요. 화환용 출입구, 엘리베이터 이용과 설치 위치, 하역 가능 여부는 별도 상담사항이며 일반 주차정보로 단정하지 않습니다.\n\n## 근조화환 사진·가격과 추가 배송비 확인\n\n근조 3단 화환 B201은 59,000원, 근조 고급 3단 화환 B203은 79,000원, 근조 특대 3단 화환 B205는 109,000원입니다. 조문 목적에 맞는 근조상품 중 예산과 빈소 주변 설치 공간을 고려해 골라 주세요. ‘특대’의 정확한 높이·폭이나 현장 허용 규격은 주문할 때 확인해야 합니다.\n\n사진은 꽃이랑 공식 상품의 예시로, 분당성모장례식장에 납품했다는 증거사진이 아닙니다. 예시 리본과 실제 주문 문구는 다르며, 꽃 구성·형태는 지역 및 계절에 따라 달라질 수 있습니다. 상품대금 외 추가 배송비가 생기는지와 최종 금액을 확인해 주세요. 상품별 차이가 고민되면 [성남 근조화환 가격과 선택 기준](/order/seongnam-funeral-wreath-price/)에서 비교한 뒤 상담하실 수 있습니다.\n\n## 고인을 향한 문구와 보내는 이름을 정리해 주세요\n\n문구는 ‘삼가 고인의 명복을 빕니다’와 같은 조의 표현을 예시로 살펴보되, 유가족의 종교나 요청에 맞는 표현인지 확인해 주세요. 보내는 회사·단체명과 이름은 정식 표기를 정확히 준비합니다. 인쇄 가능한 길이와 배열은 상담 때 확인하세요.\n\n‘분당성모장례식장 / 새나리로 13 B1 / 실제 빈소 / 고인·상주 확인정보 / 발인 일정 / 현장 연락처 / 상품코드 / 리본 문구’를 모아 알려주시면 됩니다. 희망시간을 말씀하셔도 반입 조건과 진행 가능 여부 확인 전에는 배송이 확정되지 않습니다.\n\n[1844-0644 꽃이랑 전화 상담](tel:1844-0644)에서 빈소·수령조건을 먼저 확인하고, 온라인 상품 확인과 주문은 [꽃이랑 공식몰](https://fwith.co.kr)을 이용해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "분당성모장례식장 공식 위치",
+        "url": "https://www.smfuneral.co.kr/",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "성모요양병원 공식 층별안내",
+        "url": "https://smhos.co.kr/facilities",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식몰 상품·주문 안내",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 B201 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 B203 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 B205 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B205",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "분당성모장례식장 공식 위치",
+      "url": "https://www.smfuneral.co.kr/",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-funeral-wreath-price"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "funeral_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]

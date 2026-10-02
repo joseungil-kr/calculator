@@ -199,6 +199,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-seongmo-funeral-wreath",
+      "snapshotId": "seongnam-seongmo-funeral-wreath-r1-20261002T195317Z",
+      "snapshotHash": "692b65e8806d2f68e60009e30edf0df93db2ed7192b2c63e28abc538eb42721a",
+      "approvalVerified": true,
+      "draftKey": "seongnam-seongmo-funeral-wreath-r1",
+      "sourceRecordId": "recth40OoZCLxC2tA",
+      "publishQueueRecordId": "recaMNFskHRZ9ajVq",
+      "slug": "seongnam-seongmo-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/seongnam-seongmo-funeral-wreath/",
+      "title": "분당성모장례식장 근조화환 | 새나리로 13·지하 빈소 주문",
+      "primaryKeyword": "분당성모장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-snuh-funeral-wreath",
       "snapshotId": "seongnam-snuh-funeral-r1-20261002T131900Z",
       "snapshotHash": "1522661f1f1cd0bae2e9b7449dc2adc2d095d665f12718d117e94d9e76d96e41",
