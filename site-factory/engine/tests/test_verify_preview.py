@@ -33,7 +33,12 @@ class Response:
 
 class PreviewVerificationTests(unittest.TestCase):
     def test_exact_public_noindex_passes_without_failure_metadata(self):
+        requests = []
         def opener(request, timeout):
+            self.assertIsInstance(request, preview.Request)
+            self.assertEqual(request.get_header("User-agent"), "SiteFactory-StagingQA/3.0")
+            self.assertEqual(timeout, 15)
+            requests.append(request.full_url)
             if str(getattr(request, "full_url", request)).endswith("robots.txt"):
                 return Response("User-agent: *\nDisallow: /")
             return Response(f'<meta name="robots" content="noindex"><meta name="site-factory-revision" content="{REVISION}">', {"X-Robots-Tag": "noindex, nofollow"})
@@ -42,6 +47,7 @@ class PreviewVerificationTests(unittest.TestCase):
             result = preview.verify("https://preview.example.com", REVISION, attempts=1, opener=opener)
         self.assertEqual(result["state"], "preview_verified")
         self.assertEqual(output.getvalue(), "")
+        self.assertEqual(requests, ["https://preview.example.com/", "https://preview.example.com/robots.txt"])
 
     def test_http_failure_remains_failure_with_allowlisted_diagnostics(self):
         headers = Message()

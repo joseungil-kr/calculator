@@ -128,8 +128,9 @@ def verify_once(origin, revision, opener=urlopen):
     if "noindex" not in header_directives:
         raise ValueError("x_robots_header_mismatch")
     robots_url = base + "/robots.txt"
+    robots_req = Request(robots_url, headers={"User-Agent": "SiteFactory-StagingQA/3.0"})
     try:
-        with opener(robots_url, timeout=15) as response:
+        with opener(robots_req, timeout=15) as response:
             robots = response.read().decode("utf-8")
     except HTTPError as error:
         error.site_factory_step = "robots"
