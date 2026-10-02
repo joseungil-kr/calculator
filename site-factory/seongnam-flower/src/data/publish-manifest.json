@@ -127,6 +127,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-gravity-pangyo-wreath",
+      "snapshotId": "seongnam-gravity-pangyo-wreath-r1-20261002T195317Z",
+      "snapshotHash": "0e8e7657894bc59e6452ed49bcd92ba5bf42e0bee3c6f9b724150388f7f2a7a7",
+      "approvalVerified": true,
+      "draftKey": "seongnam-gravity-pangyo-wreath-r1",
+      "sourceRecordId": "recYARKzFwdAQf8z0",
+      "publishQueueRecordId": "recs92eZTJCtCncFM",
+      "slug": "seongnam-gravity-pangyo-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-gravity-pangyo-wreath/",
+      "title": "그래비티 판교 화환 | B1 연회장·분할 룸과 주문 확인",
+      "primaryKeyword": "그래비티 판교 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-jesaeng-funeral-wreath",
       "snapshotId": "seongnam-jesaeng-funeral-wreath-r2-20261002T185018Z",
       "snapshotHash": "2938d6d02254f40c85544a605ec0a298f85eb06e0ec910144b9f626637ec31b2",
@@ -371,6 +389,11 @@
       "pageKey": "seongnam-seongmo-funeral-wreath",
       "snapshotHash": "692b65e8806d2f68e60009e30edf0df93db2ed7192b2c63e28abc538eb42721a",
       "publishQueueRecordId": "recaMNFskHRZ9ajVq"
+    },
+    "seongnam-gravity-pangyo-wreath-r1-20261002T195317Z": {
+      "pageKey": "seongnam-gravity-pangyo-wreath",
+      "snapshotHash": "0e8e7657894bc59e6452ed49bcd92ba5bf42e0bee3c6f9b724150388f7f2a7a7",
+      "publishQueueRecordId": "recs92eZTJCtCncFM"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

@@ -992,5 +992,87 @@
     "queryClass": "local-commercial",
     "visualIntent": "funeral_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-gravity-pangyo-wreath",
+    "snapshotId": "seongnam-gravity-pangyo-wreath-r1-20261002T195317Z",
+    "snapshotHash": "0e8e7657894bc59e6452ed49bcd92ba5bf42e0bee3c6f9b724150388f7f2a7a7",
+    "approvalVerified": true,
+    "draftKey": "seongnam-gravity-pangyo-wreath-r1",
+    "sourceRecordId": "recYARKzFwdAQf8z0",
+    "publishQueueRecordId": "recs92eZTJCtCncFM",
+    "slug": "seongnam-gravity-pangyo-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-gravity-pangyo-wreath/",
+    "title": "그래비티 판교 화환 | B1 연회장·분할 룸과 주문 확인",
+    "primaryKeyword": "그래비티 판교 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 17,
+    "h1": "그래비티 판교 화환, B1의 정확한 행사실로 준비하세요",
+    "description": "그래비티 조선 서울 판교의 판교역로146번길 2 주소와 B1 연회장 구분, 축하화환 가격을 안내합니다. 행사명·룸·현장 연락처와 반입 가능시간을 준비하세요.",
+    "cardSummary": "루나·솔·테라와 플렉스 스튜디오 중 초대장에 적힌 공간을 확인하세요. 판교역 방문 안내와 화환 하역 동선을 나눠 주문 실수를 줄입니다.",
+    "firstAnswer": "그래비티 판교 화환은 판교역로146번길 2 주소에 B1의 행사실 이름과 행사 시각을 함께 적어 주문하세요. 공식 안내는 스페이스볼룸의 루나·솔·테라와 별도 플렉스 스튜디오를 구분합니다. 꽃이랑 축하화환의 상품가를 확인하고 실제 반입·수령 장소와 추가 배송비를 상담해 주세요.",
+    "contentMarkdown": "그래비티 판교 화환은 판교역로146번길 2 주소에 B1의 행사실 이름과 행사 시각을 함께 적어 주문하세요. 공식 안내는 스페이스볼룸의 루나·솔·테라와 별도 플렉스 스튜디오를 구분합니다. 꽃이랑 축하화환의 상품가를 확인하고 실제 반입·수령 장소와 추가 배송비를 상담해 주세요.\n\n판교 호텔의 행사를 축하할 때는 호텔 이름만큼 행사실 표기가 중요합니다. 꽃이랑은 그래비티의 어느 행사에 보내는 화환인지 확인하고 축하상품을 상담합니다. 예식과 기업행사는 보내는 문구와 받는 담당자가 달라질 수 있으므로 행사 성격도 함께 말씀해 주세요.\n\n## 판교역로146번길 2와 B1 행사실을 함께 확인합니다\n\n그래비티 조선 서울 판교의 공식 위치는 성남시 분당구 판교역로146번길 2입니다. 연회장 안내에는 B1층이 표시되어 있으며, 스페이스볼룸과 플렉스 스튜디오를 구분합니다. 호텔 이름의 ‘서울’만 보고 서울 주소로 주문하지 말고 판교 주소를 함께 적어 주세요.\n\n공식 접근 안내는 판교역 2번·3번 출구 방향의 방문 경로를 제공합니다. 이는 사람이 호텔을 찾아가는 데 참고할 정보이며 화환 운반차량의 진입이나 하역 장소를 증명하지 않습니다. 화환 수령 담당자에게 별도의 출입구, 하역 조건과 운반 경로를 확인해 주세요.\n\n## 분할 볼룸 이름과 주최자를 주문서에 남겨 주세요\n\n스페이스볼룸은 행사에 맞춰 세 공간으로 나눌 수 있고 공식 시설표는 루나(LUNA), 솔(SOL), 테라(TERRA)를 표시합니다. 플렉스 스튜디오는 별도 공간입니다. ‘B1 연회장’까지만 쓰기보다 초대장 또는 행사 안내의 정확한 룸 이름을 주문서에 남겨 주세요.\n\n전체 볼룸 행사인지 분할 공간 행사인지, 누구의 예식 또는 어느 주최자의 행사인지가 구분되어야 합니다. 회사 행사라면 주최 명칭과 행사명을, 결혼식이면 신랑·신부 확인정보와 회차를 덧붙입니다. 같은 날 다른 공간에서 행사가 있는지 모르는 상태에서 로비에 두면 된다고 정하지 말고, 지정 수령 위치를 확인한 뒤 전달해 주세요.\n\n## 축하 3단 상품의 가격·사진을 비교하세요\n\n축하 3단 화환 C200 59,000원, 축하 고급 3단 화환 C203 79,000원, 축하 특대 3단 화환 C204 99,000원 중 예산에 맞춰 상담할 수 있습니다. 행사실 앞의 허용 공간과 규격은 상품을 고르기 전에 확인해 주세요. 큰 상품을 선택한다고 해당 공간에 반드시 설치할 수 있는 것은 아닙니다.\n\n상품사진은 공식 판매상품의 예시이며 그래비티 행사에 실제 설치한 사진이 아닙니다. 리본도 예시 문구이고, 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다. 표시 상품가격과 함께 추가 배송비, 요청시간의 진행 가능 여부를 확인한 뒤 총금액을 정합니다. 무조건 무료배송이나 정시 도착을 전제로 주문하지 마세요.\n\n## 예식 또는 기업행사에 맞춰 리본과 수령정보를 정합니다\n\n결혼 축하라면 ‘축 결혼’, 기업행사라면 ‘창립기념을 축하합니다’처럼 행사 성격에 맞게 문구를 준비할 수 있습니다. 예시는 실제 회사명이나 수령자를 뜻하지 않습니다. 리본에 적을 보내는 이름과 인쇄 가능한 문구 길이는 상담 때 확정합니다.\n\n회사명·주최자·현장 수령 담당자의 정보를 어떻게 정리할지 궁금하면 [성남 기업행사 화환 주문 준비](/event/seongnam-corporate-event-wreath/)를 참고해 주세요. 그래비티의 정확한 룸을 정한 다음 주문 누락을 줄이기 위한 연결입니다.\n\n호텔 주소, B1의 룸 이름, 날짜와 시작시각, 수령 가능한 시간, 현장 연락처를 준비해 [꽃이랑 1844-0644](tel:1844-0644)로 상담해 주세요. [꽃이랑 공식몰](https://fwith.co.kr)에서 상품을 보고 주문할 수도 있습니다. 행사장 반입·수령 조건을 확인한 뒤 진행 여부와 비용을 안내받으세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "그래비티 공식 위치",
+        "url": "https://grp.josunhotel.com/about/aboutUs.do",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "그래비티 공식 연회장",
+        "url": "https://grp.josunhotel.com/meeting/Spacballroom.do",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "그래비티 공식 웨딩",
+        "url": "https://grp.josunhotel.com/meeting/wedding.do",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식몰 상품·주문 안내",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C200 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C203 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 C204 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C204",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "그래비티 공식 위치",
+      "url": "https://grp.josunhotel.com/about/aboutUs.do",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-corporate-event-wreath"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]
