@@ -169,6 +169,76 @@
         "price-guide",
         "message-guide"
       ]
+    },
+    "goyang-flower-v2": {
+      "repo": "joseungil-kr/fwith-site-factory",
+      "branch": "site-factory-goyang-v2",
+      "root": "site-factory/goyang-flower",
+      "siteUrl": "https://goyang.fwith.kr",
+      "primaryLandingSlug": "",
+      "heroPath": "",
+      "worker": "goyang-flower-prod-disabled",
+      "launchMode": "staging",
+      "productionEnabled": false,
+      "naverVerification": "",
+      "indexnowKey": "",
+      "templateKey": "flower-local-v2",
+      "allowedCategories": [
+        "funeral",
+        "business",
+        "school",
+        "event",
+        "gift",
+        "order"
+      ],
+      "allowedPageTypes": [
+        "funeral-facility",
+        "order-help",
+        "price-guide",
+        "business-opening",
+        "school-event",
+        "event-venue",
+        "hospital-visit",
+        "personal-gift",
+        "station-transit",
+        "message-guide"
+      ],
+      "categoryPageTypes": {
+        "funeral": [
+          "funeral-facility",
+          "order-help",
+          "price-guide"
+        ],
+        "business": [
+          "business-opening"
+        ],
+        "school": [
+          "school-event"
+        ],
+        "event": [
+          "event-venue"
+        ],
+        "gift": [
+          "hospital-visit",
+          "personal-gift",
+          "station-transit"
+        ],
+        "order": [
+          "order-help",
+          "price-guide",
+          "message-guide"
+        ]
+      },
+      "snapshotRenderer": "structured-json-v12",
+      "growthPaused": true,
+      "autoDeploySnapshots": false,
+      "graphScript": "scripts/qa_graph.mjs",
+      "stagingWranglerConfig": "wrangler.staging.jsonc",
+      "stagingUrl": "https://goyang-flower-guide-qa.joseungil.workers.dev",
+      "requireRevisionApproval": true,
+      "requireSnapshotApproval": true,
+      "approvedRevision": "",
+      "approvalEvidenceUrl": ""
     }
   }
 }
