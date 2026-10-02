@@ -9,86 +9,15 @@ permissions:
 jobs:
   goyang-staging-qa:
     runs-on: ubuntu-latest
-    env:
-      ORIGIN: https://goyang-flower-guide-qa.joseungil.workers.dev
-      REVISION: e4eead3e881b3b4c09a60e2af5befb55b6787413
-      SNAPSHOT: goyang-ilsan-paik-r2-20261002T040830
-      DETAIL_PATH: /funeral/ilsan-paik-funeral-wreath/
-      HUB_PATH: /funeral/
     steps:
       - name: Checkout control verification helper
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
 
-      - name: Verify fixed Goyang preview revision
-        run: |
-          python3 - <<'PYTHON'
-          import importlib.util
-          import json
-          import os
-          from html.parser import HTMLParser
-          from pathlib import Path
-          from urllib.error import HTTPError
-          from urllib.request import Request, urlopen
-
-          helper_path = Path("site-factory/engine/verify_preview.py")
-          spec = importlib.util.spec_from_file_location("verify_preview", helper_path)
-          preview = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(preview)
-
-          origin = os.environ["ORIGIN"].rstrip("/")
-          result = preview.verify(origin, os.environ["REVISION"])
-          if result["state"] == "preview_verified":
-              try:
-                  class PageParser(HTMLParser):
-                      def __init__(self):
-                          super().__init__()
-                          self.meta = {}
-                          self.snapshots = []
-                          self.hrefs = []
-                      def handle_starttag(self, tag, attrs):
-                          values = dict(attrs)
-                          if tag.lower() == "meta" and values.get("name"):
-                              self.meta[values["name"].lower()] = values.get("content", "")
-                          if tag.lower() == "article" and "data-snapshot-id" in values:
-                              self.snapshots.append(values["data-snapshot-id"])
-                          if tag.lower() == "a" and "href" in values:
-                              self.hrefs.append(values["href"])
-
-                  def get(path, step):
-                      url = origin + path
-                      request = Request(url, headers={"User-Agent": "SiteFactory-StagingQA/3.0"})
-                      try:
-                          with urlopen(request, timeout=15) as response:
-                              return response.status, response.read().decode("utf-8")
-                      except HTTPError as error:
-                          error.site_factory_step = step
-                          error.site_factory_origin = origin
-                          raise
-
-                  detail_status, detail = get(os.environ["DETAIL_PATH"], "detail")
-                  assert detail_status == 200
-                  detail_parser = PageParser()
-                  detail_parser.feed(detail)
-                  assert detail_parser.snapshots == [os.environ["SNAPSHOT"]]
-                  assert "noindex" in {item.strip().lower() for item in detail_parser.meta["robots"].split(",")}
-                  assert detail_parser.meta["site-factory-revision"] == os.environ["REVISION"]
-                  hub_status, hub = get(os.environ["HUB_PATH"], "funeral_hub")
-                  assert hub_status == 200
-                  hub_parser = PageParser()
-                  hub_parser.feed(hub)
-                  assert os.environ["DETAIL_PATH"] in hub_parser.hrefs
-                  assert "noindex" in {item.strip().lower() for item in hub_parser.meta["robots"].split(",")}
-                  assert hub_parser.meta["site-factory-revision"] == os.environ["REVISION"]
-              except HTTPError as error:
-                  result = {"state": "goyang_http_qa_failed", "lastFailure": preview.describe_failure(error)}
-              except Exception as error:
-                  result = {"state": "goyang_http_qa_failed", "lastFailure": preview.describe_failure(error)}
-
-          Path("goyang-preview-verification.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
-          if result["state"] != "preview_verified":
-              raise SystemExit("GOYANG_HTTP_QA_FAILED: see sanitized report")
-          print("Fixed Goyang revision, snapshot, detail route, and funeral hub verified")
-          PYTHON
+      - name: Verify fixed Goyang custom domain canonical noindex revision and snapshot
+        run: python3 site-factory/engine/verify_goyang_canonical.py http --report goyang-preview-verification.json
 
       - name: Save Goyang HTTP QA report
         if: always()
