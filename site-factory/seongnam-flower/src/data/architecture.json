@@ -47,7 +47,7 @@
     },
     {
       "category": "order",
-      "children": 1,
+      "children": 2,
       "indexable": false,
       "label": "가격·주문",
       "menuVisible": false,
@@ -55,6 +55,30 @@
     }
   ],
   "pages": [
+    {
+      "pageKey": "seongnam-congrats-wreath-price",
+      "snapshotId": "seongnam-congrats-wreath-price-r1-20261002T180106Z",
+      "snapshotHash": "8ab33558663cbfca5f88374b12b248bdeeca79b179439ad859e06d4f683074c0",
+      "approvalVerified": true,
+      "draftKey": "seongnam-congrats-wreath-price-r1",
+      "sourceRecordId": "recHe8H44AKE0n07E",
+      "publishQueueRecordId": "rec3AMvHsb0GYWfll",
+      "slug": "seongnam-congrats-wreath-price",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/seongnam-congrats-wreath-price/",
+      "title": "성남 축하화환 가격 | 4종 비교와 행사장별 비용 확인",
+      "primaryKeyword": "성남 축하화환 가격",
+      "pageType": "price-guide",
+      "status": "primary",
+      "file": "src/data/pages.json",
+      "pageRole": "PRICE_GUIDE",
+      "parentHub": "/order/",
+      "intentKey": "성남|축하화환|가격비교|성남 축하4종 가격선택",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": false
+    },
     {
       "pageKey": "seongnam-funeral-wreath-price",
       "snapshotId": "seongnam-funeral-wreath-price-r1-20261002T180106Z",

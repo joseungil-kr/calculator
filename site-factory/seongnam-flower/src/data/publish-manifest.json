@@ -1,6 +1,24 @@
 {
   "pages": [
     {
+      "pageKey": "seongnam-congrats-wreath-price",
+      "snapshotId": "seongnam-congrats-wreath-price-r1-20261002T180106Z",
+      "snapshotHash": "8ab33558663cbfca5f88374b12b248bdeeca79b179439ad859e06d4f683074c0",
+      "approvalVerified": true,
+      "draftKey": "seongnam-congrats-wreath-price-r1",
+      "sourceRecordId": "recHe8H44AKE0n07E",
+      "publishQueueRecordId": "rec3AMvHsb0GYWfll",
+      "slug": "seongnam-congrats-wreath-price",
+      "category": "order",
+      "routeType": "category",
+      "url": "/order/seongnam-congrats-wreath-price/",
+      "title": "성남 축하화환 가격 | 4종 비교와 행사장별 비용 확인",
+      "primaryKeyword": "성남 축하화환 가격",
+      "pageType": "price-guide",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-funeral-wreath-price",
       "snapshotId": "seongnam-funeral-wreath-price-r1-20261002T180106Z",
       "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",
@@ -72,6 +90,11 @@
       "pageKey": "seongnam-funeral-wreath-price",
       "snapshotHash": "cb9b3dac06a19a9f98d47acdd8ed7815c11afdcb2864baf9374c7de250073046",
       "publishQueueRecordId": "recSNxjlO9HYFWV7C"
+    },
+    "seongnam-congrats-wreath-price-r1-20261002T180106Z": {
+      "pageKey": "seongnam-congrats-wreath-price",
+      "snapshotHash": "8ab33558663cbfca5f88374b12b248bdeeca79b179439ad859e06d4f683074c0",
+      "publishQueueRecordId": "rec3AMvHsb0GYWfll"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
