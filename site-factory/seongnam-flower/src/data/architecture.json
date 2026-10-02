@@ -7,7 +7,7 @@
   "hubs": [
     {
       "category": "funeral",
-      "children": 1,
+      "children": 2,
       "indexable": false,
       "label": "근조·장례",
       "menuVisible": false,
@@ -55,6 +55,30 @@
     }
   ],
   "pages": [
+    {
+      "pageKey": "seongnam-cha-funeral-wreath",
+      "snapshotId": "seongnam-cha-funeral-wreath-r1-20261002T185018Z",
+      "snapshotHash": "9c3f4332eee80000fe8204cfffc811df155d61c2bcafc6e749f87581d337a6a1",
+      "approvalVerified": true,
+      "draftKey": "seongnam-cha-funeral-wreath-r1",
+      "sourceRecordId": "rec0PaY3diRKssYVJ",
+      "publishQueueRecordId": "recRYhHlGMtasJybM",
+      "slug": "seongnam-cha-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/seongnam-cha-funeral-wreath/",
+      "title": "분당차병원 장례식장 근조화환 | 야탑로 59·빈소와 주문 확인",
+      "primaryKeyword": "분당차병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "primary",
+      "file": "src/data/pages.json",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/funeral/",
+      "intentKey": "성남|근조화환|시설주문|분당차병원 장례식장",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": false
+    },
     {
       "pageKey": "seongnam-congrats-wreath-price",
       "snapshotId": "seongnam-congrats-wreath-price-r1-20261002T180106Z",
