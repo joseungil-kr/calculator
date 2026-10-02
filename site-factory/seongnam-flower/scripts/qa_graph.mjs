@@ -26,13 +26,13 @@ export function validateGraph(data) {
    if(entries.length!==1 || entries[0].url!==p.url || entries[0].snapshotId!==p.snapshotId)throw new Error('Registry parity '+p.pageKey);
   }
  }
- for(const key of pages.flatMap(p=>p.relatedKeys||[]))if(!seen.has(key))throw new Error('Invalid related key '+key);
+ for(const p of pages) for(const key of p.relatedKeys||[])if(!seen.has(key)||key===p.pageKey)throw new Error('Invalid related key '+key);
  for(const collection of [manifest.pages,map.pages,architecture.pages])if(collection.length!==pages.length)throw new Error('Registry count mismatch');
  for(const h of architecture.hubs)if(h.children!==pages.filter(p=>p.category===h.category).length)throw new Error('Stale hub child count '+h.url);
  for(const p of products){
   if(!p.sourceUrl || !['operator_confirmed','official_business_source'].includes(p.sourceLevel) || p.assetType!=='real_product' || !p.verifiedAt)throw new Error('Unverified product '+p.key);
   const orderUrl=new URL(p.orderUrl);
-  if(orderUrl.protocol!=='https:' || orderUrl.hostname!=='fwith.co.kr' || orderUrl.pathname!=='/' || orderUrl.search || orderUrl.hash || orderUrl.username || orderUrl.password)throw new Error('Untrusted order destination '+p.key);
+  if(orderUrl.protocol!=='https:' || orderUrl.hostname!=='fwith.co.kr' || orderUrl.port || orderUrl.pathname!=='/' || orderUrl.search || orderUrl.hash || orderUrl.username || orderUrl.password)throw new Error('Untrusted order destination '+p.key);
   if(!Number.isFinite(p.price)||p.price<0)throw new Error('Invalid product price '+p.key);
  }
  return {pages:pages.length,hubs:architecture.hubs.filter(h=>h.children>0).length};
