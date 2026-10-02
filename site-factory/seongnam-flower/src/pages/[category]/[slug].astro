@@ -10,8 +10,10 @@ import {selectProducts,productHeading,productFamilies} from '../../lib/catalog.m
 import {nextSteps,relatedReading} from '../../lib/journey.mjs';
 import editorial from '../../data/editorial-assets.json';
 import {detailIllustration} from '../../lib/visual.mjs';
+import {pageSources,sourceTypeLabels} from '../../lib/sources.mjs';
 export function getStaticPaths(){return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
 const {page}=Astro.props;
+const sources=pageSources(page);
 const journey=nextSteps(page,pages);
 const related=relatedReading(page,pages);
 const productSet=selectProducts(page,products,productFamilies(page).length>3?4:3); const hero=productSet[0];
@@ -33,7 +35,7 @@ const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 {productSet.length>0 && <section class="product-section compact"><h2>{productHeading(page)}</h2><ProductCards products={productSet}/></section>}
 {!page.contentMarkdown && page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}
 {addressPage && <aside class="journey-link"><span>상품을 정했다면 수령정보를 준비해 주세요</span><a href={addressPage.url}>{addressPage.primaryKeyword} 확인 →</a></aside>}
-{page.source?.url && <section class="source-card"><h2>{page.source.name || page.entity+' 관련 공식정보'}</h2><p>{page.source.url.startsWith('https://fwith.co.kr') ? '꽃이랑의 상품과 주문 안내를 확인할 수 있습니다. 최종 상품 구성·배송조건은 주문 시 확인해 주세요.' : '주소와 시설 안내는 아래 공식 출처를 참고하세요. 꽃 수령·반입·설치 가능 여부는 해당 시설이나 행사 담당자에게 확인해 주세요.'}</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>}
+{sources.map((source:any)=><section class="source-card" data-source-type={source.type}><h2>{source.name}</h2><p>이 안내에서 참고한 출처입니다. 최신 내용은 해당 출처에서 확인해 주세요.</p><a href={source.url} rel="nofollow" aria-label={`${source.name} 확인`}>출처 확인 →</a><small>출처 유형: {sourceTypeLabels[source.type as keyof typeof sourceTypeLabels]} · 확인일 <time datetime={source.verifiedAt}>{source.verifiedAt}</time></small></section>)}
 {!page.contentMarkdown && page.faq?.length>0 && <section class="faq"><h2>{page.primaryKeyword} 자주 묻는 질문</h2>{page.faq.map((f:any)=><div><h3>{f[0]}</h3><p>{f[1]}</p></div>)}</section>}
 {journey.length>0 && <section class="related" data-journey="next-step"><h2>다음 주문 단계</h2><div class="card-grid journey-grid">{journey.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}
 {related.length>0 && <section class="related" data-journey="related-reading"><h2>함께 읽을 장소·상황 안내</h2><div class="card-grid journey-grid">{related.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}

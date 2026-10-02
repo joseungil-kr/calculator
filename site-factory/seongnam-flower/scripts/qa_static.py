@@ -10,6 +10,7 @@ class Document(HTMLParser):
         self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
         self.journey_aside=0;self.purpose_cards=[];self.active_purpose=None
+        self.source_cards=[];self.active_source=None;self.source_depth=0;self.source_field=None
         self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
@@ -22,6 +23,13 @@ class Document(HTMLParser):
         if context and tag=='a':context['links'].append(a.get('href'))
         if tag in ['script','style']:self.ignored+=1
         if tag=='section':self.sections.append(a.get('data-journey') or ('detail-hero' if 'detail-hero' in a.get('class','') else None))
+        if tag=='section' and 'source-card' in a.get('class','').split():
+            self.active_source={'type':a.get('data-source-type'),'name':[],'links':[],'dates':[],'date_text':[],'text':[]}
+            self.source_cards.append(self.active_source);self.source_depth=len(self.sections)
+        if self.active_source is not None:
+            if tag=='h2':self.source_field='name'
+            if tag=='time':self.source_field='date_text';self.active_source['dates'].append(a.get('datetime'))
+            if tag=='a':self.active_source['links'].append(a)
         if tag=='aside' and 'journey-link' in a.get('class','').split():self.journey_aside+=1
         if tag=='p' and 'detail-hero' in self.sections and not self.answer_done:self.capture_answer=True
         if tag=='h1':self.h1+=1
@@ -42,7 +50,10 @@ class Document(HTMLParser):
         if tag=='title':self.in_title=False
         if tag=='p' and self.capture_answer:self.capture_answer=False;self.answer_done=True
         if tag in ['script','style']:self.ignored=max(0,self.ignored-1)
-        if tag=='section' and self.sections:self.sections.pop()
+        if tag in ['h2','time']:self.source_field=None
+        if tag=='section' and self.sections:
+            if self.active_source is not None and len(self.sections)==self.source_depth:self.active_source=None
+            self.sections.pop()
         if tag=='aside':self.journey_aside=max(0,self.journey_aside-1)
         if tag=='a':self.active_purpose=None
         for i in range(len(self.elements)-1,-1,-1):
@@ -52,8 +63,30 @@ class Document(HTMLParser):
         if not self.ignored:self.visible.append(data)
         if self.capture_answer:self.first_answer.append(data)
         if self.active_purpose is not None:self.active_purpose['text'].append(data)
+        if self.active_source is not None and not self.ignored:
+            self.active_source['text'].append(data)
+            if self.source_field:self.active_source[self.source_field].append(data)
         context=next((p for _,p in reversed(self.elements) if p),None)
         if context and not self.ignored:context['text'].append(data)
+
+SOURCE_TYPE_LABELS={'official':'공공·기관','business':'사업자','facility':'시설','education':'교육기관','professional':'전문자료','reference':'참고자료'}
+
+def check_rendered_sources(doc, page):
+    sources=page.get('sources')
+    if sources is None:sources=[page['source']] if page.get('source') else []
+    assert isinstance(sources,list),f'Invalid source array: {page["url"]}'
+    assert len(doc.source_cards)==len(sources),f'Rendered source count mismatch: {page["url"]}'
+    for expected,card in zip(sources,doc.source_cards):
+        source_url=expected['url'];parsed=urlparse(source_url)
+        assert parsed.scheme=='https' and parsed.hostname and not parsed.username and not parsed.password,f'Unsafe source URL: {page["url"]}'
+        assert not re.search(r'[\x00-\x20\x7f\\\\]',source_url),f'Invalid source URL characters: {page["url"]}'
+        assert ''.join(card['name'])==expected['name'],f'Rendered source name/order mismatch: {page["url"]}'
+        assert card['type']==expected['type'],f'Rendered source type mismatch: {page["url"]}'
+        assert len(card['links'])==1 and card['links'][0].get('href')==source_url,f'Rendered source URL/order mismatch: {page["url"]}'
+        assert 'nofollow' in card['links'][0].get('rel','').split(),f'Source link rel mismatch: {page["url"]}'
+        assert card['links'][0].get('aria-label')==expected['name']+' 확인',f'Source link label mismatch: {page["url"]}'
+        assert card['dates']==[expected['verifiedAt']] and ''.join(card['date_text'])==expected['verifiedAt'],f'Rendered source date mismatch: {page["url"]}'
+        assert f"출처 유형: {SOURCE_TYPE_LABELS[expected['type']]}" in ''.join(card['text']),f'Rendered source type label missing: {page["url"]}'
 
 def check_customer_output(doc, url):
     text=' '.join(doc.visible)
@@ -161,6 +194,7 @@ def check(root=Path('.')):
     for page in pages:
         check_customer_journey(docs[page['url']],page,pages,navigation['families'])
         check_rendered_intent(docs[page['url']],page,products)
+        check_rendered_sources(docs[page['url']],page)
     assert {p['href'] for p in docs['/'].purpose_cards}==set(navigation['purpose']), 'Home purpose-card route mismatch'
     for card in docs['/'].purpose_cards:
         assert navigation['purpose'][card['href']] in ''.join(card['text']),f'Home purpose-card promise differs from actual hub children: {card["href"]}'
