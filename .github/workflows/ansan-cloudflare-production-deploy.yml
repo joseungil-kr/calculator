@@ -68,11 +68,29 @@ jobs:
           EXPECTED_REVISION: ${{ github.sha }}
         run: |
           python3 - <<'PY'
-          import os, time, urllib.request
+          import json, os, re, time, urllib.request
+          from html.parser import HTMLParser
           from urllib.parse import quote
 
           base="https://ansan.fwith.kr"
           expected=os.environ["EXPECTED_REVISION"]
+          with open("src/data/business-truth.json",encoding="utf-8") as truth_file:
+              business=json.load(truth_file)
+
+          class Banner(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links=[]; self.current=None; self.images=0; self.text=[]
+              def handle_starttag(self,tag,attrs):
+                  if tag=="img": self.images+=1
+                  if tag=="a":
+                      self.current=[dict(attrs).get("href"),[]]
+                      self.links.append(self.current)
+              def handle_data(self,data):
+                  self.text.append(data)
+                  if self.current is not None: self.current[1].append(data)
+              def handle_endtag(self,tag):
+                  if tag=="a": self.current=None
 
           def get(path):
               req=urllib.request.Request(base+quote(path,safe="/"),headers={"User-Agent":"SiteFactory-ProductionQA/1.0"})
@@ -94,10 +112,16 @@ jobs:
 
                   code,article=get("/안산꽃배달/")
                   assert code==200
-                  assert "content-order-banner" in article
-                  assert "order-banner-" in article
-                  assert "근조화환 생화 최저가" in article
-                  assert "index,follow" in article.lower()
+                  assert f'name="site-factory-revision" content="{expected}"' in article, "Stale representative article revision"
+                  banners=re.findall(r'<figure class="content-order-banner"[^>]*>[\s\S]*?</figure>',article)
+                  assert banners, "Missing accessible order CTA"
+                  for markup in banners:
+                      banner=Banner(); banner.feed(markup)
+                      links={(href," ".join("".join(label).split())) for href,label in banner.links}
+                      assert banner.images==0 and "최저가" not in "".join(banner.text), "Unsupported image or price claim in order CTA"
+                      assert (business["phoneHref"],f'전화 주문 {business["phone"]}') in links, "Wrong or missing telephone CTA"
+                      assert (business["onlineOrderUrl"],"온라인 주문") in links, "Wrong or missing online order CTA"
+                  assert "index,follow" in article.lower() and "noindex" not in article.lower()
                   print("ANSAN PRODUCTION DEPLOY QA PASSED")
                   break
               except Exception as exc:
