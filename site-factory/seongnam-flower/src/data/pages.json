@@ -276,5 +276,63 @@
     "queryClass": "commercial-modifier",
     "visualIntent": "wreath_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-corporate-event-wreath",
+    "snapshotId": "seongnam-corporate-event-wreath-r1-20261002T180106Z",
+    "snapshotHash": "1007416fec2290f4a33b2748ef2025a0ceaeb00324aeaacfd2fab637d264512c",
+    "approvalVerified": true,
+    "draftKey": "seongnam-corporate-event-wreath-r1",
+    "sourceRecordId": "rec0QEL00WiU0o7JO",
+    "publishQueueRecordId": "rec97stTLsF9clvRo",
+    "slug": "seongnam-corporate-event-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-corporate-event-wreath/",
+    "title": "성남 기업행사 화환 | 대관장 주소·주최명·반입 준비",
+    "primaryKeyword": "성남 기업행사 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 6,
+    "h1": "성남 기업행사 화환, 회사 주소와 행사장을 구분해 주문하세요",
+    "description": "판교 스타트업캠퍼스 등 공식 시설 위치와 대관 안내를 참고해 기업행사 화환을 준비하세요. 행사명·층·홀, 반입시간, 법인명 리본과 최종비용을 확인합니다.",
+    "cardSummary": "주최 회사의 사무실로 잘못 보내지 않도록 실제 행사장과 수령 담당자를 먼저 정하세요. 설치·철수 담당과 법인명 리본도 따로 확인합니다.",
+    "firstAnswer": "성남 기업행사 화환은 주최 회사 주소보다 실제 행사가 열리는 건물·층·홀을 먼저 확인해야 합니다. 행사명과 시작 시각, 현장 수령 담당자, 반입·설치 가능시간을 꽃이랑에 알려주세요. 축하화환은 59,000원부터이며 추가 배송비와 철수·회수 가능 여부는 별도로 확인해 주세요.",
+    "contentMarkdown": "성남 기업행사 화환은 주최 회사 주소보다 실제 행사가 열리는 건물·층·홀을 먼저 확인해야 합니다. 행사명과 시작 시각, 현장 수령 담당자, 반입·설치 가능시간을 꽃이랑에 알려주세요. 축하화환은 59,000원부터이며 추가 배송비와 철수·회수 가능 여부는 별도로 확인해 주세요.\n\n거래처의 창립기념식, 출범식, 협약식 등에 보내는 화환은 회사 소재지와 행사장이 다를 수 있습니다. 초청장이나 행사 담당자가 안내한 장소를 기준으로 준비해 주세요. 저희 꽃이랑에 주문하실 때도 주최 측 이름과 실제 도착지를 나누어 알려주시면 좋습니다.\n\n## 회사 소재지와 화환 도착지를 따로 적어주세요\n\n회사 홈페이지에 적힌 주소를 바로 배송지로 사용하기보다 행사 초청장의 장소와 대조해 주세요. 본사에서 주최하더라도 외부 회의장이나 대관홀에서 행사를 진행할 수 있습니다.\n\n- 주최 측: 행사를 여는 회사·기관의 정확한 명칭\n- 행사명: 창립기념식·출범식 등 현장에서 식별할 이름\n- 실제 도착지: 건물명과 도로명주소, 동·층·홀\n- 수령 담당: 행사 당일 현장에 있는 담당자와 연락처\n\n공동 주최라면 어떤 기관의 어느 행사로 보내는지 밝혀 주세요. 회사 대표번호만 적기보다 실제로 화환을 인계받을 담당자를 정하는 것이 필요합니다. 사업자 소재지와 배송지는 서로 다른 정보입니다.\n\n## 판교 공공건물은 시설명과 실제 대관실을 확인하세요\n\n[경기도경제과학진흥원 공식 판교 시설 안내](https://www.gbsa.or.kr/pages/contact_bio_center.do)는 스타트업캠퍼스를 성남시 분당구 판교로289번길 20으로 안내합니다. ‘판교 행사장’이라는 표현만으로 주소나 어느 동·층·실인지 정할 수 없습니다. 행사 안내문에 적힌 건물명과 실제 사용하는 공간을 함께 확인해 주세요.\n\n[판교테크노밸리 공공건물 대관시설 운영안내](https://www.pangyotechnovalley.org/base/board/read?boardManagementNo=18&boardNo=1366&menuLevel=2&menuNo=55&page=1&searchCategory=&searchType=&searchWord=)는 대관 예약현황을 경기공유서비스에서 확인하도록 안내합니다. 따라서 회사의 사무실 주소나 일반 시설 소개만 보고 화환을 보내기보다 주최 측이 확정한 대관장 정보를 받으시는 편이 좋습니다.\n\n이 안내는 특정 공간에 화환 반입이 가능하다는 뜻이 아닙니다. 공식 대관 안내가 있는 시설이라도 이번 행사에서 화환을 받는지, 어느 곳에 둘 수 있는지는 주최 측과 시설 담당자에게 별도로 확인해 주세요.\n\n## 반입·설치·행사 종료 후 처리를 나누어 정하세요\n\n행사 시작시각, 화환 반입 가능시간, 종료 후 처리시간은 서로 다를 수 있습니다. 주문 전 아래 내용을 행사 담당자와 맞춰 주세요.\n\n1. 반입: 배송차량이 접근할 출입구와 하역·인계 위치, 출입 가능한 시간\n2. 설치: 로비나 홀 앞 지정 위치, 놓을 수 있는 크기, 현장 배치를 확인할 담당자\n3. 종료 후 처리: 주최 측이 옮기거나 처리할지, 별도 철수·회수 서비스가 필요한지\n\n화환을 주문했다고 현장 설치작업이나 행사 종료 후 회수가 자동으로 포함된다고 생각하지 마세요. 별도 작업을 원하시면 가능한 서비스인지와 비용을 먼저 문의해 주세요. 출입 절차와 동선은 시설의 실제 안내를 따르며, 확인 전 허가된 것으로 보지 않습니다.\n\n회사나 건물의 화환 반입 제한이 확인됐다면 주문 확정에 앞서 그 내용을 알려주세요. 공식 주소가 있다는 이유만으로 반입 가능한 장소로 판단하지 않습니다.\n\n## 법인명 리본과 상품 예산을 맞춰보세요\n\n[꽃이랑 공식몰](https://fwith.co.kr/)의 2026년 10월 2일 표시가격은 축하 3단 59,000원, 고급 3단 79,000원, 특대 3단 99,000원, 특특대 3단 149,000원입니다. 행사 공간과 회사의 상품 예산을 고려해 선택하고, 추가 배송비까지 포함한 총예산을 알려주세요.\n\n리본은 축하 문구와 발신명을 분리해 준비하시면 됩니다. ‘창립을 축하하며 무궁한 발전을 기원합니다’, ‘새로운 출발을 축하합니다’ 등은 작성 예시이며, 실제 행사에 맞게 선택해 주세요. 보내는 법인명·부서·직함·이름 중 무엇을 표시할지 결정한 뒤 정확한 표기를 전달해 주세요. 협찬·공동주최처럼 관계를 나타내는 표현은 실제 관계에 맞게 적으셔야 합니다.\n\n상품사진의 리본문구는 예시입니다. 지역·계절에 따라 실제 상품의 꽃 구성과 형태도 일부 달라질 수 있습니다. 크기를 중요하게 보시면 설치할 공간과 함께 제작 높이·폭을 문의해 주세요.\n\n외부 행사장이 아니라 새 사무실이나 매장 개업을 축하하시는 경우에는 [개업화환의 사업장 수령·리본 준비](/business/seongnam-opening-wreath/)를 참고하세요.\n\n## 현장 담당자와 확인한 내용을 꽃이랑에 전달하세요\n\n행사명·주최명·실제 주소·층·홀·일시·수령 담당자, 상품과 총예산, 리본문구, 반입 및 종료 후 처리 조건을 준비해 주세요. 희망 도착시간과 추가 배송비, 최종금액을 안내받은 뒤 주문하시면 됩니다.\n\n[꽃이랑 1844-0644로 기업행사 화환 문의하기](tel:1844-0644)\n\n[꽃이랑 온라인몰에서 축하화환 확인·주문하기](https://fwith.co.kr)\n\n전화주문 상담은 08:00~23:00, 온라인 접수는 24시간입니다. 실제 도착 가능시간과 행사장 수령 가능시간은 별도로 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "경기도경제과학진흥원 판교 시설 위치 안내",
+        "url": "https://www.gbsa.or.kr/pages/contact_bio_center.do",
+        "type": "official",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "판교테크노밸리 공공건물 대관시설 운영안내",
+        "url": "https://www.pangyotechnovalley.org/base/board/read?boardManagementNo=18&boardNo=1366&menuLevel=2&menuNo=55&page=1&searchCategory=&searchType=&searchWord=",
+        "type": "official",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식몰 축하화환 상품가격",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "경기도경제과학진흥원 판교 시설 위치 안내",
+      "url": "https://www.gbsa.or.kr/pages/contact_bio_center.do",
+      "type": "official",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-opening-wreath"
+    ],
+    "queryClass": "work-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]
