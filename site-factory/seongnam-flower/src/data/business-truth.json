@@ -1,0 +1,13 @@
+{
+  "brand": "꽃이랑",
+  "brandKey": "flower-fwith",
+  "phone": "1844-0644",
+  "phoneHref": "tel:18440644",
+  "phoneOrderHours": "08:00-23:00",
+  "onlineOrderUrl": "https://fwith.co.kr",
+  "onlineOrderHours": "24시간",
+  "deliveryArea": "전국 배송 가능",
+  "deliveryNotice": "지역별 추가 배송비가 발생할 수 있으며 화환 반입 불가 지역은 상담원 문의가 필요합니다.",
+  "productVariationNotice": "실제 배송 상품은 지역 및 계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.",
+  "sourceLevel": "operator_confirmed"
+}
