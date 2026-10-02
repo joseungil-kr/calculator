@@ -7,7 +7,7 @@
   "hubs": [
     {
       "category": "funeral",
-      "children": 0,
+      "children": 1,
       "indexable": false,
       "label": "근조·장례",
       "menuVisible": false,
@@ -54,7 +54,32 @@
       "url": "/order/"
     }
   ],
-  "pages": [],
+  "pages": [
+    {
+      "pageKey": "goyang-flower-v2-ilsan-paik-funeral-wreath",
+      "snapshotId": "goyang-ilsan-paik-r2-20261002T040830",
+      "snapshotHash": "1419cc48f44a3618cbc365ac7f3796d4cd35dc5522eeff655a22f4caadfbdf10",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-ilsan-paik-funeral-wreath-r1",
+      "sourceRecordId": "recUNKb1Wjh7U5pAZ",
+      "publishQueueRecordId": "recEc2Nna11TLHyjg",
+      "slug": "ilsan-paik-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/ilsan-paik-funeral-wreath/",
+      "title": "일산백병원 장례식장 근조화환 | 빈소 확인과 주문 안내",
+      "primaryKeyword": "일산백병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "primary",
+      "file": "src/data/pages.json",
+      "pageRole": "PLACE_LANDING",
+      "parentHub": "/funeral/",
+      "intentKey": "goyang|funeral-wreath|facility-order|ilsan-paik-hospital-funeral",
+      "contentRole": "question-answer",
+      "localizationPolicy": "local-required",
+      "sitemapIndexable": false
+    }
+  ],
   "schemaVersion": "1.2",
   "siteKey": "goyang-flower-v2"
 }
