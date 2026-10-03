@@ -415,6 +415,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-ogeum",
+      "snapshotId": "goyang-deogyang-ogeum-r1-20261003T182200Z",
+      "snapshotHash": "83c0d56651382c7ee015633c510077bd7b370abee6907f1f71a27415b43c703e",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-ogeum-r1",
+      "sourceRecordId": "recD4gzTvBhipmw7V",
+      "publishQueueRecordId": "reccmpbakwAQT8CCK",
+      "slug": "deogyang-ogeum",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-ogeum/",
+      "title": "오금동 꽃배달 | 고양 주소로 준비하는 가족 꽃선물",
+      "primaryKeyword": "오금동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-samsong",
       "snapshotId": "goyang-deogyang-samsong-r1-20261003T182200Z",
       "snapshotHash": "2ccb93ec6ae14a6eed8a25ad27c1dd75535e36f3e04dd5849a47ab5c002745fc",

@@ -3962,5 +3962,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-ogeum",
+    "snapshotId": "goyang-deogyang-ogeum-r1-20261003T182200Z",
+    "snapshotHash": "83c0d56651382c7ee015633c510077bd7b370abee6907f1f71a27415b43c703e",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-ogeum-r1",
+    "sourceRecordId": "recD4gzTvBhipmw7V",
+    "publishQueueRecordId": "reccmpbakwAQT8CCK",
+    "slug": "deogyang-ogeum",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-ogeum/",
+    "title": "오금동 꽃배달 | 고양 주소로 준비하는 가족 꽃선물",
+    "primaryKeyword": "오금동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 51,
+    "h1": "고양 오금동 꽃배달, 가족이 받을 장소와 시간을 맞춰요",
+    "description": "고양오금초 인근에서 건넬 꽃다발과 집으로 보낼 꽃바구니를 비교해 보세요. 고양시 덕양구 주소 확인부터 상품가격, 수령시간 문의까지 안내합니다.",
+    "cardSummary": "학교에서 만날지 집에서 받을지 먼저 정하면 선물 준비가 간단해집니다. 고양오금초의 정확한 주소와 함께 받을 시간까지 챙겨 보세요.",
+    "firstAnswer": "고양시 덕양구 오금동 꽃배달을 주문하실 때는 받을 주소와 만나는 시간을 먼저 정해 주세요. 꽃이랑에서는 가족에게 직접 건넬 꽃다발과 집에 둘 꽃바구니를 고를 수 있습니다. 고양오금초 인근 선물도 학교 이름에만 의존하지 않고 합의한 수령 장소를 적고, 배송 가능 시간과 총액을 확인해 주세요.",
+    "contentMarkdown": "고양시 덕양구 오금동 꽃배달을 주문하실 때는 받을 주소와 만나는 시간을 먼저 정해 주세요. 꽃이랑에서는 가족에게 직접 건넬 꽃다발과 집에 둘 꽃바구니를 고를 수 있습니다. 고양오금초 인근 선물도 학교 이름에만 의존하지 않고 합의한 수령 장소를 적고, 배송 가능 시간과 총액을 확인해 주세요.\n\n## 고양시 덕양구까지 적으면 다른 오금동과 구분돼요\n\n받는 분에게 전달받은 주소에서 시·구를 생략하지 말아 주세요. 고양의 오금동은 [덕양구 관내도](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)상 삼송1동에 속합니다. ‘삼송 쪽’이라는 설명만으로도 부족할 수 있으니 단지명이나 건물명과 도로명주소를 함께 준비하는 것이 좋습니다.\n\n가족의 졸업·생일·기념일에 꽃을 보낸다면 주문자 주소가 아니라 실제 받는 장소를 적어 주세요. 집에서 꽃을 받아 함께 이동할지, 약속한 곳에서 받는 분이 직접 받을지에 따라 필요한 인계 정보가 달라집니다.\n\n## 고양오금초 인근 약속은 만나는 곳을 따로 정하세요\n\n[고양오금초등학교 공식 안내](https://og-e.goegy.kr/og-e/lm/location/locationMapView.do?mi=16256)의 주소는 오금1로10입니다. 학교와 관련된 가족 일정에 꽃을 준비하더라도 ‘학교로 보내 주세요’에서 끝내지 말고, 보호자가 받을 장소와 연락 가능한 시간을 정해 주세요.\n\n교내 출입이나 꽃 반입이 가능한지는 학교의 해당 일정 안내와 담당자에게 확인해야 합니다. 학교 앞에서 만나기로 했다면 서로 확인한 만남 장소를 전달하고, 일정이 바뀔 경우 연락받을 번호도 남겨 주세요. 학교의 평소 운영시간이 꽃을 받아 줄 수 있는 시간이라는 뜻은 아닙니다.\n\n## 함께 이동할 꽃다발, 집에서 감상할 꽃바구니\n\n직접 건네며 축하할 꽃은 꽃다발 ‘소소한 행복’(G105, 상품가격 50,000원)을 살펴보세요. 가족이 집에서 받을 선물이나 한곳에 두고 감상할 꽃을 원하시면 꽃바구니 ‘햇살 한가득’(A155, 상품가격 65,000원)을 비교할 수 있습니다.\n\n포장을 포함한 선물 느낌과 원하는 색감, 짧은 축하 문구를 함께 알려 주세요. 이동 중 다른 짐도 들어야 한다면 받는 분이 꽃을 어떻게 가져갈지도 생각해 선택해 주세요. 실제 꽃 구성·형태는 지역과 계절에 따라 달라질 수 있습니다.\n\n## 가족 일정과 주문 조건을 함께 확인해 드려요\n\n희망 날짜·수령 장소·상품·문구를 준비해 [1844-0644로 전화주문](tel:18440644)해 주세요. 전화주문 시간은 08:00~23:00이며, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 이용하실 수 있습니다.\n\n온라인으로 주문할 수 있는 시간과 실제 배송 가능한 시간은 구분해 주세요. 특정 시각이나 당일 전달을 원하시면 먼저 가능 여부를 확인해야 합니다. 상품가격에 지역별 추가배송비가 더해질 수 있으므로 최종 금액까지 확인한 뒤 결제해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "덕양구청 행정구역 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양오금초등학교 오시는 길",
+        "url": "https://og-e.goegy.kr/og-e/lm/location/locationMapView.do?mi=16256",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "덕양구청 행정구역 관내도",
+      "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
