@@ -205,8 +205,8 @@
       "primaryLandingSlug": "",
       "heroPath": "",
       "worker": "goyang-flower-prod-disabled",
-      "launchMode": "staging",
-      "productionEnabled": false,
+      "launchMode": "live",
+      "productionEnabled": true,
       "naverVerification": "",
       "indexnowKey": "",
       "templateKey": "flower-local-v2",
@@ -269,8 +269,8 @@
       "stagingUrl": "https://goyang-flower-guide-qa.joseungil.workers.dev",
       "requireRevisionApproval": true,
       "requireSnapshotApproval": true,
-      "approvedRevision": "",
-      "approvalEvidenceUrl": "",
+      "approvedRevision": "f3206cf71f071ec473638545892675c5ef2aafb1",
+      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/132#issuecomment-5970410314",
       "administrativeCoverage": {
         "enabled": true,
         "regionKey": "goyang",
@@ -286,7 +286,7 @@
         "previewRevision": "f3206cf71f071ec473638545892675c5ef2aafb1",
         "previewManifestSha256": "d930efc3630966607fdd354d00a3a6bbb03a4a75f270e5d6f49466d77ea5360e",
         "previewApprovalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/121#issuecomment-5970018448",
-        "productionManifestSha256": ""
+        "productionManifestSha256": "d930efc3630966607fdd354d00a3a6bbb03a4a75f270e5d6f49466d77ea5360e"
       }
     },
     "seongnam-flower-v2": {
