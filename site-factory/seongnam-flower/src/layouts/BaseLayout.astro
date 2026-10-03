@@ -2,8 +2,11 @@
 import '../styles/global.css';
 import {site,menuGroups} from '../config/site';
 import buildRevision from '../data/build-revision.json';
-const {title,description,canonicalPath='/',noindex=false,includeSchema=true,orderUrl=site.orderUrl}=Astro.props;
+import provenance from '../data/catalog-provenance.json';
+import {productSocialImage} from '../lib/social-image.mjs';
+const {title,description,canonicalPath='/',noindex=false,includeSchema=true,orderUrl=site.orderUrl,socialProduct}=Astro.props;
 const canonical=canonicalPath===false ? '' : new URL(canonicalPath,site.domain).toString();
+const socialImage=canonical ? productSocialImage(socialProduct,provenance,site.domain,site.brand) : null;
 const indexable=site.indexable && !noindex;
 const revision=buildRevision.revision || 'local';
 ---
@@ -14,6 +17,7 @@ const revision=buildRevision.revision || 'local';
 {indexable && <meta name="naver-site-verification" content={site.naverVerification}/>}
 <meta name="site-factory-revision" content={revision}/>{canonical && <link rel="canonical" href={canonical}/>} 
 <meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ko_KR"/>
+{socialImage && <><meta property="og:image" content={socialImage.url}/><meta property="og:image:secure_url" content={socialImage.url}/><meta property="og:image:alt" content={socialImage.alt}/><meta property="og:image:type" content={socialImage.type}/><meta property="og:image:width" content={socialImage.width}/><meta property="og:image:height" content={socialImage.height}/><meta name="twitter:image" content={socialImage.url}/><meta name="twitter:image:alt" content={socialImage.alt}/></>}
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
 <meta name="theme-color" content="#3a214f"/>
 {includeSchema && <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'Florist',name:site.brand,url:site.domain,telephone:site.phone,areaServed:site.region}).replace(/</g, String.fromCharCode(92) + 'u003c')}></script>}

@@ -23,7 +23,7 @@ const snapshotId=page.snapshotId;
 const pricePage=journey.find((p:any)=>p.pageType==='price-guide');
 const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 ---
-<BaseLayout title={page.title} description={page.description} canonicalPath={page.url} orderUrl={hero?.orderUrl || site.orderUrl}>
+<BaseLayout title={page.title} description={page.description} canonicalPath={page.url} orderUrl={hero?.orderUrl || site.orderUrl} socialProduct={hero}>
 <article data-snapshot-id={snapshotId} data-page-key={page.pageKey} data-page-type={page.pageType}>
 <nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><a href={category?.url || '/'}>{category?.label || '꽃배달'}</a><span>›</span><span>{page.primaryKeyword}</span></nav>
 <section class="detail-hero"><div><span class="eyebrow">{site.brand} {site.region}</span><h1>{page.h1}</h1><p>{page.firstAnswer}</p><div class="actions"><a class="btn primary" href={site.phoneHref}>☎ {site.phone}</a><a class="btn dark" href={hero?.orderUrl || site.orderUrl}>상품 확인·주문</a></div><div class="facts"><span>전화 {site.phoneOrderHours}</span><span>온라인 {site.onlineOrderHours} 접수</span><span>배송 가능시간·추가비용 확인</span></div></div>

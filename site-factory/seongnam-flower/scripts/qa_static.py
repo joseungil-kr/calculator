@@ -7,7 +7,7 @@ import hashlib, json, os, re, xml.etree.ElementTree as ET
 class Document(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
-        self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
+        self.meta={};self.meta_entries=[];self.order_banner_count=0;self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
         self.journey_aside=0;self.purpose_cards=[];self.active_purpose=None
         self.markdown_blocks=[];self.markdown_depth=0;self.active_markdown_block=None
@@ -38,7 +38,10 @@ class Document(HTMLParser):
         if tag=='p' and 'detail-hero' in self.sections and not self.answer_done:self.capture_answer=True
         if tag=='h1':self.h1+=1
         if tag=='title':self.in_title=True
-        if tag=='meta':self.meta[a.get('name',a.get('property'))]=a.get('content','')
+        if tag=='meta':
+            self.meta_entries.append((a.get('name',a.get('property')),a.get('content','')))
+            self.meta[a.get('name',a.get('property'))]=a.get('content','')
+        if tag=='aside' and a.get('data-order-banner')=='inline':self.order_banner_count+=1
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a.get('href'))
         if tag=='a':
             self.links.append(a.get('href',''))
@@ -77,6 +80,21 @@ class Document(HTMLParser):
         if context and not self.ignored:context['text'].append(data)
 
 SOURCE_TYPE_LABELS={'official':'공공·기관','business':'사업자','facility':'시설','education':'교육기관','professional':'전문자료','reference':'참고자료'}
+
+def check_social_image(doc, url, base, products, proof, brand):
+    names=['og:image','og:image:secure_url','og:image:alt','og:image:type','og:image:width','og:image:height','twitter:image','twitter:image:alt']
+    for name in names:
+        assert sum(key==name for key,_ in doc.meta_entries)==1,f'Missing/duplicate {name}: {url}'
+    image=doc.meta['og:image'];parsed=urlparse(image)
+    assert parsed.scheme=='https' and parsed.netloc==urlparse(base).netloc and not parsed.query and not parsed.fragment,f'Unsafe/noncanonical social image: {url}'
+    product=next((p for p in products if p['img']==parsed.path),None)
+    assert product and product.get('assetType')=='real_product' and product.get('sourceLevel')=='official_business_source',f'Unverified social image: {url}'
+    source=next((p for p in proof['products'] if p['key']==product['key']),None)
+    assert source and source['image']['path']==product['img'],f'Social image provenance mismatch: {url}'
+    assert doc.meta['og:image:secure_url']==image==doc.meta['twitter:image'],f'Social image URL drift: {url}'
+    assert doc.meta['og:image:alt']==doc.meta['twitter:image:alt']==brand+' '+product['name'],f'Social image alt mismatch: {url}'
+    assert [doc.meta['og:image:width'],doc.meta['og:image:height']]==[str(n) for n in source['image']['dimensions']],f'Social image dimensions mismatch: {url}'
+    assert doc.meta['og:image:type']=='image/jpeg',f'Social image MIME mismatch: {url}'
 
 def check_rendered_sources(doc, page):
     sources=page.get('sources')
@@ -176,6 +194,7 @@ def check(root=Path('.')):
     pages=json.loads((data/'pages.json').read_text());manifest=json.loads((data/'publish-manifest.json').read_text())
     arch=json.loads((data/'architecture.json').read_text());truth=json.loads((data/'business-truth.json').read_text())
     products=json.loads((data/'products.json').read_text())
+    social_proof=json.loads((data/'catalog-provenance.json').read_text())
     import subprocess
     subprocess.run(['node', 'scripts/qa_seongnam_catalog.mjs'], cwd=root, check=True)
     navigation=json.loads(subprocess.check_output(['node','--input-type=module','-e',
@@ -198,6 +217,8 @@ def check(root=Path('.')):
         thin_hub=url in hubs and hubs[url]['children']<3
         assert doc.meta.get('robots')==('index,follow' if indexable and not thin_hub else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
         for field in ['og:title','og:description','og:url','twitter:card']:assert doc.meta.get(field),f'Missing {field}: {url}'
+        check_social_image(doc,url,base,products,social_proof,truth['brand'])
+        if url=='/' or url in hubs:assert doc.order_banner_count==1,f'Expected one mid-page order banner: {url}'
         assert truth['phoneHref'] in doc.links,f'Missing real phone CTA: {url}'
         assert any(x.startswith(truth['onlineOrderUrl']) for x in doc.links),f'Missing order CTA: {url}'
         for img in doc.images:
@@ -248,6 +269,7 @@ def check(root=Path('.')):
     robots=(dist/'robots.txt').read_text()
     assert ('Allow: /' in robots and 'Disallow: /' not in robots) if indexable else 'Disallow: /' in robots
     not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','') and not not_found.canonical
+    assert not_found.order_banner_count==0 and 'og:image' not in not_found.meta, '404 must not become a purchase/share landing page'
     print(f'STATIC QA PASSED: {len(pages)} details, {len(expected)} HTML routes; indexable={indexable}; exact metadata/sitemap/snapshot/link parity')
 
 if __name__=='__main__':check()
