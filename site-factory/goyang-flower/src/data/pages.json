@@ -2552,5 +2552,91 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-daeja",
+    "snapshotId": "goyang-deogyang-daeja-r1-20261003T182200Z",
+    "snapshotHash": "b6b0d645e21d74831ab2394664c1cfa3f20a90af2f434702688e732d3aa69937",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-daeja-r1",
+    "sourceRecordId": "rec4OHG3dJIGptUYS",
+    "publishQueueRecordId": "recKpzDdymWZVzRpR",
+    "slug": "deogyang-daeja",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-daeja/",
+    "title": "대자동 꽃배달 | 중부대 고양캠퍼스와 마을 꽃선물",
+    "primaryKeyword": "대자동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 33,
+    "h1": "대자동 꽃배달, 캠퍼스 건물과 행사 수령자를 정확하게",
+    "description": "중부대학교 고양창의캠퍼스 행사 꽃과 대자동 주택 선물을 준비하세요. 동헌로 305에 건물명·인계 담당자를 더하고, 꽃다발·바구니 가격과 주문별 공급·배송 조건을 확인합니다.",
+    "cardSummary": "캠퍼스 대표주소만으로 끝내지 마세요. 행사 건물과 연락 가능한 담당자를 정하면 졸업·발표·감사 선물을 받을 장소와 시간이 선명해집니다.",
+    "firstAnswer": "대자동 꽃배달로 중부대학교 고양캠퍼스에 꽃을 보내실 때는 동헌로 305와 함께 건물명, 행사명, 수령 담당자를 알려주세요. 마을 주택은 실제 도로명주소와 집 앞 인계 위치가 필요합니다. 꽃이랑에서 꽃다발·꽃바구니의 공급과 가능한 시간, 추가배송비를 포함한 총액을 상담하실 수 있습니다.",
+    "contentMarkdown": "대자동 꽃배달로 중부대학교 고양캠퍼스에 꽃을 보내실 때는 동헌로 305와 함께 건물명, 행사명, 수령 담당자를 알려주세요. 마을 주택은 실제 도로명주소와 집 앞 인계 위치가 필요합니다. 꽃이랑에서 꽃다발·꽃바구니의 공급과 가능한 시간, 추가배송비를 포함한 총액을 상담하실 수 있습니다.\n\n## 동헌로 305 뒤에 건물 이름을 붙여 주세요\n\n[중부대학교 공식 오시는 길](https://ipsi.joongbu.ac.kr/menu.es?mid=b30107000000)은 창의캠퍼스(고양)의 주소를 고양시 덕양구 동헌로 305로 안내합니다. [고양시 도시관리계획 고시](https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=588458)에서도 해당 캠퍼스가 대자동에 있음을 확인할 수 있습니다.\n\n학교 안에서 열리는 졸업·발표·공연 등 축하 자리에 보내실 때는 초대장이나 행사 안내에서 실제 건물명과 층·호실을 확인해 주세요. 학과명만 전달하기보다는 당일 꽃을 받을 성인 담당자와 인계 지점을 정하는 편이 좋습니다. 캠퍼스 안 차량 진입이나 건물별 꽃 반입은 학교 측에 확인할 사항입니다.\n\n## 주인공의 일정과 꽃을 받을 시간을 나누세요\n\n행사 주인공은 시작 직전이나 진행 중 연락을 받기 어려울 수 있습니다. 꽃을 미리 받아둘 동행인 또는 담당자가 있다면 누구에게 언제 건넬지를 알려주세요. 행사 종료 뒤 직접 선물할 계획이면 종료 예정시각과 현장에서 기다릴 수 있는 시간대를 함께 상담해 주세요.\n\n한 분이 여러 사람의 꽃을 받는다면 상품별 받는 분 표기와 카드 내용을 구분해 주시면 됩니다. 이름이 공개적으로 보이는 리본이 필요한지, 개인 메시지를 담은 카드가 맞는지도 목적에 따라 선택해 주세요. 꽃의 수량이 많거나 특정 꽃을 원할수록 주문일 공급을 먼저 확인하는 것이 좋습니다.\n\n## 가져갈 꽃과 행사장에 둘 꽃\n\n손에 들고 축하를 전할 꽃다발 '소소한 행복'(G105)은 기본 표시가격 50,000원입니다. 꽃을 받은 뒤 이동할 분께는 운반할 상황과 희망 크기를 함께 말씀해 주세요. 행사실이나 사무실에 놓아둘 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 비교하실 수 있습니다.\n\n공식 상품사진은 선택을 돕는 자료이며, 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다. 특정 색이나 꽃을 꼭 사용해야 하는지, 놓을 자리가 어느 정도인지 알려주신 뒤 가능한 구성을 확인해 주세요. 추가배송비와 선택사항을 포함한 최종 총액은 주문별로 달라질 수 있습니다.\n\n## 대자동 가정으로 보내실 때에는 행정명보다 집 주소\n\n[덕양구청 관내도](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)에 따르면 법정동 대자동은 행정동 고양동과 관산동에 나뉘어 속합니다. 받는 분이 어느 행정동을 말씀하셨더라도 실제 집의 도로명·건물번호로 주문해 주세요. 캠퍼스 근처라는 설명만으로 학교를 수령지로 잡지 않도록 구분하는 것이 중요합니다.\n\n날짜, 정확한 장소, 연락 가능한 수령자, 상품과 예산, 문구를 준비해 [꽃이랑 1844-0644](tel:18440644)로 문의해 주세요. 전화상담은 08:00~23:00이며 [온라인 주문](https://fwith.co.kr)은 24시간 접수합니다. 당일 요청이나 시간에 맞춘 인계는 상담으로 가능 여부를 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "중부대학교 대학언론사 캠퍼스 오시는 길",
+        "url": "https://ipsi.joongbu.ac.kr/menu.es?mid=b30107000000",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 중부대학교 도시관리계획 고시",
+        "url": "https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?seq=588458",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 덕양구청 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "중부대학교 대학언론사 캠퍼스 오시는 길",
+      "url": "https://ipsi.joongbu.ac.kr/menu.es?mid=b30107000000",
+      "type": "education",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
