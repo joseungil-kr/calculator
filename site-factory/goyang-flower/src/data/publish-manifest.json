@@ -17,6 +17,24 @@
       "pageType": "funeral-facility",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
+      "snapshotId": "goyang-janghang-r1-20261003T084627Z",
+      "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-janghang-r1",
+      "sourceRecordId": "reccbUyL2K0HviLQo",
+      "publishQueueRecordId": "recyxb2o8vlCZLO9m",
+      "slug": "ilsandong-janghang",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-janghang/",
+      "title": "장항동 꽃배달 | 상품 선택과 상가·사업장 수령 안내",
+      "primaryKeyword": "장항동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,
@@ -26,6 +44,11 @@
       "pageKey": "goyang-flower-v2-ilsan-paik-funeral-wreath",
       "snapshotHash": "1419cc48f44a3618cbc365ac7f3796d4cd35dc5522eeff655a22f4caadfbdf10",
       "publishQueueRecordId": "recEc2Nna11TLHyjg"
+    },
+    "goyang-janghang-r1-20261003T084627Z": {
+      "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
+      "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
+      "publishQueueRecordId": "recyxb2o8vlCZLO9m"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

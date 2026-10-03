@@ -54,5 +54,97 @@
     "queryClass": "local-commercial",
     "visualIntent": "실제 근조 3단 상품의 형태를 확인해 예산과 빈소 조건에 맞는 구성을 선택; 시설·배송 실적 사진으로 오인시키지 않음",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
+    "snapshotId": "goyang-janghang-r1-20261003T084627Z",
+    "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-janghang-r1",
+    "sourceRecordId": "reccbUyL2K0HviLQo",
+    "publishQueueRecordId": "recyxb2o8vlCZLO9m",
+    "slug": "ilsandong-janghang",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-janghang/",
+    "title": "장항동 꽃배달 | 상품 선택과 상가·사업장 수령 안내",
+    "primaryKeyword": "장항동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 2,
+    "h1": "장항동 꽃배달, 받을 장소에 맞춰 주문하세요",
+    "description": "웨스턴돔 점포부터 오피스텔·장항로 사업장까지, 꽃을 받을 위치와 담당자를 준비하세요. 꽃이랑의 꽃다발·꽃바구니·화환 가격과 주문 확인사항을 안내합니다.",
+    "cardSummary": "복합상가에서는 점포를, 창고형 사업장에서는 사무실 인계 지점을 구분해 보세요. 놓을 공간과 수령 방식에 맞는 꽃 상품도 함께 살펴볼 수 있습니다.",
+    "firstAnswer": "장항동 꽃배달은 받으실 곳의 도로명주소와 건물·점포명, 층·호수를 준비해 꽃이랑에 주문해 주세요. 웨스턴돔 매장은 점포 위치와 수령 가능 시간을, 오피스텔·사업장은 실제로 꽃을 받을 분을 확인하면 좋습니다. 꽃다발·꽃바구니·화환 중 목적에 맞는 상품을 고르고 배송 가능 시간과 최종 금액을 확인해 주세요.",
+    "contentMarkdown": "장항동 꽃배달은 받으실 곳의 도로명주소와 건물·점포명, 층·호수를 준비해 꽃이랑에 주문해 주세요. 웨스턴돔 매장은 점포 위치와 수령 가능 시간을, 오피스텔·사업장은 실제로 꽃을 받을 분을 확인하면 좋습니다. 꽃다발·꽃바구니·화환 중 목적에 맞는 상품을 고르고 배송 가능 시간과 최종 금액을 확인해 주세요.\n\n## 장항동에서 꽃을 받을 곳부터 알려주세요\n\n생일 선물을 매장으로 보낼 때와 개업 축하화환을 입구에 세울 때는 필요한 수령 조건이 다릅니다. 저희 꽃이랑에 선물 목적과 받을 장소를 함께 알려주시면 상품을 고르고 배송 조건을 확인하는 데 도움이 됩니다.\n\n장항동에는 상가·오피스텔·아파트와 인쇄·물류 사업장처럼 꽃을 인계할 위치가 서로 다른 곳이 있습니다. ‘장항동’이나 상권 이름만 적기보다 실제 받는 곳의 주소와 담당자를 준비해 주세요.\n\n## 웨스턴돔은 매장명과 층·호수를 함께 확인하세요\n\n고양시 공식 안내에서 웨스턴돔은 일산동구 정발산로 24의 복합상가로 소개됩니다. [고양시 상권 소개](https://www.goyang.go.kr/visitgoyang/www/contents.do?key=72)에 안내된 보행자 중심의 거리와 동 사이 연결 구조를 고려해, 꽃을 받을 점포를 구체적으로 구분하는 것이 좋습니다.\n\n- 매장 선물: 간판에 적힌 매장명, 동 구분, 층·호수와 실제 수령 가능한 시간을 알려주세요. 영업시간과 담당자가 꽃을 받을 수 있는 시간은 따로 확인해 주세요.\n- 개업 축하화환: 매장 앞에 둘지 실내에 둘지 먼저 정하고, 해당 위치의 화환 반입·배치 가능 여부를 매장이나 관리 담당자에게 확인해 주세요.\n- 외부에서 만나 받을 때: ‘웨스턴돔 앞’ 대신 받는 분과 합의한 출입구나 만날 지점을 적어주세요. 배송차량의 진입 위치와 상가의 대리 수령·보관 가능 여부는 현장 담당자에게 확인해 주세요.\n\n위치는 [고양시 웨스턴돔 공식 안내](https://www.goyang.go.kr/visitgoyang/www/tourRsrcView.do?key=243&searchCtgry=1669809941180&tourRsrcNo=541)에서 확인할 수 있습니다. 안내 주소는 상가 전체 위치이므로 주문에는 받는 점포의 상세주소를 함께 적어주세요.\n\n## 오피스텔·호수마을과 장항로 사업장은 인계 지점을 구분해 주세요\n\n[장항2동 공식 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_8/dong01_5_8_tab1.jsp)는 호수마을 아파트, 오피스텔과 웨스턴돔·라페스타 상권을 안내합니다. 오피스텔이나 아파트로 보내실 때는 건물명과 동·호수를 적고, 받는 분이 부재하면 누가 어디서 받을 수 있는지 먼저 상의해 주세요. 공동현관 출입이나 관리실 보관 가능 여부도 건물별 확인이 필요합니다.\n\n[장항1동 공식 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_7/dong01_5_7_tab1.jsp)에는 장항로·백마로 주변의 인쇄소·물류창고·공장 등이 소개되어 있습니다. 이 일대 사업장에 보내는 꽃은 회사명 외에 사무실이 있는 건물이나 출입구, 현장 연락 담당자를 알려주세요. 창고 출입구와 사무실 입구가 다르면 꽃을 받을 위치를 따로 적어주시는 것이 좋습니다.\n\n행정동 이름만으로 배송지를 판단하지 않도록 주문에는 도로명주소를 우선 적어주세요. 각 건물의 출입·수령 방식과 희망 일정은 주문별로 확인합니다.\n\n## 전달 목적에 맞는 상품과 표시가격\n\n2026년 10월 3일 확인한 꽃이랑 온라인 상품의 기본 표시가격입니다.\n\n- 소소한 행복(G105), 꽃다발: 50,000원. 직접 건네거나 받은 뒤 가지고 이동할 선물을 고를 때 비교해 보세요.\n- 햇살 한가득(A155), 꽃바구니: 65,000원. 매장이나 사무실에 두고 감상할 선물이라면 놓을 자리를 생각해 선택해 주세요.\n- 축하 3단 화환(C200): 59,000원. 개업·이전 축하용으로 고르실 때는 반입과 배치할 공간부터 확인해 주세요.\n- 근조 3단 화환(B201): 59,000원. 조의용 주문은 실제 전달할 장례식장과 빈소, 받는 분 정보를 알려주세요.\n\n꽃다발과 꽃바구니는 전달 후 이동 여부와 놓을 공간을, 화환은 행사 목적과 설치 가능한 위치를 기준으로 선택하시면 좋습니다. 사진 속 축하화환 리본 문구는 예시이므로 개업·이전 등 보내는 목적에 맞는 문구로 상담해 주세요.\n\n표시가격은 배송비와 추가 선택사항을 모두 확정한 최종 결제금액이 아닙니다. 지역별 추가 배송비가 발생할 수 있고, 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다. 원하는 상품과 장항동 상세주소, 희망 날짜·시간을 전달한 뒤 총액을 확인해 주세요. 특정 꽃이나 색이 꼭 필요할 때도 가능한 구성을 먼저 상담해 주세요.\n\n## 주문할 때는 주소·수령자·시간을 한 번에 준비하세요\n\n1. 도로명주소와 건물·점포명, 동·층·호수 또는 사무실 출입구\n2. 받는 분 성함과 현장에서 연락 가능한 번호, 부재 시 합의한 인계 방법\n3. 선물·개업·조의 등 보내는 목적, 원하는 상품과 예산\n4. 희망 날짜·시간, 매장 영업이나 담당자 근무에 맞춰야 하는 조건\n5. 카드 또는 리본 문구, 보내는 분 표기\n6. 화환 반입·배치 가능 여부와 최종 배송비를 포함한 결제금액\n\n오늘 전달이 필요하다면 주문 전에 상세주소와 수령 가능한 시간을 먼저 알려주세요. 온라인 접수 가능 시간과 실제 배송 가능 시간은 다르며, 희망 시간의 배송 가능 여부는 상담으로 확인해 주세요.\n\n## 꽃이랑에 받을 장소와 상품을 알려주세요\n\n[1844-0644로 장항동 꽃배달 상담하기](tel:18440644)\n\n전화주문은 08:00~23:00에 이용할 수 있습니다. 웨스턴돔 점포, 오피스텔 호실 또는 사업장 사무실처럼 실제 꽃을 받을 위치부터 알려주세요.\n\n[꽃이랑 상품 확인·온라인 주문하기](https://fwith.co.kr)\n\n온라인 주문은 24시간 접수할 수 있습니다. 상품 구성과 배송 가능 시간, 추가 비용은 주문 내용에 맞춰 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 문화관광 웨스턴돔 공식 안내",
+        "url": "https://www.goyang.go.kr/visitgoyang/www/tourRsrcView.do?key=243&searchCtgry=1669809941180&tourRsrcNo=541",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 문화관광 라페스타·웨스턴돔 상권 소개",
+        "url": "https://www.goyang.go.kr/visitgoyang/www/contents.do?key=72",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 장항2동 공식 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_8/dong01_5_8_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 장항1동 공식 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_7/dong01_5_7_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인 쇼핑몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 근조 3단 화환(B201) 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환(C200) 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 문화관광 웨스턴돔 공식 안내",
+      "url": "https://www.goyang.go.kr/visitgoyang/www/tourRsrcView.do?key=243&searchCtgry=1669809941180&tourRsrcNo=541",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
