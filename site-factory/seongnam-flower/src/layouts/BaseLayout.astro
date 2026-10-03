@@ -21,6 +21,28 @@ const revision=buildRevision.revision || 'local';
 <a class="skip-link" href="#main-content">본문 바로가기</a>
 <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon">✿</span><span><b>{site.brand}</b><small>{site.region} 꽃배달</small></span></a>
 <nav aria-label="주요 메뉴">{menuGroups.map(g=><a href={g.url}>{g.label}</a>)}</nav><a class="phone" href={site.phoneHref}>☎ {site.phone}</a></div></header>
+<script is:inline>
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header || header.dataset.focusClearanceReady) return;
+  header.dataset.focusClearanceReady = 'true';
+  const updateHeaderHeight = () => {
+    const height = `${header.getBoundingClientRect().height}px`;
+    const style = document.documentElement.style;
+    if (style.getPropertyValue('--site-header-height') !== height) {
+      style.setProperty('--site-header-height', height);
+    }
+  };
+  updateHeaderHeight();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(updateHeaderHeight).observe(header, { box: 'border-box' });
+  } else {
+    window.addEventListener('resize', updateHeaderHeight, { passive: true });
+    document.fonts?.ready.then(updateHeaderHeight);
+    document.fonts?.addEventListener('loadingdone', updateHeaderHeight);
+  }
+})();
+</script>
 <main id="main-content"><slot/></main>
 <footer><div><strong>{site.brand} {site.region}</strong><span>{site.orderHours}</span><a href={site.phoneHref}>{site.phone}</a><a href={orderUrl}>온라인 주문</a><small>{site.deliveryNotice}</small></div></footer>
 <div class="mobile-bar"><a href={site.phoneHref}>전화주문</a><a href={orderUrl}>온라인 주문</a></div>
