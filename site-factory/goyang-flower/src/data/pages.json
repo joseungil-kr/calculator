@@ -638,5 +638,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-hwajeong",
+    "snapshotId": "goyang-deogyang-hwajeong-r1-20261003T182200Z",
+    "snapshotHash": "cbeca68c8056a82bbb488dc1a8ba5123458f736f1e3bc42081a5b908128b6fee",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-hwajeong-r1",
+    "sourceRecordId": "recY33MqLtw53aVEn",
+    "publishQueueRecordId": "rec7p1V1UtRiMFksc",
+    "slug": "deogyang-hwajeong",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-hwajeong/",
+    "title": "화정동 꽃배달 | 아파트·역세권 상가에 맞는 수령 준비",
+    "primaryKeyword": "화정동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 9,
+    "h1": "화정동 꽃배달, 마을·상가·방문 목적을 나눠 주문하세요",
+    "description": "은빛·달빛·별빛·옥빛마을의 세대 선물과 화정역 주변 상가 축하 주문을 구분합니다. 정확한 동·호수, 반입 공간, 꽃 상품의 기본가격과 배송 상담 조건을 알아보세요.",
+    "cardSummary": "가정 선물과 상가 개업은 수령자와 놓을 공간부터 달라집니다. 마을·단지 이름 뒤의 동·호수, 점포의 층과 간판을 준비해 보세요.",
+    "firstAnswer": "화정동 꽃배달은 은빛·달빛·별빛·옥빛마을의 세대 선물인지 화정역 주변 상가로 보내는 꽃인지 먼저 알려주세요. 아파트는 단지와 동·호수, 상가는 건물·층·점포와 수령 담당자가 필요합니다. 꽃이랑의 꽃다발·꽃바구니·화환 중 목적에 맞게 고르고 반입 조건, 배송 가능 시간과 최종 금액을 확인해 주세요.",
+    "contentMarkdown": "화정동 꽃배달은 은빛·달빛·별빛·옥빛마을의 세대 선물인지 화정역 주변 상가로 보내는 꽃인지 먼저 알려주세요. 아파트는 단지와 동·호수, 상가는 건물·층·점포와 수령 담당자가 필요합니다. 꽃이랑의 꽃다발·꽃바구니·화환 중 목적에 맞게 고르고 반입 조건, 배송 가능 시간과 최종 금액을 확인해 주세요.\n\n## 네 개 마을 이름과 세대 주소를 함께 확인해요\n\n고양시 화정1동 소개는 은빛·달빛마을을, 화정2동 소개는 별빛·옥빛마을을 안내합니다. 꽃을 보내실 때 마을 이름만 알고 있다면 받는 분에게 단지와 동·호수를 확인해 주세요. 같은 마을에서도 실제 공동현관과 연락할 수령자는 각각 다릅니다.\n\n집에 놓을 생일·감사 꽃은 꽃바구니를, 외출하면서 만나 건넬 꽃은 꽃다발을 비교해 보세요. 받는 분이 집을 비울 예정이면 무조건 문 앞에 두기보다 연락 가능한 시간과 허용된 대체 인계 방법을 정합니다.\n\n## 화정역 주변 상가는 층과 점포명이 중요합니다\n\n화정1·2동 소개에는 화정역과 화정로 주변 상권이 확인됩니다. 상가로 보내실 때에는 역 이름이나 출구 대신 실제 건물명·층·점포명을 알려주세요. 여러 점포가 한 주소를 사용한다면 간판에 적힌 상호와 받을 담당자까지 구분하는 편이 좋습니다.\n\n개업·이전 축하화환은 매장 입구의 설치 공간, 건물 반입 가능 여부, 매장을 여는 시간을 확인해 주세요. 입구가 좁거나 놓을 자리가 여의치 않다면 꽃바구니 등 다른 형태를 상담할 수 있습니다. 관리실이 대신 받을 수 있다고 미리 정하지는 않습니다.\n\n## 병원 방문과 조문은 목적부터 구분하세요\n\n병원으로 꽃을 보내려는 경우에는 병문안인지 장례식장 조문인지 알려주세요. 병문안용 생화의 반입 여부는 해당 병동·시설에 확인해야 하며, 일반 선물 주문만으로 반입이 가능하다고 보장하지 않습니다. 조문은 실제 장례식장명과 빈소, 수령 연락처를 따로 확인한 뒤 근조화환을 선택해 주세요.\n\n꽃이랑의 확인된 기본 표시가격은 꽃다발 ‘소소한 행복’ 50,000원, 꽃바구니 ‘햇살 한가득’ 65,000원, 축하 3단 화환과 근조 3단 화환 각각 59,000원입니다. 사진 속 리본문구는 예시이므로 축하·조문 목적과 보내는 분 이름을 정확하게 확인합니다.\n\n## 주소를 정한 뒤 일정과 총액을 상담하세요\n\n희망하는 상품, 전달 목적, 상세주소, 받을 분과 연락처, 날짜·시간을 알려주세요. 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다. 지역별 추가 배송비와 희망시간 배송 가능 여부를 확인한 후 최종 금액을 결정합니다.\n\n[꽃이랑 전화주문 1844-0644](tel:18440644) · [꽃이랑 온라인 상품 확인·주문](https://fwith.co.kr)\n\n전화 상담·주문은 08:00~23:00, 온라인 접수는 24시간입니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 화정1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_16/dong01_4_16_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 화정2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_17/dong01_4_17_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 화정1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_16/dong01_4_16_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

@@ -91,6 +91,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeong",
+      "snapshotId": "goyang-deogyang-hwajeong-r1-20261003T182200Z",
+      "snapshotHash": "cbeca68c8056a82bbb488dc1a8ba5123458f736f1e3bc42081a5b908128b6fee",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-hwajeong-r1",
+      "sourceRecordId": "recY33MqLtw53aVEn",
+      "publishQueueRecordId": "rec7p1V1UtRiMFksc",
+      "slug": "deogyang-hwajeong",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-hwajeong/",
+      "title": "화정동 꽃배달 | 아파트·역세권 상가에 맞는 수령 준비",
+      "primaryKeyword": "화정동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-hyangdong",
       "snapshotId": "goyang-deogyang-hyangdong-r1-20261003T182200Z",
       "snapshotHash": "b190ee1d680d106effae4e0261cb712ffc84901637d5574be24f2f81a8d4f0a8",
@@ -187,6 +205,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-hwajeon",
       "snapshotHash": "3c8661c0f472e74274ab00c20a6c433b26e34d5eebd713e50ee2b74e24aba6a0",
       "publishQueueRecordId": "recmRez7gn7JGhZGh"
+    },
+    "goyang-deogyang-hwajeong-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeong",
+      "snapshotHash": "cbeca68c8056a82bbb488dc1a8ba5123458f736f1e3bc42081a5b908128b6fee",
+      "publishQueueRecordId": "rec7p1V1UtRiMFksc"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
