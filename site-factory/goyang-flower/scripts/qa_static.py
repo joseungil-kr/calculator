@@ -2,14 +2,14 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote, urljoin
-import json, os, re, xml.etree.ElementTree as ET
+import hashlib, json, os, re, xml.etree.ElementTree as ET
 
 class Document(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
-        self.cta_links=[];self.ids=set();self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
+        self.cta_links=[];self.ids=set();self.meta={};self.meta_entries=[];self.order_banner_count=0;self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
-        self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
+        self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.banner_depth=0;self.banner_links=[];self.banner_labels=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if a.get('id'):self.ids.add(a['id'])
@@ -25,10 +25,15 @@ class Document(HTMLParser):
         if tag=='p' and 'detail-hero' in self.sections and not self.answer_done:self.capture_answer=True
         if tag=='h1':self.h1+=1
         if tag=='title':self.in_title=True
-        if tag=='meta':self.meta[a.get('name',a.get('property'))]=a.get('content','')
+        if tag=='meta':
+            self.meta_entries.append((a.get('name',a.get('property')),a.get('content','')))
+            self.meta[a.get('name',a.get('property'))]=a.get('content','')
+        if tag=='aside' and a.get('data-order-banner')=='inline':
+            self.order_banner_count+=1;self.banner_depth=len(self.elements);self.banner_links.append([]);self.banner_labels.append(a.get('aria-label',''))
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a.get('href'))
         if tag=='a':
             self.links.append(a.get('href',''))
+            if self.banner_depth:self.banner_links[-1].append(a.get('href',''))
             if context or 'btn' in a.get('class','').split() or any(order for _,_,order in self.elements):self.cta_links.append(a.get('href',''))
             if 'next-step' in self.sections:self.journey_links.append(a.get('href',''))
         if tag=='img':self.images.append(a)
@@ -37,6 +42,7 @@ class Document(HTMLParser):
             if 'detail-product' in a.get('class','') or 'hero-product' in a.get('class',''):self.primary_families.append(a['data-product-family'])
         if 'data-snapshot-id' in a:self.snapshots.append(a['data-snapshot-id'])
     def handle_endtag(self,tag):
+        if tag=='aside' and len(self.elements)==self.banner_depth:self.banner_depth=0
         if tag=='title':self.in_title=False
         if tag=='p' and self.capture_answer:self.capture_answer=False;self.answer_done=True
         if tag in ['script','style']:self.ignored=max(0,self.ignored-1)
@@ -49,6 +55,65 @@ class Document(HTMLParser):
         if self.capture_answer:self.first_answer.append(data)
         context=next((p for _,p,_ in reversed(self.elements) if p),None)
         if context and not self.ignored:context['text'].append(data)
+
+def image_metadata(data):
+    if data[:2]==b'\xff\xd8':
+        i=2
+        while i+9<len(data):
+            assert data[i]==255, 'Invalid JPEG marker'
+            while data[i]==255:i+=1
+            marker=data[i];i+=1
+            if marker in (0xD9,0xDA):break
+            length=int.from_bytes(data[i:i+2],'big');assert length>=2
+            if marker in (0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF):
+                return [int.from_bytes(data[i+5:i+7],'big'),int.from_bytes(data[i+3:i+5],'big')], 'image/jpeg'
+            i+=length
+    elif data[:4]==b'RIFF' and data[8:12]==b'WEBP':
+        kind=data[12:16]
+        if kind==b'VP8 ' and data[23:26]==b'\x9d\x01\x2a':
+            return [int.from_bytes(data[26:28],'little')&0x3fff,int.from_bytes(data[28:30],'little')&0x3fff], 'image/webp'
+        if kind==b'VP8L' and data[20]==0x2f:
+            bits=int.from_bytes(data[21:25],'little')
+            return [(bits&0x3fff)+1,((bits>>14)&0x3fff)+1], 'image/webp'
+        if kind==b'VP8X':
+            return [int.from_bytes(data[24:27],'little')+1,int.from_bytes(data[27:30],'little')+1], 'image/webp'
+    raise AssertionError('Unsupported social asset format')
+
+
+def check_social_provenance(root, products, proof):
+    records=proof['products']
+    assert len({p['key'] for p in records})==len(records)==len(products),'Social provenance set mismatch'
+    for product in products:
+        record=next((p for p in records if p['key']==product['key']),None)
+        assert record and record['name']==product['name'] and record['sourceUrl']==product['sourceUrl'] and record['verifiedAt']==product['verifiedAt'],'Social provenance identity mismatch'
+        image=record['image']
+        assert image['path']==product['img'] and re.fullmatch(r'/images/products/[a-z0-9-]+\.(jpg|webp)',image['path']),'Unsafe social asset path'
+        raw=(root/'public'/image['path'].lstrip('/')).read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==image['sha256'],'Social asset bytes changed'
+        dimensions,mime=image_metadata(raw)
+        assert dimensions==image['dimensions'] and mime==image['type'],'Social asset dimensions/MIME mismatch'
+
+
+def check_social_image(doc, url, base, products, proof, brand):
+    names=['og:image','og:image:secure_url','og:image:alt','og:image:type','og:image:width','og:image:height','twitter:image','twitter:image:alt']
+    for name in names:assert sum(key==name for key,_ in doc.meta_entries)==1,f'Missing/duplicate {name}: {url}'
+    image=doc.meta['og:image'];parsed=urlparse(image)
+    assert parsed.scheme=='https' and parsed.netloc==urlparse(base).netloc and not parsed.query and not parsed.fragment,f'Unsafe/noncanonical social image: {url}'
+    product=next((p for p in products if p['img']==parsed.path),None)
+    assert product and product.get('assetType')=='real_product' and product.get('sourceLevel')=='official_business_source',f'Unverified social image: {url}'
+    source=next((p for p in proof['products'] if p['key']==product['key']),None)
+    assert source and source['image']['path']==product['img'],f'Social image provenance mismatch: {url}'
+    assert doc.meta['og:image:secure_url']==image==doc.meta['twitter:image'],f'Social image URL drift: {url}'
+    assert doc.meta['og:image:alt']==doc.meta['twitter:image:alt']==brand+' '+product['name'],f'Social image alt mismatch: {url}'
+    assert [doc.meta['og:image:width'],doc.meta['og:image:height']]==[str(n) for n in source['image']['dimensions']],f'Social image dimensions mismatch: {url}'
+    assert doc.meta['og:image:type']==source['image']['type'],f'Social image MIME mismatch: {url}'
+
+
+def check_purchase_banner(doc, url, truth):
+    assert doc.order_banner_count==1,f'Expected one purchase banner: {url}'
+    assert doc.banner_links==[[truth['phoneHref'],truth['onlineOrderUrl']]],f'Purchase banner CTA mismatch: {url}'
+    assert len(doc.banner_labels)==1 and truth['brand'] in doc.banner_labels[0],f'Purchase banner brand/label missing: {url}'
+
 
 def expected_robots(indexable, url, architecture):
     if not indexable:
@@ -106,6 +171,8 @@ def check(root=Path('.')):
     pages=json.loads((data/'pages.json').read_text());manifest=json.loads((data/'publish-manifest.json').read_text())
     arch=json.loads((data/'architecture.json').read_text());truth=json.loads((data/'business-truth.json').read_text())
     products=json.loads((data/'products.json').read_text())
+    social_proof=json.loads((data/'social-image-provenance.json').read_text())
+    check_social_provenance(root,products,social_proof)
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true' and site_config.get('productionApproved') is True
@@ -131,6 +198,8 @@ def check(root=Path('.')):
         check_customer_output(doc,url)
         check_rendered_catalog(doc,url,products,truth['onlineOrderUrl'])
         check_order_ctas(doc,url,truth)
+        check_social_image(doc,url,base,products,social_proof,truth['brand'])
+        check_purchase_banner(doc,url,truth)
     for page in pages:
         check_customer_journey(docs[page['url']],page,pages)
         check_rendered_intent(docs[page['url']],page,products)
@@ -179,6 +248,7 @@ def check(root=Path('.')):
     robots=(dist/'robots.txt').read_text()
     assert ('Allow: /' in robots and 'Disallow: /' not in robots) if indexable else 'Disallow: /' in robots
     not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','')
+    assert not not_found.order_banner_count and 'og:image' not in not_found.meta and 'twitter:image' not in not_found.meta,'404 must not advertise a normal page'
     print(f'STATIC QA PASSED: {len(pages)} details, {len(expected)} HTML routes; indexable={indexable}; exact metadata/sitemap/snapshot/link parity')
 
 if __name__=='__main__':check()

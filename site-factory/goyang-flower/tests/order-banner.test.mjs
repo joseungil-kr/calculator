@@ -31,20 +31,21 @@ test('fallback never separates a heading from its text or splits a contiguous li
     }
   }
 });
-test('each current approved regional Markdown gets one unchanged-content boundary',()=>{
+test('each current approved detail Markdown gets one unchanged-content boundary',()=>{
   const pages=JSON.parse(fs.readFileSync(new URL('../src/data/pages.json',import.meta.url))),before=JSON.stringify(pages);
-  for(const page of pages.filter(page=>page.category==='regions' && page.pageType==='regional-service')) {
+  for(const page of pages.filter(page=>page.contentMarkdown)) {
     const blocks=markdownBlocks(page.contentMarkdown),copy=JSON.stringify(blocks),boundary=orderBannerBoundary(blocks);
     assert.ok(boundary>0 && boundary<=blocks.length,page.pageKey);
     assert.equal(JSON.stringify(blocks),copy,page.pageKey);
   }
   assert.equal(JSON.stringify(pages),before);
 });
-test('renderer opts in only regional-service details and leaves ordinary Markdown disabled',()=>{
+test('detail renderer opts in explicitly without changing frozen content',()=>{
   const detail=fs.readFileSync(new URL('../src/pages/[category]/[slug].astro',import.meta.url),'utf8');
   const markdown=fs.readFileSync(new URL('../src/components/MarkdownContent.astro',import.meta.url),'utf8');
-  assert.match(detail,/regionalOrderBanner=\{page.pageType==='regional-service' && page.category==='regions'\}/);
-  assert.match(markdown,/Astro.props.regionalOrderBanner === true \? orderBannerBoundary\(blocks\) : -1/);
+  assert.match(detail,/showOrderBanner=\{true\}/);
+  assert.match(detail,/!page.contentMarkdown && <InlineOrderBanner\/>/);
+  assert.match(markdown,/Astro.props.showOrderBanner === true \? orderBannerBoundary\(blocks\) : -1/);
 });
 test('banner uses verified site values and scoped-in-output CSS without new price or image claims',()=>{
   const component=fs.readFileSync(new URL('../src/components/InlineOrderBanner.astro',import.meta.url),'utf8');
