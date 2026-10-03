@@ -19,6 +19,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-haengsin",
+      "snapshotId": "goyang-deogyang-haengsin-r1-20261003T182200Z",
+      "snapshotHash": "fc3c5182c37fcfe8db38a0360c0cfd1be4e267fb8728af31a8356d5e7cfb60e2",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-haengsin-r1",
+      "sourceRecordId": "recM9Qzwfry5rrRPb",
+      "publishQueueRecordId": "recOeuYdtZsvoctQU",
+      "slug": "deogyang-haengsin",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-haengsin/",
+      "title": "행신동 꽃배달 | 마을·단지와 수령 일정에 맞춘 꽃 주문",
+      "primaryKeyword": "행신동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
       "snapshotId": "goyang-janghang-r1-20261003T084627Z",
       "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
@@ -49,6 +67,11 @@
       "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
       "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
       "publishQueueRecordId": "recyxb2o8vlCZLO9m"
+    },
+    "goyang-deogyang-haengsin-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-haengsin",
+      "snapshotHash": "fc3c5182c37fcfe8db38a0360c0cfd1be4e267fb8728af31a8356d5e7cfb60e2",
+      "publishQueueRecordId": "recOeuYdtZsvoctQU"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

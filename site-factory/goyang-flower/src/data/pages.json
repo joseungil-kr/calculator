@@ -146,5 +146,97 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-haengsin",
+    "snapshotId": "goyang-deogyang-haengsin-r1-20261003T182200Z",
+    "snapshotHash": "fc3c5182c37fcfe8db38a0360c0cfd1be4e267fb8728af31a8356d5e7cfb60e2",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-haengsin-r1",
+    "sourceRecordId": "recM9Qzwfry5rrRPb",
+    "publishQueueRecordId": "recOeuYdtZsvoctQU",
+    "slug": "deogyang-haengsin",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-haengsin/",
+    "title": "행신동 꽃배달 | 마을·단지와 수령 일정에 맞춘 꽃 주문",
+    "primaryKeyword": "행신동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 3,
+    "h1": "행신동 꽃배달, 단지 주소와 꽃을 받을 시간을 알려주세요",
+    "description": "샘터·무원·소만·햇빛·서정마을로 보내는 꽃선물은 단지와 동·호수를 구체적으로 준비하세요. 이동할 꽃다발과 집에 둘 꽃바구니의 차이, 표시가격과 주문 조건을 안내합니다.",
+    "cardSummary": "비슷한 마을 이름 사이에서 단지 번호와 공동현관을 먼저 짚어보세요. 집에서 받는 선물과 이동하며 건네는 꽃에 필요한 준비가 달라집니다.",
+    "firstAnswer": "행신동 꽃배달은 마을 이름에 단지명과 동·호수를 더해 꽃이랑에 주문해 주세요. 샘터·무원·소만·햇빛·서정마을 중 정확한 수령지를 확인하고, 집에 둘 꽃바구니와 이동하며 건넬 꽃다발을 구분하면 선택이 쉬워집니다. 받는 분의 일정과 희망 날짜를 알려주시면 배송 가능 시간과 최종 금액을 상담할 수 있습니다.",
+    "contentMarkdown": "행신동 꽃배달은 마을 이름에 단지명과 동·호수를 더해 꽃이랑에 주문해 주세요. 샘터·무원·소만·햇빛·서정마을 중 정확한 수령지를 확인하고, 집에 둘 꽃바구니와 이동하며 건넬 꽃다발을 구분하면 선택이 쉬워집니다. 받는 분의 일정과 희망 날짜를 알려주시면 배송 가능 시간과 최종 금액을 상담할 수 있습니다.\n\n## 마을 이름 뒤에 단지 번호까지 적어주세요\n\n행신동에는 샘터마을과 무원·소만마을, 햇빛마을, 서정마을처럼 서로 다른 주거권역이 있습니다. 고양시 행신1·2·3·4동 소개에서도 이 이름을 구분해 안내합니다. 꽃을 보내실 때는 “행신동 아파트”에서 멈추지 말고 도로명주소, 단지명, 건물 동과 호수를 함께 알려주세요.\n\n행신2동이라는 행정명에는 강매동도 포함됩니다. 무원·소만마을로 보내는 주문인지 강매동 주소인지 먼저 나누면 불필요한 주소 재확인을 줄일 수 있습니다. 빌라나 단독주택이라면 아파트 동 번호 대신 건물명·호수와 실제 현관 위치가 필요합니다.\n\n## 집에서 받는 선물과 이동할 꽃을 나눠 고르세요\n\n집에 머무는 분께 감사나 생일 마음을 전하려면 놓아두고 감상할 꽃바구니를 살펴보세요. 직접 만나 건네거나 꽃을 든 채 이동할 예정이라면 꽃다발이 편한 선택입니다. 행신역에서 출발하는 일정이 있다면 열차 출발시각을 배송 약속으로 정하기 전에 실제로 인계받을 장소와 여유 시간을 상담해 주세요. 역무실이나 상점이 대신 받아줄 것으로 가정하지 않는 것이 좋습니다.\n\n공동현관 출입이 필요한 경우에는 받는 분이 연락 가능한 시간, 현관 앞 직접 수령 여부, 부재 시 연락할 분을 정해 주세요. 경비실 보관은 해당 단지에서 받아줄 수 있는지 확인한 경우에만 요청합니다.\n\n## 상품 표시가격과 최종 비용\n\n꽃이랑의 꽃다발 ‘소소한 행복’은 50,000원, 꽃바구니 ‘햇살 한가득’은 65,000원으로 확인된 기본 표시가격입니다. 개업·이전 축하에는 축하 3단 화환 59,000원, 조문에는 근조 3단 화환 59,000원을 비교하실 수 있습니다. 화환은 가정용 선물과 크기·설치방식이 다르므로 놓을 공간과 반입 가능 여부를 먼저 알려주세요.\n\n지역별 추가 배송비가 생길 수 있고 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다. 사진 속 화환 리본문구는 예시이며, 보내는 목적과 이름에 맞는 문구를 주문할 때 확인합니다. 희망시간 배송 가능 여부와 추가비용을 합한 금액을 상담 후 결정해 주세요.\n\n## 주소와 일정이 준비되면 주문하세요\n\n단지 또는 건물 주소, 받을 분과 연락처, 전달 목적, 희망 날짜·시간, 상품, 카드나 리본문구를 알려주세요. 꽃이랑 전화주문은 08:00~23:00, 온라인 주문 접수는 24시간 가능합니다. 접수시간이 곧 배송시간을 뜻하지는 않습니다.\n\n[1844-0644로 수령 일정 상담](tel:18440644) · [꽃이랑 온라인에서 상품 확인·주문](https://fwith.co.kr)",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 행신1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_11/dong01_4_11_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 행신2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_12/dong01_4_12_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 행신4동 소개",
+        "url": "https://newportal.goyang.go.kr/dong/dong01/dong01_4/dong01_4_21/dong01_4_21_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 행신3동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_13/dong01_4_13_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 행신1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_11/dong01_4_11_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
