@@ -283,9 +283,9 @@
         "canonicalOrigin": "https://goyang.fwith.kr",
         "worker": "goyang-flower-guide-qa",
         "wranglerConfig": "wrangler.staging.jsonc",
-        "previewRevision": "f3206cf71f071ec473638545892675c5ef2aafb1",
-        "previewManifestSha256": "d930efc3630966607fdd354d00a3a6bbb03a4a75f270e5d6f49466d77ea5360e",
-        "previewApprovalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/121#issuecomment-5970018448",
+        "previewRevision": "0ecff4fb9268e809b6a6d16768497d345d53a154",
+        "previewManifestSha256": "698cce4fde11188f5b411e64a90cc64ecab9ef3d5169fd7c56fe1c7cf1d36b9a",
+        "previewApprovalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/185#issuecomment-5972825733",
         "productionManifestSha256": "d930efc3630966607fdd354d00a3a6bbb03a4a75f270e5d6f49466d77ea5360e"
       }
     },
