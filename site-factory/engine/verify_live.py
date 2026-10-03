@@ -51,7 +51,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def resolve_goyang_coverage_target(site, repository, revision, launch_key, scope_key, phase):
+def resolve_goyang_coverage_target(site, repository, revision, launch_key, scope_key, phase, version_preview=False):
     """Trusted-main opt-in; a caller's scope string alone never authorizes release."""
     require(phase in {"preview", "production"}, "Unsupported Goyang phase")
     require(launch_key == scope_key == GOYANG_SCOPE, "Goyang coverage scope mismatch")
@@ -84,8 +84,9 @@ def resolve_goyang_coverage_target(site, repository, revision, launch_key, scope
     digest = config.get(phase + "ManifestSha256", "")
     require(re.fullmatch(r"[0-9a-f]{64}", digest) is not None, "Reviewed Goyang manifest digest required")
     if phase == "preview":
-        require(site.get("productionEnabled") is False and site.get("launchMode") == "staging",
-                "Goyang noindex preview requires paused pre-production state")
+        paused = site.get("productionEnabled") is False and site.get("launchMode") == "staging"
+        live = site.get("productionEnabled") is True and site.get("launchMode") == "live"
+        require(paused or (version_preview and live), "Goyang live preview requires non-deploying version isolation")
     else:
         require(site.get("productionEnabled") is True and site.get("launchMode") == "live",
                 "Production Launch Gate is closed")
@@ -99,7 +100,7 @@ def resolve_goyang_coverage_target(site, repository, revision, launch_key, scope
             "naver": site.get("naverVerification", ""), "indexnow": site.get("indexnowKey", "")}
 
 
-def validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase):
+def validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase, version_preview=False):
     """Validate the reviewed source and preserve the complete historical canary record."""
     root, baseline_root = Path(root), Path(baseline_root)
     read = lambda base, name: json.loads((base / "src/data" / name).read_text())
@@ -133,7 +134,9 @@ def validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase)
             candidate = root / original.relative_to(baseline_root)
             require(candidate.is_file() and candidate.read_bytes() == original.read_bytes(), "Historical product image was changed")
     config = read(root, "site-config.json")
-    require(config.get("siteKey") == GOYANG_SITE and config.get("productionApproved") is (phase == "production"),
+    approved = config.get("productionApproved")
+    require(config.get("siteKey") == GOYANG_SITE and type(approved) is bool
+            and (approved is (phase == "production") or (phase == "preview" and version_preview)),
             "Goyang source indexing approval mismatch")
     primary = json.loads((root / "wrangler.jsonc").read_text())
     deploy = json.loads((root / "wrangler.staging.jsonc").read_text())
@@ -173,9 +176,9 @@ def validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase)
     return manifest, architecture
 
 
-def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_digest, phase, fetch=None):
+def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_digest, phase, fetch=None, version_preview=False):
     require(origin == GOYANG_ORIGIN, "Goyang canonical origin mismatch")
-    manifest, architecture = validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase)
+    manifest, architecture = validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase, version_preview)
     routes = {"/": (None, True)}
     routes.update({p["url"]: (p["snapshotId"], True) for p in manifest["pages"]})
     for hub in architecture["hubs"]:
@@ -186,6 +189,8 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
         if children:
             routes[hub["url"]] = (None, children >= 3)
     root = Path(root)
+    if phase == "production":
+        require(not any((root / "dist/_site-factory/version-probe").rglob("*")), "Preview probe cannot enter production artifact")
     actual_html = {"/" if p.relative_to(root / "dist").as_posix() == "index.html" else "/" + p.parent.relative_to(root / "dist").as_posix() + "/"
                    for p in (root / "dist").rglob("index.html")}
     require(actual_html == set(routes), "Built HTML route set differs from approved manifest/hubs")
@@ -277,6 +282,89 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
     return {"pipelineState": "goyang_source_validated" if offline else "preview_verified" if phase == "preview" else "live_verified", "revision": revision,
             "origin": origin, "scopeKey": GOYANG_SCOPE, "routes": len(routes), "manifestSha256": manifest_digest,
             "artifactParity": True, "manifestPages": len(manifest["pages"])}
+
+
+GOYANG_PUBLIC_BOOTSTRAP = "48f0b31e779c399dd47ee1405ba81f974a302a93"
+GOYANG_PUBLIC_BOOTSTRAP_MANIFEST = "d930efc3630966607fdd354d00a3a6bbb03a4a75f270e5d6f49466d77ea5360e"
+# Independent HTTP/visual evidence: issues/127#issuecomment-5969021992.
+def goyang_public_reference(site):
+    if site.get("productionEnabled") is False and site.get("launchMode") == "staging":
+        return {"revision": GOYANG_PUBLIC_BOOTSTRAP, "manifest_sha256": GOYANG_PUBLIC_BOOTSTRAP_MANIFEST, "phase": "preview"}
+    target = resolve_goyang_coverage_target(site, "joseungil-kr/fwith-site-factory",
+        site.get("approvedRevision"), GOYANG_SCOPE, GOYANG_SCOPE, "production")
+    return {"revision": target["revision"], "manifest_sha256": target["manifest_sha256"], "phase": "production"}
+
+
+def read_goyang_version_upload(text):
+    """Pinned Wrangler 4.146 official NDJSON. Never synthesize a preview URL."""
+    require(len(text) <= 1024 * 1024, "Oversized upload result")
+    rows = [json.loads(line) for line in text.splitlines() if line.strip()]
+    require(all(isinstance(row, dict) for row in rows), "Invalid upload result")
+    require(all(row.get("type") in {"wrangler-session", "version-upload"} for row in rows),
+            "Failed or non-upload operation in result")
+    uploads = [row for row in rows if row.get("type") == "version-upload"]
+    require(len(uploads) == 1, "Exactly one confirmed version upload required")
+    row = uploads[0]
+    version, url = row.get("version_id"), row.get("preview_url")
+    require(row.get("version") == 1 and row.get("worker_name") == "goyang-flower-guide-qa"
+            and row.get("worker_name_overridden") is False and not row.get("wrangler_environment")
+            and not row.get("preview_alias_url"), "Unexpected upload identity/alias")
+    require(isinstance(version, str) and re.fullmatch(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", version), "Missing actual version ID")
+    require(isinstance(url, str) and re.fullmatch(r"https://[0-9a-f]{8}-goyang-flower-guide-qa\.joseungil\.workers\.dev", url)
+            and urlsplit(url).hostname.split("-", 1)[0] == version[:8], "Unconfirmed or mismatched exact version URL")
+    return {"versionId": version, "previewUrl": url}
+
+
+def verify_goyang_assets(root, fetch, noindex):
+    """Exact bytes for every non-HTML asset, including product photos and CSS."""
+    count = 0
+    for file in sorted((Path(root) / "dist").rglob("*")):
+        if not file.is_file() or file.suffix.lower() in {".html", ".htm", ".xhtml"} or file.name in {"_headers", "_redirects"}:
+            continue
+        route = "/" + file.relative_to(Path(root) / "dist").as_posix()
+        status, body, headers = fetch(route)
+        if status == 403: raise PermissionError("Goyang asset HTTP403")
+        require(status == 200 and body == file.read_bytes(), "Goyang static asset bytes/status mismatch")
+        headers = {k.lower(): v for k, v in headers.items()}
+        if noindex:
+            require({x.strip().lower() for x in headers.get("x-robots-tag", "").split(",")} == {"noindex", "nofollow", "noarchive"}, "Version asset lacks exact noindex headers")
+        mime = {".jpg":"image/jpeg", ".jpeg":"image/jpeg", ".png":"image/png", ".webp":"image/webp", ".svg":"image/svg+xml", ".css":"text/css"}.get(file.suffix.lower())
+        if mime: require(headers.get("content-type", "").split(";",1)[0].strip() == mime, "Goyang static asset MIME mismatch")
+        count += 1
+    require(count > 0, "Empty Goyang asset artifact")
+    return count
+
+
+def validate_goyang_probe_path(path):
+    require(re.fullmatch(r"/_site-factory/version-probe/[1-9][0-9]*\.txt", path or ""), "Unsafe isolation probe path")
+    return path
+
+
+def verify_goyang_probe_absent(public_root, path, fetch):
+    validate_goyang_probe_path(path)
+    status, body, _ = fetch(path)
+    if status == 403: raise PermissionError("Goyang probe HTTP403")
+    require(status == 404 and goyang_artifact_matches(body.decode("utf-8"), (Path(public_root)/"dist/404.html").read_bytes(), True),
+            "Version-only probe was exposed on canonical hostname")
+
+
+def goyang_http_fetch(origin):
+    class NoRedirect(HTTPRedirectHandler):
+        def redirect_request(self, request, fp, code, message, headers, newurl): return None
+    opener = build_opener(NoRedirect())
+    def fetch(route):
+        require(route.startswith("/") and not route.startswith("//") and ".." not in route and not any(c in route for c in "?#\\"), "Unsafe HTTP verification path")
+        request = Request(origin + quote(route, safe="/"), headers={"User-Agent": "SiteFactory-GoyangCoverageQA/1.0", "Cache-Control": "no-cache"})
+        try:
+            response = opener.open(request, timeout=15)
+        except HTTPError as error:
+            response = error
+        with response:
+            require(response.geturl() == request.full_url, "Goyang unexpected redirect")
+            body = response.read(8 * 1024 * 1024 + 1)
+            require(len(body) <= 8 * 1024 * 1024, "Goyang response too large")
+            return response.status, body, dict(response.headers.items())
+    return fetch
 
 
 class Document(HTMLParser):
@@ -391,30 +479,45 @@ def main():
     parser.add_argument("--baseline-root", type=Path)
     parser.add_argument("--phase", choices=["preview", "production"], default="production")
     parser.add_argument("--validate-only", action="store_true")
+    parser.add_argument("--version-preview", action="store_true")
+    parser.add_argument("--version-upload-result", type=Path)
+    parser.add_argument("--protect-public", action="store_true")
+    parser.add_argument("--probe-path", default="")
     args = parser.parse_args()
     assert re.fullmatch(r"[0-9a-f]{40}", args.revision), "Expected full pinned commit SHA"
     origin = args.origin.rstrip("/")
     if args.site_key == GOYANG_SITE:
         require(args.registry is not None and args.baseline_root is not None, "Goyang trusted registry and fixed baseline required")
-        target = resolve_goyang_coverage_target(json.loads(args.registry.read_text())["sites"][GOYANG_SITE],
-            "joseungil-kr/fwith-site-factory", args.revision, args.launch_key, args.scope_key, args.phase)
-        class NoRedirect(HTTPRedirectHandler):
-            def redirect_request(self, request, fp, code, message, headers, newurl):
-                return None
-        opener = build_opener(NoRedirect())
-        def strict_fetch(route):
-            request = Request(origin + quote(route, safe="/"), headers={"User-Agent": "SiteFactory-GoyangCoverageQA/1.0", "Cache-Control": "no-cache"})
-            try:
-                with opener.open(request, timeout=15) as response:
-                    require(response.geturl() == request.full_url, "Goyang unexpected redirect")
-                    body = response.read(2 * 1024 * 1024 + 1)
-                    require(len(body) <= 2 * 1024 * 1024, "Goyang response too large")
-                    return response.status, body.decode("utf-8"), dict(response.headers.items())
-            except HTTPError as error:
-                return error.code, error.read(2 * 1024 * 1024 + 1).decode("utf-8", "replace"), dict(error.headers.items())
+        site = json.loads(args.registry.read_text())["sites"][GOYANG_SITE]
+        target = resolve_goyang_coverage_target(site, "joseungil-kr/fwith-site-factory", args.revision,
+            args.launch_key, args.scope_key, args.phase, args.version_preview)
         try:
-            result = verify_goyang_coverage(args.root, args.baseline_root, origin, args.revision,
-                target["manifest_sha256"], args.phase, None if args.validate_only else strict_fetch)
+            require(not args.version_preview or args.phase == "preview", "Version URLs are noindex-only")
+            require(not args.version_upload_result or args.version_preview, "Upload result requires version preview")
+            require(not args.protect_public or args.version_preview, "Public protection requires version path")
+            reference = goyang_public_reference(site) if args.protect_public else {
+                "revision": args.revision, "manifest_sha256": target["manifest_sha256"], "phase": args.phase}
+            upload = read_goyang_version_upload(args.version_upload_result.read_text()) if args.version_upload_result else None
+            require(args.validate_only or args.protect_public or not args.version_preview or upload,
+                    "Live version verification requires actual upload result")
+            fetch_origin = upload["previewUrl"] if upload and not args.protect_public else origin
+            binary_fetch = goyang_http_fetch(fetch_origin)
+            def text_fetch(route):
+                status, body, headers = binary_fetch(route)
+                return status, body.decode("utf-8"), headers
+            result = verify_goyang_coverage(args.root, args.baseline_root, origin, reference["revision"],
+                reference["manifest_sha256"], reference["phase"], None if args.validate_only else text_fetch,
+                args.version_preview and not args.protect_public)
+            if not args.validate_only and args.version_preview:
+                result["verifiedAssets"] = verify_goyang_assets(args.root, binary_fetch, reference["phase"] == "preview")
+                if args.protect_public:
+                    verify_goyang_probe_absent(args.root, args.probe_path, binary_fetch)
+                    result["publicArtifactPreserved"] = True
+                else:
+                    path = validate_goyang_probe_path(args.probe_path)
+                    probe = (args.root / "dist" / path.lstrip("/"))
+                    require(probe.is_file() and probe.read_text() == "site-factory-version-isolation " + args.revision + "\n", "Probe does not identify exact source")
+                    result.update(upload, assetIsolationProbe=path)
         except PermissionError:
             result = {"pipelineState": "verification_blocked", "revision": args.revision, "reason": "Goyang HTTP403; verification remains blocked"}
         except (AssertionError, ValueError, KeyError, TypeError, OSError, ET.ParseError):
@@ -424,7 +527,8 @@ def main():
         if result["pipelineState"] not in {"goyang_source_validated", "preview_verified", "live_verified"}:
             raise SystemExit(2)
         return
-    require(not args.scope_key and not args.launch_key and not args.validate_only and args.phase == "production",
+    require(not args.scope_key and not args.launch_key and not args.validate_only and args.phase == "production"
+            and not args.version_preview and not args.version_upload_result and not args.protect_public and not args.probe_path,
             "Coverage-only options are not supported for other sites")
     def fetch(route):
         request = Request(origin + quote(route, safe="/%?=&"), headers={"User-Agent": "SiteFactory-LiveQA/3.0", "Cache-Control": "no-cache"})

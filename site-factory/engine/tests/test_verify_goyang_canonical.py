@@ -360,5 +360,44 @@ class CapabilityTests(unittest.TestCase):
             finally:os.chdir(cwd)
 
 
+class UploadPreflightAPI(CapabilitiesAPI):
+    def __init__(self):
+        super().__init__();self.service={'default_environment':{'script':{'tags':[]}}};self.settings={'bindings':[],'observability':{'enabled':False}}
+    def __call__(self,method,path):
+        if path==f'/accounts/{ACCOUNT}/workers/services/{qa.WORKER}':
+            self.calls.append((method,path));return {'success':True,'result':self.service}
+        if path==f'/accounts/{ACCOUNT}/workers/scripts/{qa.WORKER}/settings':
+            self.calls.append((method,path));return {'success':True,'result':self.settings}
+        return super().__call__(method,path)
+
+
+class UploadPreflightTests(unittest.TestCase):
+    def test_get_only_preflight_proves_no_tag_patch_or_shared_runtime_resources(self):
+        api=UploadPreflightAPI();result=qa.check_version_upload_preflight(api,ACCOUNT)
+        self.assertEqual(len(api.calls),6);self.assertTrue(all(method=='GET' for method,_ in api.calls))
+        self.assertTrue(result['assets_only']);self.assertTrue(result['grouping_tags_unchanged'])
+        self.assertEqual(qa.compare_upload_boundary(result,result)['state'],'goyang_version_upload_boundary_preserved')
+        self.assertNotIn(SECRET,json.dumps(result));self.assertNotIn('observability',json.dumps(result))
+
+    def test_tags_bindings_unknown_or_disabled_block_before_upload(self):
+        for tags in (['cf:service:old'],['ordinary-tag'],{},'unknown'):
+            api=UploadPreflightAPI();api.service['default_environment']['script']['tags']=tags
+            with self.assertRaises(qa.PreflightError):qa.check_version_upload_preflight(api,ACCOUNT)
+        for bindings in (None,{},[{'type':'kv_namespace','name':'SECRET'}],[{'type':'secret_text','name':'SECRET'}]):
+            api=UploadPreflightAPI();api.settings['bindings']=bindings
+            with self.assertRaises(qa.PreflightError):qa.check_version_upload_preflight(api,ACCOUNT)
+        api=UploadPreflightAPI();del api.service['default_environment']['script']['tags']
+        with self.assertRaises(qa.PreflightError):qa.check_version_upload_preflight(api,ACCOUNT)
+        api=UploadPreflightAPI();api.subdomain['previews_enabled']=False
+        with self.assertRaises(qa.PreflightError):qa.check_version_upload_preflight(api,ACCOUNT)
+        self.assertEqual(len(api.calls),4)
+
+    def test_changed_active_deployment_binding_settings_or_unknown_results_never_pass(self):
+        before=qa.check_version_upload_preflight(UploadPreflightAPI(),ACCOUNT)
+        for key,value in [('deployment_id','new'),('hostname','other'),('worker','other'),('settings_sha256','a'*64),('previews_enabled',False),('state','failed')]:
+            with self.assertRaises(qa.PreflightError):qa.compare_upload_boundary(before,{**before,key:value})
+        with self.assertRaises(qa.PreflightError):qa.compare_upload_boundary(before,{})
+
+
 if __name__ == "__main__":
     unittest.main()

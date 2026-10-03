@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fixed Goyang canonical/noindex QA; authenticated operations are GET-only."""
 import argparse
+import hashlib
 from html.parser import HTMLParser
 import json
 import os
@@ -71,6 +72,48 @@ def check_preview_capabilities(transport, account_id):
     return {"state": "goyang_preview_capabilities_observed", "hostname": HOSTNAME, "worker": WORKER,
             "previews_enabled": subdomain["previews_enabled"], "deployment_id": deployment["id"],
             "mutations_performed": False}
+
+
+
+def check_version_upload_preflight(transport, account_id):
+    result = check_preview_capabilities(transport, account_id)
+    if result["previews_enabled"] is not True:
+        raise PreflightError("existing_preview_urls_disabled")
+    # Wrangler 4.146 may patch non-versioned grouping tags. Empty tags prove
+    # applyServiceAndEnvironmentTags leaves them unchanged with this frozen config.
+    # No runtime resource bindings are allowed: Version URLs share such resources.
+    values = []
+    for path in (f"/accounts/{account_id}/workers/services/{WORKER}",
+                 f"/accounts/{account_id}/workers/scripts/{WORKER}/settings"):
+        try:
+            payload = transport("GET", path)
+        except HTTPError as error:
+            raise PreflightError("upload_preflight_http_error", error.code) from None
+        except Exception:
+            raise PreflightError("upload_preflight_request_failed") from None
+        if (not isinstance(payload, dict) or payload.get("success") is not True
+                or payload.get("errors", []) != [] or not isinstance(payload.get("result"), dict)):
+            raise PreflightError("upload_preflight_response_invalid")
+        values.append(payload["result"])
+    environment = values[0].get("default_environment", {})
+    script = environment.get("script", {}) if isinstance(environment, dict) else {}
+    if not isinstance(script, dict) or "tags" not in script or script["tags"] not in (None, []):
+        raise PreflightError("remote_tags_require_review")
+    if values[1].get("bindings") != []:
+        raise PreflightError("runtime_bindings_not_assets_only")
+    result.update(state="goyang_version_upload_preflight_verified", assets_only=True, grouping_tags_unchanged=True,
+                  settings_sha256=hashlib.sha256(json.dumps(values[1], sort_keys=True, separators=(",", ":")).encode()).hexdigest())
+    return result
+
+
+def compare_upload_boundary(before, after):
+    keys = {"state", "hostname", "worker", "previews_enabled", "deployment_id", "mutations_performed", "assets_only", "grouping_tags_unchanged", "settings_sha256"}
+    if (set(before) != keys or set(after) != keys or before != after
+            or before.get("state") != "goyang_version_upload_preflight_verified"
+            or before.get("previews_enabled") is not True or before.get("assets_only") is not True):
+        raise PreflightError("active_deployment_or_binding_changed")
+    return {"state": "goyang_version_upload_boundary_preserved", "deployment_id": before["deployment_id"],
+            "hostname": HOSTNAME, "worker": WORKER, "mutations_performed": False}
 
 
 
@@ -157,10 +200,17 @@ def verify_http(opener=urlopen, sleeper=time.sleep):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("binding", "http", "preview-capabilities"))
+    parser.add_argument("mode", choices=("binding", "http", "preview-capabilities", "version-upload-preflight", "compare-upload-boundary"))
     parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--before", type=Path)
+    parser.add_argument("--after", type=Path)
     args = parser.parse_args(argv)
-    if args.mode == "http":
+    if args.mode == "compare-upload-boundary":
+        try:
+            result = compare_upload_boundary(json.loads(args.before.read_text()), json.loads(args.after.read_text()))
+        except (PreflightError, OSError, ValueError, AttributeError):
+            result = {"state":"goyang_version_upload_boundary_blocked"}
+    elif args.mode == "http":
         result = verify_http()
     else:
         token, account = os.environ.get("CLOUDFLARE_API_TOKEN", ""), os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")
@@ -179,16 +229,20 @@ def main(argv=None):
         try:
             if not token:
                 raise PreflightError("missing_credentials")
-            result = check_preview_capabilities(transport, account) if args.mode == "preview-capabilities" else check_binding(transport, account)
+            if args.mode == "version-upload-preflight":
+                result = check_version_upload_preflight(transport, account)
+            else:
+                result = check_preview_capabilities(transport, account) if args.mode == "preview-capabilities" else check_binding(transport, account)
         except PreflightError as error:
-            result = {"state": "goyang_preview_capabilities_blocked" if args.mode == "preview-capabilities" else "goyang_binding_failed", "code": error.code}
-            if args.mode == "preview-capabilities":
+            state = {"preview-capabilities":"goyang_preview_capabilities_blocked", "version-upload-preflight":"goyang_version_upload_preflight_blocked"}.get(args.mode, "goyang_binding_failed")
+            result = {"state": state, "code": error.code}
+            if args.mode in {"preview-capabilities", "version-upload-preflight"}:
                 result.update(previews_enabled=None, deployment_id=None, mutations_performed=False)
             if error.status is not None:
                 result["httpStatus"] = error.status
     args.report.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result) if args.mode == "preview-capabilities" else result["state"])
-    return int(result["state"] not in {"goyang_binding_verified", "goyang_canonical_noindex_verified", "goyang_preview_capabilities_observed"})
+    return int(result["state"] not in {"goyang_binding_verified", "goyang_canonical_noindex_verified", "goyang_preview_capabilities_observed", "goyang_version_upload_preflight_verified", "goyang_version_upload_boundary_preserved"})
 
 
 if __name__ == "__main__":

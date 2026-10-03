@@ -310,6 +310,96 @@ class ArtifactTests(unittest.TestCase):
                 with self.subTest(file=name,key=key),self.assertRaisesRegex(ValueError,'fixed authorized baseline'):self.verify(False)
             path.write_bytes(original)
 
+    def test_production_ready_source_only_allowed_in_isolated_noindex_version_mode(self):
+        self.write(self.root,'site-config.json',{'siteKey':qa.GOYANG_SITE,'productionApproved':True})
+        with self.assertRaisesRegex(ValueError,'indexing'):self.verify(False)
+        result=qa.verify_goyang_coverage(self.root,self.base,qa.GOYANG_ORIGIN,REVISION,self.digest(),'preview',version_preview=True)
+        self.assertEqual(result['pipelineState'],'goyang_source_validated')
+        path='/regions/';status,body,headers=self.responses[path]
+        self.responses[path]=(status,body.replace('noindex,nofollow,noarchive','index,follow'),headers)
+        with self.assertRaises((AssertionError,ValueError)):
+            qa.verify_goyang_coverage(self.root,self.base,qa.GOYANG_ORIGIN,REVISION,self.digest(),'preview',self.fetch,version_preview=True)
+
+    def test_probe_never_enters_production_artifact_and_canonical_must_return_exact_404(self):
+        path='/_site-factory/version-probe/123.txt'
+        missing=(self.root/'dist/404.html').read_bytes()
+        qa.verify_goyang_probe_absent(self.root,path,lambda p:(404,missing,{}))
+        for status,body in [(200,missing),(403,b'blocked'),(404,b'foreign 404')]:
+            with self.assertRaises((ValueError,PermissionError)):
+                qa.verify_goyang_probe_absent(self.root,path,lambda p:(status,body,{}))
+        self.phase='production';self.write(self.root,'site-config.json',{'siteKey':qa.GOYANG_SITE,'productionApproved':True})
+        (self.root/'production-indexing.enabled').write_text('SYNTHETIC');self.build()
+        p=self.root/'dist'/path.lstrip('/');p.parent.mkdir(parents=True);p.write_text('synthetic')
+        with self.assertRaisesRegex(ValueError,'probe'):self.verify(False)
+
+
+class VersionPreviewTests(unittest.TestCase):
+    def upload(self):
+        return {'type':'version-upload','version':1,'worker_name':'goyang-flower-guide-qa',
+            'version_id':'11111111-2222-4333-8444-555555555555',
+            'preview_url':'https://11111111-goyang-flower-guide-qa.joseungil.workers.dev','worker_name_overridden':False}
+
+    def parse(self,rows):return qa.read_goyang_version_upload('\n'.join(json.dumps(row) for row in rows))
+
+    def test_actual_official_single_upload_record_with_session_filters_nonpublic_fields(self):
+        row=self.upload();row.update(worker_tag='PRIVATE',bundle_size={'raw_bytes':1})
+        result=self.parse([{'type':'wrangler-session','argv':['PRIVATE']},row])
+        self.assertEqual(result,{'versionId':row['version_id'],'previewUrl':row['preview_url']})
+        self.assertNotIn('PRIVATE',json.dumps(result))
+
+    def test_failed_missing_stale_duplicate_alias_foreign_or_deployment_id_results_block(self):
+        row=self.upload()
+        for rows in [[],[{'type':'wrangler-session'}],[row,row],[row,{'type':'command-failed'}],
+                     [row,{'type':'version-deploy'}],[row,{'type':'deploy'}],[row,{'type':'preview'}]]:
+            with self.subTest(rows=rows),self.assertRaises(ValueError):self.parse(rows)
+        for k,v in [('version_id',None),('version_id','different-deployment-id'),('preview_url',None),
+            ('preview_url',row['preview_url']+'/'),('preview_url',row['preview_url']+'?secret=x'),
+            ('preview_url',row['preview_url'].replace('11111111','22222222')),
+            ('preview_url','https://goyang.fwith.kr'),('preview_url','https://11111111-goyang-flower-guide-qa.attacker.workers.dev'),
+            ('preview_alias_url',row['preview_url']),('worker_name','other'),('worker_name_overridden',True),('wrangler_environment','production')]:
+            with self.subTest(k=k,v=v),self.assertRaises(ValueError):self.parse([{**row,k:v}])
+
+    def test_live_preview_requires_explicit_version_path_and_uses_approved_public_reference(self):
+        live=site('production');live['coverageDeployment']['previewRevision']='c'*40
+        args=(live,REPO,'c'*40,qa.GOYANG_SCOPE,qa.GOYANG_SCOPE,'preview')
+        with self.assertRaises(ValueError):qa.resolve_goyang_coverage_target(*args)
+        target=qa.resolve_goyang_coverage_target(*args,version_preview=True)
+        self.assertEqual(target['revision'],'c'*40)
+        self.assertEqual(qa.goyang_public_reference(live),{'revision':REVISION,'manifest_sha256':'b'*64,'phase':'production'})
+        live['approvalEvidenceUrl']=''
+        with self.assertRaises(ValueError):qa.goyang_public_reference(live)
+        preview=site();preview['coverageDeployment']['previewRevision']='d'*40
+        self.assertEqual(qa.goyang_public_reference(preview)['revision'],qa.GOYANG_PUBLIC_BOOTSTRAP)
+
+    def test_all_static_assets_require_exact_status_bytes_mime_and_version_noindex(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dist=Path(tmp)/'dist';dist.mkdir();(dist/'photo.jpg').write_bytes(b'jpeg-fixture');(dist/'style.css').write_bytes(b'css-fixture');(dist/'index.html').write_text('HTML tested elsewhere');(dist/'_headers').write_text('rules')
+            responses={'/photo.jpg':(200,b'jpeg-fixture',{'Content-Type':'image/jpeg','X-Robots-Tag':'noindex,nofollow,noarchive'}),'/style.css':(200,b'css-fixture',{'Content-Type':'text/css','X-Robots-Tag':'noindex,nofollow,noarchive'})}
+            self.assertEqual(qa.verify_goyang_assets(tmp,responses.__getitem__,True),2)
+            original=responses['/photo.jpg']
+            for replacement in [(403,b'jpeg-fixture',original[2]),(200,b'changed',original[2]),(200,original[1],{'Content-Type':'image/png','X-Robots-Tag':'noindex,nofollow,noarchive'}),(200,original[1],{'Content-Type':'image/jpeg'})]:
+                responses['/photo.jpg']=replacement
+                with self.assertRaises((ValueError,PermissionError)):qa.verify_goyang_assets(tmp,responses.__getitem__,True)
+            responses['/photo.jpg']=original
+
+    def test_workflow_only_goyang_uses_upload_and_always_checks_public_boundary(self):
+        import yaml
+        data=yaml.safe_load((ROOT/'.github/workflows/site-staging-deploy.yml').read_text())
+        steps=data['jobs']['preview']['steps'];byid={step.get('id'):step for step in steps}
+        self.assertEqual(byid['deploy']['if'],"steps.target.outputs.goyang_coverage != 'true'")
+        upload=byid['version_upload'];self.assertEqual(upload['if'],"steps.target.outputs.goyang_coverage == 'true'")
+        self.assertIn('versions upload -c "$CONFIG" --strict --keep-vars',upload['run'])
+        self.assertIn('test ! -e "$WRANGLER_OUTPUT_FILE_PATH"',upload['run'])
+        for forbidden in ('versions deploy','triggers deploy','--preview-alias','--env ','--secrets-file','--experimental-provision'):
+            self.assertNotIn(forbidden,upload['run'])
+        after=[step for step in steps if 'after every upload attempt' in step.get('name','') or 'after upload attempt' in step.get('name','')]
+        self.assertEqual(len(after),2)
+        self.assertTrue(all('always()' in step['if'] and "steps.version_upload.outcome != 'skipped'" in step['if'] for step in after))
+        marker=next(step for step in steps if 'Record one Goyang' in step.get('name',''))
+        self.assertIn('GITHUB_RUN_ATTEMPT',marker['with']['script']);self.assertIn('GOYANG_VERSION_UPLOAD_STARTED:',marker['with']['script'])
+        artifacts=next(step for step in steps if step.get('uses','').startswith('actions/upload-artifact'))['with']['path']
+        self.assertNotIn('ndjson',artifacts);self.assertNotIn('upload.log',artifacts)
+
 
 class WorkflowContractTests(unittest.TestCase):
     def test_existing_workflow_inline_python_compiles_and_binding_runs_after_closed_scope_gate(self):
@@ -317,8 +407,9 @@ class WorkflowContractTests(unittest.TestCase):
             text=(ROOT/'.github/workflows'/filename).read_text()
             for block in re.findall(r"python3 - <<'PYTHON'\n(.*?)\n          PYTHON",text,re.S):
                 compile('\n'.join(line[10:] for line in block.splitlines()),filename,'exec')
-            self.assertEqual(text.count('verify_goyang_canonical.py binding'),2)
-            self.assertLess(text.index('resolve_goyang_coverage_target'),text.index('verify_goyang_canonical.py binding'))
+            guard='verify_goyang_canonical.py version-upload-preflight' if filename=='site-staging-deploy.yml' else 'verify_goyang_canonical.py binding'
+            self.assertEqual(text.count(guard),2)
+            self.assertLess(text.index('resolve_goyang_coverage_target'),text.index(guard))
             self.assertIn('--validate-only',text);self.assertIn('git -C target archive',text)
             self.assertNotIn('schedule:',text);self.assertNotIn('goyang_domain_attach.py',text)
 
@@ -334,7 +425,7 @@ class WorkflowContractTests(unittest.TestCase):
             cwd=Path.cwd()
             try:
                 os.chdir(tmp)
-                env={'SITE_KEY':qa.GOYANG_SITE,'REVISION':REVISION,'ISSUE_BODY':'','GITHUB_REPOSITORY':REPO,'GITHUB_OUTPUT':str(tmp/'outputs'),
+                env={'SITE_KEY':qa.GOYANG_SITE,'REVISION':REVISION,'ISSUE_BODY':'','GITHUB_REPOSITORY':REPO,'GITHUB_OUTPUT':str(tmp/'outputs'),'GITHUB_RUN_ID':'12345',
                     'LAUNCH_KEY':qa.GOYANG_SCOPE,'SCOPE_KEY':qa.GOYANG_SCOPE}
                 with patch.dict(os.environ,env,clear=True):
                     with self.assertRaisesRegex(ValueError,'closed'):exec(code,{})

@@ -73,8 +73,10 @@ jobs:
               if len(headers)!=len(set(headers)):raise SystemExit('Duplicate issue header')
               import sys
               sys.path.insert(0,'control/site-factory/engine')
-              from verify_live import resolve_goyang_coverage_target
-              resolved=resolve_goyang_coverage_target(site,os.environ['GITHUB_REPOSITORY'],revision,launch,scope,'preview')
+              from verify_live import resolve_goyang_coverage_target, goyang_public_reference
+              resolved=resolve_goyang_coverage_target(site,os.environ['GITHUB_REPOSITORY'],revision,launch,scope,'preview',version_preview=True)
+              public=goyang_public_reference(site)
+              resolved.update(public_revision=public['revision'],public_phase=public['phase'],probe_path='/_site-factory/version-probe/'+os.environ['GITHUB_RUN_ID']+'.txt')
               with open(os.environ['GITHUB_OUTPUT'],'a') as out:
                   for k,v in resolved.items():out.write(f'{k}={v}\n')
               raise SystemExit(0)
@@ -145,7 +147,7 @@ jobs:
           if os.environ['ISOLATED']=='true':
               assert s['name']==os.environ['STAGING_WORKER'] and p['name']==s['name'].replace('-guide-qa','-prod-disabled')
               assert 'route' not in s and 'routes' not in s and 'triggers' not in s
-              if os.environ['SITE_KEY']!='seongnam-flower-v2':
+              if os.environ['SITE_KEY'] not in ('seongnam-flower-v2','goyang-flower-v2'):
                   assert json.load(open('src/data/site-config.json'))['productionApproved'] is False
           PYTHON
       - uses: actions/setup-node@v4
@@ -162,13 +164,85 @@ jobs:
       - name: Validate exact Goyang coverage artifact and frozen source
         if: steps.target.outputs.goyang_coverage == 'true'
         env: {ROOT: "${{ steps.target.outputs.build_root }}", REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}"}
-        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --validate-only --report goyang-coverage-source.json
-      - name: Verify existing Goyang binding before asset deployment
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --version-preview --validate-only --report goyang-coverage-source.json
+      - name: Build protected canonical reference separately
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {PUBLIC_REVISION: "${{ steps.target.outputs.public_revision }}", PUBLIC_PHASE: "${{ steps.target.outputs.public_phase }}", ROOT: "${{ steps.target.outputs.root }}"}
+        run: |
+          set -euo pipefail
+          git -C target merge-base --is-ancestor "$PUBLIC_REVISION" "origin/site-factory-goyang-v2"
+          mkdir public-build
+          git -C target archive "$PUBLIC_REVISION:$ROOT" | tar -xf - -C public-build
+          cd public-build
+          npm ci
+          export SITE_URL=https://goyang.fwith.kr SITE_FACTORY_REVISION="$PUBLIC_REVISION" SITE_INDEXABLE=false
+          if [ "$PUBLIC_PHASE" = production ]; then export SITE_INDEXABLE=true; fi
+          npm run build
+          python3 scripts/qa_static.py
+      - name: Verify public artifact and probe absence before upload
+        id: public_before
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}", PROBE_PATH: "${{ steps.target.outputs.probe_path }}"}
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root public-build --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --version-preview --protect-public --probe-path "$PROBE_PATH" --report goyang-public-before.json
+      - name: Verify existing Worker upload preconditions without settings changes
+        id: upload_boundary
         if: steps.target.outputs.goyang_coverage == 'true'
         env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"}
-        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-before.json
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py version-upload-preflight --report goyang-binding-before.json
+      - name: Record one Goyang upload attempt before mutation
+        if: steps.target.outputs.goyang_coverage == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (Number(process.env.GITHUB_RUN_ATTEMPT) !== 1) throw new Error('Uncertain upload cannot be rerun automatically; inspect the original result first');
+            if (context.payload.issue) {
+              const comments = await github.paginate(github.rest.issues.listComments, {...context.repo, issue_number: context.issue.number});
+              if (comments.some(c => c.body.includes('GOYANG_VERSION_UPLOAD_STARTED:'))) throw new Error('This request already attempted upload; inspect that result, do not repeat');
+              await github.rest.issues.createComment({...context.repo, issue_number: context.issue.number,
+                body: `GOYANG_VERSION_UPLOAD_STARTED: run=${context.runId}. One CLI invocation only; Wrangler may perform its bounded internal API retries. Unknown outcomes require inspection, not a repeated upload.`});
+            }
+      - name: Upload one immutable noindex Goyang version without deploying traffic
+        id: version_upload
+        if: steps.target.outputs.goyang_coverage == 'true'
+        working-directory: ${{ steps.target.outputs.build_root }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CONFIG: ${{ steps.target.outputs.config }}
+          REVISION: ${{ steps.target.outputs.revision }}
+          PROBE_PATH: ${{ steps.target.outputs.probe_path }}
+          WRANGLER_OUTPUT_FILE_PATH: ${{ runner.temp }}/goyang-version-upload.ndjson
+          WRANGLER_LOG_SANITIZE: 'true'
+          WRANGLER_SEND_METRICS: 'false'
+        run: |
+          set -euo pipefail
+          python3 - <<'PYTHON'
+          import os,pathlib,sys
+          sys.path.insert(0,'../control/site-factory/engine')
+          from verify_live import validate_goyang_probe_path
+          p=pathlib.Path('dist')/validate_goyang_probe_path(os.environ['PROBE_PATH']).lstrip('/')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text('site-factory-version-isolation '+os.environ['REVISION']+'\n')
+          PYTHON
+          test ! -e "$WRANGLER_OUTPUT_FILE_PATH"
+          # Raw logs/NDJSON remain runner-local: they can contain provider metadata.
+          if ! npx --yes wrangler@4.146.0 versions upload -c "$CONFIG" --strict --keep-vars > "$RUNNER_TEMP/goyang-upload.log" 2>&1; then
+            echo 'Version upload unsuccessful or uncertain. No repeated upload; inspect the provider outcome.'
+            exit 1
+          fi
+          python3 - <<'PYTHON'
+          import json,os,pathlib,sys
+          sys.path.insert(0,'../control/site-factory/engine')
+          from verify_live import read_goyang_version_upload
+          result=read_goyang_version_upload(pathlib.Path(os.environ['WRANGLER_OUTPUT_FILE_PATH']).read_text())
+          pathlib.Path('../goyang-version-upload.json').write_text(json.dumps(result,indent=2)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('url='+result['previewUrl']+'\nversion_id='+result['versionId']+'\n')
+          print(json.dumps(result))
+          PYTHON
       - name: Deploy isolated noindex QA Worker
         id: deploy
+        if: steps.target.outputs.goyang_coverage != 'true'
         working-directory: ${{ steps.target.outputs.build_root }}
         env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", CONFIG: "${{ steps.target.outputs.config }}", ISOLATED: "${{ steps.target.outputs.isolated }}"}
         run: |
@@ -177,14 +251,20 @@ jobs:
           else
             npx --yes wrangler@latest deploy -c "$CONFIG"
           fi
-      - name: Verify Goyang binding preservation after deployment attempt
-        if: ${{ always() && steps.target.outputs.goyang_coverage == 'true' && steps.deploy.outcome != 'skipped' }}
+      - name: Recheck active deployment binding and settings after every upload attempt
+        if: ${{ always() && steps.target.outputs.goyang_coverage == 'true' && steps.version_upload.outcome != 'skipped' }}
         env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"}
-        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-after.json
-      - name: Verify complete Goyang coverage HTTP artifact
+        run: |
+          python3 control/site-factory/engine/verify_goyang_canonical.py version-upload-preflight --report goyang-binding-after.json
+          python3 control/site-factory/engine/verify_goyang_canonical.py compare-upload-boundary --before goyang-binding-before.json --after goyang-binding-after.json --report goyang-upload-boundary.json
+      - name: Verify complete public artifact remains unchanged after upload attempt
+        if: ${{ always() && steps.target.outputs.goyang_coverage == 'true' && steps.version_upload.outcome != 'skipped' }}
+        env: {REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}", PROBE_PATH: "${{ steps.target.outputs.probe_path }}"}
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root public-build --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --version-preview --protect-public --probe-path "$PROBE_PATH" --report goyang-public-after.json
+      - name: Verify exact returned version URL noindex source and every static asset
         if: steps.target.outputs.goyang_coverage == 'true'
-        env: {ROOT: "${{ steps.target.outputs.build_root }}", REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}"}
-        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --report preview-verification.json
+        env: {ROOT: "${{ steps.target.outputs.build_root }}", REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}", PROBE_PATH: "${{ steps.target.outputs.probe_path }}"}
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase preview --version-preview --version-upload-result "$RUNNER_TEMP/goyang-version-upload.ndjson" --probe-path "$PROBE_PATH" --report preview-verification.json
       - name: Verify isolated exact-revision preview
         if: steps.target.outputs.goyang_coverage != 'true'
         env: {ORIGIN: "${{ steps.target.outputs.url }}", REVISION: "${{ steps.target.outputs.revision }}"}
@@ -200,13 +280,17 @@ jobs:
             goyang-coverage-source.json
             goyang-binding-before.json
             goyang-binding-after.json
+            goyang-upload-boundary.json
+            goyang-public-before.json
+            goyang-public-after.json
+            goyang-version-upload.json
           retention-days: 7
       - name: Report issue preview
         if: github.event_name == 'issues'
-        env: {GH_TOKEN: "${{ github.token }}", URL: "${{ steps.target.outputs.url }}", GOYANG_COVERAGE: "${{ steps.target.outputs.goyang_coverage }}", REVISION: "${{ steps.target.outputs.revision }}"}
+        env: {GH_TOKEN: "${{ github.token }}", URL: "${{ steps.target.outputs.url }}", VERSION_URL: "${{ steps.version_upload.outputs.url }}", VERSION_ID: "${{ steps.version_upload.outputs.version_id }}", GOYANG_COVERAGE: "${{ steps.target.outputs.goyang_coverage }}", REVISION: "${{ steps.target.outputs.revision }}"}
         run: |
           if [ "$GOYANG_COVERAGE" = true ]; then
-            gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: preview_verified. Goyang coverage noindex artifact=$URL revision=$REVISION. Assets on the existing public QA hostname were updated. Independent visual QA is still required."
+            gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: preview_verified. Goyang immutable noindex version=$VERSION_ID preview=$VERSION_URL revision=$REVISION. Active deployment, binding, settings and canonical HTML/assets preserved; version-only asset isolation verified. Independent visual QA is still required."
           else
             gh issue comment -R "$GITHUB_REPOSITORY" "${{ github.event.issue.number }}" --body "PIPELINE_STATE: preview_verified. Noindex isolated preview=$URL revision=$REVISION. Production is unchanged. Independent visual QA is still required."
           fi
