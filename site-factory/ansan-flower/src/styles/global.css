@@ -532,3 +532,7 @@ body{background:#fff;color:var(--ink);}
       url('/images/ansan/hero-B-original.png') 72% center / cover no-repeat;
   }
 }
+
+/* Keep the body purchase panel full-width between hub cards. */
+.hub-purchase-banner{grid-column:1/-1;min-width:0}
+.hub-purchase-banner .order-cta{margin:8px 0}

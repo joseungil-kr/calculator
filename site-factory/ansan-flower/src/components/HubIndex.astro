@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OrderCTA from './OrderCTA.astro';
 import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
 
@@ -74,7 +75,8 @@ const structureLabel: Record<string, string> = {
   <section class="section">
     <div class="container">
       <div class="hub-card-grid">
-        {articles.map((article) => (
+        {articles.map((article, index) => (
+          <>
           <a class="hub-card" href={hrefFor(article)}>
             <div class="hub-card-top">
               <span class="tag">{roleLabel[roleByPageKey.get(article.data.pageKey) ?? ''] ?? structureLabel[article.data.structureType] ?? '가이드'}</span>
@@ -84,6 +86,12 @@ const structureLabel: Record<string, string> = {
             <p>{article.data.cardSummary || article.data.description}</p>
             <span class="more">자세히 보기 →</span>
           </a>
+          {index === Math.floor((articles.length - 1) / 2) && (
+            <div class="hub-purchase-banner" data-purchase-banner="middle" data-page-role="hub">
+              <OrderCTA heading={`${title} 주문 안내`} />
+            </div>
+          )}
+          </>
         ))}
       </div>
     </div>
