@@ -3482,5 +3482,91 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsanseo-daehwa",
+    "snapshotId": "goyang-ilsanseo-daehwa-r1-20261003T182200Z",
+    "snapshotHash": "8c700c0616d4507d4cc79aaec2bf348e82a0fbe8d4439fd2af8a8a0dd0038f20",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsanseo-daehwa-r1",
+    "sourceRecordId": "rechkgZOraLYaVzUW",
+    "publishQueueRecordId": "recvTTLQBF0kzchPG",
+    "slug": "ilsanseo-daehwa",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsanseo-daehwa/",
+    "title": "대화동 꽃배달 | 킨텍스 행사 수령과 성저·장성마을 주문",
+    "primaryKeyword": "대화동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 45,
+    "h1": "대화동 꽃배달, 행사장과 가정의 수령정보를 나누어 준비하세요",
+    "description": "킨텍스 전시장·홀·부스 담당자와 성저·장성·대화마을 단지주소를 구분하세요. 화환 반입 확인부터 꽃다발·바구니 기본 표시가격, 배송 가능 시간과 총액까지 안내합니다.",
+    "cardSummary": "킨텍스 행사에는 전시장·홀·담당자가, 집 선물에는 단지·동·호수가 필요합니다. 설치할 화환과 들고 건넬 꽃의 선택도 함께 정리했습니다.",
+    "firstAnswer": "대화동 꽃배달은 킨텍스 행사장인지, 성저·장성·대화마을의 가정인지부터 알려 꽃이랑에 주문해 주세요. 행사는 전시장·홀·부스와 수령 담당자, 집은 단지·동·호수를 준비하시면 됩니다. 화환 반입과 받을 시간을 먼저 확인하고 상품 공급, 배송 가능 일정 및 추가비용을 포함한 총액을 상담하세요.",
+    "contentMarkdown": "대화동 꽃배달은 킨텍스 행사장인지, 성저·장성·대화마을의 가정인지부터 알려 꽃이랑에 주문해 주세요. 행사는 전시장·홀·부스와 수령 담당자, 집은 단지·동·호수를 준비하시면 됩니다. 화환 반입과 받을 시간을 먼저 확인하고 상품 공급, 배송 가능 일정 및 추가비용을 포함한 총액을 상담하세요.\n\n## 킨텍스 행사라면 건물 주소 다음에 홀과 부스를 적어주세요\n\n[고양특례시 대화동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_1/dong01_6_1_tab1.jsp)는 성저·장성마을과 킨텍스를 안내합니다. 킨텍스로 축하꽃을 보낼 때는 행사명만으로 주문을 마치지 말고 전시장, 홀, 부스 또는 회의실 이름, 현장 수령 담당자를 알려주세요. [킨텍스 공식 주차 안내](https://parkingpay.kintex.com/)도 제1·제2전시장 주차센터를 구분하고 있어 행사장 건물을 정확히 정하는 것이 중요합니다.\n\n출품업체에 보내는 화환이라면 행사 주최 측이나 부스 담당자에게 반입과 배치가 가능한지 먼저 확인해 주세요. 설치 준비시간에 받을지, 행사 운영 중에 받을지에 따라 인계 약속이 달라질 수 있습니다. 차량 진입·주차·하역 허가를 일반 방문객 안내만으로 판단하지 말고 현장 안내를 확인해야 합니다.\n\n## 화환을 둘 수 없는 행사에는 다른 형태를 상담하세요\n\n축하 3단 화환(C200)은 기본 표시가격 59,000원으로, 설치가 허용되는 축하 자리에서 비교할 수 있습니다. 리본에는 받는 업체나 행사명, 축하 문장, 보내는 분 표기를 정확히 준비해 주세요. 화환 반입이 어렵다면 담당자가 받을 수 있는 꽃다발이나 실내에 놓을 바구니가 가능한지 먼저 상의하는 편이 좋습니다.\n\n소소한 행복(G105) 꽃다발의 기본 표시가격은 50,000원, 햇살 한가득(A155) 꽃바구니는 65,000원입니다. 이동하며 받을 축하꽃인지 한곳에 놓을 꽃인지 생각해 선택해 주세요. 실제 공급과 구성은 주문 시 확인하며 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.\n\n## 성저·장성·대화마을 선물은 단지 주소로 준비하세요\n\n법정동 대화동은 행정동 대화동과 송포동 관할 일부에 걸쳐 있습니다. [고양특례시 송포동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_3/dong01_6_3_tab1.jsp)에도 대화동과 법곳동의 관할 관계가 안내되어 있으므로, 행정동 이름을 기준으로 집 주소를 임의 변경하지 말고 받는 분이 알려준 도로명주소를 사용해 주세요.\n\n성저마을·장성마을·대화마을이라는 이름 뒤에 실제 단지와 동·호수를 적고, 가족이 재실하는 시간을 알려주세요. 큰 행사장의 이름을 주택 배송 위치로 대신 쓰거나 아파트 관리실 수령이 가능하다고 가정하지 않는 것이 좋습니다.\n\n## 행사 시각과 배송 가능시각은 따로 확인합니다\n\n행사 시작이나 가족 약속 전에 필요하다면 상세 수령처와 희망 시각을 [꽃이랑 1844-0644](tel:18440644)에 먼저 알려주세요. 전화 주문은 08:00-23:00이며 [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 접수만으로 특정 시각 도착이 보장되지는 않습니다.\n\n기본 표시가격 외 지역별 추가배송비가 발생할 수 있습니다. 주소·상품·수령 조건에 맞는 배송 가능 일정과 최종 총액을 확인해 주문하세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 대화동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_1/dong01_6_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 송포동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_3/dong01_6_3_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "킨텍스 공식 주차 안내",
+        "url": "https://parkingpay.kintex.com/",
+        "type": "facility",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 대화동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_1/dong01_6_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
