@@ -248,8 +248,8 @@
       "primaryLandingSlug": "",
       "heroPath": "",
       "worker": "seongnam-flower-prod-disabled",
-      "launchMode": "staging",
-      "productionEnabled": false,
+      "launchMode": "live",
+      "productionEnabled": true,
       "naverVerification": "",
       "indexnowKey": "",
       "templateKey": "flower-local-v2",
@@ -307,8 +307,8 @@
       "stagingUrl": "https://seongnam-flower-guide-qa.joseungil.workers.dev",
       "requireRevisionApproval": true,
       "requireSnapshotApproval": true,
-      "approvedRevision": "",
-      "approvalEvidenceUrl": "",
+      "approvedRevision": "02f70b37648332606f570d8435b78e34c55331bf",
+      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/117#issuecomment-5965375767",
       "stagingBuildIsolation": true,
       "stagingWorker": "seongnam-flower-guide-qa"
     }
