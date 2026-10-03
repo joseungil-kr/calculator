@@ -3402,5 +3402,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsanseo-tanhyeon",
+    "snapshotId": "goyang-ilsanseo-tanhyeon-r1-20261003T182200Z",
+    "snapshotHash": "af586601274a5eaac076d95de6f3e0311d8cc49712dc54655637251cfc199f9c",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsanseo-tanhyeon-r1",
+    "sourceRecordId": "recrEt9BaKe25jFFK",
+    "publishQueueRecordId": "recA1qOQN3Vbvk84G",
+    "slug": "ilsanseo-tanhyeon",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsanseo-tanhyeon/",
+    "title": "탄현동 꽃배달 | 탄현마을·큰마을과 업무시설 선물 수령",
+    "primaryKeyword": "탄현동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 44,
+    "h1": "탄현동 꽃배달, 집·상가·업무시설의 받을 사람을 정하세요",
+    "description": "탄현마을·큰마을 가정 선물과 상가·제작시설의 수령 정보를 구분하세요. 꽃다발·바구니 형태, 담당부서와 인계시간, 기본 표시가격 및 배송 조건을 확인합니다.",
+    "cardSummary": "집으로 보내면 단지와 재실 시간이, 회사로 보내면 담당부서와 인계 위치가 필요합니다. 이동할 선물과 한곳에 둘 꽃을 비교해 보세요.",
+    "firstAnswer": "탄현동 꽃배달은 탄현마을·큰마을의 집인지, 상가나 업무시설인지 알려 꽃이랑에 주문해 주세요. 가정은 단지·동·호수와 재실 시간, 회사는 담당부서와 실제 수령자를 준비하시면 됩니다. 꽃다발·바구니의 용도와 희망일시를 정해 상품 공급, 배송 가능 여부 및 추가비용을 포함한 총액을 확인하세요.",
+    "contentMarkdown": "탄현동 꽃배달은 탄현마을·큰마을의 집인지, 상가나 업무시설인지 알려 꽃이랑에 주문해 주세요. 가정은 단지·동·호수와 재실 시간, 회사는 담당부서와 실제 수령자를 준비하시면 됩니다. 꽃다발·바구니의 용도와 희망일시를 정해 상품 공급, 배송 가능 여부 및 추가비용을 포함한 총액을 확인하세요.\n\n## 탄현마을·큰마을은 아파트 이름과 동을 함께 알려주세요\n\n[고양특례시 탄현2동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_11/dong01_6_11_tab1.jsp)는 탄현동 서쪽의 경의선 철로와 동쪽의 고봉로, 탄현마을·큰마을을 안내합니다. 주문에는 큰길이나 철로의 어느 쪽인지보다 실제 단지명, 도로명주소와 동·호수가 필요합니다. 단지 상가에서 받을 예정이면 주거동과 구분해 상호·층·호수를 적어주세요.\n\n생신이나 기념일 선물을 집으로 보낸다면 가족이 있는 시간대를 알려주세요. 외출 중이라면 누가 대신 받을지와 인계할 장소를 먼저 협의하는 것이 좋습니다. 관리실 보관이나 공동현관 출입은 건물별로 확인해 주세요.\n\n## 회사나 제작시설에는 받을 부서를 먼저 확인하세요\n\n[고양특례시 탄현1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_9/dong01_6_9_tab1.jsp)에는 SBS 일산제작센터가 안내되어 있습니다. 제작시설이나 다른 업무시설로 꽃을 보내실 때에는 건물 이름만 전달하지 말고 수령 부서, 담당자, 꽃을 받을 장소를 확인해 주세요. 직원이나 출연자에게 보내는 선물이라도 외부 꽃을 맡아주는지와 반입 가능한 시간이 따로 있을 수 있습니다.\n\n보안·출입 절차를 추정하거나 촬영 공간으로 바로 들어갈 수 있다고 가정하지 않는 것이 좋습니다. 현장 담당자가 허용하는 인계 방법이 확인되지 않으면 받는 분과 다른 장소나 시간을 먼저 상의해 주세요. 시설 소재 사실이 꽃 반입 허가를 뜻하지는 않습니다.\n\n## 움직이며 받을 꽃과 한곳에 놓을 꽃을 비교하세요\n\n직접 만나 건네거나 받은 뒤 이동할 선물에는 소소한 행복(G105) 꽃다발, 기본 표시가격 50,000원을 비교해 보세요. 집이나 사무실에 놓고 감상할 꽃에는 햇살 한가득(A155) 꽃바구니, 기본 표시가격 65,000원이 있습니다. 받는 분이 다시 들고 이동해야 한다면 너무 큰 형태를 고르기 전에 운반 방법도 함께 생각해 주세요.\n\n카드에 넣을 호칭과 보내는 분 이름을 정하고, 수령 담당자가 알아볼 이름은 별도로 알려주세요. 특정 꽃이나 색감은 공급 가능 여부를 상담한 뒤 정하며 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다.\n\n## 받을 분의 일정에 맞춰 배송 가능 여부를 상담합니다\n\n[꽃이랑 1844-0644 전화 주문](tel:18440644)은 08:00-23:00, [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 주문 접수시간이 원하는 도착시각을 보장하지는 않으므로 당일 선물은 상세주소와 꼭 필요한 시간을 먼저 알려주세요.\n\n기본 표시가격 외에 지역별 추가배송비가 발생할 수 있습니다. 상품 공급·최종 구성·반입 또는 수령 조건과 총액을 함께 확인해 주문해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 탄현1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_9/dong01_6_9_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 탄현2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_11/dong01_6_11_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 탄현1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_9/dong01_6_9_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

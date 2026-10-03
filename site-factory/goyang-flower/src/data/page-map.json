@@ -773,6 +773,24 @@
       "pageType": "regional-service",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsanseo-tanhyeon",
+      "snapshotId": "goyang-ilsanseo-tanhyeon-r1-20261003T182200Z",
+      "snapshotHash": "af586601274a5eaac076d95de6f3e0311d8cc49712dc54655637251cfc199f9c",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsanseo-tanhyeon-r1",
+      "sourceRecordId": "recrEt9BaKe25jFFK",
+      "publishQueueRecordId": "recA1qOQN3Vbvk84G",
+      "slug": "ilsanseo-tanhyeon",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsanseo-tanhyeon/",
+      "title": "탄현동 꽃배달 | 탄현마을·큰마을과 업무시설 선물 수령",
+      "primaryKeyword": "탄현동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,
