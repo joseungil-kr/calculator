@@ -415,6 +415,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-seonyu",
+      "snapshotId": "goyang-deogyang-seonyu-r2-20261003T182200Z",
+      "snapshotHash": "3558ed2c09116c41d6576a0c26948bd26c6f7fec13e7aefb3d484c7c08fd9776",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-seonyu-r2",
+      "sourceRecordId": "recSYQPkFH0fwMf6S",
+      "publishQueueRecordId": "recSW9GXu6PcGpYFt",
+      "slug": "deogyang-seonyu",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-seonyu/",
+      "title": "선유동 꽃배달 | 체험 모임·전원마을에 전하는 완성 꽃선물",
+      "primaryKeyword": "선유동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-sinpyeong",
       "snapshotId": "goyang-deogyang-sinpyeong-r1-20261003T182200Z",
       "snapshotHash": "86c0a2a7870c777f0c7fed50ae08976b038727c4992bcd1aff815dc46dedb51c",
@@ -785,6 +803,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-bukhan",
       "snapshotHash": "b2f92b7cbf873b1ffbddf320a45063edcafab34ebaa9b791c06a92531cd102ef",
       "publishQueueRecordId": "recR5w3bZhtjptxmv"
+    },
+    "goyang-deogyang-seonyu-r2-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-seonyu",
+      "snapshotHash": "3558ed2c09116c41d6576a0c26948bd26c6f7fec13e7aefb3d484c7c08fd9776",
+      "publishQueueRecordId": "recSW9GXu6PcGpYFt"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

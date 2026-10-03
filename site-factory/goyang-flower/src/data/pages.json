@@ -2712,5 +2712,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-seonyu",
+    "snapshotId": "goyang-deogyang-seonyu-r2-20261003T182200Z",
+    "snapshotHash": "3558ed2c09116c41d6576a0c26948bd26c6f7fec13e7aefb3d484c7c08fd9776",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-seonyu-r2",
+    "sourceRecordId": "recSYQPkFH0fwMf6S",
+    "publishQueueRecordId": "recSW9GXu6PcGpYFt",
+    "slug": "deogyang-seonyu",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-seonyu/",
+    "title": "선유동 꽃배달 | 체험 모임·전원마을에 전하는 완성 꽃선물",
+    "primaryKeyword": "선유동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 35,
+    "h1": "선유동 꽃배달, 모임 장소와 주택 수령에 맞춰 준비하세요",
+    "description": "선유동의 체험 모임과 주택으로 전할 꽃다발·꽃바구니를 안내합니다. 서리골길 행사 장소와 인계 담당자, 실내 보관·수령 시간, 상품 공급과 최종 배송비를 확인하세요.",
+    "cardSummary": "모임에서 건넬 완성 꽃선물은 화훼 재료 구매와 준비사항이 달라요. 행사 담당자와 받을 시점, 가져갈 분의 이동 일정까지 맞춰보세요.",
+    "firstAnswer": "선유동 꽃배달은 주택이나 모임 장소의 도로명주소와 꽃을 받을 담당자, 희망 시간을 알려주시면 꽃이랑에서 상담하실 수 있습니다. 체험시설 행사에는 프로그램명과 합의된 인계 위치를 더해 주세요. 완성 꽃다발·꽃바구니의 공급, 실제 수령 가능 시간과 추가배송비를 포함한 총액을 확인해 주세요.",
+    "contentMarkdown": "선유동 꽃배달은 주택이나 모임 장소의 도로명주소와 꽃을 받을 담당자, 희망 시간을 알려주시면 꽃이랑에서 상담하실 수 있습니다. 체험시설 행사에는 프로그램명과 합의된 인계 위치를 더해 주세요. 완성 꽃다발·꽃바구니의 공급, 실제 수령 가능 시간과 추가배송비를 포함한 총액을 확인해 주세요.\n\n## 화훼마을에서 전할 선물도 완성 형태를 먼저 정하세요\n\n[고양시 고양동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp)는 선유동을 장미 등 화훼가 발달한 전원마을로 설명합니다. 화훼 재료를 직접 구입하는 일과 포장된 선물용 꽃을 정해진 수령자에게 보내는 일은 준비가 다릅니다. 꽃이랑에 문의하실 때에는 꽃다발이나 꽃바구니처럼 완성된 상품을 원하는지 먼저 말씀해 주세요.\n\n마을 이름이나 농장 간판만 알고 계시면 꽃을 받을 분에게 실제 도로명주소와 건물번호를 확인해 주세요. 일하는 공간에서 받을지, 주택에서 받을지에 따라 연락할 사람과 시간도 달라질 수 있습니다. 선유동에 있다는 사실만으로 특정 꽃의 재고나 저렴한 가격을 약속하지는 않습니다.\n\n## 서리골길의 체험 모임에는 행사 담당자까지\n\n[고양시관광협의회 안내](https://www.goyangtca.or.kr/contents/sub/?s_mn=111)는 산울안 민속농원 에듀팜 위치를 덕양구 서리골길124번길 48-3(선유동 244-3)으로 안내합니다. 이곳 모임에 축하·감사 꽃을 보내실 계획이라면 주소 외에 예약한 행사 또는 프로그램명, 실제 꽃을 받을 성인 담당자와 인계 장소를 알려주세요.\n\n시설의 일반 안내만으로 꽃 반입이나 보관을 확정하지 말고 행사 담당자에게 먼저 확인해 주세요. 활동 중에는 담당자가 실외에 있을 수 있으므로 꽃을 미리 받아 실내에 둘 수 있는지, 모임이 끝날 때 받아 바로 건넬 것인지 정해 두면 좋습니다. 이는 행사별로 협의할 사항입니다.\n\n## 단체 모임의 선물은 전달 시점과 수량을 함께\n\n한 분에게 감사를 전하거나 모임을 마친 뒤 손에 건넬 선물은 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)을 살펴보세요. 꽃을 여러 분에게 각각 드리려면 수량과 카드 문구를 구분해 알려주시고, 같은 날짜에 준비할 수 있는지를 먼저 문의해 주세요.\n\n주택이나 합의된 실내 공간에 놓는 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 비교할 수 있습니다. 실제 크기, 원하는 꽃 종류와 색감은 상담이 필요하며 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다. 수량이 늘어났을 때의 공급·가격도 개별 확인 사항입니다.\n\n## 꽃을 둘 곳과 받을 시간을 확인한 뒤 주문하세요\n\n선유동의 전체 주소와 건물명, 수령자 연락처, 행사명 또는 선물 목적, 날짜·시간대, 상품명·수량·예산, 카드 문구를 준비해 주세요. 야외에 오래 두는 계획보다 받는 사람이 바로 실내로 옮길 수 있는 시간을 잡는 편이 좋습니다. 기본 표시가격 외 지역별 추가배송비를 포함한 최종 총액도 확인해 주세요.\n\n[꽃이랑 전화주문 1844-0644](tel:18440644)은 08:00~23:00, [온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있습니다. 모임 시작 전이나 종료 무렵 전달이 꼭 필요하면 상품 공급과 실제 인계 가능 시간을 먼저 상담해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 고양동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시관광협의회 산울안 민속농원 에듀팜 안내",
+        "url": "https://www.goyangtca.or.kr/contents/sub/?s_mn=111",
+        "type": "professional",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 고양동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
