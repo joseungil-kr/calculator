@@ -4,6 +4,7 @@ import { removeRepeatedOpeningParagraph } from '../lib/article-opening.mjs';
 import BaseLayout from './BaseLayout.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
 import { pageProductKeys } from '../lib/site-catalog.mjs';
+import { selectRelatedArticles } from '../lib/related-articles.mjs';
 import { regionalPages } from '../lib/regional-runtime.mjs';
 import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
@@ -147,36 +148,12 @@ const hrefFor = (article: (typeof allArticles)[number]) =>
     ? `/${article.data.slug}/`
     : `/${article.data.category}/${article.data.slug}/`;
 
-const nextCategoryPriority: Record<string, string[]> = {
-  guide: ['places', 'occasions', 'order-help', 'funeral', 'flower-knowledge'],
-  funeral: ['order-help', 'places', 'guide', 'flower-knowledge', 'occasions'],
-  places: ['order-help', 'occasions', 'funeral', 'guide', 'flower-knowledge'],
-  occasions: ['order-help', 'places', 'guide', 'funeral', 'flower-knowledge'],
-  'flower-knowledge': ['guide', 'places', 'occasions', 'order-help', 'funeral'],
-  'order-help': ['occasions', 'places', 'funeral', 'guide', 'flower-knowledge'],
-};
-const explicitRank = new Map(relatedPageKeys.map((key, index) => [key, index]));
-const priority = nextCategoryPriority[category] ?? [];
-const fallbackRelated = allArticles
-  .filter((article) => article.data.pageKey !== pageKey)
-  .map((article) => {
-    const explicit = explicitRank.has(article.data.pageKey);
-    const categoryRank = priority.indexOf(article.data.category);
-    const score =
-      (explicit ? 1000 - (explicitRank.get(article.data.pageKey) ?? 0) * 10 : 0) +
-      (categoryRank >= 0 ? 100 - categoryRank * 10 : 0) +
-      (article.data.structureType !== structureType ? 5 : 0);
-    return { article, score };
-  })
-  .sort((a, b) => b.score - a.score || a.article.data.pageKey.localeCompare(b.article.data.pageKey, 'ko'))
-  .slice(0, 4)
-  .map(({ article }) => article);
-const related = relatedPageKeys.length
-  ? [...new Set(relatedPageKeys)].flatMap((key) => {
-      const article = allArticles.find((item) => item.data.pageKey === key && key !== pageKey);
-      return article ? [article] : [];
-    })
-  : fallbackRelated;
+const related = selectRelatedArticles({
+  articles: allArticles,
+  architecturePages,
+  current: { pageKey, category, pageType: effectivePageType, title, h1 },
+  relatedPageKeys,
+});
 
 const formatDate = (date?: Date) =>
   date ? new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }).format(date) : null;
