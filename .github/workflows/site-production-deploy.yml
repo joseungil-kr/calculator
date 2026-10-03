@@ -116,6 +116,7 @@ jobs:
       - name: Verify exact live revision and every published route
         run: python3 control/site-factory/engine/verify_live.py --root "target/${{ steps.target.outputs.root }}" --origin "${{ steps.target.outputs.site_url }}" --revision "${{ steps.target.outputs.revision }}" --report live-qa-report.json --naver-verification "${{ steps.target.outputs.naver }}" --indexnow-key "${{ steps.target.outputs.indexnow }}"
       - name: Submit verified URLs to IndexNow
+        if: steps.target.outputs.indexnow != ''
         working-directory: target/${{ steps.target.outputs.root }}
         env:
           SITE_URL: ${{ steps.target.outputs.site_url }}
@@ -128,6 +129,9 @@ jobs:
         run: |
           node scripts/select_indexnow_urls.mjs
           node scripts/submit_indexnow.mjs
+      - name: Record skipped IndexNow submission
+        if: steps.target.outputs.indexnow == ''
+        run: echo 'IndexNow not configured for this approved release; no submission attempted.' >> "$GITHUB_STEP_SUMMARY"
       - name: Save exact-revision QA reports
         if: always()
         uses: actions/upload-artifact@v4

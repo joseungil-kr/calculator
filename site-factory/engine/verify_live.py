@@ -31,11 +31,14 @@ class Document(HTMLParser):
         if a.get("data-snapshot-id"): self.snapshots.append(a["data-snapshot-id"])
 
 
-def validate_html(html, origin, route, revision, snapshot=None):
+def validate_html(html, origin, route, revision, snapshot=None, indexable=True):
     doc = Document(html)
     assert doc.metas.get("site-factory-revision") == revision, f"Revision mismatch at {route}"
     robots = doc.metas.get("robots", "").lower()
-    assert "index,follow" in robots and "noindex" not in robots, f"Unindexable {route}"
+    if indexable:
+        assert "index,follow" in robots and "noindex" not in robots, f"Unindexable {route}"
+    else:
+        assert "noindex" in robots, f"Missing noindex at {route}"
     assert doc.h1 == 1, f"Expected one H1 at {route}"
     assert [unquote(url or "") for url in doc.canonicals] == [origin + route], f"Canonical mismatch at {route}"
     if snapshot: assert snapshot in doc.snapshots, f"Snapshot mismatch at {route}"
@@ -46,15 +49,15 @@ def validate_html(html, origin, route, revision, snapshot=None):
 def verify(root, origin, revision, fetch, naver_verification="", indexnow_key=""):
     manifest = json.loads((root / "src/data/publish-manifest.json").read_text())
     architecture = json.loads((root / "src/data/architecture.json").read_text()) if (root / "src/data/architecture.json").exists() else {}
-    routes = {"/": None}
-    routes.update({p["url"]: p["snapshotId"] for p in manifest["pages"] if p.get("status") == "approved"})
-    routes.update({h["url"]: None for h in architecture.get("hubs", []) if h.get("children", 1) > 0 and h.get("indexable", True)})
+    routes = {"/": (None, True)}
+    routes.update({p["url"]: (p["snapshotId"], True) for p in manifest["pages"] if p.get("status") == "approved"})
+    routes.update({h["url"]: (None, h.get("children", 0) >= 3) for h in architecture.get("hubs", []) if h.get("children", 0) > 0})
     fingerprint = hashlib.sha256()
-    for route, snapshot in sorted(routes.items()):
+    for route, (snapshot, indexable) in sorted(routes.items()):
         status, html = fetch(route)
         if status == 403: raise PermissionError(f"Live QA blocked by HTTP403 at {route}; independent browser verification is required")
         assert status == 200, f"HTTP{status} at {route}"
-        doc = validate_html(html, origin, route, revision, snapshot)
+        doc = validate_html(html, origin, route, revision, snapshot, indexable)
         if route == "/" and naver_verification:
             assert doc.metas.get("naver-site-verification") == naver_verification
         fingerprint.update(html.encode())
@@ -73,7 +76,8 @@ def verify(root, origin, revision, fetch, naver_verification="", indexnow_key=""
         status, content = fetch(url[len(origin):])
         assert status == 200
         sitemap += unquote(content)
-    for route in routes:
+    for route, (_, indexable) in routes.items():
+        if not indexable: continue
         assert f"<loc>{origin}{route}</loc>" in sitemap, f"Missing sitemap route {route}"
     status, body = fetch("/site-factory-live-qa-definitely-not-found/")
     assert status == 404 and "페이지를 찾을 수 없습니다" in body

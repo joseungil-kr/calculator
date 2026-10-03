@@ -183,7 +183,8 @@ def check(root=Path('.')):
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
-    expected={'/'}|{p['url'] for p in pages}|{h['url'] for h in arch['hubs'] if any(p['category']==h['category'] for p in pages)}
+    hubs={h['url']:h for h in arch['hubs'] if any(p['category']==h['category'] for p in pages)}
+    expected={'/'}|{p['url'] for p in pages}|set(hubs)
     docs={};titles=set();descriptions=set();incoming={u:set() for u in expected}
     for url in expected:
         file=dist/url.strip('/')/'index.html'
@@ -194,7 +195,8 @@ def check(root=Path('.')):
         description=doc.meta.get('description','')
         assert description and description not in descriptions,f'Duplicate/missing description: {url}';descriptions.add(description)
         assert doc.canonical==[base+url],f'Canonical mismatch: {url} {doc.canonical}'
-        assert doc.meta.get('robots')==('index,follow' if indexable else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
+        thin_hub=url in hubs and hubs[url]['children']<3
+        assert doc.meta.get('robots')==('index,follow' if indexable and not thin_hub else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
         for field in ['og:title','og:description','og:url','twitter:card']:assert doc.meta.get(field),f'Missing {field}: {url}'
         assert truth['phoneHref'] in doc.links,f'Missing real phone CTA: {url}'
         assert any(x.startswith(truth['onlineOrderUrl']) for x in doc.links),f'Missing order CTA: {url}'

@@ -1,7 +1,7 @@
 {
   "naverVerification": "",
   "previewUrl": "https://seongnam-flower-guide-qa.joseungil.workers.dev",
-  "productionApproved": false,
+  "productionApproved": true,
   "region": "성남",
   "siteKey": "seongnam-flower-v2",
   "stagingWorker": "seongnam-flower-guide-qa"
