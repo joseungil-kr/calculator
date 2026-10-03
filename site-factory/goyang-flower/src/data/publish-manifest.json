@@ -541,6 +541,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-wondang",
+      "snapshotId": "goyang-deogyang-wondang-r1-20261003T182200Z",
+      "snapshotHash": "d574b163629ac47bf50e0210ea324c19c4b23ff1af59c94320af6727f2d2787f",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-wondang-r1",
+      "sourceRecordId": "recdUon5bOP1dzxxw",
+      "publishQueueRecordId": "recIZmitBEXQ6dxdm",
+      "slug": "deogyang-wondang",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-wondang/",
+      "title": "원당동 꽃배달 | 캠퍼스와 받는 분 주소에 맞춘 꽃선물",
+      "primaryKeyword": "원당동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-baekseok",
       "snapshotId": "goyang-ilsandong-baekseok-r1-20261003T182200Z",
       "snapshotHash": "d2b48f1a45993bda5f653e072033e4e02ae9e4c84873f5e3956fc5bd29408858",
@@ -1176,6 +1194,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-ogeum",
       "snapshotHash": "83c0d56651382c7ee015633c510077bd7b370abee6907f1f71a27415b43c703e",
       "publishQueueRecordId": "reccmpbakwAQT8CCK"
+    },
+    "goyang-deogyang-wondang-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-wondang",
+      "snapshotHash": "d574b163629ac47bf50e0210ea324c19c4b23ff1af59c94320af6727f2d2787f",
+      "publishQueueRecordId": "recIZmitBEXQ6dxdm"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

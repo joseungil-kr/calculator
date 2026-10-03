@@ -4042,5 +4042,91 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-wondang",
+    "snapshotId": "goyang-deogyang-wondang-r1-20261003T182200Z",
+    "snapshotHash": "d574b163629ac47bf50e0210ea324c19c4b23ff1af59c94320af6727f2d2787f",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-wondang-r1",
+    "sourceRecordId": "recdUon5bOP1dzxxw",
+    "publishQueueRecordId": "recIZmitBEXQ6dxdm",
+    "slug": "deogyang-wondang",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-wondang/",
+    "title": "원당동 꽃배달 | 캠퍼스와 받는 분 주소에 맞춘 꽃선물",
+    "primaryKeyword": "원당동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 52,
+    "h1": "고양 원당동 꽃배달, 건물명까지 알려 주세요",
+    "description": "원당동 농협대학교로 보낼 꽃은 캠퍼스 주소 뒤에 건물과 수령인을 더해 주세요. 직접 건넬 꽃다발과 실내 선물의 차이, 상품가격과 주문 준비사항을 안내합니다.",
+    "cardSummary": "같은 대학 주소라도 꽃을 받는 건물과 사무실은 다를 수 있습니다. 캠퍼스 선물에 필요한 장소 설명과 개인 주소 확인 방법을 담았습니다.",
+    "firstAnswer": "원당동 꽃배달을 준비하신다면 고양시 덕양구의 실제 수령 주소와 건물명, 받을 사람을 함께 알려 주세요. 농협대학교처럼 여러 공간이 있는 곳은 대학 이름에 더해 건물·호실이 필요합니다. 꽃이랑에서 꽃다발과 꽃바구니를 비교하시고, 행사나 방문에 맞는 수령 가능 시간과 최종 금액을 먼저 확인해 주세요.",
+    "contentMarkdown": "원당동 꽃배달을 준비하신다면 고양시 덕양구의 실제 수령 주소와 건물명, 받을 사람을 함께 알려 주세요. 농협대학교처럼 여러 공간이 있는 곳은 대학 이름에 더해 건물·호실이 필요합니다. 꽃이랑에서 꽃다발과 꽃바구니를 비교하시고, 행사나 방문에 맞는 수령 가능 시간과 최종 금액을 먼저 확인해 주세요.\n\n## 대학 이름 뒤에 건물·호실을 더하면 수령지가 또렷해져요\n\n농협대학교의 주소는 고양시 덕양구 서삼릉길281입니다. [협동조합경영연구소의 공식 안내](https://paper.nonghyup.ac.kr/)는 같은 대학 주소 뒤에 ‘태헌관320호’까지 표시합니다. 꽃을 보낼 때에도 캠퍼스 정문 주소만 적기보다 받는 분이 있는 건물, 층·호실, 부서나 모임 이름을 함께 알려 주세요.\n\n초대받은 행사에 꽃을 전한다면 안내장에 적힌 실제 장소와 현장 담당자를 기준으로 준비하세요. 접수대에서 받을지 받는 분에게 직접 건넬지는 미리 합의해 주세요. 특정 사무실이나 관리실이 꽃을 대신 받아 준다고 가정해서 주문하지 않는 편이 좋습니다.\n\n## 원당이라는 이름과 수령 주소를 함께 보세요\n\n[덕양구 관내도](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)에서 원당동은 신원동과 함께 원신동 관할입니다. 평소 부르는 지역명이나 상호에 ‘원당’이 들어가는 것과 실제 수령지 주소는 따로 확인해 주세요. 주문에는 고양시 덕양구부터 도로명과 건물번호까지 적어 주시면 됩니다.\n\n개인 집으로 보낼 선물이라면 캠퍼스 주소를 예시 삼아 대신 적지 말고, 받는 분에게 확인한 주소를 사용해 주세요. 주택·사업장·학교 가운데 어디에서 받을지 먼저 정하면 꽃 종류와 전달 방법도 고르기 쉬워집니다.\n\n## 직접 축하할 때와 실내에 두고 볼 때의 상품 선택\n\n졸업·수료·기념일에 직접 건네는 선물로는 꽃다발 ‘소소한 행복’(G105, 상품가격 50,000원)을 살펴보실 수 있습니다. 받는 분과 함께 이동할 예정이라면 꽃을 들고 갈 상황까지 생각해 주세요.\n\n방 안이나 사무공간에서 감상할 선물을 원하시면 꽃바구니 ‘햇살 한가득’(A155, 상품가격 65,000원)을 비교해 보세요. 놓을 자리가 정해져 있는지, 당사자가 받을 수 있는지부터 확인하면 좋습니다. 원하시는 색감이나 축하 문구는 주문 시 알려 주시되 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다.\n\n## 주소·받는 분·희망 일정을 준비해 주문하세요\n\n꽃이랑에 날짜, 정확한 주소와 건물명, 수령인 연락처, 상품과 문구를 알려 주세요. 학교나 행사 공간의 반입 조건은 해당 장소와 확인하고, 특정 시각이나 당일 전달 가능 여부는 결제 전에 문의해 주세요. 지역별 추가배송비가 발생할 수 있어 상품가격과 최종 결제금액이 다를 수 있습니다.\n\n[1844-0644 전화주문](tel:18440644)은 08:00~23:00, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 가능합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "덕양구청 행정구역 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "농협대학교 협동조합경영연구소 공식 안내",
+        "url": "https://paper.nonghyup.ac.kr/",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 원신동 주요관내시설 농협대학교",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbs.do?q_bbsCode=1072&q_bbscttSn=0000000194%40000000187&q_clCode=8&q_pClCode=",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "덕양구청 행정구역 관내도",
+      "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
