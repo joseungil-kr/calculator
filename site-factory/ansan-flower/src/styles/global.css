@@ -536,3 +536,17 @@ body{background:#fff;color:var(--ink);}
 /* Keep the body purchase panel full-width between hub cards. */
 .hub-purchase-banner{grid-column:1/-1;min-width:0}
 .hub-purchase-banner .order-cta{margin:8px 0}
+
+/* Verified gift photos retain their full original frame. */
+.product-group-gift .product-grid { grid-template-columns: 1fr; }
+.product-group-gift .product-card { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center; }
+.product-group-gift .product-image-wrap { aspect-ratio:1; }
+.product-group-gift .product-card-body { text-align:left;padding:16px; }
+.product-group-gift .product-card h4 { font-size:17px; }
+.product-group-gift .product-card p { font-size:12px;line-height:1.6;min-height:0; }
+.product-group-gift .product-card-actions a { font-size:12px;min-height:40px; }
+.article-products { margin:32px 0; }
+.article-products .product-showcase { display:block; }
+.article-products .product-group { margin:20px 0; }
+.article-products .product-card h4 { margin:0; }
+@media(max-width:480px) { .product-group-gift .product-card-body { padding:12px; } .product-group-gift .product-card h4 { font-size:15px; } }

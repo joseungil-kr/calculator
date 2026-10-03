@@ -14,5 +14,24 @@
   "rulesRevision": "8986a1936615cd0d814b816db7816488e40bacc1",
   "definitionFile": "src/data/region-coverage.json",
   "state": "pending-independent-review-and-scope-binding",
-  "visualBindings": []
+  "visualBindings": [
+    {
+      "pageKey": "ansan-flower-test-region-sangnok-sa",
+      "image": "/images/products/bouquet-g108.jpg",
+      "alt": "러블리 자나장미 공식 상품사진",
+      "sha256": "323602568f9af549a8cdafbd270a2914d167d4709dcbbfec8a49fad6ab54d7cd",
+      "sourceUrl": "https://fwith.co.kr/data/item/flower379/G108/thumb-1_500x500.jpg",
+      "verifiedAt": "2026-10-03T12:58:34.907519+00:00",
+      "assetType": "real_product",
+      "status": "candidate",
+      "width": 500,
+      "height": 500,
+      "type": "image/jpeg",
+      "purchaseMode": "catalog",
+      "productKeys": [
+        "bouquet-g108",
+        "basket-a155"
+      ]
+    }
+  ]
 }

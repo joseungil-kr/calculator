@@ -2,6 +2,9 @@
 import { getCollection } from 'astro:content';
 import { removeRepeatedOpeningParagraph } from '../lib/article-opening.mjs';
 import BaseLayout from './BaseLayout.astro';
+import ProductShowcase from '../components/ProductShowcase.astro';
+import { pageProductKeys } from '../lib/site-catalog.mjs';
+import { regionalPages } from '../lib/regional-runtime.mjs';
 import { siteConfig } from '../config/site';
 import architecture from '../data/architecture.json';
 import '../styles/article.css';
@@ -240,6 +243,8 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: breadcrumbItems,
 };
+const regionalPage=regionalPages.find((page: {pageKey:string;regionalPurchaseMode?:string;regionalProductKeys:string[]})=>page.pageKey===pageKey);
+const selectedProductKeys=regionalPage?.regionalPurchaseMode==='catalog' ? regionalPage.regionalProductKeys : pageProductKeys(process.cwd(),siteConfig.siteKey,pageKey);
 const articleContent=removeRepeatedOpeningParagraph(await Astro.slots.render('default'),firstAnswer);
 ---
 <BaseLayout title={seoTitle} description={description} canonicalPath={canonicalPath} robotsOverride={!architectureIndexable ? "noindex,follow,max-image-preview:large" : undefined} ogType="article" ogImage={ogImage} ogImageAlt={ogImageAlt}>
@@ -320,6 +325,8 @@ const articleContent=removeRepeatedOpeningParagraph(await Astro.slots.render('de
           )}
         </article>
       </div>
+
+      {selectedProductKeys.length > 0 && <div class="article-products"><ProductShowcase productKeys={selectedProductKeys} /></div>}
 
       {related.length > 0 && (
         <section class="related-questions" aria-labelledby="related-title">
