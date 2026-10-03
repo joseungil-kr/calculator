@@ -703,6 +703,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsanseo-deogi",
+      "snapshotId": "goyang-ilsanseo-deogi-r1-20261003T182200Z",
+      "snapshotHash": "c9567e299021341b25442753213fe33be406d670ac059238b08f9cbace0d0065",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsanseo-deogi-r1",
+      "sourceRecordId": "recRwMbB8mdKaJidD",
+      "publishQueueRecordId": "recWCz05xLh3dPo1x",
+      "slug": "ilsanseo-deogi",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsanseo-deogi/",
+      "title": "덕이동 꽃배달 | 로데오·가구매장 개업축하와 꽃선물",
+      "primaryKeyword": "덕이동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsanseo-ilsan",
       "snapshotId": "goyang-ilsanseo-ilsan-r1-20261003T182200Z",
       "snapshotHash": "628913c5df253268a6addb01c0217c3de7b29793b7532d2e654e323c467bc067",
