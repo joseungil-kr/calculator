@@ -19,6 +19,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-goyang",
+      "snapshotId": "goyang-deogyang-goyang-r1-20261003T182200Z",
+      "snapshotHash": "36d8610f4b302ec365022f93af2f46962230bad2e5b0f6dbc73d443f1b3a87a8",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-goyang-r1",
+      "sourceRecordId": "recG6AlSky0SKZH11",
+      "publishQueueRecordId": "recIWaoz0Rjmj1Jss",
+      "slug": "deogyang-goyang",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-goyang/",
+      "title": "고양동 꽃배달 | 상가 축하꽃과 가정 선물 주문",
+      "primaryKeyword": "고양동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-gwansan",
       "snapshotId": "goyang-deogyang-gwansan-r1-20261003T182200Z",
       "snapshotHash": "5b167c00dfeb87c20afbf90710dfe2cec037f3d880b93760091af9aea99de732",

@@ -1038,5 +1038,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-goyang",
+    "snapshotId": "goyang-deogyang-goyang-r1-20261003T182200Z",
+    "snapshotHash": "36d8610f4b302ec365022f93af2f46962230bad2e5b0f6dbc73d443f1b3a87a8",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-goyang-r1",
+    "sourceRecordId": "recG6AlSky0SKZH11",
+    "publishQueueRecordId": "recIWaoz0Rjmj1Jss",
+    "slug": "deogyang-goyang",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-goyang/",
+    "title": "고양동 꽃배달 | 상가 축하꽃과 가정 선물 주문",
+    "primaryKeyword": "고양동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 14,
+    "h1": "고양동 꽃배달로 전하는 개업 축하와 일상의 꽃선물",
+    "description": "고양시 전체가 아닌 덕양구 고양동의 실제 받는 장소를 확인하세요. 점포명·층수와 수령자를 준비하고, 개업 화환과 꽃다발·꽃바구니 중 목적에 맞게 주문할 수 있습니다.",
+    "cardSummary": "가게에는 상호와 배치할 자리, 집에는 받을 사람과 시간을 먼저 정하세요. 개업 축하와 개인 선물을 나눠 상품·문구·수령 조건을 살펴볼 수 있습니다.",
+    "firstAnswer": "고양동 꽃배달을 주문하실 때는 덕양구 고양동의 도로명주소와 가게명 또는 동·호수까지 알려주세요. 꽃이랑에서 개업용 축하화환과 개인 선물용 꽃다발·꽃바구니를 상담하실 수 있습니다. 희망일의 공급, 받을 분의 시간, 화환 배치 가능 여부와 최종 배송비를 함께 확인해 주세요.",
+    "contentMarkdown": "고양동 꽃배달을 주문하실 때는 덕양구 고양동의 도로명주소와 가게명 또는 동·호수까지 알려주세요. 꽃이랑에서 개업용 축하화환과 개인 선물용 꽃다발·꽃바구니를 상담하실 수 있습니다. 희망일의 공급, 받을 분의 시간, 화환 배치 가능 여부와 최종 배송비를 함께 확인해 주세요.\n\n## '고양동'에서 꽃을 받을 곳을 한 번 더 좁혀주세요\n\n고양시 어디로든 보내는 주문과 덕양구 고양동으로 보내는 주문은 주소에서 구분됩니다. 또 [덕양구청 관내도](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)의 행정동 고양동에는 벽제동·선유동과 대자동 일부도 포함됩니다. 받는 분이 '고양동 쪽'이라고 설명하셨다면 주문에는 실제 도로명주소와 건물명을 적어주세요.\n\n[고양시 고양동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp)는 고양동 마을에 초등학교·상가·기관이 모여 있다고 안내합니다. 같은 건물이라도 점포 선물은 상호와 층·호실, 기관 행사라면 부서나 행사 담당자를 덧붙여야 꽃이 최종 수령자에게 연결됩니다.\n\n## 새 가게를 축하한다면 화환이 설 자리부터\n\n개업·이전 축하에 리본으로 보내는 마음을 전하려면 '축하 3단 화환'(C200, 기본 표시가격 59,000원)을 살펴보세요. 고양동 상가 입구에 놓을 예정이라면 가게 담당자에게 받을 시간과 배치할 자리를 확인해 주세요. 복도·출입문 앞에 둘 수 있는지는 건물과 점포의 안내에 따라야 합니다.\n\n가게 이름은 배송지 정보이고, 리본에 적을 보내는 분의 이름이나 단체명은 문구 정보입니다. 두 내용을 나눠 알려주시면 상호와 발신명을 혼동하는 일을 줄일 수 있습니다. 식당처럼 영업 준비로 바쁜 곳이라면 개점 시각만 적기보다 담당자가 꽃을 받을 수 있는 시간도 함께 알려주세요.\n\n## 손에 건네는 축하와 집 안에 두는 선물\n\n생일·감사 선물을 직접 건네고 싶은 경우 꽃다발 '소소한 행복'(G105)의 기본 표시가격은 50,000원입니다. 집이나 사무실에 놓고 감상할 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 비교해 보세요.\n\n꽃을 받은 뒤 이동할 예정인지, 집에 머물며 감상할 것인지에 따라 형태를 골라주시면 됩니다. 정확한 크기나 꼭 들어가야 하는 꽃이 있다면 주문할 때 별도로 확인해 주세요. 지역·계절에 따라 구성과 형태가 달라질 수 있어 사진과 완전히 같은 제작이나 특정 꽃의 공급을 미리 확정하지 않습니다.\n\n## 상품을 고른 다음에는 수령 약속을 정하세요\n\n고양동의 정확한 주소와 받는 분 연락처, 희망일, 예산, 상품명, 카드 또는 리본문구를 준비해 주세요. 외출 중인 가족이나 영업 중인 점포를 대신해 누가 받을지도 확인하면 좋습니다. 안내된 금액은 기본 상품가로, 지역별 추가배송비와 선택사항을 반영한 최종 총액은 주문 시 확인하셔야 합니다.\n\n[꽃이랑 전화주문 1844-0644](tel:18440644)은 08:00~23:00에 상담하실 수 있습니다. [온라인으로 상품을 골라 주문](https://fwith.co.kr)하실 수도 있으며 접수는 24시간 가능합니다. 당일 필요하신 꽃은 접수 전에 주소와 희망 시간을 알려 배송 가능 여부부터 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 고양동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 덕양구청 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환 [C200]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 고양동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
