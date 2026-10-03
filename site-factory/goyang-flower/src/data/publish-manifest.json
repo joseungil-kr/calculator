@@ -73,6 +73,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeon",
+      "snapshotId": "goyang-deogyang-hwajeon-r1-20261003T182200Z",
+      "snapshotHash": "3c8661c0f472e74274ab00c20a6c433b26e34d5eebd713e50ee2b74e24aba6a0",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-hwajeon-r1",
+      "sourceRecordId": "recojuQ363ZA5CbMX",
+      "publishQueueRecordId": "recmRez7gn7JGhZGh",
+      "slug": "deogyang-hwajeon",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-hwajeon/",
+      "title": "화전동 꽃배달 | 대학가·주택 수령과 꽃선물 선택",
+      "primaryKeyword": "화전동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-hyangdong",
       "snapshotId": "goyang-deogyang-hyangdong-r1-20261003T182200Z",
       "snapshotHash": "b190ee1d680d106effae4e0261cb712ffc84901637d5574be24f2f81a8d4f0a8",
@@ -164,6 +182,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-hyeoncheon",
       "snapshotHash": "1ee070525f5e0eaa80c9384f13e267497971dfcb2fda053c8ca70f288f938a47",
       "publishQueueRecordId": "recDFxZnb6P6JCoIC"
+    },
+    "goyang-deogyang-hwajeon-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeon",
+      "snapshotHash": "3c8661c0f472e74274ab00c20a6c433b26e34d5eebd713e50ee2b74e24aba6a0",
+      "publishQueueRecordId": "recmRez7gn7JGhZGh"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

@@ -558,5 +558,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-hwajeon",
+    "snapshotId": "goyang-deogyang-hwajeon-r1-20261003T182200Z",
+    "snapshotHash": "3c8661c0f472e74274ab00c20a6c433b26e34d5eebd713e50ee2b74e24aba6a0",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-hwajeon-r1",
+    "sourceRecordId": "recojuQ363ZA5CbMX",
+    "publishQueueRecordId": "recmRez7gn7JGhZGh",
+    "slug": "deogyang-hwajeon",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-hwajeon/",
+    "title": "화전동 꽃배달 | 대학가·주택 수령과 꽃선물 선택",
+    "primaryKeyword": "화전동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 8,
+    "h1": "화전동 꽃배달, 캠퍼스 건물과 주택 현관을 구분해 주세요",
+    "description": "항공대학로 캠퍼스 수령과 화전동 주택 선물에 필요한 정보를 안내합니다. 건물·층·담당자 확인, 이동할 꽃다발과 놓아둘 꽃바구니 선택, 주문 비용을 살펴보세요.",
+    "cardSummary": "교문 도착만으로 선물 전달이 끝나지는 않아요. 건물·호실과 실제로 받을 분을 정하고, 행사 뒤 가져갈 꽃의 형태도 생각해 보세요.",
+    "firstAnswer": "화전동 꽃배달은 대학가라면 캠퍼스 건물·층·호실과 받을 분을, 주택이라면 도로명주소와 현관 위치를 알려주세요. 항공대학로의 한 주소 안에서도 건물에 따라 인계 장소가 달라집니다. 꽃이랑에서 이동할 꽃다발과 놓아둘 꽃바구니, 행사 화환을 비교하고 희망시간과 최종 비용을 상담해 주세요.",
+    "contentMarkdown": "화전동 꽃배달은 대학가라면 캠퍼스 건물·층·호실과 받을 분을, 주택이라면 도로명주소와 현관 위치를 알려주세요. 항공대학로의 한 주소 안에서도 건물에 따라 인계 장소가 달라집니다. 꽃이랑에서 이동할 꽃다발과 놓아둘 꽃바구니, 행사 화환을 비교하고 희망시간과 최종 비용을 상담해 주세요.\n\n## 교문보다 한 단계 더 구체적인 수령지가 필요해요\n\n한국항공대학교의 공식 연구실 안내에는 항공대학로 76이라는 주소 아래 전자관·연구동처럼 서로 다른 건물과 호실이 표시됩니다. 대학으로 꽃을 보내실 때에는 학교 이름만 쓰지 말고 꽃을 받을 건물과 층·호실, 현장 담당자를 알려주세요. 이 주소 안내만으로 학내 반입이나 특정 건물 출입이 허용되는 것은 아닙니다.\n\n발표회·축하 모임처럼 참석자가 이동하는 일정은 시작시간과 꽃을 받을 시간을 구분해 주세요. 주인공이 행사 준비 중이라 전화를 받기 어렵다면 인계에 동의한 담당자를 정하는 방법이 있습니다. 정문이나 사무실의 대리 보관은 허용 여부를 먼저 확인합니다.\n\n## 들고 이동하는 꽃과 한곳에 둘 꽃\n\n행사를 마치고 사진을 찍거나 꽃을 들고 이동할 예정이라면 꽃다발을, 사무실이나 방에 놓아두려면 꽃바구니를 살펴보세요. 받는 분이 꽃을 가져갈 교통편과 함께 들고 갈 짐도 선택에 도움이 됩니다.\n\n개업·행사 축하화환은 놓을 자리가 충분한지 장소 측에 확인한 후 선택합니다. 현수막이나 안내판 가까이에 무조건 설치할 수 있는 것은 아니므로 실제 반입구와 인계 담당자를 알려주세요. 조문용 근조화환은 일반 축하행사와 목적·문구가 다릅니다.\n\n## 화전동 주택은 동네 이름에 건물번호를 더해요\n\n고양시 화전동 소개에는 안동네·대흥관사·벌말 등 마을과 단독주택의 맥락이 나옵니다. 오래 쓰던 동네 이름으로 위치를 설명하더라도 주문에는 정확한 도로명주소와 건물번호, 실제 출입할 현관을 적어주세요. 행정동 화전동에는 향동동 등 다른 법정동도 포함되므로 배송지의 법정동과 건물 주소를 따로 확인합니다.\n\n## 상품가격과 주문 확인사항\n\n‘소소한 행복’ 꽃다발 50,000원, ‘햇살 한가득’ 꽃바구니 65,000원, 축하 3단 화환 59,000원, 근조 3단 화환 59,000원은 확인된 기본 표시가격입니다. 상품 사진의 화환 리본문구는 예시이며 주문 목적과 보내는 분에 맞춰 문구를 확인해 주세요.\n\n지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있고 지역별 추가 배송비도 생길 수 있습니다. 상품·주소·희망 날짜·수령 가능시간을 알려주신 뒤 배송 가능 여부와 총액을 확인합니다. 전화주문은 08:00~23:00, 온라인 주문은 24시간 접수할 수 있습니다.\n\n[1844-0644로 꽃선물 상담](tel:18440644) · [꽃이랑 공식 온라인 주문](https://fwith.co.kr)",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 화전동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_15/dong01_4_15_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "한국항공대학교 SATECS 연구실 위치",
+        "url": "https://satecslab.kau.ac.kr/contact-us",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 화전동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_15/dong01_4_15_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
