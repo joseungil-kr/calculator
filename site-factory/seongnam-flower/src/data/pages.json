@@ -1150,5 +1150,99 @@
     "queryClass": "local-commercial",
     "visualIntent": "event_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-dongseoul-wedding-convention-wreath",
+    "snapshotId": "seongnam-dongseoul-wedding-convention-wreath-r1-20261003T000000Z",
+    "snapshotHash": "2ca209bbed21c069854f2de9e31ff16be8d7d49a3de295ce9d7b0cae588a5e09",
+    "approvalVerified": true,
+    "draftKey": "seongnam-dongseoul-wedding-convention-wreath-r1",
+    "sourceRecordId": "recyIthnMeWw57jmc",
+    "publishQueueRecordId": "reck5TSriFlzEzZyU",
+    "slug": "seongnam-dongseoul-wedding-convention-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-dongseoul-wedding-convention-wreath/",
+    "title": "동서울웨딩컨벤션 화환 | 캠퍼스 목적지·예식홀·수령 준비",
+    "primaryKeyword": "동서울웨딩컨벤션 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 19,
+    "h1": "동서울웨딩컨벤션 화환, 복정로 76의 예식 목적지 확인",
+    "description": "동서울대학교 안 그랜드볼룸과 1·2층 연회장을 구분해 화환 받을 장소를 준비하세요. 59,000원부터 축하 상품을 비교하고 차량 반입·도착 가능시간을 상담합니다.",
+    "cardSummary": "캠퍼스 주소만 입력하고 끝내지 마세요. 그랜드볼룸 예식의 수령 장소를 정하고 연회장 층 안내, 하객 셔틀, 화환 차량 동선을 구분합니다.",
+    "firstAnswer": "동서울웨딩컨벤션 화환은 성남시 수정구 복정로 76, 동서울대학교 안의 예식 목적지와 수령 위치를 함께 알려 주세요. 그랜드볼룸과 연회장 안내를 구분하고 예식 날짜·시각을 맞추는 것이 먼저입니다. 축하 상품은 59,000원부터이며, 차량 반입과 설치 가능 여부·총비용은 주문 전에 상담해 주세요.",
+    "contentMarkdown": "동서울웨딩컨벤션 화환은 성남시 수정구 복정로 76, 동서울대학교 안의 예식 목적지와 수령 위치를 함께 알려 주세요. 그랜드볼룸과 연회장 안내를 구분하고 예식 날짜·시각을 맞추는 것이 먼저입니다. 축하 상품은 59,000원부터이며, 차량 반입과 설치 가능 여부·총비용은 주문 전에 상담해 주세요.\n\n## 캠퍼스 주소 다음에는 받을 공간을 적어 주세요\n\n공식 오시는 길은 경기도 성남시 수정구 복정로 76의 동서울대학교를 목적지로 안내합니다. 캠퍼스 주소만으로 화환을 맡길 위치가 정해지지는 않으므로 '동서울웨딩컨벤션, 예식 날짜·시각, 그랜드볼룸, 지정 수령 위치'까지 한 묶음으로 전달해 주세요.\n\n공식 시설 소개에는 그랜드볼룸과 1층·2층 연회장이 각각 나뉘어 있습니다. 식사하는 연회장 층을 보고 화환을 보낼 예식홀 층으로 옮겨 적지 않도록 주의하세요. 예식홀 앞 설치인지 별도 인수 지점 전달인지, 사용할 건물·출입구는 현장 담당자의 안내를 받아야 합니다.\n\n## 하객 이동 안내와 화환 차량의 진입을 따로 확인하세요\n\n공식 교통 안내는 복정역 2번 출구 옆 환승주차장에서 셔틀버스를 이용하도록 소개합니다. 화환 주문에는 이 하객 동선 외에 차량이 들어갈 출입구, 정차·하역 위치, 운반 가능한 통로가 필요합니다. 셔틀 운행 안내를 화환 운반 허용으로 이해하지 마세요.\n\n예식 담당자에게 외부 3단 화환 반입 여부, 놓을 자리, 반입 가능한 시간대를 먼저 물어보세요. 앞 예식의 화환과 섞이지 않도록 받는 신랑·신부 이름과 예식시각을 알려 주시고, 현장에서 인수할 연락처도 준비해 주세요. 도착시간은 주문일과 수령 조건에 따라 상담합니다.\n\n## 2027년 예식이라면 리뉴얼 일정도 대조하세요\n\n공식 리뉴얼 안내에는 웨딩홀과 접수대 후면 공간의 시공 기간을 2027년 6월 28일~8월 28일로, 새 모습 공개를 2027년 하반기로 안내하고 있습니다. 이 기간 전후의 예식은 초대장에 적힌 장소와 담당자가 알려 준 수령 동선을 다시 확인해 주세요.\n\n안내된 조감도는 예정 모습입니다. 미래 배치도를 현재 설치 자리로 정하거나, 공사 일정만으로 특정 날짜의 예식 운영 여부를 판단하지 마세요. 주문 시 실제 예식일에 적용되는 안내를 전달해 주시면 됩니다.\n\n## 기본·고급·특대의 상품대금과 현장 조건\n\n축하 3단 화환 C200은 59,000원, 축하 고급 3단 화환 C203은 79,000원, 축하 특대 3단 화환 C204는 99,000원입니다. 모두 꽃이랑 공식 상품의 표시 상품대금이며 배송 총액과는 구분됩니다.\n\n통로 폭이나 배치 공간이 좁다면 큰 상품을 먼저 고르기보다 허용 규격을 확인하세요. 상품의 실제 폭·높이, 현장 전달 조건과 추가 배송비를 상담한 뒤 예산을 정하실 수 있습니다. [축하화환 가격별 선택과 추가비용 확인](/order/seongnam-congrats-wreath-price/)도 참고해 주세요.\n\n상품사진은 예시 리본이 달린 공식 상품 이미지입니다. 특정 예식장 배송실적 사진은 아니며 실제 꽃 구성·형태는 지역과 계절에 따라 일부 달라질 수 있습니다.\n\n## 예식 수령정보와 축하 문구를 정리해 주세요\n\n- 목적지: 복정로 76, 동서울웨딩컨벤션, 실제 홀·수령 위치\n- 일정: 예식 날짜·시각과 반입·수령 가능한 시간대\n- 수령: 신랑·신부 구분, 이름, 현장 담당 연락처\n- 상품: 원하는 상품과 예산, 확인할 크기·추가비용\n- 리본: 축하 문구와 보내는 개인·회사·모임 이름\n\n문구는 '결혼을 진심으로 축하합니다'나 '두 분의 앞날에 행복이 가득하길 바랍니다'처럼 정할 수 있습니다. 긴 회사명이나 공동 발신은 원하는 표기를 미리 적고 인쇄할 구성을 상담해 주세요. 예식 후 이동·철수가 필요한지도 시설 담당자에게 확인해 주세요.\n\n## 꽃이랑에 가능시간과 총금액을 문의하세요\n\n위 정보를 준비해 [1844-0644로 전화 상담하기](tel:18440644) 또는 [꽃이랑 공식 홈페이지에서 주문하기](https://fwith.co.kr)를 이용하실 수 있습니다. 전화는 08:00~23:00, 온라인 주문은 24시간 가능합니다. 반입이 허용되는지와 실제 도착 가능한 시각을 확인한 후 주문을 진행해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "동서울웨딩컨벤션 오시는 길",
+        "url": "https://dswedding.co.kr/Location",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "동서울웨딩컨벤션 그랜드볼룸",
+        "url": "https://dswedding.co.kr/grandballroom",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "동서울웨딩컨벤션 1층 연회장",
+        "url": "https://dswedding.co.kr/1banquet",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "동서울웨딩컨벤션 2층 연회장",
+        "url": "https://dswedding.co.kr/2banquet",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "동서울웨딩컨벤션 2027 리뉴얼 안내",
+        "url": "https://dswedding.co.kr/103",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식 홈페이지",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 C200",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 고급 3단 화환 C203",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 특대 3단 화환 C204",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C204",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "동서울웨딩컨벤션 오시는 길",
+      "url": "https://dswedding.co.kr/Location",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-congrats-wreath-price"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]
