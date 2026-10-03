@@ -798,5 +798,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-gwansan",
+    "snapshotId": "goyang-deogyang-gwansan-r1-20261003T182200Z",
+    "snapshotHash": "5b167c00dfeb87c20afbf90710dfe2cec037f3d880b93760091af9aea99de732",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-gwansan-r1",
+    "sourceRecordId": "recwnI6WnYJOylQxq",
+    "publishQueueRecordId": "recEZipCYpENfR7UY",
+    "slug": "deogyang-gwansan",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-gwansan/",
+    "title": "관산동 꽃배달 | 통일로 상가·학교·집 수령 안내",
+    "primaryKeyword": "관산동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 11,
+    "h1": "관산동 꽃배달, 상가와 학교의 받는 시간을 맞춰 준비하세요",
+    "description": "통일로 상가의 개업 화환, 고양외국어고등학교 행사 꽃, 집으로 전하는 꽃바구니를 목적에 맞게 고르세요. 도로명주소·담당자·반입 조건과 최종 비용을 함께 확인합니다.",
+    "cardSummary": "영업 중인 점포와 수업·행사 중인 학교는 꽃을 받을 사람이 다를 수 있어요. 통일로 주소에 상호나 행사명을 더하고 인계 시간을 정해 보세요.",
+    "firstAnswer": "관산동 꽃배달은 통일로의 상가·학교 또는 마을 안 주택 중 어디에서 누가 받을지 정한 뒤 주문해 주세요. 꽃이랑에서 축하화환·꽃다발·꽃바구니를 고르고 주소와 희망일을 전달하실 수 있습니다. 학교나 건물의 꽃 반입·배치 조건, 당일 공급과 최종 총액은 주문 전에 확인이 필요합니다.",
+    "contentMarkdown": "관산동 꽃배달은 통일로의 상가·학교 또는 마을 안 주택 중 어디에서 누가 받을지 정한 뒤 주문해 주세요. 꽃이랑에서 축하화환·꽃다발·꽃바구니를 고르고 주소와 희망일을 전달하실 수 있습니다. 학교나 건물의 꽃 반입·배치 조건, 당일 공급과 최종 총액은 주문 전에 확인이 필요합니다.\n\n## 시장 쪽 가게인지, 마을 안 주소인지 알려주세요\n\n[고양시 관산동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp)는 주민센터·시장·주공아파트가 있는 중심마을과 통일로변 자연마을을 함께 안내합니다. 관산동 꽃배달을 요청하실 때 '시장 근처'나 '통일로 쪽'이라는 설명은 길을 찾는 참고로 쓰고, 실제 점포의 도로명주소와 상호를 알려주세요.\n\n개업 가게로 보낼 꽃은 매장 직원이 받을지, 건물 입구에서 다른 분이 인계할지를 먼저 정하면 좋습니다. 아직 간판이 달리지 않았거나 기존 상호와 다른 이름으로 문을 연다면 현재 현장에서 확인할 수 있는 건물명·층수와 새 가게 이름을 구분해 주세요.\n\n## 학교 행사 꽃은 행사 장소와 인계자를 함께\n\n[관산동 주요관내시설](https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=2)에 안내된 고양외국어고등학교 주소는 덕양구 통일로 820입니다. 학교에 축하꽃을 보내실 경우 주소만으로 접수를 끝내기보다 행사명과 받는 성인 담당자, 사전에 합의한 인계 위치를 함께 준비해 주세요.\n\n공식 주소 안내는 꽃의 교내 반입이나 특정 교실 배송을 허용한다는 뜻은 아닙니다. 행사장에 직접 들어갈 수 있는지, 입구에서 인계해야 하는지 학교 측에 확인해 주세요. 행사 시작 시각과 꽃을 받는 시각을 나누어 정하면 담당자가 다른 일을 하는 동안 기다리는 상황을 줄일 수 있습니다.\n\n## 놓을 공간과 전달 방식에 맞춘 세 가지 선택\n\n- 상가 앞 개업·이전 축하: '축하 3단 화환'(C200), 기본 표시가격 59,000원. 배치할 자리를 확인한 뒤 리본문구와 보내는 분 표기를 준비하세요.\n- 행사에서 손에 건네는 꽃: '소소한 행복'(G105), 기본 표시가격 50,000원. 꽃다발을 받은 뒤 이동하는 일정도 생각해 주세요.\n- 관산동 가정으로 전하는 감사: '햇살 한가득'(A155), 기본 표시가격 65,000원. 꽃바구니를 실내에 둘 곳과 받을 사람을 정해 주세요.\n\n각 상품의 실제 크기, 특정 꽃의 사용과 주문일 공급은 상담이 필요합니다. 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다. 표시가격 외 지역별 추가배송비가 발생할 수 있으므로 상품 선택과 함께 최종 총액을 확인해 주세요.\n\n## 전화하실 때 알려주실 내용\n\n받는 장소의 전체 주소, 가게명 또는 학교 행사명, 수령 담당자 연락처, 희망일·시간대, 상품과 예산, 카드나 리본문구를 정리해 주세요. 당일 배송은 도착시간을 먼저 약속하기보다 준비와 인계가 가능한지 확인하는 순서로 상담하실 수 있습니다.\n\n[1844-0644로 관산동 주문 상담](tel:18440644)은 08:00~23:00에 이용하실 수 있고, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 접수합니다. 접수 가능한 시간과 현장에서 실제로 받을 수 있는 시간은 별도로 맞춰주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 관산동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 관산동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=2",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환 [C200]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 관산동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

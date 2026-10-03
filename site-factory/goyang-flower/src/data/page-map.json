@@ -19,6 +19,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-gwansan",
+      "snapshotId": "goyang-deogyang-gwansan-r1-20261003T182200Z",
+      "snapshotHash": "5b167c00dfeb87c20afbf90710dfe2cec037f3d880b93760091af9aea99de732",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-gwansan-r1",
+      "sourceRecordId": "recwnI6WnYJOylQxq",
+      "publishQueueRecordId": "recEZipCYpENfR7UY",
+      "slug": "deogyang-gwansan",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-gwansan/",
+      "title": "관산동 꽃배달 | 통일로 상가·학교·집 수령 안내",
+      "primaryKeyword": "관산동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-haengjunae",
       "snapshotId": "goyang-deogyang-haengjunae-r1-20261003T182200Z",
       "snapshotHash": "919c1fc24d31b7732fe670fe2a1ca4c448b0a7ca662b4211fa687b8a68fb3751",
