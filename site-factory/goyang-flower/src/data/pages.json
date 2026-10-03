@@ -2380,5 +2380,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-byeokje",
+    "snapshotId": "goyang-deogyang-byeokje-r1-20261003T182200Z",
+    "snapshotHash": "8c8d70d72bb763838ae0ff712d97a46554449abfe67da0078791b9641b9c7df2",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-byeokje-r1",
+    "sourceRecordId": "rec0PN5xtO2w8IO9a",
+    "publishQueueRecordId": "recapI6EBCeQL2ufi",
+    "slug": "deogyang-byeokje",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-byeokje/",
+    "title": "벽제동 꽃배달 | 푸른마을 선물과 정확한 배송지 확인",
+    "primaryKeyword": "벽제동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 31,
+    "h1": "벽제동 꽃배달, 단지 주소와 받는 분의 목적을 구분하세요",
+    "description": "벽제동 푸른마을·빌라 꽃선물은 단지명과 동·호수부터 확인하세요. 벽제라는 통칭으로 장례시설을 정하지 않도록 실제 시설명·주소를 구분하고 상품과 비용을 상담합니다.",
+    "cardSummary": "집으로 보내는 감사꽃과 장례식장으로 보내는 조의꽃은 받는 곳부터 다릅니다. 푸른마을 동·호수 또는 부고에 적힌 실제 시설 정보를 확인해 주세요.",
+    "firstAnswer": "벽제동 꽃배달은 푸른마을 등 단지명과 동·호수, 빌라 이름 또는 실제 시설명을 알려주시면 꽃이랑에서 상담하실 수 있습니다. 벽제라는 통칭만으로 장례시설을 정하지 말고 정확한 주소를 확인해 주세요. 선물 목적에 맞는 상품과 수령 시간, 공급 여부·추가배송비를 포함한 총액을 함께 살펴보세요.",
+    "contentMarkdown": "벽제동 꽃배달은 푸른마을 등 단지명과 동·호수, 빌라 이름 또는 실제 시설명을 알려주시면 꽃이랑에서 상담하실 수 있습니다. 벽제라는 통칭만으로 장례시설을 정하지 말고 정확한 주소를 확인해 주세요. 선물 목적에 맞는 상품과 수령 시간, 공급 여부·추가배송비를 포함한 총액을 함께 살펴보세요.\n\n## 푸른마을이나 빌라의 꽃선물은 현관까지 구체적으로\n\n[고양시 고양동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp)는 벽제동에 빌라와 푸른마을 등 아파트 단지가 함께 있다고 안내합니다. 가정으로 꽃을 보내실 때에는 단지명에 그치지 않고 동·호수와 도로명주소, 받는 분의 연락처를 준비해 주세요.\n\n선물을 받을 분이 외출하는 날이라면 가족의 대리수령이 가능한지 먼저 확인해 주세요. 공동현관에서 인계할 경우에는 실제로 내려올 수 있는 사람과 시간을 정하면 좋습니다. 주차·출입절차는 건물마다 달라 정확한 주소와 현장 안내를 기준으로 상담해야 합니다.\n\n## 장례 관련 꽃은 통칭보다 부고의 시설명을 확인하세요\n\n'벽제 쪽으로 보내주세요'라는 말만 듣고 조의꽃을 주문한다면 정확한 장소를 다시 확인해 주세요. [서울시설공단 오시는 길](https://www.sisul.or.kr/open_content/main/introduce/location8.jsp)은 서울시립승화원의 소재지를 대자동으로 안내합니다. 익숙하게 부르는 지역명과 실제 꽃을 받을 주소가 같다고 보기는 어렵습니다.\n\n조의를 전할 꽃은 부고에 적힌 장례식장 이름과 빈소, 상주명, 유가족 또는 현장 담당자가 확인해 준 수령 조건을 기준으로 상담해 주세요. 장례식장 빈소로 보내는지, 다른 추모 장소로 보내는지도 구분해야 합니다. 특정 시설이 화환을 받을 수 있는지와 배치 가능 여부는 별도 확인이 필요합니다.\n\n## 마음의 목적을 말씀해 주시면 상품을 비교하기 쉬워요\n\n벽제동 집에 전하는 생일·감사 선물이라면 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)과 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)을 비교해 보세요. 손에 들고 전달할 계획인지, 실내에 놓고 감상할 계획인지에 따라 형태를 고르실 수 있습니다.\n\n실제 빈소로 보내는 조의꽃이 필요하다면 '근조 3단 화환'(B201)의 기본 표시가격은 59,000원입니다. 보내는 분 또는 단체명과 리본문구를 정확히 알려주세요. 빈소의 수령 가능 시간과 반입 조건을 확인하기 전에는 배치를 확정하지 않는 것이 좋습니다.\n\n## 주소를 확정한 뒤 일정과 총액을 확인하세요\n\n지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있고 요청일의 공급 여부는 확인이 필요합니다. 위 금액은 상품 기본 표시가이며 지역별 추가배송비와 선택사항에 따라 최종 총액이 달라질 수 있습니다. 희망 날짜·시간, 받는 장소·연락처, 상품명·예산, 문구를 모아 문의해 주세요.\n\n[꽃이랑 1844-0644 전화상담](tel:18440644)은 08:00~23:00에 이용하실 수 있습니다. [온라인 주문](https://fwith.co.kr)은 24시간 접수하지만, 급한 장례 일정이나 지정시각 전달은 실제 주소와 수령 조건을 먼저 상담해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 고양동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "서울시설공단 서울시립승화원 오시는 길",
+        "url": "https://www.sisul.or.kr/open_content/main/introduce/location8.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환 [B201]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 고양동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_1/dong01_4_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
