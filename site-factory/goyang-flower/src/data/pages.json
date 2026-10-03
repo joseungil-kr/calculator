@@ -1192,5 +1192,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-baekseok",
+    "snapshotId": "goyang-ilsandong-baekseok-r1-20261003T182200Z",
+    "snapshotHash": "d2b48f1a45993bda5f653e072033e4e02ae9e4c84873f5e3956fc5bd29408858",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-baekseok-r1",
+    "sourceRecordId": "recVJuZCVSv6ky2Pb",
+    "publishQueueRecordId": "rec43lUZv189hSrha",
+    "slug": "ilsandong-baekseok",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-baekseok/",
+    "title": "백석동 꽃배달 | 백송·흰돌마을 선물과 업무시설 수령",
+    "primaryKeyword": "백석동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 16,
+    "h1": "백석동 꽃배달, 집과 업무시설에 맞는 꽃을 고르세요",
+    "description": "백송·흰돌마을 가정 선물과 백석동 업무시설 축하를 구분해 주문하세요. 단지·층·호수, 실제 수령자와 추가비용, 꽃다발·바구니 기본 표시가격을 확인할 수 있습니다.",
+    "cardSummary": "가정에는 재실 시간, 직장에는 받을 부서가 필요합니다. 백송·흰돌마을 선물부터 업무시설 축하까지 주소에 덧붙일 정보를 정리했습니다.",
+    "firstAnswer": "백석동 꽃배달은 백송·흰돌마을의 가정인지, 상가나 업무시설인지에 맞춰 꽃과 수령처를 정해 주문해 주세요. 꽃이랑에 도로명주소와 건물명, 동·층·호수 및 실제 받을 분을 알려주시면 됩니다. 희망 날짜의 상품 공급과 배송 가능 시간, 추가배송비를 포함한 최종 금액도 함께 확인해 주세요.",
+    "contentMarkdown": "백석동 꽃배달은 백송·흰돌마을의 가정인지, 상가나 업무시설인지에 맞춰 꽃과 수령처를 정해 주문해 주세요. 꽃이랑에 도로명주소와 건물명, 동·층·호수 및 실제 받을 분을 알려주시면 됩니다. 희망 날짜의 상품 공급과 배송 가능 시간, 추가배송비를 포함한 최종 금액도 함께 확인해 주세요.\n\n## 백석1동·2동 이름보다 실제 받는 건물을 알려주세요\n\n[고양특례시 백석1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_4/dong01_5_4_tab1.jsp)는 법정동 백석동이 백석1·2동과 장항1동 일부에 걸쳐 있다고 안내합니다. 주문서에 적을 것은 행정복지센터 관할보다 꽃을 받을 건물의 도로명주소입니다. ‘백석동 회사’처럼 넓게 적기보다 상호, 건물명, 층·호수를 붙여주세요.\n\n공식 소개에는 백송마을과 흰돌마을 일부, 아파트형 공장 등 서로 다른 공간이 나옵니다. 집으로 보내는 선물이라면 마을명과 단지를, 사업장이라면 건물 이름과 입주 회사명을 함께 확인하는 방식이 알맞습니다.\n\n## 집으로 받는 선물은 포장을 풀 자리까지 생각해 보세요\n\n백송·흰돌마을의 생신이나 기념일 선물은 받는 분의 재실 시간을 먼저 맞춰주세요. 외출 중에 도착할 경우 가족 수령이나 다른 시간을 합의하는 편이 좋습니다. 관리실에서 꽃을 맡아줄 수 있는지는 별도로 확인해 주세요.\n\n집에 놓고 감상할 꽃바구니 햇살 한가득(A155)은 기본 표시가격 65,000원입니다. 직접 만나 건네거나 받은 뒤 이동할 꽃다발 소소한 행복(G105)은 기본 표시가격 50,000원입니다. 특정 꽃이나 색감이 꼭 필요하다면 주문 단계에서 공급 여부를 상담해 주세요.\n\n## 업무시설에서는 회사명 다음에 부서를 적어주세요\n\n입주 축하나 승진 선물을 건물로 보낼 때는 ‘로비 도착’과 ‘받는 분께 인계’가 같지 않을 수 있습니다. 담당 부서, 층·호수, 근무 중 꽃을 받아줄 사람을 지정하고 접수대에서 맡아줄지 회사에 확인해 주세요. 받는 분이 퇴근 후 집으로 가져갈 예정이라면 꽃의 크기와 이동 방법도 상품 선택에 영향을 줍니다.\n\n병원으로 보내는 경우에는 이름과 주소가 맞더라도 꽃 반입이 가능한지 해당 시설에 먼저 확인해야 합니다. 허용되지 않는다면 받는 분과 자택 수령 등 다른 전달 방법을 정한 뒤 주문해 주세요.\n\n## 표시가격과 배송 총액을 함께 확인하세요\n\n상품 표시가는 기본 가격이며, 배송지별 추가배송비나 선택 사항으로 최종 금액이 달라질 수 있습니다. 실제 꽃 구성과 형태는 지역 및 계절에 따라 일부 달라집니다. 당일 수령이 필요하면 희망 시각을 알려 가능 여부를 먼저 확인해 주세요.\n\n[1844-0644 전화 주문](tel:18440644)은 08:00-23:00, [꽃이랑 홈페이지 주문](https://fwith.co.kr)은 24시간 가능합니다. 상세주소·수령자·희망일시·상품·카드 문구를 준비해 문의해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 백석1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_4/dong01_5_4_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 백석1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_4/dong01_5_4_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
