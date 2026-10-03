@@ -37,6 +37,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-deogeun",
+      "snapshotId": "goyang-deogyang-deogeun-r1-20261003T182200Z",
+      "snapshotHash": "4c1d27dad46f9a2307bd1af6c6f076f40238a725f0fd1d8eac380ec911aa861a",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-deogeun-r1",
+      "sourceRecordId": "rec2YB4NemlnWLeTg",
+      "publishQueueRecordId": "recdON8Yk9IyMDD2O",
+      "slug": "deogyang-deogeun",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-deogeun/",
+      "title": "덕은동 꽃배달 | DMC 주거동·상가를 구분하는 주문",
+      "primaryKeyword": "덕은동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-donae",
       "snapshotId": "goyang-deogyang-donae-r1-20261003T182200Z",
       "snapshotHash": "a36223efda649449bd44d3eeeea77981948c49112aa857e8658114e901f6792a",
@@ -647,6 +665,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-sinwon",
       "snapshotHash": "23a412718df48d25e58d44fc687be85f2b2d834e5ca5df9f63b56595428b708a",
       "publishQueueRecordId": "recWMYRi5ksTxHWkm"
+    },
+    "goyang-deogyang-deogeun-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-deogeun",
+      "snapshotHash": "4c1d27dad46f9a2307bd1af6c6f076f40238a725f0fd1d8eac380ec911aa861a",
+      "publishQueueRecordId": "recdON8Yk9IyMDD2O"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
