@@ -91,6 +91,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-dongsan",
+      "snapshotId": "goyang-deogyang-dongsan-r1-20261003T182200Z",
+      "snapshotHash": "2b6b35e43c672ec2ec16d7d5089c559257ff2f4f61b2822820e89c05bc811555",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-dongsan-r1",
+      "sourceRecordId": "rec2iLAvNT1cohsfC",
+      "publishQueueRecordId": "recJr8USI3EWVAtcQ",
+      "slug": "deogyang-dongsan",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-dongsan/",
+      "title": "동산동 꽃배달 | 스타필드 매장·가정 꽃선물 주문",
+      "primaryKeyword": "동산동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-gangmae",
       "snapshotId": "goyang-deogyang-gangmae-r1-20261003T182200Z",
       "snapshotHash": "b203b84afbcb997b0a3eecca928e7682f9496c7fd6c70973099e9542c36f00e7",
@@ -716,6 +734,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-byeokje",
       "snapshotHash": "8c8d70d72bb763838ae0ff712d97a46554449abfe67da0078791b9641b9c7df2",
       "publishQueueRecordId": "recapI6EBCeQL2ufi"
+    },
+    "goyang-deogyang-dongsan-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-dongsan",
+      "snapshotHash": "2b6b35e43c672ec2ec16d7d5089c559257ff2f4f61b2822820e89c05bc811555",
+      "publishQueueRecordId": "recJr8USI3EWVAtcQ"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

@@ -2460,5 +2460,97 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-dongsan",
+    "snapshotId": "goyang-deogyang-dongsan-r1-20261003T182200Z",
+    "snapshotHash": "2b6b35e43c672ec2ec16d7d5089c559257ff2f4f61b2822820e89c05bc811555",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-dongsan-r1",
+    "sourceRecordId": "rec2iLAvNT1cohsfC",
+    "publishQueueRecordId": "recJr8USI3EWVAtcQ",
+    "slug": "deogyang-dongsan",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-dongsan/",
+    "title": "동산동 꽃배달 | 스타필드 매장·가정 꽃선물 주문",
+    "primaryKeyword": "동산동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 32,
+    "h1": "동산동 꽃배달, 스타필드의 층과 매장 이름까지 알려주세요",
+    "description": "스타필드 고양 입점매장 축하꽃과 동산동 가정 선물을 준비하세요. 시설 대표주소와 실제 수령처를 구분하고, 화환 배치·꽃다발 인계·상품가격과 배송 조건을 확인합니다.",
+    "cardSummary": "큰 쇼핑시설에서는 주소 다음에 층·매장·수령 담당자가 필요해요. 매장 축하화환과 방문객이 가져갈 꽃다발을 구분해 주문 준비를 도와드립니다.",
+    "firstAnswer": "동산동 꽃배달로 스타필드 고양에 꽃을 보내실 때는 고양대로 1955 외에 층, 입점매장명과 받을 담당자를 알려주세요. 꽃이랑에서 매장 축하화환이나 개인 선물용 꽃다발을 상담하실 수 있습니다. 시설의 반입·배치 조건과 수령 시간을 먼저 확인하고 상품 공급·추가배송비·총액을 확인해 주세요.",
+    "contentMarkdown": "동산동 꽃배달로 스타필드 고양에 꽃을 보내실 때는 고양대로 1955 외에 층, 입점매장명과 받을 담당자를 알려주세요. 꽃이랑에서 매장 축하화환이나 개인 선물용 꽃다발을 상담하실 수 있습니다. 시설의 반입·배치 조건과 수령 시간을 먼저 확인하고 상품 공급·추가배송비·총액을 확인해 주세요.\n\n## 대표주소에서 실제 매장까지 좁혀주세요\n\n[한국관광공사 안내](https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=147905)는 스타필드 고양의 주소를 고양대로 1955(동산동)로 표시합니다. [스타필드 고양 공식 사이트](https://www.starfield.co.kr/goyang/main.do)에서는 층별 안내와 매장 정보를 확인할 수 있습니다. 꽃을 주문하실 때는 이 대표주소에 실제 매장명과 층, 연락 가능한 담당자를 더해 주세요.\n\n같은 브랜드의 다른 지점이나 쇼핑시설 밖의 가까운 점포로 보내지 않도록 '스타필드 고양점'인지 확인하는 것이 좋습니다. 주소만 정해진 상태에서 안내데스크나 임의의 입구를 수령지로 삼지 말고, 매장 담당자와 실제로 만날 곳을 합의해 주세요.\n\n## 입점매장 축하꽃은 배치 허가와 공간을 먼저\n\n개점·리뉴얼·이전을 축하하는 '축하 3단 화환'(C200)은 기본 표시가격 59,000원입니다. 쇼핑시설 안 매장으로 보낼 때는 화환을 받을 수 있는지, 어디에 둘 수 있는지 해당 매장과 시설 안내를 확인해 주세요. 일반 고객의 출입 동선이나 주차 안내가 곧 화환 반입 동선인 것은 아닙니다.\n\n희망 시간은 매장 영업 시작시각과 꽃을 인계할 담당자의 근무시간을 구분해 알려주세요. 매장 앞 배치가 어렵다면 담당자와 상의해 실내에 둘 수 있는 꽃바구니 등 다른 형태를 검토하실 수 있습니다. 리본에 표시할 상호와 보내는 분 표기는 각각 정확히 적어주세요.\n\n## 쇼핑 중인 지인에게 꽃을 전할 계획이라면\n\n개인 선물로 손에 건네는 꽃다발 '소소한 행복'(G105)의 기본 표시가격은 50,000원입니다. 방문객에게 전하려는 경우에는 돌아다니는 동선보다 한곳에서 만날 수 있는 시간과 장소를 정해 주세요. 상대가 쇼핑이나 식사를 마치고 떠난 뒤 도착하는 상황을 피하도록 수령 가능한 시간대를 상담하는 것이 중요합니다.\n\n동산동 가정으로 바로 받는 선물이라면 시설 주소 대신 해당 집의 도로명·동·호수를 알려주세요. 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)은 실내에 놓아둘 선물로 비교하실 수 있습니다. 정확한 상품 크기, 원하는 꽃의 공급과 실제 구성은 주문 때 확인해 주세요.\n\n## 동산동 주문에 필요한 정보와 비용\n\n전체 주소, 층·매장명 또는 세대 정보, 받는 분 연락처, 희망일·시간, 상품명과 예산, 카드·리본문구를 준비해 주세요. 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있으며, 표시가격 외에 지역별 추가배송비가 발생할 수 있습니다. 최종 총액은 실제 배송지와 선택사항을 기준으로 확인해 주세요.\n\n[1844-0644로 꽃이랑 상담](tel:18440644)은 08:00~23:00, [온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있습니다. 당일 또는 매장 개점 전에 필요한 주문은 상품 준비와 시설 인계가 가능한지 먼저 전화로 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "스타필드 고양 공식 점포·층별 안내",
+        "url": "https://www.starfield.co.kr/goyang/main.do",
+        "type": "facility",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 창릉동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_10/dong01_4_10_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 덕양구청 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "한국관광공사 스타필드 고양점 안내",
+        "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=147905",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환 [C200]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "스타필드 고양 공식 점포·층별 안내",
+      "url": "https://www.starfield.co.kr/goyang/main.do",
+      "type": "facility",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
