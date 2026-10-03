@@ -323,6 +323,24 @@
       "pageType": "regional-service",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsandong-siksa",
+      "snapshotId": "goyang-ilsandong-siksa-r1-20261003T182200Z",
+      "snapshotHash": "df9cefe5c746a4bf5dd3aaf97e7d54f544cb111b3078b48d7ec8819b4a38f049",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-siksa-r1",
+      "sourceRecordId": "rec3PTScBUsST8OGQ",
+      "publishQueueRecordId": "recVo56bKO6DJPYRz",
+      "slug": "ilsandong-siksa",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-siksa/",
+      "title": "식사동 꽃배달 | 위시티·은행마을과 사업장 꽃 주문",
+      "primaryKeyword": "식사동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,

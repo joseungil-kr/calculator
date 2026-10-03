@@ -1420,5 +1420,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-siksa",
+    "snapshotId": "goyang-ilsandong-siksa-r1-20261003T182200Z",
+    "snapshotHash": "df9cefe5c746a4bf5dd3aaf97e7d54f544cb111b3078b48d7ec8819b4a38f049",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-siksa-r1",
+    "sourceRecordId": "rec3PTScBUsST8OGQ",
+    "publishQueueRecordId": "recVo56bKO6DJPYRz",
+    "slug": "ilsandong-siksa",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-siksa/",
+    "title": "식사동 꽃배달 | 위시티·은행마을과 사업장 꽃 주문",
+    "primaryKeyword": "식사동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 19,
+    "h1": "식사동 꽃배달, 위시티 가정선물부터 사업장 축하까지",
+    "description": "위시티·은행마을 단지, 자연마을 주택, 공단 사업장에 따라 필요한 수령정보를 준비하세요. 꽃다발·꽃바구니·축하화환 기본 표시가와 공급·배송 조건을 확인합니다.",
+    "cardSummary": "아파트 단지, 주택 현관, 회사 사무실은 꽃을 인계할 방식이 다릅니다. 받을 곳을 고르면 식사동 주문에 필요한 정보도 간단해집니다.",
+    "firstAnswer": "식사동 꽃배달은 위시티·은행마을 아파트인지, 주택이나 사업장인지부터 알려 꽃이랑에 주문해 주세요. 아파트는 단지·동·호수, 주택은 현관 위치, 회사는 실제 수령 담당자가 필요합니다. 받을 공간에 맞는 꽃다발·꽃바구니·화환을 비교하고 배송 가능 일정과 추가비용을 포함한 총액을 확인하세요.",
+    "contentMarkdown": "식사동 꽃배달은 위시티·은행마을 아파트인지, 주택이나 사업장인지부터 알려 꽃이랑에 주문해 주세요. 아파트는 단지·동·호수, 주택은 현관 위치, 회사는 실제 수령 담당자가 필요합니다. 받을 공간에 맞는 꽃다발·꽃바구니·화환을 비교하고 배송 가능 일정과 추가비용을 포함한 총액을 확인하세요.\n\n## 위시티와 은행마을에서는 단지명부터 맞춰주세요\n\n[고양특례시 식사동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_6/dong01_5_6_tab1.jsp)는 식사동의 아파트 마을로 은행마을과 위시티를 소개하며, 자연촌락과 공단 지역도 구분해 설명합니다. 가정으로 보낼 때 ‘위시티’만 적지 말고 실제 단지명·도로명주소·동·호수를 함께 알려주세요. 꽃을 받을 가족이 집에 있는 시간과 공동현관에서 만날 방법도 정해 주세요.\n\n선물 사실을 비밀로 하고 싶다면 대신 받을 가족과 먼저 상의하는 방법이 있습니다. 관리실이나 무인 공간에 둘 수 있다고 가정하지 말고, 대리수령과 보관이 가능한지 확인한 뒤 요청해 주세요.\n\n## 주택과 사업장은 인계할 문을 따로 정하세요\n\n자연마을 주택으로 보낼 꽃은 건물번호와 대문·현관을, 회사 축하꽃은 사무실이 있는 건물과 층을 알려주세요. 같은 주소에 작업 공간과 사무 공간이 나뉘어 있다면 받을 담당자가 기다릴 위치를 지정하는 것이 좋습니다.\n\n고양대로나 가까운 큰 건물은 방향을 설명하는 데 쓸 수 있지만 목적지의 상세주소를 대신하지 않습니다. 병원으로 보내실 계획이라면 꽃 반입 및 수령 가능 여부를 해당 시설에 먼저 확인해 주세요. 확인되지 않으면 자택 등 받는 분과 합의한 다른 장소를 상담할 수 있습니다.\n\n## 받을 공간에 맞춰 세 가지 꽃을 비교해 보세요\n\n직접 만나 건네거나 받은 뒤 이동할 선물에는 소소한 행복(G105) 꽃다발, 기본 표시가격 50,000원을 비교해 보세요. 집의 식탁·선반이나 사무실에 놓고 볼 꽃에는 햇살 한가득(A155) 꽃바구니, 65,000원이 있습니다. 사업장 입구에 설치할 축하 3단 화환(C200)은 59,000원이며, 먼저 반입과 배치할 공간을 확인해야 합니다.\n\n가격이 가까워도 세 상품의 쓰임은 다릅니다. 예산과 함께 ‘누구에게, 어디에 두도록, 무슨 마음을 전하는지’를 알려주시면 선택을 정리하는 데 도움이 됩니다. 리본이나 카드 문장은 보내는 분 표기와 나누어 준비해 주세요.\n\n## 꽃 종류와 도착 희망을 함께 상담합니다\n\n실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있으므로 특정 색이나 꽃을 원하시면 공급 여부를 확인해 주세요. 위의 금액은 기본 표시가격이고, 배송지별 추가배송비와 선택 사항을 확인한 후 최종 총액을 정합니다.\n\n[1844-0644 전화 주문](tel:18440644)은 08:00-23:00, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 접수 가능시간과 배송 가능시간은 구분되며, 당일이나 정해진 시각에 필요하면 상세주소·수령자·희망일시를 먼저 알려주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 식사동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_6/dong01_5_6_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 식사동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_6/dong01_5_6_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
