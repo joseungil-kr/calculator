@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OrderCTA from '../components/OrderCTA.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
 import business from '../data/business-truth.json';
 import { siteConfig } from '../config/site';
@@ -67,6 +68,10 @@ const situations = [
   </section>
 
   <section class="section product-section"><div class="container"><ProductShowcase showHeading={false} /></div></section>
+
+  <div class="container" data-purchase-banner="middle" data-page-role="home">
+    <OrderCTA heading={`${siteConfig.region} 꽃 주문 전 상품과 수령정보를 확인하세요`} />
+  </div>
 
   {situations.length > 0 && (
     <section class="section guide-section">
