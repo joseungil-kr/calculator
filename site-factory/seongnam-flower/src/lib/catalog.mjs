@@ -1,5 +1,6 @@
 /** Map buyer intent to real catalog families. Unknown intent never inherits wreaths. */
 export function productFamilies(page) {
+  if(page.pageType==='regional-service'){if(!Array.isArray(page.regionalProductFamilies))throw new Error('Missing regional product binding');return page.regionalProductFamilies;}
   if (page.pageType === 'business-opening') return ['congrats'];
   if (['school-event', 'station-transit'].includes(page.pageType)) return ['bouquet'];
   if (['hospital-visit', 'personal-gift'].includes(page.pageType)) return ['bouquet', 'basket'];
@@ -22,6 +23,7 @@ export function productFamilies(page) {
   return [];
 }
 export function selectProducts(page, products, limit = 3) {
+  if(page.pageType==='regional-service'){if(!Array.isArray(page.regionalProductKeys))throw new Error('Missing regional product binding');return page.regionalProductKeys.map(key=>{const p=products.find(p=>p.key===key);if(!p)throw new Error('Missing registered regional product');return p;}).slice(0,limit);}
   const families = productFamilies(page);
   const rows = families.flatMap(family => products.filter(p => p.family === family));
   if (families.length === 1) return rows.slice(0, limit);

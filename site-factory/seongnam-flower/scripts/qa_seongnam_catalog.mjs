@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {validateRegionalPurchase} from '../src/lib/regions.mjs';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {homeProducts, productFamilies} from '../src/lib/catalog.mjs';
@@ -35,7 +36,7 @@ for (const p of products) {
  assert.equal(crypto.createHash('sha256').update(fs.readFileSync(`public${p.img}`)).digest('hex'),source.image.sha256);
 }
 assert.deepEqual([...new Set(homeProducts(products).map(p=>p.family))].sort(),['congrats','funeral']);
-for (const category of new Set(pages.map(p=>p.category))) {
+for (const category of new Set(pages.filter(p=>p.category!=='regions').map(p=>p.category))) {
  assert.ok(hubGuides[category]);hubProducts(category,products,3,pages);
  const guide=hubGuide(category,pages);
  if (category==='event' && guide.families.length===1 && guide.families[0]==='congrats') {
@@ -45,7 +46,8 @@ for (const category of new Set(pages.map(p=>p.category))) {
 }
 for (const page of pages) {
  const expected=productFamilies(page);
- assert.ok(expected.length,`Unmapped page intent: ${page.pageKey}`);
+ if(page.pageType==='regional-service')validateRegionalPurchase(page,products,[page.title,page.h1,page.description,page.cardSummary,page.firstAnswer,page.contentMarkdown||''].join('\n'));
+ else assert.ok(expected.length,`Unmapped page intent: ${page.pageKey}`);
  for (const f of expected) assert.ok(products.some(p=>p.family===f),`Missing promised product family ${f}: ${page.pageKey}`);
 }
 const home=fs.readFileSync('src/pages/index.astro','utf8');

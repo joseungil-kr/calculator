@@ -198,7 +198,7 @@ def check(root=Path('.')):
     import subprocess
     subprocess.run(['node', 'scripts/qa_seongnam_catalog.mjs'], cwd=root, check=True)
     navigation=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import fs from 'node:fs'; import {productFamilies} from './src/lib/catalog.mjs'; import {hubGuide} from './src/lib/hubs.mjs'; import {displayMarkdownBlocks,inlineTokens} from './src/lib/content.mjs'; const pages=JSON.parse(fs.readFileSync('src/data/pages.json')); const cats=[...new Set(pages.map(p=>p.category))]; console.log(JSON.stringify({body:Object.fromEntries(pages.map(p=>[p.pageKey,displayMarkdownBlocks(p.contentMarkdown||'',p.firstAnswer).map(b=>({type:b.type,text:inlineTokens(b.text).map(t=>t.text).join('')}))])),families:Object.fromEntries(pages.map(p=>[p.pageKey,productFamilies(p)])),purpose:Object.fromEntries(cats.map(c=>['/'+c+'/',hubGuide(c,pages).decision[0]]))}));"],cwd=root,text=True))
+        "import fs from 'node:fs'; import {productFamilies} from './src/lib/catalog.mjs'; import {hubGuide} from './src/lib/hubs.mjs'; import {displayMarkdownBlocks,inlineTokens} from './src/lib/content.mjs'; const pages=JSON.parse(fs.readFileSync('src/data/pages.json')); const cats=[...new Set(pages.filter(p=>p.category!=='regions').map(p=>p.category))]; console.log(JSON.stringify({body:Object.fromEntries(pages.map(p=>[p.pageKey,displayMarkdownBlocks(p.contentMarkdown||'',p.firstAnswer).map(b=>({type:b.type,text:inlineTokens(b.text).map(t=>t.text).join('')}))])),families:Object.fromEntries(pages.map(p=>[p.pageKey,productFamilies(p)])),purpose:Object.fromEntries(cats.map(c=>['/'+c+'/',hubGuide(c,pages).decision[0]]))}));"],cwd=root,text=True))
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
@@ -215,9 +215,15 @@ def check(root=Path('.')):
         assert description and description not in descriptions,f'Duplicate/missing description: {url}';descriptions.add(description)
         assert doc.canonical==[base+url],f'Canonical mismatch: {url} {doc.canonical}'
         thin_hub=url in hubs and hubs[url]['children']<3
-        assert doc.meta.get('robots')==('index,follow' if indexable and not thin_hub else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
+        assert doc.meta.get('robots')==('noindex,follow' if indexable and url=='/regions/' and thin_hub else 'index,follow' if indexable and not thin_hub else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
         for field in ['og:title','og:description','og:url','twitter:card']:assert doc.meta.get(field),f'Missing {field}: {url}'
-        check_social_image(doc,url,base,products,social_proof,truth['brand'])
+        if url.startswith('/regions/'):
+            regional_page=next((p for p in pages if p['url']==url), next(p for p in pages if p['category']=='regions'))
+            for field,value in [('og:image',base+regional_page['ogImage']),('og:image:secure_url',base+regional_page['ogImage']),('og:image:alt',regional_page['ogImageAlt']),('og:image:width',str(regional_page['ogImageWidth'])),('og:image:height',str(regional_page['ogImageHeight'])),('og:image:type',regional_page['ogImageType']),('twitter:image',base+regional_page['ogImage'])]:
+                assert doc.meta.get(field)==value,f'Regional social metadata mismatch: {url} {field}'
+            assert hashlib.sha256((root/'public'/regional_page['ogImage'].lstrip('/')).read_bytes()).hexdigest()==regional_page['ogImageSha256'],f'Regional image bytes mismatch: {url}'
+        else:
+            check_social_image(doc,url,base,products,social_proof,truth['brand'])
         if url=='/' or url in hubs:assert doc.order_banner_count==1,f'Expected one mid-page order banner: {url}'
         assert truth['phoneHref'] in doc.links,f'Missing real phone CTA: {url}'
         assert any(x.startswith(truth['onlineOrderUrl']) for x in doc.links),f'Missing order CTA: {url}'
@@ -258,6 +264,7 @@ def check(root=Path('.')):
         for loc in tree.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
             if not (loc.text or '').endswith('.xml'):sitemap_urls.add(unquote(loc.text or ''))
     sitemap_expected={'/'}|{p['url'] for p in pages}|{h['url'] for h in arch['hubs'] if h['children']>=3}
+    if not indexable:sitemap_expected={u for u in sitemap_expected if not u.startswith('/regions/')}
     assert sitemap_urls=={base+u for u in sitemap_expected},f'Sitemap mismatch: {sitemap_urls ^ {base+u for u in sitemap_expected}}'
     headers=(dist/'_headers').read_text()
     if not indexable:
@@ -265,7 +272,7 @@ def check(root=Path('.')):
     else:
         for hub in hubs.values():
             if hub['children']<3:
-                assert f"{hub['url']}\n  X-Robots-Tag: noindex, nofollow, noarchive" in headers, f"Thin hub header missing: {hub['url']}"
+                assert f"{hub['url']}\n  X-Robots-Tag: " + ("noindex, follow" if hub['category']=='regions' else "noindex, nofollow, noarchive") in headers, f"Thin hub header missing: {hub['url']}"
     robots=(dist/'robots.txt').read_text()
     assert ('Allow: /' in robots and 'Disallow: /' not in robots) if indexable else 'Disallow: /' in robots
     not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','') and not not_found.canonical

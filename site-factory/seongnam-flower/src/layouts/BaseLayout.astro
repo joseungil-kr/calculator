@@ -6,14 +6,14 @@ import provenance from '../data/catalog-provenance.json';
 import {productSocialImage} from '../lib/social-image.mjs';
 const {title,description,canonicalPath='/',noindex=false,includeSchema=true,orderUrl=site.orderUrl,socialProduct}=Astro.props;
 const canonical=canonicalPath===false ? '' : new URL(canonicalPath,site.domain).toString();
-const socialImage=canonical ? productSocialImage(socialProduct,provenance,site.domain,site.brand) : null;
+const socialImage=canonical ? (Astro.props.ogImage ? {url:new URL(Astro.props.ogImage,site.domain).toString(),alt:Astro.props.ogImageAlt,type:Astro.props.ogImageType,width:Astro.props.ogImageWidth,height:Astro.props.ogImageHeight} : productSocialImage(socialProduct,provenance,site.domain,site.brand)) : null;
 const indexable=site.indexable && !noindex;
 const revision=buildRevision.revision || 'local';
 ---
 <!doctype html><html lang="ko"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title}</title><meta name="description" content={description}/>
-<meta name="robots" content={indexable?'index,follow':'noindex,nofollow,noarchive'}/>
+<meta name="robots" content={!site.indexable ? 'noindex,nofollow,noarchive' : (Astro.props.robotsOverride || (indexable?'index,follow':'noindex,nofollow,noarchive'))}/>
 {indexable && <meta name="naver-site-verification" content={site.naverVerification}/>}
 <meta name="site-factory-revision" content={revision}/>{canonical && <link rel="canonical" href={canonical}/>} 
 <meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ko_KR"/>

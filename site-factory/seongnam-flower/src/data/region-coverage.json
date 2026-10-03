@@ -1,0 +1,1132 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "seongnam-flower-v2",
+  "scopeKey": "seongnam-flower-v2-maintenance-after-initial22-20261003",
+  "unitBasis": "legal-dong-plus-eup-myeon",
+  "verifiedAt": "2026-10-03",
+  "sourceBasisDate": "2024-08; 2026-08-27; current official page, no explicit effective date",
+  "countIsPageQuota": false,
+  "officialSourceUrls": [
+    "https://www.seongnam.go.kr/cn040104",
+    "https://www.sujeong-gu.go.kr/sub/content.asp?cIdx=8",
+    "https://snvision.seongnam.go.kr/4787"
+  ],
+  "districts": [
+    {
+      "key": "sujeong",
+      "name": "수정구",
+      "sourceUrl": "https://www.seongnam.go.kr/cn040104"
+    },
+    {
+      "key": "jungwon",
+      "name": "중원구",
+      "sourceUrl": "https://www.seongnam.go.kr/cn040104"
+    },
+    {
+      "key": "bundang",
+      "name": "분당구",
+      "sourceUrl": "https://www.seongnam.go.kr/cn040104"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "성남시/법정동/신흥동",
+      "name": "신흥동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/태평동",
+      "name": "태평동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/수진동",
+      "name": "수진동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/단대동",
+      "name": "단대동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/산성동",
+      "name": "산성동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/양지동",
+      "name": "양지동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/복정동",
+      "name": "복정동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/창곡동",
+      "name": "창곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/신촌동",
+      "name": "신촌동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/오야동",
+      "name": "오야동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/심곡동",
+      "name": "심곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/고등동",
+      "name": "고등동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/상적동",
+      "name": "상적동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/둔전동",
+      "name": "둔전동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/시흥동",
+      "name": "시흥동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/금토동",
+      "name": "금토동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/사송동",
+      "name": "사송동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sujeong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/성남동",
+      "name": "성남동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/중앙동",
+      "name": "중앙동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/금광동",
+      "name": "금광동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/은행동",
+      "name": "은행동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/상대원동",
+      "name": "상대원동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/하대원동",
+      "name": "하대원동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/여수동",
+      "name": "여수동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/도촌동",
+      "name": "도촌동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/갈현동",
+      "name": "갈현동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jungwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/분당동",
+      "name": "분당동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/수내동",
+      "name": "수내동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/정자동",
+      "name": "정자동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/율동",
+      "name": "율동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/서현동",
+      "name": "서현동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/이매동",
+      "name": "이매동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/야탑동",
+      "name": "야탑동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/금곡동",
+      "name": "금곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/궁내동",
+      "name": "궁내동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/동원동",
+      "name": "동원동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/구미동",
+      "name": "구미동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/판교동",
+      "name": "판교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/삼평동",
+      "name": "삼평동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/백현동",
+      "name": "백현동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/운중동",
+      "name": "운중동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/대장동",
+      "name": "대장동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/석운동",
+      "name": "석운동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    },
+    {
+      "unitKey": "성남시/법정동/하산운동",
+      "name": "하산운동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "bundang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official_complete_name_inventory_but_citywide_2026_legal_crosswalk_not_fully_verified"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "aliasKey": "seongnam/sujeong/신흥1동",
+      "name": "신흥1동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/신흥동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/신흥2동",
+      "name": "신흥2동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/신흥동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/신흥3동",
+      "name": "신흥3동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/신흥동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/태평1동",
+      "name": "태평1동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/태평동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/태평2동",
+      "name": "태평2동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/태평동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/태평3동",
+      "name": "태평3동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/태평동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/태평4동",
+      "name": "태평4동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/태평동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/수진1동",
+      "name": "수진1동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/수진동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/수진2동",
+      "name": "수진2동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/수진동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/단대동",
+      "name": "단대동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/단대동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/산성동",
+      "name": "산성동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/산성동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/양지동",
+      "name": "양지동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/양지동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/복정동",
+      "name": "복정동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/복정동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/창곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_table_lists_both_but_exact_overlap_unresolved",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/위례동",
+      "name": "위례동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/복정동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/창곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/신촌동",
+      "name": "신촌동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/신촌동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/오야동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/심곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/고등동",
+      "name": "고등동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/고등동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/상적동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/둔전동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/sujeong/시흥동",
+      "name": "시흥동",
+      "districtKey": "sujeong",
+      "relations": [
+        {
+          "unitKey": "성남시/법정동/시흥동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/금토동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "성남시/법정동/사송동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "seongnam/jungwon/성남동",
+      "name": "성남동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "성남동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/중앙동",
+      "name": "중앙동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "중앙동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/금광1동",
+      "name": "금광1동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "금광동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/금광2동",
+      "name": "금광2동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "금광동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/은행1동",
+      "name": "은행1동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "은행동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/은행2동",
+      "name": "은행2동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "은행동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/상대원1동",
+      "name": "상대원1동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "상대원동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/상대원2동",
+      "name": "상대원2동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "상대원동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/상대원3동",
+      "name": "상대원3동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "상대원동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/하대원동",
+      "name": "하대원동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "하대원동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/jungwon/도촌동",
+      "name": "도촌동",
+      "districtKey": "jungwon",
+      "relations": [],
+      "verificationStatus": "historically_supported_current_boundary_unverified",
+      "unresolvedCandidateNames": [
+        "도촌동",
+        "여수동",
+        "갈현동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/분당동",
+      "name": "분당동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "분당동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/수내1동",
+      "name": "수내1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "수내동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/수내2동",
+      "name": "수내2동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "수내동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/수내3동",
+      "name": "수내3동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "수내동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/정자동",
+      "name": "정자동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "정자동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/정자1동",
+      "name": "정자1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "정자동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/정자2동",
+      "name": "정자2동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "정자동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/정자3동",
+      "name": "정자3동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "정자동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/서현1동",
+      "name": "서현1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "서현동",
+        "율동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/서현2동",
+      "name": "서현2동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "서현동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/이매1동",
+      "name": "이매1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "이매동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/이매2동",
+      "name": "이매2동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "이매동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/야탑1동",
+      "name": "야탑1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "야탑동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/야탑2동",
+      "name": "야탑2동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "야탑동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/야탑3동",
+      "name": "야탑3동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "야탑동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/금곡동",
+      "name": "금곡동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "금곡동",
+        "궁내동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/구미동",
+      "name": "구미동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "구미동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/구미1동",
+      "name": "구미1동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "historically_supported_current_boundary_unverified",
+      "unresolvedCandidateNames": [
+        "구미동",
+        "동원동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/판교동",
+      "name": "판교동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "판교동",
+        "백현동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/삼평동",
+      "name": "삼평동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "삼평동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/백현동",
+      "name": "백현동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "백현동"
+      ]
+    },
+    {
+      "aliasKey": "seongnam/bundang/운중동",
+      "name": "운중동",
+      "districtKey": "bundang",
+      "relations": [],
+      "verificationStatus": "candidate_only_current_jurisdiction_annex_required",
+      "unresolvedCandidateNames": [
+        "운중동",
+        "대장동",
+        "석운동",
+        "하산운동"
+      ]
+    }
+  ],
+  "representatives": [
+    {
+      "pageKey": "seongnam-flower-v2-region-bundang-seohyeon",
+      "unitKeys": [
+        "성남시/법정동/서현동"
+      ],
+      "slug": "bundang-seohyeon",
+      "url": "/regions/bundang-seohyeon/",
+      "intentKey": "seongnam|flower-delivery|local-order|서현동",
+      "primaryKeyword": "서현동 꽃배달",
+      "routeMode": "regional",
+      "status": "candidate",
+      "queryEvidence": "Explicit user request to repair missing local coverage, official name/crosswalk and an inferred local-order need; no volume or independent demand claimed. Full buyer-intent/local-fact review remains required."
+    }
+  ],
+  "caveats": [
+    "시청의 44법정동·50행정동 명단은 완전히 확보했지만 원표 기준일은 2024-08 및 2022-12임. 수정구 공식 대응표만 최종수정일 2026-08-27 확인. 도시 전체 2026 법정코드/경계 검증 완료라고 쓰지 말 것.",
+    "위례동은 행정동·신도시 검색어이고 성남 법정동 목록에는 없음. 창곡동과 복정동 일부에 대응하며 송파·하남 위례와 관할이 다름. 창곡동을 빠뜨리고 위례동만 추가해서 법정지역 완료로 세지 말 것.",
+    "서현1동·금곡동·구미1동·판교동·운중동 등은 추가 법정동을 포함할 수 있어 이름의 숫자만 제거하는 알고리즘으로 전체 crosswalk 생성 금지.",
+    "분당구 법정동 18개에는 율동·궁내동·동원동·대장동·석운동·하산운동 포함. 이 이름들은 독립 법정동 목록에 반드시 남김."
+  ]
+}

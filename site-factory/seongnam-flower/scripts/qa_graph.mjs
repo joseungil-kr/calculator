@@ -4,7 +4,7 @@ import {validateCustomerIntent} from './qa_intent.mjs';
 export function validateGraph(data) {
  const {pages,manifest,map,architecture,products}=data;
  if(!pages.length) throw new Error('No approved pages');
- const compatible={funeral:['funeral-facility','order-help','price-guide'],business:['business-opening'],school:['school-event'],event:['event-venue'],gift:['hospital-visit','personal-gift','station-transit'],order:['order-help','price-guide','message-guide']};
+ const compatible={regions:['regional-service'],funeral:['funeral-facility','order-help','price-guide'],business:['business-opening'],school:['school-event'],event:['event-venue'],gift:['hospital-visit','personal-gift','station-transit'],order:['order-help','price-guide','message-guide']};
  const seen=new Set(), urls=new Set(), intents=new Set();
  for(const p of pages){
   if(!compatible[p.category]?.includes(p.pageType))throw new Error('Category/pageType mismatch '+p.pageKey);
