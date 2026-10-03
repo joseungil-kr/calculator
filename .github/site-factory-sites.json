@@ -100,8 +100,8 @@
       "stagingUrl": "https://suwon-flower-guide-qa.joseungil.workers.dev",
       "requireRevisionApproval": true,
       "requireSnapshotApproval": true,
-      "approvedRevision": "be08fdb6f1afa864ab1627a7dcd1f2d6386a7555",
-      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/74#issuecomment-5934300307"
+      "approvedRevision": "819217512b013988a27af26e35ba3bb93941e728",
+      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/126#issuecomment-5969047794"
     },
     "hwaseong-flower": {
       "repo": "joseungil-kr/fwith-site-factory",
