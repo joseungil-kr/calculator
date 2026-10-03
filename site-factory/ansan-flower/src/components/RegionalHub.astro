@@ -1,0 +1,15 @@
+---
+import {getCollection} from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RegionDirectory from './RegionDirectory.astro';
+import OrderCTA from './OrderCTA.astro';
+import {siteConfig} from '../config/site';
+import {regionalPages,assertRegionalInput} from '../lib/regional-runtime.mjs';
+const articles=await getCollection('articles');assertRegionalInput(articles.map(a=>a.data));
+const items=regionalPages.map((p:any)=>({...p,cardSummary:articles.find(a=>a.data.pageKey===p.pageKey)?.data.cardSummary}));
+if(!items.length)throw new Error('Empty regional hub cannot render');
+---
+<BaseLayout title={`${siteConfig.region} 지역별 꽃배달 | ${siteConfig.brand}`} description="받는 곳의 동·읍·면 이름으로 꽃배달 주문에 필요한 수령정보를 확인하세요." robotsOverride={siteConfig.indexable && items.length<3 ? 'noindex,follow,max-image-preview:large' : undefined}>
+<section class="page-hero"><div class="container"><span class="eyebrow">지역별 안내</span><h1>{siteConfig.region} 지역별 꽃배달 안내</h1><p>받는 곳의 동·읍·면과 도로명주소를 확인하고 전달할 장소에 필요한 주문정보를 준비하세요.</p></div></section>
+<section class="section"><div class="container"><RegionDirectory pages={items}/><OrderCTA/></div></section>
+</BaseLayout>

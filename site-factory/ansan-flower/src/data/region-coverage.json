@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "ansan-flower-test",
+  "scopeKey": "ansan-flower-test-dong-maintenance-20261003",
+  "unitBasis": "legal-dong-plus-eup-myeon",
+  "verifiedAt": "2026-10-03",
+  "sourceBasisDate": "2024-12-31 full inventory; current centers checked 2026-01-01 to 2026-07-01",
+  "countIsPageQuota": false,
+  "officialSourceUrls": [
+    "https://www.ansan.go.kr/stat/common/cntnts/selectContents.do?cntnts_id=C0001014",
+    "https://www.ansan.go.kr/stat/common/cntnts/selectContents.do?cntnts_id=C0001013",
+    "https://www.ansan.go.kr/sangnokgu/common/cntnts/selectContents.do?cntnts_id=C0000870",
+    "https://www.ansan.go.kr/sangnokgu/common/cntnts/selectContents.do?cntnts_id=C0000854"
+  ],
+  "districts": [
+    {
+      "key": "sangnok",
+      "name": "상록구",
+      "sourceUrl": "https://www.ansan.go.kr/stat/common/cntnts/selectContents.do?cntnts_id=C0001014"
+    },
+    {
+      "key": "danwon",
+      "name": "단원구",
+      "sourceUrl": "https://www.ansan.go.kr/stat/common/cntnts/selectContents.do?cntnts_id=C0001014"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "안산시/상록구/법정동/일동",
+      "name": "일동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/이동",
+      "name": "이동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/사동",
+      "name": "사동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/본오동",
+      "name": "본오동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/팔곡이동",
+      "name": "팔곡이동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/양상동",
+      "name": "양상동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/부곡동",
+      "name": "부곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/성포동",
+      "name": "성포동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/월피동",
+      "name": "월피동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/팔곡일동",
+      "name": "팔곡일동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/건건동",
+      "name": "건건동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/사사동",
+      "name": "사사동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/수암동",
+      "name": "수암동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/장상동",
+      "name": "장상동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/상록구/법정동/장하동",
+      "name": "장하동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "sangnok"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/고잔동",
+      "name": "고잔동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/와동",
+      "name": "와동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/신길동",
+      "name": "신길동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/성곡동",
+      "name": "성곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/원시동",
+      "name": "원시동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/목내동",
+      "name": "목내동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/초지동",
+      "name": "초지동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/원곡동",
+      "name": "원곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/선부동",
+      "name": "선부동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/대부동동",
+      "name": "대부동동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/대부북동",
+      "name": "대부북동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/대부남동",
+      "name": "대부남동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/선감동",
+      "name": "선감동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/풍도동",
+      "name": "풍도동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "안산시/단원구/법정동/화정동",
+      "name": "화정동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "danwon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "aliasKey": "ansan/sangnok/일동",
+      "name": "일동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/일동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/이동",
+      "name": "이동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/일동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/이동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/사동",
+      "name": "사동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/사동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/사이동",
+      "name": "사이동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/사동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/해양동",
+      "name": "해양동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/사동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/본오1동",
+      "name": "본오1동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/본오동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/팔곡이동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/본오2동",
+      "name": "본오2동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/본오동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/본오3동",
+      "name": "본오3동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/본오동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/부곡동",
+      "name": "부곡동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/부곡동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/월피동",
+      "name": "월피동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/부곡동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/월피동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/양상동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/성포동",
+      "name": "성포동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/성포동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/반월동",
+      "name": "반월동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/사사동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/건건동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/팔곡일동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/sangnok/안산동",
+      "name": "안산동",
+      "districtKey": "sangnok",
+      "relations": [
+        {
+          "unitKey": "안산시/상록구/법정동/수암동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/장상동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/상록구/법정동/장하동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/와동",
+      "name": "와동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/와동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/고잔동",
+      "name": "고잔동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/고잔동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/중앙동",
+      "name": "중앙동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/고잔동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/호수동",
+      "name": "호수동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/고잔동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/원곡동",
+      "name": "원곡동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/원곡동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/백운동",
+      "name": "백운동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/원곡동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/신길동",
+      "name": "신길동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/신길동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/초지동",
+      "name": "초지동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/초지동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/원시동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/목내동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/성곡동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/선부1동",
+      "name": "선부1동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/선부동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/선부2동",
+      "name": "선부2동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/선부동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/선부3동",
+      "name": "선부3동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/선부동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/화정동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "ansan/danwon/대부동",
+      "name": "대부동",
+      "districtKey": "danwon",
+      "relations": [
+        {
+          "unitKey": "안산시/단원구/법정동/대부동동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/대부남동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/대부북동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/선감동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "안산시/단원구/법정동/풍도동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    }
+  ],
+  "representatives": [
+    {
+      "pageKey": "ansan-flower-test-region-sangnok-sa",
+      "unitKeys": [
+        "안산시/상록구/법정동/사동"
+      ],
+      "slug": "sangnok-sa",
+      "url": "/regions/sangnok-sa/",
+      "intentKey": "ansan|flower-delivery|local-order|사동",
+      "primaryKeyword": "안산 사동 꽃배달",
+      "routeMode": "regional",
+      "status": "candidate",
+      "queryEvidence": "Explicit user request to repair missing local coverage, official name/crosswalk and an inferred local-order need; no volume or independent demand claimed. Full buyer-intent/local-fact review remains required."
+    },
+    {
+      "pageKey": "ansan-flower-launch-14",
+      "unitKeys": [
+        "안산시/단원구/법정동/선부동"
+      ],
+      "slug": "seonbu-home-shop-flower-delivery",
+      "url": "/places/seonbu-home-shop-flower-delivery/",
+      "intentKey": "reserved-existing-ansan-seonbu-local-order",
+      "primaryKeyword": "선부동 꽃배달",
+      "routeMode": "existing",
+      "status": "reserved",
+      "queryEvidence": "Existing Plan/Draft/Job lineage; no new URL or automatic migration. Not assumed published."
+    }
+  ],
+  "caveats": "Geographic unit count is not independent query-intent or article quota. Need canonical mapping for every unit and full local/source/product review before any publication."
+}

@@ -1,4 +1,5 @@
 ---
+import {regionalPages} from '../lib/regional-runtime.mjs';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OrderCTA from '../components/OrderCTA.astro';
@@ -108,4 +109,5 @@ const situations = [
       </div>
     </div>
   </section>
+{regionalPages.length>0 && <section class="section"><div class="container"><a href="/regions/">{siteConfig.region} 지역별 꽃배달 안내 →</a></div></section>}
 </BaseLayout>
