@@ -478,5 +478,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-hyeoncheon",
+    "snapshotId": "goyang-deogyang-hyeoncheon-r1-20261003T182200Z",
+    "snapshotHash": "1ee070525f5e0eaa80c9384f13e267497971dfcb2fda053c8ca70f288f938a47",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-hyeoncheon-r1",
+    "sourceRecordId": "rec9uuP2JITchma7w",
+    "publishQueueRecordId": "recDFxZnb6P6JCoIC",
+    "slug": "deogyang-hyeoncheon",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-hyeoncheon/",
+    "title": "현천동 꽃배달 | 대덕로 사업장·주택의 인계 지점 확인",
+    "primaryKeyword": "현천동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 7,
+    "h1": "현천동 꽃배달, 시설 이름과 실제 고양시 주소를 함께 알려주세요",
+    "description": "서울 기관 이름을 쓰는 시설도 실제 주소는 현천동일 수 있습니다. 대덕로의 시설·사업장과 주택을 구분하고 담당자·출입구·희망시간에 맞춰 꽃 주문을 준비하세요.",
+    "cardSummary": "기관 이름보다 도로명주소와 담당 부서를 먼저 확인해 보세요. 큰 시설의 정문 도착과 실제 꽃 인계는 별도로 정해야 합니다.",
+    "firstAnswer": "현천동 꽃배달은 시설·사업장 이름과 함께 고양시 덕양구의 실제 도로명주소, 꽃을 받을 건물과 담당자를 알려주세요. 대덕로 주변 시설은 정문 위치와 내부 인계 장소를 따로 확인하면 좋습니다. 꽃이랑에서 선물·행사 목적에 맞는 상품을 고르고 출입 조건, 배송 가능 시간과 최종 비용을 상담해 주세요.",
+    "contentMarkdown": "현천동 꽃배달은 시설·사업장 이름과 함께 고양시 덕양구의 실제 도로명주소, 꽃을 받을 건물과 담당자를 알려주세요. 대덕로 주변 시설은 정문 위치와 내부 인계 장소를 따로 확인하면 좋습니다. 꽃이랑에서 선물·행사 목적에 맞는 상품을 고르고 출입 조건, 배송 가능 시간과 최종 비용을 상담해 주세요.\n\n## 이름은 서울 기관이어도 배송 주소는 따로 확인하세요\n\n서울시가 안내하는 난지물재생센터의 실제 주소는 고양시 덕양구 대덕로 426(현천동)입니다. 이처럼 기관의 이름이나 운영주체만 보고 서울 주소로 주문하기보다 받는 분이 알려준 도로명주소를 확인해 주세요. 현천동은 고양시 대덕동 관할에 속하므로 행정동 명칭만 전달하는 경우에도 실제 건물 주소가 필요합니다.\n\n공식 위치안내는 서울방면과 일산방면에서 센터로 진입하는 설명을 구분합니다. 이 주소·진입정보는 장소를 찾기 위한 근거이며 꽃 반입이나 내부 출입을 허용한다는 의미는 아닙니다. 해당 시설로 보내실 때에는 받을 부서·건물·담당자와 가능한 인계 지점을 주문 전에 정해 주세요.\n\n## 사업장 정문에서 누가 받을지 정해 주세요\n\n큰 부지의 사업장에서는 대표주소만 있어도 정문에 도착할 수 있지만, 선물을 전달할 사무실까지 정해지는 것은 아닙니다. 사무실명과 층, 담당자 연락처, 외부 물품을 인계할 수 있는 시간을 알려주세요. 경비실이나 관리동의 대리 수령은 현장에서 허용한 경우에만 요청합니다.\n\n주택으로 보내는 경우에는 사업장과 구분되는 건물번호와 현관 위치, 받는 분의 재실 여부가 중요합니다. 도로에서 보이는 간판이나 마을 이름은 보조 설명으로 덧붙이고 주소를 대신하지 않도록 해 주세요.\n\n## 책상 위 선물인지 행사장 축하인지\n\n사무실에서 놓고 감상할 선물은 ‘햇살 한가득’ 꽃바구니를, 퇴근하며 가져가거나 직접 건네는 선물은 ‘소소한 행복’ 꽃다발을 비교해 보세요. 확인된 기본 표시가격은 각각 65,000원과 50,000원입니다.\n\n행사나 이전 축하에는 축하 3단 화환 59,000원을, 조문 목적에는 근조 3단 화환 59,000원을 살펴보실 수 있습니다. 화환은 설치 공간과 반입 가능 여부가 필요하며 사진 속 문구는 예시입니다. 보낼 목적, 받는 곳, 보내는 분 이름을 함께 확인합니다.\n\n## 출입조건을 알려주시면 일정과 금액을 상담합니다\n\n시설명·도로명주소·담당 부서·실제 수령자·희망 날짜와 시간·상품을 준비해 주세요. 배송 가능 여부는 현장 조건과 주문 일정에 따라 확인해야 하며 도착시간을 일률적으로 보장하지 않습니다. 지역별 추가 배송비가 발생할 수 있고 상품의 꽃 구성·형태는 지역·계절에 따라 달라질 수 있습니다.\n\n[꽃이랑 1844-0644로 인계조건 상담](tel:18440644) · [꽃이랑 온라인 주문 접수](https://fwith.co.kr)\n\n전화주문은 08:00~23:00, 온라인 접수는 24시간 가능합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "서울시 난지물재생센터 위치안내",
+        "url": "https://news.seoul.go.kr/env/water-recycling-facility/nanji-water-center/nanji-water-center-location",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 대덕동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_4/dong01_4_4_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "서울시 난지물재생센터 위치안내",
+      "url": "https://news.seoul.go.kr/env/water-recycling-facility/nanji-water-center/nanji-water-center-location",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

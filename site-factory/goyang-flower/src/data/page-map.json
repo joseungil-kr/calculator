@@ -91,6 +91,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-hyeoncheon",
+      "snapshotId": "goyang-deogyang-hyeoncheon-r1-20261003T182200Z",
+      "snapshotHash": "1ee070525f5e0eaa80c9384f13e267497971dfcb2fda053c8ca70f288f938a47",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-hyeoncheon-r1",
+      "sourceRecordId": "rec9uuP2JITchma7w",
+      "publishQueueRecordId": "recDFxZnb6P6JCoIC",
+      "slug": "deogyang-hyeoncheon",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-hyeoncheon/",
+      "title": "현천동 꽃배달 | 대덕로 사업장·주택의 인계 지점 확인",
+      "primaryKeyword": "현천동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
       "snapshotId": "goyang-janghang-r1-20261003T084627Z",
       "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
