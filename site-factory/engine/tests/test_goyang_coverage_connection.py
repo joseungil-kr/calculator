@@ -320,6 +320,24 @@ class ArtifactTests(unittest.TestCase):
         with self.assertRaises((AssertionError,ValueError)):
             qa.verify_goyang_coverage(self.root,self.base,qa.GOYANG_ORIGIN,REVISION,self.digest(),'preview',self.fetch,version_preview=True)
 
+    def test_provider_header_only_on_confirmed_live_version_keeps_html_meta_strict(self):
+        for path,(status,body,headers) in list(self.responses.items()):
+            self.responses[path]=(status,body,{'X-Robots-Tag':'noindex'})
+        # A provider response must never weaken canonical, legacy or offline QA.
+        with self.assertRaisesRegex(ValueError,'header'):self.verify()
+        with self.assertRaisesRegex(ValueError,'confirmed live'):
+            qa.verify_goyang_coverage(self.root,self.base,qa.GOYANG_ORIGIN,REVISION,self.digest(),'preview',version_preview=True,version_headers=True)
+        run=lambda:qa.verify_goyang_coverage(self.root,self.base,qa.GOYANG_ORIGIN,REVISION,self.digest(),'preview',self.fetch,version_preview=True,version_headers=True)
+        self.assertEqual(run()['pipelineState'],'preview_verified')
+        for path in ('/','/regions/unpublished/','/sitemap-0.xml'):
+            original=self.responses[path]
+            for header in ('','index','noindex,index','noindex,follow'):
+                self.responses[path]=(original[0],original[1],{'X-Robots-Tag':header})
+                with self.subTest(path=path,header=header),self.assertRaises(ValueError):run()
+            self.responses[path]=original
+        original=self.responses['/'];self.responses['/']=(200,original[1].replace('noindex,nofollow,noarchive','noindex'),original[2])
+        with self.assertRaises(ValueError):run()
+
     def test_probe_never_enters_production_artifact_and_canonical_must_return_exact_404(self):
         path='/_site-factory/version-probe/123.txt'
         missing=(self.root/'dist/404.html').read_bytes()
@@ -381,6 +399,15 @@ class VersionPreviewTests(unittest.TestCase):
                 responses['/photo.jpg']=replacement
                 with self.assertRaises((ValueError,PermissionError)):qa.verify_goyang_assets(tmp,responses.__getitem__,True)
             responses['/photo.jpg']=original
+
+    def test_provider_asset_noindex_header_does_not_allow_missing_or_index_conflict(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dist=Path(tmp)/'dist';dist.mkdir();(dist/'proof.txt').write_bytes(b'proof')
+            fetch=lambda path:(200,b'proof',{'X-Robots-Tag':'noindex'})
+            with self.assertRaises(ValueError):qa.verify_goyang_assets(tmp,fetch,True)
+            self.assertEqual(qa.verify_goyang_assets(tmp,fetch,True,version_headers=True),1)
+            for header in ('','index','noindex,index','noindex,follow'):
+                with self.assertRaises(ValueError):qa.verify_goyang_assets(tmp,lambda p:(200,b'proof',{'X-Robots-Tag':header}),True,version_headers=True)
 
     def test_workflow_only_goyang_uses_upload_and_always_checks_public_boundary(self):
         import yaml

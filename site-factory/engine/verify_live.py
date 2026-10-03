@@ -176,7 +176,7 @@ def validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase,
     return manifest, architecture
 
 
-def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_digest, phase, fetch=None, version_preview=False):
+def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_digest, phase, fetch=None, version_preview=False, version_headers=False):
     require(origin == GOYANG_ORIGIN, "Goyang canonical origin mismatch")
     manifest, architecture = validate_goyang_coverage_source(root, baseline_root, manifest_digest, phase, version_preview)
     routes = {"/": (None, True)}
@@ -199,6 +199,7 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
     all_html = {p for p in (root / "dist").rglob("*") if p.is_file() and p.suffix.lower() in {".html", ".htm", ".xhtml"}}
     require(all_html == allowed_html, "Unapproved standalone HTML artifact")
     offline = fetch is None
+    require(not version_headers or (version_preview and not offline and phase == "preview"), "Provider header policy requires confirmed live version preview")
     if offline:
         # Run the SAME HTML/404/robots/sitemap policy before credentials or deploy.
         # This site emits one global robots rule; unfamiliar overrides fail closed.
@@ -238,7 +239,7 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
         expected = {"index", "follow"} if indexable else ({"noindex", "follow"} if phase == "production" else {"noindex", "nofollow", "noarchive"})
         require(directives == expected, "Goyang exact robots directives mismatch")
         header = {v.strip().lower() for v in headers.get("x-robots-tag", "").split(",") if v.strip()}
-        require(("noindex" not in header and "nofollow" not in header) if phase == "production" else header == {"noindex", "nofollow", "noarchive"},
+        require(("noindex" not in header and "nofollow" not in header) if phase == "production" else valid_goyang_preview_header(header, version_headers),
                 "Goyang response header policy mismatch")
         require(doc.snapshots == ([snapshot] if snapshot else []), "Goyang exact snapshot identity mismatch")
         file = root / "dist" / route.lstrip("/") / "index.html"
@@ -251,7 +252,7 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
         status, body, headers = response(path)
         require(status == 200 and len(body) <= 1024 * 1024 and "<!" not in body, "Invalid Goyang sitemap response")
         directives = {x.strip().lower() for x in headers.get("x-robots-tag", "").split(",") if x.strip()}
-        require("noindex" not in directives if phase == "production" else "noindex" in directives, "Goyang sitemap header mismatch")
+        require("noindex" not in directives if phase == "production" else valid_goyang_preview_header(directives, True) if version_headers else "noindex" in directives, "Goyang sitemap header mismatch")
         xml = ET.fromstring(body); ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
         require(xml.tag == ns + root_tag, "Goyang sitemap type mismatch")
         urls = [unquote(x.text or "") for x in xml.findall(ns + child_tag + "/" + ns + "loc")]
@@ -278,7 +279,8 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
                 and not doc.snapshots and "application/ld+json" not in html
                 and goyang_artifact_matches(html, (root / "dist/404.html").read_bytes(), not offline), "Goyang 404 artifact/policy mismatch")
         if phase == "preview":
-            require("noindex" in {x.strip().lower() for x in headers.get("x-robots-tag", "").split(",")}, "Goyang 404 header missing noindex")
+            directives = {x.strip().lower() for x in headers.get("x-robots-tag", "").split(",") if x.strip()}
+            require(valid_goyang_preview_header(directives, True) if version_headers else "noindex" in directives, "Goyang 404 header missing noindex")
     return {"pipelineState": "goyang_source_validated" if offline else "preview_verified" if phase == "preview" else "live_verified", "revision": revision,
             "origin": origin, "scopeKey": GOYANG_SCOPE, "routes": len(routes), "manifestSha256": manifest_digest,
             "artifactParity": True, "manifestPages": len(manifest["pages"])}
@@ -315,7 +317,15 @@ def read_goyang_version_upload(text):
     return {"versionId": version, "previewUrl": url}
 
 
-def verify_goyang_assets(root, fetch, noindex):
+def valid_goyang_preview_header(directives, version_headers=False):
+    # Cloudflare injects noindex on workers.dev preview URLs. This alternate
+    # policy is used only after parsing the actual official version-upload URL;
+    # canonical responses and offline _headers retain their exact three rules.
+    allowed = {"noindex", "nofollow", "noarchive"}
+    return "noindex" in directives and directives <= allowed if version_headers else directives == allowed
+
+
+def verify_goyang_assets(root, fetch, noindex, version_headers=False):
     """Exact bytes for every non-HTML asset, including product photos and CSS."""
     count = 0
     for file in sorted((Path(root) / "dist").rglob("*")):
@@ -327,7 +337,7 @@ def verify_goyang_assets(root, fetch, noindex):
         require(status == 200 and body == file.read_bytes(), "Goyang static asset bytes/status mismatch")
         headers = {k.lower(): v for k, v in headers.items()}
         if noindex:
-            require({x.strip().lower() for x in headers.get("x-robots-tag", "").split(",")} == {"noindex", "nofollow", "noarchive"}, "Version asset lacks exact noindex headers")
+            require(valid_goyang_preview_header({x.strip().lower() for x in headers.get("x-robots-tag", "").split(",") if x.strip()}, version_headers), "Version asset lacks valid noindex headers")
         mime = {".jpg":"image/jpeg", ".jpeg":"image/jpeg", ".png":"image/png", ".webp":"image/webp", ".svg":"image/svg+xml", ".css":"text/css"}.get(file.suffix.lower())
         if mime: require(headers.get("content-type", "").split(";",1)[0].strip() == mime, "Goyang static asset MIME mismatch")
         count += 1
@@ -507,9 +517,9 @@ def main():
                 return status, body.decode("utf-8"), headers
             result = verify_goyang_coverage(args.root, args.baseline_root, origin, reference["revision"],
                 reference["manifest_sha256"], reference["phase"], None if args.validate_only else text_fetch,
-                args.version_preview and not args.protect_public)
+                args.version_preview and not args.protect_public, bool(upload and not args.protect_public and not args.validate_only))
             if not args.validate_only and args.version_preview:
-                result["verifiedAssets"] = verify_goyang_assets(args.root, binary_fetch, reference["phase"] == "preview")
+                result["verifiedAssets"] = verify_goyang_assets(args.root, binary_fetch, reference["phase"] == "preview", bool(upload and not args.protect_public))
                 if args.protect_public:
                     verify_goyang_probe_absent(args.root, args.probe_path, binary_fetch)
                     result["publicArtifactPreserved"] = True
