@@ -52,6 +52,14 @@
       "label": "가격·주문",
       "menuVisible": false,
       "url": "/order/"
+    },
+    {
+      "category": "regions",
+      "children": 0,
+      "indexable": false,
+      "label": "지역별 안내",
+      "menuVisible": false,
+      "url": "/regions/"
     }
   ],
   "pages": [

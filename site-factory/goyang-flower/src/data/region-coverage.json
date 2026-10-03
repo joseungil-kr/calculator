@@ -1,0 +1,1086 @@
+{
+  "schemaVersion": 1,
+  "siteKey": "goyang-flower-v2",
+  "scopeKey": "goyang-flower-v2-dong-coverage-20261003",
+  "unitBasis": "legal",
+  "verifiedAt": "2026-10-03",
+  "route": {
+    "routeType": "category",
+    "category": "regions",
+    "pageType": "regional-service",
+    "pageRole": "REGION_SERVICE_LANDING",
+    "parentHub": "/regions/"
+  },
+  "officialSourceUrls": [
+    "https://www.goyang.go.kr/www/www05/www05_1/www05_1_8.jsp",
+    "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+    "https://www.goyang.go.kr/ilsegu/ilsegu01/ilsegu01_5/ilsegu01_5_3.jsp",
+    "https://www.goyang.go.kr/ilswgu/ilswgu01/ilswgu01_5/ilswgu01_5_3.jsp"
+  ],
+  "districts": [
+    {
+      "key": "deogyang",
+      "name": "덕양구",
+      "sourceUrl": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp"
+    },
+    {
+      "key": "ilsandong",
+      "name": "일산동구",
+      "sourceUrl": "https://www.goyang.go.kr/ilsegu/ilsegu01/ilsegu01_5/ilsegu01_5_3.jsp"
+    },
+    {
+      "key": "ilsanseo",
+      "name": "일산서구",
+      "sourceUrl": "https://www.goyang.go.kr/ilswgu/ilswgu01/ilswgu01_5/ilswgu01_5_3.jsp"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "고양시/덕양구/법정동/강매동",
+      "name": "강매동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-gangmae",
+      "slug": "deogyang-gangmae",
+      "url": "/regions/deogyang-gangmae/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/고양동",
+      "name": "고양동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-goyang",
+      "slug": "deogyang-goyang",
+      "url": "/regions/deogyang-goyang/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/관산동",
+      "name": "관산동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-gwansan",
+      "slug": "deogyang-gwansan",
+      "url": "/regions/deogyang-gwansan/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/내곡동",
+      "name": "내곡동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-naegok",
+      "slug": "deogyang-naegok",
+      "url": "/regions/deogyang-naegok/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/내유동",
+      "name": "내유동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-naeyu",
+      "slug": "deogyang-naeyu",
+      "url": "/regions/deogyang-naeyu/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/대자동",
+      "name": "대자동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-daeja",
+      "slug": "deogyang-daeja",
+      "url": "/regions/deogyang-daeja/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/대장동",
+      "name": "대장동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-daejang",
+      "slug": "deogyang-daejang",
+      "url": "/regions/deogyang-daejang/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/덕은동",
+      "name": "덕은동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-deogeun",
+      "slug": "deogyang-deogeun",
+      "url": "/regions/deogyang-deogeun/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/도내동",
+      "name": "도내동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-donae",
+      "slug": "deogyang-donae",
+      "url": "/regions/deogyang-donae/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/동산동",
+      "name": "동산동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-dongsan",
+      "slug": "deogyang-dongsan",
+      "url": "/regions/deogyang-dongsan/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/벽제동",
+      "name": "벽제동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-byeokje",
+      "slug": "deogyang-byeokje",
+      "url": "/regions/deogyang-byeokje/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/북한동",
+      "name": "북한동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-bukhan",
+      "slug": "deogyang-bukhan",
+      "url": "/regions/deogyang-bukhan/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/삼송동",
+      "name": "삼송동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-samsong",
+      "slug": "deogyang-samsong",
+      "url": "/regions/deogyang-samsong/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/선유동",
+      "name": "선유동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-seonyu",
+      "slug": "deogyang-seonyu",
+      "url": "/regions/deogyang-seonyu/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/성사동",
+      "name": "성사동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-seongsa",
+      "slug": "deogyang-seongsa",
+      "url": "/regions/deogyang-seongsa/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/신원동",
+      "name": "신원동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-sinwon",
+      "slug": "deogyang-sinwon",
+      "url": "/regions/deogyang-sinwon/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/신평동",
+      "name": "신평동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-sinpyeong",
+      "slug": "deogyang-sinpyeong",
+      "url": "/regions/deogyang-sinpyeong/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/오금동",
+      "name": "오금동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-ogeum",
+      "slug": "deogyang-ogeum",
+      "url": "/regions/deogyang-ogeum/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/용두동",
+      "name": "용두동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-yongdu",
+      "slug": "deogyang-yongdu",
+      "url": "/regions/deogyang-yongdu/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/원당동",
+      "name": "원당동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-wondang",
+      "slug": "deogyang-wondang",
+      "url": "/regions/deogyang-wondang/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/원흥동",
+      "name": "원흥동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-wonheung",
+      "slug": "deogyang-wonheung",
+      "url": "/regions/deogyang-wonheung/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/주교동",
+      "name": "주교동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-jugyo",
+      "slug": "deogyang-jugyo",
+      "url": "/regions/deogyang-jugyo/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/지축동",
+      "name": "지축동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-jichuk",
+      "slug": "deogyang-jichuk",
+      "url": "/regions/deogyang-jichuk/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/토당동",
+      "name": "토당동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-todang",
+      "slug": "deogyang-todang",
+      "url": "/regions/deogyang-todang/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/행신동",
+      "name": "행신동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-haengsin",
+      "slug": "deogyang-haengsin",
+      "url": "/regions/deogyang-haengsin/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/행주내동",
+      "name": "행주내동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-haengjunae",
+      "slug": "deogyang-haengjunae",
+      "url": "/regions/deogyang-haengjunae/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/행주외동",
+      "name": "행주외동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-haengjuoe",
+      "slug": "deogyang-haengjuoe",
+      "url": "/regions/deogyang-haengjuoe/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/향동동",
+      "name": "향동동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-hyangdong",
+      "slug": "deogyang-hyangdong",
+      "url": "/regions/deogyang-hyangdong/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/현천동",
+      "name": "현천동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-hyeoncheon",
+      "slug": "deogyang-hyeoncheon",
+      "url": "/regions/deogyang-hyeoncheon/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/화전동",
+      "name": "화전동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeon",
+      "slug": "deogyang-hwajeon",
+      "url": "/regions/deogyang-hwajeon/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/화정동",
+      "name": "화정동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-hwajeong",
+      "slug": "deogyang-hwajeong",
+      "url": "/regions/deogyang-hwajeong/"
+    },
+    {
+      "unitKey": "고양시/덕양구/법정동/효자동",
+      "name": "효자동",
+      "districtKey": "deogyang",
+      "pageKey": "goyang-flower-v2-region-deogyang-hyoja",
+      "slug": "deogyang-hyoja",
+      "url": "/regions/deogyang-hyoja/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/마두동",
+      "name": "마두동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-madu",
+      "slug": "ilsandong-madu",
+      "url": "/regions/ilsandong-madu/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/문봉동",
+      "name": "문봉동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-munbong",
+      "slug": "ilsandong-munbong",
+      "url": "/regions/ilsandong-munbong/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/백석동",
+      "name": "백석동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-baekseok",
+      "slug": "ilsandong-baekseok",
+      "url": "/regions/ilsandong-baekseok/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/사리현동",
+      "name": "사리현동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-sarihyun",
+      "slug": "ilsandong-sarihyun",
+      "url": "/regions/ilsandong-sarihyun/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/산황동",
+      "name": "산황동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-sanhwang",
+      "slug": "ilsandong-sanhwang",
+      "url": "/regions/ilsandong-sanhwang/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/설문동",
+      "name": "설문동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-seolmun",
+      "slug": "ilsandong-seolmun",
+      "url": "/regions/ilsandong-seolmun/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/성석동",
+      "name": "성석동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-seongseok",
+      "slug": "ilsandong-seongseok",
+      "url": "/regions/ilsandong-seongseok/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/식사동",
+      "name": "식사동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-siksa",
+      "slug": "ilsandong-siksa",
+      "url": "/regions/ilsandong-siksa/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/장항동",
+      "name": "장항동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
+      "slug": "ilsandong-janghang",
+      "url": "/regions/ilsandong-janghang/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/정발산동",
+      "name": "정발산동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-jeongbalsan",
+      "slug": "ilsandong-jeongbalsan",
+      "url": "/regions/ilsandong-jeongbalsan/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/중산동",
+      "name": "중산동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-jungsan",
+      "slug": "ilsandong-jungsan",
+      "url": "/regions/ilsandong-jungsan/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/지영동",
+      "name": "지영동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-jiyeong",
+      "slug": "ilsandong-jiyeong",
+      "url": "/regions/ilsandong-jiyeong/"
+    },
+    {
+      "unitKey": "고양시/일산동구/법정동/풍동",
+      "name": "풍동",
+      "districtKey": "ilsandong",
+      "pageKey": "goyang-flower-v2-region-ilsandong-pung",
+      "slug": "ilsandong-pung",
+      "url": "/regions/ilsandong-pung/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/가좌동",
+      "name": "가좌동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-gajwa",
+      "slug": "ilsanseo-gajwa",
+      "url": "/regions/ilsanseo-gajwa/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/구산동",
+      "name": "구산동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-gusan",
+      "slug": "ilsanseo-gusan",
+      "url": "/regions/ilsanseo-gusan/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/대화동",
+      "name": "대화동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-daehwa",
+      "slug": "ilsanseo-daehwa",
+      "url": "/regions/ilsanseo-daehwa/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/덕이동",
+      "name": "덕이동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-deogi",
+      "slug": "ilsanseo-deogi",
+      "url": "/regions/ilsanseo-deogi/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/법곳동",
+      "name": "법곳동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-beopgot",
+      "slug": "ilsanseo-beopgot",
+      "url": "/regions/ilsanseo-beopgot/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/일산동",
+      "name": "일산동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-ilsan",
+      "slug": "ilsanseo-ilsan",
+      "url": "/regions/ilsanseo-ilsan/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/주엽동",
+      "name": "주엽동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-juyeop",
+      "slug": "ilsanseo-juyeop",
+      "url": "/regions/ilsanseo-juyeop/"
+    },
+    {
+      "unitKey": "고양시/일산서구/법정동/탄현동",
+      "name": "탄현동",
+      "districtKey": "ilsanseo",
+      "pageKey": "goyang-flower-v2-region-ilsanseo-tanhyeon",
+      "slug": "ilsanseo-tanhyeon",
+      "url": "/regions/ilsanseo-tanhyeon/"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "unitKey": "고양시/덕양구/행정동/주교동",
+      "name": "주교동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/주교동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/성사동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/원신동",
+      "name": "원신동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/원당동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/신원동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/흥도동",
+      "name": "흥도동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/원흥동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/도내동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/성사동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/성사1동",
+      "name": "성사1동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/주교동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/성사동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/성사2동",
+      "name": "성사2동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/성사동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/효자동",
+      "name": "효자동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/북한동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/효자동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/지축동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/삼송1동",
+      "name": "삼송1동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/오금동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/삼송동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/지축동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/삼송2동",
+      "name": "삼송2동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/원흥동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/삼송동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/창릉동",
+      "name": "창릉동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/동산동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/용두동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/고양동",
+      "name": "고양동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/고양동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/벽제동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/선유동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/대자동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/관산동",
+      "name": "관산동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/관산동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/내유동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/대자동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/능곡동",
+      "name": "능곡동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/내곡동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/대장동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/신평동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/토당동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/화정1동",
+      "name": "화정1동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/화정동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/화정2동",
+      "name": "화정2동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/화정동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/행주동",
+      "name": "행주동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행주내동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행주외동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/토당동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/행신1동",
+      "name": "행신1동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행신동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/행신2동",
+      "name": "행신2동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/강매동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행신동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/행신3동",
+      "name": "행신3동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행신동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/행신4동",
+      "name": "행신4동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/행신동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/화전동",
+      "name": "화전동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/향동동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/화전동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/덕은동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/덕양구/행정동/대덕동",
+      "name": "대덕동",
+      "districtKey": "deogyang",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/현천동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/덕은동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/덕양구/법정동/화전동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/식사동",
+      "name": "식사동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/식사동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/중산1동",
+      "name": "중산1동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/중산동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/중산2동",
+      "name": "중산2동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/중산동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/정발산동",
+      "name": "정발산동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/정발산동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/풍산동",
+      "name": "풍산동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/풍동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/산황동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/백석1동",
+      "name": "백석1동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/백석동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/백석2동",
+      "name": "백석2동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/백석동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/마두1동",
+      "name": "마두1동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/마두동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/마두2동",
+      "name": "마두2동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/마두동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/장항1동",
+      "name": "장항1동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/장항동",
+          "scope": "partial"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/백석동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/장항2동",
+      "name": "장항2동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/장항동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산동구/행정동/고봉동",
+      "name": "고봉동",
+      "districtKey": "ilsandong",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/사리현동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/지영동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/문봉동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/설문동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산동구/법정동/성석동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/일산1동",
+      "name": "일산1동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/일산동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/일산2동",
+      "name": "일산2동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/일산동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/일산3동",
+      "name": "일산3동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/일산동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/탄현1동",
+      "name": "탄현1동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/탄현동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/탄현2동",
+      "name": "탄현2동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/탄현동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/주엽1동",
+      "name": "주엽1동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/주엽동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/주엽2동",
+      "name": "주엽2동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/주엽동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/대화동",
+      "name": "대화동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/대화동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/송포동",
+      "name": "송포동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/법곳동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/대화동",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/덕이동",
+      "name": "덕이동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/덕이동",
+          "scope": "whole"
+        }
+      ]
+    },
+    {
+      "unitKey": "고양시/일산서구/행정동/가좌동",
+      "name": "가좌동",
+      "districtKey": "ilsanseo",
+      "relations": [
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/구산동",
+          "scope": "whole"
+        },
+        {
+          "legalUnitKey": "고양시/일산서구/법정동/가좌동",
+          "scope": "whole"
+        }
+      ]
+    }
+  ],
+  "scopeNotice": "Official jurisdiction relationships only; this file contains no customer content, search-demand proof, service availability or publication approval. Partial relations do not identify a parcel boundary."
+}

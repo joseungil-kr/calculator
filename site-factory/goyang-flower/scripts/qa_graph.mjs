@@ -1,10 +1,12 @@
 import fs from 'node:fs';
 import {productFamilies,selectProducts} from '../src/lib/catalog.mjs';
 import {validateCustomerIntent} from './qa_intent.mjs';
+import {validateRegionalGraph} from '../src/lib/regions.mjs';
 export function validateGraph(data) {
- const {pages,manifest,map,architecture,products}=data;
+ const {pages,manifest,map,architecture,products,coverage}=data;
  if(!pages.length) throw new Error('No approved pages');
- const compatible={funeral:['funeral-facility','order-help','price-guide'],business:['business-opening'],school:['school-event'],event:['event-venue'],gift:['hospital-visit','personal-gift','station-transit'],order:['order-help','price-guide','message-guide']};
+ const compatible={funeral:['funeral-facility','order-help','price-guide'],business:['business-opening'],school:['school-event'],event:['event-venue'],gift:['hospital-visit','personal-gift','station-transit'],order:['order-help','price-guide','message-guide'],regions:['regional-service']};
+ validateRegionalGraph(pages,architecture,coverage);
  const seen=new Set(), urls=new Set(), intents=new Set();
  for(const p of pages){
   if(!compatible[p.category]?.includes(p.pageType))throw new Error('Category/pageType mismatch '+p.pageKey);
@@ -38,6 +40,6 @@ export function validateGraph(data) {
 }
 export function loadGraph(root='.') {
  const read=name=>JSON.parse(fs.readFileSync(`${root}/src/data/${name}.json`,'utf8'));
- return {pages:read('pages'),manifest:read('publish-manifest'),map:read('page-map'),architecture:read('architecture'),products:read('products')};
+ return {pages:read('pages'),manifest:read('publish-manifest'),map:read('page-map'),architecture:read('architecture'),products:read('products'),coverage:read('region-coverage')};
 }
 if(process.argv[1]?.endsWith('/qa_graph.mjs'))console.log('GRAPH QA PASSED',validateGraph(loadGraph()));

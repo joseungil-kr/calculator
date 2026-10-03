@@ -1,5 +1,20 @@
 /** Map buyer intent to real catalog families. Unknown intent never inherits wreaths. */
 export function productFamilies(page) {
+  if (page.pageType === 'regional-service') {
+    const regionalFamilies = {
+      flower_delivery: ['bouquet', 'basket', 'funeral', 'congrats'],
+      flower_gift: ['bouquet', 'basket'],
+      funeral_wreath: ['funeral'],
+      congrats_wreath: ['congrats']
+    };
+    const families = regionalFamilies[page.visualIntent];
+    if (page.category !== 'regions' || !families) throw new Error('Regional service requires an explicit supported product visual intent');
+    const funeral=/근조/.test(page.primaryKeyword || '');
+    const congrats=/축하/.test(page.primaryKeyword || '');
+    if ((funeral && page.visualIntent==='congrats_wreath') || (congrats && page.visualIntent==='funeral_wreath'))
+      throw new Error('Product visual intent contradicts promised wreath family');
+    return [...families];
+  }
   if (page.pageType === 'business-opening') return ['congrats'];
   if (['school-event', 'station-transit'].includes(page.pageType)) return ['bouquet'];
   if (['hospital-visit', 'personal-gift'].includes(page.pageType)) return ['bouquet', 'basket'];

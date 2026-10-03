@@ -7,11 +7,12 @@ import json, os, re, xml.etree.ElementTree as ET
 class Document(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
-        self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
+        self.ids=set();self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
         self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if a.get('id'):self.ids.add(a['id'])
         product=None
         if a.get('data-product-key'):
             product={'key':a['data-product-key'],'family':a.get('data-product-family'),'images':[],'links':[],'text':[]};self.product_records.append(product)
@@ -47,6 +48,12 @@ class Document(HTMLParser):
         if self.capture_answer:self.first_answer.append(data)
         context=next((p for _,p in reversed(self.elements) if p),None)
         if context and not self.ignored:context['text'].append(data)
+
+def expected_robots(indexable, url, architecture):
+    if not indexable:
+        return 'noindex,nofollow,noarchive'
+    thin_hub=any(h['url']==url and h['children']<3 for h in architecture['hubs'])
+    return 'noindex,follow' if thin_hub else 'index,follow'
 
 def check_customer_output(doc, url):
     text=' '.join(doc.visible)
@@ -92,7 +99,7 @@ def check(root=Path('.')):
     products=json.loads((data/'products.json').read_text())
     site_config=json.loads((data/'site-config.json').read_text())
     base=(os.environ.get('SITE_URL') or site_config['previewUrl']).rstrip('/')
-    indexable=os.environ.get('SITE_INDEXABLE')=='true'
+    indexable=os.environ.get('SITE_INDEXABLE')=='true' and site_config.get('productionApproved') is True
     expected={'/'}|{p['url'] for p in pages}|{h['url'] for h in arch['hubs'] if any(p['category']==h['category'] for p in pages)}
     docs={};titles=set();descriptions=set();incoming={u:set() for u in expected}
     for url in expected:
@@ -104,7 +111,7 @@ def check(root=Path('.')):
         description=doc.meta.get('description','')
         assert description and description not in descriptions,f'Duplicate/missing description: {url}';descriptions.add(description)
         assert doc.canonical==[base+url],f'Canonical mismatch: {url} {doc.canonical}'
-        assert doc.meta.get('robots')==('index,follow' if indexable else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
+        assert doc.meta.get('robots')==expected_robots(indexable,url,arch),f'Wrong robots: {url}'
         for field in ['og:title','og:description','og:url','twitter:card']:assert doc.meta.get(field),f'Missing {field}: {url}'
         assert truth['phoneHref'] in doc.links,f'Missing real phone CTA: {url}'
         assert any(x.startswith(truth['onlineOrderUrl']) for x in doc.links),f'Missing order CTA: {url}'
@@ -128,13 +135,26 @@ def check(root=Path('.')):
             assert docs[page['url']].primary_families==['bouquet'],f'Performance primary product mismatch: {page["url"]}'
     for url,doc in docs.items():
         for href in doc.links:
-            if href.startswith(('tel:','mailto:','#')):continue
+            if href.startswith(('tel:','mailto:')):continue
             target=urlparse(urljoin(base+url,href))
             if target.netloc!=urlparse(base).netloc:continue
             path=unquote(target.path)
             assert path in expected,f'Broken internal link: {url} -> {path}'
+            if target.fragment:assert unquote(target.fragment) in docs[path].ids,f'Broken internal fragment: {url} -> {href}'
             if path!=url:incoming[path].add(url)
     for url in expected-{'/'}:assert incoming[url],f'Orphan page: {url}'
+    # Check the rendered regional graph, independently of planned coverage size.
+    coverage=json.loads((data/'region-coverage.json').read_text())
+    units={unit['pageKey']:unit for unit in coverage['units']}
+    regional=[page for page in pages if page['category']=='regions']
+    for page in regional:
+        unit=units.get(page['pageKey'])
+        assert unit and page['url']==unit['url'],f'Unknown regional route: {page["url"]}'
+        assert unit['districtKey'] in docs['/regions/'].ids,f'Missing district section: {page["url"]}'
+        assert page['url'] in docs['/regions/'].links,f'Missing regional hub link: {page["url"]}'
+        assert '/regions/#'+unit['districtKey'] in docs['/'].links,f'Missing home district link: {page["url"]}'
+    if not regional:
+        assert '/regions/' not in expected and not (dist/'regions/index.html').exists(), 'Empty regional hub generated'
     for page in manifest['pages']:
         assert docs[page['url']].snapshots==[page['snapshotId']],f'Snapshot not rendered: {page["pageKey"]}'
     sitemap_urls=set()

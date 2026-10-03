@@ -1,0 +1,31 @@
+---
+import {site} from '../config/site';
+import coverage from '../data/region-coverage.json';
+import {regionGroups} from '../lib/regions.mjs';
+const {pages}=Astro.props;
+type RegionEntry={unit:typeof coverage.units[number];page:{url:string;primaryKeyword:string;cardSummary:string}};
+type RegionGroup=typeof coverage.districts[number] & {items:RegionEntry[];administrativeUnits:typeof coverage.administrativeCrosswalk};
+const districts=regionGroups(pages,coverage) as RegionGroup[];
+const published=new Map<string,RegionEntry>(districts.flatMap(district=>district.items).map(entry=>[entry.unit.unitKey,entry]));
+---
+<section class="category-hero">
+  <span class="eyebrow">{site.brand} {site.region}</span>
+  <h1>{site.region} 지역별 꽃배달 안내</h1>
+  <p>받는 곳의 동 이름으로 안내를 찾아보세요. 배송 주소는 도로명주소와 건물명·층·호수까지 확인해 주세요.</p>
+  <div class="actions"><a class="btn primary" href={site.phoneHref}>전화 상담·주문</a><a class="btn dark" href={site.orderUrl}>온라인 주문</a></div>
+</section>
+<nav class="actions" aria-label="구별 지역 안내">{districts.map(district=><a class="btn light" href={`#${district.key}`}>{district.name}</a>)}</nav>
+{districts.map(district=><section id={district.key} data-region-district={district.key}>
+  <div class="section-title"><h2>{district.name}</h2></div>
+  <div class="card-grid big">{district.items.map(({unit,page})=><a class="page-card" href={page.url} data-region-unit={unit.unitKey}><strong>{page.primaryKeyword}</strong><span>{page.cardSummary}</span><em>주문 안내 보기 →</em></a>)}</div>
+  <details class="content-card"><summary>행정동 이름으로 찾기</summary>
+    <p>행정동과 주소에 쓰이는 법정동은 범위가 다를 수 있습니다. ‘일부’로 표시한 관계는 동 전체를 뜻하지 않습니다.</p>
+    <ul class="decision-list">{district.administrativeUnits.map(admin=><li><strong>{admin.name}</strong>: {admin.relations.map((relation,index)=>{
+      const unit=coverage.units.find(unit=>unit.unitKey===relation.legalUnitKey);
+      const entry=published.get(relation.legalUnitKey);
+      if(!unit)throw new Error('Administrative relation lacks a legal unit');
+      return <>{index>0?' · ':''}{entry ? <a href={entry.page.url}>{unit.name}</a> : <span>{unit.name}</span>}{relation.scope==='partial'?' 일부':''}</>;
+    })}</li>)}</ul>
+    <a href={district.sourceUrl} rel="nofollow">{district.name} 공식 관할 안내</a>
+  </details>
+</section>)}
