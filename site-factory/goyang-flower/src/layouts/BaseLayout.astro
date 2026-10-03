@@ -2,10 +2,10 @@
 import '../styles/global.css';
 import {site,menuGroups} from '../config/site';
 import buildRevision from '../data/build-revision.json';
-const {title,description,canonicalPath='/',noindex=false,orderUrl=site.orderUrl}=Astro.props;
+const {title,description,canonicalPath='/',noindex=false,is404=false,orderUrl=site.orderUrl}=Astro.props;
 const canonical=new URL(canonicalPath,site.domain).toString();
-const indexable=site.indexable && !noindex;
-const robots=site.indexable ? (noindex ? 'noindex,follow' : 'index,follow') : 'noindex,nofollow,noarchive';
+const indexable=site.indexable && !noindex && !is404;
+const robots=site.indexable ? ((noindex || is404) ? 'noindex,follow' : 'index,follow') : 'noindex,nofollow,noarchive';
 const revision=buildRevision.revision || 'local';
 ---
 <!doctype html><html lang="ko"><head>
@@ -13,11 +13,11 @@ const revision=buildRevision.revision || 'local';
 <title>{title}</title><meta name="description" content={description}/>
 <meta name="robots" content={robots}/>
 {indexable && <meta name="naver-site-verification" content={site.naverVerification}/>}
-<meta name="site-factory-revision" content={revision}/><link rel="canonical" href={canonical}/>
-<meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ko_KR"/>
+<meta name="site-factory-revision" content={revision}/>{!is404 && <link rel="canonical" href={canonical}/>}
+<meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/>{!is404 && <meta property="og:url" content={canonical}/>}<meta property="og:locale" content="ko_KR"/>
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
 <meta name="theme-color" content="#3a214f"/>
-<script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'Florist',name:site.brand,url:site.domain,telephone:site.phone,areaServed:site.region}).replace(/</g, String.fromCharCode(92) + 'u003c')}></script>
+{!is404 && <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'Florist',name:site.brand,url:site.domain,telephone:site.phone,areaServed:site.region}).replace(/</g, String.fromCharCode(92) + 'u003c')}></script>}
 </head><body>
 <a class="skip-link" href="#main-content">본문 바로가기</a>
 <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon">✿</span><span><b>{site.brand}</b><small>{site.region} 꽃배달</small></span></a>
