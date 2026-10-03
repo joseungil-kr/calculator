@@ -2638,5 +2638,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-bukhan",
+    "snapshotId": "goyang-deogyang-bukhan-r1-20261003T182200Z",
+    "snapshotHash": "b2f92b7cbf873b1ffbddf320a45063edcafab34ebaa9b791c06a92531cd102ef",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-bukhan-r1",
+    "sourceRecordId": "recRDCiZjOYyDzoG2",
+    "publishQueueRecordId": "recR5w3bZhtjptxmv",
+    "slug": "deogyang-bukhan",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-bukhan/",
+    "title": "북한동 꽃배달 | 산 안 목적지·인계 지점 먼저 상담",
+    "primaryKeyword": "북한동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 34,
+    "h1": "북한동 꽃배달, 받을 건물과 인계할 수 있는 장소부터 확인하세요",
+    "description": "북한산국립공원 안 북한동의 꽃 주문은 목적지 확인이 먼저입니다. 건물명·주소, 이동·인계 방법과 수령 시간을 정하고 상품 공급·배송 가능 여부·추가비용을 상담하세요.",
+    "cardSummary": "산 안의 장소는 지도에 표시된 목적지와 꽃을 실제로 건넬 지점이 다를 수 있어요. 받는 분과 운반 방법을 먼저 정한 뒤 상품을 선택하세요.",
+    "firstAnswer": "북한동 꽃배달은 받는 건물의 정확한 이름·주소와 꽃을 인계할 수 있는 지점을 먼저 알려주세요. 북한동은 북한산국립공원 안에 있어 목적지별 접근·수령 조건 확인이 중요합니다. 꽃이랑에서 상품 공급과 배송 가능 여부, 받을 시간, 추가배송비를 포함한 총액을 확인한 뒤 주문해 주세요.",
+    "contentMarkdown": "북한동 꽃배달은 받는 건물의 정확한 이름·주소와 꽃을 인계할 수 있는 지점을 먼저 알려주세요. 북한동은 북한산국립공원 안에 있어 목적지별 접근·수령 조건 확인이 중요합니다. 꽃이랑에서 상품 공급과 배송 가능 여부, 받을 시간, 추가배송비를 포함한 총액을 확인한 뒤 주문해 주세요.\n\n## 목적지 이름과 실제 인계 지점을 나누어 준비하세요\n\n[고양시 효자동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_18/dong01_4_18_tab1.jsp)는 법정동 북한동 전체가 북한산국립공원에 편입되어 있다고 안내합니다. 산 이름이나 탐방로 이름만으로 꽃을 받을 곳을 지정하기보다, 받는 건물의 명칭과 주소를 먼저 확인해 주세요.\n\n목적지까지 차량이 갈 수 있는지, 허용된 길에서 사람이 받아 옮겨야 하는지, 어느 지점에서 만날 수 있는지는 해당 장소의 안내를 확인해야 합니다. 공원 안이라는 이유만으로 모든 곳의 진입 조건을 같게 정할 수는 없습니다. 출입이 제한된 길로 들어가는 것을 전제로 시간이나 비용을 잡지 말고, 이용 가능한 인계 방법을 먼저 상담해 주세요.\n\n## 꽃을 받은 뒤 누가 어디까지 옮길까요?\n\n모임을 준비하는 분이 꽃을 받을 계획이라면 연락 가능한 담당자와 만날 시간을 정해 주세요. 현장에 도착해도 담당자가 다른 장소에 있거나 이동 중이면 인계가 어려울 수 있습니다. 실내까지 가져갈 사람과 꽃을 놓아둘 자리가 마련되어 있는지도 확인하면 상품을 고르기 쉽습니다.\n\n직접 들고 이동해야 한다면 크고 무거운 형태를 먼저 정하기보다 운반에 맞는 규격을 문의해 주세요. 길이나 날씨에 따른 무리한 이동을 피하고, 합의한 장소에서 받을 수 있는 조건을 기준으로 주문을 결정하는 것이 좋습니다. 대형 화환의 반입·배치 가능 여부도 시설 담당자 확인이 필요합니다.\n\n## 이동과 보관 계획에 맞춰 꽃을 고르세요\n\n손으로 건네는 꽃다발 '소소한 행복'(G105)은 기본 표시가격 50,000원입니다. 인계 뒤 들고 이동할 일정이 있다면 희망 크기와 포장 형태를 알려주세요. 실내에서 바로 놓고 감상할 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 비교하실 수 있습니다.\n\n상품사진만으로 정확한 크기나 운반 편의성을 확정하지 말고, 이동 거리와 받을 방법을 설명한 뒤 적합한 형태인지 상담해 주세요. 꽃을 오래 야외에 두지 않도록 인계 시간을 정하는 편이 좋습니다. 지역·계절에 따라 실제 꽃 구성과 형태가 일부 달라질 수 있으며 해당 날짜의 공급도 확인해야 합니다.\n\n## 결제 전에 확인할 북한동 주문 조건\n\n- 받는 건물명과 도로명주소, 장소를 찾는 데 필요한 보조 설명\n- 현장에서 허용하는 접근 방법과 합의된 인계 지점\n- 수령 담당자의 연락처와 실제로 받을 수 있는 날짜·시간대\n- 원하는 상품·규격·예산과 카드 문구\n\n위 상품가는 기본 표시가격입니다. 북한동의 구체적인 목적지와 수령 방법을 확인한 뒤 배송 가능 여부, 지역별 추가배송비와 최종 총액을 안내받아 주세요. 특정 시간 안 도착이나 산 안 모든 주소의 배송을 미리 약속하지 않습니다.\n\n[1844-0644로 북한동 꽃배달 상담](tel:18440644)은 08:00~23:00입니다. [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있지만, 북한동 목적지는 접근·인계 조건을 먼저 전화로 확인하시는 것이 좋습니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 효자동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_18/dong01_4_18_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 효자동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_18/dong01_4_18_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
