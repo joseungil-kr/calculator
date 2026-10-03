@@ -93,7 +93,9 @@ def verify(root, origin, revision, fetch, naver_verification="", indexnow_key=""
         assert f"<loc>{origin}{route}</loc>" in sitemap, f"Missing sitemap route {route}"
     status, body, headers = response("/site-factory-live-qa-definitely-not-found/")
     assert status == 404 and "페이지를 찾을 수 없습니다" in body
-    assert "noindex" in headers.get("x-robots-tag", "").lower(), "404 missing X-Robots-Tag noindex"
+    not_found = Document(body)
+    assert "noindex" in not_found.metas.get("robots", "").lower(), "404 missing noindex meta"
+    assert not not_found.canonicals and "application/ld+json" not in body, "404 has canonical or product schema"
     return {"pipelineState": "live_verified", "revision": revision, "origin": origin, "routes": len(routes), "manifestPages": len(manifest["pages"]), "htmlSha256": fingerprint.hexdigest()}
 
 
