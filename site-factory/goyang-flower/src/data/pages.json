@@ -2792,5 +2792,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsanseo-ilsan",
+    "snapshotId": "goyang-ilsanseo-ilsan-r1-20261003T182200Z",
+    "snapshotHash": "628913c5df253268a6addb01c0217c3de7b29793b7532d2e654e323c467bc067",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsanseo-ilsan-r1",
+    "sourceRecordId": "recccULd5jYbf3YKc",
+    "publishQueueRecordId": "recFR4oebCB2LaJox",
+    "slug": "ilsanseo-ilsan",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsanseo-ilsan/",
+    "title": "일산동 꽃배달 | 원일산·후곡마을 주소와 꽃선물 주문",
+    "primaryKeyword": "일산동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 36,
+    "h1": "일산동 꽃배달, 원일산과 후곡마을의 받을 곳을 정확히 알려주세요",
+    "description": "일산 전역과 일산서구 일산동을 구분하고 원일산 매장·후곡마을 가정의 주소를 준비하세요. 단지·부서·영업시간에 맞는 꽃다발·바구니 선택과 기본 가격을 안내합니다.",
+    "cardSummary": "“일산으로”라는 말 다음에 구·동과 건물주소를 적어주세요. 후곡마을 집 선물과 원일산 매장 선물은 받을 사람과 시간을 다르게 정해야 합니다.",
+    "firstAnswer": "일산동 꽃배달은 고양시 일산서구 일산동의 실제 도로명주소를 알려 꽃이랑에 주문해 주세요. 후곡마을 아파트는 단지·동·호수, 원일산 매장은 상호와 층·호수 및 받을 담당자를 준비하시면 됩니다. 꽃다발·바구니의 용도와 희망일시를 전해 배송 가능 여부, 추가비용을 포함한 총액을 확인하세요.",
+    "contentMarkdown": "일산동 꽃배달은 고양시 일산서구 일산동의 실제 도로명주소를 알려 꽃이랑에 주문해 주세요. 후곡마을 아파트는 단지·동·호수, 원일산 매장은 상호와 층·호수 및 받을 담당자를 준비하시면 됩니다. 꽃다발·바구니의 용도와 희망일시를 전해 배송 가능 여부, 추가비용을 포함한 총액을 확인하세요.\n\n## ‘일산으로’라는 안내를 실제 주소로 바꿔주세요\n\n[고양특례시 일산1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_4/dong01_6_4_tab1.jsp)는 일산1동을 원일산 또는 본일산이라고도 부른다고 안내하고, [고양특례시 일산3동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_6/dong01_6_6_tab1.jsp)는 후곡마을의 아파트 주거지역을 설명합니다. 넓은 일산 지역을 말하는 것인지 법정동 일산동 주소인지 혼동하지 않도록 주문에는 고양시 일산서구와 도로명 건물번호까지 적어주세요.\n\n예전 마을 이름이나 가까운 역을 길 안내에 덧붙일 수는 있지만 그 이름으로 받는 집을 특정할 수는 없습니다. 후곡마을이라면 실제 단지명과 동·호수, 원일산 매장이라면 상호·건물명·층·호수를 함께 알려주세요.\n\n## 후곡마을 가정 선물은 외출 전후 시간을 확인하세요\n\n생신이나 기념일 꽃을 집으로 보낼 때는 재실 가족을 먼저 정해 주세요. 행사나 약속으로 모두 외출하는 날에는 귀가 후에 받을 수 있는 시간을 상담하는 편이 좋습니다. 관리실이나 공동현관 앞에서 맡아줄 수 있는지는 해당 건물과 받는 분에게 확인해야 합니다.\n\n햇살 한가득(A155) 꽃바구니의 기본 표시가격은 65,000원입니다. 가족이 집에서 감상할 선물을 고른다면 식탁·선반 등 실제 둘 공간을 생각해 보세요. 카드에는 가족의 호칭과 보내는 분 이름을 정확히 준비하면 좋습니다.\n\n## 매장이나 사무실은 영업 중에도 받을 담당자가 필요합니다\n\n원일산의 매장에 꽃을 보낸다면 문 여는 시간과 꽃을 받을 사람이 있는 시간을 따로 확인해 주세요. 받는 분이 고객 응대나 외근으로 자리를 비운다면 대신 받을 담당자를 미리 정하는 것이 좋습니다. 개업 축하인 경우에는 새 간판의 상호와 카드·리본에 쓸 이름도 대조해 주세요.\n\n퇴근 후 꽃을 가져갈 계획이나 직접 만나 전할 선물이라면 소소한 행복(G105) 꽃다발, 기본 표시가격 50,000원도 비교할 수 있습니다. 같은 예산이라도 놓고 감상할 바구니와 들고 이동할 다발은 선택 기준이 다릅니다.\n\n## 일정·구성과 총액을 함께 정하세요\n\n원하는 꽃이나 색감은 공급 가능 여부를 확인한 뒤 정하며 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다. 배송지별 추가배송비가 발생할 수 있어 상품 기본 표시가격과 최종 총액을 구분해 확인해 주세요.\n\n[꽃이랑 1844-0644 전화 주문](tel:18440644)은 08:00-23:00, [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 받는 주소와 희망 날짜·시각을 알려 배송 가능 여부를 상담해 주세요. 주문을 접수한 시간만으로 당일이나 특정 시각 도착이 확정되지는 않습니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 일산1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_4/dong01_6_4_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 일산3동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_6/dong01_6_6_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 일산1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_4/dong01_6_4_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

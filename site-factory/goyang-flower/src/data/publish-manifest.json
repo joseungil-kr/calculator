@@ -629,6 +629,24 @@
       "pageType": "regional-service",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsanseo-ilsan",
+      "snapshotId": "goyang-ilsanseo-ilsan-r1-20261003T182200Z",
+      "snapshotHash": "628913c5df253268a6addb01c0217c3de7b29793b7532d2e654e323c467bc067",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsanseo-ilsan-r1",
+      "sourceRecordId": "recccULd5jYbf3YKc",
+      "publishQueueRecordId": "recFR4oebCB2LaJox",
+      "slug": "ilsanseo-ilsan",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsanseo-ilsan/",
+      "title": "일산동 꽃배달 | 원일산·후곡마을 주소와 꽃선물 주문",
+      "primaryKeyword": "일산동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,
@@ -808,6 +826,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-seonyu",
       "snapshotHash": "3558ed2c09116c41d6576a0c26948bd26c6f7fec13e7aefb3d484c7c08fd9776",
       "publishQueueRecordId": "recSW9GXu6PcGpYFt"
+    },
+    "goyang-ilsanseo-ilsan-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-ilsanseo-ilsan",
+      "snapshotHash": "628913c5df253268a6addb01c0217c3de7b29793b7532d2e654e323c467bc067",
+      "publishQueueRecordId": "recFR4oebCB2LaJox"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
