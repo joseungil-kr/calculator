@@ -73,6 +73,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-hyangdong",
+      "snapshotId": "goyang-deogyang-hyangdong-r1-20261003T182200Z",
+      "snapshotHash": "b190ee1d680d106effae4e0261cb712ffc84901637d5574be24f2f81a8d4f0a8",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-hyangdong-r1",
+      "sourceRecordId": "rechHXjFKJJtbpbft",
+      "publishQueueRecordId": "recbWW7D62jQOC4mT",
+      "slug": "deogyang-hyangdong",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-hyangdong/",
+      "title": "향동동 꽃배달 | 공동주택·업무동 구분과 선물 주문",
+      "primaryKeyword": "향동동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
       "snapshotId": "goyang-janghang-r1-20261003T084627Z",
       "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
@@ -118,6 +136,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-haengjuoe",
       "snapshotHash": "d80e7c1fb0c096233efda167adaffcd36d441110a629a0935fe8a9bdb749a811",
       "publishQueueRecordId": "recKfscyqfkdvtYN0"
+    },
+    "goyang-deogyang-hyangdong-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-hyangdong",
+      "snapshotHash": "b190ee1d680d106effae4e0261cb712ffc84901637d5574be24f2f81a8d4f0a8",
+      "publishQueueRecordId": "recbWW7D62jQOC4mT"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
