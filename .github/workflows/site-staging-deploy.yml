@@ -73,8 +73,12 @@ jobs:
               match=re.fullmatch(r'([a-z0-9]+)-flower-v2',key)
               if not match:raise SystemExit('Invalid isolated v2 identity')
               region=match.group(1)
+              paused=site.get('productionEnabled') is False and site.get('launchMode')=='staging'
+              approved_live=(key=='seongnam-flower-v2' and site.get('productionEnabled') is True
+                             and site.get('launchMode')=='live')
+              if not (paused or approved_live):
+                  raise SystemExit('Isolated v2 launch policy mismatch')
               if (site.get('templateKey')!='flower-local-v2' or site.get('snapshotRenderer')!='structured-json-v12'
-                  or site.get('productionEnabled') is not False or site.get('launchMode')!='staging'
                   or site.get('growthPaused') is not True or site.get('autoDeploySnapshots') is not False
                   or site.get('requireRevisionApproval') is not True or site.get('requireSnapshotApproval') is not True
                   or site.get('indexnowKey')!='' or site.get('naverVerification')!=''
@@ -107,7 +111,7 @@ jobs:
           git -C target archive "$REVISION:$ROOT" | tar -xf - -C preview-build
       - name: Assert preview cannot route onto production
         working-directory: ${{ steps.target.outputs.build_root }}
-        env: {CONFIG: "${{ steps.target.outputs.config }}", ISOLATED: "${{ steps.target.outputs.isolated }}", STAGING_WORKER: "${{ steps.target.outputs.staging_worker }}"}
+        env: {CONFIG: "${{ steps.target.outputs.config }}", ISOLATED: "${{ steps.target.outputs.isolated }}", STAGING_WORKER: "${{ steps.target.outputs.staging_worker }}", SITE_KEY: "${{ steps.target.outputs.site_key }}"}
         run: |
           python3 - <<'PYTHON'
           import json,os
@@ -118,7 +122,8 @@ jobs:
           if os.environ['ISOLATED']=='true':
               assert s['name']==os.environ['STAGING_WORKER'] and p['name']==s['name'].replace('-guide-qa','-prod-disabled')
               assert 'route' not in s and 'routes' not in s and 'triggers' not in s
-              assert json.load(open('src/data/site-config.json'))['productionApproved'] is False
+              if os.environ['SITE_KEY']!='seongnam-flower-v2':
+                  assert json.load(open('src/data/site-config.json'))['productionApproved'] is False
           PYTHON
       - uses: actions/setup-node@v4
         with: {node-version: 22}
