@@ -13,6 +13,19 @@ const makePage = (unit = coverage.units[0]) => ({
 const makeArchitecture = page => ({siteKey:'goyang-flower-v2', pages:[{
   ...page, pageRole:'REGION_SERVICE_LANDING', parentHub:'/regions/', localizationPolicy:'local-required'
 }]});
+// Isolate the historical canary in memory; real approved region snapshots may grow.
+const loadCanaryFixture = () => {
+  const data=loadGraph(), key='goyang-flower-v2-ilsan-paik-funeral-wreath';
+  data.pages=data.pages.filter(page=>page.pageKey===key);
+  for(const collection of [data.manifest,data.map,data.architecture]) {
+    collection.pages=collection.pages.filter(page=>page.pageKey===key);
+    if(collection.snapshotLedger) collection.snapshotLedger=Object.fromEntries(
+      Object.entries(collection.snapshotLedger).filter(([,snapshot])=>snapshot.pageKey===key));
+  }
+  for(const hub of data.architecture.hubs)
+    hub.children=data.pages.filter(page=>page.category===hub.category).length;
+  return data;
+};
 
 test('official input retains legal and administrative bases without double counting', () => {
   validateRegionDefinition(coverage);
@@ -42,7 +55,7 @@ test('empty official list, duplicate route, cross-district and unknown relation 
 });
 test('empty regional input creates no groups or planned links', () => {
   assert.deepEqual(regionGroups([],coverage),[]);
-  assert.deepEqual(regionGroups(loadGraph().pages,coverage),[]);
+  assert.deepEqual(regionGroups(loadCanaryFixture().pages,coverage),[]);
 });
 test('only actual approved pages appear under their district', () => {
   const page=makePage();const groups=regionGroups([page],coverage);
@@ -86,7 +99,7 @@ test('regional product promises reject the opposite wreath family in both direct
 test('whole graph rejects regional keyword versus wreath visual-intent contradictions', () => {
   // In-memory fixture only: no Draft, snapshot, catalog or real content is changed.
   const graph=(primaryKeyword,visualIntent)=>{
-    const data=loadGraph();
+    const data=loadCanaryFixture();
     const page={...makePage(),primaryKeyword,visualIntent,title:primaryKeyword,h1:primaryKeyword,
       description:'Synthetic graph test description',cardSummary:'Synthetic graph test card',
       firstAnswer:'Synthetic graph test answer',source:{url:coverage.officialSourceUrls[0],verifiedAt:coverage.verifiedAt}};
@@ -102,7 +115,13 @@ test('whole graph rejects regional keyword versus wreath visual-intent contradic
   assert.throws(()=>validateGraph(graph('강매동축하화환','funeral_wreath')),/contradicts promised wreath family/);
 });
 test('unchanged frozen canary graph remains valid with no regional content', () => {
-  const data=loadGraph();assert.deepEqual(validateGraph(data),{pages:1,hubs:1});
+  const data=loadCanaryFixture();assert.deepEqual(validateGraph(data),{pages:1,hubs:1});
   assert.equal(data.manifest.snapshotLedger['goyang-ilsan-paik-r2-20261002T040830'].snapshotHash,
     '1419cc48f44a3618cbc365ac7f3796d4cd35dc5522eeff655a22f4caadfbdf10');
+});
+test('all current frozen snapshots remain valid as approved coverage grows', () => {
+  const data=loadGraph();
+  assert.deepEqual(validateGraph(data),{
+    pages:data.pages.length,hubs:new Set(data.pages.map(page=>page.category)).size
+  });
 });
