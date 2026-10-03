@@ -329,8 +329,8 @@
       "stagingUrl": "https://seongnam-flower-guide-qa.joseungil.workers.dev",
       "requireRevisionApproval": true,
       "requireSnapshotApproval": true,
-      "approvedRevision": "02f70b37648332606f570d8435b78e34c55331bf",
-      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/117#issuecomment-5965375767",
+      "approvedRevision": "e1d187856a0e88cd7c21fc5a06f81742f32c2143",
+      "approvalEvidenceUrl": "https://github.com/joseungil-kr/fwith-site-factory/issues/119#issuecomment-5967075739",
       "stagingBuildIsolation": true,
       "stagingWorker": "seongnam-flower-guide-qa"
     }
