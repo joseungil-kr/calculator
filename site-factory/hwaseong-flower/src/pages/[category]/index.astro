@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import RegionalHub from '../../components/RegionalHub.astro';
+import {regionalPages} from '../../lib/regional-runtime.mjs';
 import HubIndex from '../../components/HubIndex.astro';
 import architecture from '../../data/architecture.json';
 import { siteConfig } from '../../config/site';
@@ -43,7 +45,7 @@ const categoryMeta = {
   },
 } as const;
 
-type Category = keyof typeof categoryMeta;
+type Category = keyof typeof categoryMeta | 'regions';
 
 export async function getStaticPaths() {
   const activePageKeys = new Set(
@@ -61,16 +63,16 @@ export async function getStaticPaths() {
   const allowedCategories = new Set(['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help']);
   const categories = [...new Set(articles.map((article) => article.data.category))]
     .filter((category) => allowedCategories.has(category)) as Category[];
-  return categories.map((category) => ({ params: { category }, props: { category } }));
+  return [...categories, ...(regionalPages.length ? ['regions'] : [])].map((category) => ({ params: { category }, props: { category } }));
 }
 
 const { category } = Astro.props as { category: Category };
-const meta = categoryMeta[category];
+const meta = category==='regions' ? null : categoryMeta[category];
 ---
-<HubIndex
+{category==='regions' ? <RegionalHub/> : <HubIndex
   category={category}
-  eyebrow={meta.eyebrow}
-  title={meta.title}
-  intro={meta.intro}
-  description={meta.description}
-/>
+  eyebrow={meta!.eyebrow}
+  title={meta!.title}
+  intro={meta!.intro}
+  description={meta!.description}
+/>}

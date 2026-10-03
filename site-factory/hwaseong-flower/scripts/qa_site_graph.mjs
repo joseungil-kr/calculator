@@ -98,7 +98,7 @@ for (const [route, count] of inbound) {
 
 const manifest = JSON.parse(readFileSync('src/data/publish-manifest.json', 'utf8'));
 const approved = (manifest.pages || []).filter(p => ['approved','published'].includes(p.status));
-const hubCategories = ['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help'];
+const hubCategories = ['guide', 'funeral', 'places', 'occasions', 'flower-knowledge', 'order-help', 'regions'];
 const hubStats = [];
 for (const category of hubCategories) {
   const children = approved.filter(p => p.routeType === 'category' && p.category === category);

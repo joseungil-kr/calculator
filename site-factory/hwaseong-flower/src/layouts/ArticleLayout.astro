@@ -24,7 +24,7 @@ type ArchitectureEntry = {
 type SourceRef = {
   name: string;
   url: string;
-  type?: 'official' | 'facility' | 'education' | 'professional' | 'reference';
+  type?: 'official' | 'facility' | 'education' | 'professional' | 'business' | 'reference';
   verifiedAt?: Date;
 };
 
@@ -85,6 +85,7 @@ const {
 } = Astro.props;
 
 const categoryLabel: Record<string, string> = {
+  regions: '지역별',
   guide: '꽃 선택',
   funeral: '장례식장',
   places: '장소별',
@@ -192,6 +193,7 @@ const normalizedSources = sources.length
       name: source.name,
       url: source.url,
       typeLabel: {
+        business: '업체 공식자료',
         official: '공식기관',
         facility: '시설 공식자료',
         education: '교육기관',

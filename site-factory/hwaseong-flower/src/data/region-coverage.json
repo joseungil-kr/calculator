@@ -1,0 +1,1074 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "hwaseong-flower",
+  "scopeKey": "hwaseong-flower-dong-maintenance-20261003",
+  "unitBasis": "legal-dong-plus-eup-myeon",
+  "verifiedAt": "2026-10-03",
+  "sourceBasisDate": "2026-02-01; current official page, no explicit effective date; current official page, no explicit effective date",
+  "countIsPageQuota": false,
+  "officialSourceUrls": [
+    "https://www.hscity.go.kr/www/intro/gnrlSttus/administzone.jsp",
+    "https://www.hscity.go.kr/office/intro.jsp",
+    "https://www.hscity.go.kr/www/user/bbs/BD_selectBbs.do?q_bbsCode=1019&q_bbscttSn=20260106145941632"
+  ],
+  "districts": [
+    {
+      "key": "manse",
+      "name": "만세구",
+      "sourceUrl": "https://www.hscity.go.kr/www/intro/gnrlSttus/administzone.jsp"
+    },
+    {
+      "key": "hyohang",
+      "name": "효행구",
+      "sourceUrl": "https://www.hscity.go.kr/www/intro/gnrlSttus/administzone.jsp"
+    },
+    {
+      "key": "byeongjeom",
+      "name": "병점구",
+      "sourceUrl": "https://www.hscity.go.kr/www/intro/gnrlSttus/administzone.jsp"
+    },
+    {
+      "key": "dongtan",
+      "name": "동탄구",
+      "sourceUrl": "https://www.hscity.go.kr/www/intro/gnrlSttus/administzone.jsp"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "화성시/읍/우정읍",
+      "name": "우정읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "원안리",
+        "호곡리",
+        "운평리",
+        "한각리",
+        "멱우리",
+        "화수리",
+        "주곡리",
+        "이화리",
+        "석천리",
+        "매향리",
+        "화산리",
+        "조암리",
+        "국화리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/읍/향남읍",
+      "name": "향남읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "평리",
+        "발안리",
+        "제암리",
+        "상신리",
+        "구문천리",
+        "하길리",
+        "화리현리",
+        "상두리",
+        "백토리",
+        "길성리",
+        "요리",
+        "수직리",
+        "갈천리",
+        "증거리",
+        "송곡리",
+        "동오리",
+        "관리",
+        "도이리",
+        "행정리",
+        "방축리",
+        "장짐리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/읍/남양읍",
+      "name": "남양읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "남양리",
+        "신남리",
+        "장덕리",
+        "안석리",
+        "활초리",
+        "온석리",
+        "무송리",
+        "북양리",
+        "송림리",
+        "수화리",
+        "장전리",
+        "신외리",
+        "문호리",
+        "시리",
+        "원천리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/마도면",
+      "name": "마도면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "석교리",
+        "두곡리",
+        "송정리",
+        "쌍송리",
+        "청원리",
+        "슬항리",
+        "해문리",
+        "백곡리",
+        "금당리",
+        "고모리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/송산면",
+      "name": "송산면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "사강리",
+        "봉가리",
+        "삼존리",
+        "용포리",
+        "고정리",
+        "쌍정리",
+        "천등리",
+        "신천리",
+        "독지리",
+        "마산리",
+        "고포리",
+        "지화리",
+        "중송리",
+        "육일리",
+        "칠곡리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/서신면",
+      "name": "서신면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "전곡리",
+        "상안리",
+        "광평리",
+        "장외리",
+        "송교리",
+        "제부리",
+        "홍법리",
+        "사곶리",
+        "매화리",
+        "용두리",
+        "궁평리",
+        "백미리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/팔탄면",
+      "name": "팔탄면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "하저리",
+        "창곡리",
+        "기천리",
+        "가재리",
+        "구장리",
+        "율암리",
+        "노하리",
+        "덕천리",
+        "지월리",
+        "덕우리",
+        "서근리",
+        "월문리",
+        "화당리",
+        "고주리",
+        "매곡리",
+        "해창리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/장안면",
+      "name": "장안면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "어은리",
+        "석포리",
+        "수촌리",
+        "독정리",
+        "장안리",
+        "덕다리",
+        "사랑리",
+        "금의리",
+        "사곡리",
+        "노진리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/양감면",
+      "name": "양감면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [
+        "신왕리",
+        "사창리",
+        "정문리",
+        "송산리",
+        "용소리",
+        "요당리",
+        "대양리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/새솔동",
+      "name": "새솔동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "manse"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/읍/봉담읍",
+      "name": "봉담읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [
+        "상리",
+        "내리",
+        "수영리",
+        "동화리",
+        "와우리",
+        "수기리",
+        "분천리",
+        "왕림리",
+        "세곡리",
+        "당하리",
+        "마하리",
+        "유리",
+        "덕리",
+        "덕우리",
+        "하가등리",
+        "상기리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/매송면",
+      "name": "매송면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [
+        "천천리",
+        "원평리",
+        "어천리",
+        "숙곡리",
+        "야목리",
+        "송라리",
+        "원리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/비봉면",
+      "name": "비봉면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [
+        "양노리",
+        "남전리",
+        "유포리",
+        "삼화리",
+        "구포리",
+        "쌍학리",
+        "청요리",
+        "자안리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/면/정남면",
+      "name": "정남면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [
+        "발산리",
+        "괘랑리",
+        "보통리",
+        "관항리",
+        "오일리",
+        "백리",
+        "문학리",
+        "신리",
+        "계향리",
+        "귀래리",
+        "제기리",
+        "덕절리",
+        "음양리",
+        "망월리",
+        "수면리",
+        "내리",
+        "금복리",
+        "고지리",
+        "용수리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/배양동",
+      "name": "배양동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/기안동",
+      "name": "기안동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "hyohang"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/진안동",
+      "name": "진안동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/능동",
+      "name": "능동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom",
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "병점구/동탄구 양쪽 공식 이름 대응; 각 구 법정코드·필지경계 미확정. 하나의 구매의도로 통합 검토하며 특정 구만 단정 금지.",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/기산동",
+      "name": "기산동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/반정동",
+      "name": "반정동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/병점동",
+      "name": "병점동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/반월동",
+      "name": "반월동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/황계동",
+      "name": "황계동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/송산동",
+      "name": "송산동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/안녕동",
+      "name": "안녕동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "byeongjeom"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/반송동",
+      "name": "반송동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/석우동",
+      "name": "석우동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/청계동",
+      "name": "청계동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/영천동",
+      "name": "영천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/중동",
+      "name": "중동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/오산동",
+      "name": "오산동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/방교동",
+      "name": "방교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/금곡동",
+      "name": "금곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/송동",
+      "name": "송동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/산척동",
+      "name": "산척동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/장지동",
+      "name": "장지동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/목동",
+      "name": "목동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "화성시/법정동/신동",
+      "name": "신동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "dongtan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "aliasKey": "hwaseong/manse/새솔동",
+      "name": "새솔동",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/새솔동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/hyohang/기배동",
+      "name": "기배동",
+      "districtKey": "hyohang",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/배양동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/기안동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/byeongjeom/진안동",
+      "name": "진안동",
+      "districtKey": "byeongjeom",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/진안동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/능동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/기산동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/반정동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/byeongjeom/병점1동",
+      "name": "병점1동",
+      "districtKey": "byeongjeom",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/병점동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/byeongjeom/병점2동",
+      "name": "병점2동",
+      "districtKey": "byeongjeom",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/병점동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/byeongjeom/반월동",
+      "name": "반월동",
+      "districtKey": "byeongjeom",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/반월동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/byeongjeom/화산동",
+      "name": "화산동",
+      "districtKey": "byeongjeom",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/황계동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/송산동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/안녕동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄1동",
+      "name": "동탄1동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/반송동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/석우동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄2동",
+      "name": "동탄2동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/반송동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄3동",
+      "name": "동탄3동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/능동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄4동",
+      "name": "동탄4동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/청계동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄5동",
+      "name": "동탄5동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/영천동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/중동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄6동",
+      "name": "동탄6동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/오산동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/방교동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/금곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄7동",
+      "name": "동탄7동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/송동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/산척동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄8동",
+      "name": "동탄8동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/장지동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/dongtan/동탄9동",
+      "name": "동탄9동",
+      "districtKey": "dongtan",
+      "relations": [
+        {
+          "unitKey": "화성시/법정동/목동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "화성시/법정동/신동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "hwaseong/manse/우정읍",
+      "name": "우정읍",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/읍/우정읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/향남읍",
+      "name": "향남읍",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/읍/향남읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/남양읍",
+      "name": "남양읍",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/읍/남양읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/마도면",
+      "name": "마도면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/마도면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/송산면",
+      "name": "송산면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/송산면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/서신면",
+      "name": "서신면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/서신면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/팔탄면",
+      "name": "팔탄면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/팔탄면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/장안면",
+      "name": "장안면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/장안면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/manse/양감면",
+      "name": "양감면",
+      "districtKey": "manse",
+      "relations": [
+        {
+          "unitKey": "화성시/면/양감면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/hyohang/봉담읍",
+      "name": "봉담읍",
+      "districtKey": "hyohang",
+      "relations": [
+        {
+          "unitKey": "화성시/읍/봉담읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/hyohang/매송면",
+      "name": "매송면",
+      "districtKey": "hyohang",
+      "relations": [
+        {
+          "unitKey": "화성시/면/매송면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/hyohang/비봉면",
+      "name": "비봉면",
+      "districtKey": "hyohang",
+      "relations": [
+        {
+          "unitKey": "화성시/면/비봉면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "hwaseong/hyohang/정남면",
+      "name": "정남면",
+      "districtKey": "hyohang",
+      "relations": [
+        {
+          "unitKey": "화성시/면/정남면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    }
+  ],
+  "representatives": [
+    {
+      "pageKey": "hwaseong-flower-region-manse-saesol",
+      "unitKeys": [
+        "화성시/법정동/새솔동"
+      ],
+      "slug": "manse-saesol",
+      "url": "/regions/manse-saesol/",
+      "intentKey": "hwaseong|flower-delivery|local-order|새솔동",
+      "primaryKeyword": "새솔동 꽃배달",
+      "routeMode": "regional",
+      "status": "candidate",
+      "queryEvidence": "Explicit user request to repair missing local coverage, official name/crosswalk and an inferred local-order need; no volume or independent demand claimed. Full buyer-intent/local-fact review remains required."
+    }
+  ],
+  "caveats": [
+    "법정동명 25개는 시 전체 이름 중복을 제거한 집계이며, 구를 포함한 코드의 개수라고 주장하지 않음. 공식 HWP는 능동을 진안동(병점구)과 동탄3동(동탄구) 양쪽에 기재하나 동탄구 소계에서 13개로 표기하여 중복을 제외하는 방식. 능동의 구별 코드·필지 경계는 미검증.",
+    "하나의 능동 페이지에서 병점구 진안동 관할 부분과 동탄구 동탄3동 관할 부분을 구분하거나 공식 코드 확인 후 구별 URL 정책을 정할 것. 구를 임의로 하나로 고정하지 말 것.",
+    "송산면과 법정동 송산동은 별개. 화산동(행정동)과 우정읍 화산리, 남양읍과 과거 남양동, 서신면과 법정동 신동을 혼동하지 말 것.",
+    "행정동 동탄1~9동은 법정동과 다른 구분. 합산해 독립 지역 수를 부풀리지 않음."
+  ]
+}

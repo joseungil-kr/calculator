@@ -33,6 +33,7 @@ export const siteConfig = {
     email: 'webmaster@interpiad.com',
   },
   nav: [
+    { href: '/regions/', label: '지역별', category: 'regions', menuMinChildren: 5 },
     { href: '/화성꽃배달/', label: '화성 꽃배달', kind: 'core' },
     { href: '/guide/', label: '꽃 선택', category: 'guide', menuMinChildren: 5 },
     { href: '/funeral/', label: '장례식장', category: 'funeral', menuMinChildren: 5 },
