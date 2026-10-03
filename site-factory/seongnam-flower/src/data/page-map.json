@@ -199,6 +199,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-lh-ori-wedding-wreath",
+      "snapshotId": "seongnam-lh-ori-wedding-wreath-r1-20261003T000000Z",
+      "snapshotHash": "b0c32e011b845a05c3c33713df1522018972d326b546316a83b0edf7a69b0273",
+      "approvalVerified": true,
+      "draftKey": "seongnam-lh-ori-wedding-wreath-r1",
+      "sourceRecordId": "rec81R04qgETvELOn",
+      "publishQueueRecordId": "recSVrUiujg7dkh7E",
+      "slug": "seongnam-lh-ori-wedding-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-lh-ori-wedding-wreath/",
+      "title": "LH 오리사옥 예식장 화환 | 성남 주소·로비 수령과 주문",
+      "primaryKeyword": "LH 오리사옥 예식장 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-ncsoft-convention-wedding-wreath",
       "snapshotId": "seongnam-ncsoft-convention-wedding-wreath-r1-20261003T000000Z",
       "snapshotHash": "7a6270dcb613f004f75b2faae7834f1990f6e0740fafa7504d1c1afb97b2ec31",
