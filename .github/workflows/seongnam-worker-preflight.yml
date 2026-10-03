@@ -2,6 +2,13 @@ name: Seongnam Worker Read-only Preflight
 
 on:
   workflow_dispatch:
+    inputs:
+      site_key:
+        description: Exact supported region to inspect
+        required: true
+        default: seongnam-flower-v2
+        type: choice
+        options: [seongnam-flower-v2, bucheon-flower-v2]
 permissions:
   contents: read
 concurrency:
@@ -22,6 +29,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SITE_KEY: ${{ inputs.site_key || 'seongnam-flower-v2' }}
         shell: bash
         run: |
           python3 - <<'PY'
@@ -46,6 +54,8 @@ jobs:
               'accountHttpStatus': None,
               'scriptsHttpStatus': None,
               'exists': None,
+              'workerName': None,
+              'checkedNames': {},
           }
           token = os.environ.get('CLOUDFLARE_API_TOKEN', '')
           account = os.environ.get('CLOUDFLARE_ACCOUNT_ID', '')
@@ -83,6 +93,13 @@ jobs:
               if (not token or token != token.strip() or '\r' in token or '\n' in token
                       or re.fullmatch(r'[0-9a-fA-F]{32}', account) is None):
                   raise ValueError()
+              names = {
+                  'seongnam-flower-v2': ['seongnam-flower-guide-qa'],
+                  'bucheon-flower-v2': ['bucheon-flower-guide-qa', 'bucheon-flower-prod-disabled'],
+              }.get(os.environ.get('SITE_KEY'))
+              if names is None:
+                  raise ValueError()
+              report['workerName'] = names[0]
               payload = transport('GET', account_path)
               result = payload.get('result')
               if not isinstance(result, dict) or result.get('id') != account:
@@ -91,7 +108,8 @@ jobs:
               rows = single_page(transport, scripts_path)
               if any(not isinstance(row.get('id'), str) or not row['id'] for row in rows):
                   raise ValueError()
-              report['exists'] = any(row['id'] == 'seongnam-flower-guide-qa' for row in rows)
+              report['checkedNames'] = {name: any(row['id'] == name for row in rows) for name in names}
+              report['exists'] = any(report['checkedNames'].values())
           except Exception:
               # HTTP/auth errors, malformed or incomplete results remain unknown, never absent.
               pass
@@ -102,3 +120,4 @@ jobs:
               summary.write(safe_report + '\n')
           raise SystemExit(0 if report['accountVerified'] and report['exists'] is False else 1)
           PY
+
