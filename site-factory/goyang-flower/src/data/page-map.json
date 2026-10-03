@@ -343,6 +343,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-jugyo",
+      "snapshotId": "goyang-deogyang-jugyo-r1-20261003T182200Z",
+      "snapshotHash": "0517df0a8a9611ff206f6f37799c9c847dae7b9f4a13e683412037108a7ea541",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-jugyo-r1",
+      "sourceRecordId": "recIjnlRZ8ysWDVGy",
+      "publishQueueRecordId": "reccQyGm9QgWrXiyt",
+      "slug": "deogyang-jugyo",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-jugyo/",
+      "title": "주교동 꽃배달 | 원당이라는 이름보다 정확한 수령 주소",
+      "primaryKeyword": "주교동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-naegok",
       "snapshotId": "goyang-deogyang-naegok-r1-20261003T182200Z",
       "snapshotHash": "b0922e40cd7426a5bd7cf6d684b8f364348050f51ada85ee84c4b266a64aae3f",
