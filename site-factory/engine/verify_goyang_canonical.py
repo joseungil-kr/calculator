@@ -35,6 +35,45 @@ def check_binding(transport, account_id):
     return {"state": "goyang_binding_verified", "hostname": HOSTNAME, "worker": WORKER}
 
 
+def check_preview_capabilities(transport, account_id):
+    """GET-only observation. No default-false inference and no upload/enable."""
+    check_binding(transport, account_id)
+
+    def read_object(path):
+        try:
+            payload = transport("GET", path)
+        except HTTPError as error:
+            raise PreflightError("capability_http_error", error.code) from None
+        except Exception:
+            raise PreflightError("capability_request_failed") from None
+        if (not isinstance(payload, dict) or payload.get("success") is not True
+                or payload.get("errors", []) != [] or not isinstance(payload.get("result"), dict)):
+            raise PreflightError("capability_response_invalid")
+        return payload
+
+    prefix = f"/accounts/{account_id}/workers/scripts/{WORKER}"
+    subdomain = read_object(prefix + "/subdomain")["result"]
+    if any(type(subdomain.get(key)) is not bool for key in ("enabled", "previews_enabled")):
+        raise PreflightError("preview_capability_not_observed")
+    payload = read_object(prefix + "/deployments?page=1&per_page=1")
+    deployments, info = payload["result"].get("deployments"), payload.get("result_info", {})
+    # Cloudflare documents the first entry as the deployment serving traffic.
+    # We ask for that one entry, not a supposedly complete history.
+    if (not isinstance(deployments, list) or len(deployments) != 1 or not isinstance(deployments[0], dict)
+            or not isinstance(info, dict) or info.get("page", 1) != 1
+            or info.get("per_page", 1) != 1 or info.get("count", 1) != 1
+            or any(key in info and type(info[key]) is not int for key in ("page", "per_page", "count"))):
+        raise PreflightError("active_deployment_not_observed")
+    deployment = deployments[0]
+    uuid = r"[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}"
+    if not isinstance(deployment.get("id"), str) or not re.fullmatch(uuid, deployment["id"]):
+        raise PreflightError("active_deployment_invalid")
+    return {"state": "goyang_preview_capabilities_observed", "hostname": HOSTNAME, "worker": WORKER,
+            "previews_enabled": subdomain["previews_enabled"], "deployment_id": deployment["id"],
+            "mutations_performed": False}
+
+
+
 class PageParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -118,7 +157,7 @@ def verify_http(opener=urlopen, sleeper=time.sleep):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("binding", "http"))
+    parser.add_argument("mode", choices=("binding", "http", "preview-capabilities"))
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args(argv)
     if args.mode == "http":
@@ -140,14 +179,16 @@ def main(argv=None):
         try:
             if not token:
                 raise PreflightError("missing_credentials")
-            result = check_binding(transport, account)
+            result = check_preview_capabilities(transport, account) if args.mode == "preview-capabilities" else check_binding(transport, account)
         except PreflightError as error:
-            result = {"state": "goyang_binding_failed", "code": error.code}
+            result = {"state": "goyang_preview_capabilities_blocked" if args.mode == "preview-capabilities" else "goyang_binding_failed", "code": error.code}
+            if args.mode == "preview-capabilities":
+                result.update(previews_enabled=None, deployment_id=None, mutations_performed=False)
             if error.status is not None:
                 result["httpStatus"] = error.status
     args.report.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print(result["state"])
-    return int(result["state"] not in {"goyang_binding_verified", "goyang_canonical_noindex_verified"})
+    print(json.dumps(result) if args.mode == "preview-capabilities" else result["state"])
+    return int(result["state"] not in {"goyang_binding_verified", "goyang_canonical_noindex_verified", "goyang_preview_capabilities_observed"})
 
 
 if __name__ == "__main__":
