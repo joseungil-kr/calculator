@@ -3100,5 +3100,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsanseo-juyeop",
+    "snapshotId": "goyang-ilsanseo-juyeop-r1-20261003T182200Z",
+    "snapshotHash": "16c238523be1460278cbcc594fad0fefdb74478870ccd0e43b56c650da8ee5d6",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsanseo-juyeop-r1",
+    "sourceRecordId": "rectEPE2fdpboKvEX",
+    "publishQueueRecordId": "rechGzjhDZWNLvUrb",
+    "slug": "ilsanseo-juyeop",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsanseo-juyeop/",
+    "title": "주엽동 꽃배달 | 강선·문촌마을과 중앙로 상가 꽃 주문",
+    "primaryKeyword": "주엽동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 40,
+    "h1": "주엽동 꽃배달, 강선·문촌마을 선물과 직장 축하를 준비하세요",
+    "description": "강선마을·문촌마을 단지주소와 중앙로 상가의 층·호수를 확인하세요. 가정 재실·직장 담당자, 꽃바구니와 축하화환 선택, 기본 표시가격 및 배송 총액을 안내합니다.",
+    "cardSummary": "같은 동번호라도 강선마을인지 문촌마을인지부터 밝혀주세요. 직장에 두는 꽃바구니와 매장 입구에 세우는 화환의 선택도 다릅니다.",
+    "firstAnswer": "주엽동 꽃배달은 강선마을·문촌마을의 단지와 동·호수 또는 중앙로 상가의 건물·층·호수를 알려 주문해 주세요. 꽃이랑에 가정 재실 시간이나 직장 수령 담당자를 전하고 바구니·화환을 둘 공간을 함께 확인하시면 좋습니다. 희망일의 상품 공급, 배송 가능 시간과 추가비용을 포함한 총액을 상담하세요.",
+    "contentMarkdown": "주엽동 꽃배달은 강선마을·문촌마을의 단지와 동·호수 또는 중앙로 상가의 건물·층·호수를 알려 주문해 주세요. 꽃이랑에 가정 재실 시간이나 직장 수령 담당자를 전하고 바구니·화환을 둘 공간을 함께 확인하시면 좋습니다. 희망일의 상품 공급, 배송 가능 시간과 추가비용을 포함한 총액을 상담하세요.\n\n## 강선마을과 문촌마을, 단지 이름부터 적어주세요\n\n[고양특례시 주엽1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_7/dong01_6_7_tab1.jsp)는 강선마을과 중앙로·주엽역 주변 상가를, [고양특례시 주엽2동 소개](https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_8/dong01_6_8_tab1.jsp)는 문촌마을의 아파트와 상가를 안내합니다. 가정 선물은 ‘주엽동 아파트’나 동번호만 전달하지 말고 마을명, 단지명, 도로명주소와 동·호수를 함께 알려주세요.\n\n상가에서 꽃을 받는다면 단지 주거동과 구분해 건물명·층·점포호수를 적어주시는 것이 좋습니다. 받는 분이 알려준 주소와 실제 간판명도 함께 확인해 주세요.\n\n## 직장에 둘 꽃인가요, 퇴근 후 집으로 가져갈 꽃인가요?\n\n승진·취임을 축하할 때는 받는 분이 꽃을 놓을 자리를 먼저 생각해 보세요. 사무실 책상이나 응접공간에 둘 예정이라면 햇살 한가득(A155) 꽃바구니, 기본 표시가격 65,000원을 비교할 수 있습니다. 카드는 축하 메시지와 보내는 분 이름을 나누어 준비해 주세요.\n\n퇴근 후 가져갈 예정이라면 크기와 이동 방법을 먼저 상담하는 편이 좋습니다. 선물을 직장으로 보낼지 집으로 보낼지에 따라 근무 중 담당자 수령과 가족 재실 수령 중 어느 쪽을 조율할지 달라집니다. 영업 중인 건물이라도 특정 직원이 늘 꽃을 받아줄 수 있다고 가정하지 마세요.\n\n## 중앙로 매장 개업은 입구 공간부터 확인하세요\n\n축하 3단 화환(C200)의 기본 표시가격은 59,000원입니다. 상가 입구나 점포 앞에 세울 꽃이라면 해당 위치에 화환 반입·배치가 가능한지 매장이나 관리 담당자에게 확인해 주세요. 건물 공동통로나 출입문 주변을 임의 설치 장소로 정하지 않는 것이 좋습니다.\n\n리본에 적을 상호·지점명은 매장 간판과 대조하고, 개업이나 이전이라는 목적에 맞는 문구를 준비하세요. 실내 수령만 허용된다면 화환을 고집하기보다 놓을 수 있는 꽃 형태를 담당자와 상의한 뒤 주문하시면 됩니다.\n\n## 상품값만 보지 말고 최종 금액을 확인해 주세요\n\n위 금액은 기본 표시가격으로 지역별 추가배송비가 발생할 수 있습니다. 특정 꽃·색감의 공급과 최종 구성은 주문 시 확인하고, 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다.\n\n[1844-0644 꽃이랑 전화 주문](tel:18440644)은 08:00-23:00, [공식 홈페이지 주문](https://fwith.co.kr)은 24시간 가능합니다. 상세주소와 희망일시, 받을 사람, 상품·문구를 알려 실제 배송 가능 일정과 총액을 상담해 주세요. 접수시간은 배송 완료 약속과 구분됩니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 주엽1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_7/dong01_6_7_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 주엽2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_8/dong01_6_8_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 주엽1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_6/dong01_6_7/dong01_6_7_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

@@ -701,6 +701,24 @@
       "pageType": "regional-service",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsanseo-juyeop",
+      "snapshotId": "goyang-ilsanseo-juyeop-r1-20261003T182200Z",
+      "snapshotHash": "16c238523be1460278cbcc594fad0fefdb74478870ccd0e43b56c650da8ee5d6",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsanseo-juyeop-r1",
+      "sourceRecordId": "rectEPE2fdpboKvEX",
+      "publishQueueRecordId": "rechGzjhDZWNLvUrb",
+      "slug": "ilsanseo-juyeop",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsanseo-juyeop/",
+      "title": "주엽동 꽃배달 | 강선·문촌마을과 중앙로 상가 꽃 주문",
+      "primaryKeyword": "주엽동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,
