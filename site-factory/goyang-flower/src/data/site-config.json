@@ -1,7 +1,7 @@
 {
   "naverVerification": "",
   "previewUrl": "https://goyang-flower-guide-qa.joseungil.workers.dev",
-  "productionApproved": false,
+  "productionApproved": true,
   "region": "고양",
   "siteKey": "goyang-flower-v2",
   "stagingWorker": "goyang-flower-guide-qa"
