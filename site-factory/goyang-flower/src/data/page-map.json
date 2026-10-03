@@ -541,6 +541,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-jungsan",
+      "snapshotId": "goyang-ilsandong-jungsan-r1-20261003T182200Z",
+      "snapshotHash": "d1178feb4bae1a2d214a1d612b0d5e3b4d37300edb227525b645f2566c80d8f5",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-jungsan-r1",
+      "sourceRecordId": "recmEPUmqCLMCeOZH",
+      "publishQueueRecordId": "rec9mnaBXXhNwbqqg",
+      "slug": "ilsandong-jungsan",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-jungsan/",
+      "title": "중산동 꽃배달 | 중산·산들·하늘마을 수령정보와 꽃 주문",
+      "primaryKeyword": "중산동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-madu",
       "snapshotId": "goyang-ilsandong-madu-r1-20261003T182200Z",
       "snapshotHash": "9c212a783c26a352f1b778763508f17703cc3aac9f302d85d46885fc19a36691",

@@ -3568,5 +3568,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-jungsan",
+    "snapshotId": "goyang-ilsandong-jungsan-r1-20261003T182200Z",
+    "snapshotHash": "d1178feb4bae1a2d214a1d612b0d5e3b4d37300edb227525b645f2566c80d8f5",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-jungsan-r1",
+    "sourceRecordId": "recmEPUmqCLMCeOZH",
+    "publishQueueRecordId": "rec9mnaBXXhNwbqqg",
+    "slug": "ilsandong-jungsan",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-jungsan/",
+    "title": "중산동 꽃배달 | 중산·산들·하늘마을 수령정보와 꽃 주문",
+    "primaryKeyword": "중산동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 46,
+    "h1": "중산동 꽃배달, 마을 이름과 행사 수령처를 함께 맞추세요",
+    "description": "중산마을·산들마을 주소와 하늘마을로 학교 주변 수령처를 구분하세요. 가정 꽃바구니, 행사 후 꽃다발, 단지·담당자·시간과 실제 상품 기본 표시가격을 안내합니다.",
+    "cardSummary": "중산·산들마을 가정 선물과 하늘마을로 행사 축하는 받을 장소부터 달라집니다. 마을명·단지와 성인 수령 담당자를 함께 준비하세요.",
+    "firstAnswer": "중산동 꽃배달은 중산·산들·하늘마을 등 실제 받으실 곳의 주소와 단지·동·호수를 알려 주문해 주세요. 행사 축하꽃은 학교 이름뿐 아니라 꽃을 받을 담당자와 인계할 장소를 먼저 정해야 합니다. 꽃이랑에 상품, 희망 날짜와 시간을 전해 배송 가능 여부와 추가배송비를 포함한 총액을 확인하세요.",
+    "contentMarkdown": "중산동 꽃배달은 중산·산들·하늘마을 등 실제 받으실 곳의 주소와 단지·동·호수를 알려 주문해 주세요. 행사 축하꽃은 학교 이름뿐 아니라 꽃을 받을 담당자와 인계할 장소를 먼저 정해야 합니다. 꽃이랑에 상품, 희망 날짜와 시간을 전해 배송 가능 여부와 추가배송비를 포함한 총액을 확인하세요.\n\n## 중산마을과 산들마을은 단지까지 적어주세요\n\n[고양특례시 중산1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_10/dong01_5_10_tab1.jsp)에는 중산마을·산들마을과 중산공원이 안내되어 있습니다. 가정 선물을 주문하실 때는 마을 이름 뒤에 아파트 단지와 동·호수, 도로명주소를 함께 적어주세요. 단지 상가로 보낸다면 주거동이 아닌 상가 건물·점포를 따로 밝혀주는 것이 좋습니다.\n\n공원 근처에서 만나 꽃을 받을 계획이라면 ‘중산공원 앞’만 쓰지 말고 받는 분과 합의한 출입구나 고정된 만남 장소를 알려주세요. 도착 시 연락할 사람이 있어야 실제 전달을 조율하기 좋습니다.\n\n## 하늘마을로 행사에는 종료 후 전달 계획이 필요합니다\n\n[고양특례시 중산2동 주요관내시설](https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=42)는 하늘마을로에 있는 안곡중학교·안곡고등학교와 하늘마을1로에 있는 하늘초등학교를 안내합니다. 학교 행사 축하꽃은 학교 대표주소가 맞는지와 별개로 교내 반입, 교문 인계, 행사 담당자 수령 중 어떤 방법이 가능한지 확인해 주세요.\n\n행사 시작 전에 담당자에게 전할 꽃인지, 종료 후 가족이 건넬 꽃인지에 따라 필요한 시간이 달라집니다. 받는 성인 담당자와 인계 지점을 정하고 학생의 불필요한 개인 정보는 주문 메모에 적지 않으셔도 됩니다. 여러 다발을 준비할 경우 수량과 카드 표기를 나누어 알려주세요.\n\n## 행사 후 들고 갈 꽃, 귀가 후 집에서 볼 꽃\n\n소소한 행복(G105) 꽃다발은 기본 표시가격 50,000원입니다. 기념사진 뒤 들고 이동할 선물을 고를 때 비교해 보세요. 햇살 한가득(A155) 꽃바구니는 기본 표시가격 65,000원이며, 식탁이나 거실에 놓아두는 선물이라면 실제 자리를 생각해 선택할 수 있습니다.\n\n행사에 참석하느라 가족이 집을 비우는 날이라면 자택 꽃바구니의 희망시각을 귀가 이후로 상담해 주세요. 문 앞에 두도록 요청하기 전에 재실 가족이나 다른 수령 방법을 정하는 편이 좋습니다.\n\n## 일정과 공급, 최종 금액을 확인해 주문하세요\n\n원하는 색감·종류의 꽃은 공급 가능 여부를 확인해야 하며 실제 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다. 지역별 추가배송비가 발생할 수 있으므로 기본 표시가만으로 총액을 판단하지 말고 주소와 함께 확인해 주세요.\n\n[1844-0644 전화 주문](tel:18440644)은 08:00-23:00, [꽃이랑 홈페이지 주문](https://fwith.co.kr)은 24시간 가능합니다. 행사 날짜, 받을 시각, 상세주소, 성인 수령자와 연락처, 상품·문구를 준비해 상담해 주세요. 당일배송 가능 여부도 주문별로 확인합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 중산1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_10/dong01_5_10_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 중산2동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=42",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 중산1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_10/dong01_5_10_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
