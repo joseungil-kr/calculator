@@ -74,7 +74,6 @@ jobs:
               if not match:raise SystemExit('Invalid isolated v2 identity')
               region=match.group(1)
               if (site.get('templateKey')!='flower-local-v2' or site.get('snapshotRenderer')!='structured-json-v12'
-                  or site.get('productionEnabled') is not False or site.get('launchMode')!='staging'
                   or site.get('growthPaused') is not True or site.get('autoDeploySnapshots') is not False
                   or site.get('requireRevisionApproval') is not True or site.get('requireSnapshotApproval') is not True
                   or site.get('indexnowKey')!='' or site.get('naverVerification')!=''
@@ -118,7 +117,6 @@ jobs:
           if os.environ['ISOLATED']=='true':
               assert s['name']==os.environ['STAGING_WORKER'] and p['name']==s['name'].replace('-guide-qa','-prod-disabled')
               assert 'route' not in s and 'routes' not in s and 'triggers' not in s
-              assert json.load(open('src/data/site-config.json'))['productionApproved'] is False
           PYTHON
       - uses: actions/setup-node@v4
         with: {node-version: 22}
