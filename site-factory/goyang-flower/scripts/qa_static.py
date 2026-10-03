@@ -7,7 +7,7 @@ import json, os, re, xml.etree.ElementTree as ET
 class Document(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
-        self.ids=set();self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
+        self.cta_links=[];self.ids=set();self.meta={};self.h1=0;self.canonical=[];self.links=[];self.images=[];self.snapshots=[];self.title='';self.in_title=False
         self.visible=[];self.ignored=0;self.sections=[];self.journey_links=[];self.primary_families=[];self.product_families=[]
         self.first_answer=[];self.capture_answer=False;self.answer_done=False;self.product_records=[];self.elements=[];self.feed(text)
     def handle_starttag(self, tag, attrs):
@@ -16,8 +16,8 @@ class Document(HTMLParser):
         product=None
         if a.get('data-product-key'):
             product={'key':a['data-product-key'],'family':a.get('data-product-family'),'images':[],'links':[],'text':[]};self.product_records.append(product)
-        if tag not in ['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']:self.elements.append((tag,product))
-        context=next((p for _,p in reversed(self.elements) if p),None)
+        if tag not in ['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']:self.elements.append((tag,product,tag=='footer' or 'mobile-bar' in a.get('class','').split()))
+        context=next((p for _,p,_ in reversed(self.elements) if p),None)
         if context and tag=='img':context['images'].append(a.get('src'))
         if context and tag=='a':context['links'].append(a.get('href'))
         if tag in ['script','style']:self.ignored+=1
@@ -29,6 +29,7 @@ class Document(HTMLParser):
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a.get('href'))
         if tag=='a':
             self.links.append(a.get('href',''))
+            if context or 'btn' in a.get('class','').split() or any(order for _,_,order in self.elements):self.cta_links.append(a.get('href',''))
             if 'next-step' in self.sections:self.journey_links.append(a.get('href',''))
         if tag=='img':self.images.append(a)
         if 'data-product-family' in a:
@@ -46,7 +47,7 @@ class Document(HTMLParser):
         if self.in_title:self.title+=data
         if not self.ignored:self.visible.append(data)
         if self.capture_answer:self.first_answer.append(data)
-        context=next((p for _,p in reversed(self.elements) if p),None)
+        context=next((p for _,p,_ in reversed(self.elements) if p),None)
         if context and not self.ignored:context['text'].append(data)
 
 def expected_robots(indexable, url, architecture):
@@ -83,13 +84,21 @@ def check_rendered_intent(doc, page, products):
         for purpose,pattern in [('condolence',r'삼가|애도|명복|위로'),('opening',r'개업|개점|번창'),('relocation',r'이전|새로운 출발|새 보금자리'),('event',r'공연|행사|전시|무대')]:
             assert any(re.search(pattern,e) for e in examples),f'Missing rendered {purpose} examples: {page["url"]}'
 
-def check_rendered_catalog(doc, url, products):
+def check_order_ctas(doc, url, truth):
+    assert truth['onlineOrderUrl'] in doc.cta_links,f'Missing Business Truth online CTA: {url}'
+    assert truth['phoneHref'] in doc.cta_links,f'Missing Business Truth phone CTA: {url}'
+    for href in doc.cta_links:
+        if href.startswith('#') or (href.startswith('/') and not href.startswith('//')):continue  # Local navigational button.
+        expected=truth['phoneHref'] if href.startswith('tel:') else truth['onlineOrderUrl']
+        assert href==expected,f'Order CTA contradicts Business Truth: {url} -> {href}'
+
+def check_rendered_catalog(doc, url, products, order_url):
     catalog={p['key']:p for p in products}
     for rendered in doc.product_records:
         p=catalog.get(rendered['key'])
         assert p and rendered['family']==p['family'],f'Rendered catalog family mismatch: {url}'
         assert rendered['images']==[p['img']],f'Rendered catalog image mismatch: {url} {p["key"]}'
-        assert p['orderUrl'] in rendered['links'] or p['orderUrl'] in doc.links,f'Rendered SKU order mismatch: {url} {p["key"]}'
+        assert all(href==order_url for href in rendered['links']) and order_url in doc.cta_links,f'Rendered product CTA mismatch: {url} {p["key"]}'
         assert f'{p["price"]:,}원' in ''.join(rendered['text']),f'Rendered catalog price mismatch: {url} {p["key"]}'
 
 def check(root=Path('.')):
@@ -120,7 +129,8 @@ def check(root=Path('.')):
             src=img.get('src','');assert src.startswith('/'),f'Unexpected remote image: {url}'
             assert (root/'public'/src.lstrip('/')).is_file(),f'Missing asset: {src}'
         check_customer_output(doc,url)
-        check_rendered_catalog(doc,url,products)
+        check_rendered_catalog(doc,url,products,truth['onlineOrderUrl'])
+        check_order_ctas(doc,url,truth)
     for page in pages:
         check_customer_journey(docs[page['url']],page,pages)
         check_rendered_intent(docs[page['url']],page,products)
