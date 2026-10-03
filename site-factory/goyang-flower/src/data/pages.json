@@ -2054,5 +2054,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-donae",
+    "snapshotId": "goyang-deogyang-donae-r1-20261003T182200Z",
+    "snapshotHash": "a36223efda649449bd44d3eeeea77981948c49112aa857e8658114e901f6792a",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-donae-r1",
+    "sourceRecordId": "recvLHZHAdIU3Vr7E",
+    "publishQueueRecordId": "rec9JFacWgY8Uav9f",
+    "slug": "deogyang-donae",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-donae/",
+    "title": "도내동 꽃배달 | 도래울마을 단지·수령 장소 확인",
+    "primaryKeyword": "도내동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 27,
+    "h1": "도내동 꽃배달, 도래울마을 번호와 받는 곳을 함께 알려주세요",
+    "description": "도래울마을 가정과 단지 공동시설로 꽃을 보내는 방법을 안내합니다. 단지번호·도로명·실제 인계 장소를 확인하고 꽃바구니·꽃다발의 기본가격과 추가배송비를 상담하세요.",
+    "cardSummary": "단지 이름 뒤의 번호, 도래울로와 도래울1로처럼 비슷한 도로명을 함께 확인하세요. 세대 선물과 경로당 행사 꽃의 수령자를 다르게 준비할 수 있습니다.",
+    "firstAnswer": "도내동 꽃배달은 도래울마을의 단지번호와 도로명주소, 세대 동·호수 또는 공동시설 이름을 함께 알려주세요. 꽃이랑에서 집으로 전할 꽃다발·꽃바구니를 상담하실 수 있습니다. 경로당 등 행사 장소는 담당자와 인계 시간을 먼저 정하고, 상품 공급과 추가배송비를 포함한 총액을 확인해 주세요.",
+    "contentMarkdown": "도내동 꽃배달은 도래울마을의 단지번호와 도로명주소, 세대 동·호수 또는 공동시설 이름을 함께 알려주세요. 꽃이랑에서 집으로 전할 꽃다발·꽃바구니를 상담하실 수 있습니다. 경로당 등 행사 장소는 담당자와 인계 시간을 먼저 정하고, 상품 공급과 추가배송비를 포함한 총액을 확인해 주세요.\n\n## 단지번호와 도로명은 한 세트로 확인하세요\n\n[고양시 흥도동 주요관내시설](https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=19)은 도래울마을5단지경로당을 도래울로 17, 6단지경로당을 도래울로 16, 7단지경로당을 도래울1로 80으로 안내하며 모두 도내동 주소를 표시합니다. 비슷한 단지명이라도 번호와 도로명이 달라집니다.\n\n이 주소들은 해당 공동시설의 위치 예시입니다. 세대 선물을 보내실 때 경로당 주소나 관리동을 수령지로 대신 쓰지 말고, 받는 집의 정확한 동·호수와 도로명주소를 확인해 주세요. '도래울 쪽'이라는 설명에 숫자를 더하면 주문 착오를 줄이는 데 도움이 됩니다.\n\n## 가정 선물과 공동시설 행사 꽃은 받는 사람이 달라요\n\n도내동 가족 집에 보내는 꽃은 직접 받을 시간과 부재 시 동의한 대리수령자를 정해 주세요. 공동현관에서 만날지 세대에서 받을지도 수령자와 협의한 내용을 전달해 주시면 됩니다. 경비실이나 관리사무소가 보관을 맡는지는 각 현장의 확인이 필요합니다.\n\n경로당이나 단지 공동시설의 행사에 꽃을 보내는 경우에는 행사명, 실제로 받을 담당자, 사용할 공간을 먼저 물어보세요. 평소 시설을 이용하는 분에게 드리는 개인 선물인지, 행사장에 놓을 꽃인지도 구분해 주세요. 시설명만 적고 아무 직원에게나 맡기는 방식으로 정하지 않는 것이 좋습니다.\n\n## 놓아둘 꽃바구니와 손에 전할 꽃다발\n\n가정 거실이나 합의된 행사 공간에 둘 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)을 비교해 보세요. 축하받는 분이 꽃을 들고 이동하거나 직접 건네는 순간을 준비한다면 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)도 살펴보실 수 있습니다.\n\n바구니를 둘 탁자나 선반의 공간이 넉넉한지, 다발을 받은 뒤 꽃병에 꽂을 수 있는지 생각해 주세요. 정확한 규격이나 특정 꽃이 필요하면 주문 전에 확인하셔야 합니다. 지역·계절에 따라 실제 꽃 구성과 형태가 일부 달라질 수 있고, 사진과 같은 꽃의 공급을 확정하려면 별도 상담이 필요합니다.\n\n## 받는 장소를 읽어 보며 주문 내용을 확인하세요\n\n'고양시 덕양구 도내동, 도로명과 건물번호, 도래울마을 몇 단지, 세대 또는 시설' 순서로 확인해 주세요. [흥도동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_19/dong01_4_19_tab1.jsp)에서 안내하는 행정동 흥도동에는 도내동 외 지역도 포함되므로 행정명만으로 접수하지 않는 것이 좋습니다.\n\n상품명, 예산, 원하는 날짜와 받을 수 있는 시간대, 수령자 연락처, 카드 문구를 준비하신 뒤 [꽃이랑 1844-0644](tel:18440644)로 문의해 주세요. 기본 표시가격 외 지역별 추가배송비와 선택사항을 포함한 총액을 확인해 드릴 수 있도록 정확한 배송지를 알려주세요. 전화상담은 08:00~23:00이며 [온라인 주문](https://fwith.co.kr)은 24시간 접수합니다. 당일·지정시간 전달 가능 여부는 주문 전에 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 흥도동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_19/dong01_4_19_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 흥도동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=19",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 흥도동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_19/dong01_4_19_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

@@ -37,6 +37,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-donae",
+      "snapshotId": "goyang-deogyang-donae-r1-20261003T182200Z",
+      "snapshotHash": "a36223efda649449bd44d3eeeea77981948c49112aa857e8658114e901f6792a",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-donae-r1",
+      "sourceRecordId": "recvLHZHAdIU3Vr7E",
+      "publishQueueRecordId": "rec9JFacWgY8Uav9f",
+      "slug": "deogyang-donae",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-donae/",
+      "title": "도내동 꽃배달 | 도래울마을 단지·수령 장소 확인",
+      "primaryKeyword": "도내동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-gangmae",
       "snapshotId": "goyang-deogyang-gangmae-r1-20261003T182200Z",
       "snapshotHash": "b203b84afbcb997b0a3eecca928e7682f9496c7fd6c70973099e9542c36f00e7",
