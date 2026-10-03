@@ -253,6 +253,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-samsong",
+      "snapshotId": "goyang-deogyang-samsong-r1-20261003T182200Z",
+      "snapshotHash": "2ccb93ec6ae14a6eed8a25ad27c1dd75535e36f3e04dd5849a47ab5c002745fc",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-samsong-r1",
+      "sourceRecordId": "recsMtZuxEu2eGv7r",
+      "publishQueueRecordId": "recN0CX5JBkYgGUCa",
+      "slug": "deogyang-samsong",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-samsong/",
+      "title": "삼송동 꽃배달 | 역 주변 만남과 집으로 보내는 꽃",
+      "primaryKeyword": "삼송동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-sinpyeong",
       "snapshotId": "goyang-deogyang-sinpyeong-r1-20261003T182200Z",
       "snapshotHash": "86c0a2a7870c777f0c7fed50ae08976b038727c4992bcd1aff815dc46dedb51c",
@@ -555,6 +573,11 @@
       "pageKey": "goyang-flower-v2-region-deogyang-sinpyeong",
       "snapshotHash": "86c0a2a7870c777f0c7fed50ae08976b038727c4992bcd1aff815dc46dedb51c",
       "publishQueueRecordId": "recw7rx3OtBNPylHv"
+    },
+    "goyang-deogyang-samsong-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-deogyang-samsong",
+      "snapshotHash": "2ccb93ec6ae14a6eed8a25ad27c1dd75535e36f3e04dd5849a47ab5c002745fc",
+      "publishQueueRecordId": "recN0CX5JBkYgGUCa"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
