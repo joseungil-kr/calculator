@@ -248,6 +248,18 @@
         "enabled": true,
         "regionKey": "goyang",
         "unitBasis": "legal"
+      },
+      "coverageDeployment": {
+        "enabled": false,
+        "launchKey": "goyang-flower-v2-dong-coverage-20261003",
+        "scopeKey": "goyang-flower-v2-dong-coverage-20261003",
+        "canonicalOrigin": "https://goyang.fwith.kr",
+        "worker": "goyang-flower-guide-qa",
+        "wranglerConfig": "wrangler.staging.jsonc",
+        "previewRevision": "",
+        "previewManifestSha256": "",
+        "previewApprovalEvidenceUrl": "",
+        "productionManifestSha256": ""
       }
     },
     "seongnam-flower-v2": {

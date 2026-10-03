@@ -3,6 +3,8 @@ on:
   workflow_call:
     inputs:
       site_key: {required: true, type: string}
+      launch_key: {required: false, type: string, default: ''}
+      scope_key: {required: false, type: string, default: ''}
       expected_revision: {required: true, type: string}
       source_snapshot_issue: {required: false, type: string, default: ''}
     secrets:
@@ -11,12 +13,14 @@ on:
   workflow_dispatch:
     inputs:
       site_key: {description: Registered site key, required: true, type: string}
+      launch_key: {description: Exact registered launch for Goyang coverage only, required: false, type: string}
+      scope_key: {description: Exact registered scope for Goyang coverage only, required: false, type: string}
       expected_revision: {description: Full independently approved target commit SHA, required: true, type: string}
   issues:
     types: [opened, reopened]
 permissions: {}
 concurrency:
-  group: site-production-${{ github.repository }}
+  group: "${{ (inputs.site_key == 'goyang-flower-v2' || contains(github.event.issue.body, 'SITE_KEY: goyang-flower-v2')) && format('site-staging-{0}', github.repository) || format('site-production-{0}', github.repository) }}"
   cancel-in-progress: false
 jobs:
   deploy-and-verify:
@@ -54,6 +58,8 @@ jobs:
         env:
           SITE_KEY: ${{ inputs.site_key }}
           REVISION: ${{ inputs.expected_revision }}
+          LAUNCH_KEY: ${{ inputs.launch_key }}
+          SCOPE_KEY: ${{ inputs.scope_key }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python3 - <<'PYTHON'
@@ -67,6 +73,19 @@ jobs:
           key=os.environ.get('SITE_KEY') or values.get('SITE_KEY','')
           site=json.load(open('control/.github/site-factory-sites.json'))['sites'].get(key)
           if not site or site['repo']!=os.environ['GITHUB_REPOSITORY']: raise SystemExit('Unregistered target')
+          if key == 'goyang-flower-v2':
+              if not os.environ.get('SITE_KEY') and 'SITE_KEY: goyang-flower-v2' not in os.environ.get('ISSUE_BODY','').split('---BEGIN-',1)[0].splitlines():
+                  raise SystemExit('Goyang issue SITE_KEY must use its exact canonical header for the shared deployment lock')
+              import sys
+              sys.path.insert(0,'control/site-factory/engine')
+              from verify_live import resolve_goyang_coverage_target
+              resolved=resolve_goyang_coverage_target(site,os.environ['GITHUB_REPOSITORY'],
+                  os.environ.get('REVISION') or values.get('EXPECTED_REVISION',''),
+                  os.environ.get('LAUNCH_KEY') or values.get('LAUNCH_KEY',''),
+                  os.environ.get('SCOPE_KEY') or values.get('SCOPE_KEY',''),'production')
+              with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+                  for k,v in resolved.items():out.write(f'{k}={v}\n')
+              raise SystemExit(0)
           if key == 'seongnam-flower-v2':
               expected = {'siteUrl':'https://seongnam.fwith.kr','worker':'seongnam-flower-prod-disabled',
                           'root':'site-factory/seongnam-flower','branch':'site-factory-seongnam-v2'}
@@ -80,7 +99,7 @@ jobs:
               if site.get('approvedRevision')!=revision or not site.get('approvalEvidenceUrl','').startswith('https://github.com/'):
                   raise SystemExit('Exact revision lacks independent QA clearance in trusted registry')
           with open(os.environ['GITHUB_OUTPUT'],'a') as out:
-              for k,v in {'site_key':key,'branch':site['branch'],'root':site['root'],'site_url':site['siteUrl'],'worker':site.get('worker',''),'revision':revision,'wrangler':site.get('wranglerConfig','wrangler.jsonc'),'graph':site.get('graphScript','scripts/qa_site_graph.mjs'),'naver':site.get('naverVerification',''),'indexnow':site.get('indexnowKey','')}.items():out.write(f'{k}={v}\n')
+              for k,v in {'site_key':key,'branch':site['branch'],'root':site['root'],'site_url':site['siteUrl'],'worker':site.get('worker',''),'revision':revision,'wrangler':site.get('wranglerConfig','wrangler.jsonc'),'build_root':'target/'+site['root'],'graph':site.get('graphScript','scripts/qa_site_graph.mjs'),'naver':site.get('naverVerification',''),'indexnow':site.get('indexnowKey','')}.items():out.write(f'{k}={v}\n')
           PYTHON
       - name: Checkout pinned approved revision
         uses: actions/checkout@v4
@@ -92,44 +111,83 @@ jobs:
           git fetch origin "$BRANCH"
           git merge-base --is-ancestor "$REVISION" "origin/$BRANCH"
           test "$(git rev-parse HEAD)" = "$REVISION"
+      - name: Isolate exact Goyang coverage release tree
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {ROOT: "${{ steps.target.outputs.root }}", REVISION: "${{ steps.target.outputs.revision }}"}
+        run: |
+          set -euo pipefail
+          mkdir release-build
+          git -C target archive "$REVISION:$ROOT" | tar -xf - -C release-build
+      - name: Extract unchanged fixed Goyang canary baseline
+        if: steps.target.outputs.goyang_coverage == 'true'
+        run: |
+          set -euo pipefail
+          test "$(git -C target rev-parse e4eead3e881b3b4c09a60e2af5befb55b6787413:site-factory/goyang-flower)" = 27a45b8e99151c34b966f0a59a96110b91395fad
+          mkdir canary-baseline
+          git -C target archive e4eead3e881b3b4c09a60e2af5befb55b6787413:site-factory/goyang-flower | tar -xf - -C canary-baseline
       - uses: actions/setup-node@v4
         with: {node-version: 22}
       - name: Build approved indexable artifact and rerun gates
-        working-directory: target/${{ steps.target.outputs.root }}
+        working-directory: ${{ steps.target.outputs.build_root }}
         env:
           SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_INDEXABLE: 'true'
           SITE_FACTORY_REVISION: ${{ steps.target.outputs.revision }}
           GRAPH_SCRIPT: ${{ steps.target.outputs.graph }}
+          GOYANG_COVERAGE: ${{ steps.target.outputs.goyang_coverage }}
         run: |
           test -f production-indexing.enabled
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          if [ "$GOYANG_COVERAGE" = true ]; then npm test; fi
           npm run build
           python3 scripts/qa_static.py
           node "$GRAPH_SCRIPT"
       - name: Record build provenance
-        run: python3 control/site-factory/engine/write_qa_provenance.py --root "target/${{ steps.target.outputs.root }}" --revision "${{ steps.target.outputs.revision }}" --output production-qa-provenance.json
+        run: python3 control/site-factory/engine/write_qa_provenance.py --root "${{ steps.target.outputs.build_root }}" --revision "${{ steps.target.outputs.revision }}" --output production-qa-provenance.json
+      - name: Validate exact Goyang coverage artifact and frozen source
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {ROOT: "${{ steps.target.outputs.build_root }}", REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}"}
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase production --validate-only --report goyang-coverage-source.json
+      - name: Verify existing Goyang binding before asset deployment
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"}
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-before.json
       - name: Deploy approved artifact
-        working-directory: target/${{ steps.target.outputs.root }}
+        id: deploy
+        working-directory: ${{ steps.target.outputs.build_root }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_CONFIG: ${{ steps.target.outputs.wrangler }}
+          GOYANG_COVERAGE: ${{ steps.target.outputs.goyang_coverage }}
         run: |
           test -n "$CLOUDFLARE_API_TOKEN"
           printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9A-Fa-f]{32}$'
-          npx --yes wrangler@latest deploy -c "$WRANGLER_CONFIG"
+          if [ "$GOYANG_COVERAGE" = true ]; then
+            npx --yes wrangler@4.146.0 deploy -c "$WRANGLER_CONFIG"
+          else
+            npx --yes wrangler@latest deploy -c "$WRANGLER_CONFIG"
+          fi
+      - name: Verify Goyang binding preservation after deployment attempt
+        if: ${{ always() && steps.target.outputs.goyang_coverage == 'true' && steps.deploy.outcome != 'skipped' }}
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"}
+        run: python3 control/site-factory/engine/verify_goyang_canonical.py binding --report goyang-binding-after.json
       - name: Bind exact approved Seongnam hostname
         if: steps.target.outputs.site_key == 'seongnam-flower-v2'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: python3 control/site-factory/engine/seongnam_domain_attach.py
+      - name: Verify complete Goyang coverage HTTP artifact
+        if: steps.target.outputs.goyang_coverage == 'true'
+        env: {ROOT: "${{ steps.target.outputs.build_root }}", REVISION: "${{ steps.target.outputs.revision }}", LAUNCH_KEY: "${{ steps.target.outputs.launch_key }}", SCOPE_KEY: "${{ steps.target.outputs.scope_key }}"}
+        run: python3 control/site-factory/engine/verify_live.py --site-key goyang-flower-v2 --root "$ROOT" --baseline-root canary-baseline --registry control/.github/site-factory-sites.json --origin https://goyang.fwith.kr --revision "$REVISION" --launch-key "$LAUNCH_KEY" --scope-key "$SCOPE_KEY" --phase production --report live-qa-report.json
       - name: Verify exact live revision and every published route
-        run: python3 control/site-factory/engine/verify_live.py --site-key "${{ steps.target.outputs.site_key }}" --root "target/${{ steps.target.outputs.root }}" --origin "${{ steps.target.outputs.site_url }}" --revision "${{ steps.target.outputs.revision }}" --report live-qa-report.json --naver-verification "${{ steps.target.outputs.naver }}" --indexnow-key "${{ steps.target.outputs.indexnow }}"
+        if: steps.target.outputs.goyang_coverage != 'true'
+        run: python3 control/site-factory/engine/verify_live.py --site-key "${{ steps.target.outputs.site_key }}" --root "${{ steps.target.outputs.build_root }}" --origin "${{ steps.target.outputs.site_url }}" --revision "${{ steps.target.outputs.revision }}" --report live-qa-report.json --naver-verification "${{ steps.target.outputs.naver }}" --indexnow-key "${{ steps.target.outputs.indexnow }}"
       - name: Submit verified URLs to IndexNow
         if: steps.target.outputs.indexnow != ''
-        working-directory: target/${{ steps.target.outputs.root }}
+        working-directory: ${{ steps.target.outputs.build_root }}
         env:
           SITE_URL: ${{ steps.target.outputs.site_url }}
           SITE_INDEXABLE: 'true'
@@ -152,6 +210,9 @@ jobs:
           path: |
             production-qa-provenance.json
             live-qa-report.json
+            goyang-coverage-source.json
+            goyang-binding-before.json
+            goyang-binding-after.json
           if-no-files-found: ignore
       - name: Report live verification
         if: github.event_name == 'issues' || inputs.source_snapshot_issue != ''
