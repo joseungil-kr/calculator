@@ -1,4 +1,5 @@
 ---
+import {assertRegionalInput} from '../../lib/regional-runtime.mjs';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PurchaseBanner from '../../components/PurchaseBanner.astro';
 import MarkdownContent from '../../components/MarkdownContent.astro';
@@ -10,7 +11,7 @@ import {site,groups} from '../../config/site';
 import {selectProducts,productHeading,productFamilies} from '../../lib/catalog.mjs';
 import {nextSteps,relatedReading} from '../../lib/journey.mjs';
 import editorial from '../../data/editorial-assets.json';
-export function getStaticPaths(){return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
+export function getStaticPaths(){assertRegionalInput(pages);return (pages as any[]).map(p=>({params:{category:p.category,slug:p.slug},props:{page:p}}));}
 const {page}=Astro.props;
 const journey=nextSteps(page,pages);
 const related=relatedReading(page,pages);
@@ -21,7 +22,7 @@ const snapshotId=page.snapshotId;
 const pricePage=journey.find((p:any)=>p.pageType==='price-guide');
 const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 ---
-<BaseLayout title={page.title} description={page.description} canonicalPath={page.url} socialImage={hero} orderUrl={hero?.orderUrl || site.orderUrl}>
+<BaseLayout ogImage={page.ogImage} ogImageAlt={page.ogImageAlt} ogImageWidth={page.ogImageWidth} ogImageHeight={page.ogImageHeight} ogImageType={page.ogImageType} socialImage={hero} title={page.title} description={page.description} canonicalPath={page.url} orderUrl={hero?.orderUrl || site.orderUrl}>
 <article data-snapshot-id={snapshotId} data-page-key={page.pageKey} data-page-type={page.pageType}>
 <nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><a href={category?.url || '/'}>{category?.label || '꽃배달'}</a><span>›</span><span>{page.primaryKeyword}</span></nav>
 <section class="detail-hero"><div><span class="eyebrow">{site.brand} {site.region}</span><h1>{page.h1}</h1><p>{page.firstAnswer}</p><div class="actions"><a class="btn primary" href={site.phoneHref}>☎ {site.phone}</a><a class="btn dark" href={hero?.orderUrl || site.orderUrl}>상품 확인·주문</a></div><div class="facts"><span>전화 {site.phoneOrderHours}</span><span>온라인 {site.onlineOrderHours} 접수</span><span>배송 가능시간·추가비용 확인</span></div></div>
@@ -34,7 +35,8 @@ const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 {productSet.length>0 && <section class="product-section compact"><h2>{productHeading(page)}</h2><ProductCards products={productSet}/></section>}
 {!page.contentMarkdown && page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}
 {addressPage && <aside class="journey-link"><span>상품을 정했다면 수령정보를 준비해 주세요</span><a href={addressPage.url}>{addressPage.primaryKeyword} 확인 →</a></aside>}
-{page.source?.url && <section class="source-card"><h2>{page.source.name || page.entity+' 관련 공식정보'}</h2><p>{page.source.url.startsWith('https://fwith.co.kr') ? '꽃이랑의 상품과 주문 안내를 확인할 수 있습니다. 최종 상품 구성·배송조건은 주문 시 확인해 주세요.' : '주소와 시설 안내는 아래 공식 출처를 참고하세요. 꽃 수령·반입·설치 가능 여부는 해당 시설이나 행사 담당자에게 확인해 주세요.'}</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>}
+{page.category==='regions' && (page.sources || []).map((source:any)=><section class="source-card" data-source-type={source.type}><h2>{source.name}</h2><a href={source.url} rel="nofollow">출처 확인 →</a><small>출처 유형: {source.type} · 확인일 <time datetime={source.verifiedAt}>{source.verifiedAt}</time></small></section>)}
+{page.category!=='regions' && page.source?.url && <section class="source-card"><h2>{page.source.name || page.entity+' 관련 공식정보'}</h2><p>{page.source.url.startsWith('https://fwith.co.kr') ? '꽃이랑의 상품과 주문 안내를 확인할 수 있습니다. 최종 상품 구성·배송조건은 주문 시 확인해 주세요.' : '주소와 시설 안내는 아래 공식 출처를 참고하세요. 꽃 수령·반입·설치 가능 여부는 해당 시설이나 행사 담당자에게 확인해 주세요.'}</p><a href={page.source.url} rel="nofollow">공식정보 확인 →</a><small>확인일 {page.source.verifiedAt}</small></section>}
 {!page.contentMarkdown && page.faq?.length>0 && <section class="faq"><h2>{page.primaryKeyword} 자주 묻는 질문</h2>{page.faq.map((f:any)=><div><h3>{f[0]}</h3><p>{f[1]}</p></div>)}</section>}
 {journey.length>0 && <section class="related" data-journey="next-step"><h2>다음 주문 단계</h2><div class="card-grid journey-grid">{journey.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}
 {related.length>0 && <section class="related" data-journey="related-reading"><h2>함께 읽을 장소·상황 안내</h2><div class="card-grid journey-grid">{related.map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></section>}

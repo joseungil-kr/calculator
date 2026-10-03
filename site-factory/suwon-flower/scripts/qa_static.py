@@ -93,6 +93,7 @@ def check(root=Path('.')):
     base=os.environ.get('SITE_URL','https://suwon.fwith.kr').rstrip('/')
     indexable=os.environ.get('SITE_INDEXABLE')=='true'
     expected={'/'}|{p['url'] for p in pages}|{h['url'] for h in arch['hubs'] if any(p['category']==h['category'] for p in pages)}
+    thin_hubs={h['url'] for h in arch['hubs'] if h['children']<3}
     docs={};titles=set();descriptions=set();incoming={u:set() for u in expected}
     for url in expected:
         file=dist/url.strip('/')/'index.html'
@@ -103,7 +104,7 @@ def check(root=Path('.')):
         description=doc.meta.get('description','')
         assert description and description not in descriptions,f'Duplicate/missing description: {url}';descriptions.add(description)
         assert doc.canonical==[base+url],f'Canonical mismatch: {url} {doc.canonical}'
-        assert doc.meta.get('robots')==('index,follow' if indexable else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
+        assert doc.meta.get('robots')==('noindex,follow' if indexable and url=='/regions/' and url in thin_hubs else 'index,follow' if indexable and url not in thin_hubs else 'noindex,nofollow,noarchive'),f'Wrong robots: {url}'
         for field in ['og:title','og:description','og:url','twitter:card']:assert doc.meta.get(field),f'Missing {field}: {url}'
         assert truth['phoneHref'] in doc.links,f'Missing real phone CTA: {url}'
         assert any(x.startswith(truth['onlineOrderUrl']) for x in doc.links),f'Missing order CTA: {url}'
@@ -141,7 +142,8 @@ def check(root=Path('.')):
         tree=ET.parse(file)
         for loc in tree.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
             if not (loc.text or '').endswith('.xml'):sitemap_urls.add(unquote(loc.text or ''))
-    assert sitemap_urls=={base+u for u in expected},f'Sitemap mismatch: {sitemap_urls ^ {base+u for u in expected}}'
+    sitemap_expected={u for u in expected if u not in thin_hubs and (indexable or not u.startswith('/regions/'))}
+    assert sitemap_urls=={base+u for u in sitemap_expected},f'Sitemap mismatch: {sitemap_urls ^ {base+u for u in expected}}'
     headers=(dist/'_headers').read_text()
     assert ('X-Robots-Tag: noindex, nofollow, noarchive' not in headers) if indexable else ('X-Robots-Tag: noindex, nofollow, noarchive' in headers)
     robots=(dist/'robots.txt').read_text()

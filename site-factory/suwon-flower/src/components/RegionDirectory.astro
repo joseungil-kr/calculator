@@ -1,0 +1,17 @@
+---
+import {groupsFor} from '../lib/regional-runtime.mjs';
+const {pages}=Astro.props;
+type RegionGroup={key:string;name:string;items:{page:{url:string;pageKey:string;primaryKeyword:string;cardSummary?:string};aliases:{name:string;scope:string}[]}[]};
+const districts=groupsFor(pages) as RegionGroup[];
+---
+<div class="region-directory">
+{districts.map(district=><section data-region-district={district.key}>
+<h2>{district.name}</h2>
+<div class="region-grid">{district.items.map(({page,aliases})=><article class="region-card" data-region-page={page.pageKey}>
+<h3><a href={page.url}>{page.primaryKeyword}</a></h3><p>{page.cardSummary}</p>
+{aliases.length>0 && <p class="region-aliases">{aliases.map((alias,index)=><>{index>0?' · ':''}<a href={page.url}>{alias.name}</a>{alias.scope==='partial'?' 일부':alias.scope==='historical'?' (옛 이름)':''}</>)}</p>}
+</article>)}</div>
+</section>)}
+<p>행정동과 주소에 쓰이는 법정동은 범위가 다를 수 있습니다. 도로명주소와 건물명·층·호수로 받는 곳을 확인해 주세요.</p>
+</div>
+<style>.region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem}.region-card{border:1px solid #ddd1d8;border-radius:1rem;padding:1.2rem;background:#fff}.region-card h3{margin-top:0}.region-aliases{line-height:2}.region-directory a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.region-directory section{margin-block:2rem}</style>

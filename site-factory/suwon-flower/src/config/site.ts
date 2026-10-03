@@ -13,3 +13,6 @@ export const site = {
   naverVerification: '80fedf144567fea99fe833d2937731a190854c41'
 };
 export const groups = architecture.hubs.filter(h => pages.some(p => p.category === h.category)).map(h => ({cat: h.category, label: h.label, url: h.url}));
+
+// Region menu threshold is independent of the six existing service menus.
+export const regionalMenuEligible = (pages as {category:string}[]).filter(p=>p.category==='regions').length>=5;

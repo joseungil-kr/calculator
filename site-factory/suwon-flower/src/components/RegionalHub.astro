@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RegionDirectory from './RegionDirectory.astro';
+import RegionalOrderBanner from './RegionalOrderBanner.astro';
+import {site} from '../config/site';
+import {assertRegionalInput} from '../lib/regional-runtime.mjs';
+import pages from '../data/pages.json';
+assertRegionalInput(pages);
+const items=(pages as any[]).filter(p=>p.category==='regions');
+if(!items.length)throw new Error('Empty regional hub cannot render');
+---
+<BaseLayout title={`${site.region} 지역별 꽃배달 | ${site.brand}`} description="받는 곳의 동·읍·면 이름으로 꽃배달 주문에 필요한 수령정보를 확인하세요." canonicalPath="/regions/" noindex={items.length<3} robotsOverride={site.indexable && items.length<3 ? 'noindex,follow' : undefined} ogImage={items[0].ogImage} ogImageAlt={items[0].ogImageAlt} ogImageWidth={items[0].ogImageWidth} ogImageHeight={items[0].ogImageHeight} ogImageType={items[0].ogImageType}>
+<nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><span>지역별</span></nav>
+<section class="category-hero"><span class="eyebrow">지역별 안내</span><h1>{site.region} 지역별 꽃배달 안내</h1><p>받는 곳의 동·읍·면과 도로명주소를 확인하고 전달할 장소에 필요한 주문정보를 준비하세요.</p></section>
+<RegionDirectory pages={items}/><RegionalOrderBanner/>
+</BaseLayout>

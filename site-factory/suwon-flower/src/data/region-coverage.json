@@ -1,0 +1,1359 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "suwon-flower-test",
+  "scopeKey": "suwon-flower-test-dong-maintenance-20261003",
+  "unitBasis": "legal-dong-plus-eup-myeon",
+  "verifiedAt": "2026-10-03",
+  "sourceBasisDate": "Current official page, no explicit effective date; 2026-04-28 corroboration",
+  "countIsPageQuota": false,
+  "officialSourceUrls": [
+    "https://mayor.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp",
+    "https://www.suwon.go.kr/web/board/BD_board.view.do?bbsCd=1043&seq=20260428095831262"
+  ],
+  "districts": [
+    {
+      "key": "jangan",
+      "name": "장안구",
+      "sourceUrl": "https://mayor.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp"
+    },
+    {
+      "key": "gwonseon",
+      "name": "권선구",
+      "sourceUrl": "https://mayor.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp"
+    },
+    {
+      "key": "paldal",
+      "name": "팔달구",
+      "sourceUrl": "https://mayor.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp"
+    },
+    {
+      "key": "yeongtong",
+      "name": "영통구",
+      "sourceUrl": "https://mayor.suwon.go.kr/sw-www/www05/www05-01/www05-01-08.jsp"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "수원시/장안구/법정동/파장동",
+      "name": "파장동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/이목동",
+      "name": "이목동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/율전동",
+      "name": "율전동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/천천동",
+      "name": "천천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/정자동",
+      "name": "정자동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/영화동",
+      "name": "영화동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/송죽동",
+      "name": "송죽동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/조원동",
+      "name": "조원동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/연무동",
+      "name": "연무동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/상광교동",
+      "name": "상광교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/장안구/법정동/하광교동",
+      "name": "하광교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "jangan"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/세류동",
+      "name": "세류동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/장지동",
+      "name": "장지동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/평동",
+      "name": "평동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/고색동",
+      "name": "고색동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/오목천동",
+      "name": "오목천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/평리동",
+      "name": "평리동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/서둔동",
+      "name": "서둔동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/탑동",
+      "name": "탑동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/구운동",
+      "name": "구운동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/금곡동",
+      "name": "금곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/호매실동",
+      "name": "호매실동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/권선동",
+      "name": "권선동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/곡반정동",
+      "name": "곡반정동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/대황교동",
+      "name": "대황교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/입북동",
+      "name": "입북동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/권선구/법정동/당수동",
+      "name": "당수동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "gwonseon"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/팔달로1가",
+      "name": "팔달로1가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/팔달로2가",
+      "name": "팔달로2가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/팔달로3가",
+      "name": "팔달로3가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/남창동",
+      "name": "남창동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/영동",
+      "name": "영동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/중동",
+      "name": "중동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/구천동",
+      "name": "구천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/남수동",
+      "name": "남수동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/매향동",
+      "name": "매향동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/북수동",
+      "name": "북수동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/장안동",
+      "name": "장안동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/신풍동",
+      "name": "신풍동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/매교동",
+      "name": "매교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/교동",
+      "name": "교동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/매산로1가",
+      "name": "매산로1가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/매산로2가",
+      "name": "매산로2가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/매산로3가",
+      "name": "매산로3가",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/고등동",
+      "name": "고등동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/화서동",
+      "name": "화서동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/지동",
+      "name": "지동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/우만동",
+      "name": "우만동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/팔달구/법정동/인계동",
+      "name": "인계동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "paldal"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/매탄동",
+      "name": "매탄동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/원천동",
+      "name": "원천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/이의동",
+      "name": "이의동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/하동",
+      "name": "하동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/영통동",
+      "name": "영통동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/신동",
+      "name": "신동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "수원시/영통구/법정동/망포동",
+      "name": "망포동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "yeongtong"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "aliasKey": "suwon/jangan/파장동",
+      "name": "파장동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/파장동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/장안구/법정동/이목동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/율천동",
+      "name": "율천동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/율전동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/장안구/법정동/천천동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/정자1동",
+      "name": "정자1동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/정자동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/정자2동",
+      "name": "정자2동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/정자동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/정자3동",
+      "name": "정자3동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/정자동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "수원시/장안구/법정동/천천동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/영화동",
+      "name": "영화동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/영화동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/송죽동",
+      "name": "송죽동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/송죽동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/조원1동",
+      "name": "조원1동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/조원동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/조원2동",
+      "name": "조원2동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/조원동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/jangan/연무동",
+      "name": "연무동",
+      "districtKey": "jangan",
+      "relations": [
+        {
+          "unitKey": "수원시/장안구/법정동/연무동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/장안구/법정동/상광교동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/장안구/법정동/하광교동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/세류1동",
+      "name": "세류1동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/세류동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/세류3동",
+      "name": "세류3동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/세류동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/세류2동",
+      "name": "세류2동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/세류동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/장지동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/평동",
+      "name": "평동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/평동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/고색동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/오목천동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/평리동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/서둔동",
+      "name": "서둔동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/서둔동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/탑동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/구운동",
+      "name": "구운동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/구운동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/금곡동",
+      "name": "금곡동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/금곡동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/호매실동",
+      "name": "호매실동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/호매실동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/권선1동",
+      "name": "권선1동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/권선동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/권선2동",
+      "name": "권선2동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/권선동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/곡선동",
+      "name": "곡선동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/권선동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/곡반정동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/대황교동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/gwonseon/입북동",
+      "name": "입북동",
+      "districtKey": "gwonseon",
+      "relations": [
+        {
+          "unitKey": "수원시/권선구/법정동/입북동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/권선구/법정동/당수동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/행궁동",
+      "name": "행궁동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/팔달로1가",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/팔달로2가",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/팔달로3가",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/남창동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/영동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/중동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/구천동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/남수동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/매향동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/북수동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/장안동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/신풍동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/매교동",
+      "name": "매교동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/매교동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/교동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/매산동",
+      "name": "매산동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/매산로1가",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/매산로2가",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/팔달구/법정동/매산로3가",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/고등동",
+      "name": "고등동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/고등동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/화서1동",
+      "name": "화서1동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/화서동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/화서2동",
+      "name": "화서2동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/화서동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/지동",
+      "name": "지동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/지동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/우만1동",
+      "name": "우만1동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/우만동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/우만2동",
+      "name": "우만2동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/우만동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/paldal/인계동",
+      "name": "인계동",
+      "districtKey": "paldal",
+      "relations": [
+        {
+          "unitKey": "수원시/팔달구/법정동/인계동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/매탄1동",
+      "name": "매탄1동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/매탄동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/매탄2동",
+      "name": "매탄2동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/매탄동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/매탄3동",
+      "name": "매탄3동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/매탄동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/매탄4동",
+      "name": "매탄4동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/매탄동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/원천동",
+      "name": "원천동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/원천동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/광교1동",
+      "name": "광교1동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/이의동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/광교2동",
+      "name": "광교2동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/하동",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/영통1동",
+      "name": "영통1동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/영통동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/영통3동",
+      "name": "영통3동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/영통동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/영통2동",
+      "name": "영통2동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/영통동",
+          "scope": "partial"
+        },
+        {
+          "unitKey": "수원시/영통구/법정동/신동",
+          "scope": "whole"
+        },
+        {
+          "unitKey": "수원시/영통구/법정동/망포동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/망포1동",
+      "name": "망포1동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/망포동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "suwon/yeongtong/망포2동",
+      "name": "망포2동",
+      "districtKey": "yeongtong",
+      "relations": [
+        {
+          "unitKey": "수원시/영통구/법정동/망포동",
+          "scope": "partial"
+        }
+      ],
+      "verificationStatus": "official full/partial crosswalk",
+      "unresolvedCandidateNames": []
+    }
+  ],
+  "representatives": [
+    {
+      "pageKey": "suwon-flower-test-region-gwonseon-geumgok",
+      "unitKeys": [
+        "수원시/권선구/법정동/금곡동"
+      ],
+      "slug": "gwonseon-geumgok",
+      "url": "/regions/gwonseon-geumgok/",
+      "intentKey": "suwon|flower-delivery|local-order|금곡동",
+      "primaryKeyword": "수원 금곡동 꽃배달",
+      "routeMode": "regional",
+      "status": "candidate",
+      "queryEvidence": "Explicit user request to repair missing local coverage, official name/crosswalk and an inferred local-order need; no volume or independent demand claimed. Full buyer-intent/local-fact review remains required."
+    }
+  ],
+  "caveats": "Geographic unit count is not independent query-intent or article quota. Need canonical mapping for every unit and full local/source/product review before any publication."
+}
