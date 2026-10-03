@@ -120,10 +120,16 @@ def check(root=Path('.')):
     assert {'bouquet','basket','funeral','congrats'} <= set(docs['/'].primary_families), 'Home hero omits advertised product purpose'
     assert {'bouquet','basket','funeral','congrats'} <= set(docs['/'].product_families), 'Home product selection omits advertised product purpose'
     for page in pages:
-        if page['pageType']=='business-opening':
+        slot=page.get('assetSlot')
+        assert slot in [None,'','NONE','REAL_PROOF'],f'Unsupported dedicated asset slot: {page["url"]}'
+        illustration=not slot and page.get('visualIntent') not in ['congrats_wreath','funeral_wreath'] and (page['pageType']=='business-opening' or page.get('visualIntent')=='event_wreath')
+        if illustration:
             doc=docs[page['url']]
-            assert doc.images[0]['src'].startswith('/images/editorial/'),f'Opening hero communicates wedding sample: {page["url"]}'
-            assert 'AI 일러스트' in ' '.join(doc.visible),f'Unlabeled editorial opening hero: {page["url"]}'
+            assert doc.images[0]['src'].startswith('/images/editorial/'),f'Missing declared editorial hero: {page["url"]}'
+            assert 'AI 일러스트' in ' '.join(doc.visible),f'Unlabeled editorial hero: {page["url"]}'
+        elif slot=='REAL_PROOF':
+            doc=docs[page['url']]
+            assert doc.images[0]['src'].startswith('/images/products/'),f'REAL_PROOF must use verified product photography: {page["url"]}'
         if page.get('visualIntent')=='performance_venue':
             assert docs[page['url']].primary_families==['bouquet'],f'Performance primary product mismatch: {page["url"]}'
     for url,doc in docs.items():

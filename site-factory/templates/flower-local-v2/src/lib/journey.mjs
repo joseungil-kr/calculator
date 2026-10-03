@@ -6,8 +6,9 @@ export function nextSteps(page, pages) {
   const families = productFamilies(page);
   const wreathOnly = families.length > 0 && families.every(f => ['funeral', 'congrats'].includes(f));
   const byIntent = intent => pages.find(p => p.category === 'order' && p.visualIntent === intent);
-  const price = pages.find(p => p.pageType === 'price-guide' && p.category === page.category)
-    || pages.find(p => p.pageType === 'price-guide' && p.category === 'order');
+  const compatiblePrice = p => p.pageType === 'price-guide' && productFamilies(p).some(f => families.includes(f));
+  const price = pages.find(p => compatiblePrice(p) && p.category === page.category)
+    || pages.find(p => compatiblePrice(p) && p.category === 'order');
   const candidates = [price, byIntent('order_address')];
   if (wreathOnly) candidates.push(byIntent('wreath_message'), byIntent('wreath_order'));
   else candidates.push(byIntent('same_day_order'));
@@ -16,10 +17,8 @@ export function nextSteps(page, pages) {
 
 export function relatedReading(page, pages) {
   const next = new Set(nextSteps(page, pages).map(p => p.pageKey));
+  // Every explicit reviewed reference is displayed, either in next steps above
+  // or as related reading here. A cross-category reference is not discarded.
   return (page.relatedKeys || []).map(key => pages.find(p => p.pageKey === key))
-    .filter(p => p && p.pageKey !== page.pageKey && !next.has(p.pageKey)
-      && p.category === page.category
-      && (page.category !== 'gift' || p.pageType === page.pageType)
-      && (page.category !== 'event' || p.visualIntent === page.visualIntent)
-      && productFamilies(p).some(f => productFamilies(page).includes(f)));
+    .filter(p => p && p.pageKey !== page.pageKey && !next.has(p.pageKey));
 }
