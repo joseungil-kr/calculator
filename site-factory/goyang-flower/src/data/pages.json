@@ -1118,5 +1118,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-gangmae",
+    "snapshotId": "goyang-deogyang-gangmae-r1-20261003T182200Z",
+    "snapshotHash": "b203b84afbcb997b0a3eecca928e7682f9496c7fd6c70973099e9542c36f00e7",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-gangmae-r1",
+    "sourceRecordId": "recNoDnqRdFnRuBeN",
+    "publishQueueRecordId": "recBdjiqo0fiK45ok",
+    "slug": "deogyang-gangmae",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-gangmae/",
+    "title": "강매동 꽃배달 | 마을 주소와 집 앞 수령을 맞추는 꽃선물",
+    "primaryKeyword": "강매동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 15,
+    "h1": "강매동 꽃배달, 받으실 집과 시간을 먼저 알려주세요",
+    "description": "강고산·매화정처럼 익숙한 마을명에 도로명주소와 건물번호를 더해 주세요. 강매동 가정으로 보낼 꽃다발·꽃바구니의 표시가격, 수령 위치와 배송 상담사항을 안내합니다.",
+    "cardSummary": "마을 이름만 알고 계셔도 주문 준비를 시작할 수 있어요. 집의 도로명주소와 직접 받을 시간을 확인하고, 들고 건넬 꽃과 놓아둘 꽃을 비교하세요.",
+    "firstAnswer": "강매동 꽃배달은 받으실 집의 도로명주소와 건물번호, 연락 가능한 수령자, 희망 시간을 알려주시면 꽃이랑에서 주문 상담을 받으실 수 있습니다. 강고산·매화정 같은 마을명은 보조로 적고, 꽃다발이나 꽃바구니의 공급 여부와 추가배송비를 포함한 총액을 확인해 주세요.",
+    "contentMarkdown": "강매동 꽃배달은 받으실 집의 도로명주소와 건물번호, 연락 가능한 수령자, 희망 시간을 알려주시면 꽃이랑에서 주문 상담을 받으실 수 있습니다. 강고산·매화정 같은 마을명은 보조로 적고, 꽃다발이나 꽃바구니의 공급 여부와 추가배송비를 포함한 총액을 확인해 주세요.\n\n## 강고산·매화정이라는 이름에 집 주소를 더해 주세요\n\n[고양시 행신2동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_12/dong01_4_12_tab1.jsp)는 강매동을 경의선 남쪽의 자연마을로 설명하고, 강고산·매화정이라는 마을명도 안내합니다. 행신2동이라는 행정명이나 행신역 근처라는 설명만으로는 꽃을 받을 집까지 특정하기 어렵습니다.\n\n가족에게 주소를 확인할 때에는 지도에서 선택한 도로명과 건물번호를 함께 받아 주세요. 마을회관이나 다리 등 눈에 띄는 장소는 길찾기 보조로 남기되, 그곳에서 대신 받기로 한 약속이 없다면 배송 목적지로 바꾸지 않는 것이 좋습니다. 대문 앞에서 받을지, 건물 입구에서 만날지도 함께 정하면 마지막 인계 지점을 상담하기 쉽습니다.\n\n## 집에 놓을 꽃인가요, 직접 건넬 꽃인가요?\n\n강매동 집으로 부모님 생신이나 감사의 마음을 전한다면 받는 분이 꽃을 놓을 자리를 생각해 보세요. 꽃바구니 '햇살 한가득'(A155)은 기본 표시가격 65,000원입니다. 방문하시는 분이 받아서 손에 들고 전할 계획이라면 꽃다발 '소소한 행복'(G105), 기본 표시가격 50,000원부터 비교하실 수 있습니다.\n\n다발은 받은 뒤 꽂아 둘 꽃병을 준비할 수 있는지, 바구니는 실내에 놓을 자리가 있는지 생각하면 선택이 쉬워집니다. 사진과 꼭 같은 꽃 종류가 필요하면 주문 전에 말씀해 주세요. 지역·계절에 따라 실제 꽃 구성과 형태가 일부 달라질 수 있고, 해당 날짜의 공급도 확인해야 합니다.\n\n## 외출하는 가족을 기다리게 하지 않으려면\n\n집 앞에 잠깐 두는 방식보다 받을 수 있는 시간대를 먼저 정해 주세요. 대리수령을 부탁한다면 실제로 동의한 분과 인계 장소를 전달해 주시면 됩니다. 꽃은 장시간 바깥에 두지 않도록 수령 일정을 잡는 편이 좋습니다.\n\n강매동 안에서도 출입구 위치와 수령 약속은 집마다 다릅니다. 차량이 집 앞까지 갈 수 있는지, 다른 지점에서 사람이 나와 받아야 하는지 아는 범위에서 알려주세요. 길이 좁거나 진입이 어려울 것이라는 추측만으로 배송비나 가능 시간을 정하지 말고, 정확한 주소로 상담해 주세요.\n\n## 날짜·주소·예산을 모아 주문하세요\n\n꽃이랑에 강매동의 도로명주소, 받는 분 연락처, 희망일과 수령 가능한 시간대, 상품명, 카드에 적을 문구를 알려주세요. 위 금액은 상품 기본 표시가이며 지역별 추가배송비가 생길 수 있어 최종 총액은 주문별로 확인해야 합니다. 당일 요청은 공급과 이동·수령 조건을 확인한 뒤 가능 시간을 안내받으세요.\n\n[1844-0644로 강매동 꽃배달 상담](tel:18440644)은 08:00~23:00, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있습니다. 온라인 접수시간이 곧 배송 가능 시간은 아닙니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 행신2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_12/dong01_4_12_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 행신2동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_12/dong01_4_12_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
