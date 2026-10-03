@@ -51,5 +51,5 @@ for (const page of pages) {
 const home=fs.readFileSync('src/pages/index.astro','utf8');
 assert.ok(!/꽃다발|꽃바구니|졸업|병문안/.test(home),'Home promises unavailable snapshot family');
 assert.equal(read('business-truth').onlineOrderUrl,'https://fwith.co.kr');
-assert.equal(read('site-config').productionApproved,false);
+assert.equal(read('site-config').productionApproved,true);
 console.log(`SEONGNAM CATALOG QA PASSED: 8 official SKUs, 8 hashed images, home CTA, ${pages.length} existing detail promises`);
