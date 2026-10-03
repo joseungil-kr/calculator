@@ -2134,5 +2134,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-sinwon",
+    "snapshotId": "goyang-deogyang-sinwon-r1-20261003T182200Z",
+    "snapshotHash": "23a412718df48d25e58d44fc687be85f2b2d834e5ca5df9f63b56595428b708a",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-sinwon-r1",
+    "sourceRecordId": "recpC6VWsGUwQVuWK",
+    "publishQueueRecordId": "recWMYRi5ksTxHWkm",
+    "slug": "deogyang-sinwon",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-sinwon/",
+    "title": "신원동 꽃배달 | 신원마을 가정·학교 행사 수령",
+    "primaryKeyword": "신원동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 28,
+    "h1": "신원동 꽃배달, 신원마을 집과 학교 행사 장소를 구분하세요",
+    "description": "고양 신원동 꽃선물은 단지·동·호수와 실제 학교명을 확인해 준비하세요. 신원초·신원중 주소를 구분하고 꽃다발·꽃바구니의 기본가격, 인계 담당자와 배송 조건을 상담합니다.",
+    "cardSummary": "비슷한 학교명과 신원2로·신원3로를 구분하면 행사 꽃의 수령지가 명확해져요. 가정 선물은 단지번호와 받을 가족의 시간을 함께 준비하세요.",
+    "firstAnswer": "신원동 꽃배달은 고양시 덕양구의 도로명주소에 단지·동·호수 또는 정확한 학교명을 더해 주문해 주세요. 꽃이랑에서 가족 선물용 꽃다발·꽃바구니를 고르고, 학교 행사라면 성인 수령 담당자와 인계 장소를 확인하실 수 있습니다. 희망일 공급과 받을 시간, 추가배송비를 포함한 총액을 상담해 주세요.",
+    "contentMarkdown": "신원동 꽃배달은 고양시 덕양구의 도로명주소에 단지·동·호수 또는 정확한 학교명을 더해 주문해 주세요. 꽃이랑에서 가족 선물용 꽃다발·꽃바구니를 고르고, 학교 행사라면 성인 수령 담당자와 인계 장소를 확인하실 수 있습니다. 희망일 공급과 받을 시간, 추가배송비를 포함한 총액을 상담해 주세요.\n\n## 신원초와 신원중, 학교 이름과 도로명을 함께 보세요\n\n[고양시 원신동 공식 안내](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_8/dong01_4_8_tab1.jsp)에 신원초등학교는 덕양구 신원3로 21, 신원중학교는 신원2로 6으로 나옵니다. 학교 행사에 꽃을 보내실 때에는 '신원 학교'라는 표현 대신 행사 안내문에 적힌 정확한 학교명과 주소를 확인해 주세요.\n\n졸업·발표·수상 축하 꽃을 학교에서 받는다면 보호자나 행사 운영 담당자 등 성인 인계자를 먼저 정해 주세요. 학교 안 출입과 꽃 반입, 실제로 받을 위치는 학교 측 안내에 따라 협의할 사항입니다. 생년월일이나 학생의 상세 개인정보를 주문 문구에 넣을 필요 없이, 행사명과 수령 담당자의 연락으로 인계를 준비해 주세요.\n\n## 가족이 집에서 받을 때에는 신원마을의 단지를 확인하세요\n\n같은 시 공식 소개는 신원동 일부에 삼송택지개발지구의 아파트·단독주택·집합상가가 조성되었다고 안내합니다. '삼송 쪽 신원마을'이라고만 적기보다 받는 집의 도로명주소와 단지명·동·호수를 알려주세요. 서울 등 다른 지역의 같은 신원동 이름과도 구별되도록 고양시 덕양구를 포함하는 것이 좋습니다.\n\n학교 행사 후 가족이 집에 돌아와 받을 예정이면 행사 종료시각과 집 수령 가능시각을 나누어 생각해 주세요. 가정 선물을 학교나 단지 관리시설에 맡기는 방식은 해당 수령자와 시설의 동의가 필요합니다. 직접 받을 가족 또는 동의한 대리수령자를 정해 주세요.\n\n## 축하꽃을 들고 갈지, 집에 놓아둘지 고르세요\n\n행사가 끝난 뒤 직접 꽃을 건네거나 사진을 남길 선물은 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)을 비교해 보세요. 꽃을 받은 뒤 이동할 상황과 원하는 크기를 말씀해 주시고 실제 제작 가능한 규격을 확인해 주세요.\n\n부모님 생신이나 감사의 마음을 집으로 전한다면 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 살펴보실 수 있습니다. 실내에 놓을 자리와 받는 분이 선호하는 색감을 생각해 주세요. 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있으며, 특정 꽃의 공급 여부는 주문 시 확인해야 합니다.\n\n## 날짜와 인계 장소가 정해지면 상담해 주세요\n\n고양 신원동의 실제 주소, 가정 또는 학교 행사 수령 여부, 성인 수령자 연락처, 희망 날짜·가능한 시간대, 상품과 예산, 카드 문구를 준비하시면 됩니다. 위 상품가는 기본 표시가격이며 지역별 추가배송비와 선택사항을 포함한 최종 총액은 주문별로 확인해 주세요. 당일 또는 행사 전 전달은 상품 준비와 인계 조건에 따른 확인이 필요합니다.\n\n[꽃이랑 전화 1844-0644](tel:18440644)는 08:00~23:00에 상담하실 수 있고 [온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있습니다. 접수 가능한 시간과 실제 받을 수 있는 시간은 구분해 알려주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 원신동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_8/dong01_4_8_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 원신동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_8/dong01_4_8_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
