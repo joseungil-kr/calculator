@@ -4128,5 +4128,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-wonheung",
+    "snapshotId": "goyang-deogyang-wonheung-r1-20261003T182200Z",
+    "snapshotHash": "b7e4e2707c302f65413684409d674927a7d7f35a1a27852164bdcf0883d972d0",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-wonheung-r1",
+    "sourceRecordId": "recG3dsoM9oM2o8YW",
+    "publishQueueRecordId": "recVEnH7W7tl2zQIU",
+    "slug": "deogyang-wonheung",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-wonheung/",
+    "title": "원흥동 꽃배달 | 역 주변 아파트와 주택 수령 안내",
+    "primaryKeyword": "원흥동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 53,
+    "h1": "원흥동 꽃배달, 아파트 동·호수와 주택 주소를 나눠 준비해요",
+    "description": "원흥역 주변 공동주택·상가와 흥도동 관할 원흥동은 주소 설명이 달라집니다. 받는 건물과 상품 선택, 꽃바구니·꽃다발 가격 및 주문 조건을 확인하세요.",
+    "cardSummary": "역 주변 단지의 동·호수와 주택의 실제 출입 지점을 구분해 안내합니다. 받는 분이 이동할지 집에 둘지에 맞춰 꽃을 골라 보세요.",
+    "firstAnswer": "원흥동 꽃배달은 아파트·상가라면 단지명과 동·호수를, 주택이라면 도로명주소와 실제 출입 지점을 먼저 알려 주세요. 꽃이랑에서는 집에 둘 꽃바구니와 직접 건넬 꽃다발을 비교해 주문하실 수 있습니다. 원흥역 근처라는 설명만으로 수령지를 정하지 않고, 담당자와 받을 시간·추가배송비까지 확인해 주세요.",
+    "contentMarkdown": "원흥동 꽃배달은 아파트·상가라면 단지명과 동·호수를, 주택이라면 도로명주소와 실제 출입 지점을 먼저 알려 주세요. 꽃이랑에서는 집에 둘 꽃바구니와 직접 건넬 꽃다발을 비교해 주문하실 수 있습니다. 원흥역 근처라는 설명만으로 수령지를 정하지 않고, 담당자와 받을 시간·추가배송비까지 확인해 주세요.\n\n## 같은 원흥동에서도 단지와 주택은 주소 설명이 달라요\n\n[삼송2동 공식 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_20/dong01_4_20_tab1.jsp)는 원흥역을 중심으로 삼송마을·원흥마을의 공동주택과 상가가 형성돼 있다고 안내하고, 흥도동 관할 원흥동과도 구분합니다. ‘원흥동으로 보내 주세요’라는 정보만으로 받는 장소를 하나로 정하기는 어렵습니다.\n\n단지 안 세대로 보낸다면 정식 단지명, 동·호수와 받는 분의 연락처를 적어 주세요. 상가로 보낸다면 같은 단지에 있더라도 상가동 구분, 간판명, 층·호수가 필요합니다. 주택은 지도에 표시된 주소에 더해 어느 문에서 꽃을 받을지 알려 주시면 됩니다.\n\n## 집에 둘 바구니와 만나서 줄 꽃다발을 비교해요\n\n집들이나 생일에 집에서 받을 선물은 꽃바구니 ‘햇살 한가득’(A155, 상품가격 65,000원)을 살펴보세요. 실내에 둘 자리를 생각하고 받는 분이 직접 받아 둘 수 있는 시간대를 정하는 편이 좋습니다.\n\n만나서 축하한 뒤 이동하는 일정이라면 꽃다발 ‘소소한 행복’(G105, 상품가격 50,000원)이 또 다른 선택지입니다. 원흥역 부근에서 만나더라도 역 이름만 주문서에 적지 말고 합의한 출입구·건물 등 식별 가능한 만남 장소를 알려 주세요. 정하신 만남 장소에서 인계가 가능한지는 주문할 때 확인해 주세요.\n\n## 관리실이나 매장이 대신 받을 때는 먼저 합의하세요\n\n받는 분이 부재중이라면 관리실이나 매장 직원에게 맡길 수 있는지 미리 확인해 주세요. 같은 건물에서 일하더라도 누구나 대신 꽃을 받아 줄 수 있는 것은 아닙니다. 수령인과 대리수령인의 연락 가능한 번호, 실제 전달 위치를 구분해 준비해 주세요.\n\n꽃을 둘 공간이나 색감에 관한 요청은 주문할 때 함께 알려 주세요. 지역·계절에 따라 실제 꽃 구성과 형태는 달라질 수 있습니다. 사진 속 구성과 원하는 조건이 꼭 같아야 한다면 가능한 범위를 결제 전에 확인하는 것이 좋습니다.\n\n## 수령 방식이 정해지면 희망 날짜와 함께 문의하세요\n\n꽃이랑 전화주문은 [1844-0644](tel:18440644)로 08:00~23:00에 가능합니다. 날짜·주소·동호수·상품·문구를 준비하시면 주문에 필요한 내용을 정리하기 쉽습니다. [공식 홈페이지 온라인 주문](https://fwith.co.kr)은 24시간 이용하실 수 있습니다.\n\n희망 시각 도착과 당일 전달은 실제 배송 가능 여부를 따로 확인해 주세요. 안내한 금액은 상품가격이며 지역별 추가배송비가 발생할 수 있으므로 주문별 최종 금액을 확인해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "덕양구청 행정구역 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 삼송2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_20/dong01_4_20_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "덕양구청 행정구역 관내도",
+      "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

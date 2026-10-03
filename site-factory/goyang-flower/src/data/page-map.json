@@ -559,6 +559,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-wonheung",
+      "snapshotId": "goyang-deogyang-wonheung-r1-20261003T182200Z",
+      "snapshotHash": "b7e4e2707c302f65413684409d674927a7d7f35a1a27852164bdcf0883d972d0",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-wonheung-r1",
+      "sourceRecordId": "recG3dsoM9oM2o8YW",
+      "publishQueueRecordId": "recVEnH7W7tl2zQIU",
+      "slug": "deogyang-wonheung",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-wonheung/",
+      "title": "원흥동 꽃배달 | 역 주변 아파트와 주택 수령 안내",
+      "primaryKeyword": "원흥동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-baekseok",
       "snapshotId": "goyang-ilsandong-baekseok-r1-20261003T182200Z",
       "snapshotHash": "d2b48f1a45993bda5f653e072033e4e02ae9e4c84873f5e3956fc5bd29408858",
