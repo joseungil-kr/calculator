@@ -24,6 +24,9 @@ EVIDENCE = 'https://github.com/joseungil-kr/fwith-site-factory/issues/1#issuecom
 
 def site(phase='preview'):
     value = copy.deepcopy(json.loads((ROOT / '.github/site-factory-sites.json').read_text())['sites'][qa.GOYANG_SITE])
+    # Test approval states are disposable fixtures, not an assertion that the
+    # real registry must stay at its initial pre-preview state forever.
+    value.update(productionEnabled=False, launchMode='staging', approvedRevision='', approvalEvidenceUrl='')
     value['coverageDeployment'].update(enabled=True, previewRevision=REVISION,
         previewManifestSha256='b'*64, previewApprovalEvidenceUrl=EVIDENCE, productionManifestSha256='b'*64)
     if phase == 'production':
@@ -37,8 +40,8 @@ class ResolverTests(unittest.TestCase):
         args.update(kw)
         return qa.resolve_goyang_coverage_target(value, **args)
 
-    def test_committed_registry_is_closed_and_preserves_original_gates(self):
-        value = json.loads((ROOT / '.github/site-factory-sites.json').read_text())['sites'][qa.GOYANG_SITE]
+    def test_closed_registry_fixture_preserves_original_gates(self):
+        value = site();value['coverageDeployment']['enabled'] = False
         self.assertFalse(value['productionEnabled']); self.assertTrue(value['growthPaused'])
         self.assertFalse(value['autoDeploySnapshots']); self.assertFalse(value['coverageDeployment']['enabled'])
         self.assertEqual(value['approvedRevision'], '')
@@ -72,6 +75,45 @@ class ResolverTests(unittest.TestCase):
             with self.subTest(key=key),self.assertRaises(ValueError):self.resolve(candidate)
         with self.assertRaises(ValueError):self.resolve(site(), 'production')
         with self.assertRaises(ValueError):self.resolve(site('production'), 'preview')
+
+
+SYNTHETIC_BEACON = (b'<script type="module" src="' + qa.GOYANG_CF_BEACON_SRC
+    + b'" integrity="sha512-synthetic" data-cf-beacon=\'{"token":"public-test-fixture"}\' crossorigin="anonymous"></script>\n')
+
+
+class ManagedBeaconTests(unittest.TestCase):
+    def test_exact_bytes_or_one_fully_pinned_suffix_only(self):
+        artifact=b'<html><body><h1>Fixture</h1></body></html>'
+        live=artifact.replace(b'</body>',SYNTHETIC_BEACON+b'</body>')
+        with patch.object(qa,'GOYANG_CF_BEACON_SHA256',hashlib.sha256(SYNTHETIC_BEACON).hexdigest()):
+            self.assertTrue(qa.goyang_artifact_matches(artifact.decode(),artifact))
+            self.assertTrue(qa.goyang_artifact_matches(live.decode(),artifact,True))
+            self.assertFalse(qa.goyang_artifact_matches(live.decode(),artifact,False))
+
+    def test_changed_source_attributes_inline_duplicate_or_location_is_rejected(self):
+        artifact=b'<html><body><h1>Fixture</h1></body></html>'
+        variants=[SYNTHETIC_BEACON.replace(b'static.cloudflareinsights.com',b'attacker.example'),
+            SYNTHETIC_BEACON.replace(b'type="module"',b'type="text/javascript"'),
+            SYNTHETIC_BEACON.replace(b'public-test-fixture',b'other-token'),
+            SYNTHETIC_BEACON.replace(b'integrity="sha512-synthetic"',b'integrity="changed"'),
+            SYNTHETIC_BEACON.replace(b'crossorigin="anonymous"',b'crossorigin="use-credentials"'),
+            SYNTHETIC_BEACON.replace(b'></script>',b'>alert(1)</script>'),
+            SYNTHETIC_BEACON.replace(b' crossorigin=',b' onload="alert(1)" crossorigin='),
+            SYNTHETIC_BEACON*2,SYNTHETIC_BEACON+b'<script>alert(1)</script>',b'<script>alert(1)</script>']
+        with patch.object(qa,'GOYANG_CF_BEACON_SHA256',hashlib.sha256(SYNTHETIC_BEACON).hexdigest()):
+            for injected in variants:
+                self.assertFalse(qa.goyang_artifact_matches(artifact.replace(b'</body>',injected+b'</body>').decode(),artifact,True))
+            for live in [SYNTHETIC_BEACON+artifact,artifact+SYNTHETIC_BEACON,
+                         artifact.replace(b'<h1>',SYNTHETIC_BEACON+b'<h1>')]:
+                self.assertFalse(qa.goyang_artifact_matches(live.decode(),artifact,True))
+
+    def test_known_beacon_never_hides_body_cta_image_or_metadata_changes(self):
+        artifact=b'<html><body><h1>Fixture</h1><a href="https://fwith.co.kr">Order</a><img src="/proof.jpg"></body></html>'
+        live=artifact.replace(b'</body>',SYNTHETIC_BEACON+b'</body>')
+        with patch.object(qa,'GOYANG_CF_BEACON_SHA256',hashlib.sha256(SYNTHETIC_BEACON).hexdigest()):
+            for old,new in [(b'Fixture',b'Changed'),(b'https://fwith.co.kr',b'https://attacker.example'),
+                            (b'/proof.jpg',b'/wrong.jpg'),(b'<body>',b'<body><meta name="robots" content="index">')]:
+                self.assertFalse(qa.goyang_artifact_matches(live.replace(old,new).decode(),artifact,True))
 
 
 class ArtifactTests(unittest.TestCase):
@@ -145,6 +187,24 @@ class ArtifactTests(unittest.TestCase):
         self.phase='production';self.write(self.root,'site-config.json',{'siteKey':qa.GOYANG_SITE,'productionApproved':True,'region':'고양'})
         (self.root/'production-indexing.enabled').write_text('SYNTHETIC');self.build()
         self.assertEqual(self.verify()['pipelineState'],'live_verified')
+
+    def test_complete_pages_and_404_accept_only_pinned_managed_suffix(self):
+        for phase in ('preview','production'):
+            self.phase=phase;self.write(self.root,'site-config.json',{'siteKey':qa.GOYANG_SITE,'productionApproved':phase=='production','region':'고양'})
+            if phase=='production':(self.root/'production-indexing.enabled').write_text('SYNTHETIC')
+            self.build()
+            for path,(status,body,headers) in list(self.responses.items()):
+                if not path.endswith('/'):
+                    continue
+                artifact='<html><body>'+body+'</body></html>'
+                file=self.root/'dist'/path.lstrip('/')/'index.html' if status==200 else self.root/'dist/404.html'
+                file.write_text(artifact)
+                self.responses[path]=(status,artifact.replace('</body>',SYNTHETIC_BEACON.decode()+'</body>'),headers)
+            with patch.object(qa,'GOYANG_CF_BEACON_SHA256',hashlib.sha256(SYNTHETIC_BEACON).hexdigest()):
+                self.assertIn(self.verify()['pipelineState'],('preview_verified','live_verified'))
+                path='/regions/unpublished/';status,body,headers=self.responses[path]
+                self.responses[path]=(status,body.replace('public-test-fixture','unapproved'),headers)
+                with self.assertRaisesRegex(ValueError,'404'):self.verify()
 
     def test_preflight_is_offline_and_changed_source_canary_products_images_fail(self):
         self.assertEqual(self.verify(False)['pipelineState'],'goyang_source_validated');self.assertEqual(self.calls,[])
@@ -269,6 +329,7 @@ class WorkflowContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             tmp=Path(directory);(tmp/'control/.github').mkdir(parents=True)
             registry=json.loads((ROOT/'.github/site-factory-sites.json').read_text())
+            registry['sites'][qa.GOYANG_SITE]['coverageDeployment']['enabled']=False
             (tmp/'control/.github/site-factory-sites.json').write_text(json.dumps(registry))
             cwd=Path.cwd()
             try:

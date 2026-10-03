@@ -24,6 +24,26 @@ GOYANG_BASELINE = "e4eead3e881b3b4c09a60e2af5befb55b6787413"
 GOYANG_BASELINE_TREE = "27a45b8e99151c34b966f0a59a96110b91395fad"
 GOYANG_CANARY = "goyang-ilsan-paik-r2-20261002T040830"
 GOYANG_CANARY_HASH = "1419cc48f44a3618cbc365ac7f3796d4cd35dc5522eeff655a22f4caadfbdf10"
+# Observed on the existing bound Goyang host. This digest pins every byte of
+# Cloudflare's single public analytics element, including all attributes/values.
+GOYANG_CF_BEACON_SRC = b"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+GOYANG_CF_BEACON_SHA256 = "8a5cd48fb3f913d009a128498bef6fadc43d5561daec87e79f6adcd0bcc903f5"
+
+
+def goyang_artifact_matches(html, artifact, allow_managed_beacon=False):
+    live = html.encode("utf-8")
+    if live == artifact:
+        return True
+    closing = b"</body></html>"
+    if not allow_managed_beacon or not artifact.endswith(closing) or not live.endswith(closing):
+        return False
+    prefix = artifact[:-len(closing)]
+    if not live.startswith(prefix):
+        return False
+    inserted = live[len(prefix):-len(closing)]
+    return (inserted.startswith(b'<script type="module" src="' + GOYANG_CF_BEACON_SRC + b'" ')
+            and inserted.endswith(b'</script>\n') and inserted.count(b'<script') == 1
+            and hashlib.sha256(inserted).hexdigest() == GOYANG_CF_BEACON_SHA256)
 
 
 def require(condition, message):
@@ -217,7 +237,7 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
                 "Goyang response header policy mismatch")
         require(doc.snapshots == ([snapshot] if snapshot else []), "Goyang exact snapshot identity mismatch")
         file = root / "dist" / route.lstrip("/") / "index.html"
-        require(html.encode() == file.read_bytes(), "Live HTML differs from reviewed artifact/source/CTA/assets")
+        require(goyang_artifact_matches(html, file.read_bytes(), not offline), "Live HTML differs from reviewed artifact/source/CTA/assets")
     status, robots, _ = response("/robots.txt")
     expected_robots = [("user-agent", "*"), ("disallow", "/")] if phase == "preview" else [("user-agent", "*"), ("allow", "/"), ("sitemap", origin + "/sitemap-index.xml")]
     directives = [tuple(x.strip() for x in line.split(":", 1)) for line in robots.splitlines() if line.strip() and not line.lstrip().startswith("#")]
@@ -251,7 +271,7 @@ def verify_goyang_coverage(root, baseline_root, origin, revision, manifest_diges
         require(status == 404 and doc.metas.get("robots") == expected_robots and doc.h1 == 1
                 and doc.metas.get("site-factory-revision") == revision and not doc.canonicals
                 and not doc.snapshots and "application/ld+json" not in html
-                and html.encode() == (root / "dist/404.html").read_bytes(), "Goyang 404 artifact/policy mismatch")
+                and goyang_artifact_matches(html, (root / "dist/404.html").read_bytes(), not offline), "Goyang 404 artifact/policy mismatch")
         if phase == "preview":
             require("noindex" in {x.strip().lower() for x in headers.get("x-robots-tag", "").split(",")}, "Goyang 404 header missing noindex")
     return {"pipelineState": "goyang_source_validated" if offline else "preview_verified" if phase == "preview" else "live_verified", "revision": revision,
