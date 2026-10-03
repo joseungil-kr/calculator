@@ -162,6 +162,131 @@ def frozen_hashes(p):
     return snapshot, hashlib.sha256(encode(reviewed)).hexdigest()
 
 
+def regional_customer_claims(customer):
+    """Supplemental common-claim guard, not a replacement for independent review."""
+    import unicodedata
+    compact = re.sub(r'[\s\u200b-\u200d\ufeff]+', '', unicodedata.normalize('NFKC', customer))
+    terms = {'bouquet': r'꽃다발|부케', 'basket': r'꽃바구니',
+             'funeral': r'(?:근조|장례)(?:[0-9]+단)?화환|근조[·/ㆍ]축하화환',
+             'congrats': r'(?:축하|개업)(?:[0-9]+단)?화환'}
+    families = {family for family, pattern in terms.items() if re.search(pattern, compact)}
+    price = bool(re.search(r'(?:[0-9]+(?:[.,][0-9]+)*|[일이삼사오육칠팔구십백천만억]+)(?:[십백천만억]+)?원|(?:₩|KRW)[0-9]', compact, re.I))
+    negative = r'^(?:을|를|이|가|은|는)?(?:하지않|하지못|할수없|되지않|되는것(?:이|은)?아|아니|아닙|없|불가)'
+    delivery = False
+    for sentence in re.split(r'[.!?。！？\n]', compact):
+        for match in re.finditer(r'무료(?:배송|배달)|배송비무료', sentence):
+            if not re.search(negative, sentence[match.end():]):
+                delivery = True
+        if re.search(r'배송|배달|도착', sentence):
+            for match in re.finditer(r'보장|확약', sentence):
+                if not re.search(negative, sentence[match.end():]):
+                    delivery = True
+    return families, price or delivery
+
+
+def regional_contract(p, target, root):
+    """Five-city opt-in; legacy Goyang v1 is preserved by its separate adapter."""
+    if p['CATEGORY'] != 'regions' and p['PAGE_TYPE'] != 'regional-service':
+        return None
+    registered = target.get('regionalService')
+    if registered is None and target.get('administrativeCoverage') == {'enabled': True, 'regionKey': 'goyang', 'unitBasis': 'legal'} and p['SITE_KEY'] == 'goyang-flower-v2':
+        return None  # Existing v1 rules and frozen payload remain byte-compatible.
+    if not registered or registered.get('enabled') is not True:
+        fail('Regional scope is not explicitly enabled in the trusted registry')
+    if p.get('REGION_SCOPE_KEY') and p['REGION_SCOPE_KEY'] != registered.get('scopeKey'):
+        fail('REGION_SCOPE_KEY disagrees with the registered maintenance scope')
+    documents = {}
+    for name, file in [('definition', 'src/data/region-coverage.json'), ('policy', 'src/data/region-policy.json')]:
+        path = root / file
+        if not path.resolve().is_relative_to(root) or not path.is_file():
+            fail('Regional contract file is missing or escapes the site')
+        documents[name] = load_json(path)
+    coverage, policy = documents['definition'], documents['policy']
+    if coverage.get('schemaVersion') != 2 or policy.get('enabled') is not True:
+        fail('Regional data adapter is disabled or unsupported')
+    for document in [coverage, policy]:
+        if document.get('siteKey') != p['SITE_KEY'] or document.get('scopeKey') != registered.get('scopeKey'):
+            fail('Regional source site/scope mismatch')
+    if coverage.get('countIsPageQuota') is not False or coverage.get('unitBasis') != 'legal-dong-plus-eup-myeon':
+        fail('Regional geographic inventory is not a page quota')
+    hosts = policy.get('officialHosts', [])
+    urls = coverage.get('officialSourceUrls', [])
+    if not hosts or not urls or any(urlparse(url).scheme != 'https' or urlparse(url).hostname not in hosts or urlparse(url).username or urlparse(url).password for url in urls):
+        fail('Regional official provenance is untrusted')
+    if not any(source['type'] == 'official' and urlparse(source['url']).hostname in hosts for source in p['sources']):
+        fail('Regional snapshot needs an official local source')
+    representatives = coverage.get('representatives', [])
+    represented = []
+    for field in ['pageKey', 'url', 'intentKey', 'primaryKeyword']:
+        values = [row.get(field) for row in representatives]
+        if not all(values) or len(set(values)) != len(values):
+            fail('Duplicate regional canonical binding')
+    units = {unit['unitKey'] for unit in coverage.get('units', [])}
+    for row in representatives:
+        if not isinstance(row.get('unitKeys'), list) or not row['unitKeys']:
+            fail('Regional representative requires nonempty known unitKeys')
+        for unit in row['unitKeys']:
+            if unit not in units or unit in represented:
+                fail('Duplicate or unknown regional unit assignment')
+            represented.append(unit)
+    matching = [row for row in representatives if row['pageKey'] == p['PAGE_KEY']]
+    if len(matching) != 1:
+        fail('Regional page has no registered query/canonical binding')
+    row = matching[0]
+    if row.get('status') != 'approved' or row.get('routeMode') != 'regional' or not row.get('queryEvidence'):
+        fail('Regional representative is candidate/reserved, not approved')
+    for header, expected in [('CATEGORY', 'regions'), ('PAGE_TYPE', 'regional-service'), ('PAGE_ROLE', 'REGION_SERVICE_LANDING'), ('PARENT_HUB', '/regions/'), ('ROUTE_TYPE', 'category'), ('LOCALIZATION_POLICY', 'local-required'), ('QUERY_CLASS', 'local-commercial'), ('SLUG', row['slug']), ('INTENT_KEY', row['intentKey']), ('PRIMARY_KEYWORD', row['primaryKeyword'])]:
+        if p.get(header) != expected:
+            fail('Regional route/query contract mismatch: ' + header)
+    if p['url'] != row['url'] or not all(p.get(key) for key in ['H1', 'CARD-SUMMARY', 'FIRST-ANSWER', 'VISUAL_INTENT', 'ASSET_SLOT']):
+        fail('Regional snapshot lacks its explicit reviewed display fields')
+    bindings = [item for item in policy.get('visualBindings', []) if item.get('pageKey') == p['PAGE_KEY']]
+    if len(bindings) != 1:
+        fail('Regional page needs an independently verified visual binding')
+    asset = bindings[0]
+    for header, field in [('OG_IMAGE', 'image'), ('OG_IMAGE_ALT', 'alt'), ('OG_IMAGE_SHA256', 'sha256'), ('OG_IMAGE_SOURCE_URL', 'sourceUrl')]:
+        if not asset.get(field) or (p.get(header) and p[header] != asset[field]):
+            fail('Regional visual metadata contradicts reviewed source binding: ' + header)
+    if not re.fullmatch(r'/images/[A-Za-z0-9_./-]+\.(?:png|jpe?g|webp)', asset['image']) or '..' in asset['image']:
+        fail('Regional OG image must be an existing local image')
+    image = (root / 'public' / asset['image'].lstrip('/')).resolve()
+    if not image.is_relative_to(root / 'public') or not image.is_file() or hashlib.sha256(image.read_bytes()).hexdigest() != asset['sha256']:
+        fail('Regional OG image bytes do not match verified binding')
+    if asset.get('status') != 'approved' or asset.get('assetType') not in ['real_product', 'brand'] or not asset.get('verifiedAt') or urlparse(asset['sourceUrl']).scheme != 'https':
+        fail('Regional OG image lacks reviewed product/brand provenance')
+    if not isinstance(asset.get('width'), int) or not isinstance(asset.get('height'), int) or min(asset['width'], asset['height']) < 1 or asset.get('type') not in ['image/jpeg', 'image/png', 'image/webp']:
+        fail('Regional visual binding lacks verified image dimensions/type')
+    mode = asset.get('purchaseMode')
+    keys = asset.get('productKeys')
+    if mode not in ['catalog', 'consultation-only'] or not isinstance(keys, list) or len(set(keys)) != len(keys):
+        fail('Regional purchase mode and exact product keys must be explicit')
+    families = []
+    if mode == 'catalog':
+        if not keys:
+            fail('Regional catalog purchase intent has no product mapping')
+        products = load_json(root / 'src/data/products.json')
+        family_map = {'funeral_wreath': 'funeral', 'congrats_wreath': 'congrats', 'flower_bouquet': 'bouquet', 'flower_basket': 'basket'}
+        for key in keys:
+            matches = [product for product in products if (product.get('key') or product.get('productKey')) == key]
+            if len(matches) != 1 or not matches[0].get('sourceUrl'):
+                fail('Regional product is not in the existing site catalog')
+            family = matches[0].get('family') or family_map.get(matches[0].get('category'))
+            if family not in ['funeral', 'congrats', 'bouquet', 'basket']:
+                fail('Regional product family is unsupported')
+            if family not in families:
+                families.append(family)
+    elif keys:
+        fail('Consultation-only regional page cannot silently select products')
+    customer = '\n'.join(p.get(field, '') for field in ['TITLE', 'DESCRIPTION', 'H1', 'FIRST-ANSWER', 'CARD-SUMMARY', 'CONTENT'])
+    promised, price_or_delivery = regional_customer_claims(customer)
+    for family in promised:
+        if family not in families:
+            fail('Regional promised product family has no existing verified mapping: ' + family)
+    if mode == 'consultation-only' and price_or_delivery:
+        fail('Consultation-only page cannot promise price, free delivery or guaranteed delivery')
+    return {'regionalPurchaseMode': mode, 'regionalProductKeys': keys, 'regionalProductFamilies': families, 'ogImageWidth': asset['width'], 'ogImageHeight': asset['height'], 'ogImageType': asset['type'], 'scopeKey': registered['scopeKey'], 'regionUnitKeys': row['unitKeys'], 'ogImage': asset['image'], 'ogImageAlt': asset['alt'], 'ogImageSha256': asset['sha256'], 'ogImageSourceUrl': asset['sourceUrl']}
+
+
 def render(body, registry, workspace):
     p = validate_content(parse_payload(body))
     target = registry.get("sites", {}).get(p["SITE_KEY"])
@@ -179,6 +304,7 @@ def render(body, registry, workspace):
     root = (workspace / target["root"]).resolve()
     if not root.is_relative_to(workspace) or root == workspace:
         fail("Registered root escapes the checkout")
+    regional = regional_contract(p, target, root)
     data = root / "src/data"
     manifest = load_json(data / "publish-manifest.json")
     page_map = load_json(data / "page-map.json")
@@ -219,7 +345,9 @@ def render(body, registry, workspace):
     approval = p.get("APPROVAL_STATUS") == "approved" and p.get("APPROVED_SNAPSHOT_HASH") == approval_digest
     if p.get("APPROVED_SNAPSHOT_HASH") and not approval:
         fail("Approval status/hash does not match the exact frozen snapshot")
-    require_approval = target.get("requireSnapshotApproval", renderer != "markdown-v1")
+    if regional and not approval:
+        fail("Regional service requires independent exact frozen approval, including legacy Markdown sites")
+    require_approval = regional is not None or target.get("requireSnapshotApproval", renderer != "markdown-v1")
     publication_approved = approval or not require_approval
     ledger = dict(manifest.get("snapshotLedger", {}))
     for row in tables["manifest"].values():
@@ -245,6 +373,8 @@ def render(body, registry, workspace):
         elif p.get("SUPERSEDES_SNAPSHOT_ID") != prior.get("snapshotId"):
             fail("Replacing a page requires SUPERSEDES_SNAPSHOT_ID matching its current snapshot")
     entry = {"pageKey": key, "snapshotId": p["SNAPSHOT_ID"], "snapshotHash": digest, "approvalVerified": approval, "draftKey": p["DRAFT_KEY"], "sourceRecordId": p["SOURCE_RECORD_ID"], "publishQueueRecordId": p["PUBLISH_QUEUE_RECORD_ID"], "slug": p["SLUG"], "category": p["CATEGORY"], "routeType": p["ROUTE_TYPE"], "url": p["url"], "title": p["TITLE"], "primaryKeyword": p["PRIMARY_KEYWORD"], "pageType": p["PAGE_TYPE"], "status": "approved"}
+    if regional:
+        entry.update(regional)
     writes = {}
     if renderer == "structured-json-v12":
         if p["ROUTE_TYPE"] != "category":
@@ -266,8 +396,10 @@ def render(body, registry, workspace):
         writes[data / "pages.json"] = list(sorted(tables["renderer"].values(), key=lambda r: (r.get("order", 0), r["pageKey"])))
     else:
         entry["file"] = f"src/content/articles/{key}.md"
-        legacy_sources = [{**s, "type": "reference" if s["type"] == "business" else s["type"]} for s in p["sources"]]
+        legacy_sources = p["sources"] if regional else [{**s, "type": "reference" if s["type"] == "business" else s["type"]} for s in p["sources"]]
         fields = {"pageKey": key, "snapshotId": p["SNAPSHOT_ID"], "sourceDraftKey": p["DRAFT_KEY"], "sourceRecordId": p["SOURCE_RECORD_ID"], "slug": p["SLUG"], "routeType": p["ROUTE_TYPE"], "title": p["TITLE"], "description": p["DESCRIPTION"], "category": p["CATEGORY"], "structureType": p["STRUCTURE_TYPE"], "pageType": p["PAGE_TYPE"], "contentRole": p["CONTENT_ROLE"], "localizationPolicy": p["LOCALIZATION_POLICY"], "region": p["REGION"], "verifiedAt": p["VERIFIED_AT"], "sourceUrls": [s["url"] for s in p["sources"]], "sources": legacy_sources, "relatedPageKeys": p["relatedKeys"], "draftStatus": "approved"}
+        if regional:
+            fields.update(regional)
         # Emit only supplied review fields, preserving byte-identical legacy
         # snapshots when the optional Publisher slots are absent or blank.
         for header, field in (("H1", "h1"), ("CARD-SUMMARY", "cardSummary"),
@@ -288,6 +420,10 @@ def render(body, registry, workspace):
         if name != "architecture":
             doc.update({"schemaVersion": 2, "generatedFrom": "Airtable Publish Queue", "snapshotMode": "git-frozen"})
         writes[data / filename] = doc
+    if regional:
+        hubs = arch.setdefault("hubs", [])
+        if not any(hub.get("category") == "regions" for hub in hubs):
+            hubs.append({"category": "regions", "url": "/regions/", "label": "지역별", "children": 0})
     for hub in arch.get("hubs", []):
         hub["children"] = sum(r.get("parentHub") == hub.get("url") for r in tables["architecture"].values())
     # Validate every destination including symlink resolution before any writes.
