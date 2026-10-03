@@ -163,6 +163,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "seongnam-laonzena-bundang-wedding-wreath",
+      "snapshotId": "seongnam-laonzena-bundang-wedding-wreath-r1-20261003T000000Z",
+      "snapshotHash": "1b811fac47792357d5ce232e74b872b5aa9c056fb2ab5c0cee24011d52d27257",
+      "approvalVerified": true,
+      "draftKey": "seongnam-laonzena-bundang-wedding-wreath-r1",
+      "sourceRecordId": "recyBlOtf98EjGuGR",
+      "publishQueueRecordId": "recbPMlUY0fNqS9sF",
+      "slug": "seongnam-laonzena-bundang-wedding-wreath",
+      "category": "event",
+      "routeType": "category",
+      "url": "/event/seongnam-laonzena-bundang-wedding-wreath/",
+      "title": "라온제나 분당 화환 | 8층 플로렌스홀 예식과 상품 선택",
+      "primaryKeyword": "라온제나 분당 화환",
+      "pageType": "event-venue",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "seongnam-nsquare-wedding-wreath",
       "snapshotId": "seongnam-nsquare-wedding-wreath-r1-20261002T185018Z",
       "snapshotHash": "de3c803d99e3081d5ef3e608b82cacc2328a486b3dcdd3fb78f2b9a2d3ea4a18",

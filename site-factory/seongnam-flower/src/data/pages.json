@@ -1074,5 +1074,81 @@
     "queryClass": "local-commercial",
     "visualIntent": "event_wreath",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "seongnam-laonzena-bundang-wedding-wreath",
+    "snapshotId": "seongnam-laonzena-bundang-wedding-wreath-r1-20261003T000000Z",
+    "snapshotHash": "1b811fac47792357d5ce232e74b872b5aa9c056fb2ab5c0cee24011d52d27257",
+    "approvalVerified": true,
+    "draftKey": "seongnam-laonzena-bundang-wedding-wreath-r1",
+    "sourceRecordId": "recyBlOtf98EjGuGR",
+    "publishQueueRecordId": "recbPMlUY0fNqS9sF",
+    "slug": "seongnam-laonzena-bundang-wedding-wreath",
+    "category": "event",
+    "routeType": "category",
+    "url": "/event/seongnam-laonzena-bundang-wedding-wreath/",
+    "title": "라온제나 분당 화환 | 8층 플로렌스홀 예식과 상품 선택",
+    "primaryKeyword": "라온제나 분당 화환",
+    "pageType": "event-venue",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 18,
+    "h1": "라온제나 분당 화환, 플로렌스홀 예식에 맞춰 주문하기",
+    "description": "성남대로916번길 5의 8층과 예식 날짜를 맞추고 축하 3단 화환 59,000원·79,000원·99,000원을 비교하세요. 반입 위치와 배송 가능시각은 주문 전에 확인합니다.",
+    "cardSummary": "분당점 8층 플로렌스홀과 청첩장의 날짜를 함께 확인하세요. 단독홀에서도 앞뒤 예식이 섞이지 않도록 수령 이름과 리본 발신명을 따로 준비합니다.",
+    "firstAnswer": "라온제나 분당 화환은 성남대로916번길 5, 8층의 플로렌스홀인지 청첩장과 먼저 맞춰 주세요. 꽃이랑 축하 3단 화환은 상품대금 59,000원부터 비교할 수 있습니다. 예식 날짜·시각과 받는 분을 알려주시면 반입 위치, 배송 가능시각과 추가비용을 함께 상담하실 수 있습니다.",
+    "contentMarkdown": "라온제나 분당 화환은 성남대로916번길 5, 8층의 플로렌스홀인지 청첩장과 먼저 맞춰 주세요. 꽃이랑 축하 3단 화환은 상품대금 59,000원부터 비교할 수 있습니다. 예식 날짜·시각과 받는 분을 알려주시면 반입 위치, 배송 가능시각과 추가비용을 함께 상담하실 수 있습니다.\n\n## 분당점 주소와 플로렌스홀을 한 줄로 준비하세요\n\n주문 목적지는 '경기도 성남시 분당구 성남대로916번길 5, 8층, 라온제나 분당'으로 정리하세요. 공식 홈페이지는 이 주소와 플로렌스홀을 안내하고 있습니다. 공식 메뉴에 라온제나 강남 링크도 있으므로 지점명을 빼고 전달하지 않는 편이 좋습니다.\n\n청첩장에 플로렌스홀이 적혀 있다면 홀명까지 그대로 적어 주세요. 공식 사이트에 단독홀로 소개되어 있어도 같은 날 여러 회차의 예식이 진행될 수 있으므로 날짜와 예식시각, 신랑·신부 이름이 모두 필요합니다. 웹사이트의 리뉴얼 소개만 보고 예식 당일의 입구나 배치까지 정하지 말고, 최신 청첩장과 담당자의 안내를 기준으로 준비하세요.\n\n## 8층까지 올리는 위치와 설치 자리를 확인해 주세요\n\n화환을 받을 장소가 8층 접수대 주변인지, 별도로 지정된 인수 지점인지 예식 담당자에게 물어보세요. 신부대기실이나 홀 내부의 생화 장식은 예식장 연출이며, 외부에서 보내는 3단 화환의 설치 자리를 뜻하지 않습니다.\n\n- 외부 3단 화환을 받을 수 있는지, 크기 제한이 있는지\n- 차량이 잠시 정차할 위치와 사용할 출입구·승강기\n- 화환을 인수할 담당자와 연락 가능한 시간\n- 예식 후 화환을 옮기거나 철수해야 하는지\n\n받는 분의 이름만 있고 현장 담당자가 없으면 어느 예식의 화환인지 확인하는 데 시간이 걸릴 수 있습니다. 예식 시작시각과 실제 수령 가능한 시간대를 따로 알려 주세요. 가능 도착시각은 그 조건을 확인한 뒤 상담합니다.\n\n## 축하 상품은 예산과 놓을 공간을 함께 보고 고르세요\n\n꽃이랑 공식 상품의 현재 표시 상품대금은 축하 3단 화환 C200 59,000원, 축하 고급 3단 화환 C203 79,000원, 축하 특대 3단 화환 C204 99,000원입니다. 기본형에서 고급형, 고급형에서 특대형으로 각각 20,000원 차이가 납니다.\n\n예산을 정한 뒤 화환을 놓을 자리와 통로 여유를 확인해 주세요. 제품명에 '특대'가 있어도 시설이 허용하는 폭·높이를 대신하지 않으므로 실물규격은 상담 때 확인하는 것이 좋습니다. [축하화환 가격과 총금액 확인사항](/order/seongnam-congrats-wreath-price/)에서 다른 예산대도 비교하실 수 있습니다.\n\n표시 가격은 상품대금입니다. 추가 배송비와 현장 조건을 반영한 총금액은 주문 시 확인해 주세요. 사진은 공식 상품 예시이며, 사진 속 리본 문구도 예시입니다. 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다.\n\n## 받는 예식과 리본에 남길 이름을 구분하세요\n\n배송정보에는 신랑·신부 구분과 예식시각을, 리본에는 보내는 개인·회사·모임의 이름을 적습니다. 축하 문구는 '결혼을 진심으로 축하합니다', '두 분의 새로운 출발을 축복합니다'처럼 정할 수 있습니다. 보낼 문구와 발신명은 원하시는 표기로 알려 주세요.\n\n회사 명의로 보낼 때에는 상호만 넣을지 직함·이름을 함께 넣을지 먼저 정하면 재확인이 줄어듭니다. 인쇄 전 문구와 줄 나눔이 가능한지는 주문 상담에서 확인해 주세요.\n\n## 청첩장 정보를 준비해 꽃이랑에 문의하세요\n\n라온제나 분당 8층, 홀명, 예식 날짜·시각, 받는 분과 현장 연락처, 상품, 리본 문구·발신명을 준비해 주세요. 반입 조건이 정해지지 않았다면 그 부분부터 상담하실 수 있습니다.\n\n[꽃이랑 1844-0644로 화환 상담하기](tel:18440644) 또는 [꽃이랑 공식 홈페이지에서 주문하기](https://fwith.co.kr)를 이용해 주세요. 전화 상담은 08:00~23:00, 온라인 주문은 24시간 가능합니다. 온라인 접수시각과 배송 확정시각은 별도로 확인해 드릴 내용입니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "라온제나 분당 공식 홈페이지",
+        "url": "https://maisondeverre.imweb.me/",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "라온제나 분당 플로렌스홀",
+        "url": "https://maisondeverre.imweb.me/35",
+        "type": "facility",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 공식 홈페이지",
+        "url": "https://fwith.co.kr/",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 C200",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 고급 3단 화환 C203",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C203",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      },
+      {
+        "name": "꽃이랑 축하 특대 3단 화환 C204",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C204",
+        "type": "business",
+        "verifiedAt": "2026-10-02"
+      }
+    ],
+    "source": {
+      "name": "라온제나 분당 공식 홈페이지",
+      "url": "https://maisondeverre.imweb.me/",
+      "type": "facility",
+      "verifiedAt": "2026-10-02"
+    },
+    "relatedKeys": [
+      "seongnam-congrats-wreath-price"
+    ],
+    "queryClass": "local-commercial",
+    "visualIntent": "event_wreath",
+    "assetSlot": "REAL_PROOF"
   }
 ]
