@@ -577,6 +577,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-pung",
+      "snapshotId": "goyang-ilsandong-pung-r1-20261003T182200Z",
+      "snapshotHash": "7589dadb78bd3fe45069f3495d0dd9cfcfe0c2b93a2eeedcfe925552f28395b5",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-pung-r1",
+      "sourceRecordId": "recrytTe4HuPHSQF2",
+      "publishQueueRecordId": "recKwM60C3DkQgT63",
+      "slug": "ilsandong-pung",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-pung/",
+      "title": "풍동 꽃배달 | 애니골 모임 꽃과 숲속마을 선물 주문",
+      "primaryKeyword": "풍동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-sanhwang",
       "snapshotId": "goyang-ilsandong-sanhwang-r1-20261003T182200Z",
       "snapshotHash": "f360dbca99afba590ccdf2956f813eb14246c859cf07e3cbc280d7a2eea4ef58",
@@ -877,6 +895,11 @@
       "pageKey": "goyang-flower-v2-region-ilsandong-jiyeong",
       "snapshotHash": "e17f6d4ab042b6a83fdcecead5d1124c285175b3c04c022057d7e7199f4e2af5",
       "publishQueueRecordId": "recpMzuCeWHPHzVL4"
+    },
+    "goyang-ilsandong-pung-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-ilsandong-pung",
+      "snapshotHash": "7589dadb78bd3fe45069f3495d0dd9cfcfe0c2b93a2eeedcfe925552f28395b5",
+      "publishQueueRecordId": "recKwM60C3DkQgT63"
     }
   },
   "generatedFrom": "Airtable Publish Queue",
