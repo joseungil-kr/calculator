@@ -103,3 +103,101 @@ issues. Invalid/incomplete input exits 1 with `state="blocked"`. Missing Git
 objects require fetching the ordinary authorized repository history; never guess
 at evidence. No workflow is wired to invoke or bypass this barrier automatically.
 Production/indexing remain separate, explicitly authorized gates.
+
+## Goyang all-remaining coverage (schemaVersion 2)
+
+The original schemaVersion 1 contract above is unchanged. Schema 2 is an opt-in
+for `goyang-flower-v2` / `goyang-flower-v2-dong-coverage-20261003`, using the
+existing registered structured-JSON source and single-snapshot Publisher. It is
+not a new scheduler, publisher, approval service or configurable page quota.
+
+Its batch fields are:
+
+- `schemaVersion: 2`, `contractType: "goyang-all-remaining-legal-dongs"`
+- `batchId`, the exact `siteKey` and `scopeKey`
+- `baselineSourceSha`: the full committed source SHA before this batch
+- `baselineManifestSha256`: SHA-256 of its raw committed manifest bytes
+- `coverageSha256`: SHA-256 of its raw committed `region-coverage.json`; final
+  source must preserve these bytes, including all legal/administrative aliases
+- the same full `ruleRevision`, `templateRevision`, `registryRevision` pins
+- `members`: unique `{pageKey, intentKey}` objects, exactly every legal unit in
+  coverage minus already committed baseline details
+- `membershipHash`: `identity(batch)` after freezing this complete identity
+
+There is no `targetDetails` or numeric cap in schema 2. The current researched
+contract has 52 new members and preserves two baseline details, but counts are
+computed from the reviewed pinned source and membership. Reordering members does
+not change identity. Shrinking the list and recomputing the hash still fails the
+coverage difference check. A digest alone does not authorize this contract.
+
+The registry must retain `growthPaused=true`, `autoDeploySnapshots=false`, and
+both exact revision/snapshot approval requirements. All required customer drafts
+are saved and independently reviewed before creating any new Publish Queue row.
+That row's `recordCreated` trigger immediately creates a GitHub Issue, so never
+pre-create incomplete/pending placeholders and fill them later. The operator
+creates one complete approved row, reconciles its emitted payload and committed
+snapshot, and only then creates the next. Notes are metadata, not an executable
+lock; the existing snapshot workflow's concurrency lock is per Issue, not site.
+
+`evidence.items` covers only new members, in actual sequential checkpoint order.
+Each item has the schema 1 fields plus a nonempty `writerRunId`. The independent
+content reviewer's identity must differ from that Writer ID. Review approvals
+bind the exact draft revision, digest and new membership identity; baseline
+approvals are preserved rather than retroactively reissued. Snapshot/Queue/Issue
+and commit IDs are unique. The review source is between the batch baseline and
+the preceding checkpoint. Each commit adds exactly one next member and preserves
+every earlier frozen table entry. At each checkpoint the whole snapshot ledger
+must equal the prior ledger plus exactly the new snapshot, including all historical
+entries. New page order is the prior renderer maximum plus one, and
+`sitemapIndexable` is computed from the pinned registry production flag, matching
+the existing renderer. Self-reported values and later repairs cannot satisfy these
+checks. Future/unapproved related links are refused.
+
+The final manifest, page-map, pages and architecture sets must equal baseline
+plus all new members. Existing baseline entries and ledger are preserved. Each
+new entry's complete frozen customer content, display fields, sources and related
+graph are checked against its actual approved payload, not merely a claimed hash.
+Every checkpoint is replayed through the actual `render_snapshot.render` using
+its complete approved Issue payload, the pinned registry, and the preceding four
+JSON files copied from committed Git bytes into a disposable temporary directory.
+The executing renderer file must be byte-identical to `render_snapshot.py` at
+`registryRevision`; it is not loaded or executed from arbitrary evidence. The
+resulting complete four files must match the checkpoint byte-for-byte, including
+all top-level metadata, HOME/hub state, ordering and historical ledger. Unexpected
+output files are rejected. Temporary replay files are removed; the evidence
+checkout, records, repository refs and external services are never modified.
+
+The final four content-data files must be byte-identical to the last snapshot
+checkpoint. Unrelated source UI changes, if any, remain separate reviewed commits
+and require final exact-source QA as usual.
+
+The final `qa` object retains schema 1 source/manifest/state/environment/noindex,
+reviewer and evidence fields, and adds:
+
+- `gates`: the schema 1 set plus `source`, `snapshot`, `assets`, `banner`, `og`,
+  `cta`, `inbound`, `aliases`, `responsive`, `isolation`
+- `routes`: exactly `/`, every detail route, and hubs with actual children,
+  each with `state="passed"`, `noindex=true`
+- `notFoundRoutes`: exactly empty registered hubs and
+  `/site-factory-live-qa-definitely-not-found/`, each with `state="passed"`,
+  `status=404`, `canonicalAbsent=true`
+- `aliasCoverageSha256`: the pinned coverage digest
+- `discoverableNames`: sorted unique legal and administrative names from that
+  definition, verified in the rendered hub/crosswalk by the independent consumer
+
+Existing fixed canary, product/Truth/images and Worker/domain contracts, full
+strict HTTP/artifact verification and independent visual QA still apply. Use
+one final immutable-version noindex preview after all snapshots, preserve active
+public assets/binding/settings during upload, and never externally retry an
+uncertain upload. Version probe is not a detail/hub or customer route and must not
+enter production. HTTP403, unknown response, missing route or changed SHA cannot
+be replaced by UI success. A final production release remains a separate exact
+approval and public verification step, with growth/auto-deploy still paused.
+
+Schema 2 returns `staging_complete`, calculated baseline/new/total detail counts,
+actual hub/route/404/alias counts, and always `productionApproved=false` and
+`indexNowAllowed=false`. It neither fetches nor authenticates external evidence;
+trusted operators must acquire actual persisted independent approvals and QA
+records. Synthetic unit fixtures are never real membership/content/release
+approval. This helper is not automatically called by a workflow; a saved result
+alone does not open any gate.
