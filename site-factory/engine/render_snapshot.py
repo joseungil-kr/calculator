@@ -162,6 +162,121 @@ def frozen_hashes(p):
     return snapshot, hashlib.sha256(encode(reviewed)).hexdigest()
 
 
+def jpeg_dimensions(data):
+    if data[:2] != b'\xff\xd8':
+        fail('Site catalog: image MIME is not JPEG')
+    i = 2
+    while i + 4 <= len(data):
+        if data[i] != 255:
+            fail('Site catalog: invalid JPEG marker')
+        i += 1
+        while i < len(data) and data[i] == 255:
+            i += 1
+        if i >= len(data):
+            break
+        marker = data[i]
+        i += 1
+        if marker in (0xd9, 0xda):
+            break
+        if marker == 0x01 or 0xd0 <= marker <= 0xd7:
+            continue
+        length = int.from_bytes(data[i:i+2], 'big')
+        if length < 2 or i + length > len(data):
+            fail('Site catalog: invalid JPEG segment')
+        if marker in (0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf):
+            if length < 8:
+                fail('Site catalog: invalid JPEG frame')
+            return int.from_bytes(data[i+5:i+7], 'big'), int.from_bytes(data[i+3:i+5], 'big')
+        i += length
+    fail('Site catalog: JPEG dimensions missing')
+
+
+def catalog_safe_integer(value):
+    return type(value) in (int, float) and abs(value) <= 9007199254740991 and value % 1 == 0
+
+
+def catalog_tuple_equal(left, right):
+    # JSON booleans must not compare equal to numeric 0/1; numeric 1.0 equals 1.
+    if type(left) is bool or type(right) is bool:
+        return type(left) is type(right) and left == right
+    if isinstance(left, dict) and isinstance(right, dict):
+        return left.keys() == right.keys() and all(catalog_tuple_equal(left[k], right[k]) for k in left)
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(catalog_tuple_equal(a, b) for a, b in zip(left, right))
+    if type(left) in (int, float) and type(right) in (int, float):
+        return left == right
+    return type(left) is type(right) and left == right
+
+
+def site_catalog_products(root, site_key):
+    """Optional source-local gifts; never changes or promotes global Catalog rows."""
+    legacy = load_json(root / 'src/data/products.json')
+    file = root / 'src/data/site-catalog.json'
+    if not file.is_file():
+        return legacy
+    catalog = load_json(file)
+    if site_key != 'ansan-flower-test' or catalog.get('siteKey') != 'ansan-flower-test':
+        fail('Site catalog: unsupported site-local scope')
+    if catalog.get('status') not in ['candidate', 'approved'] or (catalog.get('enabled') and catalog.get('status') != 'approved'):
+        fail('Site catalog: catalog activation requires reviewed source')
+    evidence_file = root / 'src/data/site-catalog-evidence.json'
+    if not evidence_file.is_file():
+        fail('Site catalog: missing site-scoped catalog evidence')
+    evidence = load_json(evidence_file)
+    business = load_json(root / 'src/data/business-truth.json')
+    if type(catalog.get('schemaVersion')) is bool or catalog.get('schemaVersion') != 1 or catalog.get('siteKey') != site_key or catalog.get('brandKey') != business.get('brandKey') or catalog.get('truthKey') != business.get('truthKey') or type(catalog.get('enabled')) is not bool:
+        fail('Site catalog: site/brand/truth mismatch')
+    if type(evidence.get('schemaVersion')) is bool or evidence.get('schemaVersion') != 1 or evidence.get('siteKey') != 'ansan-flower-test' or evidence.get('brandKey') != business.get('brandKey') or evidence.get('truthKey') != business.get('truthKey') or evidence.get('sourceLevel') != 'official_business_source' or not evidence.get('verifiedAt') or evidence.get('catalogBaseId') != 'appOthiezu3SqH2Nu' or evidence.get('catalogTableId') != 'tbl7qSHi0lTDjPE5A' or not isinstance(evidence.get('products'), list):
+        fail('Site catalog: missing site-scoped catalog evidence')
+    products, bindings = catalog.get('products'), catalog.get('pageBindings')
+    if not isinstance(products, list) or not isinstance(bindings, list):
+        fail('Site catalog: missing products/bindings')
+    for rows, field in [(products, 'productKey'), (products, 'sku'), (products, 'catalogRecordId'), (bindings, 'pageKey')]:
+        values = [p.get(field) for p in rows]
+        if len(set(values)) != len(values):
+            fail('Site catalog: duplicate ' + field)
+    evidence_keys = [p.get('productKey') for p in evidence['products']]
+    if len(evidence_keys) != len(set(evidence_keys)):
+        fail('Site catalog: duplicate evidence product key')
+    legacy_keys = {p.get('productKey') or p.get('key') for p in legacy}
+    for p in products:
+        verified = [row for row in evidence['products'] if row.get('productKey') == p.get('productKey')]
+        if len(verified) != 1 or not catalog_tuple_equal(p, verified[0]):
+            fail('Site catalog: verified product tuple drift')
+        family = {'flower_bouquet': 'bouquet', 'flower_basket': 'basket'}.get(p.get('category'))
+        if not family or p.get('family') != family:
+            fail('Site catalog: unsupported product family')
+        sku = p.get('sku', '')
+        key = p.get('productKey', '')
+        if not re.fullmatch(r'[GA][0-9]{3}', sku) or key != f'{family}-{sku.lower()}' or key in legacy_keys:
+            fail('Site catalog: exact product key/SKU mismatch')
+        if (family == 'bouquet' and not sku.startswith('G')) or (family == 'basket' and not sku.startswith('A')):
+            fail('Site catalog: SKU family mismatch')
+        if not re.fullmatch(r'rec[A-Za-z0-9]{14}', p.get('catalogRecordId', '')) or p.get('catalogStatus') not in ['draft', 'active'] or p.get('brandKey') != business.get('brandKey'):
+            fail('Site catalog: Catalog identity mismatch')
+        if not isinstance(p.get('name'), str) or not p['name'].strip() or not catalog_safe_integer(p.get('price')) or not 0 < p['price'] <= 9007199254740991 or p.get('priceKind') != 'public_sale' or p.get('currency') != 'KRW' or not p.get('priceNotice'):
+            fail('Site catalog: unknown or invalid public sale price')
+        if p.get('sourceUrl') != f'https://fwith.co.kr/shop/item.php?it_id={sku}' or p.get('sourceImageUrl') != f'https://fwith.co.kr/data/item/flower379/{sku}/thumb-1_500x500.jpg' or p.get('onlineOrderUrl') != business.get('onlineOrderUrl'):
+            fail('Site catalog: official source/CTA identity mismatch')
+        if p.get('sourceLevel') != 'official_business_source' or p.get('assetType') != 'real_product' or not p.get('imageAlt') or not re.match(r'\d{4}-\d{2}-\d{2}T', p.get('verifiedAt', '')) or p.get('availability') != 'public_listing_orderable_stock_unconfirmed':
+            fail('Site catalog: missing source/availability qualification')
+        if p.get('image') != f'/images/products/{key}.jpg' or p.get('imageType') != 'image/jpeg' or not catalog_safe_integer(p.get('imageWidth')) or not catalog_safe_integer(p.get('imageHeight')) or min(p['imageWidth'], p['imageHeight']) < 1 or not re.fullmatch(r'[a-f0-9]{64}', p.get('imageSha256', '')):
+            fail('Site catalog: invalid local image binding')
+        public = (root / 'public').resolve()
+        image = (public / p['image'].lstrip('/')).resolve()
+        if not image.is_relative_to(public) or not image.is_file():
+            fail('Site catalog: local image missing or escapes site root')
+        data = image.read_bytes()
+        if hashlib.sha256(data).hexdigest() != p['imageSha256'] or jpeg_dimensions(data) != (p['imageWidth'], p['imageHeight']):
+            fail('Site catalog: image bytes/dimensions mismatch')
+    all_keys = legacy_keys | {p['productKey'] for p in products}
+    for binding in bindings:
+        keys = binding.get('productKeys')
+        if not re.fullmatch(r'[a-zA-Z0-9_-]+', binding.get('pageKey', '')) or binding.get('status') not in ['candidate', 'approved'] or not isinstance(keys, list) or not keys or len(keys) != len(set(keys)) or any(key not in all_keys for key in keys):
+            fail('Site catalog: invalid page selection')
+    return legacy + products if catalog['enabled'] else legacy
+
+
 def regional_customer_claims(customer):
     """Supplemental common-claim guard, not a replacement for independent review."""
     import unicodedata
@@ -264,7 +379,7 @@ def regional_contract(p, target, root):
     if mode == 'catalog':
         if not keys:
             fail('Regional catalog purchase intent has no product mapping')
-        products = load_json(root / 'src/data/products.json')
+        products = site_catalog_products(root, p['SITE_KEY'])
         family_map = {'funeral_wreath': 'funeral', 'congrats_wreath': 'congrats', 'flower_bouquet': 'bouquet', 'flower_basket': 'basket'}
         for key in keys:
             matches = [product for product in products if (product.get('key') or product.get('productKey')) == key]
@@ -396,7 +511,8 @@ def render(body, registry, workspace):
         writes[data / "pages.json"] = list(sorted(tables["renderer"].values(), key=lambda r: (r.get("order", 0), r["pageKey"])))
     else:
         entry["file"] = f"src/content/articles/{key}.md"
-        legacy_sources = p["sources"] if regional else [{**s, "type": "reference" if s["type"] == "business" else s["type"]} for s in p["sources"]]
+        # validate_content already rejects unknown types; preserve all six reviewed enums.
+        legacy_sources = p["sources"]
         fields = {"pageKey": key, "snapshotId": p["SNAPSHOT_ID"], "sourceDraftKey": p["DRAFT_KEY"], "sourceRecordId": p["SOURCE_RECORD_ID"], "slug": p["SLUG"], "routeType": p["ROUTE_TYPE"], "title": p["TITLE"], "description": p["DESCRIPTION"], "category": p["CATEGORY"], "structureType": p["STRUCTURE_TYPE"], "pageType": p["PAGE_TYPE"], "contentRole": p["CONTENT_ROLE"], "localizationPolicy": p["LOCALIZATION_POLICY"], "region": p["REGION"], "verifiedAt": p["VERIFIED_AT"], "sourceUrls": [s["url"] for s in p["sources"]], "sources": legacy_sources, "relatedPageKeys": p["relatedKeys"], "draftStatus": "approved"}
         if regional:
             fields.update(regional)
