@@ -84,13 +84,21 @@
     },
     {
       "pageKey": "ansan-flower-launch-10",
-      "snapshotId": "ansan-flower-launch-10-v1",
+      "snapshotId": "ansan-flower-launch-10-v2",
+      "snapshotHash": "1ff5f5de98095a06e12c2f04d9450ca21a5efe4fa3072e11bd64387ec200ff5f",
+      "approvalVerified": true,
+      "draftKey": "ansan-flower-factory-draft-10",
+      "sourceRecordId": "recj9a8GjZDk5eK8d",
+      "publishQueueRecordId": "recfft4wWqc8lQJie",
       "slug": "jungang-station-carrying-flowers",
       "category": "places",
       "routeType": "category",
       "url": "/places/jungang-station-carrying-flowers/",
+      "title": "안산 중앙역 꽃다발 | 약속 전 수령·포장과 이동 준비",
+      "primaryKeyword": "안산 중앙역 꽃다발",
+      "pageType": "station-transit",
       "status": "approved",
-      "sourceRecordId": "recj9a8GjZDk5eK8d"
+      "file": "src/content/articles/ansan-flower-launch-10.md"
     },
     {
       "pageKey": "ansan-flower-launch-11",
