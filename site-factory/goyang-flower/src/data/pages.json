@@ -3882,5 +3882,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-jichuk",
+    "snapshotId": "goyang-deogyang-jichuk-r1-20261003T182200Z",
+    "snapshotHash": "5fd5f6af268352903b634d2a14cdf5324a18ee444ed4cf24a4006569e839562a",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-jichuk-r1",
+    "sourceRecordId": "recN7SpYEMWnrqvAD",
+    "publishQueueRecordId": "recWSrC3DugWMjHqw",
+    "slug": "deogyang-jichuk",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-jichuk/",
+    "title": "지축동 꽃배달 | 아파트 세대와 단지 내 시설 수령 구분",
+    "primaryKeyword": "지축동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 50,
+    "h1": "지축동 꽃배달, 집으로 보낼지 단지 내 시설로 보낼지 알려 주세요",
+    "description": "지축로163의 복지관처럼 아파트 단지 안에 시설이 있는 곳은 동·층과 수령인이 필요합니다. 오부자로의 학교 구분, 꽃선물 가격과 주문정보를 안내합니다.",
+    "cardSummary": "단지 주소가 같아도 세대 현관과 복지관의 인계 장소는 다릅니다. 동·층·시설명을 빠뜨리지 않고 선물을 준비하는 방법을 살펴보세요.",
+    "firstAnswer": "지축동 꽃배달은 아파트 세대로 보낼지 단지 안의 시설로 보낼지 먼저 알려 주세요. 꽃이랑은 단지명과 동·호수 또는 시설명·층, 실제 수령인을 바탕으로 꽃선물 주문을 준비합니다. 집에서 볼 꽃바구니와 직접 건넬 꽃다발을 비교하시고, 현장 반입과 받을 시간, 배송 가능 여부 및 최종 금액을 확인해 주세요.",
+    "contentMarkdown": "지축동 꽃배달은 아파트 세대로 보낼지 단지 안의 시설로 보낼지 먼저 알려 주세요. 꽃이랑은 단지명과 동·호수 또는 시설명·층, 실제 수령인을 바탕으로 꽃선물 주문을 준비합니다. 집에서 볼 꽃바구니와 직접 건넬 꽃다발을 비교하시고, 현장 반입과 받을 시간, 배송 가능 여부 및 최종 금액을 확인해 주세요.\n\n## 같은 아파트 단지 안에서도 집과 시설은 목적지가 달라요\n\n[효자동의 공식 시설목록](https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=18)은 고양시지축종합사회복지관을 ‘지축로163, LH8단지아파트802동1층’으로 안내합니다. 단지명까지만 적으면 개인 세대로 보내는 꽃인지 시설에서 받을 꽃인지 구분되지 않을 수 있습니다.\n\n가족 집으로 보낸다면 동·호수와 수령인 이름을 적어 주세요. 복지관 등 시설에서 받을 선물이라면 기관명, 층, 실제 담당자를 함께 알려 주세요. 시설 주소가 공개돼 있다고 해서 사무실이나 관리실이 외부 선물을 대신 받아 준다는 뜻은 아닙니다. 담당자와 인계 위치를 먼저 정해 주세요.\n\n지축초등학교와 지효초등학교도 같은 목록에서 각각 오부자로50과 오부자로115로 안내됩니다. 가족의 학교 일정에 꽃을 준비할 때는 비슷한 이름만 확인하지 말고 학교명과 번호를 대조해 주세요. 출입·꽃반입 조건과 만남 장소는 해당 일정에 맞춰 별도로 확인해야 합니다.\n\n## 받은 뒤 어디에 둘지에 맞춰 상품을 고르세요\n\n집에 두고 감상할 생일·기념일 선물이라면 꽃바구니 ‘햇살 한가득’(A155, 상품가격 65,000원)을 비교할 수 있습니다. 받는 분이 집에 있는 시간, 꽃을 놓을 자리와 원하는 색감을 함께 알려 주세요.\n\n가족이나 지인에게 직접 건네고 이동할 예정이라면 꽃다발 ‘소소한 행복’(G105, 상품가격 50,000원)을 살펴보세요. 행사 장소가 정해졌더라도 당사자가 잠시 자리를 비울 수 있으니 실제로 꽃을 받을 사람과 인계 시점을 따로 정하면 좋습니다. 실제 꽃 구성과 형태는 지역·계절에 따라 달라질 수 있습니다.\n\n## 동·호수 또는 시설명, 날짜와 연락처를 준비해 주세요\n\n지축동은 [덕양구 관내도](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)에서 효자동과 삼송1동에 일부씩 속합니다. 주문에는 행정동 이름만 적기보다 받는 곳의 정확한 도로명과 상세주소를 알려 주세요. 공동현관에서 받을지 정해진 실내 위치에서 받을지도 수령인과 합의해 주세요.\n\n꽃이랑 전화주문은 08:00~23:00 [1844-0644](tel:18440644), [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 특정 시각 또는 당일 전달은 가능 여부를 먼저 문의해 주세요. 지역별 추가배송비가 발생할 수 있으므로 상품가격과 별도로 최종 금액을 확인한 후 주문해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 효자동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=18",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "덕양구청 행정구역 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 효자동 주요관내시설",
+      "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=18",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
