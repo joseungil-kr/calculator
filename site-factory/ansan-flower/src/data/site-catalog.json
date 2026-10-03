@@ -3,7 +3,7 @@
   "siteKey": "ansan-flower-test",
   "brandKey": "flower-fwith",
   "truthKey": "flower-fwith-v1",
-  "enabled": false,
+  "enabled": true,
   "products": [
     {
       "productKey": "bouquet-g108",
@@ -65,11 +65,11 @@
   "pageBindings": [
     {
       "pageKey": "ansan-flower-launch-10",
-      "status": "candidate",
+      "status": "approved",
       "productKeys": [
         "bouquet-g108"
       ]
     }
   ],
-  "status": "candidate"
+  "status": "approved"
 }
