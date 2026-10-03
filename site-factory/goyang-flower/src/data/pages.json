@@ -1494,5 +1494,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-madu",
+    "snapshotId": "goyang-ilsandong-madu-r1-20261003T182200Z",
+    "snapshotHash": "9c212a783c26a352f1b778763508f17703cc3aac9f302d85d46885fc19a36691",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-madu-r1",
+    "sourceRecordId": "recqzuMBJT9Ar8iRn",
+    "publishQueueRecordId": "rec7NQ8t9XudwQTWq",
+    "slug": "ilsandong-madu",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-madu/",
+    "title": "마두동 꽃배달 | 백마·정발·강촌마을 꽃선물 주문",
+    "primaryKeyword": "마두동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 20,
+    "h1": "마두동 꽃배달, 받을 마을과 선물 형태에 맞춰 주문하세요",
+    "description": "백마마을·정발마을·강촌마을로 보내는 꽃선물의 상세주소와 수령시간을 정리하세요. 꽃다발 50,000원, 꽃바구니 65,000원 기본 표시가와 주문별 배송 조건을 안내합니다.",
+    "cardSummary": "마을 이름 뒤에 단지와 동·호수까지 적으면 선물 받을 집이 분명해집니다. 직접 건넬 꽃과 집에 둘 꽃의 차이도 살펴보세요.",
+    "firstAnswer": "마두동 꽃배달은 백마·정발·강촌마을 중 받으실 곳의 도로명주소와 단지, 동·호수를 알려 꽃이랑에 주문해 주세요. 직접 건넬 꽃다발과 집에 둘 꽃바구니를 비교하고, 받는 분의 재실 시간에 맞춰 배송 가능 일정과 추가비용을 포함한 총액을 확인하시면 됩니다.",
+    "contentMarkdown": "마두동 꽃배달은 백마·정발·강촌마을 중 받으실 곳의 도로명주소와 단지, 동·호수를 알려 꽃이랑에 주문해 주세요. 직접 건넬 꽃다발과 집에 둘 꽃바구니를 비교하고, 받는 분의 재실 시간에 맞춰 배송 가능 일정과 추가비용을 포함한 총액을 확인하시면 됩니다.\n\n## 백마·정발·강촌, 마을 이름 다음을 채워주세요\n\n[고양특례시 마두1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_2/dong01_5_2_tab1.jsp)는 백마마을과 정발마을을, [고양특례시 마두2동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_3/dong01_5_3_tab1.jsp)는 강촌마을을 안내합니다. 생신 꽃을 집으로 보내실 때는 ‘백마마을 아파트’처럼 큰 이름에서 멈추지 않고 단지명과 동·호수를 함께 적어주세요. 같은 마을 안에서도 아파트, 빌라, 단독주택에 따라 꽃을 인계할 문이 달라질 수 있습니다.\n\n정발마을 주택이라면 도로명 건물번호와 현관 위치를, 강촌마을 아파트라면 단지와 수령 동을 준비하세요. 공동현관 출입과 관리실 대리수령은 해당 건물에서 가능한지 받는 분께 확인해 주세요. 꽃이랑이 현관 밖이나 관리실에 임의로 맡길 수 있다고 생각하고 주문하지 않는 편이 좋습니다.\n\n## 만난 뒤 들고 갈 꽃인지, 집에서 감상할 꽃인지\n\n마두역에서 만나 축하할 계획이라면 실제로 받을 분과 출구·만날 지점·시간을 먼저 합의해 주세요. 역 이름만 지정하면 어느 쪽에서 기다리는지 알기 어렵습니다. 이후 식사나 이동이 이어진다면 손에 들고 건네는 꽃다발이 맞는지, 집으로 따로 보낼 꽃바구니가 편한지 비교할 수 있습니다.\n\n- 소소한 행복(G105), 꽃다발 기본 표시가격 50,000원: 직접 건네는 축하·기념 선물을 고를 때 비교해 보세요. 이동시간과 원하는 색감도 함께 말씀해 주세요.\n- 햇살 한가득(A155), 꽃바구니 기본 표시가격 65,000원: 집에서 놓고 감상할 꽃을 고른다면 식탁이나 선반 등 실제 놓을 자리를 생각해 주세요.\n\n표시가격은 주문 총액과 다를 수 있습니다. 상품 공급과 선택 구성, 배송지별 추가배송비를 확인한 뒤 최종 금액을 정합니다. 실제 꽃 구성과 형태는 지역과 계절에 따라 일부 달라질 수 있습니다.\n\n## 깜짝 선물도 받을 사람은 정해두세요\n\n받는 분이 외출한다면 ‘언제든 배달’보다 집에 머무는 시간대를 알려주시는 것이 좋습니다. 선물 사실을 미리 알리기 어렵다면 대신 받을 가족과 인계 장소를 먼저 협의해 주세요. 햇볕이나 비에 노출되는 현관 밖을 보관 장소로 정하기보다 직접 받을 시간을 맞춰보세요.\n\n카드에는 전할 문장과 보내는 분 이름을 구분해 적어주세요. 가족 여러 명의 이름을 넣는 경우 표기 순서도 함께 확인하면 전달할 마음을 정확히 담을 수 있습니다.\n\n## 마두동 주소와 희망일을 알려주세요\n\n[1844-0644로 꽃이랑에 전화 주문하기](tel:18440644). 전화 주문은 08:00-23:00, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 주문 접수시간과 실제 배송시간은 다르므로 오늘 필요한 꽃은 주소와 희망 시각을 먼저 알려 가능 여부를 확인해 주세요.\n\n주문할 때는 마을·단지·상세주소, 받는 분 연락처와 재실 시간, 상품, 카드 문구를 준비해 주시면 됩니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 마두1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_2/dong01_5_2_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 마두2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_3/dong01_5_3_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 마두1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_2/dong01_5_2_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

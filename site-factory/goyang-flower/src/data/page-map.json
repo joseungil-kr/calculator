@@ -289,6 +289,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-madu",
+      "snapshotId": "goyang-ilsandong-madu-r1-20261003T182200Z",
+      "snapshotHash": "9c212a783c26a352f1b778763508f17703cc3aac9f302d85d46885fc19a36691",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-madu-r1",
+      "sourceRecordId": "recqzuMBJT9Ar8iRn",
+      "publishQueueRecordId": "rec7NQ8t9XudwQTWq",
+      "slug": "ilsandong-madu",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-madu/",
+      "title": "마두동 꽃배달 | 백마·정발·강촌마을 꽃선물 주문",
+      "primaryKeyword": "마두동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-munbong",
       "snapshotId": "goyang-ilsandong-munbong-r1-20261003T182200Z",
       "snapshotHash": "13aa11482209b0d04c3dc2c37400aa37a3f6f7f575fa09acbbab4bdeb2af326e",
