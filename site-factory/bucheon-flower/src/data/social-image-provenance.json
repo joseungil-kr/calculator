@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-pinned-product-asset-inventory",
+  "sourceRevision": "2ead40cecc0fe0925f69395e4798a35c0aec1894",
+  "note": "Image bytes and dimensions inventory of the independently reviewed source pin. Scheduled Creator must reconcile current Business Truth and active Catalog before customer-content review; this is not a new live product/business verification.",
+  "products": [
+    {
+      "key": "funeral-basic",
+      "name": "근조 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B201",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B201",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/funeral-basic.webp",
+        "sha256": "7b6a2ae56415c52ddc1e072c2250066366e31c177601f84055bf038a5541239b",
+        "dimensions": [
+          480,
+          480
+        ],
+        "type": "image/webp"
+      }
+    },
+    {
+      "key": "funeral-premium",
+      "name": "근조 고급 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B203",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B203",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/funeral-premium.webp",
+        "sha256": "c09af52edc3108584c0b76ae6d37715384d7b448dac3f3e7700f7ef10c5f7738",
+        "dimensions": [
+          480,
+          480
+        ],
+        "type": "image/webp"
+      }
+    },
+    {
+      "key": "funeral-large",
+      "name": "근조 특대 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B205",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B205",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/funeral-large.webp",
+        "sha256": "f3d1eba34c8b288c0f61582f98c4e0ef0de422842f7e9a12407ccaaab8e04210",
+        "dimensions": [
+          480,
+          480
+        ],
+        "type": "image/webp"
+      }
+    },
+    {
+      "key": "congrats-basic",
+      "name": "축하 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C200",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C200",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/congrats-basic.jpg",
+        "sha256": "2f58d64d26983bf9aa19f2410b47bfc193ad18b948b2ab54bf59b8a36bb1fdf6",
+        "dimensions": [
+          1000,
+          1000
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "congrats-premium",
+      "name": "축하 고급 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C203",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C203",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/congrats-premium.jpg",
+        "sha256": "9b2a869a4aba5ab02af7c0efb5270f536b90d5989d040af5c2c7ead78ec6b46d",
+        "dimensions": [
+          1000,
+          1000
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "congrats-large",
+      "name": "축하 특대 3단 화환",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C204",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C204",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/congrats-large.jpg",
+        "sha256": "2cffb47abdda01652a08e4f89372c5a32fed6b00d47f260afbbefe606bc72f15",
+        "dimensions": [
+          1000,
+          1000
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "bouquet-happiness",
+      "name": "소소한 행복",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G105",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G105",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/bouquet-happiness.jpg",
+        "sha256": "902a9543f977f2f12884da9046f5dfd80d4bbb32f66f01f32708a450ef0d358d",
+        "dimensions": [
+          500,
+          500
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "bouquet-blue",
+      "name": "블루톤 시즌플라워",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G107",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G107",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/bouquet-blue.jpg",
+        "sha256": "03867ab3419026155c68521b3a4fc0f63e4e03a347643d4c0c23d18dec44add7",
+        "dimensions": [
+          500,
+          500
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "bouquet-rose",
+      "name": "러블리 자나장미",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G108",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G108",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/bouquet-rose.jpg",
+        "sha256": "323602568f9af549a8cdafbd270a2914d167d4709dcbbfec8a49fad6ab54d7cd",
+        "dimensions": [
+          500,
+          500
+        ],
+        "type": "image/jpeg"
+      }
+    },
+    {
+      "key": "basket-sunshine",
+      "name": "햇살 한가득",
+      "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=A155",
+      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=A155",
+      "verifiedAt": "2026-10-01",
+      "image": {
+        "path": "/images/products/basket-sunshine.jpg",
+        "sha256": "981b12dfed6d6a1a53689ffd1edbedad79b6bfd3db5315be2d328021aa42131f",
+        "dimensions": [
+          500,
+          500
+        ],
+        "type": "image/jpeg"
+      }
+    }
+  ]
+}

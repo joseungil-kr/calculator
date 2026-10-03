@@ -1,0 +1,6 @@
+---
+import {displayMarkdownBlocks} from '../lib/content.mjs';
+import InlineText from './InlineText.astro';
+const blocks=displayMarkdownBlocks(Astro.props.content || '', Astro.props.firstAnswer);
+---
+<div class="content-card markdown-content">{blocks.map(block => block.type === 'h2' ? <h2><InlineText text={block.text}/></h2> : block.type === 'h3' ? <h3><InlineText text={block.text}/></h3> : block.type === 'li' ? <ul><li><InlineText text={block.text}/></li></ul> : <p><InlineText text={block.text}/></p>)}</div>

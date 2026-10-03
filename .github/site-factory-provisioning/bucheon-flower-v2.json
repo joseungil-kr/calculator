@@ -1,0 +1,685 @@
+{
+  "adaptedFiles": [
+    "src/data/architecture.json",
+    "src/data/page-map.json",
+    "src/data/publish-manifest.json",
+    "src/data/site-config.json",
+    "wrangler.jsonc",
+    "wrangler.staging.jsonc"
+  ],
+  "autoDeploySnapshots": false,
+  "bootstrapId": "6d52bccb3b6391fd0a20a6172a994b4ca7311930f29b52e6fedb385e28c1cc93",
+  "branch": "site-factory-bucheon-v2",
+  "customerPages": 0,
+  "growthPaused": true,
+  "kind": "site-factory-infrastructure-bootstrap-v1",
+  "launchKey": "bucheon-flower-v2-trial-20261004",
+  "productionEnabled": false,
+  "repository": "joseungil-kr/fwith-site-factory",
+  "root": "site-factory/bucheon-flower",
+  "schemaVersion": 1,
+  "siteKey": "bucheon-flower-v2",
+  "snapshotApprovalGranted": false,
+  "sourceBranch": "site-factory-flower-v2-template",
+  "sourceManifest": [
+    {
+      "gitBlob": "6bd40fd273da61bbc6c8ef5c00dfd947ca89e5ce",
+      "mode": "100644",
+      "path": ".gitignore",
+      "sha256": "0a5eef845a42deb1d0b1f0c56b1dffdbd79a29cd1db049a5d4dbbf7a6372cbf3"
+    },
+    {
+      "gitBlob": "b5b491a71f95c15b80ce9761d15668a60d0f915f",
+      "mode": "100644",
+      "path": "README.md",
+      "sha256": "60eeea3cd5d4e339fffc88613a69d33f921947d049cac8158a8de9b9abcd66de"
+    },
+    {
+      "gitBlob": "e4c686ed4ee3f1ae7f66daea5e4f7bcee917d0a9",
+      "mode": "100644",
+      "path": "astro.config.mjs",
+      "sha256": "d3f5870839bdd3685e0292df487a2c22008424214db13aee7f992c2b1ccc1109"
+    },
+    {
+      "gitBlob": "640929d57802c2f534db82da79cb19c36b006df3",
+      "mode": "100644",
+      "path": "package-lock.json",
+      "sha256": "247ea260dec6f082770f06215e59854d90d02b1548db41d44bb0453c6a2f62bf"
+    },
+    {
+      "gitBlob": "391c3b88aebce59c9c3c0a49e5fd3a88769719d5",
+      "mode": "100644",
+      "path": "package.json",
+      "sha256": "48b91c214520401f938676dab0c0ca0789c7c991b945eaf94dafb4b60120f2ab"
+    },
+    {
+      "gitBlob": "af23a9cc2aca1c815b74c4da87a4191f045f6805",
+      "mode": "100644",
+      "path": "public/_headers",
+      "sha256": "1b27a67288f21cf98b19d15cef8fa084bf7d7ca7a0f89975dd48ba51f90ed015"
+    },
+    {
+      "gitBlob": "04825f793dd3f36db0ac15ad82dbf1d954746f8e",
+      "mode": "100644",
+      "path": "public/favicon.svg",
+      "sha256": "7ad52153b6e98b0b1a93bf546b2c1f3a9d9724a450703086fcedcb30fd05c3b4"
+    },
+    {
+      "gitBlob": "8ab5a58eef8b16e2952229bc95c7f063dfef434e",
+      "mode": "100644",
+      "path": "public/images/editorial/opening-wreath-illustration-v1.webp",
+      "sha256": "cd6ca9f33f39c0568b7acc67e7fa17d2993a75da50cee237e735c8490624c8b8"
+    },
+    {
+      "gitBlob": "b0cc2473d82d98838e371452adbe53c6b5ea15ca",
+      "mode": "100644",
+      "path": "public/images/products/basket-sunshine.jpg",
+      "sha256": "981b12dfed6d6a1a53689ffd1edbedad79b6bfd3db5315be2d328021aa42131f"
+    },
+    {
+      "gitBlob": "d86742ba3ca03b4de1557b723395bd174daf827f",
+      "mode": "100644",
+      "path": "public/images/products/bouquet-blue.jpg",
+      "sha256": "03867ab3419026155c68521b3a4fc0f63e4e03a347643d4c0c23d18dec44add7"
+    },
+    {
+      "gitBlob": "a62ce8484a3fc93faf9c531c8e3765aa70ccf0e6",
+      "mode": "100644",
+      "path": "public/images/products/bouquet-happiness.jpg",
+      "sha256": "902a9543f977f2f12884da9046f5dfd80d4bbb32f66f01f32708a450ef0d358d"
+    },
+    {
+      "gitBlob": "7a2f94f0bdc31c44be813e7e35de7a43552ffe2d",
+      "mode": "100644",
+      "path": "public/images/products/bouquet-rose.jpg",
+      "sha256": "323602568f9af549a8cdafbd270a2914d167d4709dcbbfec8a49fad6ab54d7cd"
+    },
+    {
+      "gitBlob": "019b6987190d1dbd959bad8381a73b001c144c95",
+      "mode": "100644",
+      "path": "public/images/products/congrats-basic.jpg",
+      "sha256": "2f58d64d26983bf9aa19f2410b47bfc193ad18b948b2ab54bf59b8a36bb1fdf6"
+    },
+    {
+      "gitBlob": "60d737b43f04a2c0f05e4ab91981187cfc9cdc1c",
+      "mode": "100644",
+      "path": "public/images/products/congrats-large.jpg",
+      "sha256": "2cffb47abdda01652a08e4f89372c5a32fed6b00d47f260afbbefe606bc72f15"
+    },
+    {
+      "gitBlob": "d784c6a21676bc5ef659512b30a01d97114c7877",
+      "mode": "100644",
+      "path": "public/images/products/congrats-premium.jpg",
+      "sha256": "9b2a869a4aba5ab02af7c0efb5270f536b90d5989d040af5c2c7ead78ec6b46d"
+    },
+    {
+      "gitBlob": "5a6f41e37b0137dd48bbcf310c508811fcc4baef",
+      "mode": "100644",
+      "path": "public/images/products/congrats-xl.jpg",
+      "sha256": "4929374434bd95de1cfe73421fd3033ef74f9532a68df1837a7e6e6afb51a410"
+    },
+    {
+      "gitBlob": "ff86b334ade08edb840e071802e547ebbba51593",
+      "mode": "100644",
+      "path": "public/images/products/funeral-basic.webp",
+      "sha256": "7b6a2ae56415c52ddc1e072c2250066366e31c177601f84055bf038a5541239b"
+    },
+    {
+      "gitBlob": "596bd7ec077b8abc09aa3db27218fe4d04ca983d",
+      "mode": "100644",
+      "path": "public/images/products/funeral-large.webp",
+      "sha256": "f3d1eba34c8b288c0f61582f98c4e0ef0de422842f7e9a12407ccaaab8e04210"
+    },
+    {
+      "gitBlob": "1b9608037c14c7c5f371d0bb73a2a62c5bba0d5a",
+      "mode": "100644",
+      "path": "public/images/products/funeral-premium.webp",
+      "sha256": "c09af52edc3108584c0b76ae6d37715384d7b448dac3f3e7700f7ef10c5f7738"
+    },
+    {
+      "gitBlob": "9900de24565467c66107dc220b527a37bf67d3ed",
+      "mode": "100644",
+      "path": "public/images/products/funeral-xl.webp",
+      "sha256": "fab5752e7c2577efd0ed1713e69e943c83378107abe2f238d0e84a4faf9ffad6"
+    },
+    {
+      "gitBlob": "ef8bef6aad2103086284800654ff3c45548c9c6f",
+      "mode": "100644",
+      "path": "scripts/assert_preview_boundary.mjs",
+      "sha256": "8d9c7ea611375ffeb1b2fb65b7e0397929b7c6e5020917f7ae1aa2faed1ea56f"
+    },
+    {
+      "gitBlob": "b572b14571480886a529a8dfa30a951bffe5f695",
+      "mode": "100644",
+      "path": "scripts/qa_bootstrap_or_graph.mjs",
+      "sha256": "45e205884a3da37eaf768aaa6fb95772e5635a2fa371e263446140a612e9ce84"
+    },
+    {
+      "gitBlob": "29961509198dad636b29dac23bab52682dd2b8c3",
+      "mode": "100644",
+      "path": "scripts/qa_graph.mjs",
+      "sha256": "b7c2bd3ca367c4ca26edb2677331ae46f6527c470312a5f206feb27e50d6628c"
+    },
+    {
+      "gitBlob": "b9e851f2818edf2cae6e1836d628bd32b4198624",
+      "mode": "100644",
+      "path": "scripts/qa_intent.mjs",
+      "sha256": "c1fa7486e7a9e2f1fbe2e56f7e408cb143495541811a3a7c6b9c3fdfac2e6b99"
+    },
+    {
+      "gitBlob": "65480253ec6d081e86f5d4b43eefafe8b139cbc1",
+      "mode": "100644",
+      "path": "scripts/qa_static.py",
+      "sha256": "badd194d350aa974e32cf86c3abec70c0ba1efcdfb0e668c0ec0eaa731640d48"
+    },
+    {
+      "gitBlob": "7bb6ef97adb52cf3be9ba84c343e5be5df837f8f",
+      "mode": "100644",
+      "path": "scripts/write_build_revision.mjs",
+      "sha256": "7e0de1d50032c7789e05ef25fecfab2a19702cbac6e46fab451c6ae154934278"
+    },
+    {
+      "gitBlob": "28fdee0510169d5652b212fcfcc9e03c1510a510",
+      "mode": "100644",
+      "path": "scripts/write_response_headers.mjs",
+      "sha256": "e2bb388129c8e4144cfd880523a45d86ad03b4e7075d9532f0ba825ad65ebc1e"
+    },
+    {
+      "gitBlob": "76d9576e2aee063d86372dde23c3501fc047627a",
+      "mode": "100644",
+      "path": "src/components/InlineOrderBanner.astro",
+      "sha256": "9c4a05aa806810d5d27a0040e357ccdd89c7d465d9d0d43df0ce48cec8fe33a0"
+    },
+    {
+      "gitBlob": "e65577bc1857c80c807014610d5172272a40807b",
+      "mode": "100644",
+      "path": "src/components/InlineText.astro",
+      "sha256": "ac748bd0e67c41dab43634bbb63a606d2f2124d1f2c089b1266a52795c3ceb0a"
+    },
+    {
+      "gitBlob": "f40b368cd526df837b2a7602d3a48dcc462afd17",
+      "mode": "100644",
+      "path": "src/components/MarkdownContent.astro",
+      "sha256": "664e29b01720f12ac6b479b9fe722907c192f1df44338ba3df9a764ba7e3ac77"
+    },
+    {
+      "gitBlob": "885072b201f7ef0e13085add8f30b21fb8936315",
+      "mode": "100644",
+      "path": "src/components/ProductCards.astro",
+      "sha256": "5f249fb03794c892a727813e326d03f141f086199257620e0ca0f6d6cf993083"
+    },
+    {
+      "gitBlob": "24659bd53ab1fc61dc6aae0514a7741ebf01a2e3",
+      "mode": "100644",
+      "path": "src/config/site.ts",
+      "sha256": "079fcf38c7f3bb8532691ada85fed0df3e2151f0b78330778ddd9aaa57e208d4"
+    },
+    {
+      "gitBlob": "1f2d165957d94daf82897b48633383f017e28575",
+      "mode": "100644",
+      "path": "src/data/architecture.json",
+      "sha256": "2dedae9fa93529f78e53c39c36ea814b12273acdd28c96e34c1cb57d2c481757"
+    },
+    {
+      "gitBlob": "102be29ab9bfc635ebe7123da3a7fcc38c3f4163",
+      "mode": "100644",
+      "path": "src/data/business-truth.json",
+      "sha256": "a93a64b61fadf406a4cb4535359a17bbabef1160a81978de5ec908e6391c9319"
+    },
+    {
+      "gitBlob": "e1afa985dd826e0b012fa44bc5a737d32ef2f778",
+      "mode": "100644",
+      "path": "src/data/editorial-assets.json",
+      "sha256": "00cbe0b89572b78c7694ae100e04a5fa7b3e64295739ae9ee60eee2496b4e1ec"
+    },
+    {
+      "gitBlob": "43a2874524245435bde8ba5e92926b325d71cde4",
+      "mode": "100644",
+      "path": "src/data/page-map.json",
+      "sha256": "643280f6e12c187224a27d94374c170013ad357d2921f19b7af4873f0cae527f"
+    },
+    {
+      "gitBlob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "mode": "100644",
+      "path": "src/data/pages.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "gitBlob": "8ce1bf76185791206a3494f6e433c8de1dbc5b56",
+      "mode": "100644",
+      "path": "src/data/products.json",
+      "sha256": "33b543a8a051e5755742b8dacf22a77194e0d184e6173eea8c46386fd49c5b01"
+    },
+    {
+      "gitBlob": "72ee79de39099d6cf26bb36b83e895e95bc2bf13",
+      "mode": "100644",
+      "path": "src/data/publish-manifest.json",
+      "sha256": "486f407ba43d558ab715411175b3b7aa89543213c634d973e3ad0ee4b1090286"
+    },
+    {
+      "gitBlob": "be683136b9023c9df73f11a14f5758fd557a25db",
+      "mode": "100644",
+      "path": "src/data/site-config.json",
+      "sha256": "eb2827ffb6d8e564efd8e4dc3589267eaf9306549bd7dd5e31642ff149843783"
+    },
+    {
+      "gitBlob": "1e30c7a23cf8530216b312cdb67009cb5a26f8dd",
+      "mode": "100644",
+      "path": "src/data/social-image-provenance.json",
+      "sha256": "549199e74a040a4cd153b62aafcf52daf6a1eea2d8c691ebb751644600e7a3bd"
+    },
+    {
+      "gitBlob": "2e79de958b3c8f7acdb7462d2b465404a5133675",
+      "mode": "100644",
+      "path": "src/layouts/BaseLayout.astro",
+      "sha256": "5163afb4091f80601fd7f28fc9f4d3638ca215bb3c2d0c6d4b7a3d99fab13135"
+    },
+    {
+      "gitBlob": "38e421b974f35d4ab0b45c00690291af0349a896",
+      "mode": "100644",
+      "path": "src/lib/catalog.mjs",
+      "sha256": "be11855a714f1f8b22aff183ef190fd3dbc22d7ebe48452b2b24051d2daf5253"
+    },
+    {
+      "gitBlob": "e03cbe95986bb4502fa3f943f480785d799f352e",
+      "mode": "100644",
+      "path": "src/lib/content.mjs",
+      "sha256": "13bb46b0945b4b39f31bdc2c171c77ea5943cc16a92c1b91dc5674ed4befbb79"
+    },
+    {
+      "gitBlob": "9503ce8dd01257abb7f36c9e55d376601052f5bc",
+      "mode": "100644",
+      "path": "src/lib/hubs.mjs",
+      "sha256": "cd3289a46fd77b1d5b32b3a5c5878d95243a6a5224bc8f1ba3095168acf55d2a"
+    },
+    {
+      "gitBlob": "f19efadd9f1f35ada73bf74a2de9ab69ca8d4cdb",
+      "mode": "100644",
+      "path": "src/lib/journey.mjs",
+      "sha256": "c07934204e5ddbd8b9126b715aae569b410dedbbbfe9ff80a1c518fe8be6c400"
+    },
+    {
+      "gitBlob": "c7d9f1f647d4de512ff0cb7f06a1b23dc339f8d6",
+      "mode": "100644",
+      "path": "src/lib/social-image.mjs",
+      "sha256": "15008f3e008430001e88298858bf4998a7901024623cd9ec8d7da162513ec1a3"
+    },
+    {
+      "gitBlob": "0169fd1710aedcbd81ea8530b3538aad97fd7c1d",
+      "mode": "100644",
+      "path": "src/lib/sources.mjs",
+      "sha256": "0bea1d95eed1c8544baf757baabdd4eaf2827788250575b626c9a0879efd1d9f"
+    },
+    {
+      "gitBlob": "19a8c6515a8e3e45f6f60e61c843814e68f6eb08",
+      "mode": "100644",
+      "path": "src/lib/visual.mjs",
+      "sha256": "a0bba0aa048d56f3a323b347a7e0022f39b01029da844dbfd7ed86e9dce6c44e"
+    },
+    {
+      "gitBlob": "481dcb4ad4e6077e03a8ce080c7663ba99717af1",
+      "mode": "100644",
+      "path": "src/pages/404.astro",
+      "sha256": "f4497cf673dd7cf0e2d045ec7c8253fb56f20b366689efea473e36c080adae9e"
+    },
+    {
+      "gitBlob": "e12cc9698d3fc4dbbad5ef39111be98a6b525348",
+      "mode": "100644",
+      "path": "src/pages/[category]/[slug].astro",
+      "sha256": "b43439714fbed0f1c80d777be846576f751d84e24f47f10c24406f91aa1cb042"
+    },
+    {
+      "gitBlob": "4bf93bc18cdbc4e4f36963b90949a249c652c2da",
+      "mode": "100644",
+      "path": "src/pages/[category]/index.astro",
+      "sha256": "97c8700be22279531df4e5992a483ee7c649edcb3ac8c4761699e8781fb905d3"
+    },
+    {
+      "gitBlob": "bdcada1da76c292029734a4d6d6319e64d57105c",
+      "mode": "100644",
+      "path": "src/pages/index.astro",
+      "sha256": "a03d9476939a7fe5b787d810a3534d923f089e355d5453cb75599d855e7daaf1"
+    },
+    {
+      "gitBlob": "34bb350862a1d4f0197dc431e3bdf8955bd69ca4",
+      "mode": "100644",
+      "path": "src/pages/robots.txt.ts",
+      "sha256": "b7dbb859b51755671b762c0e6d7f9b42cbcfc65e32eb5267cbd27fd4f075a8f7"
+    },
+    {
+      "gitBlob": "2d84867cf1cbc65120a7cb92ff4fd12620092c04",
+      "mode": "100644",
+      "path": "src/styles/global.css",
+      "sha256": "903963c83c95f9a42c2fc6c21bb096e457f723ed58c1d5b9fe1195a00105e723"
+    },
+    {
+      "gitBlob": "8688d0f85ba4e736577a1fcb2c629e4f88a7e05f",
+      "mode": "100644",
+      "path": "tests/answer-opening.test.mjs",
+      "sha256": "6f726874f40007833011ec3f95dd6cf35cf8effad8870b7317df6cd8b9a8a312"
+    },
+    {
+      "gitBlob": "be8c79e49d435be1ffab6e584c774d9609e31d5d",
+      "mode": "100644",
+      "path": "tests/catalog.test.mjs",
+      "sha256": "571938946f6ba802f255001f0115ff2cc51099a4c73549d06b43b029ee1d58ed"
+    },
+    {
+      "gitBlob": "01fafc603fdea3469b04acf4c383141df9d79df5",
+      "mode": "100644",
+      "path": "tests/journey-contract.test.mjs",
+      "sha256": "a9e9defb22a540fa79fa04af55614d0634acb265f78a60a2352aec146d0a3461"
+    },
+    {
+      "gitBlob": "73e1bc167efb880c678b12df48927f81cb530612",
+      "mode": "100644",
+      "path": "tests/purchase-banner-contract.test.mjs",
+      "sha256": "09b5b730f902d7f6cdf309f6284c297ffab7334d026df92dc120c6a6358fd7a3"
+    },
+    {
+      "gitBlob": "02cfeab72d04214dff3bb399e78fa1ee00422ec0",
+      "mode": "100644",
+      "path": "tests/social-image.test.mjs",
+      "sha256": "09e285e4a770fd0a60f75d8971a1f4a4c69d14bd84a3245f99c57131624a9486"
+    },
+    {
+      "gitBlob": "58786f9a415ba3a9f7d957a5a737f95babdab7f6",
+      "mode": "100644",
+      "path": "tests/sources.test.mjs",
+      "sha256": "5eec659e38f74d45a908ab8bef9a11498d6880a3659855c91481387a2bdac987"
+    },
+    {
+      "gitBlob": "b12200da6ff3798573eddd9a61539ff60eb078ba",
+      "mode": "100644",
+      "path": "tests/visual.test.mjs",
+      "sha256": "9b2afdef5c9c847c7965f362a93effec26b17ed2a801e00379a6682fde258811"
+    },
+    {
+      "gitBlob": "bb33be4f1b08c043c088a8db5bb01b0749135947",
+      "mode": "100644",
+      "path": "tsconfig.json",
+      "sha256": "903f5bd9f78e464bbf03c0d68f91a5d8b76092f9abc22c3dd78d8c2f3f4d8e93"
+    },
+    {
+      "gitBlob": "e5cb5f9a677d43f595cd70371c0752fe4e23137f",
+      "mode": "100644",
+      "path": "wrangler.jsonc",
+      "sha256": "b843bcad23016629d940063631e3e03ff754d360ffc97a4d402fedc78eb7b40d"
+    },
+    {
+      "gitBlob": "852a6ecbd0745f3ce16feb2c742bca90d2a42ffd",
+      "mode": "100644",
+      "path": "wrangler.staging.jsonc",
+      "sha256": "659517d516c021e7a63c5c92dcbce0dd246d9d30a3c67661f2cec66b9332a752"
+    }
+  ],
+  "sourceManifestSha256": "5c8109a54c190c3d9657a945d6adb5b00bb5c92c5cd5c6feca864f4022b0ebdd",
+  "sourceRevision": "d31b9004055b28f3bab699dcaaab7882adf0a3bd",
+  "sourceRoot": "site-factory/templates/flower-local-v2",
+  "sourceTemplateRegistryKey": "flower-local-v2-bucheon-bootstrap-r1",
+  "sourceTree": "770d3f2d200d55ded378a649265cca3de81c130e",
+  "targetManifest": [
+    {
+      "path": ".gitignore",
+      "sha256": "0a5eef845a42deb1d0b1f0c56b1dffdbd79a29cd1db049a5d4dbbf7a6372cbf3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "60eeea3cd5d4e339fffc88613a69d33f921947d049cac8158a8de9b9abcd66de"
+    },
+    {
+      "path": "astro.config.mjs",
+      "sha256": "d3f5870839bdd3685e0292df487a2c22008424214db13aee7f992c2b1ccc1109"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "247ea260dec6f082770f06215e59854d90d02b1548db41d44bb0453c6a2f62bf"
+    },
+    {
+      "path": "package.json",
+      "sha256": "48b91c214520401f938676dab0c0ca0789c7c991b945eaf94dafb4b60120f2ab"
+    },
+    {
+      "path": "public/_headers",
+      "sha256": "1b27a67288f21cf98b19d15cef8fa084bf7d7ca7a0f89975dd48ba51f90ed015"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "7ad52153b6e98b0b1a93bf546b2c1f3a9d9724a450703086fcedcb30fd05c3b4"
+    },
+    {
+      "path": "public/images/editorial/opening-wreath-illustration-v1.webp",
+      "sha256": "cd6ca9f33f39c0568b7acc67e7fa17d2993a75da50cee237e735c8490624c8b8"
+    },
+    {
+      "path": "public/images/products/basket-sunshine.jpg",
+      "sha256": "981b12dfed6d6a1a53689ffd1edbedad79b6bfd3db5315be2d328021aa42131f"
+    },
+    {
+      "path": "public/images/products/bouquet-blue.jpg",
+      "sha256": "03867ab3419026155c68521b3a4fc0f63e4e03a347643d4c0c23d18dec44add7"
+    },
+    {
+      "path": "public/images/products/bouquet-happiness.jpg",
+      "sha256": "902a9543f977f2f12884da9046f5dfd80d4bbb32f66f01f32708a450ef0d358d"
+    },
+    {
+      "path": "public/images/products/bouquet-rose.jpg",
+      "sha256": "323602568f9af549a8cdafbd270a2914d167d4709dcbbfec8a49fad6ab54d7cd"
+    },
+    {
+      "path": "public/images/products/congrats-basic.jpg",
+      "sha256": "2f58d64d26983bf9aa19f2410b47bfc193ad18b948b2ab54bf59b8a36bb1fdf6"
+    },
+    {
+      "path": "public/images/products/congrats-large.jpg",
+      "sha256": "2cffb47abdda01652a08e4f89372c5a32fed6b00d47f260afbbefe606bc72f15"
+    },
+    {
+      "path": "public/images/products/congrats-premium.jpg",
+      "sha256": "9b2a869a4aba5ab02af7c0efb5270f536b90d5989d040af5c2c7ead78ec6b46d"
+    },
+    {
+      "path": "public/images/products/congrats-xl.jpg",
+      "sha256": "4929374434bd95de1cfe73421fd3033ef74f9532a68df1837a7e6e6afb51a410"
+    },
+    {
+      "path": "public/images/products/funeral-basic.webp",
+      "sha256": "7b6a2ae56415c52ddc1e072c2250066366e31c177601f84055bf038a5541239b"
+    },
+    {
+      "path": "public/images/products/funeral-large.webp",
+      "sha256": "f3d1eba34c8b288c0f61582f98c4e0ef0de422842f7e9a12407ccaaab8e04210"
+    },
+    {
+      "path": "public/images/products/funeral-premium.webp",
+      "sha256": "c09af52edc3108584c0b76ae6d37715384d7b448dac3f3e7700f7ef10c5f7738"
+    },
+    {
+      "path": "public/images/products/funeral-xl.webp",
+      "sha256": "fab5752e7c2577efd0ed1713e69e943c83378107abe2f238d0e84a4faf9ffad6"
+    },
+    {
+      "path": "scripts/assert_preview_boundary.mjs",
+      "sha256": "8d9c7ea611375ffeb1b2fb65b7e0397929b7c6e5020917f7ae1aa2faed1ea56f"
+    },
+    {
+      "path": "scripts/qa_bootstrap_or_graph.mjs",
+      "sha256": "45e205884a3da37eaf768aaa6fb95772e5635a2fa371e263446140a612e9ce84"
+    },
+    {
+      "path": "scripts/qa_graph.mjs",
+      "sha256": "b7c2bd3ca367c4ca26edb2677331ae46f6527c470312a5f206feb27e50d6628c"
+    },
+    {
+      "path": "scripts/qa_intent.mjs",
+      "sha256": "c1fa7486e7a9e2f1fbe2e56f7e408cb143495541811a3a7c6b9c3fdfac2e6b99"
+    },
+    {
+      "path": "scripts/qa_static.py",
+      "sha256": "badd194d350aa974e32cf86c3abec70c0ba1efcdfb0e668c0ec0eaa731640d48"
+    },
+    {
+      "path": "scripts/write_build_revision.mjs",
+      "sha256": "7e0de1d50032c7789e05ef25fecfab2a19702cbac6e46fab451c6ae154934278"
+    },
+    {
+      "path": "scripts/write_response_headers.mjs",
+      "sha256": "e2bb388129c8e4144cfd880523a45d86ad03b4e7075d9532f0ba825ad65ebc1e"
+    },
+    {
+      "path": "src/components/InlineOrderBanner.astro",
+      "sha256": "9c4a05aa806810d5d27a0040e357ccdd89c7d465d9d0d43df0ce48cec8fe33a0"
+    },
+    {
+      "path": "src/components/InlineText.astro",
+      "sha256": "ac748bd0e67c41dab43634bbb63a606d2f2124d1f2c089b1266a52795c3ceb0a"
+    },
+    {
+      "path": "src/components/MarkdownContent.astro",
+      "sha256": "664e29b01720f12ac6b479b9fe722907c192f1df44338ba3df9a764ba7e3ac77"
+    },
+    {
+      "path": "src/components/ProductCards.astro",
+      "sha256": "5f249fb03794c892a727813e326d03f141f086199257620e0ca0f6d6cf993083"
+    },
+    {
+      "path": "src/config/site.ts",
+      "sha256": "079fcf38c7f3bb8532691ada85fed0df3e2151f0b78330778ddd9aaa57e208d4"
+    },
+    {
+      "path": "src/data/architecture.json",
+      "sha256": "69e0432c0108d11736cbdab53a4abed7474acee364c1b589ac0ff2a585e0d1f4"
+    },
+    {
+      "path": "src/data/business-truth.json",
+      "sha256": "a93a64b61fadf406a4cb4535359a17bbabef1160a81978de5ec908e6391c9319"
+    },
+    {
+      "path": "src/data/editorial-assets.json",
+      "sha256": "00cbe0b89572b78c7694ae100e04a5fa7b3e64295739ae9ee60eee2496b4e1ec"
+    },
+    {
+      "path": "src/data/page-map.json",
+      "sha256": "53d28ca44ad0b2bb9e217977627c80122f247601fb0d5471f9cfdb5d4c7501d7"
+    },
+    {
+      "path": "src/data/pages.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "src/data/products.json",
+      "sha256": "33b543a8a051e5755742b8dacf22a77194e0d184e6173eea8c46386fd49c5b01"
+    },
+    {
+      "path": "src/data/publish-manifest.json",
+      "sha256": "810f5a950b51465e38025c6b1834e84fa1556b144775ebf140b8970210bccac8"
+    },
+    {
+      "path": "src/data/site-config.json",
+      "sha256": "e30e14828b21402b815816658d509fea2945ca44cab1135f46c7fb0d212c71d2"
+    },
+    {
+      "path": "src/data/social-image-provenance.json",
+      "sha256": "549199e74a040a4cd153b62aafcf52daf6a1eea2d8c691ebb751644600e7a3bd"
+    },
+    {
+      "path": "src/layouts/BaseLayout.astro",
+      "sha256": "5163afb4091f80601fd7f28fc9f4d3638ca215bb3c2d0c6d4b7a3d99fab13135"
+    },
+    {
+      "path": "src/lib/catalog.mjs",
+      "sha256": "be11855a714f1f8b22aff183ef190fd3dbc22d7ebe48452b2b24051d2daf5253"
+    },
+    {
+      "path": "src/lib/content.mjs",
+      "sha256": "13bb46b0945b4b39f31bdc2c171c77ea5943cc16a92c1b91dc5674ed4befbb79"
+    },
+    {
+      "path": "src/lib/hubs.mjs",
+      "sha256": "cd3289a46fd77b1d5b32b3a5c5878d95243a6a5224bc8f1ba3095168acf55d2a"
+    },
+    {
+      "path": "src/lib/journey.mjs",
+      "sha256": "c07934204e5ddbd8b9126b715aae569b410dedbbbfe9ff80a1c518fe8be6c400"
+    },
+    {
+      "path": "src/lib/social-image.mjs",
+      "sha256": "15008f3e008430001e88298858bf4998a7901024623cd9ec8d7da162513ec1a3"
+    },
+    {
+      "path": "src/lib/sources.mjs",
+      "sha256": "0bea1d95eed1c8544baf757baabdd4eaf2827788250575b626c9a0879efd1d9f"
+    },
+    {
+      "path": "src/lib/visual.mjs",
+      "sha256": "a0bba0aa048d56f3a323b347a7e0022f39b01029da844dbfd7ed86e9dce6c44e"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "sha256": "f4497cf673dd7cf0e2d045ec7c8253fb56f20b366689efea473e36c080adae9e"
+    },
+    {
+      "path": "src/pages/[category]/[slug].astro",
+      "sha256": "b43439714fbed0f1c80d777be846576f751d84e24f47f10c24406f91aa1cb042"
+    },
+    {
+      "path": "src/pages/[category]/index.astro",
+      "sha256": "97c8700be22279531df4e5992a483ee7c649edcb3ac8c4761699e8781fb905d3"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "sha256": "a03d9476939a7fe5b787d810a3534d923f089e355d5453cb75599d855e7daaf1"
+    },
+    {
+      "path": "src/pages/robots.txt.ts",
+      "sha256": "b7dbb859b51755671b762c0e6d7f9b42cbcfc65e32eb5267cbd27fd4f075a8f7"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "903963c83c95f9a42c2fc6c21bb096e457f723ed58c1d5b9fe1195a00105e723"
+    },
+    {
+      "path": "tests/answer-opening.test.mjs",
+      "sha256": "6f726874f40007833011ec3f95dd6cf35cf8effad8870b7317df6cd8b9a8a312"
+    },
+    {
+      "path": "tests/catalog.test.mjs",
+      "sha256": "571938946f6ba802f255001f0115ff2cc51099a4c73549d06b43b029ee1d58ed"
+    },
+    {
+      "path": "tests/journey-contract.test.mjs",
+      "sha256": "a9e9defb22a540fa79fa04af55614d0634acb265f78a60a2352aec146d0a3461"
+    },
+    {
+      "path": "tests/purchase-banner-contract.test.mjs",
+      "sha256": "09b5b730f902d7f6cdf309f6284c297ffab7334d026df92dc120c6a6358fd7a3"
+    },
+    {
+      "path": "tests/social-image.test.mjs",
+      "sha256": "09e285e4a770fd0a60f75d8971a1f4a4c69d14bd84a3245f99c57131624a9486"
+    },
+    {
+      "path": "tests/sources.test.mjs",
+      "sha256": "5eec659e38f74d45a908ab8bef9a11498d6880a3659855c91481387a2bdac987"
+    },
+    {
+      "path": "tests/visual.test.mjs",
+      "sha256": "9b2afdef5c9c847c7965f362a93effec26b17ed2a801e00379a6682fde258811"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "903f5bd9f78e464bbf03c0d68f91a5d8b76092f9abc22c3dd78d8c2f3f4d8e93"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "sha256": "88b5d751695a5f9d34ecb7eaa4990188aa634e4ac32574ac339b2fccadc86e57"
+    },
+    {
+      "path": "wrangler.staging.jsonc",
+      "sha256": "4cf4715baf945feecc43034d32265ac2c197a92f1c8f64deae7f731964d99b82"
+    }
+  ],
+  "templateKey": "flower-local-v2",
+  "trialDetailTarget": 1
+}

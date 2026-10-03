@@ -1,0 +1,27 @@
+---
+import {site} from '../config/site';
+---
+<aside class="inline-order-banner" data-order-banner="inline" aria-label={`${site.brand} ${site.region} 주문 안내`}>
+  <div class="inline-order-copy">
+    <strong>{site.brand} {site.region} 주문 안내</strong>
+    <span>전화 {site.phoneOrderHours} · 온라인 {site.onlineOrderHours} 접수</span>
+    <small>접수시간은 배송시간을 보장하지 않습니다. 반입·배송 가능시간과 추가비용을 주문 전에 확인해 주세요.</small>
+  </div>
+  <div class="inline-order-actions">
+    <a class="inline-order-phone" href={site.phoneHref}>전화 상담 {site.phone}</a>
+    <a class="inline-order-online" href={site.orderUrl}>{site.brand} 온라인 주문</a>
+  </div>
+</aside>
+<style>
+  .inline-order-banner{margin:32px 0;padding:24px;border:1px solid #ddc5d6;border-radius:16px;background:#fff6fa;box-shadow:0 8px 24px rgba(58,33,79,.04)}
+  .inline-order-copy{display:flex;flex-direction:column;gap:8px}
+  .inline-order-copy strong{font-size:20px;line-height:1.45;color:#3a214f}
+  .inline-order-copy span{font-size:15px;line-height:1.65;color:#554c57}
+  .inline-order-copy small{font-size:13px;line-height:1.7;color:#655568}
+  .inline-order-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .inline-order-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 18px;border:1px solid #3a214f;border-radius:11px;font-size:15px;font-weight:800;line-height:1.5;text-decoration:none;overflow-wrap:anywhere}
+  .inline-order-actions .inline-order-phone{background:#fff;color:#3a214f}
+  .inline-order-actions .inline-order-online{background:#3a214f;color:#fff}
+  @media(max-width:600px){.inline-order-banner{padding:20px 16px}.inline-order-actions{display:grid;grid-template-columns:1fr}.inline-order-actions a{width:100%}}
+</style>
+

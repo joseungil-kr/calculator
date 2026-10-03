@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {site} from '../config/site';
+---
+<BaseLayout title={`페이지를 찾을 수 없습니다 | ${site.brand} ${site.region}`} description="요청한 페이지를 찾을 수 없습니다." noindex={true} canonicalPath={false} includeSchema={false}><section class="not-found"><h1>페이지를 찾을 수 없습니다</h1><p>필요한 꽃배달 정보를 메인에서 다시 찾아보세요.</p><a class="btn primary" href="/">홈으로 이동</a></section></BaseLayout>
