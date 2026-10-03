@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PurchaseBanner from '../../components/PurchaseBanner.astro';
 import MarkdownContent from '../../components/MarkdownContent.astro';
 import ProductCards from '../../components/ProductCards.astro';
 import InlineText from '../../components/InlineText.astro';
@@ -20,7 +21,7 @@ const snapshotId=page.snapshotId;
 const pricePage=journey.find((p:any)=>p.pageType==='price-guide');
 const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 ---
-<BaseLayout title={page.title} description={page.description} canonicalPath={page.url} orderUrl={hero?.orderUrl || site.orderUrl}>
+<BaseLayout title={page.title} description={page.description} canonicalPath={page.url} socialImage={hero} orderUrl={hero?.orderUrl || site.orderUrl}>
 <article data-snapshot-id={snapshotId} data-page-key={page.pageKey} data-page-type={page.pageType}>
 <nav class="breadcrumb" aria-label="현재 위치"><a href="/">{site.region} 꽃배달</a><span>›</span><a href={category?.url || '/'}>{category?.label || '꽃배달'}</a><span>›</span><span>{page.primaryKeyword}</span></nav>
 <section class="detail-hero"><div><span class="eyebrow">{site.brand} {site.region}</span><h1>{page.h1}</h1><p>{page.firstAnswer}</p><div class="actions"><a class="btn primary" href={site.phoneHref}>☎ {site.phone}</a><a class="btn dark" href={hero?.orderUrl || site.orderUrl}>상품 확인·주문</a></div><div class="facts"><span>전화 {site.phoneOrderHours}</span><span>온라인 {site.onlineOrderHours} 접수</span><span>배송 가능시간·추가비용 확인</span></div></div>
@@ -28,6 +29,7 @@ const addressPage=journey.find((p:any)=>p.visualIntent==='order_address');
 </section>
 {page.pageType==='hospital-visit' && <aside class="caution"><strong>병동 반입 가능 여부부터 확인해 주세요</strong><p>생화 반입은 병원·병동에 따라 제한될 수 있습니다. 병동 확인 전에는 꽃을 주문하지 마시고, 반입이 허용되는 경우에만 아래 상품을 비교해 주세요.</p></aside>}
 {page.contentMarkdown ? <MarkdownContent content={page.contentMarkdown}/> : page.sections.slice(0,3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}
+<PurchaseBanner heading={`${page.primaryKeyword} 상담 안내`}/>
 {pricePage && pricePage.pageKey!==page.pageKey && <aside class="journey-link"><span>예산을 먼저 정하고 싶다면</span><a href={pricePage.url}>{pricePage.primaryKeyword} 확인 →</a></aside>}
 {productSet.length>0 && <section class="product-section compact"><h2>{productHeading(page)}</h2><ProductCards products={productSet}/></section>}
 {!page.contentMarkdown && page.sections.slice(3).map((s:any)=><section class="content-card"><h2>{s[0]}</h2><p><InlineText text={s[1]}/></p></section>)}

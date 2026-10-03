@@ -43,7 +43,8 @@ class StaticGateTests(unittest.TestCase):
   file=self.root/'dist/index.html';text=file.read_text().replace('data-product-family="bouquet"','data-product-family="congrats"').replace('data-product-family="basket"','data-product-family="congrats"');file.write_text(text)
   with self.assertRaisesRegex(AssertionError,'Home hero omits|catalog family mismatch'):gate.check(self.root)
  def test_real_product_photo_cannot_be_reassigned_to_another_sku(self):
-  self.mutate('/images/products/bouquet-happiness.jpg','/images/products/congrats-basic.jpg')
+  # Mutate the visible product, not the new social-image metadata.
+  self.mutate('src="/images/products/bouquet-happiness.jpg"','src="/images/products/congrats-basic.jpg"')
   with self.assertRaisesRegex(AssertionError,'catalog image mismatch'):gate.check(self.root)
  def test_rendered_sku_price_cannot_drift_from_catalog(self):
   file=self.root/'dist/index.html';text=file.read_text();assert '50,000원' in text;file.write_text(text.replace('50,000원','49,000원'))

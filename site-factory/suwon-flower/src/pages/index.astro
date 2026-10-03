@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PurchaseBanner from '../components/PurchaseBanner.astro';
 import {site,groups} from '../config/site';
 import ProductCards from '../components/ProductCards.astro';
 import pages from '../data/pages.json';
@@ -19,6 +20,7 @@ const heroProducts=['bouquet-happiness','basket-sunshine','funeral-basic','congr
 <section class="purpose-navigation" data-purpose-navigation><div class="section-title"><span class="eyebrow">목적에 맞게 선택</span><h2>누구에게, 어디로 보내시나요?</h2></div><div class="purpose-grid">{groups.map(g=><a class="page-card purpose-card" href={g.url}><strong>{g.label}</strong><span>{hubGuides[g.cat].decision[0]}</span><em>상품·주문 준비 보기 →</em></a>)}</div></section>
 <section class="product-section" data-home-selection><div class="section-title"><span class="eyebrow">꽃이랑 상품과 가격</span><h2>꽃다발·꽃바구니·화환을 비교하세요</h2><p>직접 건넬 꽃과 한곳에 둘 꽃은 크기와 형태가 다릅니다. 상품 이미지는 대표 구성이며 지역·계절에 따라 달라질 수 있습니다.</p></div>
 <ProductCards products={featured}/></section>
+<PurchaseBanner pageRole="home" heading="상품을 비교하셨다면 수령정보를 준비해 주세요"/>
 <section class="hub-overview"><div class="section-title"><span class="eyebrow">장소와 상황별 상세 안내</span><h2>전달할 곳에 필요한 정보를 확인하세요</h2></div>
 {groups.map(g=><article class="hub-block"><div class="hub-heading"><h3>{g.label}</h3><a href={g.url}>전체 보기 →</a></div><div class="card-grid">{pages.filter((p:any)=>p.category===g.cat).map((p:any)=><a class="page-card" href={p.url}><strong>{p.primaryKeyword}</strong><span>{p.cardSummary}</span></a>)}</div></article>)}</section>
 <section class="conversion-panel"><div><span class="eyebrow">주문 전에 준비하면 빨라집니다</span><h2>상품 · 주소 · 수령자 · 문구</h2><p>장례식장은 빈소·상주 정보를, 행사장은 행사명·홀·담당자를 함께 알려주세요.</p></div><div class="actions"><a class="btn light" href={site.phoneHref}>전화주문</a><a class="btn yellow" href={site.orderUrl}>온라인 주문</a></div></section>

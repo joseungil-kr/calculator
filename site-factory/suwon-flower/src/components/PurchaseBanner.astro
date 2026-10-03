@@ -1,0 +1,8 @@
+---
+import {site} from '../config/site';
+const {heading = `${site.region} 꽃 주문을 준비하고 계신가요?`, pageRole = 'detail'} = Astro.props;
+---
+<aside class="purchase-banner" data-purchase-banner="middle" data-page-role={pageRole} aria-label="꽃이랑 전화·온라인 주문 안내">
+  <div><span class="purchase-kicker">{site.brand} 주문 안내</span><h2>{heading}</h2><p>상품과 수령 장소·희망 시간을 확인한 뒤 문의해 주세요. 배송 가능 여부와 추가비용은 주문 시 확인해 주세요.</p><small>전화 {site.phoneOrderHours} · 온라인 {site.onlineOrderHours} 접수</small></div>
+  <div class="purchase-actions"><a class="btn primary" href={site.phoneHref} aria-label={`${site.phone} 전화 상담·주문`}>전화 상담·주문 {site.phone}</a><a class="btn dark" href={site.orderUrl}>꽃이랑 공식 홈페이지 주문</a></div>
+</aside>
