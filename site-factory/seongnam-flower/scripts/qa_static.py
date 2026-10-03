@@ -239,11 +239,13 @@ def check(root=Path('.')):
     sitemap_expected={'/'}|{p['url'] for p in pages}|{h['url'] for h in arch['hubs'] if h['children']>=3}
     assert sitemap_urls=={base+u for u in sitemap_expected},f'Sitemap mismatch: {sitemap_urls ^ {base+u for u in sitemap_expected}}'
     headers=(dist/'_headers').read_text()
-    assert ('X-Robots-Tag: noindex, nofollow, noarchive' not in headers) if indexable else ('X-Robots-Tag: noindex, nofollow, noarchive' in headers)
-    if indexable:
+    if not indexable:
+        assert 'X-Robots-Tag: noindex, nofollow, noarchive' in headers
+    else:
         for hub in hubs.values():
             if hub['children']<3:
                 assert f"{hub['url']}\n  X-Robots-Tag: noindex, nofollow, noarchive" in headers, f"Thin hub header missing: {hub['url']}"
+        assert '/404.html\n  X-Robots-Tag: noindex, nofollow, noarchive' in headers, '404 header missing'
     robots=(dist/'robots.txt').read_text()
     assert ('Allow: /' in robots and 'Disallow: /' not in robots) if indexable else 'Disallow: /' in robots
     not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','')
