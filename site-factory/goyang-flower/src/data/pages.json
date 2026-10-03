@@ -1340,5 +1340,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-munbong",
+    "snapshotId": "goyang-ilsandong-munbong-r1-20261003T182200Z",
+    "snapshotHash": "13aa11482209b0d04c3dc2c37400aa37a3f6f7f575fa09acbbab4bdeb2af326e",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-munbong-r1",
+    "sourceRecordId": "recAaBGPqKRcW2tFI",
+    "publishQueueRecordId": "rec7oQG0D7RYqJ8Z9",
+    "slug": "ilsandong-munbong",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-munbong/",
+    "title": "문봉동 꽃배달 | 문봉길 행사 꽃과 성현로 사업장 주문",
+    "primaryKeyword": "문봉동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 18,
+    "h1": "문봉동 꽃배달, 학교 행사와 사업장 축하의 수령처를 정하세요",
+    "description": "성석초등학교 문봉길 주소와 성현로 사업장 인계처를 구분해 꽃을 주문하세요. 꽃다발·축하화환 선택, 담당자와 받을 시간, 기본 표시가와 추가배송비 확인을 안내합니다.",
+    "cardSummary": "성석초로 보내는 꽃도 학교명만 보고 동을 정하지 마세요. 문봉길의 행사 수령처와 사업장 입구를 각각 준비할 수 있습니다.",
+    "firstAnswer": "문봉동 꽃배달을 주문하실 때는 학교나 회사 이름과 실제 도로명주소를 함께 알려주세요. 성석초등학교는 문봉길 110으로 안내되어 있어 이름만 보고 배송지를 정하지 않는 것이 좋습니다. 꽃이랑에 행사명·받을 담당자·희망 시간을 전해 상품 공급, 배송 가능 일정과 총액을 확인해 주세요.",
+    "contentMarkdown": "문봉동 꽃배달을 주문하실 때는 학교나 회사 이름과 실제 도로명주소를 함께 알려주세요. 성석초등학교는 문봉길 110으로 안내되어 있어 이름만 보고 배송지를 정하지 않는 것이 좋습니다. 꽃이랑에 행사명·받을 담당자·희망 시간을 전해 상품 공급, 배송 가능 일정과 총액을 확인해 주세요.\n\n## 성석초에 보낼 꽃은 문봉길 주소로 준비하세요\n\n[성석초등학교 공식 홈페이지](https://www.goegy.kr/seongseok-e/main.do)의 학교 주소는 고양시 일산동구 문봉길 110입니다. 졸업이나 발표를 축하하는 꽃을 보내실 때 학교 이름에 들어간 ‘성석’만으로 배송 동을 정하기보다 안내받은 주소를 그대로 적어주세요.\n\n행사장 안으로 꽃을 들일 수 있는지, 종료 후 교문 밖에서 가족이 받을지는 학교 또는 행사 담당자와 먼저 정해야 합니다. 행사 시작 시각만 알려주시면 꽃을 실제로 건넬 때와 차이가 날 수 있으니 ‘누가, 어느 문에서, 몇 시에 받는지’를 주문 메모에 담아주세요. 미성년자의 학급·상세 일정 등 불필요한 정보를 추가하기보다 성인 수령 담당자의 연락수단을 준비해 주세요.\n\n## 성현로 사업장에는 사무실과 작업장 중 어디인가요?\n\n[고양특례시 고봉동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp)는 문봉동의 성현로와 주변 건물 변화를 설명합니다. 회사 이전을 축하한다면 사업자명뿐 아니라 현장에서 보이는 간판명, 사무실이 있는 동·층, 담당자를 알려주세요. 출입구가 여러 개라면 꽃을 받을 문을 구체적으로 고르는 것이 좋습니다.\n\n큰 축하화환을 주문하기 전에는 출입문을 가리지 않고 둘 자리가 있는지 현장에 확인해 주세요. 사무실 내부에서만 받을 수 있다면 책상이나 응접공간에 둘 꽃바구니가 맞는지 상담할 수 있습니다. 사업장의 반입 가능 여부는 주소 확인과 별도로 확인합니다.\n\n## 행사 후 들고 갈 꽃과 개업 입구에 둘 꽃\n\n소소한 행복(G105) 꽃다발의 기본 표시가격은 50,000원입니다. 행사 후 사진을 찍고 직접 들고 갈 선물이라면 포장 색감과 이동 계획을 함께 알려주세요. 축하 3단 화환(C200)은 기본 표시가격 59,000원으로, 입구 설치가 가능한 개업·이전 축하에 비교할 수 있습니다. 리본은 축하 문장과 보내는 회사·이름을 나누어 적어주세요.\n\n두 상품의 표시가격만 비교하기보다 실제 공급과 구성, 배송지에 따른 추가배송비까지 포함한 총액을 확인해 주세요. 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다.\n\n## 문봉길 주소, 행사 수령자, 희망 시간을 함께 전해주세요\n\n[꽃이랑 전화 주문 1844-0644](tel:18440644)는 08:00-23:00, [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 온라인으로 접수했다고 행사 전 도착이 확정되는 것은 아니므로 날짜가 가까운 주문은 희망 시각과 정확한 수령처를 먼저 상담해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 고봉동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "성석초등학교 공식 홈페이지",
+        "url": "https://www.goegy.kr/seongseok-e/main.do",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 고봉동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

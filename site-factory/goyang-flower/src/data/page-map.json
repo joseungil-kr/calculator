@@ -289,6 +289,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-munbong",
+      "snapshotId": "goyang-ilsandong-munbong-r1-20261003T182200Z",
+      "snapshotHash": "13aa11482209b0d04c3dc2c37400aa37a3f6f7f575fa09acbbab4bdeb2af326e",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-munbong-r1",
+      "sourceRecordId": "recAaBGPqKRcW2tFI",
+      "publishQueueRecordId": "rec7oQG0D7RYqJ8Z9",
+      "slug": "ilsandong-munbong",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-munbong/",
+      "title": "문봉동 꽃배달 | 문봉길 행사 꽃과 성현로 사업장 주문",
+      "primaryKeyword": "문봉동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-seolmun",
       "snapshotId": "goyang-ilsandong-seolmun-r1-20261003T182200Z",
       "snapshotHash": "fd506fefa78d19173544ec406710ac829be1ac6869b67906cc0cd5b0704de739",
