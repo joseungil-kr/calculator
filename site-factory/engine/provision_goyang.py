@@ -48,7 +48,11 @@ CATEGORY_TYPES = {
     'gift': ['hospital-visit', 'personal-gift', 'station-transit'],
     'order': ['order-help', 'price-guide', 'message-guide'],
 }
-REGIONS = {'goyang-flower-v2': '고양', 'seongnam-flower-v2': '성남'}
+REGIONS = {'goyang-flower-v2': '고양', 'seongnam-flower-v2': '성남', 'bucheon-flower-v2': '부천'}
+# A separate source profile leaves both existing bootstrap contracts unchanged.
+BUCHEON_TEMPLATE_REGISTRY_KEY = 'flower-local-v2-bucheon-bootstrap-r1'
+BUCHEON_SOURCE_TREE = '770d3f2d200d55ded378a649265cca3de81c130e'
+BUCHEON_SOURCE_COUNT = 65
 
 
 class ProvisionError(ValueError):
@@ -242,17 +246,27 @@ def prepare(repo, control_revision, target_revision, site_key=SITE_KEY, launch_k
     target = target_contract(site_key)
     launch_key = checked_launch_key(site_key, launch_key)
     full_commit(repo, control_revision)
-    full_commit(repo, SOURCE_REVISION)
     template_registry = read_json(repo, control_revision, TEMPLATE_REGISTRY_PATH)
     require(template_registry.get('schemaVersion') == 1, 'Unsupported template registry')
+    registry_key = TEMPLATE_KEY
+    source_revision, source_tree, source_count = SOURCE_REVISION, SOURCE_TREE, SOURCE_COUNT
+    if site_key == 'bucheon-flower-v2':
+        registry_key = BUCHEON_TEMPLATE_REGISTRY_KEY
+        entry = template_registry.get('templates', {}).get(registry_key)
+        require(isinstance(entry, dict), 'Missing reviewed Bucheon source profile')
+        source_revision = entry.get('sourceRevision')
+        require(isinstance(source_revision, str) and bool(re.fullmatch('[0-9a-f]{40}', source_revision)),
+                'Bucheon source profile requires an exact published commit')
+        source_tree, source_count = BUCHEON_SOURCE_TREE, BUCHEON_SOURCE_COUNT
     expected_template = {'sourceBranch': SOURCE_BRANCH, 'sourceRoot': SOURCE_ROOT,
-                         'sourceRevision': SOURCE_REVISION, 'productionReady': False}
-    require(template_registry.get('templates', {}).get(TEMPLATE_KEY) == expected_template,
+                         'sourceRevision': source_revision, 'productionReady': False}
+    require(template_registry.get('templates', {}).get(registry_key) == expected_template,
             'Trusted registry does not contain the exact reviewed source pin')
-    tree = git(repo, 'rev-parse', SOURCE_REVISION + ':' + SOURCE_ROOT).decode().strip()
-    require(tree == SOURCE_TREE, 'Source tree differs from independently reviewed source')
-    source, source_manifest = read_tree(repo, SOURCE_REVISION, SOURCE_ROOT)
-    require(len(source) == SOURCE_COUNT, 'Expected exactly 54 tracked source files')
+    full_commit(repo, source_revision)
+    tree = git(repo, 'rev-parse', source_revision + ':' + SOURCE_ROOT).decode().strip()
+    require(tree == source_tree, 'Source tree differs from independently reviewed source')
+    source, source_manifest = read_tree(repo, source_revision, SOURCE_ROOT)
+    require(len(source) == source_count, f'Expected exactly {source_count} tracked source files')
     files = adapt(source, site_key)
     registry = read_json(repo, control_revision, REGISTRY_PATH)
     already_registered = validate_registry(registry, site_key)
@@ -264,13 +278,15 @@ def prepare(repo, control_revision, target_revision, site_key=SITE_KEY, launch_k
         'siteKey': site_key, 'launchKey': launch_key, 'repository': REPOSITORY,
         'branch': target['branch'], 'root': target['root'],
         'templateKey': TEMPLATE_KEY, 'sourceBranch': SOURCE_BRANCH,
-        'sourceRoot': SOURCE_ROOT, 'sourceRevision': SOURCE_REVISION,
-        'sourceTree': SOURCE_TREE, 'sourceManifest': source_manifest,
+        'sourceRoot': SOURCE_ROOT, 'sourceRevision': source_revision,
+        'sourceTree': source_tree, 'sourceManifest': source_manifest,
         'sourceManifestSha256': sha256(encode(source_manifest)),
         'adaptedFiles': sorted(ADAPTATIONS), 'targetManifest': manifest_for(files),
         'customerPages': 0, 'snapshotApprovalGranted': False,
         'productionEnabled': False, 'growthPaused': True, 'autoDeploySnapshots': False,
     }
+    if registry_key != TEMPLATE_KEY:
+        provenance['sourceTemplateRegistryKey'] = registry_key
     if site_key != SITE_KEY:
         provenance['trialDetailTarget'] = 1
     provenance['bootstrapId'] = sha256(encode(provenance))
@@ -301,7 +317,7 @@ def prepare(repo, control_revision, target_revision, site_key=SITE_KEY, launch_k
         'repository': REPOSITORY, 'controlRevision': control_revision,
         'expectedTargetRevision': target_revision, 'targetBranch': target['branch'],
         'targetState': target_state, 'registryState': 'unchanged' if already_registered else 'add',
-        'sourceRevision': SOURCE_REVISION, 'sourceTree': SOURCE_TREE,
+        'sourceRevision': source_revision, 'sourceTree': source_tree,
         'targetFiles': manifest_for(target_files), 'registryPath': REGISTRY_PATH,
         'registrySha256': sha256(proposed_registry), 'customerPagesCreated': 0,
         'externalActionsPerformed': [],
@@ -314,6 +330,8 @@ def prepare(repo, control_revision, target_revision, site_key=SITE_KEY, launch_k
             'Actual reviewed Draft must later use the existing frozen Publisher and snapshot approval path',
         ],
     }
+    if registry_key != TEMPLATE_KEY:
+        plan['sourceTemplateRegistryKey'] = registry_key
     if site_key != SITE_KEY:
         plan['trialDetailTarget'] = 1
     outputs = {'target-files/' + p: b for p, b in target_files.items()}

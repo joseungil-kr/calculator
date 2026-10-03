@@ -204,3 +204,74 @@ no empty hub route/navigation, with noindex meta/header and `Disallow: /`.
 The fixture revision used in a local QA build is not a published target revision.
 The existing `test_rendered_growth.py` is a CLI test requiring `--suwon-root`;
 it is not import-safe under blanket `unittest discover -p 'test_*.py'`.
+
+## Bucheon scheduled bootstrap trial: reviewed source profile
+
+Bucheon is the only newly supported region. Do not choose another ready Pool row
+as a fallback. Existing Goyang and Seongnam source pins, provenance and customer
+content remain unchanged.
+
+- Site: `bucheon-flower-v2`; explicit trial: `bucheon-flower-v2-trial-20261004`.
+- Branch/root: `site-factory-bucheon-v2` / `site-factory/bucheon-flower`.
+- QA Worker: `bucheon-flower-guide-qa`, isolated workers.dev and noindex.
+- Disabled production placeholder: `bucheon-flower-prod-disabled`.
+- Source registry key: `flower-local-v2-bucheon-bootstrap-r1`.
+- Reviewed source subtree: `770d3f2d200d55ded378a649265cca3de81c130e`, exactly 65 source files.
+- Source branch/root stay `site-factory-flower-v2-template` /
+  `site-factory/templates/flower-local-v2`.
+- The new registry entry must contain the actual published 40-character source
+  commit, not a branch name, planned SHA or local test fixture commit. The helper
+  verifies the trusted registry entry, commit object, fixed subtree and count.
+- The existing `flower-local-v2` registry entry and original 54-file source
+  profile are retained byte for byte. Only Bucheon selects the new profile.
+
+Publish the independently reviewed generic template commit first, as a
+descendant of the current verified template branch. Read back its exact source
+subtree and every source blob before registering that commit under the new key.
+Then publish the helper/tests/documentation plus only the new template registry
+entry on the fresh trusted main. Serialize these writes with the parent; no new
+workflow or broadly enabled region selector is required.
+
+The source inventory for social images verifies the retained asset bytes,
+dimensions and MIME. It does not certify current product prices, availability,
+business policies or a local delivery record. The scheduled Creator must
+reconcile actual Business Truth and active Catalog before content review.
+Updated catalog/image bindings require their real bytes, decoded dimensions and
+MIME to be reverified together. Raw HTML is not a banner implementation path.
+
+Before the actual scheduled invocation, the parent may register only the bounded
+scope and its input records. The parent must not create the Bucheon branch,
+registry site entry, hosted Worker or customer Draft and call that unattended
+bootstrap. The existing scheduled Creator must perform the helper invocation,
+consume its exact proposal through the supported Git path, and read it back.
+Remote ref/Worker collision checks must use the currently authorized account
+and real responses; 403, unavailable metadata and unqueried names are not proof
+of absence. Existing credentials may be reused through supported mechanisms;
+new credentials, access expansion and mandatory account approvals remain gated.
+
+Example after those prerequisites are independently cleared:
+```sh
+python3 site-factory/engine/provision_goyang.py \
+  --repo /path/to/verified/repository \
+  --control-revision FULL_CURRENT_TRUSTED_MAIN_SHA \
+  --target-revision absent \
+  --site-key bucheon-flower-v2 \
+  --launch-key bucheon-flower-v2-trial-20261004 \
+  --output /path/to/existing-parent/new-bucheon-trial-bundle
+```
+
+The Pool's historical `bucheon-flower-v2-launch` key is not a valid trial key.
+Link the explicit trial separately without fabricating an earlier launch.
+The helper creates zero customer pages and grants no content approval.
+The actual first query, Draft revision, independent review, frozen Queue,
+Publisher run, Connector Issue, snapshot and exact isolated staging/hosted QA
+must follow the existing roles. A trial of one genuine new detail proves only
+that bounded connection; it is not complete city coverage, production release
+or indexing. Official lower-region coverage remains a separate explicit
+initial-open contract, and neither fixed50 nor quota filler is restored.
+
+Do not assign a promised test time before the code/source pin, scope registration,
+actual execution capabilities and account preconditions are ready. Reuse the
+existing Creator/Reviewer tasks; any one-time time advancement must be recorded
+separately from the regular cadence and restored afterward. A saved prompt or
+schedule is not actual invocation evidence.

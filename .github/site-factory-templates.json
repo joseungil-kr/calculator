@@ -14,6 +14,12 @@
       "sourceRoot": "site-factory/templates/flower-local-v2",
       "sourceRevision": "2ead40cecc0fe0925f69395e4798a35c0aec1894",
       "productionReady": false
+    },
+    "flower-local-v2-bucheon-bootstrap-r1": {
+      "sourceBranch": "site-factory-flower-v2-template",
+      "sourceRoot": "site-factory/templates/flower-local-v2",
+      "sourceRevision": "d31b9004055b28f3bab699dcaaab7882adf0a3bd",
+      "productionReady": false
     }
   }
 }

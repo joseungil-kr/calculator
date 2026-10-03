@@ -187,7 +187,7 @@ class BootstrapTests(unittest.TestCase):
 
     def test_unlisted_source_and_extra_target_files_rejected(self):
         with patch.object(p, 'SOURCE_COUNT', len(self.source) + 1):
-            with self.assertRaisesRegex(p.ProvisionError, '54 tracked'):
+            with self.assertRaisesRegex(p.ProvisionError, 'tracked source files'):
                 self.prepare()
         outputs, _ = self.prepare()
         for path, data in outputs.items():
