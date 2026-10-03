@@ -1,76 +1,88 @@
 #!/usr/bin/env python3
-"""Attach only the fixed hostname to the existing QA Worker; never deploy assets."""
+"""Request the fixed Seongnam Custom Domain with server-side overrides disabled.
+
+Uses the native Custom Domains endpoint used by Wrangler 4.147.0. No separate
+DNS/routes inventory, force, retry or alternate endpoint is used. A successful
+request is not live verification; the production controller verifies HTTP next.
+"""
 import argparse
 import json
 import os
 import re
 from urllib.error import HTTPError
-from urllib.parse import urlencode
 from urllib.request import Request, build_opener
 
-from seongnam_domain import HOSTNAME, ZONE_NAME, WORKER, NoRedirect, PreflightError, inspect, pages, single_page
+from seongnam_domain import HOSTNAME, ZONE_NAME, WORKER, NoRedirect, PreflightError
+
+
+def error_codes(payload):
+    """Return only bounded integer Cloudflare codes, never upstream messages."""
+    rows = payload.get("errors") if isinstance(payload, dict) else None
+    if not isinstance(rows, list):
+        return []
+    return sorted({row["code"] for row in rows[:20]
+                   if isinstance(row, dict) and type(row.get("code")) is int
+                   and 0 <= row["code"] <= 1000000000})[:5]
+
+
+def failure(code, status=None, codes=()):
+    error = PreflightError(code, status)
+    error.cloudflare_codes = list(codes)
+    return error
 
 
 def attach(transport, account_id):
     if not isinstance(account_id, str) or not re.fullmatch(r"[0-9a-fA-F]{32}", account_id):
-        raise PreflightError("invalid_account_configuration")
-    zones = pages(transport, "/zones?" + urlencode({"name": ZONE_NAME, "status": "active", "account.id": account_id}))
-    if (len(zones) != 1 or zones[0].get("name") != ZONE_NAME or zones[0].get("status") != "active"
-            or not isinstance(zones[0].get("account"), dict) or zones[0]["account"].get("id") != account_id
-            or not isinstance(zones[0].get("id"), str) or not re.fullmatch(r"[0-9a-fA-F]{32}", zones[0]["id"])):
-        raise PreflightError("zone_scope_uncertain")
-    zone_id = zones[0]["id"]
-    endpoint = f"/accounts/{account_id}/workers/domains"
-    lookup = endpoint + "?" + urlencode({"hostname": HOSTNAME})
-    # Current API request schema omits environment; the legacy response must be production.
-    body = {"hostname": HOSTNAME, "service": WORKER, "zone_id": zone_id}
-
-    def same_binding(rows):
-        return len(rows) == 1 and all(rows[0].get(key) == value for key, value in body.items()) and rows[0].get("environment") == "production"
-
-    existing = single_page(transport, lookup)
-    if existing:
-        if same_binding(existing):
-            return "already_attached"
-        raise PreflightError("hostname_binding_conflict")
-    preflight = inspect(transport, account_id)
-    if preflight.get("state") != "inspection_complete" or preflight.get("collisionsObserved") is not False:
-        raise PreflightError("hostname_preflight_conflict")
-    uncertain = False
+        raise failure("invalid_account_configuration")
+    # Official implementation and option contract:
+    # cloudflare/workers-sdk tag wrangler@4.147.0,
+    # packages/deploy-helpers/src/triggers/publish-routes.ts, publishCustomDomains.
+    # Never inherit Wrangler's non-TTY auto-override defaults.
+    endpoint = f"/accounts/{account_id}/workers/scripts/{WORKER}/domains/records"
+    body = {
+        "override_scope": False,
+        "override_existing_origin": False,
+        "override_existing_dns_record": False,
+        "origins": [{"hostname": HOSTNAME, "zone_name": ZONE_NAME}],
+    }
     try:
         result = transport("PUT", endpoint, body)
     except HTTPError as error:
-        if type(error.code) is int and 400 <= error.code < 500 and error.code != 408:
-            raise PreflightError("attach_http_error", error.code) from None
-        uncertain = True
+        codes = []
+        try:
+            raw = error.read(8193)
+            if len(raw) <= 8192:
+                codes = error_codes(json.loads(raw))
+        except Exception:
+            pass
+        finally:
+            error.close()
+        uncertain = error.code == 408 or (type(error.code) is int and error.code >= 500)
+        raise failure("attach_result_uncertain" if uncertain else "attach_http_error", error.code, codes) from None
     except Exception:
-        uncertain = True
-    if not uncertain and (not isinstance(result, dict) or result.get("success") is not True):
-        raise PreflightError("attach_api_failure")
-    try:
-        readback = single_page(transport, lookup)
-    except PreflightError as error:
-        raise PreflightError("attach_readback_uncertain", error.status) from None
-    if not same_binding(readback):
-        raise PreflightError("attach_readback_uncertain")
-    return "attached_after_uncertain_response" if uncertain else "attached"
+        # The server may have applied a timed-out request. Never replay it here.
+        raise failure("attach_result_uncertain") from None
+    if not isinstance(result, dict) or result.get("success") is not True:
+        raise failure("attach_api_failure", codes=error_codes(result))
+    return "request_accepted"
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    args = parser.parse_args(argv)
+    parser.parse_args(argv)
     token = os.environ.get("CLOUDFLARE_API_TOKEN", "")
     account_id = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")
     if not token:
-        print("Seongnam attach failed: missing_credentials")
+        print("Seongnam domain request failed: missing_credentials")
         return 1
     opener = build_opener(NoRedirect())
 
     def transport(method, path, body=None):
-        if method not in ("GET", "PUT") or (method == "PUT" and path != f"/accounts/{account_id}/workers/domains"):
+        expected = f"/accounts/{account_id}/workers/scripts/{WORKER}/domains/records"
+        if method != "PUT" or path != expected:
             raise RuntimeError("operation_not_allowed")
-        request = Request("https://api.cloudflare.com/client/v4" + path, method=method,
-                          data=None if body is None else json.dumps(body).encode(),
+        request = Request("https://api.cloudflare.com/client/v4" + path, method="PUT",
+                          data=json.dumps(body).encode(),
                           headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
         with opener.open(request, timeout=20) as response:
             payload = response.read(1024 * 1024 + 1)
@@ -81,12 +93,14 @@ def main(argv=None):
     try:
         state = attach(transport, account_id)
     except PreflightError as error:
-        print("Seongnam attach failed: " + error.code + (f" HTTP {error.status}" if error.status is not None else ""))
+        print("Seongnam domain request failed: " + error.code
+              + (f" HTTP {error.status}" if error.status is not None else "")
+              + "; stage=native_custom_domain_put; cloudflareErrorCodes="
+              + json.dumps(getattr(error, "cloudflare_codes", [])))
         return 1
-    print("Seongnam hostname: " + HOSTNAME + "; " + state + "; assets unchanged; canonical follow-up pending.")
+    print("Seongnam hostname: " + HOSTNAME + "; " + state + "; live verification pending.")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
