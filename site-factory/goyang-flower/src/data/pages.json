@@ -958,5 +958,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-naeyu",
+    "snapshotId": "goyang-deogyang-naeyu-r1-20261003T182200Z",
+    "snapshotHash": "6cc6dc8787d4fb70eff429e16ca6b2bbe92c0879f0e14d07b1dcaca5ae157152",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-naeyu-r1",
+    "sourceRecordId": "rec3mWO9GfZCWBXkQ",
+    "publishQueueRecordId": "recyLUeFwUhMLgKQi",
+    "slug": "deogyang-naeyu",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-naeyu/",
+    "title": "내유동 꽃배달 | 빌라·사업장·커뮤니티센터 수령 준비",
+    "primaryKeyword": "내유동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 13,
+    "h1": "내유동 꽃배달은 건물 입구와 받는 담당자까지 정해 주세요",
+    "description": "내유동 빌라 선물과 유산길 커뮤니티센터 행사 꽃을 준비하세요. 건물 동·층·호수, 행사 담당자, 꽃다발·꽃바구니 선택과 최종 배송비 확인사항을 안내합니다.",
+    "cardSummary": "여러 건물이 모인 주택에서는 현관을, 행사장에서는 프로그램 담당자를 특정하는 것이 중요해요. 수령 장소별로 준비할 정보를 나눠 살펴보세요.",
+    "firstAnswer": "내유동 꽃배달은 빌라의 건물 동·층·호수나 사업장의 상호, 행사장의 담당자를 알려주시면 꽃이랑에서 상담하실 수 있습니다. 유산길 커뮤니티센터 등 공동시설은 행사명과 합의한 인계 장소를 함께 준비해 주세요. 상품 공급과 수령 가능 시간, 추가배송비를 포함한 총액은 주문별로 확인합니다.",
+    "contentMarkdown": "내유동 꽃배달은 빌라의 건물 동·층·호수나 사업장의 상호, 행사장의 담당자를 알려주시면 꽃이랑에서 상담하실 수 있습니다. 유산길 커뮤니티센터 등 공동시설은 행사명과 합의한 인계 장소를 함께 준비해 주세요. 상품 공급과 수령 가능 시간, 추가배송비를 포함한 총액은 주문별로 확인합니다.\n\n## 같은 번지 안에서도 꽃을 받는 현관은 달라요\n\n[고양시 관산동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp)는 내유동을 파주 경계 쪽에 위치한 지역으로 설명하며, 빌라·연립주택과 일부 소규모 공장을 안내합니다. '내유동 빌라'라는 설명에 머무르지 않고 건물 이름, 동 번호, 층·호수를 확인해 주세요.\n\n공동현관에서 받을 예정이면 받는 분이 내려오는 방식인지, 허용된 출입절차가 따로 있는지를 알아두면 좋습니다. 출입 비밀번호를 공개된 문구에 적기보다 현장에서 연락으로 안내받을 수 있는 수령자를 정해 주세요. 사업장에 보내는 꽃도 작업 공간과 사무실 중 어디에서 받을지 지정하면 인계가 명확해집니다.\n\n## 유산길 96 행사에는 프로그램명도 적어주세요\n\n[관산동 주요관내시설 안내](https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=2)에 내유동커뮤니티센터 주소는 고양시 덕양구 유산길 96으로 나옵니다. 이곳 행사에 꽃을 보낼 계획이라면 센터 이름 외에 행사 또는 프로그램명, 실제로 꽃을 받을 성인 담당자와 인계 위치를 준비해 주세요.\n\n센터 직원이 모든 개인 선물을 대신 받는다고 가정하지 않는 것이 좋습니다. 행사 담당자와 꽃 반입·보관이 가능한지, 시작 전에 받아둘 수 있는지 확인해 주세요. 교실이나 강당으로 직접 옮기는 방식도 현장 안내에 따라 협의할 사항입니다.\n\n## 받는 뒤의 일정에 맞는 꽃 형태\n\n축하를 받은 뒤 집으로 이동하는 분께는 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)을 먼저 비교해 보세요. 주택 거실이나 사무실에 놓아두는 감사 선물은 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 살펴보실 수 있습니다.\n\n내유동 사업장으로 보내더라도 큰 화환이 항상 필요한 것은 아닙니다. 개인에게 전하는 감사인지, 입구에 보내는 개업 축하인지 목적을 알려주세요. 화환을 원하시면 배치할 공간과 반입 가능 여부를 확인한 후 상품을 상담하시면 됩니다. 어떤 형태든 원하는 색감·규격·꽃 구성과 해당 날짜의 공급을 확인해 주세요. 지역·계절에 따라 실제 구성이나 형태가 일부 달라질 수 있습니다.\n\n## 한 번에 상담할 수 있도록 정리해 주세요\n\n1. 전체 도로명주소와 건물 동·층·호수 또는 시설명\n2. 수령자 연락처와 부재 시 합의된 대리수령자\n3. 희망 날짜, 받을 수 있는 시간대, 행사명\n4. 상품명과 예산, 카드에 적을 문구\n\n상품 기본 표시가 외에 지역별 추가배송비가 발생할 수 있습니다. [1844-0644로 전화](tel:18440644)해 해당 주소의 진행 가능 여부와 최종 총액을 확인해 주세요. 전화상담은 08:00~23:00이며, [꽃이랑 온라인 주문](https://fwith.co.kr)은 24시간 접수합니다. 온라인 접수만으로 행사 전 도착이 확정되는 것은 아닙니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 관산동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 관산동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=2",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 관산동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_2/dong01_4_2_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
