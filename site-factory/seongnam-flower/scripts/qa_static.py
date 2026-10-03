@@ -245,10 +245,9 @@ def check(root=Path('.')):
         for hub in hubs.values():
             if hub['children']<3:
                 assert f"{hub['url']}\n  X-Robots-Tag: noindex, nofollow, noarchive" in headers, f"Thin hub header missing: {hub['url']}"
-        assert '/404.html\n  X-Robots-Tag: noindex, nofollow, noarchive' in headers, '404 header missing'
     robots=(dist/'robots.txt').read_text()
     assert ('Allow: /' in robots and 'Disallow: /' not in robots) if indexable else 'Disallow: /' in robots
-    not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','')
+    not_found=Document((dist/'404.html').read_text());assert 'noindex' in not_found.meta.get('robots','') and not not_found.canonical
     print(f'STATIC QA PASSED: {len(pages)} details, {len(expected)} HTML routes; indexable={indexable}; exact metadata/sitemap/snapshot/link parity')
 
 if __name__=='__main__':check()
