@@ -181,6 +181,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-naegok",
+      "snapshotId": "goyang-deogyang-naegok-r1-20261003T182200Z",
+      "snapshotHash": "b0922e40cd7426a5bd7cf6d684b8f364348050f51ada85ee84c4b266a64aae3f",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-naegok-r1",
+      "sourceRecordId": "recYLY2ujntYpI7iu",
+      "publishQueueRecordId": "reczgnZ51MXjIIDFr",
+      "slug": "deogyang-naegok",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-naegok/",
+      "title": "내곡동 꽃배달 | 고양 덕양구 주택으로 보내는 꽃선물",
+      "primaryKeyword": "내곡동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-janghang",
       "snapshotId": "goyang-janghang-r1-20261003T084627Z",
       "snapshotHash": "9681f95f0265face689c426156a88261278ce05cef49dc59eb56b427dec56b6f",
