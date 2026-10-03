@@ -287,6 +287,24 @@
       "pageType": "regional-service",
       "status": "approved",
       "file": "src/data/pages.json"
+    },
+    {
+      "pageKey": "goyang-flower-v2-region-ilsandong-seolmun",
+      "snapshotId": "goyang-ilsandong-seolmun-r1-20261003T182200Z",
+      "snapshotHash": "fd506fefa78d19173544ec406710ac829be1ac6869b67906cc0cd5b0704de739",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-seolmun-r1",
+      "sourceRecordId": "recm97SouzKZC8Xvz",
+      "publishQueueRecordId": "rec3fUGXqA76X6vI2",
+      "slug": "ilsandong-seolmun",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-seolmun/",
+      "title": "설문동 꽃배달 | 고봉로 주소와 식당·주택 수령 상담",
+      "primaryKeyword": "설문동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
     }
   ],
   "schemaVersion": 2,
