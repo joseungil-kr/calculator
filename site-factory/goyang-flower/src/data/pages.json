@@ -4208,5 +4208,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-yongdu",
+    "snapshotId": "goyang-deogyang-yongdu-r1-20261003T182200Z",
+    "snapshotHash": "1c63a7fbca390b5f5fbe88a44878a834e4a1854a4f522b0b10231b45dd14649e",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-yongdu-r1",
+    "sourceRecordId": "reck6AEJ0Gp8QIhc3",
+    "publishQueueRecordId": "reci0lNGQ43ggmh9g",
+    "slug": "deogyang-yongdu",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-yongdu/",
+    "title": "용두동 꽃배달, 주택 선물과 식당 개업 꽃 고르기",
+    "primaryKeyword": "용두동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 54,
+    "h1": "고양 용두동 꽃배달과 집·식당에서 받을 꽃 선택",
+    "description": "단독주택 선물과 서오릉 일대 식당 개업 축하는 받는 장소와 꽃을 둘 자리가 다릅니다. 고양 용두동의 도로명주소, 상품가격과 반입 확인사항을 살펴보세요.",
+    "cardSummary": "대문에서 건넬 선물인지 매장 입구에 놓을 개업 꽃인지에 따라 준비가 달라집니다. 집과 식당의 수령 조건을 나눠 안내합니다.",
+    "firstAnswer": "용두동 꽃배달은 고양시 덕양구의 정확한 주택·매장 주소를 알려 주시고, 집에 둘 꽃바구니인지 식당 개업을 축하할 화환인지 먼저 골라 주세요. 꽃이랑은 받는 분의 연락처와 놓을 위치를 바탕으로 주문을 준비합니다. 대문·매장 출입 방법과 반입 가능 여부, 추가배송비와 배송 시간은 주문별로 확인합니다.",
+    "contentMarkdown": "용두동 꽃배달은 고양시 덕양구의 정확한 주택·매장 주소를 알려 주시고, 집에 둘 꽃바구니인지 식당 개업을 축하할 화환인지 먼저 골라 주세요. 꽃이랑은 받는 분의 연락처와 놓을 위치를 바탕으로 주문을 준비합니다. 대문·매장 출입 방법과 반입 가능 여부, 추가배송비와 배송 시간은 주문별로 확인합니다.\n\n## 집에 보낼 꽃과 매장에 세울 꽃은 다르게 준비해요\n\n생일이나 집들이 선물로 집에 둘 꽃을 찾으시면 꽃바구니 ‘햇살 한가득’(A155, 상품가격 65,000원)을 비교해 보세요. 실내에서 감상할 자리와 받는 분의 취향을 알려 주시면 선물 목적을 전달하는 데 도움이 됩니다.\n\n식당 개업이나 이전을 축하할 때는 ‘축하 3단 화환’(C200, 상품가격 59,000원)이 선택지입니다. 주문 전에 매장 안팎 중 놓을 위치와 화환을 받을 수 있는지부터 점주에게 확인해 주세요. 통로를 사용할 수 있다고 미리 가정하지 말고, 꽃을 놓기로 합의한 지점을 정확하게 전달해 주세요.\n\n## 서오릉 일대 식당도 상호와 건물번호가 필요합니다\n\n[창릉동 공식 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_10/dong01_4_10_tab1.jsp)는 용두동의 단독주택과 서오릉 일대 식당가를 안내합니다. 이 일대로 보낼 때 ‘서오릉 근처’라는 설명만 적으면 같은 목적지를 확인하기 어렵습니다. 실제 매장 상호, 도로명과 건물번호, 꽃을 받을 담당자를 함께 알려 주세요.\n\n개업일이라면 영업 시작 시각과 꽃을 미리 받아 둘 수 있는 시간을 따로 확인하세요. 주택은 대문에서 직접 받을지 다른 위치에서 인계할지 받는 분과 정해 주시면 됩니다. 받는 분이 설명한 실제 인계 위치를 주문할 때 함께 알려 주세요.\n\n## 용두로와 용두로121번길을 끝까지 확인하세요\n\n[용두초등학교 위치 안내](https://yongdoo-e.goegy.kr/yongdoo-e/lm/location/locationMapView.do?mi=10050)에는 고양시 덕양구 용두로121번길20처럼 길 이름과 건물번호가 함께 기재돼 있습니다. 인근 집이나 매장으로 보낼 때도 학교 이름을 주소 대신 적지 말고 받는 곳의 정확한 도로명을 확인해 주세요.\n\n용두동은 동산동과 함께 창릉동 관할이지만 두 법정동의 주소가 같지는 않습니다. 주문서에는 고양시 덕양구를 포함한 수령 주소를 적어 다른 도시의 용두동이나 인접 동과 구분해 주세요.\n\n## 꽃 종류와 받을 위치를 알려주시면 주문을 시작할 수 있어요\n\n희망 날짜, 받는 분·매장 연락처, 상품, 축하 문구를 준비해 주세요. 사진의 꽃 구성이나 형태는 지역·계절에 따라 달라질 수 있고, 지역별 추가배송비가 발생할 수 있습니다. 원하는 시각의 배송 가능 여부와 최종 금액은 결제 전에 확인해 주세요.\n\n꽃이랑 전화주문은 08:00~23:00 [1844-0644](tel:18440644), 온라인 주문은 24시간 [공식 홈페이지](https://fwith.co.kr)에서 가능합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 창릉동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_10/dong01_4_10_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "용두초등학교 오시는 길",
+        "url": "https://yongdoo-e.goegy.kr/yongdoo-e/lm/location/locationMapView.do?mi=10050",
+        "type": "education",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환(C200) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 창릉동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_10/dong01_4_10_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
