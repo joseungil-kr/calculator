@@ -2288,5 +2288,97 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-seongsa",
+    "snapshotId": "goyang-deogyang-seongsa-r1-20261003T182200Z",
+    "snapshotHash": "1f77ee39bff7af3f05687bdd555096ab7fec0995645184794211fb5e409bf5c4",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-seongsa-r1",
+    "sourceRecordId": "rec3cQUDMExJxE5zl",
+    "publishQueueRecordId": "reczfyfXkWRDN6hW2",
+    "slug": "deogyang-seongsa",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-seongsa/",
+    "title": "성사동 꽃배달 | 어울림누리 공연·전시 축하와 가정 선물",
+    "primaryKeyword": "성사동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 30,
+    "h1": "성사동 꽃배달, 공연장과 받는 사람의 일정을 함께 맞추세요",
+    "description": "고양어울림누리 공연·전시 축하꽃과 성사동 집·상가 선물을 준비하세요. 공연장명·행사명·인계 담당자를 확인하고 꽃다발·바구니·화환의 기본가격과 수령 조건을 상담합니다.",
+    "cardSummary": "어울림극장·별모래극장·미술관 중 어디에서 받을까요? 무대에 있는 주인공 대신 꽃을 받을 담당자와 전달 시점을 먼저 정해 보세요.",
+    "firstAnswer": "성사동 꽃배달로 고양어울림누리 공연이나 전시에 꽃을 보내실 때는 어울림로 33과 정확한 시설명, 행사명, 인계 담당자를 알려주세요. 꽃이랑에서 꽃다발·꽃바구니·축하화환을 고르고 반입·배치와 받을 시간을 상담하실 수 있습니다. 상품 공급과 추가배송비를 포함한 최종 총액을 확인해 주세요.",
+    "contentMarkdown": "성사동 꽃배달로 고양어울림누리 공연이나 전시에 꽃을 보내실 때는 어울림로 33과 정확한 시설명, 행사명, 인계 담당자를 알려주세요. 꽃이랑에서 꽃다발·꽃바구니·축하화환을 고르고 반입·배치와 받을 시간을 상담하실 수 있습니다. 상품 공급과 추가배송비를 포함한 최종 총액을 확인해 주세요.\n\n## '어울림누리' 뒤에 공연장이나 전시실 이름을 적어주세요\n\n[고양문화재단 시설 안내](https://www.artgy.or.kr/oulim/artgallery.aspx)에 따르면 성사동 고양어울림누리에는 어울림극장·별모래극장·어울림미술관 등 여러 공간이 있습니다. [재단의 강의실 안내](https://m.artgy.or.kr/Community/FAQ/Index)에도 어울림누리 주소가 덕양구 어울림로 33으로 나옵니다. 꽃 주문에는 주소와 함께 실제 행사 시설명을 알려주세요.\n\n공연 포스터에 적힌 장소와 회차, 날짜를 확인하고 어디에서 인계할지 정해 주세요. 미술관으로 보내는 꽃이라면 전시명과 받는 작가 또는 운영 담당자를 구분하면 좋습니다. 같은 단지 안의 다른 공간을 수령지로 잘못 정하지 않도록 최종 장소를 확인해 주세요.\n\n## 공연 전 전달과 공연 후 선물은 받는 사람이 다를 수 있어요\n\n공연자가 준비하거나 무대에 있는 동안에는 전화를 받거나 꽃을 인계받기 어려울 수 있습니다. 진행 담당자 또는 동행인이 대신 받기로 했다면 그분의 연락처와 가능한 시간대를 알려주세요. 분장실·무대 뒤·로비 등으로 직접 반입할 수 있는지는 공연장과 주최 측 확인이 필요합니다.\n\n관객이 공연 후 주인공에게 직접 꽃을 건네려면 공연 종료 예정시각과 만날 장소를 기준으로 상담해 주세요. 공연 시작시각을 배송 도착시각으로 그대로 지정하기보다 준비·보관·인계를 감당할 사람이 있는지 먼저 정하는 편이 좋습니다.\n\n## 선물하는 순간과 전시할 공간에 맞는 상품\n\n- 공연 후 손에 건넬 꽃다발: '소소한 행복'(G105), 기본 표시가격 50,000원. 주인공이 귀가하며 들고 갈 수 있도록 원하는 크기를 상담하세요.\n- 전시나 사무공간에 둘 꽃바구니: '햇살 한가득'(A155), 기본 표시가격 65,000원. 놓을 자리와 보관할 담당자를 확인해 주세요.\n- 행사 축하를 리본으로 전할 화환: '축하 3단 화환'(C200), 기본 표시가격 59,000원. 주최 측의 반입·배치 가능 여부를 먼저 확인해야 합니다.\n\n실제 크기와 특정 꽃의 공급은 주문 시 확인이 필요하며 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다. 위 금액은 상품 기본 표시가이므로 지역별 추가배송비와 선택사항을 반영한 최종 총액을 확인해 주세요.\n\n## 성사동 집이나 상가 선물은 실제 주소로\n\n[고양시 성사1동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_6/dong01_4_6_tab1.jsp)는 원당역 일대에 아파트·상가·단독주택·연립·다세대가 함께 있다고 안내합니다. 공연장 주문이 아니라면 익숙한 어울림누리나 원당역을 배송지로 대신 적지 말고 실제 건물 주소와 세대 또는 점포 정보를 알려주세요.\n\n꽃이랑에 주소·시설명, 수령자 연락처, 날짜·시간대, 상품·예산, 카드나 리본문구를 준비해 문의해 주세요. [전화 1844-0644](tel:18440644)는 08:00~23:00, [온라인 주문](https://fwith.co.kr)은 24시간 접수합니다. 당일 공연에 필요한 꽃은 상품 준비와 수령 가능 여부부터 상담해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 성사1동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_6/dong01_4_6_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 성사2동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_7/dong01_4_7_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양문화재단 고양어울림누리 시설 안내",
+        "url": "https://www.artgy.or.kr/oulim/artgallery.aspx",
+        "type": "facility",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양문화재단 문화예술교육 강의실 안내",
+        "url": "https://m.artgy.or.kr/Community/FAQ/Index",
+        "type": "facility",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환 [C200]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 성사1동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_6/dong01_4_6_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
