@@ -325,6 +325,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-sanhwang",
+      "snapshotId": "goyang-ilsandong-sanhwang-r1-20261003T182200Z",
+      "snapshotHash": "f360dbca99afba590ccdf2956f813eb14246c859cf07e3cbc280d7a2eea4ef58",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-sanhwang-r1",
+      "sourceRecordId": "recUtLzZdvG9YGLIR",
+      "publishQueueRecordId": "recrO2ddPLq46vhP8",
+      "slug": "ilsandong-sanhwang",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-sanhwang/",
+      "title": "산황동 꽃배달 | 주택 주소와 대문 수령을 정하는 주문",
+      "primaryKeyword": "산황동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-sarihyun",
       "snapshotId": "goyang-ilsandong-sarihyun-r1-20261003T182200Z",
       "snapshotHash": "2c8033276ce7045353c09cf8088944b9d2ddbf55a8f253425f0d689f0163fcc7",
@@ -509,6 +527,11 @@
       "pageKey": "goyang-flower-v2-region-ilsandong-seongseok",
       "snapshotHash": "ef6137bcbcc6e4e1d353037eb8a4e70ab29515305f91ce79d8fa5a3a80f8866e",
       "publishQueueRecordId": "rec2Wg8cuq1JKiPA9"
+    },
+    "goyang-ilsandong-sanhwang-r1-20261003T182200Z": {
+      "pageKey": "goyang-flower-v2-region-ilsandong-sanhwang",
+      "snapshotHash": "f360dbca99afba590ccdf2956f813eb14246c859cf07e3cbc280d7a2eea4ef58",
+      "publishQueueRecordId": "recrO2ddPLq46vhP8"
     }
   },
   "generatedFrom": "Airtable Publish Queue",

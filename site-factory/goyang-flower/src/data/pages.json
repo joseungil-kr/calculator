@@ -1734,5 +1734,79 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-sanhwang",
+    "snapshotId": "goyang-ilsandong-sanhwang-r1-20261003T182200Z",
+    "snapshotHash": "f360dbca99afba590ccdf2956f813eb14246c859cf07e3cbc280d7a2eea4ef58",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-sanhwang-r1",
+    "sourceRecordId": "recUtLzZdvG9YGLIR",
+    "publishQueueRecordId": "recrO2ddPLq46vhP8",
+    "slug": "ilsandong-sanhwang",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-sanhwang/",
+    "title": "산황동 꽃배달 | 주택 주소와 대문 수령을 정하는 주문",
+    "primaryKeyword": "산황동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 23,
+    "h1": "산황동 꽃배달, 집 앞에서 꽃을 받을 방법까지 알려주세요",
+    "description": "산황동 주택으로 꽃을 보낼 때 도로명 건물번호와 현관 인계 지점을 준비하세요. 다발·바구니 선택, 부재 시 대안, 기본 표시가격과 배송조건을 꽃이랑에서 확인합니다.",
+    "cardSummary": "풍산동이라는 넓은 이름만으로는 받는 집이 정해지지 않습니다. 산황동 도로명주소와 실제 대문, 실내에 들일 수 있는 시간을 함께 준비하세요.",
+    "firstAnswer": "산황동 꽃배달은 도로명주소와 건물번호, 실제 꽃을 받을 대문이나 현관 위치를 알려 주문해 주세요. 꽃이랑에 받는 분이 집에 있는 시간과 꽃다발·꽃바구니 용도를 전하면 상품 공급과 배송 가능 일정을 확인할 수 있습니다. 추가배송비 여부를 포함한 총액은 주소별로 상담해 주세요.",
+    "contentMarkdown": "산황동 꽃배달은 도로명주소와 건물번호, 실제 꽃을 받을 대문이나 현관 위치를 알려 주문해 주세요. 꽃이랑에 받는 분이 집에 있는 시간과 꽃다발·꽃바구니 용도를 전하면 상품 공급과 배송 가능 일정을 확인할 수 있습니다. 추가배송비 여부를 포함한 총액은 주소별로 상담해 주세요.\n\n## 풍산동 안에서도 산황동 주소를 정확히 적어주세요\n\n[고양특례시 풍산동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_11/dong01_5_11_tab1.jsp)는 풍산동을 이루는 풍동과 산황동을 구분하고, 산황동을 풍동 남쪽의 자연촌락·농촌형 단독주택 지역으로 설명합니다. ‘풍산동 쪽 주택’처럼 넓게 안내하기보다 주문에는 산황동의 실제 도로명과 건물번호를 적어주세요.\n\n차량이 도착할 건물 입구와 사람이 꽃을 받을 현관이 다르다면 두 위치를 구분해 주시면 좋습니다. 대문이나 진입로가 여러 갈래일 때는 받는 분과 통화할 수 있는 연락수단도 함께 준비해 주세요. 특정 도로에 진입할 수 있다거나 별도 비용이 없다고 주소 확인 전에 약속하지는 않습니다.\n\n## 마당에 둘 꽃보다 실내에 들일 꽃을 생각하세요\n\n집에 두고 감상할 꽃바구니는 인계 후 놓을 실내 공간을 먼저 생각해 보세요. 꽃다발을 가족에게 직접 건네려는 계획이라면 만나는 시간과 이후 이동 여부를 알려주세요. 크고 화려한 구성이 항상 편한 선물은 아니므로 받는 분이 들고 옮길 수 있는 형태도 함께 고려할 수 있습니다.\n\n햇살 한가득(A155) 꽃바구니의 기본 표시가격은 65,000원, 소소한 행복(G105) 꽃다발은 50,000원입니다. 원하는 색감이나 꼭 넣고 싶은 꽃이 있다면 실제 공급 여부를 주문할 때 확인해 주세요. 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.\n\n## 문 앞에 놓아두기 전에 받을 시간을 맞춰주세요\n\n부모님 생신처럼 날짜가 정해진 선물이라도 그날 집에 계시는지는 별개입니다. 외출 중일 수 있다면 가족이 대신 받을지, 귀가 시간에 맞출지 먼저 정해 주세요. 햇볕·비·바람을 피할 수 없는 대문 밖을 장시간 보관 장소로 지정하는 것은 피하는 편이 좋습니다.\n\n주소에 표기된 집으로 직접 들어갈 수 있는지, 대문에서 받는 방식인지도 받는 분과 확인하세요. 사진이나 출입 비밀번호 같은 불필요한 정보보다 합의된 인계 장소와 연락 가능한 사람을 먼저 알려주시면 됩니다.\n\n## 주소를 알려주시면 배송 조건부터 확인합니다\n\n[1844-0644 꽃이랑 전화 주문](tel:18440644)은 08:00-23:00, [공식 홈페이지 주문](https://fwith.co.kr)은 24시간 가능합니다. 희망일시, 주택 주소, 인계 위치, 상품과 카드 문구를 준비해 주세요. 기본 표시가에 더해 추가배송비가 있는지와 최종 금액을 확인하며, 당일이나 특정 시각 배송은 주문별 가능 여부를 상담합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 풍산동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_11/dong01_5_11_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 풍산동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_11/dong01_5_11_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
