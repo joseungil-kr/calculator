@@ -1808,5 +1808,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-sinpyeong",
+    "snapshotId": "goyang-deogyang-sinpyeong-r1-20261003T182200Z",
+    "snapshotHash": "86c0a2a7870c777f0c7fed50ae08976b038727c4992bcd1aff815dc46dedb51c",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-sinpyeong-r1",
+    "sourceRecordId": "recpI3SlQkTZS3Mgr",
+    "publishQueueRecordId": "recw7rx3OtBNPylHv",
+    "slug": "deogyang-sinpyeong",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-sinpyeong/",
+    "title": "신평동 꽃배달 | 작업실·전시 선물과 수령 장소",
+    "primaryKeyword": "신평동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 24,
+    "h1": "고양 신평동 꽃배달, 작업실에 보낼 꽃을 준비해요",
+    "description": "신평길의 작업실이나 전시 장소로 꽃을 보낼 때 받을 사람과 공간을 구분해 보세요. 꽃다발·꽃바구니의 상품가격과 현장 인계에 필요한 정보를 안내합니다.",
+    "cardSummary": "작가에게 직접 건넬 꽃과 작업실에 두고 볼 꽃은 선택이 달라집니다. 공간명·호실·받는 시간을 정해 선물을 준비해 보세요.",
+    "firstAnswer": "신평동 꽃배달은 받을 곳의 도로명주소와 현장 연락처를 알려 주시면, 직접 건넬 꽃다발인지 작업실에 둘 꽃바구니인지에 맞춰 주문을 준비할 수 있습니다. 꽃이랑은 전화와 온라인으로 주문을 받으며, 신평길 수령 장소의 출입 방법과 가능한 시간, 추가배송비는 주문 전에 확인합니다.",
+    "contentMarkdown": "신평동 꽃배달은 받을 곳의 도로명주소와 현장 연락처를 알려 주시면, 직접 건넬 꽃다발인지 작업실에 둘 꽃바구니인지에 맞춰 주문을 준비할 수 있습니다. 꽃이랑은 전화와 온라인으로 주문을 받으며, 신평길 수령 장소의 출입 방법과 가능한 시간, 추가배송비는 주문 전에 확인합니다.\n\n## 건네는 순간을 생각하면 꽃 종류가 정해져요\n\n작가나 지인에게 만나서 축하를 전한다면 꽃다발을, 작업실의 책상이나 정해진 곳에 두고 감상할 선물이라면 꽃바구니를 먼저 비교해 보세요. 받는 분이 작품이나 짐을 함께 옮겨야 한다면 꽃까지 들고 이동할지, 현장에 두고 받을지부터 정하는 편이 좋습니다.\n\n꽃이랑의 꽃다발 ‘소소한 행복’은 상품가격 50,000원, 꽃바구니 ‘햇살 한가득’은 65,000원입니다. 포장 색감이나 꽃 구성을 꼭 맞추고 싶다면 주문할 때 알려 주세요. 실제 구성과 형태는 지역·계절에 따라 달라질 수 있어, 사진의 모든 꽃이 그대로 제공된다고 약속드리지는 않습니다.\n\n## 새들로 보내실 때는 신평길217 뒤의 수령정보까지\n\n[고양시 전시 안내](https://www.goyang.go.kr/dygu/user/bbs/BD_selectBbs.do?q_bbsCode=1030&q_bbscttSn=20260706095552685)에 기재된 예술창작공간 새들의 주소는 덕양구 신평길217입니다. 전시 축하 선물이라면 이 주소에 더해 받을 작가나 담당자, 작업실·전시공간 이름, 연락 가능한 번호를 함께 알려 주세요.\n\n전시가 열린다는 안내만으로 꽃 반입이나 대리수령까지 정해진 것은 아닙니다. 받는 분과 직접 만날지, 지정한 현장 담당자에게 맡길지 먼저 합의해 주세요. 작품 옆에 꽃을 놓을 생각이라면 놓을 자리와 꽃 반입 가능 여부도 그 공간에 확인하는 것이 좋습니다.\n\n## 능곡동이라는 말만으로 다른 주소를 넣지 않도록\n\n[덕양구 행정구역 안내](https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp)에서 신평동은 능곡동 관할로 나옵니다. 능곡동에는 내곡동·대장동과 토당동 일부도 속하므로, 행정동 이름만 적기보다 실제 수령지의 도로명주소를 확인해 주세요. 신평길의 다른 작업실이나 사업장으로 보낼 때도 새들의 주소를 대신 사용하지 말고, 해당 장소의 간판명과 건물번호를 적어 주시면 됩니다.\n\n## 방문 예정일에 맞춰 꽃 주문을 준비하세요\n\n희망 날짜, 받을 사람, 정확한 장소, 꽃을 받아 둘 수 있는 시간대를 함께 준비해 주세요. 공개된 행사 시간과 담당자가 꽃을 받을 수 있는 시간은 다를 수 있습니다. 당일이나 특정 시각 도착이 필요하다면 결제 전에 가능 여부를 먼저 확인해 주세요.\n\n상품가격 외에 지역별 추가배송비가 생길 수 있으므로 최종 금액을 확인한 뒤 주문을 진행해 주세요. 전화주문은 08:00~23:00에 [꽃이랑 1844-0644](tel:18440644), 온라인 주문은 24시간 [꽃이랑 공식 주문](https://fwith.co.kr)에서 가능합니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "덕양구청 행정구역 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 문화예술과 신평의 나이테 전시 안내",
+        "url": "https://www.goyang.go.kr/dygu/user/bbs/BD_selectBbs.do?q_bbsCode=1030&q_bbscttSn=20260706095552685",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 소소한 행복(G105) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득(A155) 상품 안내",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 주문 안내",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "덕양구청 행정구역 관내도",
+      "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
