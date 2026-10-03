@@ -238,5 +238,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-haengjunae",
+    "snapshotId": "goyang-deogyang-haengjunae-r1-20261003T182200Z",
+    "snapshotHash": "919c1fc24d31b7732fe670fe2a1ca4c448b0a7ca662b4211fa687b8a68fb3751",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-haengjunae-r1",
+    "sourceRecordId": "recyuWG0FbNJlVAPn",
+    "publishQueueRecordId": "recEGG5oPw8pliD6O",
+    "slug": "deogyang-haengjunae",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-haengjunae/",
+    "title": "행주내동 꽃배달 | 식당 모임과 주택 선물 수령 준비",
+    "primaryKeyword": "행주내동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 4,
+    "h1": "행주내동 꽃배달, 예약한 식당과 집 주소를 구체적으로 알려주세요",
+    "description": "잣골·맨돌 쪽 주택 선물과 행주로 식당 모임에 필요한 수령정보를 구분합니다. 꽃바구니를 둘 자리, 예약자·담당자, 상품 기본가격과 배송 상담 방법을 확인하세요.",
+    "cardSummary": "식사 자리에 먼저 놓을 꽃인지, 모임 뒤에 들고 갈 꽃인지 정해보세요. 예약자 이름과 매장 수령 담당자를 준비하면 전달 방법을 상담하기 좋습니다.",
+    "firstAnswer": "행주내동 꽃배달은 식당 모임이면 상호·도로명주소·예약자와 수령 담당자를, 집으로 보내면 건물번호와 현관 위치를 알려주세요. 성동·결석마을 같은 마을 이름만으로 목적지를 정하지 않습니다. 꽃이랑에서 꽃다발·꽃바구니·화환을 고른 뒤 모임 시간에 맞춘 수령 가능 여부와 최종 비용을 확인해 주세요.",
+    "contentMarkdown": "행주내동 꽃배달은 식당 모임이면 상호·도로명주소·예약자와 수령 담당자를, 집으로 보내면 건물번호와 현관 위치를 알려주세요. 성동·결석마을 같은 마을 이름만으로 목적지를 정하지 않습니다. 꽃이랑에서 꽃다발·꽃바구니·화환을 고른 뒤 모임 시간에 맞춘 수령 가능 여부와 최종 비용을 확인해 주세요.\n\n## 잣골·맨돌이라는 이름과 실제 배달 주소를 함께\n\n고양시 행주동 소개는 행주내동의 성동(잣골)·결석(맨돌)마을에 식당과 주택이 함께 있다고 안내합니다. 익숙한 마을 이름은 위치 설명에 도움이 되지만 꽃을 받을 한 건물을 특정해 주지는 못합니다. 행주로 주변으로 주문하실 때에도 도로명과 건물번호, 식당 상호 또는 집 현관을 같이 확인해 주세요.\n\n행주내동과 행주외동은 같은 행주동 행정권역에 속하지만 주소는 다릅니다. “행주산성 근처”나 “행주동”이라는 설명만 받은 경우에는 예약 안내에 적힌 주소를 받는 분에게 다시 확인하는 편이 좋습니다.\n\n## 가족 모임의 꽃은 어디에 놓을까요?\n\n식탁이나 별도 자리에 두고 감상할 꽃은 꽃바구니를, 식사를 마친 뒤 주인공이 직접 들고 갈 선물은 꽃다발을 우선 비교해 보세요. 꽃바구니를 보낼 때에는 예약한 방·홀과 꽃을 놓을 자리가 있는지 매장에 확인합니다. 음식이 놓일 공간이나 통로를 막지 않는 인계 방법도 함께 정해 주세요.\n\n아직 예약자가 도착하지 않았다면 매장 직원이 대신 받아줄 수 있는지, 누구에게 전달해야 하는지를 주문 전에 정하는 것이 좋습니다. 식당 영업 시작 전 수령이나 야외 보관이 가능하다고 미리 가정하지 않습니다. 꽃을 먼저 받아두기 어렵다면 모임 참석자에게 직접 건네는 시간을 상담해 주세요.\n\n## 주택 선물과 개업 축하는 확인할 내용이 달라요\n\n집으로 보내는 꽃은 받는 분의 외출 여부와 현관 위치가 중요합니다. 건물번호가 같아도 여러 출입구를 쓰는 곳이라면 인계할 문을 설명해 주세요. 식당 개업 축하화환은 설치할 자리가 있는지, 가게 문을 여는 시간과 실제 수령 담당자가 정해졌는지 확인합니다.\n\n꽃다발 ‘소소한 행복’ 50,000원, 꽃바구니 ‘햇살 한가득’ 65,000원, 축하 3단 화환과 근조 3단 화환은 각각 59,000원이 확인된 기본 표시가격입니다. 축하와 조문은 같은 가격대여도 쓰임과 리본문구가 다르니 목적을 알려주세요. 사진에 보이는 문구는 주문 문구로 자동 확정되지 않습니다.\n\n## 모임 시간보다 수령 가능한 시간을 알려주세요\n\n예약 상호·주소·방 또는 홀, 예약자, 꽃을 받을 담당자, 모임 시각을 함께 알려주시면 필요한 인계조건을 상담할 수 있습니다. 배송 가능 시간과 총액은 주문별로 확인하며 지역별 추가 배송비가 발생할 수 있습니다. 지역·계절에 따라 꽃 구성과 형태가 일부 달라질 수 있습니다.\n\n[꽃이랑 전화로 모임 꽃 상담: 1844-0644](tel:18440644) · [꽃이랑 온라인 주문](https://fwith.co.kr)\n\n전화주문은 08:00~23:00, 온라인 접수는 24시간입니다.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 행주동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_14/dong01_4_14_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 행주동 주요관내시설",
+        "url": "https://www.goyang.go.kr/dong/user/bbs/BD_selectBbsList.do?q_bbsCode=1072&q_clCode=14",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 행주동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_14/dong01_4_14_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
