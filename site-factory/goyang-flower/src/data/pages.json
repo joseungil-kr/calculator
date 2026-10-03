@@ -1974,5 +1974,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-deogyang-daejang",
+    "snapshotId": "goyang-deogyang-daejang-r1-20261003T182200Z",
+    "snapshotHash": "55a707eaa7c210324d3342da71fc0de58563fc52b441ab68b8786da7f2ee4516",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-deogyang-daejang-r1",
+    "sourceRecordId": "rec90BSCOoMSTLJMG",
+    "publishQueueRecordId": "recRUhxIYgw5ilnMV",
+    "slug": "deogyang-daejang",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/deogyang-daejang/",
+    "title": "대장동 꽃배달 | 고양 대곡역 만남·마을 주택 수령",
+    "primaryKeyword": "대장동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 26,
+    "h1": "대장동 꽃배달, 고양 주소와 이동 전 수령 약속을 확인하세요",
+    "description": "고양시 덕양구 대장동의 주택 선물과 대곡역 일대 만남용 꽃을 준비하세요. 실제 주소, 출발 전 받을 시간, 꽃다발·바구니 기본가격과 추가배송비 확인사항을 안내합니다.",
+    "cardSummary": "역에서 만나 가져갈 꽃인지, 마을 집으로 받을 꽃인지 먼저 정해 보세요. 이동 일정에 쫓기지 않도록 수령 지점과 연락할 사람을 준비할 수 있습니다.",
+    "firstAnswer": "대장동 꽃배달은 고양시 덕양구의 실제 받는 주소를 알려주신 뒤 꽃이랑에서 상담해 주세요. 대곡역 일대에서 만나 꽃을 가져가려면 출구 주변의 정확한 인계 지점과 연락 가능한 시간까지 정해야 합니다. 마을 주택은 건물번호와 대문 위치를 보완하고 상품 공급·배송 가능 시간·총액을 확인해 주세요.",
+    "contentMarkdown": "대장동 꽃배달은 고양시 덕양구의 실제 받는 주소를 알려주신 뒤 꽃이랑에서 상담해 주세요. 대곡역 일대에서 만나 꽃을 가져가려면 출구 주변의 정확한 인계 지점과 연락 가능한 시간까지 정해야 합니다. 마을 주택은 건물번호와 대문 위치를 보완하고 상품 공급·배송 가능 시간·총액을 확인해 주세요.\n\n## 출발할 사람에게 보내는 꽃이라면 시간 여유부터\n\n꽃을 받은 뒤 전철을 타거나 약속장소로 이동한다면 '대곡역 근처'라는 표현만으로 수령 시간을 맞추기 어렵습니다. 밖에서 만나기로 한 정확한 지점, 만나는 사람, 휴대전화로 연락 가능한 시간과 출발 예정시각을 알려주세요. 역무실이나 보관함이 꽃을 대신 맡아줄 것이라고 가정하지 말고 실제 사람에게 건네는 약속을 정하는 편이 좋습니다.\n\n[고양시 능곡동 소개](https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_3/dong01_4_3_tab1.jsp)는 대장동과 대곡역의 관계를 안내합니다. 이 위치 정보만으로 역 안 전달이나 출발시각 직전의 도착을 확정할 수는 없습니다. 일정이 빠듯하다면 기다릴 수 있는 장소·시간을 먼저 협의하고, 이동 전에 여유가 생기는 다른 수령 시점도 함께 상담해 주세요.\n\n## 상대장·중대장·갈머리의 집에는 건물번호를\n\n같은 시 공식 소개에는 대장동의 마을명으로 상대장·중대장·갈머리가 나옵니다. 마을 안 가족 집에 꽃을 보내실 때에는 마을명 뒤에 도로명주소와 건물번호를 더하고, 어느 대문이나 현관으로 인계할지 알려주세요. 성남이나 부천의 같은 동명과 혼동하지 않도록 주문 주소에는 고양시 덕양구를 포함해 주세요.\n\n집으로 받는 꽃을 역 근처로 바꾸거나, 역에서 받기로 한 꽃을 집으로 바꾸려면 먼저 변경 가능 여부를 확인해야 합니다. 이미 정한 수령자를 바꾸는 경우에도 새로 받는 분의 동의와 연락 가능 여부를 확인해 주세요.\n\n## 들고 갈 때와 놓아둘 때의 상품 선택\n\n대곡역 일대에서 받아 선물하러 이동할 때에는 꽃다발 '소소한 행복'(G105, 기본 표시가격 50,000원)이 선택 후보입니다. 이동 중 다른 짐이 많거나 원하는 포장 크기가 정해져 있다면 상담할 때 알려주세요. 정확한 상품 크기와 포장 방식은 주문 전에 확인하는 것이 좋습니다.\n\n대장동 주택의 생신·기념일 선물처럼 바로 실내에 놓아둘 계획이라면 꽃바구니 '햇살 한가득'(A155, 기본 표시가격 65,000원)도 비교해 보세요. 수령 가능한 가족이 있는 시간에 맞춰 문의하고 꽃을 둘 자리를 준비해 주세요. 지역·계절에 따라 실제 꽃 구성과 형태가 일부 달라질 수 있으며, 요청일 공급은 별도 확인이 필요합니다.\n\n## 약속을 정한 뒤 상품과 비용을 확인하세요\n\n문의할 때 '고양 대장동 집 수령' 또는 '대곡역 일대에서 만나 인계' 중 실제 계획을 먼저 말씀해 주세요. 이어서 희망일과 가능한 시간대, 구체적 장소, 받는 분 연락처, 상품·예산, 카드 문구를 알려주시면 됩니다. 표시된 상품가에 지역별 추가배송비가 더해질 수 있어 최종 총액을 확인해 주세요.\n\n[꽃이랑 전화상담 1844-0644](tel:18440644)은 08:00~23:00이며 [온라인 주문](https://fwith.co.kr)은 24시간 접수하실 수 있습니다. 이동 일정이 있는 주문은 온라인 접수만으로 특정 시각 인계를 확정하지 말고 전화로 먼저 상담해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양시 능곡동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_3/dong01_4_3_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양시 덕양구청 관내도",
+        "url": "https://www.goyang.go.kr/dygu/dygu01/dygu01_5/dygu01_5_3.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복 [G105]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 햇살 한가득 [A155]",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 축하 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 온라인몰",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양시 능곡동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_4/dong01_4_3/dong01_4_3_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]

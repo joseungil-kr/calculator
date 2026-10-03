@@ -19,6 +19,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-deogyang-daejang",
+      "snapshotId": "goyang-deogyang-daejang-r1-20261003T182200Z",
+      "snapshotHash": "55a707eaa7c210324d3342da71fc0de58563fc52b441ab68b8786da7f2ee4516",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-deogyang-daejang-r1",
+      "sourceRecordId": "rec90BSCOoMSTLJMG",
+      "publishQueueRecordId": "recRUhxIYgw5ilnMV",
+      "slug": "deogyang-daejang",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/deogyang-daejang/",
+      "title": "대장동 꽃배달 | 고양 대곡역 만남·마을 주택 수령",
+      "primaryKeyword": "대장동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-deogyang-gangmae",
       "snapshotId": "goyang-deogyang-gangmae-r1-20261003T182200Z",
       "snapshotHash": "b203b84afbcb997b0a3eecca928e7682f9496c7fd6c70973099e9542c36f00e7",
