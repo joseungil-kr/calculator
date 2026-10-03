@@ -361,6 +361,24 @@
       "file": "src/data/pages.json"
     },
     {
+      "pageKey": "goyang-flower-v2-region-ilsandong-seongseok",
+      "snapshotId": "goyang-ilsandong-seongseok-r1-20261003T182200Z",
+      "snapshotHash": "ef6137bcbcc6e4e1d353037eb8a4e70ab29515305f91ce79d8fa5a3a80f8866e",
+      "approvalVerified": true,
+      "draftKey": "goyang-flower-v2-region-ilsandong-seongseok-r1",
+      "sourceRecordId": "recF1PAoDqHt6G7m6",
+      "publishQueueRecordId": "rec2Wg8cuq1JKiPA9",
+      "slug": "ilsandong-seongseok",
+      "category": "regions",
+      "routeType": "category",
+      "url": "/regions/ilsandong-seongseok/",
+      "title": "성석동 꽃배달 | 사업장 축하화환과 주택 꽃선물 주문",
+      "primaryKeyword": "성석동 꽃배달",
+      "pageType": "regional-service",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    },
+    {
       "pageKey": "goyang-flower-v2-region-ilsandong-siksa",
       "snapshotId": "goyang-ilsandong-siksa-r1-20261003T182200Z",
       "snapshotHash": "df9cefe5c746a4bf5dd3aaf97e7d54f544cb111b3078b48d7ec8819b4a38f049",

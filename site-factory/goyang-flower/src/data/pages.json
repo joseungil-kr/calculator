@@ -1654,5 +1654,85 @@
     "queryClass": "local-commercial",
     "visualIntent": "flower_delivery",
     "assetSlot": "REAL_PROOF"
+  },
+  {
+    "pageKey": "goyang-flower-v2-region-ilsandong-seongseok",
+    "snapshotId": "goyang-ilsandong-seongseok-r1-20261003T182200Z",
+    "snapshotHash": "ef6137bcbcc6e4e1d353037eb8a4e70ab29515305f91ce79d8fa5a3a80f8866e",
+    "approvalVerified": true,
+    "draftKey": "goyang-flower-v2-region-ilsandong-seongseok-r1",
+    "sourceRecordId": "recF1PAoDqHt6G7m6",
+    "publishQueueRecordId": "rec2Wg8cuq1JKiPA9",
+    "slug": "ilsandong-seongseok",
+    "category": "regions",
+    "routeType": "category",
+    "url": "/regions/ilsandong-seongseok/",
+    "title": "성석동 꽃배달 | 사업장 축하화환과 주택 꽃선물 주문",
+    "primaryKeyword": "성석동 꽃배달",
+    "pageType": "regional-service",
+    "status": "approved",
+    "file": "src/data/pages.json",
+    "order": 22,
+    "h1": "성석동 꽃배달, 작업장과 사무실의 받을 위치를 구분하세요",
+    "description": "성현로·고봉로 일대 사업장 축하에는 사무실 인계처와 화환 설치자리를 함께 확인하세요. 주택 선물의 수령시간, 실제 상품 기본 표시가격과 배송 총액을 안내합니다.",
+    "cardSummary": "회사 이름만으로는 꽃을 받을 문이 정해지지 않습니다. 작업장과 사무실을 구분하고, 화환을 둘 자리와 리본의 상호를 먼저 맞춰보세요.",
+    "firstAnswer": "성석동 꽃배달은 회사나 주택의 정확한 도로명주소와 실제 받을 입구를 알려 주문해 주세요. 사업장 축하라면 사무실 담당자와 화환을 둘 자리를, 가정 선물이라면 재실 시간을 먼저 정하는 것이 좋습니다. 꽃이랑에서 상품 공급, 희망일의 배송 가능 시간과 추가비용을 포함한 총액을 확인해 주세요.",
+    "contentMarkdown": "성석동 꽃배달은 회사나 주택의 정확한 도로명주소와 실제 받을 입구를 알려 주문해 주세요. 사업장 축하라면 사무실 담당자와 화환을 둘 자리를, 가정 선물이라면 재실 시간을 먼저 정하는 것이 좋습니다. 꽃이랑에서 상품 공급, 희망일의 배송 가능 시간과 추가비용을 포함한 총액을 확인해 주세요.\n\n## 성현로 사업장에는 간판과 사무실 위치를 같이 적어주세요\n\n[고양특례시 자동차 검사 안내](https://www.goyang.go.kr/www/www03/www03_5/www03_5_5/www03_5_5_tab6.jsp)에는 성현로 40, 고봉로531번길 29 등 성석동 사업장 주소가 안내되어 있습니다. 거래처의 이전이나 개업을 축하할 때는 회사명과 도로명만 적지 말고 꽃을 받을 사무실 위치도 알려주세요. 같은 부지에서 작업장·전시장·사무실을 나누어 쓰는 경우라면 어느 쪽으로 인계할지 업체와 확인하는 것이 좋습니다.\n\n상호가 바뀌었거나 새 간판을 단 개업이라면 주문서의 업체명과 리본에 쓸 이름도 다시 대조해 주세요. 공사 중인 현장으로 보낼 때에는 영업 시작일만 보고 배송일을 정하지 말고 담당자가 꽃을 받을 수 있는 날짜를 먼저 확인해야 합니다.\n\n## 화환은 입구를 장식할 자리가 있을 때 선택하세요\n\n축하 3단 화환(C200)의 기본 표시가격은 59,000원입니다. 설치형 화환을 선택할 때는 받는 업체가 허용하는 위치, 출입문을 가리지 않는 공간, 현장에서 받을 담당자를 준비해 주세요. 실제 크기나 구성에 대한 요청은 공급 가능 여부를 상담한 뒤 정합니다.\n\n실내 사무실에서 받는 축하라면 햇살 한가득(A155) 꽃바구니, 기본 표시가격 65,000원도 비교할 수 있습니다. 리셉션이나 응접공간처럼 놓을 자리를 먼저 생각하고, 카드에는 축하 메시지와 보내는 회사명을 정확히 적어주세요.\n\n## 주택 선물은 사업장 배송과 다른 정보를 주세요\n\n[고양특례시 고봉동 소개](https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp)는 성석동을 고봉산·황룡산 기슭의 마을로 설명합니다. 집에 보내는 선물은 회사의 근무시간 대신 받는 가족이 집에 머무는 시간과 현관 위치가 중요합니다. 마을이나 산 이름은 방향 참고로만 쓰고 건물번호까지 포함한 주소를 전달해 주세요.\n\n대문에서 받을지 현관에서 받을지 미리 협의하고, 부재한다면 대신 받을 사람을 정해 주세요. 사무실 화환을 선택한 뒤 주택으로 수령지를 바꾸는 경우에는 집에서 놓을 수 있는 형태인지 다시 상담하는 편이 좋습니다.\n\n## 상품값과 주소별 총액을 한 번에 상담하세요\n\n기본 표시가 외에 지역별 추가배송비가 발생할 수 있고, 실제 꽃 구성과 형태는 지역·계절에 따라 일부 달라질 수 있습니다. 희망 색감과 문구, 날짜, 수령처를 함께 알려 최종 구성·금액·가능시각을 확인하세요.\n\n[꽃이랑 1844-0644로 전화 주문](tel:18440644)은 08:00-23:00, [온라인 주문](https://fwith.co.kr)은 24시간 가능합니다. 오늘 필요한 축하꽃도 접수만으로 시간을 확정하지 말고 사업장 수령 가능시간을 먼저 전해 주세요.",
+    "sections": [],
+    "faq": [],
+    "sources": [
+      {
+        "name": "고양특례시 고봉동 소개",
+        "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "고양특례시 자동차 검사 안내",
+        "url": "https://www.goyang.go.kr/www/www03/www03_5/www03_5_5/www03_5_5_tab6.jsp",
+        "type": "official",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 햇살 한가득 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=A155",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 축하 3단 화환 공식 상품",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=C200",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 주문 홈페이지",
+        "url": "https://fwith.co.kr",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 소소한 행복",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=G105",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      },
+      {
+        "name": "꽃이랑 공식 상품 근조 3단 화환",
+        "url": "https://fwith.co.kr/shop/item.php?it_id=B201",
+        "type": "business",
+        "verifiedAt": "2026-10-03"
+      }
+    ],
+    "source": {
+      "name": "고양특례시 고봉동 소개",
+      "url": "https://www.goyang.go.kr/dong/dong01/dong01_5/dong01_5_1/dong01_5_1_tab1.jsp",
+      "type": "official",
+      "verifiedAt": "2026-10-03"
+    },
+    "relatedKeys": [],
+    "queryClass": "local-commercial",
+    "visualIntent": "flower_delivery",
+    "assetSlot": "REAL_PROOF"
   }
 ]
