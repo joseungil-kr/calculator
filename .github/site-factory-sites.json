@@ -189,7 +189,8 @@
         "school",
         "event",
         "gift",
-        "order"
+        "order",
+        "regions"
       ],
       "allowedPageTypes": [
         "funeral-facility",
@@ -201,7 +202,8 @@
         "hospital-visit",
         "personal-gift",
         "station-transit",
-        "message-guide"
+        "message-guide",
+        "regional-service"
       ],
       "categoryPageTypes": {
         "funeral": [
@@ -227,6 +229,9 @@
           "order-help",
           "price-guide",
           "message-guide"
+        ],
+        "regions": [
+          "regional-service"
         ]
       },
       "snapshotRenderer": "structured-json-v12",
@@ -238,7 +243,12 @@
       "requireRevisionApproval": true,
       "requireSnapshotApproval": true,
       "approvedRevision": "",
-      "approvalEvidenceUrl": ""
+      "approvalEvidenceUrl": "",
+      "administrativeCoverage": {
+        "enabled": true,
+        "regionKey": "goyang",
+        "unitBasis": "legal"
+      }
     },
     "seongnam-flower-v2": {
       "repo": "joseungil-kr/fwith-site-factory",
