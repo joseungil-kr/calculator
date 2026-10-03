@@ -8,12 +8,10 @@ from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, build_opener
 
-from seongnam_domain import HOSTNAME, ZONE_NAME, WORKER, NoRedirect, PreflightError, pages, single_page
+from seongnam_domain import HOSTNAME, ZONE_NAME, WORKER, NoRedirect, PreflightError, inspect, pages, single_page
 
 
-def attach(transport, account_id, *, operator_confirmed_unused=False):
-    if operator_confirmed_unused is not True:
-        raise PreflightError("operator_confirmation_required")
+def attach(transport, account_id):
     if not isinstance(account_id, str) or not re.fullmatch(r"[0-9a-fA-F]{32}", account_id):
         raise PreflightError("invalid_account_configuration")
     zones = pages(transport, "/zones?" + urlencode({"name": ZONE_NAME, "status": "active", "account.id": account_id}))
@@ -35,7 +33,9 @@ def attach(transport, account_id, *, operator_confirmed_unused=False):
         if same_binding(existing):
             return "already_attached"
         raise PreflightError("hostname_binding_conflict")
-    # The operator confirmed this fixed hostname unused. Do not retry denied DNS reads.
+    preflight = inspect(transport, account_id)
+    if preflight.get("state") != "inspection_complete" or preflight.get("collisionsObserved") is not False:
+        raise PreflightError("hostname_preflight_conflict")
     uncertain = False
     try:
         result = transport("PUT", endpoint, body)
@@ -58,11 +58,7 @@ def attach(transport, account_id, *, operator_confirmed_unused=False):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--operator-confirmed-unused", action="store_true")
     args = parser.parse_args(argv)
-    if not args.operator_confirmed_unused:
-        print("Seongnam attach failed: operator_confirmation_required")
-        return 1
     token = os.environ.get("CLOUDFLARE_API_TOKEN", "")
     account_id = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")
     if not token:
@@ -83,7 +79,7 @@ def main(argv=None):
         return json.loads(payload)
 
     try:
-        state = attach(transport, account_id, operator_confirmed_unused=args.operator_confirmed_unused)
+        state = attach(transport, account_id)
     except PreflightError as error:
         print("Seongnam attach failed: " + error.code + (f" HTTP {error.status}" if error.status is not None else ""))
         return 1

@@ -118,7 +118,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: python3 control/site-factory/engine/seongnam_domain_attach.py --operator-confirmed-unused
+        run: python3 control/site-factory/engine/seongnam_domain_attach.py
       - name: Verify exact live revision and every published route
         run: python3 control/site-factory/engine/verify_live.py --root "target/${{ steps.target.outputs.root }}" --origin "${{ steps.target.outputs.site_url }}" --revision "${{ steps.target.outputs.revision }}" --report live-qa-report.json --naver-verification "${{ steps.target.outputs.naver }}" --indexnow-key "${{ steps.target.outputs.indexnow }}"
       - name: Submit verified URLs to IndexNow
