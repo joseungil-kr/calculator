@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": 2,
+  "siteKey": "yongin-flower-v2",
+  "scopeKey": "yongin-flower-v2-dong-maintenance-20261003",
+  "unitBasis": "legal-dong-plus-eup-myeon",
+  "verifiedAt": "2026-10-03",
+  "sourceBasisDate": "current official page, no explicit effective date; current official page, no explicit effective date; current official page, no explicit effective date; current official page, no explicit effective date",
+  "countIsPageQuota": false,
+  "officialSourceUrls": [
+    "https://www.yongin.go.kr/home/yiIf/yiIfProd/yiIfProd07.jsp",
+    "https://www.yongin.go.kr/home/yiIf/yiIfHall/organizeGuide/organizeGuide03.jsp",
+    "https://cheoingu.go.kr/home/townInfo.do?brd_mgrno=0&menu_no=1718"
+  ],
+  "districts": [
+    {
+      "key": "cheoin",
+      "name": "처인구",
+      "sourceUrl": "https://www.yongin.go.kr/home/yiIf/yiIfProd/yiIfProd07.jsp"
+    },
+    {
+      "key": "giheung",
+      "name": "기흥구",
+      "sourceUrl": "https://www.yongin.go.kr/home/yiIf/yiIfProd/yiIfProd07.jsp"
+    },
+    {
+      "key": "suji",
+      "name": "수지구",
+      "sourceUrl": "https://www.yongin.go.kr/home/yiIf/yiIfProd/yiIfProd07.jsp"
+    }
+  ],
+  "units": [
+    {
+      "unitKey": "용인시/읍/포곡읍",
+      "name": "포곡읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "삼계리",
+        "금어리",
+        "둔전리",
+        "영문리",
+        "마성리",
+        "전대리",
+        "유운리",
+        "가실리",
+        "신원리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/읍/모현읍",
+      "name": "모현읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "왕산리",
+        "갈담리",
+        "초부리",
+        "일산리",
+        "매산리",
+        "동림리",
+        "능원리",
+        "오산리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/읍/이동읍",
+      "name": "이동읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "송전리",
+        "어비리",
+        "묘봉리",
+        "화산리",
+        "시미리",
+        "덕성리",
+        "묵리",
+        "서리",
+        "천리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/읍/남사읍",
+      "name": "남사읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "봉무리",
+        "북리",
+        "통삼리",
+        "봉명리",
+        "진목리",
+        "원암리",
+        "전궁리",
+        "방아리",
+        "창리",
+        "아곡리",
+        "완장리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/읍/양지읍",
+      "name": "양지읍",
+      "unitType": "eup",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "양지리",
+        "남곡리",
+        "평창리",
+        "제일리",
+        "추계리",
+        "식금리",
+        "정수리",
+        "대대리",
+        "주북리",
+        "송문리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/면/원삼면",
+      "name": "원삼면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "고당리",
+        "사암리",
+        "좌항리",
+        "맹리",
+        "미평리",
+        "가재월리",
+        "두창리",
+        "독성리",
+        "죽능리",
+        "목신리",
+        "학일리",
+        "문촌리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/면/백암면",
+      "name": "백암면",
+      "unitType": "myeon",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [
+        "백암리",
+        "박곡리",
+        "백봉리",
+        "고안리",
+        "옥산리",
+        "장평리",
+        "석천리",
+        "용천리",
+        "근삼리",
+        "근창리",
+        "근곡리",
+        "가창리",
+        "가좌리"
+      ],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/김량장동",
+      "name": "김량장동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/남동",
+      "name": "남동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/역북동",
+      "name": "역북동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/삼가동",
+      "name": "삼가동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/유방동",
+      "name": "유방동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/고림동",
+      "name": "고림동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/마평동",
+      "name": "마평동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/운학동",
+      "name": "운학동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/호동",
+      "name": "호동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/해곡동",
+      "name": "해곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "cheoin"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/신갈동",
+      "name": "신갈동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/영덕동",
+      "name": "영덕동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/하갈동",
+      "name": "하갈동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/구갈동",
+      "name": "구갈동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/상갈동",
+      "name": "상갈동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/보라동",
+      "name": "보라동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/지곡동",
+      "name": "지곡동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/공세동",
+      "name": "공세동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/고매동",
+      "name": "고매동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/농서동",
+      "name": "농서동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/서천동",
+      "name": "서천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/언남동",
+      "name": "언남동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/청덕동",
+      "name": "청덕동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/마북동",
+      "name": "마북동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/동백동",
+      "name": "동백동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/중동",
+      "name": "중동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/상하동",
+      "name": "상하동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/보정동",
+      "name": "보정동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "giheung"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/풍덕천동",
+      "name": "풍덕천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/신봉동",
+      "name": "신봉동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/죽전동",
+      "name": "죽전동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/동천동",
+      "name": "동천동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/고기동",
+      "name": "고기동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/상현동",
+      "name": "상현동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    },
+    {
+      "unitKey": "용인시/법정동/성복동",
+      "name": "성복동",
+      "unitType": "legal-dong",
+      "districtKeys": [
+        "suji"
+      ],
+      "legalRi": [],
+      "caveat": "",
+      "sourceFreshness": "official name-level inventory"
+    }
+  ],
+  "administrativeCrosswalk": [
+    {
+      "aliasKey": "yongin/cheoin/중앙동",
+      "name": "중앙동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/김량장동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/남동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/역북동",
+      "name": "역북동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/역북동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/삼가동",
+      "name": "삼가동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/삼가동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/유림1동",
+      "name": "유림1동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/유방동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/유림2동",
+      "name": "유림2동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/유방동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/고림동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/동부동",
+      "name": "동부동",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/마평동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/운학동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/호동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/해곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/신갈동",
+      "name": "신갈동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/신갈동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/영덕1동",
+      "name": "영덕1동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/영덕동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/영덕2동",
+      "name": "영덕2동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/하갈동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/영덕동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/구갈동",
+      "name": "구갈동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/구갈동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/상갈동",
+      "name": "상갈동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/상갈동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/보라동",
+      "name": "보라동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/보라동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/지곡동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/기흥동",
+      "name": "기흥동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/공세동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/고매동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/서농동",
+      "name": "서농동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/농서동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/서천동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/구성동",
+      "name": "구성동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/언남동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/청덕동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/마북동",
+      "name": "마북동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/마북동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/동백1동",
+      "name": "동백1동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/동백동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/동백2동",
+      "name": "동백2동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/중동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/동백3동",
+      "name": "동백3동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/동백동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/중동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/상하동",
+      "name": "상하동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/상하동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/giheung/보정동",
+      "name": "보정동",
+      "districtKey": "giheung",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/보정동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/풍덕천1동",
+      "name": "풍덕천1동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/풍덕천동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/풍덕천2동",
+      "name": "풍덕천2동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/풍덕천동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/신봉동",
+      "name": "신봉동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/신봉동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/죽전1동",
+      "name": "죽전1동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/죽전동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/죽전2동",
+      "name": "죽전2동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/죽전동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/죽전3동",
+      "name": "죽전3동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/죽전동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/동천동",
+      "name": "동천동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/동천동",
+          "scope": "name-only"
+        },
+        {
+          "unitKey": "용인시/법정동/고기동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/상현1동",
+      "name": "상현1동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/상현동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/상현2동",
+      "name": "상현2동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/상현동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/상현3동",
+      "name": "상현3동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/상현동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/suji/성복동",
+      "name": "성복동",
+      "districtKey": "suji",
+      "relations": [
+        {
+          "unitKey": "용인시/법정동/성복동",
+          "scope": "name-only"
+        }
+      ],
+      "verificationStatus": "official_name_level_crosswalk",
+      "unresolvedCandidateNames": []
+    },
+    {
+      "aliasKey": "yongin/cheoin/포곡읍",
+      "name": "포곡읍",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/포곡읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/모현읍",
+      "name": "모현읍",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/모현읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/이동읍",
+      "name": "이동읍",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/이동읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/남사읍",
+      "name": "남사읍",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/남사읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/양지읍",
+      "name": "양지읍",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/양지읍",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/원삼면",
+      "name": "원삼면",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/면/원삼면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/백암면",
+      "name": "백암면",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/면/백암면",
+          "scope": "whole"
+        }
+      ],
+      "verificationStatus": "official eup/myeon and legal-ri table"
+    },
+    {
+      "aliasKey": "yongin/cheoin/old-yangji",
+      "name": "양지면",
+      "districtKey": "cheoin",
+      "relations": [
+        {
+          "unitKey": "용인시/읍/양지읍",
+          "scope": "historical"
+        }
+      ],
+      "verificationStatus": "historical name, 2026-01-02 renamed"
+    }
+  ],
+  "representatives": [
+    {
+      "pageKey": "yongin-flower-v2-region-giheung-bojeong",
+      "unitKeys": [
+        "용인시/법정동/보정동"
+      ],
+      "slug": "giheung-bojeong",
+      "url": "/regions/giheung-bojeong/",
+      "intentKey": "yongin|flower-delivery|local-order|보정동",
+      "primaryKeyword": "보정동 꽃배달",
+      "routeMode": "regional",
+      "status": "candidate",
+      "queryEvidence": "Explicit user request to repair missing local coverage, official name/crosswalk and an inferred local-order need; no volume or independent demand claimed. Full buyer-intent/local-fact review remains required."
+    }
+  ],
+  "caveats": [
+    "행정동 중앙동·동부동·기흥동·서농동·구성동은 법정동 이름과 1:1로 일치하지 않음. 독립 법정동 페이지에 별칭·생활권으로 연결.",
+    "유방동은 유림1동과 유림2동, 영덕동은 영덕1동과 영덕2동, 동백동·중동은 동백1·2·3동에 중복 대응하므로 행정동 수를 법정동 독립페이지 수에 더하지 않음."
+  ]
+}

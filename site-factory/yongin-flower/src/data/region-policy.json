@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "siteKey": "yongin-flower-v2",
+  "scopeKey": "yongin-flower-v2-dong-maintenance-20261003",
+  "enabled": false,
+  "officialHosts": [
+    "cheoingu.go.kr",
+    "www.yongin.go.kr"
+  ],
+  "unitTypes": [
+    "legal-dong",
+    "eup",
+    "myeon"
+  ],
+  "rulesRevision": "8986a1936615cd0d814b816db7816488e40bacc1",
+  "definitionFile": "src/data/region-coverage.json",
+  "state": "pending-independent-review-and-scope-binding",
+  "visualBindings": []
+}

@@ -32,6 +32,7 @@ export const siteConfig = {
     email: 'webmaster@interpiad.com',
   },
   nav: [
+    { href: '/regions/', label: '지역별', category: 'regions', menuMinChildren: 5 },
     { href: '/funeral/', label: '근조·장례', category: 'funeral', menuMinChildren: 5 },
     { href: '/business/', label: '개업·이전', category: 'business', menuMinChildren: 5 },
     { href: '/school/', label: '졸업·입학', category: 'school', menuMinChildren: 5 },

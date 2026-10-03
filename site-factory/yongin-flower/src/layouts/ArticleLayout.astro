@@ -11,7 +11,7 @@ type ArchitectureEntry = {
   intentKey?: string; pageType?: string; contentRole?: string; localizationPolicy?: string;
   sitemapIndexable?: boolean; status?: string; canonicalUrl?: string;
 };
-type SourceRef = { name:string; url:string; type?:'official'|'facility'|'education'|'professional'|'reference'; verifiedAt?:Date };
+type SourceRef = { name:string; url:string; type?:'official'|'facility'|'education'|'professional'|'business'|'reference'; verifiedAt?:Date };
 interface Props {
   pageKey:string; title:string; description:string; category:string; structureType:string; pageType?:string;
   contentRole?:string; localizationPolicy?:string; region:string; snapshotId:string; slug:string; routeType:'category';
@@ -24,7 +24,7 @@ const {
   localizationPolicy='local-required',region,snapshotId,sourceUrls=[],sources=[],relatedPageKeys=[],
   verifiedAt,publishedAt,updatedAt,ogImage,ogImageAlt,h1,firstAnswer,queryClass,visualIntent,assetSlot,
 }=Astro.props;
-const categoryLabel:Record<string,string>={ funeral:'근조·장례',business:'개업·이전',school:'졸업·입학',event:'공연·행사',gift:'선물·병문안',order:'주문 안내' };
+const categoryLabel:Record<string,string>={regions:'지역별', funeral:'근조·장례',business:'개업·이전',school:'졸업·입학',event:'공연·행사',gift:'선물·병문안',order:'주문 안내' };
 const architecturePages=(architecture.pages||[]) as ArchitectureEntry[];
 const architectureEntry=architecturePages.find((page)=>page.pageKey===pageKey);
 const effectivePageRole=architectureEntry?.pageRole??'INFORMATION_GUIDE';
@@ -48,7 +48,7 @@ const related=relatedPageKeys.length
   : eligibleRelatedArticles.map((article)=>({article,score:article.data.category===category?40:10}))
       .sort((a,b)=>b.score-a.score||a.article.data.pageKey.localeCompare(b.article.data.pageKey,'ko')).slice(0,4).map(({article})=>article);
 const formatDate=(date?:Date)=>date?new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(date):null;
-const normalizedSources=sources.length?sources.map((s)=>({name:s.name,url:s.url,typeLabel:{official:'공식기관',facility:'시설 공식자료',education:'교육기관',professional:'전문기관',reference:'참고자료'}[s.type??'reference'],verifiedAt:s.verifiedAt??verifiedAt})):sourceUrls.map((url)=>({name:new URL(url).hostname.replace(/^www\./,''),url,typeLabel:'참고자료',verifiedAt}));
+const normalizedSources=sources.length?sources.map((s)=>({name:s.name,url:s.url,typeLabel:{business:'업체 공식자료',official:'공식기관',facility:'시설 공식자료',education:'교육기관',professional:'전문기관',reference:'참고자료'}[s.type??'reference'],verifiedAt:s.verifiedAt??verifiedAt})):sourceUrls.map((url)=>({name:new URL(url).hostname.replace(/^www\./,''),url,typeLabel:'참고자료',verifiedAt}));
 const webPageSchema={'@context':'https://schema.org','@type':'WebPage',name:title,description,inLanguage:'ko-KR',about:[region,'꽃배달',categoryLabel[category]??category],datePublished:publishedAt?.toISOString(),dateModified:(updatedAt??verifiedAt)?.toISOString(),isPartOf:{'@type':'WebSite',name:siteConfig.brand,url:Astro.site?.toString()??Astro.url.origin}};
 const breadcrumbSchema={'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
   {'@type':'ListItem',position:1,name:'홈',item:new URL('/',Astro.site??Astro.url.origin).toString()},

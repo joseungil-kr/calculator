@@ -108,7 +108,7 @@ def target_exists(href: str) -> bool:
 
 manifest_data = json.loads((Path("src/data/publish-manifest.json")).read_text(encoding="utf-8"))
 approved_pages = [p for p in manifest_data.get("pages", []) if p.get("status") in ("approved", "published")]
-hub_categories = ("funeral", "business", "school", "event", "gift", "order")
+hub_categories = ("funeral", "business", "school", "event", "gift", "order", "regions")
 hub_counts = {
     category: sum(
         1 for p in approved_pages

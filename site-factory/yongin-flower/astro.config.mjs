@@ -1,11 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+import {regionalPages} from './src/lib/regional-runtime.mjs';
 const site = process.env.SITE_URL || 'https://yongin.fwith.kr';
 const manifest = JSON.parse(readFileSync(new URL('./src/data/publish-manifest.json', import.meta.url), 'utf8'));
 const architecture = JSON.parse(readFileSync(new URL('./src/data/architecture.json', import.meta.url), 'utf8'));
-const hubCategories = ['funeral', 'business', 'school', 'event', 'gift', 'order'];
+const hubCategories = ['funeral', 'business', 'school', 'event', 'gift', 'order', 'regions'];
 const activeArchitecture = (architecture.pages || []).filter(
   (page) => page.sitemapIndexable !== false && page.status !== 'merged'
 );
@@ -29,6 +30,7 @@ export default defineConfig({
   output: 'static',
   integrations: [sitemap({ filter: (page) => {
     const pathname = new URL(page).pathname;
+    if (pathname.startsWith('/regions/')) return (process.env.SITE_INDEXABLE === 'true' || (process.env.SITE_INDEXABLE !== 'false' && existsSync('production-indexing.enabled'))) && (pathname==='/regions/' ? regionalPages.length>=3 : regionalPages.some(p=>p.url===pathname));
     if (noindexHubs.has(pathname)) return false;
     if (knownArticlePaths.has(pathname)) return indexableArticlePaths.has(pathname);
     return true;

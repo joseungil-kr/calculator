@@ -1,9 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
+import RegionalHub from '../../components/RegionalHub.astro';
+import {regionalPages} from '../../lib/regional-runtime.mjs';
 import HubIndex from '../../components/HubIndex.astro';
 import { siteConfig } from '../../config/site';
 
-type Category = 'funeral' | 'business' | 'school' | 'event' | 'gift' | 'order';
+type Category = 'regions' | 'funeral' | 'business' | 'school' | 'event' | 'gift' | 'order';
 
 const definitions = {
   funeral: {
@@ -48,11 +50,12 @@ export async function getStaticPaths() {
   const allowed = new Set(['funeral', 'business', 'school', 'event', 'gift', 'order']);
   const articles = await getCollection('articles', ({ data }) => data.draftStatus === 'approved' || data.draftStatus === 'published');
   const categories = [...new Set(articles.map((article) => article.data.category))].filter((category) => allowed.has(category));
-  return categories.map((category) => ({ params: { category } }));
+  return [...categories, ...(regionalPages.length ? ['regions'] : [])].map((category) => ({ params: { category } }));
 }
 
 const category = Astro.params.category as Category;
-const definition = definitions[category];
-if (!definition) throw new Error(`UNKNOWN_V2_HUB: ${category}`);
+const definition = category==='regions' ? null : definitions[category];
+if (category !== 'regions' && !definition) throw new Error(`UNKNOWN_V2_HUB: ${category}`);
 ---
-<HubIndex category={category} {...definition} />
+{category==='regions' ? <RegionalHub/> : <HubIndex category={category} {...definition!} />}
+

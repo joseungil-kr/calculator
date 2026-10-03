@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 const sourceRef = z.object({
   name: z.string(),
   url: z.string().url(),
-  type: z.enum(['official', 'facility', 'education', 'professional', 'reference']).default('reference'),
+  type: z.enum(['official', 'facility', 'education', 'professional', 'business', 'reference']).default('reference'),
   verifiedAt: z.coerce.date().optional(),
 });
 
@@ -25,9 +25,10 @@ const articles = defineCollection({
     queryClass: z.string().optional(),
     visualIntent: z.string().optional(),
     assetSlot: z.string().optional(),
-    category: z.enum(['funeral', 'business', 'school', 'event', 'gift', 'order']),
+    category: z.enum(['funeral', 'business', 'school', 'event', 'gift', 'order', 'regions']),
     structureType: z.string(),
     pageType: z.enum([
+      'regional-service',
       'funeral-facility',
       'business-opening',
       'school-event',
@@ -45,6 +46,16 @@ const articles = defineCollection({
     verifiedAt: z.coerce.date().optional(),
     publishedAt: z.coerce.date().optional(),
     updatedAt: z.coerce.date().optional(),
+    regionalPurchaseMode: z.enum(['catalog','consultation-only']).optional(),
+    regionalProductKeys: z.array(z.string()).optional(),
+    regionalProductFamilies: z.array(z.string()).optional(),
+    ogImageWidth: z.number().optional(),
+    ogImageHeight: z.number().optional(),
+    ogImageType: z.string().optional(),
+    scopeKey: z.string().optional(),
+    regionUnitKeys: z.array(z.string()).optional(),
+    ogImageSha256: z.string().optional(),
+    ogImageSourceUrl: z.string().url().optional(),
     ogImage: z.string().optional(),
     ogImageAlt: z.string().optional(),
     sourceUrls: z.array(z.string().url()).default([]),
