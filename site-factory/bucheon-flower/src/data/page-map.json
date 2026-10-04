@@ -1,5 +1,26 @@
 {
-  "pages": [],
+  "pages": [
+    {
+      "pageKey": "bucheon-flower-v2-soonchunhyang-bucheon-funeral-wreath",
+      "snapshotId": "bucheon-soonchunhyang-funeral-r1-20261004",
+      "snapshotHash": "c7f47eec1f378f52d67acc07869cad38bf3a7cd053089743413b3e31a9f8bcb5",
+      "approvalVerified": true,
+      "draftKey": "bucheon-flower-v2-soonchunhyang-bucheon-funeral-wreath-r1",
+      "sourceRecordId": "reczwbDJQwIjk5I08",
+      "publishQueueRecordId": "recQER4G3aNaSNbay",
+      "slug": "soonchunhyang-bucheon-funeral-wreath",
+      "category": "funeral",
+      "routeType": "category",
+      "url": "/funeral/soonchunhyang-bucheon-funeral-wreath/",
+      "title": "순천향대학교 부천병원 장례식장 근조화환 | 상품 가격과 빈소 확인",
+      "primaryKeyword": "순천향대학교 부천병원 장례식장 근조화환",
+      "pageType": "funeral-facility",
+      "status": "approved",
+      "file": "src/data/pages.json"
+    }
+  ],
   "schemaVersion": 2,
-  "siteKey": "bucheon-flower-v2"
+  "siteKey": "bucheon-flower-v2",
+  "generatedFrom": "Airtable Publish Queue",
+  "snapshotMode": "git-frozen"
 }
