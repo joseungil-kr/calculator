@@ -8,7 +8,7 @@
       "key": "funeral-basic",
       "name": "근조 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B201",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B201",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/funeral-basic.webp",
@@ -24,7 +24,7 @@
       "key": "funeral-premium",
       "name": "근조 고급 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B203",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B203",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/funeral-premium.webp",
@@ -40,7 +40,7 @@
       "key": "funeral-large",
       "name": "근조 특대 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=B205",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=B205",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/funeral-large.webp",
@@ -56,7 +56,7 @@
       "key": "congrats-basic",
       "name": "축하 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C200",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C200",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/congrats-basic.jpg",
@@ -72,7 +72,7 @@
       "key": "congrats-premium",
       "name": "축하 고급 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C203",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C203",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/congrats-premium.jpg",
@@ -88,7 +88,7 @@
       "key": "congrats-large",
       "name": "축하 특대 3단 화환",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=C204",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=C204",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/congrats-large.jpg",
@@ -104,7 +104,7 @@
       "key": "bouquet-happiness",
       "name": "소소한 행복",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G105",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G105",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/bouquet-happiness.jpg",
@@ -120,7 +120,7 @@
       "key": "bouquet-blue",
       "name": "블루톤 시즌플라워",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G107",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G107",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/bouquet-blue.jpg",
@@ -136,7 +136,7 @@
       "key": "bouquet-rose",
       "name": "러블리 자나장미",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=G108",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=G108",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/bouquet-rose.jpg",
@@ -152,7 +152,7 @@
       "key": "basket-sunshine",
       "name": "햇살 한가득",
       "sourceUrl": "https://fwith.co.kr/shop/item.php?it_id=A155",
-      "orderUrl": "https://fwith.co.kr/shop/item.php?it_id=A155",
+      "orderUrl": "https://fwith.co.kr/",
       "verifiedAt": "2026-10-01",
       "image": {
         "path": "/images/products/basket-sunshine.jpg",
